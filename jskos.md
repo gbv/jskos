@@ -193,7 +193,7 @@ will not be supported
     * skos:semanticRelation (can be derived)
     * skos:narrowerTransitive (can be derived)
 
-## JSKOS features not supported in SKOS
+## JSKOS features not supported in SKOS {.unnumbered}
 
 The following features of JSKOS have no corresponce in SKOS:
 
@@ -204,10 +204,11 @@ The following features of JSKOS have no corresponce in SKOS:
 
 The following [JSON-LD context document] can be used to map JSKOS to map JSKOS
 to RDF triples. Boolean values (e.g. `"narrower": true` to indicate the
-existence of narrower concepts) must be removed before conversion.
+existence of narrower concepts) must be removed before conversion. Type
+information (`rdf:type skos:Concept` or `rdf:type skos:ConceptScheme`) SHOULD
+also be added as it is implicitly given in JSKOS.
 
 [JSON-LD context document]: http://www.w3.org/TR/json-ld/#the-context
-
 
 ```json
 {
@@ -234,7 +235,7 @@ existence of narrower concepts) must be removed before conversion.
 }
 ```
 
-## Examples 
+## Examples  {.unnumbered}
 
 <div class="example">
 A concept from the abbbridget Dewey Decimal Classification, edition 23:

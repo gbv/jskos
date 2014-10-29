@@ -1,0 +1,46 @@
+a[href^="#"] em { border-bottom: 1px dotted #666 }
+a[href^="#"] em { color: #000; }
+
+body {
+    counter-reset: examples;
+}
+
+section > pre {
+    font-weight: bold;
+    background-color: #ddd;
+    padding: 0.5em;
+}
+
+.example, .note {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    padding: 0.5em;
+}
+.example:before, .note:before {
+    display: block;
+    padding-bottom: 0.5em;
+}
+.example {
+    border-left: 0.5em solid #E0CB52;
+    background-color: #FCFAEE;
+}
+.example:before {
+    content: "EXAMPLE " counter(examples);
+    counter-increment: examples;
+    color: #B9AB2D;
+}
+.example pre {
+    padding-left: 1em;
+}
+
+.note {
+    border-left: 0.5em solid #52E052;
+    background-color: #E9FBE9;
+    padding-left: 1em;
+}
+.note:before {
+    content: "NOTE";
+    color: #2B2;
+}
+
+

@@ -1,0 +1,22 @@
+{
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "uri": "@id",
+    "notation": "skos:notation",
+    "prefLabel": {
+        "@id": "skos:prefLabel",
+        "@container": "@language"
+    },
+    "altLabel": {
+        "@id": "skos:altLabel",
+        "@container": "@language"
+    },
+    "narrower": "skos:narrower",
+    "broader": "skos:broader",
+    "related": "skos:related",
+    "ancestors": "skos:broaderTransitive",
+    "inScheme": {
+        "@id": "skos:inScheme",
+        "@type": "@id"
+    },
+    "topConcepts": "skos:hasTopConcept"
+}

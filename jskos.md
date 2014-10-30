@@ -21,21 +21,27 @@ appreciated!
 [concepts]: #concepts
 
 A **concept** represents a [SKOS Concept](http://www.w3.org/TR/skos-primer/#secconcept).
-A concept is a JSON object with the following keys:
+A concept is a JSON object with the following property:
 
-name      |type                       |definition
-----------|---------------------------|------------
-uri       |string                     |URI of the concept
-notation  |array of strings           |list of notations
-prefLabel |object of strings          |preferred concept labels, index by language
-altLabel  |object of arrays of strings|alternative concept labels, indexed by language
-narrower  |boolean or array of objects|narrower concepts
-broader   |boolean or array of objects|broader concepts
-related   |boolean or array of objects|related concepts
-ancestors |boolean or array of objects|list of ancestors, possibly up to a top concept
-inScheme  |string or object           |[concept scheme] or URI of the concept scheme
+name        |type                       |description
+------------|---------------------------|------------------------------------------------
+uri         |string                     |URI of the concept
+notation    |array of strings           |list of notations
+prefLabel   |object of strings          |preferred concept labels, index by language
+altLabel    |object of arrays of strings|alternative concept labels, indexed by language
+hiddenLabel |object of arrays of strings|hidden concept labels, indexed by language
+narrower    |boolean or array of objects|narrower concepts
+broader     |boolean or array of objects|broader concepts
+related     |boolean or array of objects|related concepts
+ancestors   |boolean or array of objects|list of ancestors, possibly up to a top concept
+inScheme    |array of strings or objects|[concept scheme]s or URI of the concept schemes
+topConceptOf|array of strings or objects|[concept scheme]s or URI of the concept schemes
 
-All keys are optional, so the empty object `{}` is a valid concept.
+*TODO:* notes
+
+All properties are optional, so the empty object `{}` is a valid concept.
+
+Applications may use the first notation, inScheme, ... only.
 
 The "ancestors" field only makes sense monohierarchical classifications but
 it's not forbidden to choose jus one arbitrary path of concepts that are
@@ -73,25 +79,64 @@ connected by the narrower relation.
 The order of alternative labels with same language and the order of narrower,
 broader, or related concepts is irrelevant.
 
-Applications may use empty arrays (`[]`) and boolean values (`true` and
-`false`) to indicate the known absence or existence of a property in the
-following cases:
+# Concept Schemes
+[concept scheme]: #concept-schemes
+[concept schemes]: #concept-schemes
 
----------------------------|-----------------------------------------------
-`{ "notation": [ ] }`      | concept has no notations
-`{ }` (no "notation" key)  | concept may have notations (unknown)
-`{ "prefLabel": { } }`     | concept has no preferred labels
-`{ }` (no "prefLabel" key) | concept may have preferred labels (unknown)
-`{ "narrower": false }`    | no narrower concepts exist
-`{ "narrower": [ ] }`      | no narrower concepts exist
-`{ "narrower": true }`     | narrower concept exist but are not known
-`{ }` (no "narrower" key)  | narrower concepts may exist (unknown)
-...                        | same for "broader", "related", and "ancestors"
+A **concept scheme** represents a [SKOS Concept Scheme].
+A concept scheme is a JSON object with the following properties:
+
+property   |type                       |definition
+-----------|---------------------------|--------------------------
+uri        |string                     |URI of the concept scheme
+notation   |array of strings           |list of acronyms or notations of the concept scheme
+prefLabel  |object of strings          |preferred titles of the concept scheme, index by language
+altLabel   |object of arrays of strings|alternative titles of the concept scheme, indexed by language
+hiddenLabel|object of arrays of strings|hidden titles of the concept scheme, indexed by language
+topConcepts|array of objects           |top concepts of the concept scheme
+
+All properties are optional, so the empty object `{}` is a valid concept scheme (and also a valid [concept]).
+
+<div section="note">
+notation and label properties do not imply a domain, so they can be used for both, concepts and concept schemes.
+</div>
+
+
+# Mappings
+[mappings]: #mappings
+
+A **mapping** represents a mapping between [concepts] of two [concept schemes].
+Mappings are based on 
+[SKOS mapping properties](http://www.w3.org/TR/skos-reference/#mapping).
+
+...*this part of the specification has to be written*...
+
+# Closed world statements
+
+A missing property MUST NOT be interpreted as certain absence of the
+corresponding property. For instance a concept in JSKOS without `notation`
+field may or may not have notations. This interpretation is also known as
+open-world assumption.
+
+Applications may use empty arrays, objects, or boolean values (`true` and
+`false`) to indicate the known absence or existence of the following
+properties (closed-world assumption):
+
+property  | explicit negation | explicit existence
+----------|-------------------|-------------------
+notation  | `[ ]` or `false`  | `true`
+prefLabel | `{ }` or `false`  | `true`
+altLabel  | `{ }` or `false`  | `true`
+narrower  | `[ ]` or `false`  | `true`
+broader   | `[ ]` or `false`  | `true`
+ancestors | `[ ]` or `false`  | `true`
+
+*TODO:* is it possible to express existence of labels in unknown languages?
 
 <div class="note">
 It is *not possible* to indicate the existence of an unknown URI, unknown
-preferred labels, and an unknown concept scheme. The following is **not
-allowed**:
+preferred labels, and an unknown concept scheme. The following key-value 
+pairs are **not allowed**:
 
 ```json
 {
@@ -103,47 +148,18 @@ allowed**:
 ```
 </div>
 
-# Concept Schemes
-[concept scheme]: #concept-schemes
-[concept schemes]: #concept-schemes
-
-A **concept scheme** represents a [SKOS Concept Scheme].
-A concept scheme is a JSON object with the following keys:
-
-name       |type                       |definition
------------|---------------------------|--------------------------
-uri        |string                     |URI of the concept scheme
-notation   |array of strings           |list of acronyms or notations of the concept scheme
-prefLabel  |object of strings          |preferred titles of the concept scheme, index by language
-altLabel   |object of arrays of strings|alternative titles of the concept scheme, indexed by language
-topConcepts|array of objects           |top concepts of the concept scheme
-
-All keys are optional, so the empty object `{}` is a valid concept scheme (and also a valid [concept]).
-
-<div section="note">
-This may be modified because skos:ConceptScheme does not support prefLabel, altLabel, notation (?)
-</div>
-
-# Mappings
-[mappings]: #mappings
-
-A **mapping** represents a mapping between [concepts] of two [concept schemes].
-Mappings are based on 
-[SKOS mapping properties](http://www.w3.org/TR/skos-reference/#mapping).
-
-...*this part of the specification has to be written*...
-
 
 # Integrity rules
 
 URIs of concepts and concept schemes in a JSKOS document **must** be unique.
 
+*topConceptOf is a sub-property of inScheme*
 
 [RDF/SKOS]: http://www.w3.org/2004/02/skos/
 [ng-skos]: http://gbv.github.io/ng-skos/
 [SKOS Concept Scheme]: http://www.w3.org/TR/skos-primer/#secscheme 
 
-# References
+# References {.unnumbered}
 
 ## Normative references {.unnumbered}
 
@@ -172,7 +188,7 @@ URIs of concepts and concept schemes in a JSKOS document **must** be unique.
   Niklas Lindström (Editors): *JSON-LD 1.0*. W3C
   Recommendation, 16 January 2014. <http://www.w3.org/TR/json-ld/>
 
-# Appendices
+# Appendices {.unnumbered}
 
 The following appendices are *non-normative*.
 
@@ -185,11 +201,10 @@ will be supported
   : * [Documentation Properties](http://www.w3.org/TR/2009/REC-skos-reference-20090818/#notes)
     * [Mapping properties](http://www.w3.org/TR/2009/REC-skos-reference-20090818/#mapping)
 maybe supported later
-  : * skos:hiddenLabel
-    * skos:topConceptOf
-    * [Concept Collections](http://www.w3.org/TR/2009/REC-skos-reference-20090818/#collections)
+  : * [Concept Collections](http://www.w3.org/TR/2009/REC-skos-reference-20090818/#collections)
 will not be supported
-  : * datatypes of notations
+  : * datatypes of notations (of little use in practice)
+    * labels and notes without language tag (rarely used in practice)
     * skos:semanticRelation (can be derived)
     * skos:narrowerTransitive (can be derived)
 
@@ -197,8 +212,9 @@ will not be supported
 
 The following features of JSKOS have no corresponce in SKOS:
 
-* Closed world assumption
+* [closed world statements](#closed-world-statements)
 * Order of broaderTransitive (can be derived)
+* Order of notations and inScheme
 
 ## JSON-LD context {.unnumbered}
 
@@ -223,12 +239,20 @@ also be added as it is implicitly given in JSKOS.
         "@id": "skos:altLabel",
         "@container": "@language"
     },
+    "hiddenLabel": {
+        "@id": "skos:altLabel",
+        "@container": "@language"
+    },
     "narrower": "skos:narrower",
     "broader": "skos:broader",
     "related": "skos:related",
     "ancestors": "skos:broaderTransitive",
     "inScheme": {
         "@id": "skos:inScheme",
+        "@type": "@id"
+    },
+    "topConceptOf": {
+        "@id": "skos:topConceptOf",
         "@type": "@id"
     },
     "topConcepts": "skos:hasTopConcept"
@@ -244,7 +268,7 @@ A concept from the abbbridget Dewey Decimal Classification, edition 23:
 {
     "uri": "http://dewey.info/class/641.5/e23/",
     "notation": ["641.5"],
-    "inScheme": "http://dewey.info/edition/e23/",
+    "inScheme": ["http://dewey.info/edition/e23/"],
     "prefLabel": {
         "en": "Cooking",
         "de": "Kochen",

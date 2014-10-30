@@ -10,12 +10,20 @@
         "@id": "skos:altLabel",
         "@container": "@language"
     },
+    "hiddenLabel": {
+        "@id": "skos:altLabel",
+        "@container": "@language"
+    },
     "narrower": "skos:narrower",
     "broader": "skos:broader",
     "related": "skos:related",
     "ancestors": "skos:broaderTransitive",
     "inScheme": {
         "@id": "skos:inScheme",
+        "@type": "@id"
+    },
+    "topConceptOf": {
+        "@id": "skos:topConceptOf",
         "@type": "@id"
     },
     "topConcepts": "skos:hasTopConcept"

@@ -1,9 +1,9 @@
 # Introduction
 
 **JSKOS** defines a JSON structure to encode simple knowledge organization
-systems, such as classifications and thesauri. The data format can be mapped
-from and to [RDF/SKOS] for most instances, but not all features of SKOS are
-supported.
+systems, such as classifications and thesauri. The JSKOS data format can be 
+interpreted [as JSON-LD](#json-ld-context) to map from and to SKOS (with
+[some exceptions](#appendices)).
 
 JSKOS is currently being developed as part of [ng-skos] but it can be used
 independently. Why JSKOS? Because RDF is good for exchange, aggregation,
@@ -21,11 +21,12 @@ appreciated!
 [concepts]: #concepts
 
 A **concept** represents a [SKOS Concept](http://www.w3.org/TR/skos-primer/#secconcept).
-A concept is a JSON object with the following property:
+A concept is a JSON object with the following properties:
 
 name        |type                       |description
 ------------|---------------------------|------------------------------------------------
 uri         |string                     |URI of the concept
+type        |string                     |the value `skos:Concept`
 notation    |array of strings           |list of notations
 prefLabel   |object of strings          |preferred concept labels, index by language
 altLabel    |object of arrays of strings|alternative concept labels, indexed by language
@@ -51,6 +52,7 @@ connected by the narrower relation.
 ```json
 {
   "uri": "http://example.org/terminology/P",
+  "type": "skos:Concept",
   "prefLabel": {
     "en": "peace",
     "de": "Frieden"
@@ -89,6 +91,7 @@ A concept scheme is a JSON object with the following properties:
 property   |type                       |definition
 -----------|---------------------------|--------------------------
 uri        |string                     |URI of the concept scheme
+type       |string                     |the value `skos:ConceptScheme`
 notation   |array of strings           |list of acronyms or notations of the concept scheme
 prefLabel  |object of strings          |preferred titles of the concept scheme, index by language
 altLabel   |object of arrays of strings|alternative titles of the concept scheme, indexed by language
@@ -213,8 +216,9 @@ will not be supported
 The following features of JSKOS have no corresponce in SKOS:
 
 * [closed world statements](#closed-world-statements)
-* Order of broaderTransitive (can be derived)
-* Order of notations and inScheme
+* order of broaderTransitive statements (can be derived)
+* order of multiple notations
+* order of multiple inScheme statements
 
 ## JSON-LD context {.unnumbered}
 
@@ -230,6 +234,7 @@ also be added as it is implicitly given in JSKOS.
 {
     "skos": "http://www.w3.org/2004/02/skos/core#",
     "uri": "@id",
+    "type" "http://www.w3c.org/1999/02/22-rdf-syntax-ns#type",
     "notation": "skos:notation",
     "prefLabel": {
         "@id": "skos:prefLabel",

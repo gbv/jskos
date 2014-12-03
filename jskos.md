@@ -1,19 +1,23 @@
 # Introduction
 
-**JSKOS** defines a JSON structure to encode simple knowledge organization
-systems, such as classifications and thesauri. The JSKOS data format can be 
-interpreted [as JSON-LD](#json-ld-context) to map from and to SKOS (with
-[some exceptions](#appendices)).
+**JSKOS** defines a JavaScript Object Notation (JSON) structure to encode
+knowledge organization systems, such as classifications, thesauri, and
+authority files. The current draft of JSKOS supports encoding of [concepts] and
+[concept schemes] with their corresponding properties. A later version will
+also support [concept mappings] and [concept collections].
+
+The main part of JSKOS is compatible with Simple Knowledge Organisation System
+(SKOS) and JavaScript Object Notation for Linked Data (JSON-LD) but JSKOS can
+be used without having to be experienced in any of these technologies. A simple
+JSKOS document can be mapped to SKOS expressed in the Resource Description
+Framework (RDF), and vice versa. An extended JSKOS document may further include
+[closed world statements] without correspondence in RDF. This feature
+especially allows for use of knowledge organization systems in web
+applications.
 
 JSKOS is currently being developed as part of [ng-skos] but it can be used
-independently. Why JSKOS? Because RDF is good for exchange, aggregation,
-combination, and modeling but not for processing in web applications.
-
-In short, JSKOS consists of [concepts], [concept schemes], and [mappings].
-Concept collections for grouping and sorted concepts are not supported (yet?).
-
-The specification is hosted at <http://gbv.github.io/jskos/> in the
-public GitHub repository <https://github.com/gbv/jskos>. Feedback is
+independently. The specification is hosted at <http://gbv.github.io/jskos/> in
+the public GitHub repository <https://github.com/gbv/jskos>. Feedback is
 appreciated!
 
 # Concepts
@@ -37,15 +41,10 @@ related     |boolean or array of objects|related concepts
 ancestors   |boolean or array of objects|list of ancestors, possibly up to a top concept
 inScheme    |array of strings or objects|[concept scheme]s or URI of the concept schemes
 topConceptOf|array of strings or objects|[concept scheme]s or URI of the concept schemes
+@context    |string                     |URI referencing a [JSKOS context document]
 
-<div class="note">
-SKOS [Documentation Properties](http://www.w3.org/TR/2009/REC-skos-reference-20090818/#notes)
-will also be supported. The special property `@context` will be included with a fixed value
-to better satisfy JSON-LD.
-</div>
-
-All properties are optional, so the empty object `{}` is a valid concept.
-Additional properties SHOULD be ignored.
+All properties are optional, so the empty object `{}` is also a valid concept.
+Additional properties, not included in this list, should be ignored.
 
 Applications MAY use only the first element of property `notation` and/or property
 `inScheme` for simplification.
@@ -103,38 +102,47 @@ prefLabel  |object of strings          |preferred titles of the concept scheme, 
 altLabel   |object of arrays of strings|alternative titles of the concept scheme, indexed by language
 hiddenLabel|object of arrays of strings|hidden titles of the concept scheme, indexed by language
 topConcepts|array of objects           |top concepts of the concept scheme
+@context   |string                     |URI referencing a [JSKOS context document]
 
-<div class="note">
-SKOS [Documentation Properties](http://www.w3.org/TR/2009/REC-skos-reference-20090818/#notes)
-will also be supported. The special property `@context` will be included with a fixed value
-to better satisfy JSON-LD.
-</div>
-
-All properties are optional, so the empty object `{}` is a valid concept scheme (and also a valid [concept]).
+All properties are optional, so the empty object `{}` is also a valid concept
+scheme. Additional properties, not included in this list, should be ignored.
 
 <div section="note">
 notation and label properties do not imply a domain, so they can be used for both, concepts and concept schemes.
 </div>
 
+
 # Mappings
 [mappings]: #mappings
+[concept mappings]: #mappings
 
 A **mapping** represents a mapping between [concepts] of two [concept schemes].
-Mappings are based on 
-[SKOS mapping properties](http://www.w3.org/TR/skos-reference/#mapping).
 
-...*this part of the specification has to be written*...
+Support to encode mappings, based on 
+[SKOS mapping properties](http://www.w3.org/TR/skos-reference/#mapping)
+is planned.
+
+
+# Collections
+[collections]: #collections
+[concept collections]: #collections
+
+Support to encode [collections of
+concepts](http://www.w3.org/TR/skos-primer/#seccollections) is planned.
+
 
 # Closed world statements
+[closed world statements]: #closed-world-statements
 
-A missing property MUST NOT be interpreted as certain absence of the
-corresponding property. For instance a concept in JSKOS without `notation`
-field may or may not have notations. This interpretation is also known as
-open-world assumption.
+By default, an JSKOS document should be interpreted as possible incomplete: a
+missing property does not imply that no value exists for this property: this
+assumption is also known as open-world assumption. A JSKOS document may include
+special closed world statements to explicitly disable the open world assumption
+for selected properties.
 
 Applications may use empty arrays, objects, or boolean values (`true` and
-`false`) to indicate the known absence or existence of the following
-properties (closed-world assumption):
+`false`) to explicitly state the known absence or existence of the following
+properties:
 
 property  | explicit negation | explicit existence
 ----------|-------------------|-------------------
@@ -144,13 +152,30 @@ altLabel  | `{ }` or `false`  | `true`
 narrower  | `[ ]` or `false`  | `true`
 broader   | `[ ]` or `false`  | `true`
 ancestors | `[ ]` or `false`  | `true`
+related   | `[ ]` or `false`  | `true`
 
 *TODO:* is it possible to express existence of labels in unknown languages?
+
+<div class="example">
+The following concept has at least one preferred label but no alternative
+labels, notations, nor narrower concepts. Nothing is known about broader
+concepts, related concepts, and other possible concept properties:
+
+```json
+{
+  "type": "skos:Concept",
+  "prefLabel": true,
+  "altLabel": { },
+  "notation": [ ],
+  "narrower": false
+}
+```
+</div>
 
 <div class="note">
 It is *not possible* to indicate the existence of an unknown URI, unknown
 preferred labels, and an unknown concept scheme. The following key-value 
-pairs are **not allowed**:
+pairs are **not allowed**, each:
 
 ```json
 {
@@ -212,15 +237,19 @@ JSKOS is aligned with SKOS but all references to SKOS are informative only.
 The following features of SKOS are not supported in JSKOS (yet):
 
 will be supported
-  : * [Documentation Properties](http://www.w3.org/TR/2009/REC-skos-reference-20090818/#notes)
-    * [Mapping properties](http://www.w3.org/TR/2009/REC-skos-reference-20090818/#mapping)
+  : * [documentation properties]
+    * [mapping properties]
 maybe supported later
   : * [Concept Collections](http://www.w3.org/TR/2009/REC-skos-reference-20090818/#collections)
+    * [closed world statements] about missing or more languages
 will not be supported
   : * datatypes of notations (of little use in practice)
     * labels and notes without language tag (rarely used in practice)
     * skos:semanticRelation (can be derived)
     * skos:narrowerTransitive (can be derived)
+
+[documentation properties]: http://www.w3.org/TR/2009/REC-skos-reference-20090818/#notes
+[mapping properties]: http://www.w3.org/TR/2009/REC-skos-reference-20090818/#mapping
 
 ## JSKOS features not supported in SKOS {.unnumbered}
 

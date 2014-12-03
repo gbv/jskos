@@ -38,11 +38,17 @@ ancestors   |boolean or array of objects|list of ancestors, possibly up to a top
 inScheme    |array of strings or objects|[concept scheme]s or URI of the concept schemes
 topConceptOf|array of strings or objects|[concept scheme]s or URI of the concept schemes
 
-*TODO:* notes
+<div class="note">
+SKOS [Documentation Properties](http://www.w3.org/TR/2009/REC-skos-reference-20090818/#notes)
+will also be supported. The special property `@context` will be included with a fixed value
+to better satisfy JSON-LD.
+</div>
 
 All properties are optional, so the empty object `{}` is a valid concept.
+Additional properties SHOULD be ignored.
 
-Applications may use the first notation, inScheme, ... only.
+Applications MAY use only the first element of property `notation` and/or property
+`inScheme` for simplification.
 
 The "ancestors" field only makes sense monohierarchical classifications but
 it's not forbidden to choose jus one arbitrary path of concepts that are
@@ -98,12 +104,17 @@ altLabel   |object of arrays of strings|alternative titles of the concept scheme
 hiddenLabel|object of arrays of strings|hidden titles of the concept scheme, indexed by language
 topConcepts|array of objects           |top concepts of the concept scheme
 
+<div class="note">
+SKOS [Documentation Properties](http://www.w3.org/TR/2009/REC-skos-reference-20090818/#notes)
+will also be supported. The special property `@context` will be included with a fixed value
+to better satisfy JSON-LD.
+</div>
+
 All properties are optional, so the empty object `{}` is a valid concept scheme (and also a valid [concept]).
 
 <div section="note">
 notation and label properties do not imply a domain, so they can be used for both, concepts and concept schemes.
 </div>
-
 
 # Mappings
 [mappings]: #mappings

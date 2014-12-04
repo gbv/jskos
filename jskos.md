@@ -28,7 +28,7 @@ A **concept** represents a [SKOS Concept](http://www.w3.org/TR/skos-primer/#secc
 A concept is a JSON object with the following properties:
 
 name        |type                       |description
-------------|---------------------------|------------------------------------------------
+------------|---------------------------|----------------------------------------------------
 uri         |string                     |URI of the concept
 type        |string                     |the value `skos:Concept`
 notation    |array of strings           |list of notations
@@ -41,7 +41,7 @@ related     |boolean or array of objects|related concepts
 ancestors   |boolean or array of objects|list of ancestors, possibly up to a top concept
 inScheme    |array of strings or objects|[concept scheme]s or URI of the concept schemes
 topConceptOf|array of strings or objects|[concept scheme]s or URI of the concept schemes
-@context    |string                     |URI referencing a [JSKOS context document]
+@context    |string                     |URI referencing a JSKOS [JSKOS-LD context] document
 
 All properties are optional, so the empty object `{}` is also a valid concept.
 Additional properties, not included in this list, should be ignored.
@@ -49,9 +49,11 @@ Additional properties, not included in this list, should be ignored.
 Applications MAY use only the first element of property `notation` and/or property
 `inScheme` for simplification.
 
+<div class="note">
 The "ancestors" field only makes sense monohierarchical classifications but
-it's not forbidden to choose jus one arbitrary path of concepts that are
+it's not forbidden to choose just one arbitrary path of concepts that are
 connected by the narrower relation.
+</div>
 
 <div class="example">
 ```json
@@ -84,7 +86,8 @@ connected by the narrower relation.
 </div>
 
 The order of alternative labels with same language and the order of narrower,
-broader, or related concepts is irrelevant.
+broader, or related concepts is irrelevant, but this may be changed (see
+<https://github.com/gbv/jskos/issues/11>).
 
 # Concept Schemes
 [concept scheme]: #concept-schemes
@@ -94,7 +97,7 @@ A **concept scheme** represents a [SKOS Concept Scheme].
 A concept scheme is a JSON object with the following properties:
 
 property   |type                       |definition
------------|---------------------------|--------------------------
+-----------|---------------------------|---------------------------------------------------------------
 uri        |string                     |URI of the concept scheme
 type       |string                     |the value `skos:ConceptScheme`
 notation   |array of strings           |list of acronyms or notations of the concept scheme
@@ -102,7 +105,7 @@ prefLabel  |object of strings          |preferred titles of the concept scheme, 
 altLabel   |object of arrays of strings|alternative titles of the concept scheme, indexed by language
 hiddenLabel|object of arrays of strings|hidden titles of the concept scheme, indexed by language
 topConcepts|array of objects           |top concepts of the concept scheme
-@context   |string                     |URI referencing a [JSKOS context document]
+@context   |string                     |URI referencing a JSKOS [JSKOS-LD context] document
 
 All properties are optional, so the empty object `{}` is also a valid concept
 scheme. Additional properties, not included in this list, should be ignored.
@@ -118,17 +121,20 @@ notation and label properties do not imply a domain, so they can be used for bot
 
 A **mapping** represents a mapping between [concepts] of two [concept schemes].
 
-Support to encode mappings, based on 
+Support of encoding mappings in JSKOS, based on 
 [SKOS mapping properties](http://www.w3.org/TR/skos-reference/#mapping)
-is planned.
+is planned. See <https://github.com/gbv/jskos/issues/8> for discussion.
 
 
 # Collections
 [collections]: #collections
 [concept collections]: #collections
 
-Support to encode [collections of
-concepts](http://www.w3.org/TR/skos-primer/#seccollections) is planned.
+A **collection** is a labeled and/or ordered group of [concepts].
+
+Support of encoding collections in JSKOS, based on
+[SKOS concept collections](http://www.w3.org/TR/skos-reference/#collections)
+is planned. See <https://github.com/gbv/jskos/issues/7> for discussion.
 
 
 # Closed world statements
@@ -154,8 +160,6 @@ broader   | `[ ]` or `false`  | `true`
 ancestors | `[ ]` or `false`  | `true`
 related   | `[ ]` or `false`  | `true`
 
-*TODO:* is it possible to express existence of labels in unknown languages?
-
 <div class="example">
 The following concept has at least one preferred label but no alternative
 labels, notations, nor narrower concepts. Nothing is known about broader
@@ -173,9 +177,9 @@ concepts, related concepts, and other possible concept properties:
 </div>
 
 <div class="note">
-It is *not possible* to indicate the existence of an unknown URI, unknown
-preferred labels, and an unknown concept scheme. The following key-value 
-pairs are **not allowed**, each:
+By now it is *not possible* to indicate the existence of an unknown URI, 
+unknown preferred labels, and an unknown concept scheme. The following
+key-value  pairs are **not allowed**, each:
 
 ```json
 {
@@ -185,18 +189,51 @@ pairs are **not allowed**, each:
   "inScheme": true
 }
 ```
+
+Support for closed-world-statements on missing languages
+(see <https://github.com/gbv/jskos/issues/5>) and on the completeness of sets
+(see <https://github.com/gbv/jskos/issues/6>) may be added in a later version 
+of this specification.
 </div>
 
+<div class="note">
+Closed world statements can be removed from a JSKOS document by removing 
+all boolean values:
+
+```javascript
+function removeClosedWorldStatements(jskos) {
+    if (Array.isArray(jskos)) {
+        var i = 0;
+        while (i < jskos.length) {
+            if (jskos[i] === true || jskos[i] === false) {
+                jskos.splice(i, 1);
+            } else {
+                removeClosedWorldStatements(jskos[i]);
+                i++;
+            }
+        }
+    } else if (typeof jskos == "object") {
+        for (var p in jskos) {
+            if (jskos[p] === true || jskos[p] === false) {
+                delete jskos[p];
+            } else {
+                removeClosedWorldStatements(jskos[p]);
+            }
+        }
+    }
+}
+```
+</div>
 
 # Integrity rules
 
-URIs of concepts and concept schemes in a JSKOS document **must** be unique.
-
-*topConceptOf is a sub-property of inScheme*
+Integrity rules of SKOS should be respected. A later version of this specification
+may list these rules in more detail.
 
 [RDF/SKOS]: http://www.w3.org/2004/02/skos/
 [ng-skos]: http://gbv.github.io/ng-skos/
 [SKOS Concept Scheme]: http://www.w3.org/TR/skos-primer/#secscheme 
+
 
 # References {.unnumbered}
 
@@ -237,11 +274,14 @@ JSKOS is aligned with SKOS but all references to SKOS are informative only.
 The following features of SKOS are not supported in JSKOS (yet):
 
 will be supported
-  : * [documentation properties]
-    * [mapping properties]
+  : * [documentation properties], see <https://github.com/gbv/jskos/issues/10>
+    * [mapping properties], see <https://github.com/gbv/jskos/issues/8>
 maybe supported later
-  : * [Concept Collections](http://www.w3.org/TR/2009/REC-skos-reference-20090818/#collections)
-    * [closed world statements] about missing or more languages
+  : * [concept collections], see <https://github.com/gbv/jskos/issues/7
+    * [closed world statements] about missing or more languages,
+      see <https://github.com/gbv/jskos/issues/5>
+    * [closed world statements] about missing or complete sets,
+      see <https://github.com/gbv/jskos/issues/6>
 will not be supported
   : * datatypes of notations (of little use in practice)
     * labels and notes without language tag (rarely used in practice)
@@ -263,10 +303,7 @@ The following features of JSKOS have no corresponce in SKOS:
 ## JSON-LD context {.unnumbered}
 
 The following [JSON-LD context document] can be used to map JSKOS to map JSKOS
-to RDF triples. Boolean values (e.g. `"narrower": true` to indicate the
-existence of narrower concepts) must be removed before conversion. Type
-information (`rdf:type skos:Concept` or `rdf:type skos:ConceptScheme`) SHOULD
-also be added as it is implicitly given in JSKOS.
+without [closed world statements] to RDF triples. 
 
 [JSON-LD context document]: http://www.w3.org/TR/json-ld/#the-context
 
@@ -304,6 +341,14 @@ also be added as it is implicitly given in JSKOS.
 }
 ```
 
+JSKOS with closed world statements can be mapped to RDF by ignoring all boolean
+values and/or by mapping selected boolean values to RDF triples with blank
+nodes.
+
+Applications should further add implicit RDF triples, such as `$someConcept
+rdf:type skos:Concept`, if such information can be derived from JSKOS by other
+means.
+
 ## Examples  {.unnumbered}
 
 <div class="example">
@@ -316,8 +361,8 @@ A concept from the abbbridget Dewey Decimal Classification, edition 23:
     "inScheme": ["http://dewey.info/edition/e23/"],
     "prefLabel": {
         "en": "Cooking",
-        "de": "Kochen",
-        "it": "..."
+        "de": "Kochen"
+        "it": "Cucina"
     },
     "broader": [
         {
@@ -326,7 +371,7 @@ A concept from the abbbridget Dewey Decimal Classification, edition 23:
             "prefLabel": {
                 "en": "Food and drink",
                 "de": "Essen und Trinken",
-                "it": "..."
+                "it": "Cibi e bevande"
             }
         }
     ],
@@ -336,8 +381,8 @@ A concept from the abbbridget Dewey Decimal Classification, edition 23:
             "notation": ["641.502"],
             "prefLabel": {
                 "en": "Miscellany",
-                "de": "",
-                "it": ""
+                "de": "Verschiedenes",
+                "it": "Miscellanea"
             }
         },
         {
@@ -345,7 +390,7 @@ A concept from the abbbridget Dewey Decimal Classification, edition 23:
             "notation": ["641.508"],
             "prefLabel": {
                 "en": "Cooking with respect to kind of persons",
-                "de": "",
+                "de": "Kochen im Hinblick auf Personengruppen",
                 "it": "Cucina in riferimento a categorie di persone"
             }
         },
@@ -354,7 +399,7 @@ A concept from the abbbridget Dewey Decimal Classification, edition 23:
             "notation": ["641.509"],
             "prefLabel": {
                 "en": "Historical, geographic, persons treatment",
-                "de": "",
+                "de": "Hostorische, geographische, personenbezogene Behandlung",
                 "it": "Storia, geografia, persone"
             },
             "narrower": [
@@ -374,7 +419,7 @@ A concept from the abbbridget Dewey Decimal Classification, edition 23:
             "notation": ["641.59"],
             "prefLabel": {
                 "en": "Cooking characteristic of specific geographic environments, ethnic cooking",
-                "de": "",
+                "de": "Merkmale der Küche einzelner geografischer Umgebungen, ethnische Küche",
                 "it": "Cucina tipica di specifici ambienti geografici, cucina etnica"
             }
         }

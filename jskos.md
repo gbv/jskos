@@ -25,12 +25,12 @@ appreciated!
 [concepts]: #concepts
 
 A **concept** represents a [SKOS Concept](http://www.w3.org/TR/skos-primer/#secconcept).
-A concept is a JSON object with the following properties:
+A concept is a JSON object with the following optional properties:
 
 name        |type                       |description
-------------|---------------------------|----------------------------------------------------
+------------|---------------------------|-------------------------------------------------------------------------------
 uri         |string                     |URI of the concept
-type        |string                     |the value `skos:Concept`
+type        |array of string            |URIs of RDF types (first must be `http://www.w3.org/2004/02/skos/core#Concept`)
 notation    |array of strings           |list of notations
 prefLabel   |object of strings          |preferred concept labels, index by language
 altLabel    |object of arrays of strings|alternative concept labels, indexed by language
@@ -59,7 +59,7 @@ connected by the narrower relation.
 ```json
 {
   "uri": "http://example.org/terminology/P",
-  "type": "skos:Concept",
+  "type": ["http://www.w3.org/2004/02/skos/core#Concept"],
   "prefLabel": {
     "en": "peace",
     "de": "Frieden"
@@ -94,12 +94,12 @@ broader, or related concepts is irrelevant, but this may be changed (see
 [concept schemes]: #concept-schemes
 
 A **concept scheme** represents a [SKOS Concept Scheme].
-A concept scheme is a JSON object with the following properties:
+A concept scheme is a JSON object with the following optional properties:
 
 property   |type                       |definition
------------|---------------------------|---------------------------------------------------------------
+-----------|---------------------------|-------------------------------------------------------------------------------------
 uri        |string                     |URI of the concept scheme
-type       |string                     |the value `skos:ConceptScheme`
+type       |array of string            |URIs of RDF types (first must be `http://www.w3.org/2004/02/skos/core#ConceptScheme`)
 notation   |array of strings           |list of acronyms or notations of the concept scheme
 prefLabel  |object of strings          |preferred titles of the concept scheme, index by language
 altLabel   |object of arrays of strings|alternative titles of the concept scheme, indexed by language
@@ -167,7 +167,7 @@ concepts, related concepts, and other possible concept properties:
 
 ```json
 {
-  "type": "skos:Concept",
+  "type": ["http://www.w3.org/2004/02/skos/core#Concept"],
   "prefLabel": true,
   "altLabel": { },
   "notation": [ ],
@@ -233,7 +233,7 @@ may list these rules in more detail.
 [RDF/SKOS]: http://www.w3.org/2004/02/skos/
 [ng-skos]: http://gbv.github.io/ng-skos/
 [SKOS Concept Scheme]: http://www.w3.org/TR/skos-primer/#secscheme 
-
+[JSKOS-LD context]: #json-ld-context
 
 # References {.unnumbered}
 
@@ -311,7 +311,7 @@ without [closed world statements] to RDF triples.
 {
     "skos": "http://www.w3.org/2004/02/skos/core#",
     "uri": "@id",
-    "type" "http://www.w3c.org/1999/02/22-rdf-syntax-ns#type",
+    "type": "http://www.w3c.org/1999/02/22-rdf-syntax-ns#type",
     "notation": "skos:notation",
     "prefLabel": {
         "@id": "skos:prefLabel",
@@ -358,9 +358,10 @@ A concept from the Dewey Decimal Classification, German edition 22:
 
 ```json
 {
+    "uri": "http://dewey.info/class/612.112/e22/2014-04-15/", 
+    "type": ["http://www.w3.org/2004/02/skos/core#Concept"],
     "notation": ["612.112"],
     "prefLabel": { "de": "Leukozyten (Weiße Blutkörperchen)" },
-    "uri": "http://dewey.info/class/612.112/e22/2014-04-15/", 
     "broader": [ {
         "notation": ["612.11"],
         "prefLabel": { "de": "Blut" },
@@ -411,11 +412,12 @@ A concept from the abbbridget Dewey Decimal Classification, edition 23, in three
 ```json
 {
     "uri": "http://dewey.info/class/641.5/e23/",
+    "type": ["http://www.w3.org/2004/02/skos/core#Concept"],
     "notation": ["641.5"],
     "inScheme": ["http://dewey.info/edition/e23/"],
     "prefLabel": {
         "en": "Cooking",
-        "de": "Kochen"
+        "de": "Kochen",
         "it": "Cucina"
     },
     "broader": [

@@ -27,21 +27,27 @@ appreciated!
 A **concept** represents a [SKOS Concept](http://www.w3.org/TR/skos-primer/#secconcept).
 A concept is a JSON object with the following optional properties:
 
-name        |type                       |description
-------------|---------------------------|-------------------------------------------------------------------------------
-uri         |string                     |URI of the concept
-type        |array of string            |URIs of RDF types (first must be `http://www.w3.org/2004/02/skos/core#Concept`)
-notation    |array of strings           |list of notations
-prefLabel   |object of strings          |preferred concept labels, index by language
-altLabel    |object of arrays of strings|alternative concept labels, indexed by language
-hiddenLabel |object of arrays of strings|hidden concept labels, indexed by language
-narrower    |boolean or array of objects|narrower concepts
-broader     |boolean or array of objects|broader concepts
-related     |boolean or array of objects|related concepts
-ancestors   |boolean or array of objects|list of ancestors, possibly up to a top concept
-inScheme    |array of strings or objects|[concept scheme]s or URI of the concept schemes
-topConceptOf|array of strings or objects|[concept scheme]s or URI of the concept schemes
-@context    |string                     |URI referencing a JSKOS [JSKOS-LD context] document
+name         |type                       |description
+-------------|---------------------------|-------------------------------------------------------------------------------
+uri          |string                     |URI of the concept
+type         |array of string            |URIs of RDF types (first must be `http://www.w3.org/2004/02/skos/core#Concept`)
+notation     |array of strings           |list of notations
+prefLabel    |object of strings          |preferred concept labels, index by language
+altLabel     |object of arrays of strings|alternative concept labels, indexed by language
+hiddenLabel  |object of arrays of strings|hidden concept labels, indexed by language
+narrower     |boolean or array of objects|narrower concepts
+broader      |boolean or array of objects|broader concepts
+related      |boolean or array of objects|related concepts
+ancestors    |boolean or array of objects|list of ancestors, possibly up to a top concept
+inScheme     |array of strings or objects|[concept scheme]s or URI of the concept schemes
+topConceptOf |array of strings or objects|[concept scheme]s or URI of the concept schemes
+scopeNote    |object of arrays of strings|see [SKOS Documentary Notes]
+definition   |object of arrays of strings|see [SKOS Documentary Notes]
+example      |object of arrays of strings|see [SKOS Documentary Notes]
+historyNote  |object of arrays of strings|see [SKOS Documentary Notes]
+editorialNote|object of arrays of strings|see [SKOS Documentary Notes]
+changeNote   |object of arrays of strings|see [SKOS Documentary Notes]
+@context     |string                     |URI referencing a JSKOS [JSKOS-LD context] document
 
 All properties are optional, so the empty object `{}` is also a valid concept.
 Additional properties, not included in this list, should be ignored.
@@ -60,6 +66,10 @@ connected by the narrower relation.
 {
   "uri": "http://example.org/terminology/P",
   "type": ["http://www.w3.org/2004/02/skos/core#Concept"],
+  "scopeNote": {
+    "en": "state of harmony characterized by lack of violent conflict and freedom from fear of violence",
+    "de": "Abwesenheit von Gewalt, Angst und anderen Störungen"
+  },
   "prefLabel": {
     "en": "peace",
     "de": "Frieden"
@@ -234,6 +244,7 @@ may list these rules in more detail.
 [ng-skos]: http://gbv.github.io/ng-skos/
 [SKOS Concept Scheme]: http://www.w3.org/TR/skos-primer/#secscheme 
 [JSKOS-LD context]: #json-ld-context
+[SKOS Documentary Notes]: http://www.w3.org/TR/skos-primer/#secdocumentation
 
 # References {.unnumbered}
 

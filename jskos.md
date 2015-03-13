@@ -362,6 +362,60 @@ means.
 
 ## Examples  {.unnumbered}
 
+### Integrated Authority File (GND) {.unnumbered}
+
+The Integrated Authority File (German: *Gemeinsame Normdatei*) is an authority
+file managed by the German National Library.
+
+<div class="example">
+GND as as JSKOS concept scheme:
+
+```json
+{
+    "uri": "http://d-nb.info/gnd/7749153-1", 
+    "type": ["http://www.w3.org/2004/02/skos/core#ConceptScheme"],
+    "notation": ["GND"],
+    "prefLabel": {
+        "de": "Gemeinsame Normdatei",
+        "en": "Integrated Authority File",
+        "ar": "ملف استنادي متكامل",
+        "ko": "게마인자메 노름다타이"
+    }
+}
+```
+</div>
+
+<div class="example">
+A concept from GND:
+
+```json
+{
+    "uri": "http://d-nb.info/gnd/4074195-3",
+    "type": ["http://www.w3.org/2004/02/skos/core#Concept"],
+    "prefLabel": {
+        "de": "Leukozyt"
+    },
+    "altlabel": {
+        "de": [ "Leukocyt", "Weißes Blutkörperchen", "Leukozyten", "Leukocyten" ]
+    },
+    "broader": [ {
+        "uri": "http://d-nb.info/gnd/4130604-1",
+        "prefLabel": { "de": "Blutzelle" }
+      } ],
+    "narrower": [ {
+        "uri": "http://d-nb.info/gnd/4036762-9",
+        "prefLabel": { "de": "Lymphozyt" }
+      }, {
+        "uri": "http://d-nb.info/gnd/4158047-3",
+        "prefLabel": { "de": "Granulozyt" }
+      }, {
+        "uri": "http://d-nb.info/gnd/4285013-7",
+        "prefLabel": { "de": "Monozyt" }
+     } ]
+}
+```
+</div>
+
 ### Dewey Decimal Classification (DDC)  {.unnumbered}
 
 <div class="example">

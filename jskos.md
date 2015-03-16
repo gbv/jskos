@@ -3,8 +3,8 @@
 **JSKOS** defines a JavaScript Object Notation (JSON) structure to encode
 knowledge organization systems, such as classifications, thesauri, and
 authority files. The current draft of JSKOS supports encoding of [concepts] and
-[concept schemes] with their corresponding properties. A later version will
-also support [concept mappings] and [concept collections].
+[concept schemes] with their corresponding properties. Support of [concept
+mappings] and [concept collections] is experimental.
 
 The main part of JSKOS is compatible with Simple Knowledge Organisation System
 (SKOS) and JavaScript Object Notation for Linked Data (JSON-LD) but JSKOS can
@@ -39,8 +39,8 @@ narrower     |boolean or array of objects|narrower concepts
 broader      |boolean or array of objects|broader concepts
 related      |boolean or array of objects|related concepts
 ancestors    |boolean or array of objects|list of ancestors, possibly up to a top concept
-inScheme     |array of strings or objects|[concept scheme]s or URI of the concept schemes
-topConceptOf |array of strings or objects|[concept scheme]s or URI of the concept schemes
+inScheme     |array of strings or objects|[concept schemes] or URI of the concept schemes
+topConceptOf |array of strings or objects|[concept schemes] or URI of the concept schemes
 scopeNote    |object of arrays of strings|see [SKOS Documentary Notes]
 definition   |object of arrays of strings|see [SKOS Documentary Notes]
 example      |object of arrays of strings|see [SKOS Documentary Notes]
@@ -131,20 +131,73 @@ notation and label properties do not imply a domain, so they can be used for bot
 
 A **mapping** represents a mapping between [concepts] of two [concept schemes].
 
-Support of encoding mappings in JSKOS, based on 
+<div class="note">
+This section is highly experimental. Support of encoding mappings in JSKOS, based on 
 [SKOS mapping properties](http://www.w3.org/TR/skos-reference/#mapping)
 is planned. See <https://github.com/gbv/jskos/issues/8> for discussion.
+</div>
+
+A mapping is a JSON object with the following properties:
+
+* mandatory unique identifier as URI (`uri`). This may also be a non-HTTP URI,
+  such as `urn:uuid:687b973c-38ab-48fb-b4ea-2b77abf557b7`
+* optional DCMI Metadata Terms for metadata about the mapping, such as 
+  `creator`, `contributor`, `publisher`, `dateAccepted`, `modified`, 
+  `source`, `provenance`...
+* property `mappingType` indicating one of the 
+  [SKOS mapping properties](http://www.w3.org/TR/skos-reference/#mapping)
+  `closeMatch`, `exactMatch`, `broadMatch`, `narrowMatch`, `relatedMatch`.
+* property `mappingRelevance` with a numerical value between 0 and 1.
+* mandatory properties `from` and `to` with [concept bundles] of
+  source and target scheme. 
+
+A mapping should either include property `mappingType` or property
+`mappingRelevance`. If neither of both is given, the mappingType `closeMatch`
+can be assumed as default.
 
 
-# Collections
-[collections]: #collections
-[concept collections]: #collections
+# Concept Bundles
+[concept bundles]: #concept-bundles
+[collections]: #concept-bundles
+[concept collections]: #concept-bundles
 
-A **collection** is a labeled and/or ordered group of [concepts].
+A **concept bundle** is a group of [concepts]. Some concept bundles represent
+[SKOS concept collections](http://www.w3.org/TR/skos-reference/#collections) but
+bundles may serve other purposes as well.
 
-Support of encoding collections in JSKOS, based on
-[SKOS concept collections](http://www.w3.org/TR/skos-reference/#collections)
-is planned. See <https://github.com/gbv/jskos/issues/7> for discussion.
+<div class="note">
+Concept bundles are highly experimental. 
+See <https://github.com/gbv/jskos/issues/7> for discussion.
+</div>
+
+A concept bundle is a JSON object with the following properties. All properties
+are optional except one of `conceptSet` or `conceptList` but not both must be
+given. 
+
+property     | type                        | definition
+-------------|-----------------------------|-----------------------------------------------------
+conceptSet   | array or strings or objects | set of [concepts] or URIs of concepts
+conceptList  | array or strings or objects | list of [concepts] or URIs of concepts
+inScheme     | array or strings or objects | set of [concept schemes] or URIs of concept schemes
+coordination | string                      | the value `AND` or the value `OR`
+
+<div class="note">
+
+* More possible coordination values may be added for support of more advanced
+structured indexing (ways to relate concepts to one another).
+
+* Concepts from a bundle may also come from different concept schemes!
+
+* A concept bundle may be empty, for instance to indicate that no appropriate
+  concepts exists for a given concept scheme:
+
+    ```json
+    { 
+      "conceptSet": [ ],
+      "inScheme": [ "http://dewey.info/scheme/ddc/" ]
+    }
+    ```
+</div>
 
 
 # Closed world statements
@@ -285,10 +338,9 @@ JSKOS is aligned with SKOS but all references to SKOS are informative only.
 The following features of SKOS are not supported in JSKOS (yet):
 
 will be supported
-  : * [documentation properties], see <https://github.com/gbv/jskos/issues/10>
-    * [mapping properties], see <https://github.com/gbv/jskos/issues/8>
+  : * [mapping properties], see <https://github.com/gbv/jskos/issues/8>
 maybe supported later
-  : * [concept collections], see <https://github.com/gbv/jskos/issues/7
+  : * [concept collections], see <https://github.com/gbv/jskos/issues/7>
     * [closed world statements] about missing or more languages,
       see <https://github.com/gbv/jskos/issues/5>
     * [closed world statements] about missing or complete sets,
@@ -360,9 +412,9 @@ Applications should further add implicit RDF triples, such as `$someConcept
 rdf:type skos:Concept`, if such information can be derived from JSKOS by other
 means.
 
-## Examples  {.unnumbered}
+# Examples  {.unnumbered}
 
-### Integrated Authority File (GND) {.unnumbered}
+## Integrated Authority File (GND) {.unnumbered}
 
 The Integrated Authority File (German: *Gemeinsame Normdatei*) is an authority
 file managed by the German National Library.
@@ -416,7 +468,7 @@ A concept from GND:
 ```
 </div>
 
-### Dewey Decimal Classification (DDC)  {.unnumbered}
+## Dewey Decimal Classification (DDC)  {.unnumbered}
 
 <div class="example">
 A concept from the Dewey Decimal Classification, German edition 22:
@@ -548,6 +600,92 @@ A concept from the abbbridget Dewey Decimal Classification, edition 23, in three
 }
 ```
 </div>
+
+## Mappings {.unnumbered}
+
+<div class="example">
+Multiple mappings from one concept (612.112 in DDC) to GND.
+
+```json
+{
+    "from": {
+        "inScheme": ["http://dewey.info/scheme/edition/e22/"],    
+        "conceptSet": [ {
+            "uri": "http://dewey.info/class/612.112/e22/2014-04-15/",
+            "notation": ["612.112"]
+        } ]
+    },
+    "to": {
+        "inScheme": [],
+        "conceptSet": [ {
+            "uri": "http://d-nb.info/gnd/4074195-3",
+            "preflabel": { "de": "Leukozyt" }
+        } ]
+    },
+    "mappingType": "closeMatch"
+}
+```
+
+```json
+{
+    "from": {
+        "inScheme": ["http://dewey.info/scheme/edition/e22/"],    
+        "conceptSet": [ {
+            "uri": "http://dewey.info/class/612.112/e22/2014-04-15/",
+            "notation": ["612.112"]
+        } ]
+    },
+    "to": {
+        "inScheme": ["http://d-nb.info/gnd/7749153-1"],
+        "conceptSet": [ {
+            "uri": "http://d-nb.info/gnd/4074195-3",
+            "preflabel": { "de": "Leukozyt" }
+          },{
+            "uri": "http://d-nb.info/gnd/4141893-1",
+            "preflabel": { "de": "Alkalische Leukozytenphosphatase" }
+          },{
+            "uri": "http://d-nb.info/gnd/7606617-4",
+            "preflabel": { "de": "Blutlymphozyt" }
+          },{
+            "uri": "http://d-nb.info/gnd/4158047-3",
+            "preflabel": { "de": "Granulozyt" }
+          },{
+            "uri": "http://d-nb.info/gnd/4227943-4",
+            "preflabel": { "de": "Leukozytenadhäsion" }
+          },{
+            "uri": "http://d-nb.info/gnd/4166696-3",
+            "preflabel": { "de": "Leukozytenphosphatase" }
+          },{
+            "uri": "http://d-nb.info/gnd/4285013-7",
+            "prefLabel": { "de": "Monozyt" }
+        } ],
+        "coordination": "OR"
+    },
+    "mappingRelevance": 0.5
+}
+```
+
+```json
+{
+    "from": {
+        "inScheme": ["http://dewey.info/scheme/edition/e22/"],    
+        "conceptSet": [ {
+            "uri": "http://dewey.info/class/612.112/e22/2014-04-15/",
+            "notation": ["612.112"]
+        } ]
+    },
+    "to": {
+        "inScheme": ["http://d-nb.info/gnd/7749153-1"],
+        "conceptSet": [ {
+            "uri": "http://d-nb.info/gnd/4499720-6",
+            "prefLabel": { "de": "Leukozytenintegrine" }
+        } ]
+    } 
+}
+```
+</div>
+
+
 
 ----
 

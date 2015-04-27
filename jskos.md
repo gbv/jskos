@@ -144,16 +144,16 @@ A mapping is a JSON object with the following properties:
 * optional DCMI Metadata Terms for metadata about the mapping, such as 
   `creator`, `contributor`, `publisher`, `dateAccepted`, `modified`, 
   `source`, `provenance`...
-* property `mappingType` indicating one of the 
+* optional property `mappingType` indicating one of the 
   [SKOS mapping properties](http://www.w3.org/TR/skos-reference/#mapping)
   `closeMatch`, `exactMatch`, `broadMatch`, `narrowMatch`, `relatedMatch`.
-* property `mappingRelevance` with a numerical value between 0 and 1.
+* optional property `mappingRelevance` with a numerical value between 0 and 1.
 * mandatory properties `from` and `to` with [concept bundles] of
   source and target scheme. 
 
 A mapping should either include property `mappingType` or property
 `mappingRelevance`. If neither of both is given, the mappingType `closeMatch`
-can be assumed as default.
+may be assumed as default.
 
 
 # Concept Bundles

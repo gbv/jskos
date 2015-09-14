@@ -20,37 +20,105 @@ independently. The specification is hosted at <http://gbv.github.io/jskos/> in
 the public GitHub repository <https://github.com/gbv/jskos>. Feedback is
 appreciated!
 
+# Basics
+
+## Conformance requirements
+
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
+"SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
+interpreted as described in RFC 2119.
+
+## Data types
+
+JSKOS is based on JSON which consists of *objects* with pairs of *fields* and
+*values*, *arrays* with *members*, *strings*, *numbers*, and the special values
+`true`, `false`, and `null`. JSKOS further restricts JSON with reference to the
+following data types:
+
+### Lists {.unnumbered}
+
+A **list** is an non-empty array of strings. 
+
+### Sets {.unnumbered}
+
+A **set** is 
+
+* either the value `null`
+* or an array with `null` as only member
+* or a non-empty array with distinct URI strings as members,
+  optionally followed by `null` as last member
+* or a non-empty array with objects as members,
+  optionally followed by `null` as last member.
+  All object members MUST have a field `uri` with unique value
+  in their set.
+
+<div class="example">
+The following JSON values are JSKOS sets:
+
+* `null`{.json}
+* `[null]`{.json}
+* `["http://example.org/123"]`{.json}
+* `["http://example.org/123",null]`{.json}
+* `["http://example.org/123","http://example.org/456"]`{.json}
+* `["http://example.org/123","http://example.org/456",null]`{.json}
+* `[{"uri":"http://example.org/123"}]`{.json}
+* `[{"uri":"http://example.org/123"},null]`{.json}
+* `[{"uri":"http://example.org/123"},{"uri":"http://example.org/456"}]`{.json}
+
+The following JSON values are no valid JSKOS sets:
+
+* `[]`{.json}
+* `[null,"http://example.org/123"]`{.json}
+* `["http://example.org/456",{"uri":"http://example.org/123"}]`{.json}
+* `["http://example.org/123","http://example.org/123"]`{.json}
+</div>
+
+### Language maps
+
+A **language map** is a JSON object in which every fields is 
+
+* either a valid language tag
+* or a valid language tag followed by the character `"-"`
+* or the string `"-"`
+
+and 
+
+* either all values are lists
+* or all values are strings
+  
+except the value mapped from field `"-"` which can be any of `true`,
+`false`, and `null`.
+
 # Concepts
 [concept]: #concepts
 [concepts]: #concepts
 
-A **concept** represents a [SKOS Concept](http://www.w3.org/TR/skos-primer/#secconcept).
-A concept is a JSON object with the following optional properties:
+A **concept** represents a [SKOS Concept](http://www.w3.org/TR/skos-primer/#secconcept). A concept is a JSON object with the following optional properties:
 
-name         |type                       |description
--------------|---------------------------|-------------------------------------------------------------------------------
-uri          |string                     |URI of the concept
-type         |array of string            |URIs of RDF types (first must be `http://www.w3.org/2004/02/skos/core#Concept`)
-notation     |array of strings           |list of notations
-prefLabel    |object of strings          |preferred concept labels, index by language
-altLabel     |object of arrays of strings|alternative concept labels, indexed by language
-hiddenLabel  |object of arrays of strings|hidden concept labels, indexed by language
-narrower     |boolean or array of objects|narrower concepts
-broader      |boolean or array of objects|broader concepts
-related      |boolean or array of objects|related concepts
-ancestors    |boolean or array of objects|list of ancestors, possibly up to a top concept
-inScheme     |array of strings or objects|[concept schemes] or URI of the concept schemes
-topConceptOf |array of strings or objects|[concept schemes] or URI of the concept schemes
-scopeNote    |object of arrays of strings|see [SKOS Documentary Notes]
-definition   |object of arrays of strings|see [SKOS Documentary Notes]
-example      |object of arrays of strings|see [SKOS Documentary Notes]
-historyNote  |object of arrays of strings|see [SKOS Documentary Notes]
-editorialNote|object of arrays of strings|see [SKOS Documentary Notes]
-changeNote   |object of arrays of strings|see [SKOS Documentary Notes]
-@context     |string                     |URI referencing a JSKOS [JSKOS-LD context] document
+field        |type                      |description
+-------------|--------------------------|-------------------------------------------------------------------------------
+uri          |string                    |URI of the concept
+type         |list                      |URIs of RDF types (first must be `http://www.w3.org/2004/02/skos/core#Concept`)
+notation     |list                      |list of notations
+prefLabel    |language map of strings   |preferred concept labels, index by language
+altLabel     |language map of lists     |alternative concept labels, indexed by language
+hiddenLabel  |language map of lists     |hidden concept labels, indexed by language
+narrower     |set                       |narrower concepts
+broader      |set                       |broader concepts
+related      |set                       |related concepts
+ancestors    |set                       |list of ancestors, possibly up to a top concept
+inScheme     |set                       |[concept schemes] or URI of the concept schemes
+topConceptOf |set                       |[concept schemes] or URI of the concept schemes
+scopeNote    |list                      |see [SKOS Documentary Notes]
+definition   |list                      |see [SKOS Documentary Notes]
+example      |list                      |see [SKOS Documentary Notes]
+historyNote  |list                      |see [SKOS Documentary Notes]
+editorialNote|list                      |see [SKOS Documentary Notes]
+changeNote   |list                      |see [SKOS Documentary Notes]
+@context     |string                    |URI referencing a JSKOS [JSKOS-LD context] document
 
-All properties are optional, so the empty object `{}` is also a valid concept.
-Additional properties, not included in this list, should be ignored.
+Only the `uri` field is mandatory. Additional properties, not included in this
+list, SHOULD be ignored.
 
 Applications MAY use only the first element of property `notation` and/or property
 `inScheme` for simplification.
@@ -106,19 +174,19 @@ broader, or related concepts is irrelevant, but this may be changed (see
 A **concept scheme** represents a [SKOS Concept Scheme].
 A concept scheme is a JSON object with the following optional properties:
 
-property   |type                       |definition
------------|---------------------------|-------------------------------------------------------------------------------------
-uri        |string                     |URI of the concept scheme
-type       |array of string            |URIs of RDF types (first must be `http://www.w3.org/2004/02/skos/core#ConceptScheme`)
-notation   |array of strings           |list of acronyms or notations of the concept scheme
-prefLabel  |object of strings          |preferred titles of the concept scheme, index by language
-altLabel   |object of arrays of strings|alternative titles of the concept scheme, indexed by language
-hiddenLabel|object of arrays of strings|hidden titles of the concept scheme, indexed by language
-topConcepts|array of objects           |top concepts of the concept scheme
-@context   |string                     |URI referencing a JSKOS [JSKOS-LD context] document
+property   |type                    |definition
+-----------|------------------------|-------------------------------------------------------------------------------------
+uri        |string                  |URI of the concept scheme
+type       |list                    |URIs of RDF types (first must be `http://www.w3.org/2004/02/skos/core#ConceptScheme`)
+notation   |list                    |list of acronyms or notations of the concept scheme
+prefLabel  |language map of strings |preferred titles of the concept scheme, index by language
+altLabel   |language map of lists   |alternative titles of the concept scheme, indexed by language
+hiddenLabel|language map if lists   |hidden titles of the concept scheme, indexed by language
+topConcepts|set                     |top concepts of the concept scheme
+@context   |string                  |URI referencing a JSKOS [JSKOS-LD context] document
 
-All properties are optional, so the empty object `{}` is also a valid concept
-scheme. Additional properties, not included in this list, should be ignored.
+Only the field `uri` is mandatory. Additional properties, not included in this
+list, SHOULD be ignored.
 
 <div section="note">
 notation and label properties do not imply a domain, so they can be used for both, concepts and concept schemes.
@@ -174,12 +242,12 @@ A concept bundle is a JSON object with the following properties. All properties
 are optional except one of `conceptSet` or `conceptList` but not both must be
 given. 
 
-property     | type                        | definition
--------------|-----------------------------|-----------------------------------------------------
-conceptSet   | array or strings or objects | set of [concepts] or URIs of concepts
-conceptList  | array or strings or objects | list of [concepts] or URIs of concepts
-inScheme     | array or strings or objects | set of [concept schemes] or URIs of concept schemes
-coordination | string                      | the value `AND` or the value `OR`
+property     | type    | definition
+-------------|---------|-----------------------------------------------------
+conceptSet   |set      | set of [concepts] or URIs of concepts
+conceptList  |set      | list of [concepts] or URIs of concepts
+inScheme     |set      | set of [concept schemes] or URIs of concept schemes
+coordination | string  | the value `AND` or the value `OR`
 
 <div class="note">
 
@@ -193,7 +261,7 @@ structured indexing (ways to relate concepts to one another).
 
     ```json
     { 
-      "conceptSet": [ ],
+      "conceptSet": null,
       "inScheme": [ "http://dewey.info/scheme/ddc/" ]
     }
     ```
@@ -209,81 +277,32 @@ assumption is also known as open-world assumption. A JSKOS document may include
 special closed world statements to explicitly disable the open world assumption
 for selected properties.
 
-Applications may use empty arrays, objects, or boolean values (`true` and
-`false`) to explicitly state the known absence or existence of the following
-properties:
+Applications may use `null` values to explicitly state the known absence or
+existence of unknown values:
 
 property  | explicit negation | explicit existence
 ----------|-------------------|-------------------
-notation  | `[ ]` or `false`  | `true`
-prefLabel | `{ }` or `false`  | `true`
-altLabel  | `{ }` or `false`  | `true`
-narrower  | `[ ]` or `false`  | `true`
-broader   | `[ ]` or `false`  | `true`
-ancestors | `[ ]` or `false`  | `true`
-related   | `[ ]` or `false`  | `true`
+notation  | `null`            | `[ null ]`
+prefLabel | `null`            | `{ "-": true }`
+altLabel  | `null`            | `{ "-": true }`
+narrower  | `null`            | `[ null ]`
+broader   | `null`            | `[ null ]`
+ancestors | `null`            | `[ null ]`
+related   | `null`            | `[ null ]`
 
 <div class="example">
-The following concept has at least one preferred label but no alternative
-labels, notations, nor narrower concepts. Nothing is known about broader
+The following concept has at least one preferred label and at least one
+narrower concepts but no alternative
+labels nor notations. Nothing is known about broader
 concepts, related concepts, and other possible concept properties:
 
 ```json
 {
   "type": ["http://www.w3.org/2004/02/skos/core#Concept"],
-  "prefLabel": true,
-  "altLabel": { },
-  "notation": [ ],
-  "narrower": false
-}
-```
-</div>
-
-<div class="note">
-By now it is *not possible* to indicate the existence of an unknown URI, 
-unknown preferred labels, and an unknown concept scheme. The following
-key-value  pairs are **not allowed**, each:
-
-```json
-{
-  "uri": true,
-  "prefLabel": { "en": false, "es": true },
-  "altLabel": { "en": [] },
-  "inScheme": true
-}
-```
-
-Support for closed-world-statements on missing languages
-(see <https://github.com/gbv/jskos/issues/5>) and on the completeness of sets
-(see <https://github.com/gbv/jskos/issues/6>) may be added in a later version 
-of this specification.
-</div>
-
-<div class="note">
-Closed world statements can be removed from a JSKOS document by removing 
-all boolean values:
-
-```javascript
-function removeClosedWorldStatements(jskos) {
-    if (Array.isArray(jskos)) {
-        var i = 0;
-        while (i < jskos.length) {
-            if (jskos[i] === true || jskos[i] === false) {
-                jskos.splice(i, 1);
-            } else {
-                removeClosedWorldStatements(jskos[i]);
-                i++;
-            }
-        }
-    } else if (typeof jskos == "object") {
-        for (var p in jskos) {
-            if (jskos[p] === true || jskos[p] === false) {
-                delete jskos[p];
-            } else {
-                removeClosedWorldStatements(jskos[p]);
-            }
-        }
-    }
+  "prefLabel": { "-": true },
+  "altLabel": null,
+  "notation": null,
+  "narrower": [ null ]
 }
 ```
 </div>
@@ -341,10 +360,6 @@ will be supported
   : * [mapping properties], see <https://github.com/gbv/jskos/issues/8>
 maybe supported later
   : * [concept collections], see <https://github.com/gbv/jskos/issues/7>
-    * [closed world statements] about missing or more languages,
-      see <https://github.com/gbv/jskos/issues/5>
-    * [closed world statements] about missing or complete sets,
-      see <https://github.com/gbv/jskos/issues/6>
 will not be supported
   : * datatypes of notations (of little use in practice)
     * labels and notes without language tag (rarely used in practice)
@@ -684,8 +699,6 @@ Multiple mappings from one concept (612.112 in DDC) to GND.
 }
 ```
 </div>
-
-
 
 ----
 

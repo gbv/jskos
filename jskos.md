@@ -1,7 +1,7 @@
 # Introduction
 
 **JSKOS** defines a JavaScript Object Notation (JSON) structure to encode
-knowledge organization systems, such as classifications, thesauri, and
+knowledge organization systems (KOS), such as classifications, thesauri, and
 authority files. The current draft of JSKOS supports encoding of [concepts] and
 [concept schemes] with their corresponding properties. Support of [concept
 mappings] and [concept collections] is experimental.
@@ -10,23 +10,24 @@ The main part of JSKOS is compatible with Simple Knowledge Organisation System
 (SKOS) and JavaScript Object Notation for Linked Data (JSON-LD) but JSKOS can
 be used without having to be experienced in any of these technologies. A simple
 JSKOS document can be mapped to SKOS expressed in the Resource Description
-Framework (RDF), and vice versa. An extended JSKOS document may further include
-[closed world statements] without correspondence in RDF. This feature
-especially allows for use of knowledge organization systems in web
-applications.
+Framework (RDF), and vice versa. JSKOS further supports [closed world
+statements] to express incomplete information about knowledge organization
+systems to facilitate use in dynamic web applications.
 
-JSKOS is currently being developed as part of [ng-skos] but it can be used
-independently. The specification is hosted at <http://gbv.github.io/jskos/> in
-the public GitHub repository <https://github.com/gbv/jskos>. Feedback is
-appreciated!
+## Status of this document
 
-# Basics
+JSKOS is currently being developed as part of project [coli-conc] and the
+AngularJS module [ng-skos]. The JSKOS specification is hosted at
+<http://gbv.github.io/jskos/> in the public GitHub repository
+<https://github.com/gbv/jskos>. Feedback is appreciated!
+
+[coli-conc]: https://coli-conc.gbv.de/
 
 ## Conformance requirements
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
-interpreted as described in RFC 2119.
+interpreted as described in [RFC 2119].
 
 ## Data types
 
@@ -67,27 +68,37 @@ The following JSON values are JSKOS sets:
 
 The following JSON values are no valid JSKOS sets:
 
-* `[]`{.json}
-* `[null,"http://example.org/123"]`{.json}
-* `["http://example.org/456",{"uri":"http://example.org/123"}]`{.json}
-* `["http://example.org/123","http://example.org/123"]`{.json}
+* `[]`{.json}\
+  (set must not be empty)
+* `[null,"http://example.org/123"]`{.json}\
+  (`null` must be last member)
+* `["http://example.org/456",{"uri":"http://example.org/123"}]`{.json}\
+  (either URIs as strings or objects with field `uri`)
+* `["http://example.org/123","http://example.org/123"]`{.json}\
+  (field `uri` not unique)
 </div>
 
-### Language maps
+### Language maps {.unnumbered}
 
 A **language map** is a JSON object in which every fields is 
 
-* either a valid language tag
+* either a valid language tag as defined by [RFC 3066], normalized to lowercase.
 * or a valid language tag followed by the character `"-"`
 * or the string `"-"`
 
-and 
+A **language map of strings** is a language map in which every value is either
+`null` or a string.
 
-* either all values are lists
-* or all values are strings
-  
-except the value mapped from field `"-"` which can be any of `true`,
-`false`, and `null`.
+A **language map of lists** is a language map in which every value is either
+`null`, or `[null]`, or a list or non-empty array of strings, optionally
+followed by `null` as last array member.
+
+Language tags SHOULD also conform to [BCP 47], which succeeds [RFC 3066].
+
+<div class="note">
+JSON-LD does not allow fields ending with `"-"` in language tags so these
+fields MUST be removed or ignored before converting JSKOS to RDF.
+</div>
 
 # Concepts
 [concept]: #concepts
@@ -283,8 +294,8 @@ existence of unknown values:
 property  | explicit negation | explicit existence
 ----------|-------------------|-------------------
 notation  | `null`            | `[ null ]`
-prefLabel | `null`            | `{ "-": true }`
-altLabel  | `null`            | `{ "-": true }`
+prefLabel | `null`            | `{ "-": "..." }`
+altLabel  | `null`            | `{ "-": "..." }`
 narrower  | `null`            | `[ null ]`
 broader   | `null`            | `[ null ]`
 ancestors | `null`            | `[ null ]`
@@ -299,7 +310,7 @@ concepts, related concepts, and other possible concept properties:
 ```json
 {
   "type": ["http://www.w3.org/2004/02/skos/core#Concept"],
-  "prefLabel": { "-": true },
+  "prefLabel": { "-": "..." },
   "altLabel": null,
   "notation": null,
   "narrower": [ null ]
@@ -313,7 +324,6 @@ Integrity rules of SKOS should be respected. A later version of this specificati
 may list these rules in more detail.
 
 [RDF/SKOS]: http://www.w3.org/2004/02/skos/
-[ng-skos]: http://gbv.github.io/ng-skos/
 [SKOS Concept Scheme]: http://www.w3.org/TR/skos-primer/#secscheme 
 [JSKOS-LD context]: #json-ld-context
 [SKOS Documentary Notes]: http://www.w3.org/TR/skos-primer/#secdocumentation
@@ -322,35 +332,57 @@ may list these rules in more detail.
 
 ## Normative references {.unnumbered}
 
-* A. Phillips, M. Davis: *Tags for Identifying Languages.*
-  IETF Best Current Practice BCP 47, September 2009
-  <http://tools.ietf.org/html/bcp47>
-
 * S. Bradner: *Key words for use in RFCs to Indicate Requirement Levels*. 
   RFC 2119, March 1997. <https://tools.ietf.org/html/rfc2119>
-
-* M. Dürst, M. Suignard: *Internationalized Resource Identifiers (IRIs)*. 
-  RFC 3987, January 2005. <https://tools.ietf.org/html/rfc3987>
 
 * D. Crockford: *The application/json Media Type for JavaScript Object Notation (JSON)*.
   RFC 4627, July 2006. <https://tools.ietf.org/html/rfc4627>
 
+* M. Dürst, M. Suignard: *Internationalized Resource Identifiers (IRIs)*. 
+  RFC 3987, January 2005. <https://tools.ietf.org/html/rfc3987>
+
+* A. Phillips, M. Davis: Tags for Identifying Languages*.
+  RFC 3066, September 2006. <https://tools.ietf.org/html/rfc3066>
+
+[RFC 2119]: https://tools.ietf.org/html/rfc2119
+[RFC 4627]: https://tools.ietf.org/html/rfc4627
+[RFC 3987]: https://tools.ietf.org/html/rfc3987
+[RFC 3066]: https://tools.ietf.org/html/rfc3066
+
 ## Informative references {.unnumbered}
 
-* Alistair Miles, Sean Bechhofer (Editors): *SKOS Reference*. W3C
+* A. Miles, S. Bechhofer: *SKOS Reference*. W3C
   Recommendation, 18 August 2009. <http://www.w3.org/TR/skos-reference>
 
-* Jakob Voß, Moritz Horn: *ng-skos*. AngularJS module.  
+* A. Phillips, M. Davis: *Tags for Identifying Languages.*
+  IETF Best Current Practice BCP 47, September 2009
+  <http://tools.ietf.org/html/bcp47>
+
+* M. Sporny, D. Longley, G. Kellogg, M. Lanthaler, N. Lindström: 
+  *JSON-LD 1.0*. W3C Recommendation,
+  16 January 2014. <http://www.w3.org/TR/json-ld/>
+
+* J. Voß, M. Horn: *ng-skos*. AngularJS module.  
   <https://github.com/gbv/ng-skos>.
 
-* Manu Sporny, Dave Longley, Gregg Kellogg, Markus Lanthaler, 
-  Niklas Lindström (Editors): *JSON-LD 1.0*. W3C
-  Recommendation, 16 January 2014. <http://www.w3.org/TR/json-ld/>
+[BCP 47]: http://tools.ietf.org/html/bcp47
+[ng-skos]: http://gbv.github.io/ng-skos/
 
 # Appendices {.unnumbered}
 
 The following appendices are *non-normative*.
 
+## Glossary {.unnumbered}
+
+JSON
+  : JavaScript Object Notation
+JSON-LD
+  : JavaScript Object Notation for Linked Data 
+KOS
+  : Knowledge Organization System
+RDF
+  : Resource Description Framework 
+ 
 ## SKOS features not supported in JSKOS {.unnumbered}
 
 JSKOS is aligned with SKOS but all references to SKOS are informative only.

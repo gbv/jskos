@@ -33,8 +33,13 @@ interpreted as described in [RFC 2119].
 
 JSKOS is based on JSON which consists of *objects* with pairs of *fields* and
 *values*, *arrays* with *members*, *strings*, *numbers*, and the special values
-`true`, `false`, and `null`. JSKOS further restricts JSON with reference to the
-following data types:
+`true`, `false`, and `null`. 
+
+All strings and fields of a JSKOS document MUST be normalized to Unicode
+Normalization Form C (NFC). Applications processing JSON MAY accept JSON 
+documents not normalized in NFC by performing NFC normalization.
+
+JSKOS further restricts JSON with reference to the following data types:
 
 ### Lists {.unnumbered}
 
@@ -358,6 +363,10 @@ may list these rules in more detail.
 
 * D. Crockford: *The application/json Media Type for JavaScript Object Notation (JSON)*.
   RFC 4627, July 2006. <https://tools.ietf.org/html/rfc4627>
+
+* M. Davis, K. Whistler: *Unicode Normalization Forms*.
+  Unicode Standard Annex #15.
+  <http://www.unicode.org/reports/tr15/>
 
 * M. Dürst, M. Suignard: *Internationalized Resource Identifiers (IRIs)*. 
   RFC 3987, January 2005. <https://tools.ietf.org/html/rfc3987>

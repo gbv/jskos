@@ -82,22 +82,43 @@ The following JSON values are no valid JSKOS sets:
 
 A **language map** is a JSON object in which every fields is 
 
-* either a valid language tag as defined by [RFC 3066], normalized to lowercase.
-* or a valid language tag followed by the character `"-"`
-* or the string `"-"`
+* either a language tag as defined by [RFC 3066], normalized to lowercase
+  and RECOMMENDED to also conform to [RFC 4646],
+* or a language range defined as follows, 
 
-A **language map of strings** is a language map in which every value is either
-`null` or a string.
+and every value is
 
-A **language map of lists** is a language map in which every value is either
-`null`, or `[null]`, or a list or non-empty array of strings, optionally
-followed by `null` as last array member.
+* either a string,
+* or `null`,
+* or an array with only member `null`,
+* or an array of strings, optionally followed by last member `null`.
 
-Language tags SHOULD also conform to [BCP 47], which succeeds [RFC 3066].
+In addition, in one language map all values except `null` MUST either be
+strings (**language map of strings**) or arrays (**language map of arrays**)
+but not both.
+
+A **language range** is 
+
+* either a string that has conforms to the syntax of [RFC 3066] language tags,
+  limited to lowercase, followed by the character "`-`",
+* or the character "`-`".
+
 
 <div class="note">
-JSON-LD does not allow fields ending with `"-"` in language tags so these
-fields MUST be removed or ignored before converting JSKOS to RDF.
+In formal ABNF grammar ([RFC 5234]), a language map is defined as follows.
+
+```abnf
+language-map   = language-tag / language-range
+language-tag   = 1*8alpha *("-" 1*8(alpha / DIGIT)) 
+language-range = [language-tag] "-" 
+alpha          = %x61-7A  ; a-z
+```
+</div>
+<div class="note">
+Language ranges in JSKOS are defined similar to basic language ranges in [RFC 4647]. Both can be mapped to each other although they serve slightly different purposes.
+</div>
+<div class="note">
+JSON-LD disallows language map fields ending with `"-"` so all language range fields MUST be removed before reading JSKOS as JSON-LD.
 </div>
 
 # Concepts
@@ -351,21 +372,32 @@ may list these rules in more detail.
 
 ## Informative references {.unnumbered}
 
-* A. Miles, S. Bechhofer: *SKOS Reference*. W3C
-  Recommendation, 18 August 2009. <http://www.w3.org/TR/skos-reference>
+* D. Crocker, P. Overell: *Augmented BNF for Syntax Specifications: ABNF*.
+  RFC 5234, January 2008.
+  <http://tools.ietf.org/html/rfc5234>
 
-* A. Phillips, M. Davis: *Tags for Identifying Languages.*
-  IETF Best Current Practice BCP 47, September 2009
-  <http://tools.ietf.org/html/bcp47>
+* A. Miles, S. Bechhofer: *SKOS Reference*.
+  W3C Recommendation, 18 August 2009.
+  <http://www.w3.org/TR/skos-reference>
 
-* M. Sporny, D. Longley, G. Kellogg, M. Lanthaler, N. Lindström: 
-  *JSON-LD 1.0*. W3C Recommendation,
-  16 January 2014. <http://www.w3.org/TR/json-ld/>
+* A. Phillips, M. Davis: *Tags for Identifying Languages*.
+  RFC 4646, October 2005.
+  <http://tools.ietf.org/html/rfc4646>
 
-* J. Voß, M. Horn: *ng-skos*. AngularJS module.  
+* A. Phillips, M. Davis: *Matching of Language Tags*.
+  RFC 4647, September 2006.
+  <http://tools.ietf.org/html/rfc4647>
+
+* M. Sporny, D. Longley, G. Kellogg, M. Lanthaler, N. Lindström: *JSON-LD 1.0*.
+  W3C Recommendation, January 2014.
+  <http://www.w3.org/TR/json-ld/>
+
+* J. Voß, M. Horn: *ng-skos 0.0.9*. AngularJS module.  
   <https://github.com/gbv/ng-skos>.
 
-[BCP 47]: http://tools.ietf.org/html/bcp47
+[RFC 4646]: http://tools.ietf.org/html/rfc4646
+[RFC 4647]: http://tools.ietf.org/html/rfc4647
+[RFC 5234]: http://tools.ietf.org/html/rfc5234
 [ng-skos]: http://gbv.github.io/ng-skos/
 
 # Appendices {.unnumbered}

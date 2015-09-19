@@ -371,7 +371,7 @@ may list these rules in more detail.
 * M. Dürst, M. Suignard: *Internationalized Resource Identifiers (IRIs)*. 
   RFC 3987, January 2005. <https://tools.ietf.org/html/rfc3987>
 
-* A. Phillips, M. Davis: Tags for Identifying Languages*.
+* A. Phillips, M. Davis: *Tags for Identifying Languages*.
   RFC 3066, September 2006. <https://tools.ietf.org/html/rfc3066>
 
 [RFC 2119]: https://tools.ietf.org/html/rfc2119

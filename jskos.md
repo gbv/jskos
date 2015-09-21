@@ -167,37 +167,7 @@ connected by the narrower relation.
 </div>
 
 <div class="example">
-```json
-{
-  "uri": "http://example.org/terminology/P",
-  "type": ["http://www.w3.org/2004/02/skos/core#Concept"],
-  "scopeNote": {
-    "en": "state of harmony characterized by lack of violent conflict and freedom from fear of violence",
-    "de": "Abwesenheit von Gewalt, Angst und anderen Störungen"
-  },
-  "prefLabel": {
-    "en": "peace",
-    "de": "Frieden"
-  },
-  "altLabel": {
-    "de": ["Friede"]
-  },
-  "notation": ["P"],
-  "narrower": [
-    {
-      "prefLabel": {
-        "en": "world peace",
-        "de": "Weltfrieden"
-      } 
-    }
-  ],
-  "related": [
-    { 
-      "prefLabel": { "en": "war", "de": "Krieg" } 
-    }
-  ]
-}
-```
+`examples/example.concept.json`{.include .codeblock .json}
 </div>
 
 The order of alternative labels with same language and the order of narrower,
@@ -458,39 +428,7 @@ without [closed world statements] to RDF triples.
 
 [JSON-LD context document]: http://www.w3.org/TR/json-ld/#the-context
 
-```json
-{
-    "skos": "http://www.w3.org/2004/02/skos/core#",
-    "uri": "@id",
-    "type": "http://www.w3c.org/1999/02/22-rdf-syntax-ns#type",
-    "notation": "skos:notation",
-    "prefLabel": {
-        "@id": "skos:prefLabel",
-        "@container": "@language"
-    },
-    "altLabel": {
-        "@id": "skos:altLabel",
-        "@container": "@language"
-    },
-    "hiddenLabel": {
-        "@id": "skos:altLabel",
-        "@container": "@language"
-    },
-    "narrower": "skos:narrower",
-    "broader": "skos:broader",
-    "related": "skos:related",
-    "ancestors": "skos:broaderTransitive",
-    "inScheme": {
-        "@id": "skos:inScheme",
-        "@type": "@id"
-    },
-    "topConceptOf": {
-        "@id": "skos:topConceptOf",
-        "@type": "@id"
-    },
-    "topConcepts": "skos:hasTopConcept"
-}
-```
+`context.json`{.include .codeblock .json}
 
 JSKOS with closed world statements can be mapped to RDF by ignoring all boolean
 values and/or by mapping selected boolean values to RDF triples with blank
@@ -510,50 +448,13 @@ file managed by the German National Library.
 <div class="example">
 GND as as JSKOS concept scheme:
 
-```json
-{
-    "uri": "http://d-nb.info/gnd/7749153-1", 
-    "type": ["http://www.w3.org/2004/02/skos/core#ConceptScheme"],
-    "notation": ["GND"],
-    "prefLabel": {
-        "de": "Gemeinsame Normdatei",
-        "en": "Integrated Authority File",
-        "ar": "ملف استنادي متكامل",
-        "ko": "게마인자메 노름다타이"
-    }
-}
-```
+`examples/gnd.scheme.json`{.include .codeblock .json}
 </div>
 
 <div class="example">
 A concept from GND:
 
-```json
-{
-    "uri": "http://d-nb.info/gnd/4074195-3",
-    "type": ["http://www.w3.org/2004/02/skos/core#Concept"],
-    "prefLabel": {
-        "de": "Leukozyt"
-    },
-    "altlabel": {
-        "de": [ "Leukocyt", "Weißes Blutkörperchen", "Leukozyten", "Leukocyten" ]
-    },
-    "broader": [ {
-        "uri": "http://d-nb.info/gnd/4130604-1",
-        "prefLabel": { "de": "Blutzelle" }
-      } ],
-    "narrower": [ {
-        "uri": "http://d-nb.info/gnd/4036762-9",
-        "prefLabel": { "de": "Lymphozyt" }
-      }, {
-        "uri": "http://d-nb.info/gnd/4158047-3",
-        "prefLabel": { "de": "Granulozyt" }
-      }, {
-        "uri": "http://d-nb.info/gnd/4285013-7",
-        "prefLabel": { "de": "Monozyt" }
-     } ]
-}
-```
+`examples/gnd-4130604-1.concept.json`{.include .codeblock .json}
 </div>
 
 ## Dewey Decimal Classification (DDC)  {.unnumbered}
@@ -561,132 +462,13 @@ A concept from GND:
 <div class="example">
 A concept from the Dewey Decimal Classification, German edition 22:
 
-```json
-{
-    "uri": "http://dewey.info/class/612.112/e22/2014-04-15/", 
-    "type": ["http://www.w3.org/2004/02/skos/core#Concept"],
-    "notation": ["612.112"],
-    "prefLabel": { "de": "Leukozyten (Weiße Blutkörperchen)" },
-    "broader": [ {
-        "notation": ["612.11"],
-        "prefLabel": { "de": "Blut" },
-        "uri": "http://dewey.info/class/612.11/e22/2014-04-15/"
-      } ],
-    "narrower": [ {
-        "notation": ["612.1121"], 
-        "prefLabel": { "de": "Biochemie" },
-        "uri": "http://dewey.info/class/612.1121/e22/2014-04-15/" 
-      },{
-        "notation": ["612.1127"],
-        "prefLabel": { "de": "Anzahl und Auszählung" },
-        "uri": "http://dewey.info/class/612.1127/e22/2014-04-15/" 
-      } ],
-    "ancestors": [ { 
-        "notation": ["612.11"], 
-        "prefLabel": { "de": "Blut" }, 
-        "uri": "http://dewey.info/class/612.11/e22/2014-04-15/"
-      },{
-        "notation": ["612.1"],
-        "prefLabel": { "de": "Blut und Kreislauf" },
-        "uri": "http://dewey.info/class/612.1/e22/2014-04-15/"
-      },{
-        "notation": ["612"],
-        "prefLabel": { "de": "Humanphysiologie" },
-        "uri": "http://dewey.info/class/612/e22/2014-04-15/"
-      },{
-        "notation": ["61"],
-        "prefLabel": { "de": "Medizin & Gesundheit" },
-        "uri": "http://dewey.info/class/61/e22/2014-04-15/"
-      },{
-        "notation": ["6"],
-        "prefLabel": { "de": "Technik, Medizin, angewandte Wissenschaften" },
-        "uri": "http://dewey.info/class/6/e22/2014-04-15/"
-      } ],
-    "inScheme": [
-        "http://dewey.info/scheme/version/e22/2014-04-15/",
-        "http://dewey.info/scheme/edition/e22/",
-        "http://dewey.info/scheme/ddc/"
-    ]
-}
-```
+`examples/ddc-612.112.concept.json`{.include .codeblock .json}
 </div>
 
 <div class="example">
 A concept from the abbbridget Dewey Decimal Classification, edition 23, in three languages:
 
-```json
-{
-    "uri": "http://dewey.info/class/641.5/e23/",
-    "type": ["http://www.w3.org/2004/02/skos/core#Concept"],
-    "notation": ["641.5"],
-    "inScheme": ["http://dewey.info/edition/e23/"],
-    "prefLabel": {
-        "en": "Cooking",
-        "de": "Kochen",
-        "it": "Cucina"
-    },
-    "broader": [
-        {
-            "uri": "http://dewey.info/class/641/e23/",
-            "notation": ["641"],
-            "prefLabel": {
-                "en": "Food and drink",
-                "de": "Essen und Trinken",
-                "it": "Cibi e bevande"
-            }
-        }
-    ],
-    "narrower": [
-        {
-            "uri": "http://dewey.info/class/641.502/e23/",
-            "notation": ["641.502"],
-            "prefLabel": {
-                "en": "Miscellany",
-                "de": "Verschiedenes",
-                "it": "Miscellanea"
-            }
-        },
-        {
-            "uri": "http://dewey.info/class/641.508/e23/",
-            "notation": ["641.508"],
-            "prefLabel": {
-                "en": "Cooking with respect to kind of persons",
-                "de": "Kochen im Hinblick auf Personengruppen",
-                "it": "Cucina in riferimento a categorie di persone"
-            }
-        },
-        {
-            "uri": "http://dewey.info/class/641.509/e23/",
-            "notation": ["641.509"],
-            "prefLabel": {
-                "en": "Historical, geographic, persons treatment",
-                "de": "Hostorische, geographische, personenbezogene Behandlung",
-                "it": "Storia, geografia, persone"
-            },
-            "narrower": [
-                {
-                    "uri": "http://dewey.info/class/641.5092/e23/",
-                    "notation": ["641.5092"],
-                    "prefLabel": {
-                        "en": "Cooks",
-                        "de": "Köche",
-                        "it": "Cuochi"
-                    }
-                }
-            ]
-        },
-        {
-            "uri": "http://dewey.info/class/641.59/e23/",
-            "notation": ["641.59"],
-            "prefLabel": {
-                "en": "Cooking characteristic of specific geographic environments, ethnic cooking",
-                "de": "Merkmale der Küche einzelner geografischer Umgebungen, ethnische Küche",
-                "it": "Cucina tipica di specifici ambienti geografici, cucina etnica"
-            }
-        }
-    ]
-}
-```
+`examples/ddc-641.5.concept.json`{.include .codeblock .json}
 </div>
 
 ## Mappings {.unnumbered}
@@ -694,83 +476,9 @@ A concept from the abbbridget Dewey Decimal Classification, edition 23, in three
 <div class="example">
 Multiple mappings from one concept (612.112 in DDC) to GND.
 
-```json
-{
-    "from": {
-        "inScheme": ["http://dewey.info/scheme/edition/e22/"],    
-        "conceptSet": [ {
-            "uri": "http://dewey.info/class/612.112/e22/2014-04-15/",
-            "notation": ["612.112"]
-        } ]
-    },
-    "to": {
-        "inScheme": [],
-        "conceptSet": [ {
-            "uri": "http://d-nb.info/gnd/4074195-3",
-            "preflabel": { "de": "Leukozyt" }
-        } ]
-    },
-    "mappingType": "closeMatch"
-}
-```
+`examples/ddc-gnd-1.mapping.json`{.include .codeblock .json}
 
-```json
-{
-    "from": {
-        "inScheme": ["http://dewey.info/scheme/edition/e22/"],    
-        "conceptSet": [ {
-            "uri": "http://dewey.info/class/612.112/e22/2014-04-15/",
-            "notation": ["612.112"]
-        } ]
-    },
-    "to": {
-        "inScheme": ["http://d-nb.info/gnd/7749153-1"],
-        "conceptSet": [ {
-            "uri": "http://d-nb.info/gnd/4074195-3",
-            "preflabel": { "de": "Leukozyt" }
-          },{
-            "uri": "http://d-nb.info/gnd/4141893-1",
-            "preflabel": { "de": "Alkalische Leukozytenphosphatase" }
-          },{
-            "uri": "http://d-nb.info/gnd/7606617-4",
-            "preflabel": { "de": "Blutlymphozyt" }
-          },{
-            "uri": "http://d-nb.info/gnd/4158047-3",
-            "preflabel": { "de": "Granulozyt" }
-          },{
-            "uri": "http://d-nb.info/gnd/4227943-4",
-            "preflabel": { "de": "Leukozytenadhäsion" }
-          },{
-            "uri": "http://d-nb.info/gnd/4166696-3",
-            "preflabel": { "de": "Leukozytenphosphatase" }
-          },{
-            "uri": "http://d-nb.info/gnd/4285013-7",
-            "prefLabel": { "de": "Monozyt" }
-        } ],
-        "coordination": "OR"
-    },
-    "mappingRelevance": 0.5
-}
-```
-
-```json
-{
-    "from": {
-        "inScheme": ["http://dewey.info/scheme/edition/e22/"],    
-        "conceptSet": [ {
-            "uri": "http://dewey.info/class/612.112/e22/2014-04-15/",
-            "notation": ["612.112"]
-        } ]
-    },
-    "to": {
-        "inScheme": ["http://d-nb.info/gnd/7749153-1"],
-        "conceptSet": [ {
-            "uri": "http://d-nb.info/gnd/4499720-6",
-            "prefLabel": { "de": "Leukozytenintegrine" }
-        } ]
-    } 
-}
-```
+`examples/ddc-gnd-2.mapping.json`{.include .codeblock .json}
 </div>
 
 ----

@@ -1,0 +1,24 @@
+{
+    "uri": "http://d-nb.info/gnd/4074195-3",
+    "type": ["http://www.w3.org/2004/02/skos/core#Concept"],
+    "prefLabel": {
+        "de": "Leukozyt"
+    },
+    "altlabel": {
+        "de": [ "Leukocyt", "Weißes Blutkörperchen", "Leukozyten", "Leukocyten" ]
+    },
+    "broader": [ {
+        "uri": "http://d-nb.info/gnd/4130604-1",
+        "prefLabel": { "de": "Blutzelle" }
+      } ],
+    "narrower": [ {
+        "uri": "http://d-nb.info/gnd/4036762-9",
+        "prefLabel": { "de": "Lymphozyt" }
+      }, {
+        "uri": "http://d-nb.info/gnd/4158047-3",
+        "prefLabel": { "de": "Granulozyt" }
+      }, {
+        "uri": "http://d-nb.info/gnd/4285013-7",
+        "prefLabel": { "de": "Monozyt" }
+     } ]
+}

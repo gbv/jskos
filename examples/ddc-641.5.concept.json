@@ -1,0 +1,71 @@
+{
+    "uri": "http://dewey.info/class/641.5/e23/",
+    "type": ["http://www.w3.org/2004/02/skos/core#Concept"],
+    "notation": ["641.5"],
+    "inScheme": ["http://dewey.info/edition/e23/"],
+    "prefLabel": {
+        "en": "Cooking",
+        "de": "Kochen",
+        "it": "Cucina"
+    },
+    "broader": [
+        {
+            "uri": "http://dewey.info/class/641/e23/",
+            "notation": ["641"],
+            "prefLabel": {
+                "en": "Food and drink",
+                "de": "Essen und Trinken",
+                "it": "Cibi e bevande"
+            }
+        }
+    ],
+    "narrower": [
+        {
+            "uri": "http://dewey.info/class/641.502/e23/",
+            "notation": ["641.502"],
+            "prefLabel": {
+                "en": "Miscellany",
+                "de": "Verschiedenes",
+                "it": "Miscellanea"
+            }
+        },
+        {
+            "uri": "http://dewey.info/class/641.508/e23/",
+            "notation": ["641.508"],
+            "prefLabel": {
+                "en": "Cooking with respect to kind of persons",
+                "de": "Kochen im Hinblick auf Personengruppen",
+                "it": "Cucina in riferimento a categorie di persone"
+            }
+        },
+        {
+            "uri": "http://dewey.info/class/641.509/e23/",
+            "notation": ["641.509"],
+            "prefLabel": {
+                "en": "Historical, geographic, persons treatment",
+                "de": "Hostorische, geographische, personenbezogene Behandlung",
+                "it": "Storia, geografia, persone"
+            },
+            "narrower": [
+                {
+                    "uri": "http://dewey.info/class/641.5092/e23/",
+                    "notation": ["641.5092"],
+                    "prefLabel": {
+                        "en": "Cooks",
+                        "de": "Köche",
+                        "it": "Cuochi"
+                    }
+                }
+            ]
+        },
+        {
+            "uri": "http://dewey.info/class/641.59/e23/",
+            "notation": ["641.59"],
+            "prefLabel": {
+                "en": "Cooking characteristic of specific geographic environments, ethnic cooking",
+                "de": "Merkmale der Küche einzelner geografischer Umgebungen, ethnische Küche",
+                "it": "Cucina tipica di specifici ambienti geografici, cucina etnica"
+            }
+        }
+    ]
+}

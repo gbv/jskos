@@ -204,31 +204,54 @@ notation and label properties do not imply a domain, so they can be used for bot
 [mappings]: #mappings
 [concept mappings]: #mappings
 
-A **mapping** represents a mapping between [concepts] of two [concept schemes].
-
 <div class="note">
 This section is highly experimental. Support of encoding mappings in JSKOS, based on 
 [SKOS mapping properties](http://www.w3.org/TR/skos-reference/#mapping)
 is planned. See <https://github.com/gbv/jskos/issues/8> for discussion.
 </div>
 
-A mapping is a JSON object with the following properties:
+A **mapping** represents a mapping between [concepts] of two [concept schemes].
+It consists two [concept bundles] with additional metadata. A mapping in JSKOS
+is a JSON object with the following properties:
 
-* mandatory unique identifier as URI (`uri`). This may also be a non-HTTP URI,
-  such as `urn:uuid:687b973c-38ab-48fb-b4ea-2b77abf557b7`
-* optional DCMI Metadata Terms for metadata about the mapping, such as 
-  `creator`, `contributor`, `publisher`, `dateAccepted`, `modified`, 
-  `source`, `provenance`...
-* optional property `mappingType` indicating one of the 
-  [SKOS mapping properties](http://www.w3.org/TR/skos-reference/#mapping)
-  `closeMatch`, `exactMatch`, `broadMatch`, `narrowMatch`, `relatedMatch`.
-* optional property `mappingRelevance` with a numerical value between 0 and 1.
-* mandatory properties `from` and `to` with [concept bundles] of
-  source and target scheme. 
+property         | type             | definition
+-----------------|------------------|------------------------------------------------------------------------------------------------------
+uri              | string           | URI of the mapping
+mappingType      | string           | [SKOS mapping property] (`closeMatch`, `exactMatch`, `broadMatch`, `narrowMatch`, or `relatedMatch`)
+mappingRelevance | string           | numerical value between 0 and 1
+from             | [concept bundle] | ...
+to               | [concept bundle] | ...
+sourceScheme     | URI              | ...
+targetScheme     | URI              | ...
 
-A mapping should either include property `mappingType` or property
-`mappingRelevance`. If neither of both is given, the mappingType `closeMatch`
-may be assumed as default.
+The properties `from` and `to` are mandatory. A mapping should either include
+property `mappingType` or property `mappingRelevance`. If neither of both is
+given, the mappingType `closeMatch` MAY be assumed as default.
+
+[SKOS mapping property]: http://www.w3.org/TR/skos-reference/#mapping
+
+Additional DCMI Metadata Terms are yet to be defined:
+
+property      | type       | definition 
+--------------|------------|-------------------------------------------------------------
+creator       | ?          | agent primarily responsible for creation of the mapping
+contributor   | ?          | agent responsible for making contributions to the mapping
+publisher     | ?          | agent responsible for making the resource available
+source        | URI        | ?
+created       | date       | date of creation
+dateAccepted  | date       | ?
+dateSubmitted | date       | ?
+modified      | date       | date on which the mapping was changed
+issued        | date       | date of publication
+valid         | date range | range of date of validity of the mapping (?)
+provenance    | ?          | ?
+accrualMethod | ?          | ?
+accrualPolicy | ?          | ?
+
+<div class="note">
+When mapping are dynamically created it can be useful to assign a non-HTTP URI
+such as `urn:uuid:687b973c-38ab-48fb-b4ea-2b77abf557b7`.
+</div>
 
 
 # Concept Bundles
@@ -251,9 +274,8 @@ given.
 
 property     | type    | definition
 -------------|---------|-----------------------------------------------------
-conceptSet   |set      | set of [concepts] or URIs of concepts
-conceptList  |set      | list of [concepts] or URIs of concepts
-inScheme     |set      | set of [concept schemes] or URIs of concept schemes
+conceptSet   | set     | set of [concepts] or URIs of concepts
+conceptList  | set     | list of [concepts] or URIs of concepts
 coordination | string  | the value `AND` or the value `OR`
 
 <div class="note">
@@ -267,9 +289,10 @@ structured indexing (ways to relate concepts to one another).
   concepts exists for a given concept scheme:
 
     ```json
-    { 
-      "conceptSet": null,
-      "inScheme": [ "http://dewey.info/scheme/ddc/" ]
+    {
+      ...
+      "to": { "conceptSet": null },
+      "targetScheme": [ "http://dewey.info/scheme/ddc/" ]
     }
     ```
 </div>
@@ -351,6 +374,10 @@ may list these rules in more detail.
 
 ## Informative references {.unnumbered}
 
+* DCMI Usage Board: *DCMI Metadata Terms*.
+  June 2012.
+  <http://dublincore.org/documents/dcmi-terms/>
+
 * D. Crocker, P. Overell: *Augmented BNF for Syntax Specifications: ABNF*.
   RFC 5234, January 2008.
   <http://tools.ietf.org/html/rfc5234>
@@ -371,7 +398,7 @@ may list these rules in more detail.
   W3C Recommendation, January 2014.
   <http://www.w3.org/TR/json-ld/>
 
-* J. Voß, M. Horn: *ng-skos 0.0.9*. AngularJS module.  
+* J. Voß, M. Horn: *ng-skos 0.0.9*. AngularJS module.
   <https://github.com/gbv/ng-skos>.
 
 [RFC 4646]: http://tools.ietf.org/html/rfc4646

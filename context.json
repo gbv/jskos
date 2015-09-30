@@ -1,5 +1,7 @@
 {
     "skos": "http://www.w3.org/2004/02/skos/core#",
+    "void": "http://rdfs.org/ns/void#",
+    "dct": "http://purl.org/dc/terms/",
     "uri": "@id",
     "notation": "skos:notation",
     "prefLabel": {
@@ -26,5 +28,7 @@
         "@id": "skos:topConceptOf",
         "@type": "@id"
     },
-    "topConcepts": "skos:hasTopConcept"
+    "topConcepts": "skos:hasTopConcept",
+    "sourceScheme": "void:subjectsTarget",
+    "targetScheme": "void:objectsTarget"
 }

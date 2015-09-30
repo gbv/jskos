@@ -146,12 +146,12 @@ related      |set                       |related concepts
 ancestors    |set                       |list of ancestors, possibly up to a top concept
 inScheme     |set                       |[concept schemes] or URI of the concept schemes
 topConceptOf |set                       |[concept schemes] or URI of the concept schemes
-scopeNote    |list                      |see [SKOS Documentary Notes]
-definition   |list                      |see [SKOS Documentary Notes]
-example      |list                      |see [SKOS Documentary Notes]
-historyNote  |list                      |see [SKOS Documentary Notes]
-editorialNote|list                      |see [SKOS Documentary Notes]
-changeNote   |list                      |see [SKOS Documentary Notes]
+scopeNote    |language map of lists     |see [SKOS Documentary Notes]
+definition   |language map of lists     |see [SKOS Documentary Notes]
+example      |language map of lists     |see [SKOS Documentary Notes]
+historyNote  |language map of lists     |see [SKOS Documentary Notes]
+editorialNote|language map of lists     |see [SKOS Documentary Notes]
+changeNote   |language map of lists     |see [SKOS Documentary Notes]
 @context     |string                    |URI referencing a JSKOS [JSKOS-LD context] document
 
 Only the `uri` field is mandatory. Additional properties, not included in this

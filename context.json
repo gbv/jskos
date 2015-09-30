@@ -30,5 +30,12 @@
     },
     "topConcepts": "skos:hasTopConcept",
     "sourceScheme": "void:subjectsTarget",
-    "targetScheme": "void:objectsTarget"
+    "targetScheme": "void:objectsTarget",
+    "creator": "dct:creator",
+    "contributor": "dct:contributor",
+    "publisher": "dct:publisher",
+    "version": "dct:version",
+    "source": "dct:source",
+    "created": "dct:created",
+    "modified": "dct:modified"
 }

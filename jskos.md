@@ -244,6 +244,7 @@ dateSubmitted | date       | ?
 modified      | date       | date on which the mapping was changed
 issued        | date       | date of publication
 valid         | date range | range of date of validity of the mapping (?)
+version       | string     | ?
 provenance    | ?          | ?
 accrualMethod | ?          | ?
 accrualPolicy | ?          | ?

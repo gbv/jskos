@@ -135,6 +135,7 @@ A **concept** represents a [SKOS Concept](http://www.w3.org/TR/skos-primer/#secc
 field        |type                      |description
 -------------|--------------------------|-------------------------------------------------------------------------------
 uri          |string                    |URI of the concept
+identfier    |list                      |concept scheme identifiers, preferably URIs
 type         |list                      |URIs of RDF types (first must be `http://www.w3.org/2004/02/skos/core#Concept`)
 notation     |list                      |list of notations
 prefLabel    |language map of strings   |preferred concept labels, index by language
@@ -184,6 +185,7 @@ A concept scheme is a JSON object with the following optional properties:
 property   |type                    |definition
 -----------|------------------------|-------------------------------------------------------------------------------------
 uri        |string                  |URI of the concept scheme
+identfier  |list                    |concept identifiers, preferable URIs
 type       |list                    |URIs of RDF types (first must be `http://www.w3.org/2004/02/skos/core#ConceptScheme`)
 notation   |list                    |list of acronyms or notations of the concept scheme
 prefLabel  |language map of strings |preferred titles of the concept scheme, index by language
@@ -474,9 +476,10 @@ The Integrated Authority File (German: *Gemeinsame Normdatei*) is an authority
 file managed by the German National Library.
 
 <div class="example">
-GND as as JSKOS concept scheme:
+GND as as JSKOS concept scheme. This example includes explicit knowledge about
+existence of more identifiers, definitions, and preferred labels:
 
-`examples/gnd.scheme.json`{.include .codeblock .json}
+`jskos-data/gnd/jskos-scheme.json`{.include .codeblock .json}
 </div>
 
 <div class="example">

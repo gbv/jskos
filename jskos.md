@@ -347,6 +347,27 @@ concepts, related concepts, and other possible concept properties:
 Integrity rules of SKOS should be respected. A later version of this specification
 may list these rules in more detail.
 
+# Extensions
+
+## Custom fields
+
+A JSKOS record MAY contain additional fields for custom usage. These fields
+MUST start with an uppercase letter (A-Z) and SHOULD be ignored by JSKOS
+applications. Fields starting with lowercase letters MUST NOT be used unless
+they are explicitly defined in this specification.
+
+<div class="example">
+The field `Parts` in the following example does not belong to JSKOS:
+
+```json
+{
+  "uri": "http://www.wikidata.org/entity/Q34095",
+  "prefLabel": { "en": "bronze" },
+  "Parts": ["copper", "tin"]
+}
+```
+</div>
+
 [RDF/SKOS]: http://www.w3.org/2004/02/skos/
 [SKOS Concept Scheme]: http://www.w3.org/TR/skos-primer/#secscheme 
 [JSKOS-LD context]: #json-ld-context

@@ -135,12 +135,13 @@ A **concept** represents a [SKOS Concept](http://www.w3.org/TR/skos-primer/#secc
 field        |type                      |description
 -------------|--------------------------|-------------------------------------------------------------------------------
 uri          |string                    |URI of the concept
-identfier    |list                      |concept scheme identifiers, preferably URIs
+identifier   |list                      |concept scheme identifiers, preferably URIs
 type         |list                      |URIs of RDF types (first must be `http://www.w3.org/2004/02/skos/core#Concept`)
 notation     |list                      |list of notations
 prefLabel    |language map of strings   |preferred concept labels, index by language
 altLabel     |language map of lists     |alternative concept labels, indexed by language
 hiddenLabel  |language map of lists     |hidden concept labels, indexed by language
+depiction    |list                      |list of image URLs depicting the concept
 narrower     |set                       |narrower concepts
 broader      |set                       |broader concepts
 related      |set                       |related concepts
@@ -259,6 +260,7 @@ such as `urn:uuid:687b973c-38ab-48fb-b4ea-2b77abf557b7`.
 
 # Concept Bundles
 [concept bundles]: #concept-bundles
+[concept bundle]: #concept-bundles
 [collections]: #concept-bundles
 [concept collections]: #concept-bundles
 

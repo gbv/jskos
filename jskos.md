@@ -29,6 +29,8 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
 interpreted as described in [RFC 2119].
 
+# Basics
+
 ## Data types
 
 JSKOS is based on JSON which consists of *objects* with pairs of *fields* and
@@ -126,15 +128,45 @@ Language ranges in JSKOS are defined similar to basic language ranges in [RFC 46
 JSON-LD disallows language map fields ending with `"-"` so all language range fields MUST be removed before reading JSKOS as JSON-LD.
 </div>
 
+## Common fields
+[common fields]: #common-fields
+
+The following fields can be used with [concepts], [concept schemes], and [concept mappings]:
+
+field     type    description
+--------- ------- ----------------------------------------------
+uri       string  URI of the [concept], [scheme], or [mapping] 
+created   date    date of creation 
+modified  date    date of last modification
+@context  string  URI referencing a JSKOS [JSKOS-LD context] document
+
+## Extension with custom fields
+
+A JSKOS record MAY contain additional fields for custom usage. These fields
+MUST start with an uppercase letter (A-Z) and SHOULD be ignored by JSKOS
+applications. Fields starting with lowercase letters MUST NOT be used unless
+they are explicitly defined in this specification.
+
+<div class="example">
+The field `Parts` in the following example does not belong to JSKOS:
+
+```json
+{
+  "uri": "http://www.wikidata.org/entity/Q34095",
+  "prefLabel": { "en": "bronze" },
+  "Parts": ["copper", "tin"]
+}
+```
+</div>
+
 # Concepts
 [concept]: #concepts
 [concepts]: #concepts
 
-A **concept** represents a [SKOS Concept](http://www.w3.org/TR/skos-primer/#secconcept). A concept is a JSON object with the following optional properties:
+A **concept** represents a [SKOS Concept](http://www.w3.org/TR/skos-primer/#secconcept). A concept is a JSON object with the following optional properties, in addition to [common fields]:
 
 field        |type                      |description
 -------------|--------------------------|-------------------------------------------------------------------------------
-uri          |string                    |URI of the concept
 identifier   |list                      |concept scheme identifiers, preferably URIs
 type         |list                      |URIs of RDF types (first must be `http://www.w3.org/2004/02/skos/core#Concept`)
 notation     |list                      |list of notations
@@ -144,7 +176,12 @@ hiddenLabel  |language map of lists     |hidden concept labels, indexed by langu
 depiction    |list                      |list of image URLs depicting the concept
 narrower     |set                       |narrower concepts
 broader      |set                       |broader concepts
-related      |set                       |related concepts
+related      |set                       |generally related concepts
+previous     |set                       |related concepts ordered somehow before the concept
+next         |set                       |related concepts ordered somehow after the concept
+startDate    |date                      |date of birth, creation, or estabishment of what the concept is about
+endDate      |date                      |date death or resolution of what the concept is about
+relatedDate  |date                      |other date somehow related to what the concept is about
 ancestors    |set                       |list of ancestors, possibly up to a top concept
 inScheme     |set                       |[concept schemes] or URI of the concept schemes
 topConceptOf |set                       |[concept schemes] or URI of the concept schemes
@@ -154,7 +191,7 @@ example      |language map of lists     |see [SKOS Documentary Notes]
 historyNote  |language map of lists     |see [SKOS Documentary Notes]
 editorialNote|language map of lists     |see [SKOS Documentary Notes]
 changeNote   |language map of lists     |see [SKOS Documentary Notes]
-@context     |string                    |URI referencing a JSKOS [JSKOS-LD context] document
+subjectOf    |set                       |resources being indexed with this concept
 
 Only the `uri` field is mandatory. Additional properties, not included in this
 list, SHOULD be ignored.
@@ -179,13 +216,14 @@ broader, or related concepts is irrelevant, but this may be changed (see
 # Concept Schemes
 [concept scheme]: #concept-schemes
 [concept schemes]: #concept-schemes
+[scheme]: #schemes
 
-A **concept scheme** represents a [SKOS Concept Scheme].
-A concept scheme is a JSON object with the following optional properties:
+A **concept scheme** represents a [SKOS Concept Scheme].  A concept scheme is a
+JSON object with the following optional properties, in addition to [common
+fields]:
 
 property   |type                    |definition
 -----------|------------------------|-------------------------------------------------------------------------------------
-uri        |string                  |URI of the concept scheme
 identfier  |list                    |concept identifiers, preferable URIs
 type       |list                    |URIs of RDF types (first must be `http://www.w3.org/2004/02/skos/core#ConceptScheme`)
 notation   |list                    |list of acronyms or notations of the concept scheme
@@ -193,7 +231,7 @@ prefLabel  |language map of strings |preferred titles of the concept scheme, ind
 altLabel   |language map of lists   |alternative titles of the concept scheme, indexed by language
 hiddenLabel|language map if lists   |hidden titles of the concept scheme, indexed by language
 topConcepts|set                     |top concepts of the concept scheme
-@context   |string                  |URI referencing a JSKOS [JSKOS-LD context] document
+url        |string                  |URL of a page with information about the concept scheme
 
 Only the field `uri` is mandatory. Additional properties, not included in this
 list, SHOULD be ignored.
@@ -205,6 +243,7 @@ notation and label properties do not imply a domain, so they can be used for bot
 
 # Mappings
 [mappings]: #mappings
+[mapping]: #mappings
 [concept mappings]: #mappings
 
 <div class="note">
@@ -215,11 +254,10 @@ is planned. See <https://github.com/gbv/jskos/issues/8> for discussion.
 
 A **mapping** represents a mapping between [concepts] of two [concept schemes].
 It consists two [concept bundles] with additional metadata. A mapping in JSKOS
-is a JSON object with the following properties:
+is a JSON object with the following properties, in addition to [common fields]:
 
 property         | type             | definition
 -----------------|------------------|------------------------------------------------------------------------------------------------------
-uri              | string           | URI of the mapping
 mappingType      | string           | [SKOS mapping property] (`closeMatch`, `exactMatch`, `broadMatch`, `narrowMatch`, or `relatedMatch`)
 mappingRelevance | string           | numerical value between 0 and 1
 from             | [concept bundle] | ...
@@ -241,10 +279,8 @@ creator       | ?          | agent primarily responsible for creation of the map
 contributor   | ?          | agent responsible for making contributions to the mapping
 publisher     | ?          | agent responsible for making the resource available
 source        | URI        | ?
-created       | date       | date of creation
 dateAccepted  | date       | ?
 dateSubmitted | date       | ?
-modified      | date       | date on which the mapping was changed
 issued        | date       | date of publication
 valid         | date range | range of date of validity of the mapping (?)
 version       | string     | ?
@@ -346,27 +382,6 @@ concepts, related concepts, and other possible concept properties:
 
 Integrity rules of SKOS should be respected. A later version of this specification
 may list these rules in more detail.
-
-# Extensions
-
-## Custom fields
-
-A JSKOS record MAY contain additional fields for custom usage. These fields
-MUST start with an uppercase letter (A-Z) and SHOULD be ignored by JSKOS
-applications. Fields starting with lowercase letters MUST NOT be used unless
-they are explicitly defined in this specification.
-
-<div class="example">
-The field `Parts` in the following example does not belong to JSKOS:
-
-```json
-{
-  "uri": "http://www.wikidata.org/entity/Q34095",
-  "prefLabel": { "en": "bronze" },
-  "Parts": ["copper", "tin"]
-}
-```
-</div>
 
 [RDF/SKOS]: http://www.w3.org/2004/02/skos/
 [SKOS Concept Scheme]: http://www.w3.org/TR/skos-primer/#secscheme 

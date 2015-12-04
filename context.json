@@ -21,6 +21,13 @@
         "@id": "foaf:depiction",
         "@type": "@id"
     },
+    "url": {
+        "@id": "foaf:page",
+        "@type": "@id"
+    },
+    "subjectOf": { 
+        "@reverse": "dct:subject"
+    }
     "narrower": "skos:narrower",
     "broader": "skos:broader",
     "related": "skos:related",

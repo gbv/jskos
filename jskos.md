@@ -43,11 +43,24 @@ documents not normalized in NFC by performing NFC normalization.
 
 JSKOS further restricts JSON with reference to the following data types:
 
-### Lists {.unnumbered}
+### URI {.unnumbered}
+
+A syntactically correct URI.
+
+### URL {.unnumbered}
+
+A syntactically correct URL with HTTPS (RECOMMENDED) or HTTP scheme.
+
+### date {.unnumbered}
+
+A date as defined with XML Schema datatype date (`YYYY-MM-DD(Z|[+-]hh:mm)?`), 
+gYear (`YYYY`), or gYearMonth (`YYYY-MM`).
+
+### list {.unnumbered}
 
 A **list** is an non-empty array of strings. 
 
-### Sets {.unnumbered}
+### set {.unnumbered}
 
 A **set** is 
 
@@ -86,6 +99,7 @@ The following JSON values are no valid JSKOS sets:
 </div>
 
 ### Language maps {.unnumbered}
+[language map]: #language-maps
 
 A **language map** is a JSON object in which every fields is 
 
@@ -131,14 +145,35 @@ JSON-LD disallows language map fields ending with `"-"` so all language range fi
 ## Common fields
 [common fields]: #common-fields
 
-The following fields can be used with [concepts], [concept schemes], and [concept mappings]:
+The following fields can be used with [concepts], [concept schemes], [concept types], 
+and [concept mappings]:
 
 field     type    description
---------- ------- ----------------------------------------------
-uri       string  URI of the [concept], [scheme], or [mapping] 
-created   date    date of creation 
-modified  date    date of last modification
+--------- ------- ----------------------------------------------------------------------------
+uri       string  URI of the [concept], [concept type], [concept scheme], or [concept mapping] 
+created   [date]  date of creation 
+modified  [date]  date of last modification
 @context  string  URI referencing a JSKOS [JSKOS-LD context] document
+
+The following fields can further be used with [concepts], [concept schemes],
+and [concept types]:
+
+field         type                      description
+------------- ------------------------- ----------------------------------------------------------------------------------
+type          [list] of [URI]s          URIs of RDF types
+url           string                    URL of a page with information about the [concept]/[concept scheme]/[concept type]
+identifier    [list]                    additional identifiers
+notation      [list]                    list of notations
+prefLabel     [language map] of strings preferred labels, index by language
+altLabel      [language map] of [list]s alternative labels, indexed by language
+hiddenLabel   [language map] of [list]s hidden labels, indexed by language
+scopeNote     [language map] of [list]s see [SKOS Documentary Notes]
+definition    [language map] of [list]s see [SKOS Documentary Notes]
+example       [language map] of [list]s see [SKOS Documentary Notes]
+historyNote   [language map] of [list]s see [SKOS Documentary Notes]
+editorialNote [language map] of [list]s see [SKOS Documentary Notes]
+changeNote    [language map] of [list]s see [SKOS Documentary Notes]
+depiction     [list] of [URL]s          list of image URLs depicting the concept [concept]/[concept scheme]/[concept type]
 
 ## Extension with custom fields
 
@@ -163,35 +198,28 @@ The field `Parts` in the following example does not belong to JSKOS:
 [concept]: #concepts
 [concepts]: #concepts
 
-A **concept** represents a [SKOS Concept](http://www.w3.org/TR/skos-primer/#secconcept). A concept is a JSON object with the following optional properties, in addition to [common fields]:
+[SKOS Concept]: http://www.w3.org/TR/skos-primer/#secconcept
 
-field        |type                      |description
--------------|--------------------------|-------------------------------------------------------------------------------
-identifier   |list                      |concept scheme identifiers, preferably URIs
-type         |list                      |URIs of RDF types (first must be `http://www.w3.org/2004/02/skos/core#Concept`)
-notation     |list                      |list of notations
-prefLabel    |language map of strings   |preferred concept labels, index by language
-altLabel     |language map of lists     |alternative concept labels, indexed by language
-hiddenLabel  |language map of lists     |hidden concept labels, indexed by language
-depiction    |list                      |list of image URLs depicting the concept
-narrower     |set                       |narrower concepts
-broader      |set                       |broader concepts
-related      |set                       |generally related concepts
-previous     |set                       |related concepts ordered somehow before the concept
-next         |set                       |related concepts ordered somehow after the concept
-startDate    |date                      |date of birth, creation, or estabishment of what the concept is about
-endDate      |date                      |date death or resolution of what the concept is about
-relatedDate  |date                      |other date somehow related to what the concept is about
-ancestors    |set                       |list of ancestors, possibly up to a top concept
-inScheme     |set                       |[concept schemes] or URI of the concept schemes
-topConceptOf |set                       |[concept schemes] or URI of the concept schemes
-scopeNote    |language map of lists     |see [SKOS Documentary Notes]
-definition   |language map of lists     |see [SKOS Documentary Notes]
-example      |language map of lists     |see [SKOS Documentary Notes]
-historyNote  |language map of lists     |see [SKOS Documentary Notes]
-editorialNote|language map of lists     |see [SKOS Documentary Notes]
-changeNote   |language map of lists     |see [SKOS Documentary Notes]
-subjectOf    |set                       |resources being indexed with this concept
+A **concept** represents a [SKOS Concept]. A concept is a JSON object with the
+following optional fields, in addition to [common fields]:
+
+field        type   description
+------------ ------ -------------------------------------------------------------------------------
+narrower     [set]  narrower concepts
+broader      [set]  broader concepts
+related      [set]  generally related concepts
+previous     [set]  related concepts ordered somehow before the concept
+next         [set]  related concepts ordered somehow after the concept
+startDate    [date] date of birth, creation, or estabishment of what the concept is about
+endDate      [date] date death or resolution of what the concept is about
+relatedDate  [date] other date somehow related to what the concept is about
+ancestors    [set]  list of ancestors, possibly up to a top concept
+inScheme     [set]  [concept schemes] or URI of the concept schemes
+topConceptOf [set]  [concept schemes] or URI of the concept schemes
+subjectOf    [set]  resources being indexed with this concept
+
+The first element of field `type`, if given, MUST be
+<http://www.w3.org/2004/02/skos/core#Concept>.
 
 Only the `uri` field is mandatory. Additional properties, not included in this
 list, SHOULD be ignored.
@@ -213,6 +241,7 @@ The order of alternative labels with same language and the order of narrower,
 broader, or related concepts is irrelevant, but this may be changed (see
 <https://github.com/gbv/jskos/issues/11>).
 
+
 # Concept Schemes
 [concept scheme]: #concept-schemes
 [concept schemes]: #concept-schemes
@@ -222,16 +251,12 @@ A **concept scheme** represents a [SKOS Concept Scheme].  A concept scheme is a
 JSON object with the following optional properties, in addition to [common
 fields]:
 
-property   |type                    |definition
------------|------------------------|-------------------------------------------------------------------------------------
-identfier  |list                    |concept identifiers, preferable URIs
-type       |list                    |URIs of RDF types (first must be `http://www.w3.org/2004/02/skos/core#ConceptScheme`)
-notation   |list                    |list of acronyms or notations of the concept scheme
-prefLabel  |language map of strings |preferred titles of the concept scheme, index by language
-altLabel   |language map of lists   |alternative titles of the concept scheme, indexed by language
-hiddenLabel|language map if lists   |hidden titles of the concept scheme, indexed by language
-topConcepts|set                     |top concepts of the concept scheme
-url        |string                  |URL of a page with information about the concept scheme
+property    type  definition
+----------- -------------------------------------------------------------------------------------------
+topConcepts [set] top concepts of the concept scheme
+
+The first element of field `type`, if given, MUST be
+<http://www.w3.org/2004/02/skos/core#ConceptScheme>.
 
 Only the field `uri` is mandatory. Additional properties, not included in this
 list, SHOULD be ignored.
@@ -241,10 +266,28 @@ notation and label properties do not imply a domain, so they can be used for bot
 </div>
 
 
-# Mappings
-[mappings]: #mappings
-[mapping]: #mappings
-[concept mappings]: #mappings
+# Concept types
+[concept type]: #concept-types
+[concept types]: #concept-types
+
+A **concept type** represents a more specific type of concept. Each [concept]
+MUST belong to at least the general concept type "Concept", identified by the
+URI <http://www.w3.org/2004/02/skos/core#Concept>.
+
+Concepts schemes MAY use additional concept types to organize concepts. 
+
+A concept type in JSKOS is a JSON object with [common fields].
+
+<div class="note">
+Concept types in RDF correspond to subclasses of [SKOS Concept].
+</div>
+
+
+# Concept mappings
+[mappings]: #concept-mappings
+[mapping]: #concept-mappings
+[concept mapping]: #concept-mappings
+[concept mappings]: #concept-mappings
 
 <div class="note">
 This section is highly experimental. Support of encoding mappings in JSKOS, based on 
@@ -254,9 +297,9 @@ is planned. See <https://github.com/gbv/jskos/issues/8> for discussion.
 
 A **mapping** represents a mapping between [concepts] of two [concept schemes].
 It consists two [concept bundles] with additional metadata. A mapping in JSKOS
-is a JSON object with the following properties, in addition to [common fields]:
+is a JSON object with the following fields, in addition to [common fields]:
 
-property         | type             | definition
+field            | type             | definition
 -----------------|------------------|------------------------------------------------------------------------------------------------------
 mappingType      | string           | [SKOS mapping property] (`closeMatch`, `exactMatch`, `broadMatch`, `narrowMatch`, or `relatedMatch`)
 mappingRelevance | string           | numerical value between 0 and 1
@@ -265,7 +308,7 @@ to               | [concept bundle] | ...
 sourceScheme     | URI              | ...
 targetScheme     | URI              | ...
 
-The properties `from` and `to` are mandatory. A mapping should either include
+The fields `from` and `to` are mandatory. A mapping should either include
 property `mappingType` or property `mappingRelevance`. If neither of both is
 given, the mappingType `closeMatch` MAY be assumed as default.
 
@@ -273,7 +316,7 @@ given, the mappingType `closeMatch` MAY be assumed as default.
 
 Additional DCMI Metadata Terms are yet to be defined:
 
-property      | type       | definition 
+field         | type       | definition 
 --------------|------------|-------------------------------------------------------------
 creator       | ?          | agent primarily responsible for creation of the mapping
 contributor   | ?          | agent responsible for making contributions to the mapping
@@ -309,11 +352,11 @@ Concept bundles are highly experimental.
 See <https://github.com/gbv/jskos/issues/7> for discussion.
 </div>
 
-A concept bundle is a JSON object with the following properties. All properties
+A concept bundle is a JSON object with the following fields. All fields
 are optional except one of `conceptSet` or `conceptList` but not both must be
 given. 
 
-property     | type    | definition
+field        | type    | definition
 -------------|---------|-----------------------------------------------------
 conceptSet   | set     | set of [concepts] or URIs of concepts
 conceptList  | set     | list of [concepts] or URIs of concepts

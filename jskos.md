@@ -261,8 +261,9 @@ JSON object with the following optional properties, in addition to [common
 fields]:
 
 property    type  definition
------------ -------------------------------------------------------------------------------------------
-topConcepts [set] top concepts of the concept scheme
+----------- ----- --------------------------------------------------------------------------------------
+topConcepts [set] top [concepts] of the scheme
+versionOf   [set] [concept scheme] which this scheme is a version or edition of
 concepts    [URL] JSKOS API concepts endpoint returning all concepts in this scheme
 types       [URL] JSKOS API types endpoint returning all concept types in this scheme
 
@@ -273,7 +274,7 @@ Only the field `uri` is mandatory. Additional properties, not included in this
 list, SHOULD be ignored.
 
 <div section="note">
-notation and label properties do not imply a domain, so they can be used for both, concepts and concept schemes.
+Notation and label properties do not imply a domain, so they can be used for both, concepts and concept schemes.
 </div>
 
 

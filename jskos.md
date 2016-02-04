@@ -254,6 +254,8 @@ fields]:
 property    type  definition
 ----------- -------------------------------------------------------------------------------------------
 topConcepts [set] top concepts of the concept scheme
+concepts    [URL] JSKOS API concepts endpoint returning all concepts in this scheme
+types       [URL] JSKOS API types endpoint returning all concept types in this scheme
 
 The first element of field `type`, if given, MUST be
 <http://www.w3.org/2004/02/skos/core#ConceptScheme>.

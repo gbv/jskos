@@ -98,6 +98,15 @@ The following JSON values are no valid JSKOS sets:
   (field `uri` not unique)
 </div>
 
+### Mapping type {.unnumbered}
+[mapping type]: #mapping-type
+
+A **mapping type** is one of the string values `mappingRelation`, `closeMatch`,
+`exactMatch`, `broadMatch`, `narrowMatch`, and `relatedMatch`. Each value
+refers to the corresponding [SKOS mapping property].
+
+[SKOS mapping property]: http://www.w3.org/TR/skos-reference/#mapping
+
 ### Language maps {.unnumbered}
 [language map]: #language-maps
 
@@ -303,18 +312,14 @@ is a JSON object with the following fields, in addition to [common fields]:
 
 field            | type             | definition
 -----------------|------------------|------------------------------------------------------------------------------------------------------
-mappingType      | string           | [SKOS mapping property] (`closeMatch`, `exactMatch`, `broadMatch`, `narrowMatch`, or `relatedMatch`)
+mappingType      | [mapping type]   | [SKOS mapping property]
 mappingRelevance | string           | numerical value between 0 and 1
 from             | [concept bundle] | ...
 to               | [concept bundle] | ...
 sourceScheme     | URI              | ...
 targetScheme     | URI              | ...
 
-The fields `from` and `to` are mandatory. A mapping should either include
-property `mappingType` or property `mappingRelevance`. If neither of both is
-given, the mappingType `closeMatch` MAY be assumed as default.
-
-[SKOS mapping property]: http://www.w3.org/TR/skos-reference/#mapping
+The fields `from` and `to` are mandatory. If no `mappingType` is given a [mapping type] with value `mappingRelation` can be assumed.
 
 Additional DCMI Metadata Terms are yet to be defined:
 

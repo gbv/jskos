@@ -154,8 +154,7 @@ JSON-LD disallows language map fields ending with `"-"` so all language range fi
 ## Common fields
 [common fields]: #common-fields
 
-The following fields can be used with [concepts], [concept schemes], [concept types], 
-and [concept mappings]:
+The following fields can be used with [concepts], [concept schemes], [concept types], [registries], and [concept mappings]:
 
 field     type    description
 --------- ------- ----------------------------------------------------------------------------
@@ -165,7 +164,7 @@ modified  [date]  date of last modification
 @context  string  URI referencing a JSKOS [JSKOS-LD context] document
 
 The following fields can further be used with [concepts], [concept schemes],
-and [concept types]:
+[registries], and [concept types]:
 
 field         type                      description
 ------------- ------------------------- ----------------------------------------------------------------------------------
@@ -251,6 +250,23 @@ broader, or related concepts is irrelevant, but this may be changed (see
 <https://github.com/gbv/jskos/issues/11>).
 
 
+# Concept types
+[concept type]: #concept-types
+[concept types]: #concept-types
+
+A **concept type** represents a more specific type of concept. Each [concept]
+MUST belong to at least the general concept type "Concept", identified by the
+URI <http://www.w3.org/2004/02/skos/core#Concept>.
+
+Concepts schemes MAY use additional concept types to organize concepts. 
+
+A concept type in JSKOS is a JSON object with [common fields].
+
+<div class="note">
+Concept types in RDF correspond to subclasses of [SKOS Concept].
+</div>
+
+
 # Concept Schemes
 [concept scheme]: #concept-schemes
 [concept schemes]: #concept-schemes
@@ -278,21 +294,44 @@ Notation and label properties do not imply a domain, so they can be used for bot
 </div>
 
 
-# Concept types
-[concept type]: #concept-types
-[concept types]: #concept-types
 
-A **concept type** represents a more specific type of concept. Each [concept]
-MUST belong to at least the general concept type "Concept", identified by the
-URI <http://www.w3.org/2004/02/skos/core#Concept>.
+# Registries
+[registries]: #registries
+[registry]: #registries
 
-Concepts schemes MAY use additional concept types to organize concepts. 
+A **registry** is a collection of [concepts], [concept schemes], [concept
+types], [concept mappings], and/or other registries.  A registry is expressed
+as JSON object with the following optional properties, in addition to [common
+fields]:
 
-A concept type in JSKOS is a JSON object with [common fields].
+property     type           definition
+------------ -------------- --------------------------------------------------------------------------------------
+concepts     [URL] or [set] JSKOS API endpoint with [concepts] in this registry
+schemes      [URL] or [set] JSKOS API endpoint with [concept types] in this registry
+types        [URL] or [set] JSKOS API endpoint with [concept schemes] in this registry
+mappings     [URL] or [set] JSKOS API endpoint with [mappings] in this registry
+registries   [URL] or [set] JSKOS API endpoint with other registries in this registry
+concordances [URL] or [set] JSKOS API endpoint with [concordances] in this registry
 
 <div class="note">
-Concept types in RDF correspond to subclasses of [SKOS Concept].
+Registries are the top JSKOS entity, followed by [concordances], [mappings]
+[concept schemes], and on the lowest level [concepts] and [concept types].
 </div>
+
+# Concordances
+[concordances]: #concordances
+[concordance]: #concordances
+
+A **concordance** is a collection of [mappings] from one [concept scheme] to
+another.  A concordances is expressed as JSON object with the following fields,
+in addition to [common fields]:
+
+property     type                      definition
+------------ ------------------------- --------------------------------------------------------------------------------------
+mappings     [URL] or [set]            JSKOS API endpoint with [mappings] in this concordance
+schemes      [URL] or [set]            JSKOS API endpoint with [mappings] in this concordance
+fromScheme   [URI] or [concept scheme]
+toScheme     [URI] or [concept scheme]
 
 
 # Concept mappings
@@ -317,8 +356,8 @@ mappingType      | [mapping type]   | [SKOS mapping property]
 mappingRelevance | string           | numerical value between 0 and 1
 from             | [concept bundle] | ...
 to               | [concept bundle] | ...
-sourceScheme     | URI              | ...
-targetScheme     | URI              | ...
+fromScheme       | URI              | ...
+toScheme         | URI              | ...
 
 The fields `from` and `to` are mandatory. If no `mappingType` is given a [mapping type] with value `mappingRelation` can be assumed.
 
@@ -384,7 +423,7 @@ structured indexing (ways to relate concepts to one another).
     {
       ...
       "to": { "conceptSet": null },
-      "targetScheme": [ "http://dewey.info/scheme/ddc/" ]
+      "toScheme": [ "http://dewey.info/scheme/ddc/" ]
     }
     ```
 </div>
@@ -506,10 +545,13 @@ The following appendices are *non-normative*.
 
 JSON
   : JavaScript Object Notation
+
 JSON-LD
   : JavaScript Object Notation for Linked Data 
+
 KOS
   : Knowledge Organization System
+
 RDF
   : Resource Description Framework 
  

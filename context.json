@@ -41,8 +41,8 @@
         "@type": "@id"
     },
     "topConcepts": "skos:hasTopConcept",
-    "sourceScheme": "void:subjectsTarget",
-    "targetScheme": "void:objectsTarget",
+    "fromScheme": "void:subjectsTarget",
+    "toScheme": "void:objectsTarget",
     "creator": "dct:creator",
     "contributor": "dct:contributor",
     "publisher": "dct:publisher",

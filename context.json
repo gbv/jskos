@@ -25,9 +25,13 @@
         "@id": "foaf:page",
         "@type": "@id"
     },
+    "subject": { 
+        "@id": "dct:subject",
+        "@type": "@id"
+    },
     "subjectOf": { 
         "@reverse": "dct:subject"
-    }
+    },
     "narrower": "skos:narrower",
     "broader": "skos:broader",
     "related": "skos:related",

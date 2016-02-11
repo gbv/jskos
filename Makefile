@@ -1,4 +1,4 @@
-TITLE  = JSKOS data format for knowledge organization systems
+TITLE  = JSKOS data format for Knowledge Organization Systems
 AUTHOR = Jakob Voß
 
 NAME   = jskos

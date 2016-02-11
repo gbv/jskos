@@ -16,10 +16,9 @@ systems to facilitate use in dynamic web applications.
 
 ## Status of this document
 
-JSKOS is currently being developed as part of project [coli-conc] and the
-AngularJS module [ng-skos]. The JSKOS specification is hosted at
-<http://gbv.github.io/jskos/> in the public GitHub repository
-<https://github.com/gbv/jskos>. Feedback is appreciated!
+JSKOS is currently being developed as part of project [coli-conc].  The JSKOS
+specification is hosted at <http://gbv.github.io/jskos/> in the public GitHub
+repository <https://github.com/gbv/jskos>. Feedback is appreciated!
 
 [coli-conc]: https://coli-conc.gbv.de/
 
@@ -35,17 +34,15 @@ interpreted as described in [RFC 2119].
 
 JSKOS is based on JSON which consists of *objects* with pairs of *fields* and
 *values*, *arrays* with *members*, *strings*, *numbers*, and the special values
-`true`, `false`, and `null`. 
-
-All strings and fields of a JSKOS document MUST be normalized to Unicode
-Normalization Form C (NFC). Applications processing JSON MAY accept JSON 
-documents not normalized in NFC by performing NFC normalization.
-
-JSKOS further restricts JSON with reference to the following data types:
+`true`, `false`, and `null`.  All strings and fields of a JSKOS document MUST
+be normalized to Unicode Normalization Form C (NFC). Applications processing
+JSON MAY accept JSON documents not normalized in NFC by performing NFC
+normalization.  JSKOS further restricts JSON with reference to the following
+data types:
 
 ### URI {.unnumbered}
 
-A syntactically correct URI.
+A syntactically correct IRI.
 
 ### URL {.unnumbered}
 
@@ -53,12 +50,28 @@ A syntactically correct URL with HTTPS (RECOMMENDED) or HTTP scheme.
 
 ### date {.unnumbered}
 
-A date as defined with XML Schema datatype date (`YYYY-MM-DD(Z|[+-]hh:mm)?`), 
-gYear (`YYYY`), or gYearMonth (`YYYY-MM`).
+A date or datetime as defined with XML Schema datatype
+[datetime](https://www.w3.org/TR/xmlschema-2/#dateTime)
+(`-?YYYY-MM-DDThh:mm:ss(\.s+)?(Z|[+-]hh:mm)?`)
+[date](https://www.w3.org/TR/xmlschema-2/#date) (`-?YYYY-MM-DD(Z|[+-]hh:mm)?`),
+[gYearMonth](https://www.w3.org/TR/xmlschema-2/#gYearMonth) (`-?YYYY-MM`), 
+or [gYear](https://www.w3.org/TR/xmlschema-2/#gYear) (`-?YYYY`).
+
+### mapping type {.unnumbered}
+[mapping type]: #mapping-type
+
+One of the string values `mappingRelation`, `closeMatch`, `exactMatch`,
+`broadMatch`, `narrowMatch`, and `relatedMatch`. 
+
+<div class="note">
+Each value refers to the corresponding [SKOS mapping property].
+
+[SKOS mapping property]: http://www.w3.org/TR/skos-reference/#mapping
+</div>
 
 ### list {.unnumbered}
 
-A **list** is an non-empty array of strings. 
+A non-empty array of strings.
 
 ### set {.unnumbered}
 
@@ -97,15 +110,6 @@ The following JSON values are no valid JSKOS sets:
 * `["http://example.org/123","http://example.org/123"]`{.json}\
   (field `uri` not unique)
 </div>
-
-### Mapping type {.unnumbered}
-[mapping type]: #mapping-type
-
-A **mapping type** is one of the string values `mappingRelation`, `closeMatch`,
-`exactMatch`, `broadMatch`, `narrowMatch`, and `relatedMatch`. Each value
-refers to the corresponding [SKOS mapping property].
-
-[SKOS mapping property]: http://www.w3.org/TR/skos-reference/#mapping
 
 ### Language maps {.unnumbered}
 [language map]: #language-maps
@@ -181,6 +185,7 @@ example       [language map] of [list]s see [SKOS Documentary Notes]
 historyNote   [language map] of [list]s see [SKOS Documentary Notes]
 editorialNote [language map] of [list]s see [SKOS Documentary Notes]
 changeNote    [language map] of [list]s see [SKOS Documentary Notes]
+subject       [set]                     subject indexing of this resource
 depiction     [list] of [URL]s          list of image URLs depicting the concept [concept]/[concept scheme]/[concept type]
 
 ## Extension with custom fields
@@ -481,6 +486,10 @@ may list these rules in more detail.
 # References {.unnumbered}
 
 ## Normative references {.unnumbered}
+
+* P. Biron, A. Malhotra: *XML Schema Part 2: Datatypes Second Edition*.
+  W3C Recommendation, October 2005.
+  <https://www.w3.org/TR/xmlschema-2/>
 
 * S. Bradner: *Key words for use in RFCs to Indicate Requirement Levels*. 
   RFC 2119, March 1997. <https://tools.ietf.org/html/rfc2119>

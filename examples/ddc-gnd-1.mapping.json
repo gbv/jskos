@@ -1,4 +1,5 @@
 {
+    "type": ["http://www.w3.org/2004/02/skos/core#closeMatch"],
     "from": {
         "inScheme": ["http://dewey.info/scheme/edition/e22/"],    
         "conceptSet": [ {
@@ -12,6 +13,5 @@
             "uri": "http://d-nb.info/gnd/4074195-3",
             "preflabel": { "de": "Leukozyt" }
         } ]
-    },
-    "mappingType": "closeMatch"
+    }
 }

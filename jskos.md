@@ -28,9 +28,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
 interpreted as described in [RFC 2119].
 
-# Basics
-
-## Data types
+# Data types
 
 JSKOS is based on JSON which consists of *objects* with pairs of *fields* and
 *values*, *arrays* with *members*, *strings*, *numbers*, and the special values
@@ -56,18 +54,6 @@ A date or datetime as defined with XML Schema datatype
 [date](https://www.w3.org/TR/xmlschema-2/#date) (`-?YYYY-MM-DD(Z|[+-]hh:mm)?`),
 [gYearMonth](https://www.w3.org/TR/xmlschema-2/#gYearMonth) (`-?YYYY-MM`), 
 or [gYear](https://www.w3.org/TR/xmlschema-2/#gYear) (`-?YYYY`).
-
-### mapping type {.unnumbered}
-[mapping type]: #mapping-type
-
-One of the string values `mappingRelation`, `closeMatch`, `exactMatch`,
-`broadMatch`, `narrowMatch`, and `relatedMatch`. 
-
-<div class="note">
-Each value refers to the corresponding [SKOS mapping property].
-
-[SKOS mapping property]: http://www.w3.org/TR/skos-reference/#mapping
-</div>
 
 ### list {.unnumbered}
 
@@ -111,7 +97,7 @@ The following JSON values are no valid JSKOS sets:
   (field `uri` not unique)
 </div>
 
-### Language maps {.unnumbered}
+### language maps {.unnumbered}
 [language map]: #language-maps
 
 A **language map** is a JSON object in which every fields is 
@@ -155,24 +141,36 @@ Language ranges in JSKOS are defined similar to basic language ranges in [RFC 46
 JSON-LD disallows language map fields ending with `"-"` so all language range fields MUST be removed before reading JSKOS as JSON-LD.
 </div>
 
-## Common fields
-[common fields]: #common-fields
+# JSKOS Objects
 
-The following fields can be used with [concepts], [concept schemes], [concept types], [registries], and [concept mappings]:
+[object]: #jskos-objects
+[JSKOS objects]: #jskos-objects
 
-field     type    description
---------- ------- ----------------------------------------------------------------------------
-uri       string  URI of the [concept], [concept type], [concept scheme], or [concept mapping] 
-created   [date]  date of creation 
-modified  [date]  date of last modification
-@context  string  URI referencing a JSKOS [JSKOS-LD context] document
+A JSKOS **object** is a JSON object that expresses a [concept], [concept
+scheme], [concept type], [registry], [concordance], or [concept mapping]. Each
+JSKOS object can have at least the following fields:
 
-The following fields can further be used with [concepts], [concept schemes],
-[registries], and [concept types]:
+field     type             description
+--------- ---------------- -----------------------------------------
+uri       [URI]            primary globally unique identifier
+type      [list] of [URI]s URIs of types
+@context  [URI]            reference to a [JSON-LD context] document 
+created   [date]           date of creation 
+modified  [date]           date of last modification
+
+It is RECOMMENDED to always include the fields `uri`, `type`, and `@context`.
+The value of field `@context` SHOULD be
+`https://gbv.github.io/jskos/context.json`.
+
+
+## Items
+
+A JSKOS **item** is a JSKOS object that expresses a [concept], [concept
+scheme], [concept type], [registry] or [concordance]. Each JSKOS item can have
+at least the following fields in addition to fields of all [JSKOS objects]:
 
 field         type                      description
 ------------- ------------------------- ----------------------------------------------------------------------------------
-type          [list] of [URI]s          URIs of RDF types
 url           string                    URL of a page with information about the [concept]/[concept scheme]/[concept type]
 identifier    [list]                    additional identifiers
 notation      [list]                    list of notations
@@ -188,33 +186,15 @@ changeNote    [language map] of [list]s see [SKOS Documentary Notes]
 subject       [set]                     subject indexing of this resource
 depiction     [list] of [URL]s          list of image URLs depicting the concept [concept]/[concept scheme]/[concept type]
 
-## Extension with custom fields
+## Concepts
 
-A JSKOS record MAY contain additional fields for custom usage. These fields
-MUST start with an uppercase letter (A-Z) and SHOULD be ignored by JSKOS
-applications. Fields starting with lowercase letters MUST NOT be used unless
-they are explicitly defined in this specification.
-
-<div class="example">
-The field `Parts` in the following example does not belong to JSKOS:
-
-```json
-{
-  "uri": "http://www.wikidata.org/entity/Q34095",
-  "prefLabel": { "en": "bronze" },
-  "Parts": ["copper", "tin"]
-}
-```
-</div>
-
-# Concepts
 [concept]: #concepts
 [concepts]: #concepts
 
 [SKOS Concept]: http://www.w3.org/TR/skos-primer/#secconcept
 
-A **concept** represents a [SKOS Concept]. A concept is a JSON object with the
-following optional fields, in addition to [common fields]:
+A **concept** represents a [SKOS Concept]. Each concept can have at least the
+following fields in addition to fields of all [JSKOS items]:
 
 field        type   description
 ------------ ------ -------------------------------------------------------------------------------
@@ -255,7 +235,7 @@ broader, or related concepts is irrelevant, but this may be changed (see
 <https://github.com/gbv/jskos/issues/11>).
 
 
-# Concept types
+## Concept types
 [concept type]: #concept-types
 [concept types]: #concept-types
 
@@ -265,21 +245,21 @@ URI <http://www.w3.org/2004/02/skos/core#Concept>.
 
 Concepts schemes MAY use additional concept types to organize concepts. 
 
-A concept type in JSKOS is a JSON object with [common fields].
+A concept type in JSKOS is a [JSKOS item].
 
 <div class="note">
 Concept types in RDF correspond to subclasses of [SKOS Concept].
 </div>
 
 
-# Concept Schemes
+## Concept Schemes
 [concept scheme]: #concept-schemes
 [concept schemes]: #concept-schemes
 [scheme]: #schemes
 
-A **concept scheme** represents a [SKOS Concept Scheme].  A concept scheme is a
-JSON object with the following optional properties, in addition to [common
-fields]:
+A **concept scheme** represents a [SKOS Concept Scheme].  Each concept scheme
+can have at least the following fields in addition to fields of all [JSKOS
+items]:
 
 property    type  definition
 ----------- ----- --------------------------------------------------------------------------------------
@@ -300,14 +280,13 @@ Notation and label properties do not imply a domain, so they can be used for bot
 
 
 
-# Registries
+## Registries
 [registries]: #registries
 [registry]: #registries
 
 A **registry** is a collection of [concepts], [concept schemes], [concept
-types], [concept mappings], and/or other registries.  A registry is expressed
-as JSON object with the following optional properties, in addition to [common
-fields]:
+types], [concept mappings], and/or other registries.  Each registry can have at
+least the following fields in addition to fields of all [JSKOS items]:
 
 property     type           definition
 ------------ -------------- --------------------------------------------------------------------------------------
@@ -323,7 +302,8 @@ Registries are the top JSKOS entity, followed by [concordances], [mappings]
 [concept schemes], and on the lowest level [concepts] and [concept types].
 </div>
 
-# Concordances
+
+## Concordances
 [concordances]: #concordances
 [concordance]: #concordances
 
@@ -339,7 +319,7 @@ fromScheme   [URI] or [concept scheme]
 toScheme     [URI] or [concept scheme]
 
 
-# Concept mappings
+## Concept mappings
 [mappings]: #concept-mappings
 [mapping]: #concept-mappings
 [concept mapping]: #concept-mappings
@@ -352,21 +332,31 @@ is planned. See <https://github.com/gbv/jskos/issues/8> for discussion.
 </div>
 
 A **mapping** represents a mapping between [concepts] of two [concept schemes].
-It consists two [concept bundles] with additional metadata. A mapping in JSKOS
-is a JSON object with the following fields, in addition to [common fields]:
+It consists two [concept bundles] with additional metadata.  Each mapping can
+have at least the following fields in addition to fields of all [JSKOS items]:
+
 
 field            | type             | definition
 -----------------|------------------|------------------------------------------------------------------------------------------------------
-mappingType      | [mapping type]   | [SKOS mapping property]
 mappingRelevance | string           | numerical value between 0 and 1
 from             | [concept bundle] | ...
 to               | [concept bundle] | ...
 fromScheme       | URI              | ...
 toScheme         | URI              | ...
 
-The fields `from` and `to` are mandatory. If no `mappingType` is given a [mapping type] with value `mappingRelation` can be assumed.
+The fields `from` and `to` are mandatory. The first element of field `type`, if
+given, MUST be one of the values
+`http://www.w3.org/2004/02/skos/core#mappingRelation`,
+`http://www.w3.org/2004/02/skos/core#closeMatch`,
+`http://www.w3.org/2004/02/skos/core#exactMatch`,
+`http://www.w3.org/2004/02/skos/core#broadMatch`,
+`http://www.w3.org/2004/02/skos/core#narrowMatch`, and
+`http://www.w3.org/2004/02/skos/core#relatedMatch` from [SKOS mapping
+properties](http://www.w3.org/TR/skos-reference/#mapping) as first element. The
+field `type` MUST NOT NOT contain multiple of these values.
 
-Additional DCMI Metadata Terms are yet to be defined:
+<div class="note">
+Additional DCMI Metadata Terms are yet to be defined, for instance:
 
 field         | type       | definition 
 --------------|------------|-------------------------------------------------------------
@@ -382,6 +372,7 @@ version       | string     | ?
 provenance    | ?          | ?
 accrualMethod | ?          | ?
 accrualPolicy | ?          | ?
+</div>
 
 <div class="note">
 When mapping are dynamically created it can be useful to assign a non-HTTP URI
@@ -389,7 +380,7 @@ such as `urn:uuid:687b973c-38ab-48fb-b4ea-2b77abf557b7`.
 </div>
 
 
-# Concept Bundles
+## Concept Bundles
 [concept bundles]: #concept-bundles
 [concept bundle]: #concept-bundles
 [collections]: #concept-bundles
@@ -431,6 +422,25 @@ structured indexing (ways to relate concepts to one another).
       "toScheme": [ "http://dewey.info/scheme/ddc/" ]
     }
     ```
+</div>
+
+# Extension with custom fields
+
+A JSKOS record MAY contain additional fields for custom usage. These fields
+MUST start with an uppercase letter (A-Z) and SHOULD be ignored by JSKOS
+applications. Fields starting with lowercase letters MUST NOT be used unless
+they are explicitly defined in this specification.
+
+<div class="example">
+The field `Parts` in the following example does not belong to JSKOS:
+
+```json
+{
+  "uri": "http://www.wikidata.org/entity/Q34095",
+  "prefLabel": { "en": "bronze" },
+  "Parts": ["copper", "tin"]
+}
+```
 </div>
 
 

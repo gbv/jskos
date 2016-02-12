@@ -165,6 +165,8 @@ The value of field `@context` SHOULD be
 
 ## Items
 
+[JSKOS items]: #jskos-items
+
 A JSKOS **item** is a JSKOS object that expresses a [concept], [concept
 scheme], [concept type], [registry] or [concordance]. Each JSKOS item can have
 at least the following fields in addition to fields of all [JSKOS objects]:

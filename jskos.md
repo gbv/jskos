@@ -150,13 +150,16 @@ A JSKOS **object** is a JSON object that expresses a [concept], [concept
 scheme], [concept type], [registry], [concordance], or [concept mapping]. Each
 JSKOS object can have at least the following fields:
 
-field     type             description
---------- ---------------- -----------------------------------------
-uri       [URI]            primary globally unique identifier
-type      [list] of [URI]s URIs of types
-@context  [URI]            reference to a [JSON-LD context] document 
-created   [date]           date of creation 
-modified  [date]           date of last modification
+field        type             description
+----------- ----------------- --------------------------------------------------------
+uri         [URI]             primary globally unique identifier
+type        [list] of [URI]s  URIs of types
+@context    [URI]             reference to a [JSON-LD context] document
+created     [date]            date of creation
+modified    [date]            date of last modification
+creator     [string] or [set] agent primarily responsible for creation of object
+contributor [string] or [set] agent responsible for making contributions to the object
+publisher   [string] or [set] agent responsible for making the object available
 
 It is RECOMMENDED to always include the fields `uri`, `type`, and `@context`.
 The value of field `@context` SHOULD be
@@ -165,7 +168,8 @@ The value of field `@context` SHOULD be
 
 ## Items
 
-[JSKOS items]: #jskos-items
+[JSKOS items]: #items
+[JSKOS item]: #items
 
 A JSKOS **item** is a JSKOS object that expresses a [concept], [concept
 scheme], [concept type], [registry] or [concordance]. Each JSKOS item can have
@@ -263,12 +267,13 @@ A **concept scheme** represents a [SKOS Concept Scheme].  Each concept scheme
 can have at least the following fields in addition to fields of all [JSKOS
 items]:
 
-property    type  definition
------------ ----- --------------------------------------------------------------------------------------
-topConcepts [set] top [concepts] of the scheme
-versionOf   [set] [concept scheme] which this scheme is a version or edition of
-concepts    [URL] JSKOS API concepts endpoint returning all concepts in this scheme
-types       [URL] JSKOS API types endpoint returning all concept types in this scheme
+property    type   definition
+----------- ------ --------------------------------------------------------------------------------------
+topConcepts [set]  top [concepts] of the scheme
+versionOf   [set]  [concept scheme] which this scheme is a version or edition of
+concepts    [URL]  JSKOS API concepts endpoint returning all concepts in this scheme
+types       [URL]  JSKOS API types endpoint returning all concept types in this scheme
+languages   [list] Supported languages
 
 The first element of field `type`, if given, MUST be
 <http://www.w3.org/2004/02/skos/core#ConceptScheme>.
@@ -298,6 +303,7 @@ types        [URL] or [set] JSKOS API endpoint with [concept schemes] in this re
 mappings     [URL] or [set] JSKOS API endpoint with [mappings] in this registry
 registries   [URL] or [set] JSKOS API endpoint with other registries in this registry
 concordances [URL] or [set] JSKOS API endpoint with [concordances] in this registry
+languages    [list]         Supported languages
 
 <div class="note">
 Registries are the top JSKOS entity, followed by [concordances], [mappings]
@@ -362,9 +368,6 @@ Additional DCMI Metadata Terms are yet to be defined, for instance:
 
 field         | type       | definition 
 --------------|------------|-------------------------------------------------------------
-creator       | ?          | agent primarily responsible for creation of the mapping
-contributor   | ?          | agent responsible for making contributions to the mapping
-publisher     | ?          | agent responsible for making the resource available
 source        | URI        | ?
 dateAccepted  | date       | ?
 dateSubmitted | date       | ?

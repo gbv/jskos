@@ -57,5 +57,6 @@
     "version": "dct:version",
     "source": "dct:source",
     "created": "dct:created",
-    "modified": "dct:modified"
+    "modified": "dct:modified",
+    "languages": "http://schema.org/inLanguage"
 }

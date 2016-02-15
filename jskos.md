@@ -30,6 +30,8 @@ interpreted as described in [RFC 2119].
 
 # Data types
 
+[string]: #data-types
+
 JSKOS is based on JSON which consists of *objects* with pairs of *fields* and
 *values*, *arrays* with *members*, *strings*, *numbers*, and the special values
 `true`, `false`, and `null`.  All strings and fields of a JSKOS document MUST
@@ -156,6 +158,7 @@ uri         [URI]             primary globally unique identifier
 type        [list] of [URI]s  URIs of types
 @context    [URI]             reference to a [JSON-LD context] document
 created     [date]            date of creation
+issued      [date]            date of publication
 modified    [date]            date of last modification
 creator     [string] or [set] agent primarily responsible for creation of object
 contributor [string] or [set] agent responsible for making contributions to the object
@@ -176,8 +179,8 @@ scheme], [concept type], [registry] or [concordance]. Each JSKOS item can have
 at least the following fields in addition to fields of all [JSKOS objects]:
 
 field         type                      description
-------------- ------------------------- ----------------------------------------------------------------------------------
-url           string                    URL of a page with information about the [concept]/[concept scheme]/[concept type]
+------------- ------------------------- ----------------------------------------------
+url           string                    URL of a page with information about the item
 identifier    [list]                    additional identifiers
 notation      [list]                    list of notations
 prefLabel     [language map] of strings preferred labels, index by language
@@ -189,8 +192,9 @@ example       [language map] of [list]s see [SKOS Documentary Notes]
 historyNote   [language map] of [list]s see [SKOS Documentary Notes]
 editorialNote [language map] of [list]s see [SKOS Documentary Notes]
 changeNote    [language map] of [list]s see [SKOS Documentary Notes]
-subject       [set]                     subject indexing of this resource
-depiction     [list] of [URL]s          list of image URLs depicting the concept [concept]/[concept scheme]/[concept type]
+subject       [set]                     what this item is about (e.g. topic)
+subjectOf     [set]                     resources about this item (e.g. documentation)
+depiction     [list] of [URL]s          list of image URLs depicting the item
 
 ## Concepts
 
@@ -215,7 +219,6 @@ relatedDate  [date] other date somehow related to what the concept is about
 ancestors    [set]  list of ancestors, possibly up to a top concept
 inScheme     [set]  [concept schemes] or URI of the concept schemes
 topConceptOf [set]  [concept schemes] or URI of the concept schemes
-subjectOf    [set]  resources being indexed with this concept
 
 The first element of field `type`, if given, MUST be
 <http://www.w3.org/2004/02/skos/core#Concept>.
@@ -371,7 +374,6 @@ field         | type       | definition
 source        | URI        | ?
 dateAccepted  | date       | ?
 dateSubmitted | date       | ?
-issued        | date       | date of publication
 valid         | date range | range of date of validity of the mapping (?)
 version       | string     | ?
 provenance    | ?          | ?

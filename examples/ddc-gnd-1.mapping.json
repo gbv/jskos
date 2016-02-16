@@ -1,15 +1,14 @@
 {
     "type": ["http://www.w3.org/2004/02/skos/core#closeMatch"],
+    "fromScheme": ["http://dewey.info/scheme/edition/e22/"],    
     "from": {
-        "inScheme": ["http://dewey.info/scheme/edition/e22/"],    
-        "conceptSet": [ {
+        "members": [ {
             "uri": "http://dewey.info/class/612.112/e22/2014-04-15/",
             "notation": ["612.112"]
         } ]
     },
     "to": {
-        "inScheme": [],
-        "conceptSet": [ {
+        "members": [ {
             "uri": "http://d-nb.info/gnd/4074195-3",
             "preflabel": { "de": "Leukozyt" }
         } ]

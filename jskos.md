@@ -31,6 +31,7 @@ interpreted as described in [RFC 2119].
 # Data types
 
 [string]: #data-types
+[boolean]: #data-types
 
 JSKOS is based on JSON which consists of *objects* with pairs of *fields* and
 *values*, *arrays* with *members*, *strings*, *numbers*, and the special values
@@ -349,7 +350,7 @@ have at least the following fields in addition to fields of all [JSKOS items]:
 
 field            | type             | definition
 -----------------|------------------|------------------------------------------------------------------------------------------------------
-mappingRelevance | string           | numerical value between 0 and 1
+mappingRelevance | number           | numerical value between 0 and 1
 from             | [concept bundle] | ...
 to               | [concept bundle] | ...
 fromScheme       | URI              | ...
@@ -397,25 +398,19 @@ A **concept bundle** is a group of [concepts]. Some concept bundles represent
 [SKOS concept collections](http://www.w3.org/TR/skos-reference/#collections) but
 bundles may serve other purposes as well.
 
-<div class="note">
-Concept bundles are highly experimental. 
-See <https://github.com/gbv/jskos/issues/7> for discussion.
-</div>
+A concept bundle is a JSON object with the following fields. Field `member`
+MUST be given, the other fields are OPTIONAL.
 
-A concept bundle is a JSON object with the following fields. All fields
-are optional except one of `conceptSet` or `conceptList` but not both must be
-given. 
-
-field        | type    | definition
--------------|---------|-----------------------------------------------------
-conceptSet   | set     | set of [concepts] or URIs of concepts
-conceptList  | set     | list of [concepts] or URIs of concepts
-coordination | string  | the value `AND` or the value `OR`
+field       type      definition
+----------- --------- ----------------------------------------------------------------------
+members     [set]     [concepts] in this bundle
+ordered     [boolean] whether the concepts in this bundle are ordered (list) or not (set)  
+disjunction [boolean] whether the concepts in this bundle are combined by OR instead of AND
 
 <div class="note">
 
-* More possible coordination values may be added for support of more advanced
-structured indexing (ways to relate concepts to one another).
+* Concept are experimental, see
+  <https://github.com/gbv/jskos/issues/7> for discussion.
 
 * Concepts from a bundle may also come from different concept schemes!
 
@@ -425,7 +420,7 @@ structured indexing (ways to relate concepts to one another).
     ```json
     {
       ...
-      "to": { "conceptSet": null },
+      "to": { "members": null },
       "toScheme": [ "http://dewey.info/scheme/ddc/" ]
     }
     ```

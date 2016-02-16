@@ -2,9 +2,9 @@
     {
         "creator": "CrissCross",
         "type": ["http://www.w3.org/2004/02/skos/core#exactMatch"],
+        "fromScheme": [{"notation":"DDC"}],
         "from": {
-            "inScheme": [{"notation":"DDC"}],
-            "conceptSet": [ 
+            "members": [ 
                 {
                     "notation": ["612.112"],
                     "prefLabel": { "de": "Leukozyten (Weiße Blutkörperchen)"}
@@ -12,30 +12,30 @@
             
             ]
         },
+        "toScheme": [{"notation":"GND"}],
         "to": {
-            "inScheme": [{"notation":"GND"}],
-            "conceptSet": [ {
+            "members": [ {
                 "uri": "http://d-nb.info/gnd/4074195-3",
                 "prefLabel": { "de": "Leukozyt" },
                 "notation":["4074195-3"]
             } ],
-            "coordination": "OR"
+            "disjunction": true
         }
     },
     {
         "creator": "CrissCross",
         "mappingRelevance": 0.5,
+        "fromScheme": [{"notation":"DDC"}],
         "from": {
-            "inScheme": [{"notation":"DDC"}],
-            "conceptSet": [ {
+            "members": [ {
                 "uri": "http://dewey.info/class/612.112/e22/2014-04-15/",
                 "notation": ["612.112"],
                 "prefLabel": { "de": "Leukozyten (Weiße Blutkörperchen)"}
             } ]
         },
+        "toScheme": [{"notation":"GND"}],
         "to": {
-            "inScheme": [{"notation":"GND"}],
-            "conceptSet": [ {
+            "members": [ {
                 "uri": "http://d-nb.info/gnd/4074195-3",
                 "prefLabel": { "de": "Leukozyt" },
                 "notation":["4074195-3"]
@@ -64,28 +64,28 @@
                 "prefLabel": { "de": "Monozyt" },
                 "notation":["4285013-7"]
             } ],
-            "coordination": "OR"
+            "disjunction": true
         }
     },
     {
         "creator": "CrissCross",
         "mappingRelevance": 0.2,
+        "fromScheme": [{"notation":"DDC"}],
         "from": {
-            "inScheme": [{"notation":"DDC"}],
-            "conceptSet": [ {
+            "members": [ {
                 "uri": "http://dewey.info/class/612.112/e22/2014-04-15/",
                 "notation": ["612.112"],
                 "prefLabel": { "de": "Leukozyten (Weiße Blutkörperchen)"}
             } ]
         },
+        "toScheme": [{"notation":"GND"}],
         "to": {
-            "inScheme": [{"notation":"GND"}],
-            "conceptSet": [ {
+            "members": [ {
                 "uri": "http://d-nb.info/gnd/4499720-6",
                 "prefLabel": { "de": "Leukozytenintegrine" },
                 "notation":["4499720-6"]
             } ],
-            "coordination": "OR"
+            "disjunction": true
         }
     }
 ]

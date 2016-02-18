@@ -94,6 +94,10 @@ The following JSON values are no valid JSKOS sets:
   (field `uri` not unique)
 </div>
 
+<div class="note">
+The order of elements in a set is not relevant in most cases.
+</div>
+
 ## language map
 
 <!-- TODO: review of this part -->
@@ -190,6 +194,9 @@ subject       [set]                     what this item is about (e.g. topic)
 subjectOf     [set]                     resources about this item (e.g. documentation)
 depiction     [list] of [URL]           list of image URLs depicting the item
 
+Applications MAY limit the fields `notation` and/or `depiction` to lists of a single
+element or ignore all preceding elements of these lists.
+
 ## Concept
 
 [concept]: #concept
@@ -211,18 +218,22 @@ ancestors    [set]  list of ancestors, possibly up to a top concept
 inScheme     [set]  [concept schemes] or URI of the concept schemes
 topConceptOf [set]  [concept schemes] or URI of the concept schemes
 
-The first element of field `type`, if given, MUST be
-<http://www.w3.org/2004/02/skos/core#Concept> to refer to the general [concept
+The first element of field `type`, if given, MUST be the URI
+<http://www.w3.org/2004/02/skos/core#Concept> refering to the general [concept
 type] "Concept".
 
-Additional properties, not included in this list, SHOULD be ignored.
+Applications MAY limit the `inScheme` and/or `topConceptOf` to sets of a single
+element or ignore all but one element of these sets.
 
-Applications MAY use only the first element of property `notation` and/or property
-`inScheme` for simplification.
+If both fields `broader` and `ancestors` are given, the set `broader` MUST
+include a [concept] with same field `uri` as the first element of ordered set
+`ancestors`.
 
+<!--
 A Concept represents a [SKOS Concept].
 
 [SKOS Concept]: http://www.w3.org/TR/skos-primer/#secconcept
+-->
 
 <div class="note">
 The "ancestors" field only makes sense monohierarchical classifications but
@@ -234,10 +245,11 @@ connected by the narrower relation.
 `examples/example.concept.json`{.include .codeblock .json}
 </div>
 
+<div class="note">
 The order of alternative labels with same language and the order of narrower,
 broader, or related concepts is irrelevant, but this may be changed (see
 <https://github.com/gbv/jskos/issues/11>).
-
+</div>
 
 ## Concept types
 
@@ -259,7 +271,8 @@ identified by the URI <http://www.w3.org/2004/02/skos/core#Concept>:
 
 Concepts schemes MAY use additional concept types to organize concepts.
 
-Concept types in RDF correspond to subclasses of [SKOS Concept].
+<!-- Concept types in RDF correspond to subclasses of [SKOS Concept].  -->
+
 </div>
 
 
@@ -282,23 +295,20 @@ languages   [list]                     Supported languages
 The first element of field `type`, if given, MUST be
 <http://www.w3.org/2004/02/skos/core#ConceptScheme>.
 
-Additional properties, not included in this list, SHOULD be ignored.
-
 <div section="note">
 Notation and label properties do not imply a domain, so they can be used for both, concepts and concept schemes.
 </div>
 
+<!--
 A Concept Scheme represents a [SKOS Concept Scheme].  
-
+-->
 
 ## Registries
 
 [registries]: #registries
 [registry]: #registries
 
-A **registry** is a collection of [concepts], [concept schemes], [concept
-types], [concept mappings], and/or other registries.  Each registry can have at
-least the following fields in addition to fields of all [items]:
+A **registry** is an [item] with the following optional fields in addition:
 
 property     type           definition
 ------------ -------------- --------------------------------------------------------------------------------------
@@ -310,6 +320,9 @@ registries   [URL] or [set] JSKOS API endpoint with other registries in this reg
 concordances [URL] or [set] JSKOS API endpoint with [concordances] in this registry
 languages    [list]         Supported languages
 
+Registries are collection of [concepts], [concept schemes], [concept types],
+[concept mappings], and/or other registries.  
+
 <div class="note">
 Registries are the top JSKOS entity, followed by [concordances], [mappings]
 [concept schemes], and on the lowest level [concepts] and [concept types].
@@ -320,17 +333,17 @@ Registries are the top JSKOS entity, followed by [concordances], [mappings]
 [concordances]: #concordances
 [concordance]: #concordances
 
-A **concordance** is a collection of [mappings] from one [concept scheme] to
-another.  A concordances is expressed as JSON object with the following fields,
-in addition to [common fields]:
+A **concordance** is an [item] with the following fields in addition. All
+fields except `fromScheme` and `toScheme` are optional.
 
-property     type                      definition
------------- ---------------- --------------------------------------------------------------------------------------
-mappings     [URL] or [set]            JSKOS API endpoint with [mappings] in this concordance
-schemes      [URL] or [set]            JSKOS API endpoint with [mappings] in this concordance
-fromScheme   [concept scheme]
-toScheme     [concept scheme]
+property     type             definition
+------------ ---------------- ------------------------------------------------------
+mappings     [URL] or [set]   JSKOS API endpoint with [mappings] in this concordance
+fromScheme   [concept scheme] ... 
+toScheme     [concept scheme] ...
 
+Concordances are collections of [mappings] from one [concept scheme] to
+another.  
 
 ## Concept mappings
 [mappings]: #concept-mappings
@@ -338,35 +351,33 @@ toScheme     [concept scheme]
 [concept mapping]: #concept-mappings
 [concept mappings]: #concept-mappings
 
-<div class="note">
-This section is highly experimental. Support of encoding mappings in JSKOS, based on
-[SKOS mapping properties](http://www.w3.org/TR/skos-reference/#mapping)
-is planned. See <https://github.com/gbv/jskos/issues/8> for discussion.
-</div>
+A **mapping** is an [item] with the following fields in addition. All fields
+except `from` and `to` are optional.
+
+field            type            definition
+---------------- ---------------- -------------------------------------
+mappingRelevance number           numerical value between 0 and 1
+from             [concept bundle] ...
+to               [concept bundle] ...
+fromScheme       [concept scheme] ...
+toScheme         [concept scheme] ...
+
 
 A **mapping** represents a mapping between [concepts] of two [concept schemes].
-It consists two [concept bundles] with additional metadata.  Each mapping can
-have at least the following fields in addition to fields of all [items]:
+It consists two [concept bundles] with additional metadata.
 
-
-field            | type             | definition
------------------|------------------|------------------------------------------------------------------------------------------------------
-mappingRelevance | number           | numerical value between 0 and 1
-from             | [concept bundle] | ...
-to               | [concept bundle] | ...
-fromScheme       | [concept scheme] | ...
-toScheme         | [concept scheme] | ...
-
-The fields `from` and `to` are mandatory. The first element of field `type`, if
+The first element of field `type`, if
 given, MUST be one of the values
-`http://www.w3.org/2004/02/skos/core#mappingRelation`,
-`http://www.w3.org/2004/02/skos/core#closeMatch`,
-`http://www.w3.org/2004/02/skos/core#exactMatch`,
-`http://www.w3.org/2004/02/skos/core#broadMatch`,
-`http://www.w3.org/2004/02/skos/core#narrowMatch`, and
-`http://www.w3.org/2004/02/skos/core#relatedMatch` from [SKOS mapping
-properties](http://www.w3.org/TR/skos-reference/#mapping) as first element. The
-field `type` MUST NOT NOT contain multiple of these values.
+
+* `http://www.w3.org/2004/02/skos/core#mappingRelation`,
+* `http://www.w3.org/2004/02/skos/core#closeMatch`,
+* `http://www.w3.org/2004/02/skos/core#exactMatch`,
+* `http://www.w3.org/2004/02/skos/core#broadMatch`,
+* `http://www.w3.org/2004/02/skos/core#narrowMatch`, and
+* `http://www.w3.org/2004/02/skos/core#relatedMatch`
+
+from [SKOS mapping properties](http://www.w3.org/TR/skos-reference/#mapping) as
+first element. The field `type` MUST NOT contain multiple of these values.
 
 <div class="note">
 Additional DCMI Metadata Terms are yet to be defined, for instance:
@@ -388,8 +399,13 @@ When mapping are dynamically created it can be useful to assign a non-HTTP URI
 such as `urn:uuid:687b973c-38ab-48fb-b4ea-2b77abf557b7`.
 </div>
 
+<div class="note">
+See <https://github.com/gbv/jskos/issues/8> for discussion.
+</div>
+
 
 ## Concept Bundles
+
 [concept bundles]: #concept-bundles
 [concept bundle]: #concept-bundles
 [collections]: #concept-bundles

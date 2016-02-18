@@ -2,7 +2,7 @@
     "uri": "http://dewey.info/class/641.5/e23/",
     "type": ["http://www.w3.org/2004/02/skos/core#Concept"],
     "notation": ["641.5"],
-    "inScheme": ["http://dewey.info/edition/e23/"],
+    "inScheme": [{"uri":"http://dewey.info/edition/e23/"}],
     "prefLabel": {
         "en": "Cooking",
         "de": "Kochen",

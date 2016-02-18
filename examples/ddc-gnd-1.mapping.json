@@ -1,6 +1,7 @@
 {
     "type": ["http://www.w3.org/2004/02/skos/core#closeMatch"],
-    "fromScheme": ["http://dewey.info/scheme/edition/e22/"],    
+    "fromScheme": {"uri":"http://dewey.info/scheme/edition/e22/"},    
+    "toScheme": {"uri":"http://d-nb.info/gnd/7749153-1"},
     "from": {
         "members": [ {
             "uri": "http://dewey.info/class/612.112/e22/2014-04-15/",

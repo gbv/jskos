@@ -38,9 +38,11 @@
         "prefLabel": { "de": "Technik, Medizin, angewandte Wissenschaften" },
         "uri": "http://dewey.info/class/6/e22/2014-04-15/"
       } ],
-    "inScheme": [
-        "http://dewey.info/scheme/version/e22/2014-04-15/",
-        "http://dewey.info/scheme/edition/e22/",
-        "http://dewey.info/scheme/ddc/"
-    ]
+    "inScheme": [ {
+        "uri":"http://dewey.info/scheme/version/e22/2014-04-15/"
+      },{
+        "uri": "http://dewey.info/scheme/edition/e22/"
+      },{
+        "uri": "http://dewey.info/scheme/ddc/"
+      } ]
 }

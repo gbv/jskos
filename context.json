@@ -58,5 +58,7 @@
     "source": "dct:source",
     "created": "dct:created",
     "modified": "dct:modified",
+    "partOf": "dct:isPartOf",
+    "license": "dct:rights",
     "languages": "http://schema.org/inLanguage"
 }

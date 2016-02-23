@@ -1,45 +1,45 @@
 {
-    "uri": "http://dewey.info/class/612.112/e22/2014-04-15/", 
+    "uri": "http://dewey.info/class/612.112/e22/", 
     "type": ["http://www.w3.org/2004/02/skos/core#Concept"],
     "notation": ["612.112"],
     "prefLabel": { "de": "Leukozyten (Weiße Blutkörperchen)" },
     "broader": [ {
         "notation": ["612.11"],
         "prefLabel": { "de": "Blut" },
-        "uri": "http://dewey.info/class/612.11/e22/2014-04-15/"
+        "uri": "http://dewey.info/class/612.11/e22/"
       } ],
     "narrower": [ {
         "notation": ["612.1121"], 
         "prefLabel": { "de": "Biochemie" },
-        "uri": "http://dewey.info/class/612.1121/e22/2014-04-15/" 
+        "uri": "http://dewey.info/class/612.1121/e22/" 
       },{
         "notation": ["612.1127"],
         "prefLabel": { "de": "Anzahl und Auszählung" },
-        "uri": "http://dewey.info/class/612.1127/e22/2014-04-15/" 
+        "uri": "http://dewey.info/class/612.1127/e22/" 
       } ],
     "ancestors": [ { 
         "notation": ["612.11"], 
         "prefLabel": { "de": "Blut" }, 
-        "uri": "http://dewey.info/class/612.11/e22/2014-04-15/"
+        "uri": "http://dewey.info/class/612.11/e22/"
       },{
         "notation": ["612.1"],
         "prefLabel": { "de": "Blut und Kreislauf" },
-        "uri": "http://dewey.info/class/612.1/e22/2014-04-15/"
+        "uri": "http://dewey.info/class/612.1/e22/"
       },{
         "notation": ["612"],
         "prefLabel": { "de": "Humanphysiologie" },
-        "uri": "http://dewey.info/class/612/e22/2014-04-15/"
+        "uri": "http://dewey.info/class/612/e22/"
       },{
         "notation": ["61"],
         "prefLabel": { "de": "Medizin & Gesundheit" },
-        "uri": "http://dewey.info/class/61/e22/2014-04-15/"
+        "uri": "http://dewey.info/class/61/e22/"
       },{
         "notation": ["6"],
         "prefLabel": { "de": "Technik, Medizin, angewandte Wissenschaften" },
-        "uri": "http://dewey.info/class/6/e22/2014-04-15/"
+        "uri": "http://dewey.info/class/6/e22/"
       } ],
     "inScheme": [ {
-        "uri":"http://dewey.info/scheme/version/e22/2014-04-15/"
+        "uri":"http://dewey.info/scheme/version/e22/"
       },{
         "uri": "http://dewey.info/scheme/edition/e22/"
       },{

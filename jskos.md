@@ -229,7 +229,7 @@ An **item** is an [object] with the following optional fields in addition:
 
 field         type                      description
 ------------- ------------------------- ----------------------------------------------
-url           string                    URL of a page with information about the item
+url           [URL]                     URL of a page with information about the item
 identifier    [list]                    additional identifiers
 notation      [list]                    list of notations
 prefLabel     [language map] of strings preferred labels, index by language

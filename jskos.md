@@ -328,7 +328,7 @@ versionOf   [set] of [concept schemes] [concept scheme] which this scheme is a v
 concepts    [URL] or [set]             JSKOS API concepts endpoint returning all concepts in this scheme
 types       [URL] or [set]             JSKOS API types endpoint returning all concept types in this scheme
 languages   [list] of language tags    Supported languages
-license     [URI]                      License which the full scheme is published under
+license     [set]                      Licenses which the full scheme can be used under
 
 The first element of field `type`, if given, MUST be
 <http://www.w3.org/2004/02/skos/core#ConceptScheme>.
@@ -357,7 +357,7 @@ mappings     [URL] or [set] JSKOS API endpoint with [mappings] in this registry
 registries   [URL] or [set] JSKOS API endpoint with other registries in this registry
 concordances [URL] or [set] JSKOS API endpoint with [concordances] in this registry
 languages    [list]         Supported languages
-license      [URI]          License which the full registry content is published under
+license      [set]          Licenses which the full registry content can be used under
 
 Registries are collection of [concepts], [concept schemes], [concept types],
 [concept mappings], and/or other registries.  
@@ -383,7 +383,7 @@ property     type             definition
 mappings     [URL] or [set]   JSKOS API endpoint with [mappings] in this concordance
 fromScheme   [concept scheme] Source concept scheme
 toScheme     [concept scheme] Target concept scheme
-license      [URI]            License which the full concordance is published under
+license      [set]            License which the full concordance can be used under
 
 Concordances are collections of [mappings] from one [concept scheme] to
 another. If `mappings` is a set then
@@ -648,6 +648,12 @@ KOS
 
 RDF
   : Resource Description Framework
+
+## Changelog {.unnumbered}
+
+### 0.1.1 (2016-05-20) {.unnumbered}
+
+* Make field "license" a set instead of a single URI
 
 ## SKOS features not supported in JSKOS {.unnumbered}
 

@@ -330,6 +330,7 @@ topConcepts [set] of [concepts]        top [concepts] of the scheme
 versionOf   [set] of [concept schemes] [concept scheme] which this scheme is a version or edition of
 concepts    [URL] or [set]             JSKOS API concepts endpoint returning all concepts in this scheme
 types       [URL] or [set]             JSKOS API types endpoint returning all concept types in this scheme
+extent      string                     Size of the concept scheme
 languages   [list] of language tags    Supported languages
 license     [set]                      Licenses which the full scheme can be used under
 
@@ -359,6 +360,7 @@ types        [URL] or [set] JSKOS API endpoint with [concept schemes] in this re
 mappings     [URL] or [set] JSKOS API endpoint with [mappings] in this registry
 registries   [URL] or [set] JSKOS API endpoint with other registries in this registry
 concordances [URL] or [set] JSKOS API endpoint with [concordances] in this registry
+extent       string         Size of the registry
 languages    [list]         Supported languages
 license      [set]          Licenses which the full registry content can be used under
 
@@ -386,6 +388,7 @@ property     type             definition
 mappings     [URL] or [set]   JSKOS API endpoint with [mappings] in this concordance
 fromScheme   [concept scheme] Source concept scheme
 toScheme     [concept scheme] Target concept scheme
+extent       string           Size of the concordance
 license      [set]            License which the full concordance can be used under
 
 Concordances are collections of [mappings] from one [concept scheme] to
@@ -657,6 +660,7 @@ RDF
 ### 0.1.1 (2016-05-20) {.unnumbered}
 
 * Make field "license" a set instead of a single URI
+* Add field "extent"
 * Update reference to [RFC 5646] instead of obsoleted RFC 4646
 
 ## SKOS features not supported in JSKOS {.unnumbered}

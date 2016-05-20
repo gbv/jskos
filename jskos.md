@@ -143,7 +143,7 @@ Both can be mapped to each other but they serve slightly different purposes.
 
 A **language map** is a JSON object in which every fields is
 
-* either a [RFC 3066] language tag in lowercase that SHOULD also conform to [RFC 4646],
+* either a [RFC 3066] language tag in lowercase that SHOULD also conform to [RFC 5646],
 * or a [language range],
 
 and 
@@ -185,6 +185,9 @@ JSON-LD disallows language map fields ending with `"-"` so all fields that are
 language ranges MUST be removed before reading JSKOS as JSON-LD.
 </div>
 
+<div class="note">
+The language tag "und" can be used to include strings of unknown or unspecified language.
+</div>
 
 # Object types
 
@@ -612,8 +615,8 @@ The field `Parts` in the following example does not belong to JSKOS:
   <http://www.w3.org/TR/skos-reference>
 
 * A. Phillips, M. Davis: *Tags for Identifying Languages*.
-  RFC 4646, October 2005.
-  <http://tools.ietf.org/html/rfc4646>
+  RFC 5646, September 2009.
+  <http://tools.ietf.org/html/rfc5646>
 
 * A. Phillips, M. Davis: *Matching of Language Tags*.
   RFC 4647, September 2006.
@@ -626,7 +629,7 @@ The field `Parts` in the following example does not belong to JSKOS:
 * J. Voß, M. Horn: *ng-skos 0.0.9*. AngularJS module.
   <https://github.com/gbv/ng-skos>.
 
-[RFC 4646]: http://tools.ietf.org/html/rfc4646
+[RFC 5646]: http://tools.ietf.org/html/rfc5646
 [RFC 4647]: http://tools.ietf.org/html/rfc4647
 [RFC 5234]: http://tools.ietf.org/html/rfc5234
 [ng-skos]: http://gbv.github.io/ng-skos/
@@ -654,6 +657,7 @@ RDF
 ### 0.1.1 (2016-05-20) {.unnumbered}
 
 * Make field "license" a set instead of a single URI
+* Update reference to [RFC 5646] instead of obsoleted RFC 4646
 
 ## SKOS features not supported in JSKOS {.unnumbered}
 

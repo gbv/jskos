@@ -222,13 +222,25 @@ The value of field `@context` SHOULD be
 
 Two objects are *same* if they both contain field `uri` with the same value.
 
+<div class="example">
+The following objects are same:
+
+~~~{.json}
+{ "uri": "http://example.org/123", "created": "2007" }
+{ "uri": "http://example.org/123", "created": "2015" }
+~~~
+
+Two objects are never same of they don't both contain field `uri`!
+</div>
 
 ## Item
 
 [item]: #item
 [items]: #item
 
-An **item** is an [object] with the following optional fields in addition:
+An **item** is an [object] with the following optional fields (in addition to
+the optional fields `@context`, `contributor`, `created`, `creator`, `issued`,
+`modified`, `partOf` `publisher`, `type`, and `uri`):
 
 field         type                      description
 ------------- ------------------------- ----------------------------------------------
@@ -257,7 +269,12 @@ element or ignore all preceding elements of these lists.
 [concept]: #concept
 [concepts]: #concept
 
-A **concept** is an [item] with the following optional fields in addition:
+A **concept** is an [item] with the following optional fields (in addition to
+the optional fields `@context`, `altLabel`, `changeNote`, `contributor`,
+`created`, `creator`, `definition`, `depiction`, `editorialNote`, `example`,
+`hiddenLabel`, `historyNote`, `identifier`, `issued`, `modified`, `notation`,
+`partOf` `prefLabel`, `publisher`, `scopeNote`, `subjectOf`, `subject`, `type`,
+`uri`, and `url`):
 
 field        type   description
 ------------ ------ -------------------------------------------------------------------------------
@@ -322,7 +339,12 @@ Concepts schemes MAY use additional concept types to organize concepts.
 [concept schemes]: #concept-schemes
 [scheme]: #schemes
 
-A **concept scheme** is an [item] with the following optional fields in addition:
+A **concept scheme** is an [item] with the following optional fields (in
+addition to the optional fields `@context`, `altLabel`, `changeNote`,
+`contributor`, `created`, `creator`, `definition`, `depiction`,
+`editorialNote`, `example`, `hiddenLabel`, `historyNote`, `identifier`,
+`issued`, `modified`, `notation`, `partOf` `prefLabel`, `publisher`,
+`scopeNote`, `subjectOf`, `subject`, `type`, `uri`, and `url`):
 
 property    type                       definition
 ----------- -------------------------- --------------------------------------------------------------------------------------
@@ -350,7 +372,12 @@ for each concept's `type` other than `http://www.w3.org/2004/02/skos/core#Concep
 [registries]: #registries
 [registry]: #registries
 
-A **registry** is an [item] with the following optional fields in addition:
+A **registry** is an [item] with the following optional fields (in addition to
+the optional fields `@context`, `altLabel`, `changeNote`, `contributor`,
+`created`, `creator`, `definition`, `depiction`, `editorialNote`, `example`,
+`hiddenLabel`, `historyNote`, `identifier`, `issued`, `modified`, `notation`,
+`partOf` `prefLabel`, `publisher`, `scopeNote`, `subjectOf`, `subject`, `type`,
+`uri`, and `url`):
 
 property     type           definition
 ------------ -------------- --------------------------------------------------------------------------------------
@@ -380,8 +407,12 @@ Additional integrity rules for registries will be defined.
 [concordances]: #concordances
 [concordance]: #concordances
 
-A **concordance** is an [item] with the following fields in addition. All
-fields except `fromScheme` and `toScheme` are optional.
+A **concordance** is an [item] with the following fields (in addition to the
+optional fields `@context`, `altLabel`, `changeNote`, `contributor`, `created`,
+`creator`, `definition`, `depiction`, `editorialNote`, `example`,
+`hiddenLabel`, `historyNote`, `identifier`, `issued`, `modified`, `notation`,
+`partOf` `prefLabel`, `publisher`, `scopeNote`, `subjectOf`, `subject`, `type`,
+`uri`, and `url`). All fields except `fromScheme` and `toScheme` are optional.
 
 property     type             definition
 ------------ ---------------- ------------------------------------------------------
@@ -413,8 +444,12 @@ in mappings in concordances.
 [concept mapping]: #concept-mappings
 [concept mappings]: #concept-mappings
 
-A **mapping** is an [item] with the following fields in addition. All fields
-except `from` and `to` are optional.
+A **mapping** is an [item] with the following fields (in addition to the
+optional fields `@context`, `altLabel`, `changeNote`, `contributor`, `created`,
+`creator`, `definition`, `depiction`, `editorialNote`, `example`,
+`hiddenLabel`, `historyNote`, `identifier`, `issued`, `modified`, `notation`,
+`partOf` `prefLabel`, `publisher`, `scopeNote`, `subjectOf`, `subject`, `type`,
+`uri`, and `url`). All fields except `from` and `to` are optional.
 
 field            type             definition
 ---------------- ---------------- ----------------------------------------------
@@ -716,7 +751,7 @@ The Integrated Authority File (German: *Gemeinsame Normdatei*) is an authority
 file managed by the German National Library.
 
 <div class="example">
-GND as as JSKOS concept scheme. This example includes explicit knowledge about
+GND as JSKOS concept scheme. This example includes explicit knowledge about
 existence of more identifiers, definitions, and preferred labels:
 
 `jskos-data/gnd/jskos-scheme.json`{.include .codeblock .json}

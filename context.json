@@ -1,64 +1,48 @@
 {
-    "skos": "http://www.w3.org/2004/02/skos/core#",
-    "void": "http://rdfs.org/ns/void#",
     "dct": "http://purl.org/dc/terms/",
     "foaf": "http://xmlns.com/foaf/0.1/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "void": "http://rdfs.org/ns/void#",
+    "xskos": "http://rdf-vocabulary.ddialliance.org/xkos#",
+
     "uri": "@id",
-    "type": {
-        "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
-        "@type": "@id",
-    },
-    "notation": "skos:notation",
-    "prefLabel": {
-        "@id": "skos:prefLabel",
-        "@container": "@language"
-    },
-    "altLabel": {
-        "@id": "skos:altLabel",
-        "@container": "@language"
-    },
-    "hiddenLabel": {
-        "@id": "skos:altLabel",
-        "@container": "@language"
-    },
-    "depiction": {
-        "@id": "foaf:depiction",
-        "@type": "@id"
-    },
-    "url": {
-        "@id": "foaf:page",
-        "@type": "@id"
-    },
-    "subject": { 
-        "@id": "dct:subject",
-        "@type": "@id"
-    },
-    "subjectOf": { 
-        "@reverse": "dct:subject"
-    },
-    "narrower": "skos:narrower",
-    "broader": "skos:broader",
-    "related": "skos:related",
-    "ancestors": "skos:broaderTransitive",
-    "inScheme": {
-        "@id": "skos:inScheme",
-        "@type": "@id"
-    },
-    "topConceptOf": {
-        "@id": "skos:topConceptOf",
-        "@type": "@id"
-    },
-    "topConcepts": "skos:hasTopConcept",
-    "fromScheme": "void:subjectsTarget",
-    "toScheme": "void:objectsTarget",
+    "type": { "@id": "rdf:type", "@type": "@id" },
+    "created": "dct:created",
+    "issued": "dct:issued",
+    "modified": "dct:modified",
     "creator": "dct:creator",
     "contributor": "dct:contributor",
     "publisher": "dct:publisher",
-    "version": "dct:version",
-    "source": "dct:source",
-    "created": "dct:created",
-    "modified": "dct:modified",
     "partOf": "dct:isPartOf",
-    "license": "dct:rights",
-    "languages": "http://schema.org/inLanguage"
+
+    "url": { "@id": "foaf:page", "@type": "@id" },
+    "identifier": { "@id": "skos:closeMatch", "@type": "@id" },
+    "notation": "skos:notation",
+    "prefLabel": { "@id": "skos:prefLabel", "@container": "@language" },
+    "altLabel": { "@id": "skos:altLabel", "@container": "@language" },
+    "hiddenLabel": { "@id": "skos:altLabel", "@container": "@language" },
+
+    "subject": { "@id": "dct:subject", "@type": "@id" },
+    "subjectOf": { "@reverse": "dct:subject" },
+    "depiction": { "@id": "foaf:depiction", "@type": "@id" },
+
+    "narrower": "skos:narrower",
+    "broader": "skos:broader",
+    "related": "skos:related",
+    "previous": "xskos:previous",
+    "next": "xskos:next",
+
+    "ancestors": "skos:broaderTransitive",
+    "inScheme": { "@id": "skos:inScheme", "@type": "@id" },
+    "topConceptOf": { "@id": "skos:topConceptOf", "@type": "@id" },
+
+    "topConcepts": "skos:hasTopConcept",
+    "versionOf": "dct:isVersionOf",
+    "extent": "dct:extent",
+    "languages": "dct:language",
+    "license": "dct:license",
+    
+    "fromScheme": "void:subjectsTarget",
+    "toScheme": "void:objectsTarget"
 }

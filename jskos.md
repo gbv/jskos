@@ -189,6 +189,16 @@ language ranges MUST be removed before reading JSKOS as JSON-LD.
 The language tag "und" can be used to include strings of unknown or unspecified language.
 </div>
 
+## Location
+[location]: #location
+
+A **location** is an array of JSON objects, each having two fields
+
+* "lat", the WGS84 latitude of a point, given as number with decimal digits
+* "long",  the WGS84 longitude a point, given as number with decimal digits
+
+A location can hold a set of points and/or polygones. 
+
 # Object types
 
 ## Object
@@ -276,19 +286,20 @@ the optional fields `@context`, `altLabel`, `changeNote`, `contributor`,
 `partOf` `prefLabel`, `publisher`, `scopeNote`, `subjectOf`, `subject`, `type`,
 `uri`, and `url`):
 
-field        type   description
------------- ------ -------------------------------------------------------------------------------
-narrower     [set]  narrower concepts
-broader      [set]  broader concepts
-related      [set]  generally related concepts
-previous     [set]  related concepts ordered somehow before the concept
-next         [set]  related concepts ordered somehow after the concept
-startDate    [date] date of birth, creation, or estabishment of what the concept is about
-endDate      [date] date death or resolution of what the concept is about
-relatedDate  [date] other date somehow related to what the concept is about
-ancestors    [set]  list of ancestors, possibly up to a top concept
-inScheme     [set]  [concept schemes] or URI of the concept schemes
-topConceptOf [set]  [concept schemes] or URI of the concept schemes
+field        type       description
+------------ ---------- -------------------------------------------------------------------------------
+narrower     [set]      narrower concepts
+broader      [set]      broader concepts
+related      [set]      generally related concepts
+previous     [set]      related concepts ordered somehow before the concept
+next         [set]      related concepts ordered somehow after the concept
+startDate    [date]     date of birth, creation, or estabishment of what the concept is about
+endDate      [date]     date death or resolution of what the concept is about
+relatedDate  [date]     other date somehow related to what the concept is about
+location     [location] geographic location(s) of what the concept is about
+ancestors    [set]      list of ancestors, possibly up to a top concept
+inScheme     [set]      [concept schemes] or URI of the concept schemes
+topConceptOf [set]      [concept schemes] or URI of the concept schemes
 
 The first element of field `type`, if given, MUST be the URI
 <http://www.w3.org/2004/02/skos/core#Concept> refering to the general [concept
@@ -691,6 +702,10 @@ RDF
   : Resource Description Framework
 
 ## Changelog {.unnumbered}
+
+### 0.1.2 (2016-06-13) {.unnumbered}
+
+* Add "location" field for geographic coordinates
 
 ### 0.1.1 (2016-05-20) {.unnumbered}
 

@@ -189,15 +189,25 @@ language ranges MUST be removed before reading JSKOS as JSON-LD.
 The language tag "und" can be used to include strings of unknown or unspecified language.
 </div>
 
-## Location
+## location
 [location]: #location
 
-A **location** is an array of JSON objects, each having two fields
+A **location** is an JSON object conforming to the GeoJSON specification ([RFC
+7946]) with GeoJSON type being one of `Point`, `MultiPoint`, `LineString`,
+`MultiLineString`, `Polygon`, or `MultiPolygon`. Applications MAY restrict the
+location data type to GeoJSON objects of GeoJSON type `Point`.
 
-* "lat", the WGS84 latitude of a point, given as number with decimal digits
-* "long",  the WGS84 longitude a point, given as number with decimal digits
+<div class="example">
+Position of the RMS Titanic as point:
 
-A location can hold a set of points and/or polygones. 
+~~~json
+{
+  "type": "Point",
+  "coordinates": [-49.946944, 41.7325, -3803]
+}
+~~~
+</div>
+
 
 # Object types
 
@@ -631,6 +641,9 @@ The field `Parts` in the following example does not belong to JSKOS:
 * S. Bradner: *Key words for use in RFCs to Indicate Requirement Levels*.
   RFC 2119, March 1997. <https://tools.ietf.org/html/rfc2119>
 
+* H. Butler, M. Daly, S. Gillies, S. Hagen, T. Schaub: *The GeoJSON Format*.
+  RFC 7946, August 2016. <https://tools.ietf.org/html/rfc7946>
+
 * D. Crockford: *The application/json Media Type for JavaScript Object Notation (JSON)*.
   RFC 4627, July 2006. <https://tools.ietf.org/html/rfc4627>
 
@@ -648,6 +661,7 @@ The field `Parts` in the following example does not belong to JSKOS:
 [RFC 4627]: https://tools.ietf.org/html/rfc4627
 [RFC 3987]: https://tools.ietf.org/html/rfc3987
 [RFC 3066]: https://tools.ietf.org/html/rfc3066
+[RFC 7946]: https://tools.ietf.org/html/rfc7946
 
 ## Informative references {.unnumbered}
 
@@ -702,6 +716,10 @@ RDF
   : Resource Description Framework
 
 ## Changelog {.unnumbered}
+
+### 0.1.3 (2016-10-03) {.unnumbered}
+
+* Change definition of "location" field to subset of GeoJSON (RFC 7946)
 
 ### 0.1.2 (2016-06-13) {.unnumbered}
 

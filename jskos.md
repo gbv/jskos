@@ -716,6 +716,12 @@ RDF
 
 ## Changelog {.unnumbered}
 
+### 0.1.4 (2016-12-02) {.unnumbered}
+
+* Update JSON-LD context document
+* Change definition of concept bundles to use fields memberSet/List/Choice
+  instead of members
+
 ### 0.1.3 (2016-10-03) {.unnumbered}
 
 * Change definition of "location" field to subset of GeoJSON (RFC 7946)

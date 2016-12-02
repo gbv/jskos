@@ -1,39 +1,32 @@
 {
-  "dct": "http://purl.org/dc/terms/",
-  "foaf": "http://xmlns.com/foaf/0.1/",
-  "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
-  "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-  "void": "http://rdfs.org/ns/void#",
-  "xskos": "http://rdf-vocabulary.ddialliance.org/xkos#",
-
   "uri": "@id",
   "type": {
-    "@id": "rdf:type",
+    "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
     "@type": "@id",
     "@container": "@set"
   },
-  "created": "dct:created",
-  "issued": "dct:issued",
-  "modified": "dct:modified",
+  "created": "http://purl.org/dc/terms/created",
+  "issued": "http://purl.org/dc/terms/issued",
+  "modified": "http://purl.org/dc/terms/modified",
   "creator": {
-    "@id": "dct:creator",
+    "@id": "http://purl.org/dc/terms/creator",
     "@container": "@set"
   },
   "contributor": {
-    "@id": "dct:contributor",
+    "@id": "http://purl.org/dc/terms/contributor",
     "@container": "@set"
   },
   "publisher": {
-    "@id": "dct:publisher",
+    "@id": "http://purl.org/dc/terms/publisher",
     "@container": "@set"
   },
   "partOf": {
-    "@id": "dct:isPartOf",
+    "@id": "http://purl.org/dc/terms/isPartOf",
     "@container": "@set"
   },
 
   "url": {
-    "@id": "foaf:page",
+    "@id": "http://xmlns.com/foaf/0.1/page",
     "@type": "@id"
   },
   "identifier": {
@@ -82,15 +75,15 @@
     "@container": "@language"
   },
   "subject": {
-    "@id": "dct:subject",
+    "@id": "http://purl.org/dc/terms/subject",
     "@container": "@set"
   },
   "subjectOf": {
-    "@reverse": "dct:subject",
+    "@reverse": "http://purl.org/dc/terms/subject",
     "@container": "@set"
   },
   "depiction": {
-    "@id": "foaf:depiction",
+    "@id": "http://xmlns.com/foaf/0.1/depiction",
     "@type": "@id",
     "@container": "@set"
   },
@@ -108,18 +101,18 @@
     "@container": "@set"
   },
   "previous": {
-    "@id": "http://www.w3.org/2004/02/skos/core#previous",
+    "@id": "http://rdf-vocabulary.ddialliance.org/xkos#previous",
     "@container": "@set"
   },
   "next": {
-    "@id": "http://www.w3.org/2004/02/skos/core#next",
+    "@id": "http://rdf-vocabulary.ddialliance.org/xkos#next",
     "@container": "@set"
   },
   
   "startDate": "schema:startDate",
   "endDate": "schema:endDate",
-  "relatedDate": "rdfs:seeAlso",
-
+  "relatedDate": "http://www.w3.org/2000/01/rdf-schema#seeAlso",
+  "location": "http://schema.org/location",
   "ancestors": {
     "@id": "http://www.w3.org/2004/02/skos/core#broaderTransitive",
     "@container": "@set"
@@ -138,32 +131,32 @@
     "@container": "@set"
   },
   "versionOf": {
-    "@id": "dct:isVersionOf",
+    "@id": "http://purl.org/dc/terms/isVersionOf",
     "@container": "@set"
   },
-  "extent": "dct:extent",
+  "extent": "http://purl.org/dc/terms/extent",
   "languages": {
-    "@id": "dct:language",
+    "@id": "http://purl.org/dc/terms/language",
     "@container": "@set"
   },
   "license": {
-    "@id": "dct:license",
+    "@id": "http://purl.org/dc/terms/license",
     "@container": "@set"
   },
 
-  "fromScheme": "void:subjectsTarget",
-  "toScheme": "void:objectsTarget",
+  "fromScheme": "http://rdfs.org/ns/void#subjectsTarget",
+  "toScheme": "http://rdfs.org/ns/void#objectsTarget",
 
   "memberList": {
     "@id": "http://www.loc.gov/mads/rdf/v1#componentList",
     "@container": "@list"
   },
   "memberSet": {
-    "@id": "rdfs:member",
+    "@id": "http://www.w3.org/2000/01/rdf-schema#member",
     "@container": "@list"
   },
   "memberChoice": {
-    "@id": "rdfs:member",
+    "@id": "http://www.w3.org/2000/01/rdf-schema#member",
     "@container": "@list"
   }
 }

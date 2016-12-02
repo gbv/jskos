@@ -501,17 +501,16 @@ such as `urn:uuid:687b973c-38ab-48fb-b4ea-2b77abf557b7`.
 [concept collections]: #concept-bundles
 
 A **concept bundle** is a group of [concepts]. Some concept bundles represent
-[SKOS concept collections](http://www.w3.org/TR/skos-reference/#collections) but
-bundles may serve other purposes as well.
+[SKOS concept collections](http://www.w3.org/TR/skos-reference/#collections),
+and pre-coordinated concepts, among other use cases.
 
-A concept bundle is a JSON object with the following fields. Field `members`
-MUST be given, the other fields are OPTIONAL.
+A concept bundle is a JSON object with one of the following fields:
 
-field       type      definition
------------ --------- ----------------------------------------------------------------------
-members     [set]     [concepts] in this bundle
-ordered     [boolean] whether the concepts in this bundle are ordered (list) or not (set) 
-disjunction [boolean] whether the concepts in this bundle are combined by OR instead of AND
+field       type          definition
+----------- ------------- ----------------------------------------------------------------------
+memberSet   [set]         [concepts] in this bundle (unordered)
+memberList  ordered [set] [concepts] in this bundle (ordered)
+memberChoice [set]        [concepts] in this bundle to choose from
 
 <div class="note">
 
@@ -526,7 +525,7 @@ disjunction [boolean] whether the concepts in this bundle are combined by OR ins
     ```json
     {
       ...
-      "to": { "members": null },
+      "to": { "memberSet": [] },
       "toScheme": {"uri": "http://dewey.info/scheme/ddc/"}
     }
     ```

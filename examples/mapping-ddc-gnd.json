@@ -4,7 +4,7 @@
         "type": ["http://www.w3.org/2004/02/skos/core#exactMatch"],
         "fromScheme": {"notation":"DDC"},
         "from": {
-            "members": [ 
+            "memberSet": [ 
                 {
                     "notation": ["612.112"],
                     "prefLabel": { "de": "Leukozyten (Weiße Blutkörperchen)"}
@@ -14,12 +14,11 @@
         },
         "toScheme": {"notation":"GND"},
         "to": {
-            "members": [ {
+            "memberSet": [ {
                 "uri": "http://d-nb.info/gnd/4074195-3",
                 "prefLabel": { "de": "Leukozyt" },
                 "notation":["4074195-3"]
-            } ],
-            "disjunction": true
+            } ]
         }
     },
     {
@@ -27,7 +26,7 @@
         "mappingRelevance": 0.5,
         "fromScheme": {"notation":"DDC"},
         "from": {
-            "members": [ {
+            "memberSet": [ {
                 "uri": "http://dewey.info/class/612.112/e22/",
                 "notation": ["612.112"],
                 "prefLabel": { "de": "Leukozyten (Weiße Blutkörperchen)"}
@@ -35,7 +34,7 @@
         },
         "toScheme": {"notation":"GND"},
         "to": {
-            "members": [ {
+            "memberChoice": [ {
                 "uri": "http://d-nb.info/gnd/4074195-3",
                 "prefLabel": { "de": "Leukozyt" },
                 "notation":["4074195-3"]
@@ -63,8 +62,7 @@
                 "uri": "http://d-nb.info/gnd/4285013-7",
                 "prefLabel": { "de": "Monozyt" },
                 "notation":["4285013-7"]
-            } ],
-            "disjunction": true
+            } ]
         }
     },
     {
@@ -72,7 +70,7 @@
         "mappingRelevance": 0.2,
         "fromScheme": {"notation":"DDC"},
         "from": {
-            "members": [ {
+            "memberChoice": [ {
                 "uri": "http://dewey.info/class/612.112/e22/",
                 "notation": ["612.112"],
                 "prefLabel": { "de": "Leukozyten (Weiße Blutkörperchen)"}
@@ -80,12 +78,11 @@
         },
         "toScheme": {"notation":"GND"},
         "to": {
-            "members": [ {
+            "memberSet": [ {
                 "uri": "http://d-nb.info/gnd/4499720-6",
                 "prefLabel": { "de": "Leukozytenintegrine" },
                 "notation":["4499720-6"]
-            } ],
-            "disjunction": true
+            } ]
         }
     }
 ]

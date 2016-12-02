@@ -157,5 +157,13 @@
   "memberList": {
     "@id": "http://www.loc.gov/mads/rdf/v1#componentList",
     "@container": "@list"
+  },
+  "memberSet": {
+    "@id": "rdfs:member",
+    "@container": "@list"
+  },
+  "memberChoice": {
+    "@id": "rdfs:member",
+    "@container": "@list"
   }
 }

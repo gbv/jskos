@@ -3,13 +3,13 @@
     "fromScheme": {"uri":"http://dewey.info/scheme/edition/e22/"},    
     "toScheme": {"uri":"http://d-nb.info/gnd/7749153-1"},
     "from": {
-        "members": [ {
+        "memberSet": [ {
             "uri": "http://dewey.info/class/612.112/e22/",
             "notation": ["612.112"]
         } ]
     },
     "to": {
-        "members": [ {
+        "memberSet": [ {
             "uri": "http://d-nb.info/gnd/4074195-3",
             "preflabel": { "de": "Leukozyt" }
         } ]

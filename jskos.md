@@ -77,9 +77,9 @@ world statements]:
 
 A **set** is a possibly empty array where all members
 
-* are [objects], except the last member optionally being `null`,
+* are JSON objects of JSKOS [resources], except the last member optionally being `null`,
 * and have distinct values in field `uri`, if this field is given 
-  (members MUST not be the [same object]).
+  (members MUST not be the [same resource]).
 
 Member objects SHOULD have a field `uri`. Applications MAY restrict sets to
 require the field `uri` for all non-null members.  Applications MAY ignore or
@@ -190,9 +190,10 @@ The language tag "und" can be used to include strings of unknown or unspecified 
 </div>
 
 ## location
+
 [location]: #location
 
-A **location** is an JSON object conforming to the GeoJSON specification ([RFC
+A **location** is a JSON object conforming to the GeoJSON specification ([RFC
 7946]) with GeoJSON type being one of `Point`, `MultiPoint`, `LineString`,
 `MultiLineString`, `Polygon`, or `MultiPolygon`. Applications MAY restrict the
 location data type to GeoJSON objects of GeoJSON type `Point`.
@@ -211,12 +212,20 @@ Position of the RMS Titanic as point:
 
 # Object types
 
-## Object
+There are two basic object types:
 
-[object]: #object
-[objects]: #object
+* [resources] represent arbitrary entities
+* [concept bundles] are only used as part [mappings]
 
-An **object** is a JSON object with the following optional fields:
+Most resources are also [items] and most items have one of the [item types]
+[concept], [concept scheme], [registry], [concordance], and [mapping].
+
+## Resource
+
+[resource]: #resource
+[resources]: #resource
+
+An **resource** is a JSON object with the following optional fields:
 
 field        type             description
 ----------- ----------------- ------------------------------------------------------------------
@@ -226,39 +235,23 @@ type        [list] of [URI]s  URIs of types
 created     [date]            date of creation
 issued      [date]            date of publication
 modified    [date]            date of last modification
-creator     [set]             agent primarily responsible for creation of object
-contributor [set]             agent responsible for making contributions to the object
-publisher   [set]             agent responsible for making the object available
-partOf      [set]             resources which this object is part of (if no other field applies)
+creator     [set]             agent primarily responsible for creation of resource
+contributor [set]             agent responsible for making contributions to the resource
+publisher   [set]             agent responsible for making the resource available
+partOf      [set]             [resources] which this resource is part of (if no other field applies)
 
 It is RECOMMENDED to always include the fields `uri`, `type`, and `@context`.
 The value of field `@context` SHOULD be
 `https://gbv.github.io/jskos/context.json`.
 
-### Object sameness {.unnumbered}
-
-[same object]: #object-sameness
-[the same]: #object-sameness
-
-Two objects are *same* if they both contain field `uri` with the same value.
-
-<div class="example">
-The following objects are same:
-
-~~~{.json}
-{ "uri": "http://example.org/123", "created": "2007" }
-{ "uri": "http://example.org/123", "created": "2015" }
-~~~
-
-Two objects are never same of they don't both contain field `uri`!
-</div>
+Resources can be [tested for sameness](#resource-sameness) based on field `uri`.
 
 ## Item
 
 [item]: #item
 [items]: #item
 
-An **item** is an [object] with the following optional fields (in addition to
+An **item** is a [resource] with the following optional fields (in addition to
 the optional fields `@context`, `contributor`, `created`, `creator`, `issued`,
 `modified`, `partOf` `publisher`, `type`, and `uri`):
 
@@ -276,6 +269,10 @@ example       [language map] of [list]  see [SKOS Documentary Notes]
 historyNote   [language map] of [list]  see [SKOS Documentary Notes]
 editorialNote [language map] of [list]  see [SKOS Documentary Notes]
 changeNote    [language map] of [list]  see [SKOS Documentary Notes]
+startDate     [date]                    date of birth, creation, or estabishment of the item
+endDate       [date]                    date death or resolution of the item
+relatedDate   [date]                    other date somehow related to the item
+location      [location]                geographic location(s) of the item
 subject       [set]                     what this item is about (e.g. topic)
 subjectOf     [set]                     resources about this item (e.g. documentation)
 depiction     [list] of [URL]           list of image URLs depicting the item
@@ -303,17 +300,12 @@ broader      [set]      broader concepts
 related      [set]      generally related concepts
 previous     [set]      related concepts ordered somehow before the concept
 next         [set]      related concepts ordered somehow after the concept
-startDate    [date]     date of birth, creation, or estabishment of what the concept is about
-endDate      [date]     date death or resolution of what the concept is about
-relatedDate  [date]     other date somehow related to what the concept is about
-location     [location] geographic location(s) of what the concept is about
 ancestors    [set]      list of ancestors, possibly up to a top concept
 inScheme     [set]      [concept schemes] or URI of the concept schemes
 topConceptOf [set]      [concept schemes] or URI of the concept schemes
 
-The first element of field `type`, if given, MUST be the URI
-<http://www.w3.org/2004/02/skos/core#Concept> refering to the general [concept
-type] "Concept".
+The first element of field `type`, if given, MUST be the [item type] URI
+<http://www.w3.org/2004/02/skos/core#Concept>.
 
 Applications MAY limit the `inScheme` and/or `topConceptOf` to sets of a single
 element or ignore all but one element of these sets.
@@ -329,28 +321,6 @@ connected by the broader relation.
 
 <div class="example">
 `examples/example.concept.json`{.include .codeblock .json}
-</div>
-
-
-## Concept types
-
-[concept type]: #concept-types
-[concept types]: #concept-types
-
-A **concept type** is an [item] that represents a specific type of [concept]. 
-
-<div class="note">
-Each concept MUST belong to at least the general concept type "Concept", 
-identified by the URI <http://www.w3.org/2004/02/skos/core#Concept>:
-
-~~~json
-{
-  "uri": "http://www.w3.org/2004/02/skos/core#Concept",
-  "prefLabel": { "en": "Concept" }
-}
-~~~
-
-Concepts schemes MAY use additional concept types to organize concepts.
 </div>
 
 
@@ -372,19 +342,19 @@ property    type                       definition
 topConcepts [set] of [concepts]        top [concepts] of the scheme
 versionOf   [set] of [concept schemes] [concept scheme] which this scheme is a version or edition of
 concepts    [URL] or [set]             JSKOS API concepts endpoint returning all concepts in this scheme
-types       [URL] or [set]             JSKOS API types endpoint returning all concept types in this scheme
+types       [URL] or [set]             JSKOS API types endpoint returning all [concept types] in this scheme
 extent      string                     Size of the concept scheme
 languages   [list] of language tags    Supported languages
 license     [set]                      Licenses which the full scheme can be used under
 
-The first element of field `type`, if given, MUST be
+The first element of field `type`, if given, MUST be the [item type] URI
 <http://www.w3.org/2004/02/skos/core#ConceptScheme>.
 
 If `concepts` is a set, all its member concepts SHOULD contain a field
 `inScheme` and all MUST contain [the same] concept scheme in field `inScheme`
 if this field is given.
 
-If `types` and `concepts` are sets, the `types` set SHOULD include a [concept type] 
+If `types` and `concepts` are sets, the `types` set SHOULD include all [concept types] 
 for each concept's `type` other than `http://www.w3.org/2004/02/skos/core#Concept`.
 
 
@@ -403,14 +373,17 @@ the optional fields `@context`, `altLabel`, `changeNote`, `contributor`,
 property     type           definition
 ------------ -------------- --------------------------------------------------------------------------------------
 concepts     [URL] or [set] JSKOS API endpoint with [concepts] in this registry
-schemes      [URL] or [set] JSKOS API endpoint with [concept types] in this registry
-types        [URL] or [set] JSKOS API endpoint with [concept schemes] in this registry
+schemes      [URL] or [set] JSKOS API endpoint with [concept schemes] in this registry
+types        [URL] or [set] JSKOS API endpoint with [concept types] in this registry
 mappings     [URL] or [set] JSKOS API endpoint with [mappings] in this registry
 registries   [URL] or [set] JSKOS API endpoint with other registries in this registry
 concordances [URL] or [set] JSKOS API endpoint with [concordances] in this registry
 extent       string         Size of the registry
 languages    [list]         Supported languages
 license      [set]          Licenses which the full registry content can be used under
+
+The first element of field `type`, if given, MUST be the [item type] URI
+<http://purl.org/cld/cdtype/CatalogueOrIndex>.
 
 Registries are collection of [concepts], [concept schemes], [concept types],
 [concept mappings], and/or other registries.  
@@ -442,6 +415,9 @@ fromScheme   [concept scheme] Source concept scheme
 toScheme     [concept scheme] Target concept scheme
 extent       string           Size of the concordance
 license      [set]            License which the full concordance can be used under
+
+The first element of field `type`, if given, MUST be the [item type] URI
+<http://rdfs.org/ns/void#Linkset>.
 
 Concordances are collections of [mappings] from one [concept scheme] to
 another. If `mappings` is a set then
@@ -484,8 +460,7 @@ A **mapping** represents a mapping between [concepts] of two [concept schemes].
 It consists two [concept bundles] with additional metadata not fully defined
 yet.
 
-The first element of field `type`, if
-given, MUST be one of the values
+The first element of field `type`, if given, MUST be one of the [item types]
 
 * `http://www.w3.org/2004/02/skos/core#mappingRelation`,
 * `http://www.w3.org/2004/02/skos/core#closeMatch`,
@@ -494,8 +469,9 @@ given, MUST be one of the values
 * `http://www.w3.org/2004/02/skos/core#narrowMatch`, and
 * `http://www.w3.org/2004/02/skos/core#relatedMatch`
 
-from [SKOS mapping properties](http://www.w3.org/TR/skos-reference/#mapping) as
-first element. The field `type` MUST NOT contain multiple of these values.
+from [SKOS mapping properties](http://www.w3.org/TR/skos-reference/#mapping).
+The field `type` MAY contain additional values but MUST NOT contain multiple of
+these values.
 
 <div class="note">
 When mappings are dynamically created it can be useful to assign a non-HTTP URI
@@ -541,14 +517,112 @@ memberChoice [set]        [concepts] in this bundle to choose from
     ```
 </div>
 
+# Item and concept types
+
+[item type]: #item-and-concept-types
+[item types]: #item-and-concept-types
+[concept type]: #item-and-concept-types
+[concept types]: #item-and-concept-types
+
+An **item type** is an URI used to distinguish the different kinds of JSKOS [items]:
+
+item                item type
+------------------- -----------------------------------------------------
+[concept]           <http://www.w3.org/2004/02/skos/core#Concept>
+[concept scheme]    <http://www.w3.org/2004/02/skos/core#ConceptScheme>
+[registry]          <http://purl.org/cld/cdtype/CatalogueOrIndex>
+[concordance]       <http://rdfs.org/ns/void#Linkset>
+[mapping]           <http://www.w3.org/2004/02/skos/core#mappingRelation> and sup-properties
+------------------- ------------------------------------------------------------------------
+
+A concept type is [concept] used to distinguish different kinds of [concepts]
+or other [resources]. Concept types are referred to by their URI in field `type` 
+of a [resource]. 
+
+Item types MAY be expressed with the following [concept types]:
+
+~~~json
+[
+  {
+    "uri": "http://www.w3.org/2004/02/skos/core#Concept",
+    "prefLabel": { "en": "concept" }
+  },
+  {
+    "uri": "http://www.w3.org/2004/02/skos/core#ConceptScheme",
+    "prefLabel": { "en": "concept scheme" }
+  },
+  {
+    "uri": "http://purl.org/cld/cdtype/CatalogueOrIndex",
+    "prefLabel": { "en": "registry" },
+    "altLabel": { "en": [ "catalog", "Catalogue or Index" ] }
+  },
+  {
+    "uri": "http://rdfs.org/ns/void#Linkset",
+    "identifier": [ "http://purl.org/spar/fabio/VocabularyMapping" ],
+    "prefLabel": { "en": "concordance" },
+    "altLabel": { "en": [ "linkset" ] }
+  },
+  {
+    "uri": "http://www.w3.org/2004/02/skos/core#mappingRelation",
+    "prefLabel": { "en": "is in mapping relation with" }
+  },
+  {
+    "uri": "http://www.w3.org/2004/02/skos/core#closeMatch",
+    "prefLabel": { "en": "has close match" },
+    "broader": [ { "uri": "http://www.w3.org/2004/02/skos/core#mappingRelation" } ]
+  },
+  {
+    "uri": "http://www.w3.org/2004/02/skos/core#exactMatch",
+    "prefLabel": { "en": "has exact match" },
+    "broader": [ { "uri": "http://www.w3.org/2004/02/skos/core#closeMatch" } ]
+  },
+  {
+    "uri": "http://www.w3.org/2004/02/skos/core#broadMatch",
+    "prefLabel": { "en": "has broader match" },
+    "broader": [ { "uri": "http://www.w3.org/2004/02/skos/core#mappingRelation" } ],
+    "related": [ { "uri": "http://www.w3.org/2004/02/skos/core#narrowMatch" } ]
+  },
+  {
+    "uri": "http://www.w3.org/2004/02/skos/core#narrowMatch",
+    "prefLabel": { "en": "has narrower match" },
+    "broader": [ { "uri": "http://www.w3.org/2004/02/skos/core#mappingRelation" } ],
+    "related": [ { "uri": "http://www.w3.org/2004/02/skos/core#broadMatch" } ]
+  },
+  {
+    "uri": "http://www.w3.org/2004/02/skos/core#relatedMatch",
+    "prefLabel": { "en": "has related match" },
+    "broader": [ { "uri": "http://www.w3.org/2004/02/skos/core#mappingRelation" } ]
+  }
+]
+~~~
+
 
 # Additional rules
+
+## Resource sameness
+
+[same resource]: #resource-sameness
+[the same]: #resource-sameness
+
+Two [resources] are *same* if and only if they both contain field `uri` with
+the same value. A resource without field `uri` is not same to any other
+resource.
+
+<div class="example">
+The following resources are same:
+
+~~~{.json}
+{ "uri": "http://example.org/123", "created": "2007" }
+{ "uri": "http://example.org/123", "created": "2015" }
+~~~
+</div>
+
 
 ## Closed world statements
 
 [closed world statements]: #closed-world-statements
 
-By default, an JSKOS document should be interpreted as possibly incomplete: a
+By default, a JSKOS document should be interpreted as possibly incomplete: a
 missing property does not imply that no value exists for this property: this
 assumption is also known as open-world assumption. Applications SHOULD support
 closed world statements to explicitly disable the open world assumption for
@@ -560,7 +634,7 @@ data type      open world closed world explicit negation explicit existence
 [list]         no field   `[...]`      `[]`              `[null]` or `[..., null]`
 [set]          no field   `[...]`      `[]`              `[null]` or `[..., null]`
 [language map] no field   `{...}`      no language tag   `{"-":"?"}` or `{"-":["?"]}`
-[object]       no field   `{...}`      -                 `{}`
+[resource]     no field   `{...}`      -                 `{}`
 [URI]/[URL]    no field   `"..."`      -                 -
 [date]         no field   `"..."`      -                 -
 
@@ -610,6 +684,10 @@ A Concept Scheme represents a [SKOS Concept Scheme].
 
 
 ## Extension with custom fields
+
+<div class="note">
+The following rule may be changed in the final version of JSKOS specification!
+</div>
 
 A JSKOS record MAY contain additional fields for custom usage. These fields
 MUST start with an uppercase letter (A-Z) and SHOULD be ignored by JSKOS
@@ -715,6 +793,13 @@ RDF
   : Resource Description Framework
 
 ## Changelog {.unnumbered}
+
+### 0.2.0 (2017-21-09) {.unnumbered}
+
+* Rename object to resource
+* Move startDate, endDate, relatedDate, and location from Concept to Item
+* Add item types
+* Update JSON-LD context document
 
 ### 0.1.4 (2016-12-02) {.unnumbered}
 

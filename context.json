@@ -11,9 +11,18 @@
     "@type": "@id",
     "@container": "@set"
   },
-  "created": "dct:created",
-  "issued": "dct:issued",
-  "modified": "dct:modified",
+  "created": {
+    "@id": "dct:created",
+    "@type": "xsd:date"
+  },
+  "issued": {
+    "@id": "dct:issued",
+    "@type": "xsd:date"
+  },
+  "modified": {
+    "@id": "dct:modified",
+    "@type": "xsd:date"
+  },
   "creator": {
     "@id": "dct:creator",
     "@container": "@set"
@@ -36,8 +45,7 @@
     "@type": "@id"
   },
   "identifier": {
-    "@id": "http://www.w3.org/2004/02/skos/core#exactMatch",
-    "@type": "@id",
+    "@id": "http://purl.org/dc/terms/identifier",
     "@container": "@set"
   },
   "notation": {

@@ -115,11 +115,11 @@
     "@container": "@set"
   },
   "previous": {
-    "@id": "http://www.w3.org/2004/02/skos/core#previous",
+    "@id": "http://rdf-vocabulary.ddialliance.org/xkos#previous",
     "@container": "@set"
   },
   "next": {
-    "@id": "http://www.w3.org/2004/02/skos/core#next",
+    "@id": "http://rdf-vocabulary.ddialliance.org/xkos#next",
     "@container": "@set"
   },
   

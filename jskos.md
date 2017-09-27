@@ -2,9 +2,9 @@
 
 **JSKOS** defines a JavaScript Object Notation (JSON) structure to encode
 knowledge organization systems (KOS), such as classifications, thesauri, and
-authority files. The current draft of JSKOS supports encoding of [concepts] and
-[concept schemes] with their corresponding properties. Support of [concept
-mappings] and [concept collections] is experimental.
+authority files. JSKOS supports encoding of [concepts], [concept schemes], and
+[concept mappings] with their common properties. Support of [concordances] and
+[registries] is experimental.
 
 The main part of JSKOS is compatible with Simple Knowledge Organisation System
 (SKOS) and JavaScript Object Notation for Linked Data (JSON-LD) but JSKOS can
@@ -73,12 +73,14 @@ world statements]:
 * a list `[..., null]` denotes a list with some known and additional unknown members.
 * any other list `[...]` denotes a list with all members known.
 
+A list MUST NOT contain the empty string except if part of a [language map].
+
 ## set
 
 A **set** is a possibly empty array where all members
 
 * are JSON objects of JSKOS [resources], except the last member optionally being `null`,
-* and have distinct values in field `uri`, if this field is given 
+* and have distinct values in field `uri`, if this field is given
   (members MUST not be the [same resource]).
 
 Member objects SHOULD have a field `uri`. Applications MAY restrict sets to
@@ -101,12 +103,12 @@ The following JSON values are JSKOS sets:
 * `[{"uri":"http://example.org/123"},{"uri":"http://example.org/456"}]`{.json}
 * `[{"uri":"http://example.org/123"},{"notation":["xyz"]}]`{.json}
 
-The following JSON values are no valid JSKOS sets:
+The following JSON values are not valid JSKOS sets:
 
 * `[null,{"uri":"http://example.org/123"}]`{.json}\
-  (`null` must be last member)
+  (`null` only allowed as last member)
 * `[{"uri":"http://example.org/123"},{"uri":"http://example.org/123"}]`{.json}\
-  (field `uri` not unique)
+  (field `uri` must be unique)
 </div>
 
 <div class="note">
@@ -115,14 +117,14 @@ It is not defined yet whether and when the order of elements is relevant or not.
 
 ## language range
 
-A **language range** is 
+A **language range** is
 
 * either the character "`-`"
 * or a string that conforms to the syntax of [RFC 3066] language tags,
   limited to lowercase, followed by the character "`-`",
 
 A language range "`x-`", where `x` is a possibly empty string, refers to the
-set of [RFC 3066] language tags that start with the `x`. For instance language
+set of [RFC 3066] language tags that start the string `x`. For instance language
 range `en-` includes language tag `en`, `en-US`, and `en-GB` among others.  The
 language range `-` refers to all possible language tags.
 
@@ -135,8 +137,17 @@ language-tag   = 1*8alpha *("-" 1*8(alpha / DIGIT))
 alpha          = %x61-7A  ; a-z
 ```
 
-Language ranges are defined similar to basic language ranges in [RFC 4647].
-Both can be mapped to each other but they serve slightly different purposes.
+JSKOS language ranges can be mapped to and from basic language ranges as
+defined in [RFC 4647]. The main difference of JSKOS language ranges is they can
+be distinguished from [RFC 3066] based on their string value (always ending
+with "`-`"). For instance "`en`" could be an [RFC 3066] language tag or a
+[RFC 3647] language range but in JSKOS it is always a language tag only:
+
+                                        JSKOS RFC 3066 RFC 4647
+--------------------------------------- ----- -------- --------
+language tag for English                `en`  `en`
+languag range for all English variants  `en-`          `en`
+
 </div>
 
 ## language map
@@ -146,42 +157,46 @@ A **language map** is a JSON object in which every fields is
 * either a [RFC 3066] language tag in lowercase that SHOULD also conform to [RFC 5646],
 * or a [language range],
 
-and 
+and
 
 * either all values are strings (**language map of strings**),
 * or all values are [lists] (**language map of lists**).
 
-Applications MAY ignore or disallow language ranges in language maps. If
-language ranges are allowed, language maps MUST be interpreted as following to
-support [closed world statements]:
+and
+
+* string values or list member values mapped to from language tags MUST NOT be the empty string
+* string values or list member values mapped to from language ranges MUST BE the empty string
+
+Applications MAY ignore or disallow language ranges in language maps. JSKOS
+data providers SHOULD make clear whether their data can contain language ranges
+or not.
+
+If language ranges are allowed, language maps MUST be interpreted as following
+to support [closed world statements]:
 
 * Language maps without language range fields indicate that all values are given.
   In particular the language map `{}` denotes an empty language map.
 
-* A language range fields indicates the existence of additional, unknown
-  values. The actual value mapped to from a language range field (either a
-  string or an array) MUST be interpreted as placeholder for any number of
-  additional entries in the language map.
-
-Applications SHOULD use the string `"?"` or the array `["?"]` as placeholder.
+* A language range field indicates the existence of additional, unknown
+  values of unknown number.
 
 <div class="example">
 The following language maps make use of language ranges and placeholders:
 
-* `{"-":"?"}`, `{"-":"..."}`, `{"-":[]}`, and `{"-":["?"]}`
+* `{"-":""}`, `{"-":""}`, `{"-":[]}`, and `{"-":[""]}`
    all denote non-empty language maps with unknown language tags and values.
 
-* `{"en":"bird","-":"?"}` denotes a language map with an English value 
+* `{"en":"bird","-":""}` denotes a language map with an English value
    and additional values in other language tags.
 
 * `{"en":"bird"}` denotes a language map with an English value only.
 
-* `{"en-":"?"}` denotes a language map that only 
+* `{"en-":""}` denotes a language map that only
   contains values with language tags starting with `en`.
 </div>
 
 <div class="note">
-JSON-LD disallows language map fields ending with `"-"` so all fields that are 
+JSON-LD disallows language map fields ending with `"-"` so all fields that are
 language ranges MUST be removed before reading JSKOS as JSON-LD.
 </div>
 
@@ -354,7 +369,7 @@ If `concepts` is a set, all its member concepts SHOULD contain a field
 `inScheme` and all MUST contain [the same] concept scheme in field `inScheme`
 if this field is given.
 
-If `types` and `concepts` are sets, the `types` set SHOULD include all [concept types] 
+If `types` and `concepts` are sets, the `types` set SHOULD include all [concept types]
 for each concept's `type` other than `http://www.w3.org/2004/02/skos/core#Concept`.
 
 
@@ -386,7 +401,7 @@ The first element of field `type`, if given, MUST be the [item type] URI
 <http://purl.org/cld/cdtype/CatalogueOrIndex>.
 
 Registries are collection of [concepts], [concept schemes], [concept types],
-[concept mappings], and/or other registries.  
+[concept mappings], and/or other registries.
 
 <div class="note">
 Registries are the top JSKOS entity, followed by [concordances], [mappings]
@@ -422,10 +437,10 @@ The first element of field `type`, if given, MUST be the [item type] URI
 Concordances are collections of [mappings] from one [concept scheme] to
 another. If `mappings` is a set then
 
-* all its members with field `fromScheme` MUST have [the same] value 
+* all its members with field `fromScheme` MUST have [the same] value
   like concordance field `fromScheme`.
 
-* all its members with field `toScheme` MUST have [the same] value 
+* all its members with field `toScheme` MUST have [the same] value
   like concordance field `toScheme`.
 
 <div class="note">
@@ -536,8 +551,8 @@ item                item type
 ------------------- ------------------------------------------------------------------------
 
 A concept type is [concept] used to distinguish different kinds of [concepts]
-or other [resources]. Concept types are referred to by their URI in field `type` 
-of a [resource]. 
+or other [resources]. Concept types are referred to by their URI in field `type`
+of a [resource].
 
 Item types MAY be expressed with the following [concept types]:
 
@@ -633,7 +648,7 @@ data type      open world closed world explicit negation explicit existence
 -------------- ---------- ------------ ----------------- ----------------------------
 [list]         no field   `[...]`      `[]`              `[null]` or `[..., null]`
 [set]          no field   `[...]`      `[]`              `[null]` or `[..., null]`
-[language map] no field   `{...}`      no language tag   `{"-":"?"}` or `{"-":["?"]}`
+[language map] no field   `{...}`      no language tag   `{"-":""}` or `{"-":[""]}`
 [resource]     no field   `{...}`      -                 `{}`
 [URI]/[URL]    no field   `"..."`      -                 -
 [date]         no field   `"..."`      -                 -
@@ -673,7 +688,7 @@ A Concept represents a [SKOS Concept].
 
 [SKOS Concept]: http://www.w3.org/TR/skos-primer/#secconcept
 
-A Concept Scheme represents a [SKOS Concept Scheme].  
+A Concept Scheme represents a [SKOS Concept Scheme].
 
 -->
 
@@ -794,7 +809,11 @@ RDF
 
 ## Changelog {.unnumbered}
 
-### 0.2.0 (2017-21-09) {.unnumbered}
+### 0.2.1 (2017-09-27) {.unnumbered}
+
+* Disallow empty strings except as mandatory placeholder with language ranges
+
+### 0.2.0 (2017-09-21) {.unnumbered}
 
 * Rename object to resource
 * Move startDate, endDate, relatedDate, and location from Concept to Item
@@ -824,18 +843,20 @@ RDF
 ## SKOS features not supported in JSKOS {.unnumbered}
 
 JSKOS is aligned with SKOS but all references to SKOS are informative only.
-The following features of SKOS are not supported in JSKOS (yet):
+The following features of SKOS are not supported in JSKOS:
 
-maybe supported later
-  : [concept collections], see <https://github.com/gbv/jskos/issues/7>
+* SKOS notations can have datatypes. JSKOS notations are plain strings.
 
-will not be supported
-  : 
-    * datatypes of notations (of little use in practice)
+* SKOS notations, labels, and values of [documentation properties] can be
+  empty string. In JSKOS empty string values are disallowed.
 
-    * labels and notes without language tag (rarely used in practice)
-    * skos:semanticRelation (can be derived)
-    * skos:narrowerTransitive (can be derived)
+* SKOS labels and values of [documentation properties] do not need to
+  have a language tag. In JSKOS language tags are mandatory for label
+  and documentation properties.
+
+* JSKOS does not include the SKOS properties `skos:broaderTransitive`,
+  `skos:narrowerTransitive`, and `skos:semanticRelation`.
+
 
 [documentation properties]: http://www.w3.org/TR/2009/REC-skos-reference-20090818/#notes
 [mapping properties]: http://www.w3.org/TR/2009/REC-skos-reference-20090818/#mapping

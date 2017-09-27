@@ -1,0 +1,21 @@
+{
+  "notation": [ "305.40941109033" ],
+  "prefLabel": { "en": "Women — Scotland — 18th century" },
+  "memberList": [
+    {
+      "uri": "http://dewey.info/class/305.4/e23/",
+      "notation": "305.4",
+      "prefLabel": { "en": "Women" }
+    },
+    {
+      "uri": "http://dewey.info/class/2--411/e23/",
+      "notation": "T2--411",
+      "prefLabel": { "en": "Scotland" }
+    },
+    {
+      "uri": "http://dewey.info/class/1--09033/e23/",
+      "notation": "T1--09033",
+      "prefLabel": { "en": "18th century, 1700-1799" }
+    }
+  ]
+}

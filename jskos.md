@@ -316,6 +316,8 @@ related      [set]      generally related concepts
 previous     [set]      related concepts ordered somehow before the concept
 next         [set]      related concepts ordered somehow after the concept
 ancestors    [set]      list of ancestors, possibly up to a top concept
+memberSet    [set]      unordered [concept] parts of a composed concept
+memberList   [set]      ordered [concept] parts of a composed concept
 inScheme     [set]      [concept schemes] or URI of the concept schemes
 topConceptOf [set]      [concept schemes] or URI of the concept schemes
 
@@ -328,6 +330,11 @@ element or ignore all but one element of these sets.
 If both fields `broader` and `ancestors` are given, the set `broader` MUST
 include [the same] concept as the first element of `ancestors`.
 
+Fields `memberSet` and `memberList` can be used to express the parts of a
+composed concept (also known as combined or synthesized concepts) unsorted or
+sorted. A concept MUST NOT include both fields `memberSet` and `memberList`
+at most one.
+
 <div class="note">
 The "ancestors" field is useful in particular for monohierarchical classifications
 but it's not forbidden to choose just one arbitrary path of concepts that are
@@ -337,6 +344,20 @@ connected by the broader relation.
 <div class="example">
 `examples/example.concept.json`{.include .codeblock .json}
 </div>
+
+<div class="note">
+Parts of a composed concepts are expressed in the same way as
+concepts in a [concept mapping].
+</div>
+
+<div class="example">
+`examples/gnd-7507432-1.concept.json`{.include .codeblock .json}
+</div>
+
+<div class="example">
+`examples/ddc-305.40941109033.concept.json`{.include .codeblock .json}
+</div>
+
 
 
 ## Concept Schemes
@@ -512,6 +533,12 @@ field       type          definition
 memberSet   [set]         [concepts] in this bundle (unordered)
 memberList  ordered [set] [concepts] in this bundle (ordered)
 memberChoice [set]        [concepts] in this bundle to choose from
+
+<div class="note">
+A composed [concept] can also be seen as group of the concepts it is build of.
+For this purpose fields `memberSet` and `memberList` can also be used at
+concepts.
+</div>
 
 <div class="note">
 
@@ -812,6 +839,7 @@ RDF
 ### 0.2.1 (2017-09-27) {.unnumbered}
 
 * Disallow empty strings except as mandatory placeholder with language ranges
+* Support composed concepts with `memberSet` and `memberList`
 
 ### 0.2.0 (2017-09-21) {.unnumbered}
 

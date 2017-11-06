@@ -382,6 +382,7 @@ types       [URL] or [set]             JSKOS API types endpoint returning all [c
 extent      string                     Size of the concept scheme
 languages   [list] of language tags    Supported languages
 license     [set]                      Licenses which the full scheme can be used under
+mappings    [set]                      [mappings] from and/or to this concept
 
 The first element of field `type`, if given, MUST be the [item type] URI
 <http://www.w3.org/2004/02/skos/core#ConceptScheme>.
@@ -835,6 +836,10 @@ RDF
   : Resource Description Framework
 
 ## Changelog {.unnumbered}
+
+### 0.2.2 (2017-11-06) {.unnumbered}
+
+* Add mappings field to Concept 
 
 ### 0.2.1 (2017-09-27) {.unnumbered}
 

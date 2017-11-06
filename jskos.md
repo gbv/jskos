@@ -320,6 +320,7 @@ memberSet    [set]      unordered [concept] parts of a composed concept
 memberList   [set]      ordered [concept] parts of a composed concept
 inScheme     [set]      [concept schemes] or URI of the concept schemes
 topConceptOf [set]      [concept schemes] or URI of the concept schemes
+mappings     [set]      [mappings] from and/or to this concept
 
 The first element of field `type`, if given, MUST be the [item type] URI
 <http://www.w3.org/2004/02/skos/core#Concept>.
@@ -835,6 +836,10 @@ RDF
   : Resource Description Framework
 
 ## Changelog {.unnumbered}
+
+### 0.2.2 (2017-11-06) {.unnumbered}
+
+* Add mappings field to Concept 
 
 ### 0.2.1 (2017-09-27) {.unnumbered}
 

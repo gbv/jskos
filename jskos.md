@@ -2,9 +2,9 @@
 
 **JSKOS** defines a JavaScript Object Notation (JSON) structure to encode
 knowledge organization systems (KOS), such as classifications, thesauri, and
-authority files. JSKOS supports encoding of [concepts], [concept schemes], and
-[concept mappings] with their common properties. Support of [concordances] and
-[registries] is experimental.
+authority files. JSKOS supports encoding of [concepts], [concept schemes],
+[concept occurrences], and [concept mappings] with their common properties.
+Support of [concordances] and [registries] is experimental.
 
 The main part of JSKOS is compatible with Simple Knowledge Organisation System
 (SKOS) and JavaScript Object Notation for Linked Data (JSON-LD) but JSKOS can
@@ -233,7 +233,8 @@ There are two basic object types:
 * [concept bundles] are only used as part [mappings]
 
 Most resources are also [items] and most items have one of the [item types]
-[concept], [concept scheme], [registry], [concordance], and [mapping].
+[concept], [concept scheme], [concept occurrences], [registry], [concordance],
+and [mapping].
 
 ## Resource
 
@@ -321,6 +322,7 @@ memberList   [set]      ordered [concept] parts of a composed concept
 inScheme     [set]      [concept schemes] or URI of the concept schemes
 topConceptOf [set]      [concept schemes] or URI of the concept schemes
 mappings     [set]      [mappings] from and/or to this concept
+occurrences  [set]      [occurrences] with this concept
 
 The first element of field `type`, if given, MUST be the [item type] URI
 <http://www.w3.org/2004/02/skos/core#Concept>.
@@ -395,6 +397,58 @@ If `types` and `concepts` are sets, the `types` set SHOULD include all [concept 
 for each concept's `type` other than `http://www.w3.org/2004/02/skos/core#Concept`.
 
 
+## Concept Occurrences
+
+[occurrences]: #concept-occurrences
+[concept occurrences]: #concept-occurrences
+
+An **occurrence** is a [resource] with the following optional fields (in
+addition to the optional fields `@context`, `contributor`, `created`,
+`creator`, `issued`, `modified`, `partOf` `publisher`, `type`, and `uri`):
+
+field       type           definition
+----------- -------------- ----------------------------------------------
+count       integer        number of occurrences
+relation    URI            type of relation between concepts and resource
+
+Field `count` is mandatory and MUST NOT be negative.
+
+An occurrence gives the number of a times a concept is used in a specific
+relation to a selected resource. For instance the concept could be used to
+index documents in a database, so the occurrence gives the number of documents
+indexed with a specific concept. In the current state of this specification
+both concept and resource can only be given indirectly.
+
+A timestamp, if given, should be stored in field `modified`.
+
+<div class="example">
+The Wikidata [concept of an individual human](http://www.wikidata.org/entity/Q5) is linked to 206 Wikimedia sites (mostly Wikipedia language editions) and more than 3.7 million people (instances of <http://www.wikidata.org/entity/P31>) at November 15th 2017.
+
+~~~json
+{
+  "uri": "http://www.wikidata.org/entity/Q5",
+  "prefLabel": { "en": "human" },
+  "occurrences": [
+    {
+      "relation": "http://schema.org/about",
+      "count": 206,
+      "modified": "2017-11-15T14:00:58.796Z"
+    },
+    {
+      "relation": "http://www.wikidata.org/entity/P31",
+      "count": 3706347,
+      "modified": "2017-11-15T14:00:58.796Z"
+    }
+  ]
+}
+~~~
+</div>
+
+<div class="note">
+This resource type will be extended to also store co-occurrences. See discussion at <https://github.com/gbv/jskos/issues/62>.
+</div>
+
+
 ## Registries
 
 [registries]: #registries
@@ -407,7 +461,7 @@ the optional fields `@context`, `altLabel`, `changeNote`, `contributor`,
 `partOf` `prefLabel`, `publisher`, `scopeNote`, `subjectOf`, `subject`, `type`,
 `uri`, and `url`):
 
-property     type           definition
+field        type           definition
 ------------ -------------- --------------------------------------------------------------------------------------
 concepts     [URL] or [set] JSKOS API endpoint with [concepts] in this registry
 schemes      [URL] or [set] JSKOS API endpoint with [concept schemes] in this registry
@@ -837,6 +891,10 @@ RDF
 
 ## Changelog {.unnumbered}
 
+### 0.3.0 (2017-11-15) {.unnumbered}
+
+* Add occurrences
+
 ### 0.2.2 (2017-11-06) {.unnumbered}
 
 * Add mappings field to Concept 
@@ -898,6 +956,7 @@ The following features of SKOS are not supported in JSKOS:
 
 The following features of JSKOS have no corresponce in SKOS:
 
+* [concept occurrences], [registries], [concordances] and [concept mappings] as first-class objects
 * [closed world statements]
 * order of broaderTransitive statements (can be derived)
 * order of multiple notations

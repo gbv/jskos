@@ -4,7 +4,7 @@
 knowledge organization systems (KOS), such as classifications, thesauri, and
 authority files. JSKOS supports encoding of [concepts], [concept schemes],
 [concept occurrences], and [concept mappings] with their common properties.
-Support of [concordances] and [registries] is experimental.
+See [object types] for an outline.
 
 The main part of JSKOS is compatible with Simple Knowledge Organisation System
 (SKOS) and JavaScript Object Notation for Linked Data (JSON-LD) but JSKOS can
@@ -49,6 +49,18 @@ An **URI** is a syntactically correct IRI ([RFC 3987]).
 ## URL
 
 An **URL** is a syntactically correct URL with HTTPS (RECOMMENDED) or HTTP scheme.
+
+## Non-negative integer
+
+A **non-negative integer** is a JSON number without preceding minus part, without fractional part, or exponent.
+
+<div class="note">
+Examples of valid JSON values which are *not* non-negative integers: `"42"`, `""`, `null`, `-1`, `6e-3`.
+</div>
+
+## percentage
+
+A **percentage** is a JSON number with value between zero (0%) and one (100%).
 
 ## date
 
@@ -227,14 +239,19 @@ Position of the RMS Titanic as point:
 
 # Object types
 
-There are two basic object types:
+JSKOS defines the following types of JSON objects:
 
-* [resources] represent arbitrary entities
-* [concept bundles] are only used as part [mappings]
+* [resources] for all kinds of entities
+    * [items] for named entities
+        * [concepts] for entities from a knowledge organization system
+        * [concept schemes] for compiled collections of concepts (knowledge organization systems)
+        * [mappings] for mappings between concepts of two concept schemes
+        * [concordances] for curated collections of mappings
+        * [registries] for collections of items (concepts, concept schemes...)
+    * [occurrences] for counts of concept uses
 
-Most resources are also [items] and most items have one of the [item types]
-[concept], [concept scheme], [concept occurrences], [registry], [concordance],
-and [mapping].
+In addition there are [concept bundles] as part of mappings, occurrences, and composed [concepts].
+
 
 ## Resource
 
@@ -302,12 +319,13 @@ element or ignore all preceding elements of these lists.
 [concept]: #concept
 [concepts]: #concept
 
-A **concept** is an [item] with the following optional fields (in addition to
-the optional fields `@context`, `altLabel`, `changeNote`, `contributor`,
-`created`, `creator`, `definition`, `depiction`, `editorialNote`, `example`,
-`hiddenLabel`, `historyNote`, `identifier`, `issued`, `modified`, `notation`,
-`partOf` `prefLabel`, `publisher`, `scopeNote`, `subjectOf`, `subject`, `type`,
-`uri`, and `url`):
+A **concept** is an [item] and [concept bundle] with the following optional
+fields (in addition to the optional fields `@context`, `altLabel`,
+`changeNote`, `contributor`, `created`, `creator`, `definition`, `depiction`,
+`editorialNote`, `example`, `hiddenLabel`, `historyNote`, `identifier`,
+`issued`, `modified`, `notation`, `partOf` `prefLabel`, `publisher`,
+`scopeNote`, `subjectOf`, `subject`, `type`, `uri`, `url`, `memberSet`,
+`memberList`, and `memberChoice`):
 
 field        type       description
 ------------ ---------- -------------------------------------------------------------------------------
@@ -317,8 +335,6 @@ related      [set]      generally related concepts
 previous     [set]      related concepts ordered somehow before the concept
 next         [set]      related concepts ordered somehow after the concept
 ancestors    [set]      list of ancestors, possibly up to a top concept
-memberSet    [set]      unordered [concept] parts of a composed concept
-memberList   [set]      ordered [concept] parts of a composed concept
 inScheme     [set]      [concept schemes] or URI of the concept schemes
 topConceptOf [set]      [concept schemes] or URI of the concept schemes
 mappings     [set]      [mappings] from and/or to this concept
@@ -333,10 +349,12 @@ element or ignore all but one element of these sets.
 If both fields `broader` and `ancestors` are given, the set `broader` MUST
 include [the same] concept as the first element of `ancestors`.
 
-Fields `memberSet` and `memberList` can be used to express the parts of a
-composed concept (also known as combined or synthesized concepts) unsorted or
-sorted. A concept MUST NOT include both fields `memberSet` and `memberList`
-at most one.
+The [concept bundle] fields `memberSet`, `memberList`, and `memberChoice` can
+be used to express the parts of a **composed concept** (also known as combined
+or synthesized concepts) unsorted or sorted. The field `memberChoice` SHOULD
+NOT be used without proper documentation because its meaning in this context is
+unclear. A concept MUST NOT include more than one of concept bundle fields. A
+concept SHOULD NOT reference itself as part of its concept bundle.
 
 <div class="note">
 The "ancestors" field is useful in particular for monohierarchical classifications
@@ -346,11 +364,6 @@ connected by the broader relation.
 
 <div class="example">
 `examples/example.concept.json`{.include .codeblock .json}
-</div>
-
-<div class="note">
-Parts of a composed concepts are expressed in the same way as
-concepts in a [concept mapping].
 </div>
 
 <div class="example">
@@ -400,26 +413,39 @@ for each concept's `type` other than `http://www.w3.org/2004/02/skos/core#Concep
 ## Concept Occurrences
 
 [occurrences]: #concept-occurrences
+[occurrence]: #concept-occurrences
+[concept occurrence]: #concept-occurrence
 [concept occurrences]: #concept-occurrences
 
-An **occurrence** is a [resource] with the following optional fields (in
-addition to the optional fields `@context`, `contributor`, `created`,
-`creator`, `issued`, `modified`, `partOf` `publisher`, `type`, and `uri`):
+An **occurrence** is a [resource] and [concept bundle] with the following
+optional fields (in addition to the optional fields `@context`, `contributor`,
+`created`, `creator`, `issued`, `modified`, `partOf`m `publisher`, `type`, `uri`,
+`memberSet`, `memberChoice`, and `memberList`):
 
-field       type           definition
------------ -------------- ----------------------------------------------
-count       integer        number of occurrences
-relation    URI            type of relation between concepts and resource
+field        type                   definition
+------------ ---------------------- ----------------------------------------------
+count        [non-negative integer] number of times the concept is used
+database     [item]                 database in which the concepts are used
+frequency    [percentage]           count divided by total number of possible uses
+relation     [URI]                  type of relation between concepts and entities
+url          [URL]                  URL of a page with information about occurrence
 
-Field `count` is mandatory and MUST NOT be negative.
+An occurrence gives the number of a times a concept ("occurrence") or
+combination of concepts ("co-occurrence") is used in a specific relation to
+entities from a particular database. For instance the occurrence could give the
+number of documents indexed with some term in a catalog. The field `url`
+typically includes a deep link into the database. 
 
-An occurrence gives the number of a times a concept is used in a specific
-relation to a selected resource. For instance the concept could be used to
-index documents in a database, so the occurrence gives the number of documents
-indexed with a specific concept. In the current state of this specification
-both concept and resource can only be given indirectly.
+If both `count` and `frequency` are given, the total size of the database can
+derived by multiplication. In this case either both or none of the two fields
+MUST be zero.
 
 A timestamp, if given, should be stored in field `modified`.
+
+The actual concept or concepts MAY be given implictly, for instance if the
+occurrence is part of a [concept] in field `occurrences`.
+
+<!-- TODO: specify explicit inference rules for implicitly given concepts? -->
 
 <div class="example">
 The Wikidata [concept of an individual human](http://www.wikidata.org/entity/Q5) is linked to 206 Wikimedia sites (mostly Wikipedia language editions) and more than 3.7 million people (instances of <http://www.wikidata.org/entity/P31>) at November 15th 2017.
@@ -442,10 +468,6 @@ The Wikidata [concept of an individual human](http://www.wikidata.org/entity/Q5)
   ]
 }
 ~~~
-</div>
-
-<div class="note">
-This resource type will be extended to also store co-occurrences. See discussion at <https://github.com/gbv/jskos/issues/62>.
 </div>
 
 
@@ -577,11 +599,10 @@ such as `urn:uuid:687b973c-38ab-48fb-b4ea-2b77abf557b7`.
 [collections]: #concept-bundles
 [concept collections]: #concept-bundles
 
-A **concept bundle** is a group of [concepts]. Some concept bundles represent
-[SKOS concept collections](http://www.w3.org/TR/skos-reference/#collections),
-and pre-coordinated concepts, among other use cases.
+A **concept bundle** is a group of [concepts]. Concept bundles can be used for
+[mappings], composed concepts, and [occurrences].
 
-A concept bundle is a JSON object with one of the following fields:
+A concept bundle is a JSON object with at most one of the following fields:
 
 field       type          definition
 ----------- ------------- ----------------------------------------------------------------------
@@ -589,16 +610,12 @@ memberSet   [set]         [concepts] in this bundle (unordered)
 memberList  ordered [set] [concepts] in this bundle (ordered)
 memberChoice [set]        [concepts] in this bundle to choose from
 
-<div class="note">
-A composed [concept] can also be seen as group of the concepts it is build of.
-For this purpose fields `memberSet` and `memberList` can also be used at
-concepts.
-</div>
 
 <div class="note">
 
-* Concept collections are experimental, see
-  <https://github.com/gbv/jskos/issues/7> for discussion.
+* Concept bundles could also be used for
+  [SKOS concept collections](http://www.w3.org/TR/skos-reference/#collections),
+  see <https://github.com/gbv/jskos/issues/7> for discussion.
 
 * Concepts from a bundle may also come from different concept schemes!
 
@@ -612,6 +629,9 @@ concepts.
       "toScheme": {"uri": "http://dewey.info/scheme/ddc/"}
     }
     ```
+
+  Normalization rules may be added to prefer one kind of expressing an empty concept bundle.
+
 </div>
 
 # Item and concept types
@@ -891,6 +911,10 @@ RDF
 
 ## Changelog {.unnumbered}
 
+### 0.3.1 (2017-11-22) {.unnumbered}
+
+* Extend ocurrences to co-occurrences
+
 ### 0.3.0 (2017-11-15) {.unnumbered}
 
 * Add occurrences
@@ -956,7 +980,8 @@ The following features of SKOS are not supported in JSKOS:
 
 The following features of JSKOS have no corresponce in SKOS:
 
-* [concept occurrences], [registries], [concordances] and [concept mappings] as first-class objects
+* [concept occurrences], [registries], [concordances], [concept mappings] as first-class objects,
+  and composed [concepts]
 * [closed world statements]
 * order of broaderTransitive statements (can be derived)
 * order of multiple notations

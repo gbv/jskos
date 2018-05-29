@@ -157,6 +157,7 @@
     "@id": "dct:license",
     "@container": "@set"
   },
+  "namespace": "void:uriSpace",
 
   "fromScheme": "void:subjectsTarget",
   "toScheme": "void:objectsTarget",

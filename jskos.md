@@ -393,6 +393,7 @@ property    type                       definition
 ----------- -------------------------- --------------------------------------------------------------------------------------
 topConcepts [set] of [concepts]        top [concepts] of the scheme
 versionOf   [set] of [concept schemes] [concept scheme] which this scheme is a version or edition of
+namespace   [URI]                      URI namespace that all concepts URIs are expected to start with
 concepts    [URL] or [set]             JSKOS API concepts endpoint returning all concepts in this scheme
 types       [URL] or [set]             JSKOS API types endpoint returning all [concept types] in this scheme
 extent      string                     Size of the concept scheme
@@ -899,6 +900,10 @@ RDF
   : Resource Description Framework
 
 ## Changelog {.unnumbered}
+
+### 0.3.2 (2018-05-29) {.unnumbered}
+
+* Add Concept Scheme field namespace
 
 ### 0.3.1 (2017-11-22) {.unnumbered}
 

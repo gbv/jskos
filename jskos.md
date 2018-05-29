@@ -849,6 +849,11 @@ The field `Parts` in the following example does not belong to JSKOS:
 
 ## Informative references {.unnumbered}
 
+* K. Alexander, R. Cyganiak, M. Hausenblas, Zhao, J.:
+  *Describing Linked Datasets with the VoID Vocabulary*.
+  March 2011.
+  <http://www.w3.org/TR/void/>
+
 * DCMI Usage Board: *DCMI Metadata Terms*.
   June 2012.
   <http://dublincore.org/documents/dcmi-terms/>

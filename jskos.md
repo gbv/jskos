@@ -286,7 +286,7 @@ Resources can be [tested for sameness](#resource-sameness) based on field `uri`.
 
 An **item** is a [resource] with the following optional fields (in addition to
 the optional fields `@context`, `contributor`, `created`, `creator`, `issued`,
-`modified`, `partOf` `publisher`, `type`, and `uri`):
+`modified`, `partOf`, `publisher`, `type`, and `uri`):
 
 field         type                      description
 ------------- ------------------------- ----------------------------------------------
@@ -323,7 +323,7 @@ A **concept** is an [item] and [concept bundle] with the following optional
 fields (in addition to the optional fields `@context`, `altLabel`,
 `changeNote`, `contributor`, `created`, `creator`, `definition`, `depiction`,
 `editorialNote`, `example`, `hiddenLabel`, `historyNote`, `identifier`,
-`issued`, `modified`, `notation`, `partOf` `prefLabel`, `publisher`,
+`issued`, `modified`, `notation`, `partOf`, `prefLabel`, `publisher`,
 `scopeNote`, `subjectOf`, `subject`, `type`, `uri`, `url`, `memberSet`,
 `memberList`, and `memberChoice`):
 
@@ -386,7 +386,7 @@ A **concept scheme** is an [item] with the following optional fields (in
 addition to the optional fields `@context`, `altLabel`, `changeNote`,
 `contributor`, `created`, `creator`, `definition`, `depiction`,
 `editorialNote`, `example`, `hiddenLabel`, `historyNote`, `identifier`,
-`issued`, `modified`, `notation`, `partOf` `prefLabel`, `publisher`,
+`issued`, `modified`, `notation`, `partOf`, `prefLabel`, `publisher`,
 `scopeNote`, `subjectOf`, `subject`, `type`, `uri`, and `url`):
 
 property    type                       definition
@@ -470,7 +470,7 @@ A **registry** is an [item] with the following optional fields (in addition to
 the optional fields `@context`, `altLabel`, `changeNote`, `contributor`,
 `created`, `creator`, `definition`, `depiction`, `editorialNote`, `example`,
 `hiddenLabel`, `historyNote`, `identifier`, `issued`, `modified`, `notation`,
-`partOf` `prefLabel`, `publisher`, `scopeNote`, `subjectOf`, `subject`, `type`,
+`partOf`, `prefLabel`, `publisher`, `scopeNote`, `subjectOf`, `subject`, `type`,
 `uri`, and `url`):
 
 field        type           definition
@@ -508,7 +508,7 @@ A **concordance** is an [item] with the following fields (in addition to the
 optional fields `@context`, `altLabel`, `changeNote`, `contributor`, `created`,
 `creator`, `definition`, `depiction`, `editorialNote`, `example`,
 `hiddenLabel`, `historyNote`, `identifier`, `issued`, `modified`, `notation`,
-`partOf` `prefLabel`, `publisher`, `scopeNote`, `subjectOf`, `subject`, `type`,
+`partOf`, `prefLabel`, `publisher`, `scopeNote`, `subjectOf`, `subject`, `type`,
 `uri`, and `url`). All fields except `fromScheme` and `toScheme` are optional.
 
 property     type             definition
@@ -548,7 +548,7 @@ A **mapping** is an [item] with the following fields (in addition to the
 optional fields `@context`, `altLabel`, `changeNote`, `contributor`, `created`,
 `creator`, `definition`, `depiction`, `editorialNote`, `example`,
 `hiddenLabel`, `historyNote`, `identifier`, `issued`, `modified`, `notation`,
-`partOf` `prefLabel`, `publisher`, `scopeNote`, `subjectOf`, `subject`, `type`,
+`partOf`, `prefLabel`, `publisher`, `scopeNote`, `subjectOf`, `subject`, `type`,
 `uri`, and `url`). All fields except `from` and `to` are optional.
 
 field            type             definition

@@ -876,18 +876,18 @@ The following rule may be changed in the final version of JSKOS specification!
 </div>
 
 A JSKOS record MAY contain additional fields for custom usage. These fields
-MUST start with an uppercase letter (A-Z) and SHOULD be ignored by JSKOS
-applications. Fields starting with lowercase letters MUST NOT be used unless
-they are explicitly defined in this specification.
+MUST start with and underscore (`_`) or consist of uppercase letters only (A-Z).
+The fields SHOULD be ignored by JSKOS applications. 
 
 <div class="example">
-The field `Parts` in the following example does not belong to JSKOS:
+The fields `PARTS` and `_id` in the following example does not belong to JSKOS:
 
 ```json
 {
+  "_id": "e5fa44f2b31c1fb553b6021e7360d07d5d91ff5e",
   "uri": "http://www.wikidata.org/entity/Q34095",
   "prefLabel": { "en": "bronze" },
-  "Parts": ["copper", "tin"]
+  "PARTS": ["copper", "tin"]
 }
 ```
 </div>
@@ -989,6 +989,7 @@ RDF
 
 * Add Registry field occurrences
 * Add Distribution object type
+* Change rule for custom fields
 
 ### 0.3.2 (2018-05-29) {.unnumbered}
 

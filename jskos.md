@@ -248,6 +248,7 @@ JSKOS defines the following types of JSON objects:
         * [mappings] for mappings between concepts of two concept schemes
         * [concordances] for curated collections of mappings
         * [registries] for collections of items (concepts, concept schemes...)
+        * [distributions] for available forms to access the content of an item
     * [occurrences] for counts of concept uses
 
 In addition there are [concept bundles] as part of mappings, occurrences, and composed [concepts].
@@ -389,16 +390,17 @@ addition to the optional fields `@context`, `altLabel`, `changeNote`,
 `issued`, `modified`, `notation`, `partOf`, `prefLabel`, `publisher`,
 `scopeNote`, `subjectOf`, `subject`, `type`, `uri`, and `url`):
 
-property    type                       definition
------------ -------------------------- --------------------------------------------------------------------------------------
-topConcepts [set] of [concepts]        top [concepts] of the scheme
-versionOf   [set] of [concept schemes] [concept scheme] which this scheme is a version or edition of
-namespace   [URI]                      URI namespace that all concepts URIs are expected to start with
-concepts    [URL] or [set]             JSKOS API concepts endpoint returning all concepts in this scheme
-types       [URL] or [set]             JSKOS API types endpoint returning all [concept types] in this scheme
-extent      string                     Size of the concept scheme
-languages   [list] of language tags    Supported languages
-license     [set]                      Licenses which the full scheme can be used under
+property     type                       definition
+------------ -------------------------- --------------------------------------------------------------------------------------
+topConcepts  [set] of [concepts]        top [concepts] of the scheme
+versionOf    [set] of [concept schemes] [concept scheme] which this scheme is a version or edition of
+namespace    [URI]                      URI namespace that all concepts URIs are expected to start with
+concepts     [URL] or [set]             JSKOS API concepts endpoint returning all concepts in this scheme
+types        [URL] or [set]             JSKOS API types endpoint returning all [concept types] in this scheme
+distribution [set]                      [Distributions] to access the content of the concept scheme
+extent       string                     Size of the concept scheme
+languages    [list] of language tags    Supported languages
+license      [set]                      Licenses which the full scheme can be used under
 
 The first element of field `type`, if given, MUST be the [item type] URI
 <http://www.w3.org/2004/02/skos/core#ConceptScheme>.
@@ -492,11 +494,81 @@ The first element of field `type`, if given, MUST be the [item type] URI
 Registries are collection of [concepts], [concept schemes], [concept types],
 [concept mappings], and/or other registries.
 
-<div class="note">
-Registries are the top JSKOS entity, followed by [concordances], [mappings]
-[concept schemes], and on the lowest level [concepts] and [concept types].
+<div class="note"> Registries are the top JSKOS entity, followed by
+[concordances], [mappings] [concept schemes], and on the lowest level
+[concepts] and [concept types]. See [Distributions] for an alternative.
 
 Additional integrity rules for registries will be defined.
+</div>
+
+
+## Distributions
+
+[distribution]: #distributions
+[distributions]: #distributions
+
+A **distribution** is an [item] with the following fields (in addition to the
+optional fields `@context`, `altLabel`, `changeNote`, `contributor`, `created`,
+`creator`, `definition`, `depiction`, `editorialNote`, `example`,
+`hiddenLabel`, `historyNote`, `identifier`, `issued`, `modified`, `notation`,
+`partOf`, `prefLabel`, `publisher`, `scopeNote`, `subjectOf`, `subject`, `type`,
+`uri`, and `url`):
+
+property     type           definition
+------------ -------------- ---------------------------------------------
+download     [URL]          location of a file in given format
+mimetype     string         Internet Media Type (also known as MIME type)
+format       [URI]          data format identifier of the file
+
+Field `download` is mandatory but this requirement will be dropped in a later
+version of this specification.
+
+The `format` field SHOULD reference a content format rather than its
+serialization and possible wrapping. The URI of JSKOS is
+<http://format.gbv.de/jskos>.
+
+The first element of field `type`, if given, MUST be the [item type] URI
+<http://www.w3.org/ns/dcat#Distribution>.
+
+<div class="note">
+Access to [concept schemes] and [concordances] can also be specified with
+fields `concepts`, `types`, and `mappings`, respectively. Distributions provide
+an alternative and extensible method to express access methods.
+</div>
+
+<div class="examples">
+
+Distribution of a newline-delimited JSKOS file:
+
+~~~json
+{
+  "download": "http://example.org/data/dump.ndjson",
+  "mimetype": "application/x-ndjson",
+  "format": "http://format.gbv.de/jskos"
+}
+~~~
+
+Distribution of a RDF/XML with SKOS data:
+
+~~~json
+{
+  "download": "http://example.org/data/dump.rdf",
+  "mimetype": "application/rdf+xml"
+  "format": "http://www.w3.org/2004/02/skos/core"
+}
+~~~
+
+Distribution of a gzip-compressed MARC/XML file in [MARC 21 Format for
+Authority Data](https://www.loc.gov/marc/authority/):
+
+~~~json
+{
+  "download": "http://example.org/data/dump.xml.gz",
+  "mimetype": "application/xml+gzip",
+  "format": "http://format.gbv.de/marc/authority"
+}
+~~~
+
 </div>
 
 
@@ -515,6 +587,7 @@ optional fields `@context`, `altLabel`, `changeNote`, `contributor`, `created`,
 property     type             definition
 ------------ ---------------- ------------------------------------------------------
 mappings     [URL] or [set]   JSKOS API endpoint with [mappings] in this concordance
+distribution [set]            [Distributions] to access the concordance
 fromScheme   [concept scheme] Source concept scheme
 toScheme     [concept scheme] Target concept scheme
 extent       string           Size of the concordance
@@ -639,6 +712,7 @@ item                item type
 [concept]           <http://www.w3.org/2004/02/skos/core#Concept>
 [concept scheme]    <http://www.w3.org/2004/02/skos/core#ConceptScheme>
 [registry]          <http://purl.org/cld/cdtype/CatalogueOrIndex>
+[distribution]      <http://www.w3.org/ns/dcat#Distribution>
 [concordance]       <http://rdfs.org/ns/void#Linkset>
 [mapping]           <http://www.w3.org/2004/02/skos/core#mappingRelation> and sup-properties
 ------------------- ------------------------------------------------------------------------
@@ -663,6 +737,10 @@ Item types MAY be expressed with the following [concept types]:
     "uri": "http://purl.org/cld/cdtype/CatalogueOrIndex",
     "prefLabel": { "en": "registry" },
     "altLabel": { "en": [ "catalog", "Catalogue or Index" ] }
+  },
+  {
+    "uri": "http://www.w3.org/ns/dcat#Distribution",
+    "prefLabel": { "en": "distribution" }
   },
   {
     "uri": "http://rdfs.org/ns/void#Linkset",
@@ -907,9 +985,10 @@ RDF
 
 ## Changelog {.unnumbered}
 
-### 0.3.3 (2018-06-22) {.unnumbered}
+### 0.4.0 (2018-06-22) {.unnumbered}
 
 * Add Registry field occurrences
+* Add Distribution object type
 
 ### 0.3.2 (2018-05-29) {.unnumbered}
 

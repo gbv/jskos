@@ -173,5 +173,13 @@
   "memberChoice": {
     "@id": "rdfs:member",
     "@container": "@list"
-  }
+  },
+
+  "distribution": {
+    "@id": "http://www.w3.org/ns/dcat#distribution",
+    "@container": "@set"
+  },
+  "download": "http://www.w3.org/ns/dcat#downloadURL",
+  "mimetype": "http://www.w3.org/ns/dcat#mediaType",
+  "format": "http://purl.org/dc/terms/format"
 }

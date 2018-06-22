@@ -481,6 +481,7 @@ types        [URL] or [set] JSKOS API endpoint with [concept types] in this regi
 mappings     [URL] or [set] JSKOS API endpoint with [mappings] in this registry
 registries   [URL] or [set] JSKOS API endpoint with other registries in this registry
 concordances [URL] or [set] JSKOS API endpoint with [concordances] in this registry
+occurrences  [URL] or [set] JSKOS API endpoint with [occurrences] in this registry
 extent       string         Size of the registry
 languages    [list]         Supported languages
 license      [set]          Licenses which the full registry content can be used under
@@ -905,6 +906,10 @@ RDF
   : Resource Description Framework
 
 ## Changelog {.unnumbered}
+
+### 0.3.3 (2018-06-22) {.unnumbered}
+
+* Add Registry field occurrences
 
 ### 0.3.2 (2018-05-29) {.unnumbered}
 

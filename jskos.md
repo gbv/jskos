@@ -536,7 +536,7 @@ fields `concepts`, `types`, and `mappings`, respectively. Distributions provide
 an alternative and extensible method to express access methods.
 </div>
 
-<div class="examples">
+<div class="example">
 
 Distribution of a newline-delimited JSKOS file:
 
@@ -876,8 +876,8 @@ The following rule may be changed in the final version of JSKOS specification!
 </div>
 
 A JSKOS record MAY contain additional fields for custom usage. These fields
-MUST start with and underscore (`_`) or consist of uppercase letters only (A-Z).
-The fields SHOULD be ignored by JSKOS applications. 
+MUST start with and underscore (`_`) or consist of uppercase letters and digits 
+only (A-Z, 0-1).  The fields SHOULD be ignored by JSKOS applications. 
 
 <div class="example">
 The fields `PARTS` and `_id` in the following example does not belong to JSKOS:
@@ -988,7 +988,7 @@ RDF
 ### 0.4.1 (2018-06-26) {.unnumbered}
 
 * Rename distribution field to distributions
-* Proofreading
+* Allow digits in custom fields
 
 ### 0.4.0 (2018-06-22) {.unnumbered}
 

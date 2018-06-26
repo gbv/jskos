@@ -60,7 +60,7 @@ Examples of valid JSON values which are *not* non-negative integers: `"42"`, `""
 
 ## percentage
 
-A **percentage** is a JSON number with value between zero (0%) and one (100%).
+A **percentage** is a JSON number with value between zero (0.0 = 0%) and one (1.0 = 100%).
 
 ## date
 
@@ -390,17 +390,17 @@ addition to the optional fields `@context`, `altLabel`, `changeNote`,
 `issued`, `modified`, `notation`, `partOf`, `prefLabel`, `publisher`,
 `scopeNote`, `subjectOf`, `subject`, `type`, `uri`, and `url`):
 
-property     type                       definition
------------- -------------------------- --------------------------------------------------------------------------------------
-topConcepts  [set] of [concepts]        top [concepts] of the scheme
-versionOf    [set] of [concept schemes] [concept scheme] which this scheme is a version or edition of
-namespace    [URI]                      URI namespace that all concepts URIs are expected to start with
-concepts     [URL] or [set]             JSKOS API concepts endpoint returning all concepts in this scheme
-types        [URL] or [set]             JSKOS API types endpoint returning all [concept types] in this scheme
-distribution [set]                      [Distributions] to access the content of the concept scheme
-extent       string                     Size of the concept scheme
-languages    [list] of language tags    Supported languages
-license      [set]                      Licenses which the full scheme can be used under
+property      type                       definition
+------------- -------------------------- --------------------------------------------------------------------------------------
+topConcepts   [set] of [concepts]        top [concepts] of the scheme
+versionOf     [set] of [concept schemes] [concept scheme] which this scheme is a version or edition of
+namespace     [URI]                      URI namespace that all concepts URIs are expected to start with
+concepts      [URL] or [set]             JSKOS API concepts endpoint returning all concepts in this scheme
+types         [URL] or [set]             JSKOS API types endpoint returning all [concept types] in this scheme
+distributions [set]                      [Distributions] to access the content of the concept scheme
+extent        string                     Size of the concept scheme
+languages     [list] of language tags    Supported languages
+license       [set]                      Licenses which the full scheme can be used under
 
 The first element of field `type`, if given, MUST be the [item type] URI
 <http://www.w3.org/2004/02/skos/core#ConceptScheme>.
@@ -427,11 +427,11 @@ optional fields (in addition to the optional fields `@context`, `contributor`,
 
 field        type                   definition
 ------------ ---------------------- ----------------------------------------------
-count        [non-negative integer] number of times the concept is used
+count        [non-negative integer] number of times the concepts are used
 database     [item]                 database in which the concepts are used
 frequency    [percentage]           count divided by total number of possible uses
 relation     [URI]                  type of relation between concepts and entities
-url          [URL]                  URL of a page with information about occurrence
+url          [URL]                  URL of a page with information about the occurrence
 
 An occurrence gives the number of a times a concept ("occurrence") or
 combination of concepts ("co-occurrence") is used in a specific relation to
@@ -984,6 +984,11 @@ RDF
   : Resource Description Framework
 
 ## Changelog {.unnumbered}
+
+### 0.4.1 (2018-06-26) {.unnumbered}
+
+* Rename distribution field to distributions
+* Proofreading
 
 ### 0.4.0 (2018-06-22) {.unnumbered}
 

@@ -175,7 +175,7 @@
     "@container": "@list"
   },
 
-  "distribution": {
+  "distributions": {
     "@id": "http://www.w3.org/ns/dcat#distribution",
     "@container": "@set"
   },

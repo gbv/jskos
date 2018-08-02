@@ -1,5 +1,5 @@
 {
-  "type": ["http://www.w3.org/2004/02/skos/core#Concept"]
+  "type": ["http://www.w3.org/2004/02/skos/core#Concept"],
   "uri": "http://www.wikidata.org/entity/Q5",
   "prefLabel": { "en": "human" },
   "occurrences": [

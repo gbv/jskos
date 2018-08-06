@@ -7,7 +7,7 @@
             "url": "http://ixtrieve.fh-koeln.de/crisscross/index.html"
         }],
         "type": ["http://www.w3.org/2004/02/skos/core#exactMatch"],
-        "fromScheme": {"notation":"DDC"},
+        "fromScheme": {"notation":["DDC"]},
         "from": {
             "memberSet": [ 
                 {
@@ -17,7 +17,7 @@
             
             ]
         },
-        "toScheme": {"notation":"GND"},
+        "toScheme": {"notation":["GND"]},
         "to": {
             "memberSet": [ {
                 "uri": "http://d-nb.info/gnd/4074195-3",
@@ -34,7 +34,7 @@
             "url": "http://ixtrieve.fh-koeln.de/crisscross/index.html"
         }],
         "mappingRelevance": 0.5,
-        "fromScheme": {"notation":"DDC"},
+        "fromScheme": {"notation":["DDC"]},
         "from": {
             "memberSet": [ {
                 "uri": "http://dewey.info/class/612.112/e22/",
@@ -42,7 +42,7 @@
                 "prefLabel": { "de": "Leukozyten (Weiße Blutkörperchen)"}
             } ]
         },
-        "toScheme": {"notation":"GND"},
+        "toScheme": {"notation":["GND"]},
         "to": {
             "memberChoice": [ {
                 "uri": "http://d-nb.info/gnd/4074195-3",
@@ -83,7 +83,7 @@
             "url": "http://ixtrieve.fh-koeln.de/crisscross/index.html"
         }],
         "mappingRelevance": 0.2,
-        "fromScheme": {"notation":"DDC"},
+        "fromScheme": {"notation":["DDC"]},
         "from": {
             "memberChoice": [ {
                 "uri": "http://dewey.info/class/612.112/e22/",
@@ -91,7 +91,7 @@
                 "prefLabel": { "de": "Leukozyten (Weiße Blutkörperchen)"}
             } ]
         },
-        "toScheme": {"notation":"GND"},
+        "toScheme": {"notation":["GND"]},
         "to": {
             "memberSet": [ {
                 "uri": "http://d-nb.info/gnd/4499720-6",

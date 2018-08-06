@@ -1,6 +1,11 @@
 [
     {
-        "creator": "CrissCross",
+        "creator": [{
+            "prefLabel": {
+                "de": "CrissCross"   
+            },
+            "url": "http://ixtrieve.fh-koeln.de/crisscross/index.html"
+        }],
         "type": ["http://www.w3.org/2004/02/skos/core#exactMatch"],
         "fromScheme": {"notation":"DDC"},
         "from": {
@@ -22,7 +27,12 @@
         }
     },
     {
-        "creator": "CrissCross",
+        "creator": [{
+            "prefLabel": {
+                "de": "CrissCross"   
+            },
+            "url": "http://ixtrieve.fh-koeln.de/crisscross/index.html"
+        }],
         "mappingRelevance": 0.5,
         "fromScheme": {"notation":"DDC"},
         "from": {
@@ -66,7 +76,12 @@
         }
     },
     {
-        "creator": "CrissCross",
+        "creator": [{
+            "prefLabel": {
+                "de": "CrissCross"   
+            },
+            "url": "http://ixtrieve.fh-koeln.de/crisscross/index.html"
+        }],
         "mappingRelevance": 0.2,
         "fromScheme": {"notation":"DDC"},
         "from": {

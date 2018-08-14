@@ -1,6 +1,3 @@
 [submodule "makespec"]
 	path = makespec
 	url = https://github.com/jakobib/makespec.git
-[submodule "jskos-data"]
-	path = jskos-data
-	url = https://github.com/gbv/jskos-data.git

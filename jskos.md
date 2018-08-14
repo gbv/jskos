@@ -453,13 +453,13 @@ occurrence is part of a [concept] in field `occurrences`.
 <div class="example">
 Two occurrences and their combined co-occurrence from GBV Union Catalogue (GVK) as of November 22th, 2017: [3657 records](https://gso.gbv.de/DB=2.1/CMD?ACT=SRCHA&IKT=1016&SRT=YOP&TRM=bkl+08.22) are indexed with class `08.22` (medieval philosophy) from Basisklassifikation, [144611](https://gso.gbv.de/DB=2.1/CMD?ACT=SRCHA&IKT=1016&SRT=YOP&TRM=ddc+610) with DDC notation `610` (Medicine & health) and [2 records](https://gso.gbv.de/DB=2.1/CMD?ACT=SRCHA&IKT=1016&SRT=YOP&TRM=bkl+08.22+ddc+610) with both.
 
-`examples/co-occurrence-gvk.json`{.include .codeblock .json}
+`examples/gvk-co.occurrence.json`{.include .codeblock .json}
 </div>
 
 <div class="example">
 The Wikidata [concept of an individual human](http://www.wikidata.org/entity/Q5) is linked to 206 Wikimedia sites (mostly Wikipedia language editions) and more than 3.7 million people (instances of <http://www.wikidata.org/entity/P31>) at November 15th, 2017.
 
-`examples/wikidata-occurrence.json`{.include .codeblock .json}
+`examples/wikidata.occurrence.json`{.include .codeblock .json}
 </div>
 
 
@@ -1108,7 +1108,7 @@ file managed by the German National Library.
 GND as JSKOS concept scheme. This example includes explicit knowledge about
 existence of more identifiers, definitions, and preferred labels:
 
-`jskos-data/gnd/jskos-scheme.json`{.include .codeblock .json}
+`examples/gnd.scheme.json`{.include .codeblock .json}
 </div>
 
 <div class="example">

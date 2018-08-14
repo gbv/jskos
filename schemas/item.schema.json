@@ -15,10 +15,6 @@
       "description": "",
       "$ref": "resource.schema.json#/definitions/url"
     },
-    "identifier": {
-      "description": "",
-      "$ref": "resource.schema.json#/definitions/list"
-    },
     "notation": {
       "description": "",
       "$ref": "resource.schema.json#/definitions/list"

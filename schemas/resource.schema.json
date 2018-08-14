@@ -72,6 +72,10 @@
       "type": "string",
       "format": "uri"
     },
+    "identifier": {
+      "description": "additional identifiers",
+      "$ref": "#/definitions/list"
+    },
     "type": {
       "description": "URIs of types",
       "type": "array",

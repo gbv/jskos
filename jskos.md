@@ -264,6 +264,7 @@ An **resource** is a JSON object with the following optional fields:
 field        type             description
 ----------- ----------------- ------------------------------------------------------------------
 uri         [URI]             primary globally unique identifier
+identifier  [list]            additional identifiers
 type        [list] of [URI]s  URIs of types
 @context    [URI]             reference to a [JSON-LD context] document
 created     [date]            date of creation
@@ -286,13 +287,12 @@ Resources can be [tested for sameness](#resource-sameness) based on field `uri`.
 [items]: #item
 
 An **item** is a [resource] with the following optional fields (in addition to
-the optional fields `@context`, `contributor`, `created`, `creator`, `issued`,
-`modified`, `partOf`, `publisher`, `type`, and `uri`):
+the optional fields `@context`, `contributor`, `created`, `creator`,
+`identifier`, `issued`, `modified`, `partOf`, `publisher`, `type`, and `uri`):
 
 field         type                      description
 ------------- ------------------------- ----------------------------------------------
 url           [URL]                     URL of a page with information about the item
-identifier    [list]                    additional identifiers
 notation      [list]                    list of notations
 prefLabel     [language map] of strings preferred labels, index by language
 altLabel      [language map] of [list]  alternative labels, indexed by language
@@ -422,8 +422,8 @@ for each concept's `type` other than `http://www.w3.org/2004/02/skos/core#Concep
 
 An **occurrence** is a [resource] and [concept bundle] with the following
 optional fields (in addition to the optional fields `@context`, `contributor`,
-`created`, `creator`, `issued`, `modified`, `partOf`m `publisher`, `type`, `uri`,
-`memberSet`, `memberChoice`, and `memberList`):
+`created`, `creator`, `identifier`, `issued`, `modified`, `partOf`,
+`publisher`, `type`, `uri`, `memberSet`, `memberChoice`, and `memberList`):
 
 field        type                   definition
 ------------ ---------------------- ----------------------------------------------
@@ -984,6 +984,10 @@ RDF
   : Resource Description Framework
 
 ## Changelog {.unnumbered}
+
+### 0.4.2 (2018-08-??) {.unnumbered}
+
+* Move identifier field from item to resource
 
 ### 0.4.1 (2018-06-26) {.unnumbered}
 

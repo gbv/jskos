@@ -1,0 +1,14 @@
+{
+  "$id": "https://gbv.github.io/jskos-validation/registry.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "JSKOS Registry",
+  "description": "collections of items (concepts, concept schemes, ...)",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "item.schema.json"
+    }
+  ],
+  "$comment": "TODO: concepts, schemes, types, mappings, registries, concordances, occurrences, extent, languages, license",
+  "properties": {}
+}

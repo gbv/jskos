@@ -1,0 +1,119 @@
+{
+  "$id": "https://gbv.github.io/jskos-validation/resource.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "JSKOS Resource",
+  "description": "all kinds of entities",
+  "type": "object",
+  "definitions": {
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https?://"
+    },
+    "non-negative-integer": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "percentage": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "date": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "date"
+        },
+        {
+          "type": "string",
+          "format": "date-time"
+        },
+        {
+          "type": "string",
+          "pattern": "^\\d{4}-[01]\\d$"
+        },
+        {
+          "type": "string",
+          "pattern": "^\\d{4}$"
+        }
+      ]
+    },
+    "list": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "null"
+          },
+          {
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "set": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "null"
+          },
+          {
+            "$ref": "#"
+          }
+        ]
+      }
+    }
+  },
+  "properties": {
+    "uri": {
+      "description": "primary globally unique identifier",
+      "type": "string",
+      "format": "uri"
+    },
+    "type": {
+      "description": "URIs of types",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri",
+        "$comment": "Question: Only allow certain URIs here?"
+      }
+    },
+    "@context": {
+      "description": "reference to a JSON-LD context document",
+      "type": "string",
+      "format": "uri",
+      "$comment": "Question: Only allow https://gbv.github.io/jskos/context.json ?"
+    },
+    "created": {
+      "description": "date of creation",
+      "$ref": "#/definitions/date"
+    },
+    "issued": {
+      "description": "date of publication",
+      "$ref": "#/definitions/date"
+    },
+    "modified": {
+      "description": "date of last modification",
+      "$ref": "#/definitions/date"
+    },
+    "creator": {
+      "description": "agent primarily responsible for creation of resource",
+      "$ref": "#/definitions/set"
+    },
+    "contributor": {
+      "description": "agent responsible for making contributions to the resource",
+      "$ref": "#/definitions/set"
+    },
+    "publisher": {
+      "description": "agent responsible for making the resource available",
+      "$ref": "#/definitions/set"
+    },
+    "partOf": {
+      "description": "resources which this resource is part of (if no other field applies)",
+      "$ref": "#/definitions/set"
+    }
+  }
+}

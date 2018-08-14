@@ -1,0 +1,64 @@
+{
+  "$id": "https://gbv.github.io/jskos-validation/concept.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "JSKOS Concept",
+  "description": "entities from a knowledge organization system",
+  "type": "object",
+  "definitions": {
+    "set": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "null"
+          },
+          {
+            "$ref": "#"
+          }
+        ]
+      }
+    }
+  },
+  "allOf": [
+    {
+      "$ref": "item.schema.json"
+    }
+  ],
+  "$comment": "TODO: previous, next",
+  "properties": {
+    "narrower": {
+      "description": "narrower concepts",
+      "$ref": "#/definitions/set"
+    },
+    "broader": {
+      "description": "broader concepts",
+      "$ref": "#/definitions/set"
+    },
+    "related": {
+      "description": "generally related concepts",
+      "$ref": "#/definitions/set"
+    },
+    "ancestors": {
+      "description": "list of ancestors, possibly up to a top concept",
+      "$ref": "#/definitions/set"
+    },
+    "inScheme": {
+      "description": "concept schemes or URI of the concept schemes",
+      "$ref": "scheme.schema.json#/definitions/set",
+      "$comment": "Question: Should a list of strings be allowed as well?"
+    },
+    "topConceptOf": {
+      "description": "concept schemes or URI of the concept schemes",
+      "$ref": "scheme.schema.json#/definitions/set",
+      "$comment": "Question: Should a list of strings be allowed as well?"
+    },
+    "mappings": {
+      "description": "mappings from and/or to this concept",
+      "$ref": "mapping.schema.json#/definitions/set"
+    },
+    "occurrences": {
+      "description": "occurrences with this concept",
+      "$ref": "occurrence.schema.json#/definitions/set"
+    }
+  }
+}

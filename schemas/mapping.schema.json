@@ -1,0 +1,55 @@
+{
+  "$id": "https://gbv.github.io/jskos-validation/mapping.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "JSKOS Concept Mapping",
+  "description": "A mapping represents a mapping between concepts of two concept schemes. It consists two concept bundles with additional metadata not fully defined yet.",
+  "type": "object",
+  "definitions": {
+    "set": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "null"
+          },
+          {
+            "$ref": "#"
+          }
+        ]
+      }
+    }
+  },
+  "allOf": [
+    {
+      "$ref": "item.schema.json"
+    }
+  ],
+  "properties": {
+    "from": {
+      "description": "concepts mapped from",
+      "$ref": "conceptBundle.schema.json"
+    },
+    "to": {
+      "description": "concepts mapped to",
+      "$ref": "conceptBundle.schema.json"
+    },
+    "fromScheme": {
+      "description": "source concept scheme",
+      "$ref": "scheme.schema.json"
+    },
+    "toScheme": {
+      "description": "target concept scheme",
+      "$ref": "scheme.schema.json"
+    },
+    "mappingRelevant": {
+      "description": "numerical value between 0 and 1 (experimental)",
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    }
+  },
+  "required": [
+    "from",
+    "to"
+  ]
+}

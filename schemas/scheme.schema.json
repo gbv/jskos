@@ -1,0 +1,66 @@
+{
+  "$id": "https://gbv.github.io/jskos-validation/scheme.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "JSKOS Concept Scheme",
+  "description": "compiled collections of concepts (knowledge organization systems)",
+  "type": "object",
+  "definitions": {
+    "set": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "null"
+          },
+          {
+            "$ref": "#"
+          }
+        ]
+      }
+    }
+  },
+  "allOf": [
+    {
+      "$ref": "item.schema.json"
+    }
+  ],
+  "$comment": "TODO: types, languages",
+  "properties": {
+    "topConcepts": {
+      "description": "top concepts of the scheme",
+      "$ref": "concept.schema.json#/definitions/set"
+    },
+    "versionOf": {
+      "description": "concept scheme which this scheme is a version or edition of",
+      "$ref": "scheme.schema.json#/definitions/set"
+    },
+    "namespace": {
+      "description": "URI namespace that all concepts URIs are expected to start with",
+      "type": "string",
+      "format": "uri"
+    },
+    "concepts": {
+      "description": "JSKOS API concepts endpoint returning all concepts in this scheme",
+      "anyOf": [
+        {
+          "$ref": "resource.schema.json#/definitions/url"
+        },
+        {
+          "$ref": "concept.schema.json#/definitions/set"
+        }
+      ]
+    },
+    "distributions": {
+      "description": "Distributions to access the content of the concept scheme",
+      "$ref": "distribution.schema.json#/definitions/set"
+    },
+    "extent": {
+      "description": "Size of the concept scheme",
+      "type": "string"
+    },
+    "license": {
+      "description": "Licenses which the full scheme can be used under",
+      "$ref": "resource.schema.json#/definitions/set"
+    }
+  }
+}

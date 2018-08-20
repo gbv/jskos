@@ -303,6 +303,7 @@ example       [language map] of [list]  see [SKOS Documentary Notes]
 historyNote   [language map] of [list]  see [SKOS Documentary Notes]
 editorialNote [language map] of [list]  see [SKOS Documentary Notes]
 changeNote    [language map] of [list]  see [SKOS Documentary Notes]
+note          [language map] of [list]  see [SKOS Documentary Notes]
 startDate     [date]                    date of birth, creation, or estabishment of the item
 endDate       [date]                    date death or resolution of the item
 relatedDate   [date]                    other date somehow related to the item
@@ -324,7 +325,7 @@ A **concept** is an [item] and [concept bundle] with the following optional
 fields (in addition to the optional fields `@context`, `altLabel`,
 `changeNote`, `contributor`, `created`, `creator`, `definition`, `depiction`,
 `editorialNote`, `example`, `hiddenLabel`, `historyNote`, `identifier`,
-`issued`, `modified`, `notation`, `partOf`, `prefLabel`, `publisher`,
+`issued`, `modified`, `notation`, `note`, `partOf`, `prefLabel`, `publisher`,
 `scopeNote`, `subjectOf`, `subject`, `type`, `uri`, `url`, `memberSet`,
 `memberList`, and `memberChoice`):
 
@@ -387,7 +388,7 @@ A **concept scheme** is an [item] with the following optional fields (in
 addition to the optional fields `@context`, `altLabel`, `changeNote`,
 `contributor`, `created`, `creator`, `definition`, `depiction`,
 `editorialNote`, `example`, `hiddenLabel`, `historyNote`, `identifier`,
-`issued`, `modified`, `notation`, `partOf`, `prefLabel`, `publisher`,
+`issued`, `modified`, `notation`, `note`, `partOf`, `prefLabel`, `publisher`,
 `scopeNote`, `subjectOf`, `subject`, `type`, `uri`, and `url`):
 
 property      type                       definition
@@ -472,8 +473,8 @@ A **registry** is an [item] with the following optional fields (in addition to
 the optional fields `@context`, `altLabel`, `changeNote`, `contributor`,
 `created`, `creator`, `definition`, `depiction`, `editorialNote`, `example`,
 `hiddenLabel`, `historyNote`, `identifier`, `issued`, `modified`, `notation`,
-`partOf`, `prefLabel`, `publisher`, `scopeNote`, `subjectOf`, `subject`, `type`,
-`uri`, and `url`):
+`note`, `partOf`, `prefLabel`, `publisher`, `scopeNote`, `subjectOf`,
+`subject`, `type`, `uri`, and `url`):
 
 field        type           definition
 ------------ -------------- --------------------------------------------------------------------------------------
@@ -511,8 +512,8 @@ A **distribution** is an [item] with the following fields (in addition to the
 optional fields `@context`, `altLabel`, `changeNote`, `contributor`, `created`,
 `creator`, `definition`, `depiction`, `editorialNote`, `example`,
 `hiddenLabel`, `historyNote`, `identifier`, `issued`, `modified`, `notation`,
-`partOf`, `prefLabel`, `publisher`, `scopeNote`, `subjectOf`, `subject`, `type`,
-`uri`, and `url`):
+`note`, `partOf`, `prefLabel`, `publisher`, `scopeNote`, `subjectOf`,
+`subject`, `type`, `uri`, and `url`):
 
 property     type           definition
 ------------ -------------- ---------------------------------------------
@@ -581,8 +582,9 @@ A **concordance** is an [item] with the following fields (in addition to the
 optional fields `@context`, `altLabel`, `changeNote`, `contributor`, `created`,
 `creator`, `definition`, `depiction`, `editorialNote`, `example`,
 `hiddenLabel`, `historyNote`, `identifier`, `issued`, `modified`, `notation`,
-`partOf`, `prefLabel`, `publisher`, `scopeNote`, `subjectOf`, `subject`, `type`,
-`uri`, and `url`). All fields except `fromScheme` and `toScheme` are optional.
+`note`, `partOf`, `prefLabel`, `publisher`, `scopeNote`, `subjectOf`,
+`subject`, `type`, `uri`, and `url`). All fields except `fromScheme` and
+`toScheme` are optional.
 
 property     type             definition
 ------------ ---------------- ------------------------------------------------------
@@ -622,8 +624,9 @@ A **mapping** is an [item] with the following fields (in addition to the
 optional fields `@context`, `altLabel`, `changeNote`, `contributor`, `created`,
 `creator`, `definition`, `depiction`, `editorialNote`, `example`,
 `hiddenLabel`, `historyNote`, `identifier`, `issued`, `modified`, `notation`,
-`partOf`, `prefLabel`, `publisher`, `scopeNote`, `subjectOf`, `subject`, `type`,
-`uri`, and `url`). All fields except `from` and `to` are optional.
+`note`, `partOf`, `prefLabel`, `publisher`, `scopeNote`, `subjectOf`,
+`subject`, `type`, `uri`, and `url`). All fields except `from` and `to` are
+optional.
 
 field            type             definition
 ---------------- ---------------- ----------------------------------------------
@@ -988,6 +991,7 @@ RDF
 ### 0.4.2 (2018-08-??) {.unnumbered}
 
 * Move identifier field from item to resource
+* Add SKOS documentation field note to item
 
 ### 0.4.1 (2018-06-26) {.unnumbered}
 

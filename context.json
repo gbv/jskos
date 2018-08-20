@@ -64,6 +64,10 @@
     "@id": "http://www.w3.org/2004/02/skos/core#hiddenLabel",
     "@container": "@language"
   },
+  "note": {
+    "@id": "http://www.w3.org/2004/02/skos/core#note",
+    "@container": "@language"
+  },
   "scopeNote": {
     "@id": "http://www.w3.org/2004/02/skos/core#scopeNote",
     "@container": "@language"

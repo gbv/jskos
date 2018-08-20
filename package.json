@@ -1,0 +1,18 @@
+{
+  "homepage": "https://gbv.github.io/jskos/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gbv/jskos.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gbv/jskos/issues"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "mocha": "^5.2.0",
+    "glob": "^7.1.2",
+    "ajv": "^6.5.2"
+  }
+}

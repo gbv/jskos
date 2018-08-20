@@ -1,5 +1,5 @@
 {
-  "$id": "https://gbv.github.io/jskos-validation/concordance.schema.json",
+  "$id": "https://gbv.github.io/jskos/concordance.schema.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "JSKOS Concordance",
   "description": "curated collections of mappings",

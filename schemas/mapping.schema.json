@@ -1,5 +1,5 @@
 {
-  "$id": "https://gbv.github.io/jskos-validation/mapping.schema.json",
+  "$id": "https://gbv.github.io/jskos/mapping.schema.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "JSKOS Concept Mapping",
   "description": "A mapping represents a mapping between concepts of two concept schemes. It consists two concept bundles with additional metadata not fully defined yet.",

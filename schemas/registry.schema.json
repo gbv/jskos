@@ -1,5 +1,5 @@
 {
-  "$id": "https://gbv.github.io/jskos-validation/registry.schema.json",
+  "$id": "https://gbv.github.io/jskos/registry.schema.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "JSKOS Registry",
   "description": "collections of items (concepts, concept schemes, ...)",

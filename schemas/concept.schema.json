@@ -1,5 +1,5 @@
 {
-  "$id": "https://gbv.github.io/jskos-validation/concept.schema.json",
+  "$id": "https://gbv.github.io/jskos/concept.schema.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "JSKOS Concept",
   "description": "entities from a knowledge organization system",

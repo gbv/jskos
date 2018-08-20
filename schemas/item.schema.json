@@ -1,5 +1,5 @@
 {
-  "$id": "https://gbv.github.io/jskos-validation/item.schema.json",
+  "$id": "https://gbv.github.io/jskos/item.schema.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "JSKOS Item",
   "description": "named entities",
@@ -9,7 +9,7 @@
       "$ref": "resource.schema.json"
     }
   ],
-  "$comment": "TODO: prefLabel, altLabel, hiddenLabel, scopeNote, definition, example, historyNote, editorialNote, changeNote, startDate, endDate, relatedDate, location, subject, subjectOf, depiction",
+  "$comment": "TODO: prefLabel, altLabel, hiddenLabel, note, scopeNote, definition, example, historyNote, editorialNote, changeNote, startDate, endDate, relatedDate, location, subject, subjectOf, depiction",
   "properties": {
     "url": {
       "description": "",

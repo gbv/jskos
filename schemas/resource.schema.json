@@ -1,5 +1,5 @@
 {
-  "$id": "https://gbv.github.io/jskos-validation/resource.schema.json",
+  "$id": "https://gbv.github.io/jskos/resource.schema.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "JSKOS Resource",
   "description": "all kinds of entities",

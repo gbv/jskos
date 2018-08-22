@@ -4,7 +4,7 @@ const assert = require("assert")
 
 // load schemas
 const ajv = new require("ajv")({ extendRefs: true })
-const types = "resource item concept scheme mapping concordance registry distribution occurrence conceptBundle".split(" ")
+const types = "resource item concept scheme mapping concordance registry distribution occurrence bundle".split(" ")
 
 let schemas = {}
 let validate = {}

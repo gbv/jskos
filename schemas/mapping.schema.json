@@ -27,11 +27,11 @@
   "properties": {
     "from": {
       "description": "concepts mapped from",
-      "$ref": "conceptBundle.schema.json"
+      "$ref": "bundle.schema.json"
     },
     "to": {
       "description": "concepts mapped to",
-      "$ref": "conceptBundle.schema.json"
+      "$ref": "bundle.schema.json"
     },
     "fromScheme": {
       "description": "source concept scheme",

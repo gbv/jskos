@@ -5,3 +5,21 @@ before_install:
 
 node_js:
   - node
+
+script:
+  - npm test      # validate examples against JSON Schema
+  - make          # build jskos.html
+
+after_success:
+  - cp jskos.html gh-pages
+  - cp context.json gh-pages
+  - cp schemas/*.json gh-pages
+
+deploy:
+  provider: pages
+  github-token: $GITHUB_TOKEN
+  skip-cleanup: true
+  local-dir: gh-pages
+  on:
+    branch: master
+    tags: true

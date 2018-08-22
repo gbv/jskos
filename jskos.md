@@ -986,12 +986,45 @@ KOS
 RDF
   : Resource Description Framework
 
+## JSON-LD context {.unnumbered}
+
+The following [JSON-LD context document] can be used to map JSKOS to map JSKOS
+without [closed world statements] to RDF triples.
+
+[JSON-LD context document]: http://www.w3.org/TR/json-ld/#the-context
+
+`context.json`{.include .codeblock .json}
+
+JSKOS with closed world statements can be mapped to RDF by ignoring all boolean
+values and/or by mapping selected boolean values to RDF triples with blank
+nodes.
+
+Applications should further add implicit RDF triples, such as `$someConcept
+rdf:type skos:Concept`, if such information can be derived from JSKOS by other
+means.
+
+## JSON Schemas {.unnumbered}
+
+Experimental JSON Schemas exist but don't cover all aspects of JSKOS: 
+
+* [Resource](resource.schema.json)
+* [Item](item.schema.json)
+* [Concept](concept.schema.json)
+* [Scheme](scheme.schema.json)
+* [Mapping](mapping.schema.json)
+* [Bundle](bundle.schema.json)
+* [Registry](bundle.schema.json)
+* [Concordance](concordance.schema.json)
+* [Distribution](distribution.schema.json)
+* [Occurrence](occurrence.schema.json)
+
 ## Changelog {.unnumbered}
 
-### 0.4.2 (2018-08-??) {.unnumbered}
+### 0.4.2 (2018-08-22) {.unnumbered}
 
 * Move identifier field from item to resource
 * Add SKOS documentation field note to item
+* Add optional JSON Schemas
 
 ### 0.4.1 (2018-06-26) {.unnumbered}
 
@@ -1084,23 +1117,6 @@ The following features of JSKOS have no corresponce in SKOS:
 * order of multiple notations
 * order of multiple inScheme statements
 
-## JSON-LD context {.unnumbered}
-
-The following [JSON-LD context document] can be used to map JSKOS to map JSKOS
-without [closed world statements] to RDF triples.
-
-[JSON-LD context document]: http://www.w3.org/TR/json-ld/#the-context
-
-`context.json`{.include .codeblock .json}
-
-JSKOS with closed world statements can be mapped to RDF by ignoring all boolean
-values and/or by mapping selected boolean values to RDF triples with blank
-nodes.
-
-Applications should further add implicit RDF triples, such as `$someConcept
-rdf:type skos:Concept`, if such information can be derived from JSKOS by other
-means.
-
 # Examples  {.unnumbered}
 
 ## Integrated Authority File (GND) {.unnumbered}
@@ -1147,7 +1163,6 @@ Multiple mappings from one concept (612.112 in DDC) to GND.
 
 ----
 
-This version: <http://gbv.github.io/jskos/{CURRENT_VERSION}.html> ({CURRENT_TIMESTAMP})\
 Latest version: <http://gbv.github.io/jskos/>
 
 Created with [makespec](http://jakobib.github.io/makespec/)

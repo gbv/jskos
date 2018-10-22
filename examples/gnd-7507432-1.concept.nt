@@ -1,0 +1,5 @@
+<http://d-nb.info/gnd/4126823-4> <http://www.w3.org/2004/02/skos/core#prefLabel> "Sektoraler Strukturwandel"@de .
+<http://d-nb.info/gnd/4161152-4> <http://www.w3.org/2004/02/skos/core#prefLabel> "Hypothese"@de .
+<http://d-nb.info/gnd/7507432-1> <http://www.w3.org/2004/02/skos/core#member> <http://d-nb.info/gnd/4126823-4> .
+<http://d-nb.info/gnd/7507432-1> <http://www.w3.org/2004/02/skos/core#member> <http://d-nb.info/gnd/4161152-4> .
+<http://d-nb.info/gnd/7507432-1> <http://www.w3.org/2004/02/skos/core#prefLabel> "Drei-Sektoren-Hypothese"@de .

@@ -1,0 +1,14 @@
+<http://d-nb.info/gnd/4036762-9> <http://www.w3.org/2004/02/skos/core#prefLabel> "Lymphozyt"@de .
+<http://d-nb.info/gnd/4074195-3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://d-nb.info/gnd/4074195-3> <http://www.w3.org/2004/02/skos/core#altLabel> "Leukocyt"@de .
+<http://d-nb.info/gnd/4074195-3> <http://www.w3.org/2004/02/skos/core#altLabel> "Leukocyten"@de .
+<http://d-nb.info/gnd/4074195-3> <http://www.w3.org/2004/02/skos/core#altLabel> "Leukozyten"@de .
+<http://d-nb.info/gnd/4074195-3> <http://www.w3.org/2004/02/skos/core#altLabel> "Weißes Blutkörperchen"@de .
+<http://d-nb.info/gnd/4074195-3> <http://www.w3.org/2004/02/skos/core#broader> <http://d-nb.info/gnd/4130604-1> .
+<http://d-nb.info/gnd/4074195-3> <http://www.w3.org/2004/02/skos/core#narrower> <http://d-nb.info/gnd/4036762-9> .
+<http://d-nb.info/gnd/4074195-3> <http://www.w3.org/2004/02/skos/core#narrower> <http://d-nb.info/gnd/4158047-3> .
+<http://d-nb.info/gnd/4074195-3> <http://www.w3.org/2004/02/skos/core#narrower> <http://d-nb.info/gnd/4285013-7> .
+<http://d-nb.info/gnd/4074195-3> <http://www.w3.org/2004/02/skos/core#prefLabel> "Leukozyt"@de .
+<http://d-nb.info/gnd/4130604-1> <http://www.w3.org/2004/02/skos/core#prefLabel> "Blutzelle"@de .
+<http://d-nb.info/gnd/4158047-3> <http://www.w3.org/2004/02/skos/core#prefLabel> "Granulozyt"@de .
+<http://d-nb.info/gnd/4285013-7> <http://www.w3.org/2004/02/skos/core#prefLabel> "Monozyt"@de .

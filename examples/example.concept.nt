@@ -1,0 +1,13 @@
+<http://example.org/terminology/P> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://example.org/terminology/P> <http://www.w3.org/2004/02/skos/core#altLabel> "Friede"@de .
+<http://example.org/terminology/P> <http://www.w3.org/2004/02/skos/core#narrower> _:b0 .
+<http://example.org/terminology/P> <http://www.w3.org/2004/02/skos/core#notation> "P" .
+<http://example.org/terminology/P> <http://www.w3.org/2004/02/skos/core#prefLabel> "Frieden"@de .
+<http://example.org/terminology/P> <http://www.w3.org/2004/02/skos/core#prefLabel> "peace"@en .
+<http://example.org/terminology/P> <http://www.w3.org/2004/02/skos/core#related> _:b1 .
+<http://example.org/terminology/P> <http://www.w3.org/2004/02/skos/core#scopeNote> "Abwesenheit von Gewalt, Angst und anderen Störungen"@de .
+<http://example.org/terminology/P> <http://www.w3.org/2004/02/skos/core#scopeNote> "state of harmony characterized by lack of violent conflict and freedom from fear of violence"@en .
+_:b0 <http://www.w3.org/2004/02/skos/core#prefLabel> "Weltfrieden"@de .
+_:b0 <http://www.w3.org/2004/02/skos/core#prefLabel> "world peace"@en .
+_:b1 <http://www.w3.org/2004/02/skos/core#prefLabel> "Krieg"@de .
+_:b1 <http://www.w3.org/2004/02/skos/core#prefLabel> "war"@en .

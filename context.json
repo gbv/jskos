@@ -165,13 +165,15 @@
     "@container": "@list"
   },
   "memberSet": {
-    "@id": "http://www.w3.org/2000/01/rdf-schema#member",
-    "@container": "@list"
+    "@id": "http://www.w3.org/2004/02/skos/core#member",
+    "@container": "@set"
   },
   "memberChoice": {
-    "@id": "http://www.w3.org/2000/01/rdf-schema#member",
-    "@container": "@list"
+    "@id": "http://www.w3.org/2004/02/skos/core#member",
+    "@container": "@set"
   },
+
+  "count": "http://rdfs.org/ns/void#entities",
 
   "distributions": {
     "@id": "http://www.w3.org/ns/dcat#distribution",

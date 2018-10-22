@@ -1,0 +1,28 @@
+<http://dewey.info/class/6/e22/> <http://www.w3.org/2004/02/skos/core#notation> "6" .
+<http://dewey.info/class/6/e22/> <http://www.w3.org/2004/02/skos/core#prefLabel> "Technik, Medizin, angewandte Wissenschaften"@de .
+<http://dewey.info/class/61/e22/> <http://www.w3.org/2004/02/skos/core#notation> "61" .
+<http://dewey.info/class/61/e22/> <http://www.w3.org/2004/02/skos/core#prefLabel> "Medizin & Gesundheit"@de .
+<http://dewey.info/class/612.1/e22/> <http://www.w3.org/2004/02/skos/core#notation> "612.1" .
+<http://dewey.info/class/612.1/e22/> <http://www.w3.org/2004/02/skos/core#prefLabel> "Blut und Kreislauf"@de .
+<http://dewey.info/class/612.11/e22/> <http://www.w3.org/2004/02/skos/core#notation> "612.11" .
+<http://dewey.info/class/612.11/e22/> <http://www.w3.org/2004/02/skos/core#prefLabel> "Blut"@de .
+<http://dewey.info/class/612.112/e22/> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://dewey.info/class/612.112/e22/> <http://www.w3.org/2004/02/skos/core#broader> <http://dewey.info/class/612.11/e22/> .
+<http://dewey.info/class/612.112/e22/> <http://www.w3.org/2004/02/skos/core#broaderTransitive> <http://dewey.info/class/6/e22/> .
+<http://dewey.info/class/612.112/e22/> <http://www.w3.org/2004/02/skos/core#broaderTransitive> <http://dewey.info/class/61/e22/> .
+<http://dewey.info/class/612.112/e22/> <http://www.w3.org/2004/02/skos/core#broaderTransitive> <http://dewey.info/class/612.1/e22/> .
+<http://dewey.info/class/612.112/e22/> <http://www.w3.org/2004/02/skos/core#broaderTransitive> <http://dewey.info/class/612.11/e22/> .
+<http://dewey.info/class/612.112/e22/> <http://www.w3.org/2004/02/skos/core#broaderTransitive> <http://dewey.info/class/612/e22/> .
+<http://dewey.info/class/612.112/e22/> <http://www.w3.org/2004/02/skos/core#inScheme> <http://dewey.info/scheme/ddc/> .
+<http://dewey.info/class/612.112/e22/> <http://www.w3.org/2004/02/skos/core#inScheme> <http://dewey.info/scheme/edition/e22/> .
+<http://dewey.info/class/612.112/e22/> <http://www.w3.org/2004/02/skos/core#inScheme> <http://dewey.info/scheme/version/e22/> .
+<http://dewey.info/class/612.112/e22/> <http://www.w3.org/2004/02/skos/core#narrower> <http://dewey.info/class/612.1121/e22/> .
+<http://dewey.info/class/612.112/e22/> <http://www.w3.org/2004/02/skos/core#narrower> <http://dewey.info/class/612.1127/e22/> .
+<http://dewey.info/class/612.112/e22/> <http://www.w3.org/2004/02/skos/core#notation> "612.112" .
+<http://dewey.info/class/612.112/e22/> <http://www.w3.org/2004/02/skos/core#prefLabel> "Leukozyten (Weiße Blutkörperchen)"@de .
+<http://dewey.info/class/612.1121/e22/> <http://www.w3.org/2004/02/skos/core#notation> "612.1121" .
+<http://dewey.info/class/612.1121/e22/> <http://www.w3.org/2004/02/skos/core#prefLabel> "Biochemie"@de .
+<http://dewey.info/class/612.1127/e22/> <http://www.w3.org/2004/02/skos/core#notation> "612.1127" .
+<http://dewey.info/class/612.1127/e22/> <http://www.w3.org/2004/02/skos/core#prefLabel> "Anzahl und Auszählung"@de .
+<http://dewey.info/class/612/e22/> <http://www.w3.org/2004/02/skos/core#notation> "612" .
+<http://dewey.info/class/612/e22/> <http://www.w3.org/2004/02/skos/core#prefLabel> "Humanphysiologie"@de .

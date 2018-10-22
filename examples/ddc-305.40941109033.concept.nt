@@ -1,0 +1,15 @@
+<http://dewey.info/class/1--09033/e23/> <http://www.w3.org/2004/02/skos/core#notation> "T1--09033" .
+<http://dewey.info/class/1--09033/e23/> <http://www.w3.org/2004/02/skos/core#prefLabel> "18th century, 1700-1799"@en .
+<http://dewey.info/class/2--411/e23/> <http://www.w3.org/2004/02/skos/core#notation> "T2--411" .
+<http://dewey.info/class/2--411/e23/> <http://www.w3.org/2004/02/skos/core#prefLabel> "Scotland"@en .
+<http://dewey.info/class/305.4/e23/> <http://www.w3.org/2004/02/skos/core#notation> "305.4" .
+<http://dewey.info/class/305.4/e23/> <http://www.w3.org/2004/02/skos/core#prefLabel> "Women"@en .
+_:b0 <http://www.loc.gov/mads/rdf/v1#componentList> _:b1 .
+_:b0 <http://www.w3.org/2004/02/skos/core#notation> "305.40941109033" .
+_:b0 <http://www.w3.org/2004/02/skos/core#prefLabel> "Women — Scotland — 18th century"@en .
+_:b1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://dewey.info/class/305.4/e23/> .
+_:b1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b2 .
+_:b2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://dewey.info/class/2--411/e23/> .
+_:b2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b3 .
+_:b3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://dewey.info/class/1--09033/e23/> .
+_:b3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .

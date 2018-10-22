@@ -1,0 +1,36 @@
+<http://dewey.info/class/641.5/e23/> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://dewey.info/class/641.5/e23/> <http://www.w3.org/2004/02/skos/core#broader> <http://dewey.info/class/641/e23/> .
+<http://dewey.info/class/641.5/e23/> <http://www.w3.org/2004/02/skos/core#inScheme> <http://dewey.info/edition/e23/> .
+<http://dewey.info/class/641.5/e23/> <http://www.w3.org/2004/02/skos/core#narrower> <http://dewey.info/class/641.502/e23/> .
+<http://dewey.info/class/641.5/e23/> <http://www.w3.org/2004/02/skos/core#narrower> <http://dewey.info/class/641.508/e23/> .
+<http://dewey.info/class/641.5/e23/> <http://www.w3.org/2004/02/skos/core#narrower> <http://dewey.info/class/641.509/e23/> .
+<http://dewey.info/class/641.5/e23/> <http://www.w3.org/2004/02/skos/core#narrower> <http://dewey.info/class/641.59/e23/> .
+<http://dewey.info/class/641.5/e23/> <http://www.w3.org/2004/02/skos/core#notation> "641.5" .
+<http://dewey.info/class/641.5/e23/> <http://www.w3.org/2004/02/skos/core#prefLabel> "Cooking"@en .
+<http://dewey.info/class/641.5/e23/> <http://www.w3.org/2004/02/skos/core#prefLabel> "Cucina"@it .
+<http://dewey.info/class/641.5/e23/> <http://www.w3.org/2004/02/skos/core#prefLabel> "Kochen"@de .
+<http://dewey.info/class/641.502/e23/> <http://www.w3.org/2004/02/skos/core#notation> "641.502" .
+<http://dewey.info/class/641.502/e23/> <http://www.w3.org/2004/02/skos/core#prefLabel> "Miscellanea"@it .
+<http://dewey.info/class/641.502/e23/> <http://www.w3.org/2004/02/skos/core#prefLabel> "Miscellany"@en .
+<http://dewey.info/class/641.502/e23/> <http://www.w3.org/2004/02/skos/core#prefLabel> "Verschiedenes"@de .
+<http://dewey.info/class/641.508/e23/> <http://www.w3.org/2004/02/skos/core#notation> "641.508" .
+<http://dewey.info/class/641.508/e23/> <http://www.w3.org/2004/02/skos/core#prefLabel> "Cooking with respect to kind of persons"@en .
+<http://dewey.info/class/641.508/e23/> <http://www.w3.org/2004/02/skos/core#prefLabel> "Cucina in riferimento a categorie di persone"@it .
+<http://dewey.info/class/641.508/e23/> <http://www.w3.org/2004/02/skos/core#prefLabel> "Kochen im Hinblick auf Personengruppen"@de .
+<http://dewey.info/class/641.509/e23/> <http://www.w3.org/2004/02/skos/core#narrower> <http://dewey.info/class/641.5092/e23/> .
+<http://dewey.info/class/641.509/e23/> <http://www.w3.org/2004/02/skos/core#notation> "641.509" .
+<http://dewey.info/class/641.509/e23/> <http://www.w3.org/2004/02/skos/core#prefLabel> "Historical, geographic, persons treatment"@en .
+<http://dewey.info/class/641.509/e23/> <http://www.w3.org/2004/02/skos/core#prefLabel> "Hostorische, geographische, personenbezogene Behandlung"@de .
+<http://dewey.info/class/641.509/e23/> <http://www.w3.org/2004/02/skos/core#prefLabel> "Storia, geografia, persone"@it .
+<http://dewey.info/class/641.5092/e23/> <http://www.w3.org/2004/02/skos/core#notation> "641.5092" .
+<http://dewey.info/class/641.5092/e23/> <http://www.w3.org/2004/02/skos/core#prefLabel> "Cooks"@en .
+<http://dewey.info/class/641.5092/e23/> <http://www.w3.org/2004/02/skos/core#prefLabel> "Cuochi"@it .
+<http://dewey.info/class/641.5092/e23/> <http://www.w3.org/2004/02/skos/core#prefLabel> "Köche"@de .
+<http://dewey.info/class/641.59/e23/> <http://www.w3.org/2004/02/skos/core#notation> "641.59" .
+<http://dewey.info/class/641.59/e23/> <http://www.w3.org/2004/02/skos/core#prefLabel> "Cooking characteristic of specific geographic environments, ethnic cooking"@en .
+<http://dewey.info/class/641.59/e23/> <http://www.w3.org/2004/02/skos/core#prefLabel> "Cucina tipica di specifici ambienti geografici, cucina etnica"@it .
+<http://dewey.info/class/641.59/e23/> <http://www.w3.org/2004/02/skos/core#prefLabel> "Merkmale der Küche einzelner geografischer Umgebungen, ethnische Küche"@de .
+<http://dewey.info/class/641/e23/> <http://www.w3.org/2004/02/skos/core#notation> "641" .
+<http://dewey.info/class/641/e23/> <http://www.w3.org/2004/02/skos/core#prefLabel> "Cibi e bevande"@it .
+<http://dewey.info/class/641/e23/> <http://www.w3.org/2004/02/skos/core#prefLabel> "Essen und Trinken"@de .
+<http://dewey.info/class/641/e23/> <http://www.w3.org/2004/02/skos/core#prefLabel> "Food and drink"@en .

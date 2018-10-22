@@ -1,0 +1,12 @@
+<http://d-nb.info/gnd/7749153-1> <http://purl.org/dc/terms/identifier> "http://bartoc.org/en/node/430" .
+<http://d-nb.info/gnd/7749153-1> <http://purl.org/dc/terms/identifier> "http://d-nb.info/gnd/7749153-1" .
+<http://d-nb.info/gnd/7749153-1> <http://purl.org/dc/terms/identifier> "http://viaf.org/viaf/188136221" .
+<http://d-nb.info/gnd/7749153-1> <http://purl.org/dc/terms/identifier> "http://www.wikidata.org/entity/Q36578" .
+<http://d-nb.info/gnd/7749153-1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#ConceptScheme> .
+<http://d-nb.info/gnd/7749153-1> <http://www.w3.org/2004/02/skos/core#definition> "Von der DNB in Kooperation mit den Verbundpartnern geführte gemeinsame Normdatei"@de .
+<http://d-nb.info/gnd/7749153-1> <http://www.w3.org/2004/02/skos/core#definition> "international authority file for personal names, subject headings and corporate bodies"@en .
+<http://d-nb.info/gnd/7749153-1> <http://www.w3.org/2004/02/skos/core#notation> "GND" .
+<http://d-nb.info/gnd/7749153-1> <http://www.w3.org/2004/02/skos/core#prefLabel> "Gemeinsame Normdatei"@de .
+<http://d-nb.info/gnd/7749153-1> <http://www.w3.org/2004/02/skos/core#prefLabel> "Integrated Authority File"@en .
+<http://d-nb.info/gnd/7749153-1> <http://www.w3.org/2004/02/skos/core#prefLabel> "ملف استنادي متكامل"@ar .
+<http://d-nb.info/gnd/7749153-1> <http://www.w3.org/2004/02/skos/core#prefLabel> "게마인자메 노름다타이"@ko .

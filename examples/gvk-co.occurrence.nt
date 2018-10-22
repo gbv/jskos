@@ -1,0 +1,15 @@
+<http://dewey.info/class/610/e23/> <http://www.w3.org/2004/02/skos/core#prefLabel> "Medicine & health"@en .
+<http://uri.gbv.de/terminology/bk/08.22> <http://www.w3.org/2004/02/skos/core#prefLabel> "Mittelalterliche Philosophie"@de .
+_:b0 <http://purl.org/dc/terms/modified> "2017-11-22"^^<xsd:date> .
+_:b0 <http://rdfs.org/ns/void#entities> "3657"^^<http://www.w3.org/2001/XMLSchema#integer> .
+_:b0 <http://www.w3.org/2004/02/skos/core#member> <http://uri.gbv.de/terminology/bk/08.22> .
+_:b0 <http://xmlns.com/foaf/0.1/page> <https://gso.gbv.de/DB=2.1/CMD?ACT=SRCHA&IKT=1016&SRT=YOP&TRM=bkl+08.22> .
+_:b1 <http://purl.org/dc/terms/modified> "2017-11-22"^^<xsd:date> .
+_:b1 <http://rdfs.org/ns/void#entities> "144611"^^<http://www.w3.org/2001/XMLSchema#integer> .
+_:b1 <http://www.w3.org/2004/02/skos/core#member> <http://dewey.info/class/610/e23/> .
+_:b1 <http://xmlns.com/foaf/0.1/page> <https://gso.gbv.de/DB=2.1/CMD?ACT=SRCHA&IKT=1016&SRT=YOP&TRM=ddc+610> .
+_:b2 <http://purl.org/dc/terms/modified> "2017-11-22"^^<xsd:date> .
+_:b2 <http://rdfs.org/ns/void#entities> "2"^^<http://www.w3.org/2001/XMLSchema#integer> .
+_:b2 <http://www.w3.org/2004/02/skos/core#member> <http://dewey.info/class/610/e23/> .
+_:b2 <http://www.w3.org/2004/02/skos/core#member> <http://uri.gbv.de/terminology/bk/08.22> .
+_:b2 <http://xmlns.com/foaf/0.1/page> <https://gso.gbv.de/DB=2.1/CMD?ACT=SRCHA&IKT=1016&SRT=YOP&TRM=bkl+08.22+ddc+610> .

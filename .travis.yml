@@ -6,6 +6,9 @@ before_install:
 node_js:
   - node
 
+install:
+  - npm install
+
 script:
   - npm test      # validate examples against JSON Schema
   - make          # build jskos.html

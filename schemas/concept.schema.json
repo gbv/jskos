@@ -44,13 +44,19 @@
     },
     "inScheme": {
       "description": "concept schemes or URI of the concept schemes",
-      "$ref": "scheme.schema.json#/definitions/set",
-      "$comment": "Question: Should a list of strings be allowed as well?"
+      "$ref": "scheme.schema.json#/definitions/set"
     },
     "topConceptOf": {
       "description": "concept schemes or URI of the concept schemes",
-      "$ref": "scheme.schema.json#/definitions/set",
-      "$comment": "Question: Should a list of strings be allowed as well?"
+      "$ref": "scheme.schema.json#/definitions/set"
+    },
+    "startPlace": {
+      "description": "where a concepts started (e.g. place of birth)",
+      "$ref": "#/definitions/set"
+    },
+    "endPlace": {
+      "description": "where a concept ended (e.g. place of death)",
+      "$ref": "#/definitions/set"
     },
     "mappings": {
       "description": "mappings from and/or to this concept",

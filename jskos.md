@@ -339,6 +339,8 @@ next         [set]      related concepts ordered somehow after the concept
 ancestors    [set]      list of ancestors, possibly up to a top concept
 inScheme     [set]      [concept schemes] or URI of the concept schemes
 topConceptOf [set]      [concept schemes] or URI of the concept schemes
+startPlace   [set]      where a concepts started (e.g. place of birth)
+endPlace     [set]      where a concept ended (e.g. place of death)
 mappings     [set]      [mappings] from and/or to this concept
 occurrences  [set]      [occurrences] with this concept
 

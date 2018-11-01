@@ -11,9 +11,11 @@
       "http://www.wikidata.org/entity/Q36578",
       null
    ],
+   "namespace" : "http://d-nb.info/gnd/",
    "notation" : [
       "GND"
    ],
+   "pattern" : "[0-9X-]+",
    "prefLabel" : {
       "-" : "…",
       "ar" : "ملف استنادي متكامل",
@@ -21,6 +23,7 @@
       "en" : "Integrated Authority File",
       "ko" : "게마인자메 노름다타이"
    },
+   "template" : "^http://d-nb\.info/gnd/([0-9X-]+)$",
    "type" : [
       "http://www.w3.org/2004/02/skos/core#ConceptScheme"
    ],

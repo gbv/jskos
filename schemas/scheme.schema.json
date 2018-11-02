@@ -39,11 +39,11 @@
       "type": "string",
       "format": "uri"
     },
-    "template": {
-      "description": "URI template that all concept URIs are expected to match",
+    "uriPattern": {
+      "description": "URI pattern that all concept URIs are expected to match",
       "type": "string"
     },
-    "pattern": {
+    "notationPattern": {
       "description": "regular expression that all primary notations should follow",
       "type": "string"
     },

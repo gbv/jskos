@@ -156,7 +156,7 @@
     "@container": "@set"
   },
   "namespace": "http://rdfs.org/ns/void#uriSpace",
-  "template": "http://rdfs.org/ns/void#voidRegexPattern",
+  "uriPattern": "http://rdfs.org/ns/void#voidRegexPattern",
 
   "fromScheme": "http://rdfs.org/ns/void#subjectsTarget",
   "toScheme": "http://rdfs.org/ns/void#objectsTarget",

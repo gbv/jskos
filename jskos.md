@@ -393,24 +393,24 @@ addition to the optional fields `@context`, `altLabel`, `changeNote`,
 `issued`, `modified`, `notation`, `note`, `partOf`, `prefLabel`, `publisher`,
 `scopeNote`, `subjectOf`, `subject`, `type`, `uri`, and `url`):
 
-property      type                       definition
-------------- -------------------------- --------------------------------------------------------------------------------------
-topConcepts   [set] of [concepts]        top [concepts] of the scheme
-versionOf     [set] of [concept schemes] [concept scheme] which this scheme is a version or edition of
-namespace     [URI]                      URI namespace that all concepts URIs are expected to start with
-template      string                     URI template that all concept URIs are expected to match
-pattern       string                     regular expression that all primary notations should follow
-concepts      [URL] or [set]             JSKOS API concepts endpoint returning all concepts in this scheme
-types         [URL] or [set]             JSKOS API types endpoint returning all [concept types] in this scheme
-distributions [set]                      [Distributions] to access the content of the concept scheme
-extent        string                     Size of the concept scheme
-languages     [list] of language tags    Supported languages
-license       [set]                      Licenses which the full scheme can be used under
+property        type                       definition
+--------------- -------------------------- --------------------------------------------------------------------------------------
+topConcepts     [set] of [concepts]        top [concepts] of the scheme
+versionOf       [set] of [concept schemes] [concept scheme] which this scheme is a version or edition of
+namespace       [URI]                      URI namespace that all concepts URIs are expected to start with
+uriPattern      string                     regular expression that all concept URIs are expected to match
+notationPattern string                     regular expression that all primary notations should follow
+concepts        [URL] or [set]             JSKOS API concepts endpoint returning all concepts in this scheme
+types           [URL] or [set]             JSKOS API types endpoint returning all [concept types] in this scheme
+distributions   [set]                      [Distributions] to access the content of the concept scheme
+extent          string                     Size of the concept scheme
+languages       [list] of language tags    Supported languages
+license         [set]                      Licenses which the full scheme can be used under
 
 The first element of field `type`, if given, MUST be the [item type] URI
 <http://www.w3.org/2004/02/skos/core#ConceptScheme>.
 
-The value of field `template` MUST conform to the regular expression syntax used by
+The value of field `uriPattern` MUST conform to the regular expression syntax used by
 XML Schema ([Appendix F](https://www.w3.org/TR/xmlschema-2/#regexs)) and be anchored
 with `^` as first character.
 
@@ -1028,9 +1028,9 @@ Experimental JSON Schemas exist but don't cover all aspects of JSKOS:
 
 ## Changelog {.unnumbered}
 
-### 0.4.3 (2018-11-01) {.unnumbered}
+### 0.4.4 (2018-11-02) {.unnumbered}
 
-* Add concept scheme fields template and pattern
+* Add concept scheme fields notationPattern and uriPattern
 * Add concept fields startPlace and endPlace
 
 ### 0.4.2 (2018-08-22) {.unnumbered}

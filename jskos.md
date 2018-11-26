@@ -996,7 +996,7 @@ RDF
 
 ## JSON-LD context {.unnumbered}
 
-The following [JSON-LD context document] can be used to map JSKOS to map JSKOS
+The following [JSON-LD context document] can be used to map JSKOS
 without [closed world statements] to RDF triples.
 
 [JSON-LD context document]: http://www.w3.org/TR/json-ld/#the-context

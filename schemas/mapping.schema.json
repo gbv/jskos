@@ -41,7 +41,7 @@
       "description": "target concept scheme",
       "$ref": "scheme.schema.json"
     },
-    "mappingRelevant": {
+    "mappingRelevance": {
       "description": "numerical value between 0 and 1 (experimental)",
       "type": "number",
       "minimum": 0,

@@ -25,5 +25,17 @@
     }
   ],
   "$comment": "TODO: download, mimetype, format",
-  "properties": {}
+  "properties": {
+    "download": {
+      "description": "location of a file in given format",
+      "$ref": ""
+    },
+    "mimetype": {
+      "description": "Internet Media Type (also known as MIME type)",
+      "$ref": ""
+    },
+    "format": {
+      "description": "data format identifier of the file",
+      "$ref": ""
+    },
 }

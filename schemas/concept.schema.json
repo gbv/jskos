@@ -38,6 +38,14 @@
       "description": "generally related concepts",
       "$ref": "#/definitions/set"
     },
+    "previous": { 	
+      "description": "related concepts ordered somehow before the concept",
+      "$ref": "#/definitions/set"
+    },
+    "next": {
+      "description": "related concepts ordered somehow after the concept",
+      "$ref": "#/definitions/set"
+    },
     "ancestors": {
       "description": "list of ancestors, possibly up to a top concept",
       "$ref": "#/definitions/set"

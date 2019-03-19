@@ -9,6 +9,36 @@
       "$ref": "item.schema.json"
     }
   ],
-  "$comment": "TODO: concepts, schemes, types, mappings, registries, concordances, occurrences, extent, languages, license",
-  "properties": {}
+  "properties": {
+    "concepts": {
+      "description": "JSKOS API endpoint with concepts in this registry"
+    },
+    "schemes": {
+      "description": "JSKOS API endpoint with concept schemes in this registry"
+    },
+    "types": {
+      "description": "JSKOS API endpoint with concept types in this registry"
+    },
+    "mappings": {
+      "description": "JSKOS API endpoint with mappings in this registry"
+    },
+    "registries": {
+      "description": "JSKOS API endpoint with other registries in this registry"
+    },
+    "concordances": {
+      "description": "JSKOS API endpoint with concordances in this registry"
+    },
+    "occurrences": {
+      "description": "JSKOS API endpoint with occurrences in this registry"
+    },
+    "extent": {
+      "description": "Size of the registry"
+    },
+    "languages": {
+      "description": "Supported languages"
+    },
+    "license": {
+      "description": "Licenses which the full registry content can be used under"
+    }
+  }
 }

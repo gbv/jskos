@@ -3,7 +3,7 @@ const assert = require("assert")
 const testExamples = require('./lib/test-examples.js')
 
 // load schemas
-const ajv = new require("ajv")({ extendRefs: true })
+const ajv = new require("ajv")({ extendRefs: true, errorDataPath: 'property' })
 const types = "resource item concept scheme mapping concordance registry distribution occurrence bundle".split(" ")
 
 let schemas = {}

@@ -67,6 +67,12 @@
     }
   },
   "properties": {
+    "@context": {
+      "description": "reference to a JSON-LD context document",
+      "type": "string",
+      "format": "uri",
+      "default": "https://gbv.github.io/jskos/context.json"
+    },
     "uri": {
       "description": "primary globally unique identifier",
       "type": "string",
@@ -81,15 +87,8 @@
       "type": "array",
       "items": {
         "type": "string",
-        "format": "uri",
-        "$comment": "Question: Only allow certain URIs here?"
+        "format": "uri"
       }
-    },
-    "@context": {
-      "description": "reference to a JSON-LD context document",
-      "type": "string",
-      "format": "uri",
-      "$comment": "Question: Only allow https://gbv.github.io/jskos/context.json ?"
     },
     "created": {
       "description": "date of creation",
@@ -119,5 +118,8 @@
       "description": "resources which this resource is part of (if no other field applies)",
       "$ref": "#/definitions/set"
     }
+  },
+  "patternProperties": {
+    "^_|^[A-Z0-9]+$": {}
   }
 }

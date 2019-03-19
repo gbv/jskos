@@ -24,6 +24,19 @@
       "$ref": "item.schema.json"
     }
   ],
-  "$comment": "TODO: download, mimetype, format",
-  "properties": {}
+  "properties": {
+    "download": {
+      "description": "location of a file in given format",
+      "$ref": "resource.schema.json#/definitions/url"
+    },
+    "mimetype": {
+      "description": "Internet Media Type (also known as MIME type)",
+      "type": "string"
+    },
+    "format": {
+      "description": "data format identifier of the file",
+      "type": "string",
+      "format": "uri"
+    }
+  }
 }

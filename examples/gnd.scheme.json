@@ -1,8 +1,8 @@
 {
    "definition" : {
-      "-" : "…",
-      "de" : "Von der DNB in Kooperation mit den Verbundpartnern geführte gemeinsame Normdatei",
-      "en" : "international authority file for personal names, subject headings and corporate bodies"
+      "-" : ["…"],
+      "de" : ["Von der DNB in Kooperation mit den Verbundpartnern geführte gemeinsame Normdatei"],
+      "en" : ["international authority file for personal names, subject headings and corporate bodies"]
    },
    "identifier" : [
       "http://bartoc.org/en/node/430",

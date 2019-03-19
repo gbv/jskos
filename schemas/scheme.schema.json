@@ -58,6 +58,17 @@
         }
       ]
     },
+    "types": {
+      "description": "JSKOS API types endpoint returning all concept types in this scheme",
+      "anyOf": [
+        {
+          "$ref": "resource.schema.json#/definitions/url"
+        },
+        {
+          "$ref": "resource.schema.json#/definitions/set"
+        }
+      ]
+    },
     "distributions": {
       "description": "Distributions to access the content of the concept scheme",
       "$ref": "distribution.schema.json#/definitions/set"
@@ -65,6 +76,10 @@
     "extent": {
       "description": "Size of the concept scheme",
       "type": "string"
+    },
+    "languages": {
+      "description": "Supported languages",
+      "$ref": "resource.schema.json#/definitions/list"
     },
     "license": {
       "description": "Licenses which the full scheme can be used under",

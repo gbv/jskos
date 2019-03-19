@@ -4,20 +4,142 @@
   "title": "JSKOS Item",
   "description": "named entities",
   "type": "object",
+  "definitions": {
+    "language-map": {
+      "type": "object",
+      "patternProperties": {
+        "^([a-z]{1,8}(-[a-z0-9]{1,8})*-?|-)$": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "language-map-of-lists": {
+      "type": "object",
+      "patternProperties": {
+        "^([a-z]{1,8}(-[a-z0-9]{1,8})*-?|-)$": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "location": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Point",
+            "MultiPoint",
+            "LineString",
+            "MultiLineString",
+            "Polygon",
+            "MultiPolygon"
+          ]
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": true
+    }
+  },
   "allOf": [
     {
       "$ref": "resource.schema.json"
     }
   ],
-  "$comment": "TODO: prefLabel, altLabel, hiddenLabel, note, scopeNote, definition, example, historyNote, editorialNote, changeNote, startDate, endDate, relatedDate, location, subject, subjectOf, depiction",
   "properties": {
     "url": {
-      "description": "",
+      "description": "URL of a page with information about the item",
       "$ref": "resource.schema.json#/definitions/url"
     },
     "notation": {
-      "description": "",
+      "description": "list of notations",
       "$ref": "resource.schema.json#/definitions/list"
+    },
+    "prefLabel": {
+      "description": "preferred labels, index by language",
+      "$ref": "#/definitions/language-map"
+    },
+    "altLabel": {
+      "description": "alternative labels, indexed by language",
+      "$ref": "#/definitions/language-map-of-lists"
+    },
+    "hiddenLabel": {
+      "description": "hidden labels, indexed by language",
+      "$ref": "#/definitions/language-map-of-lists"
+    },
+    "scopeNote": {
+      "description": "see SKOS Documentary Notes",
+      "$ref": "#/definitions/language-map-of-lists"
+    },
+    "definition": {
+      "description": "see SKOS Documentary Notes",
+      "$ref": "#/definitions/language-map-of-lists"
+    },
+    "example": {
+      "description": "see SKOS Documentary Notes",
+      "$ref": "#/definitions/language-map-of-lists"
+    },
+    "historyNote": {
+      "description": "see SKOS Documentary Notes",
+      "$ref": "#/definitions/language-map-of-lists"
+    },
+    "editorialNote": {
+      "description": "see SKOS Documentary Notes",
+      "$ref": "#/definitions/language-map-of-lists"
+    },
+    "changeNote": {
+      "description": "see SKOS Documentary Notes",
+      "$ref": "#/definitions/language-map-of-lists"
+    },
+    "note": {
+      "description": "see SKOS Documentary Notes",
+      "$ref": "#/definitions/language-map-of-lists"
+    },
+    "startDate": {
+      "description": "date of birth, creation, or estabishment of the item",
+      "$ref": "resource.schema.json#/definitions/date"
+    },
+    "endDate": {
+      "description": "date death or resolution of the item",
+      "$ref": "resource.schema.json#/definitions/date"
+    },
+    "relatedDate": {
+      "description": "other date somehow related to the item",
+      "$ref": "resource.schema.json#/definitions/date"
+    },
+    "location": {
+      "description": "geographic location of the item",
+      "$ref": "#/definitions/location"
+    },
+    "subject": {
+      "description": "what this item is about (e.g. topic)",
+      "$ref": "resource.schema.json#/definitions/set"
+    },
+    "subjectOf": {
+      "description": "resources about this item (e.g. documentation)",
+      "$ref": "resource.schema.json#/definitions/set"
+    },
+    "depiction": {
+      "description": "list of image URLs depicting the item",
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "null"
+          },
+          {
+            "$ref": "resource.schema.json#/definitions/url"
+          }
+        ]
+      }
     }
   }
 }

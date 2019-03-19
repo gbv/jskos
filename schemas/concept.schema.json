@@ -19,12 +19,14 @@
       }
     }
   },
-  "allOf": [
+  "anyOf": [
     {
       "$ref": "item.schema.json"
+    },
+    {
+      "$ref": "bundle.schema.json"
     }
   ],
-  "$comment": "TODO: previous, next",
   "properties": {
     "narrower": {
       "description": "narrower concepts",
@@ -36,6 +38,14 @@
     },
     "related": {
       "description": "generally related concepts",
+      "$ref": "#/definitions/set"
+    },
+    "previous": {
+      "description": "related concepts ordered somehow before the concept",
+      "$ref": "#/definitions/set"
+    },
+    "next": {
+      "description": "related concepts ordered somehow after the concept",
       "$ref": "#/definitions/set"
     },
     "ancestors": {

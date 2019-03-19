@@ -263,10 +263,10 @@ An **resource** is a JSON object with the following optional fields:
 
 field        type             description
 ----------- ----------------- ------------------------------------------------------------------
+@context    [URI]             reference to a [JSON-LD context] document
 uri         [URI]             primary globally unique identifier
 identifier  [list]            additional identifiers
 type        [list] of [URI]s  URIs of types
-@context    [URI]             reference to a [JSON-LD context] document
 created     [date]            date of creation
 issued      [date]            date of publication
 modified    [date]            date of last modification
@@ -307,7 +307,7 @@ note          [language map] of [list]  see [SKOS Documentary Notes]
 startDate     [date]                    date of birth, creation, or estabishment of the item
 endDate       [date]                    date death or resolution of the item
 relatedDate   [date]                    other date somehow related to the item
-location      [location]                geographic location(s) of the item
+location      [location]                geographic location of the item
 subject       [set]                     what this item is about (e.g. topic)
 subjectOf     [set]                     resources about this item (e.g. documentation)
 depiction     [list] of [URL]           list of image URLs depicting the item

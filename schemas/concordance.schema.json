@@ -10,5 +10,32 @@
     }
   ],
   "$comment": "TODO: mappings, distribution, fromScheme, toScheme, extent, license",
-  "properties": {}
+  "properties": {
+    "mappings": {
+      "description": "JSKOS API endpoint with mappings in this concordance",
+      "$ref": "#/definitions/set"
+    },
+    "distribution": {
+      "description": "Distributions to access the concordance",
+      "$ref": "#/definitions/set"
+    },
+    "fromScheme": {
+      "description": "Source concept scheme",
+      "$ref": ""
+    },
+    "toScheme": {
+      "description": "Target concept scheme",
+      "$ref": ""
+    },
+    "extent": {
+      "description": "Size of the concordance",
+      "$ref": ""
+    },
+    "license": {
+      "description": "License which the full concordance can be used under",
+      "$ref": ""
+    },
+  
+  
+  }
 }

@@ -12,11 +12,11 @@
   "$comment": "TODO: prefLabel, altLabel, hiddenLabel, note, scopeNote, definition, example, historyNote, editorialNote, changeNote, startDate, endDate, relatedDate, location, subject, subjectOf, depiction",
   "properties": {
     "url": {
-      "description": "",
+      "description": "URL of a page with information about the item",
       "$ref": "resource.schema.json#/definitions/url"
     },
     "notation": {
-      "description": "",
+      "description": "list of notations",
       "$ref": "resource.schema.json#/definitions/list"
     }
   }

@@ -2,6 +2,8 @@
 <http://d-nb.info/gnd/7749153-1> <http://purl.org/dc/terms/identifier> "http://d-nb.info/gnd/7749153-1" .
 <http://d-nb.info/gnd/7749153-1> <http://purl.org/dc/terms/identifier> "http://viaf.org/viaf/188136221" .
 <http://d-nb.info/gnd/7749153-1> <http://purl.org/dc/terms/identifier> "http://www.wikidata.org/entity/Q36578" .
+<http://d-nb.info/gnd/7749153-1> <http://rdfs.org/ns/void#uriSpace> "http://d-nb.info/gnd/" .
+<http://d-nb.info/gnd/7749153-1> <http://rdfs.org/ns/void#voidRegexPattern> "^http://d-nb\\.info/gnd/([0-9X-]+)$" .
 <http://d-nb.info/gnd/7749153-1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#ConceptScheme> .
 <http://d-nb.info/gnd/7749153-1> <http://www.w3.org/2004/02/skos/core#definition> "Von der DNB in Kooperation mit den Verbundpartnern geführte gemeinsame Normdatei"@de .
 <http://d-nb.info/gnd/7749153-1> <http://www.w3.org/2004/02/skos/core#definition> "international authority file for personal names, subject headings and corporate bodies"@en .

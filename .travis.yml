@@ -1,7 +1,7 @@
 language: node_js
 
 before_install:
-  - sudo apt-get install -y pandoc
+  - sudo apt-get install -y pandoc jq
 
 node_js:
   - node

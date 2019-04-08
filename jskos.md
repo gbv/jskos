@@ -3,8 +3,9 @@
 **JSKOS** defines a JavaScript Object Notation (JSON) structure to encode
 knowledge organization systems (KOS), such as classifications, thesauri, and
 authority files. JSKOS supports encoding of [concepts], [concept schemes],
-[concept occurrences], and [concept mappings] with their common properties.
-See [object types] for an outline.
+[concept occurrences], and [concept mappings] with their common properties.  It
+further defines application profiles for [registries], [distributions], and
+[annotations]. See [object types] for an outline.
 
 The main part of JSKOS is compatible with Simple Knowledge Organisation System
 (SKOS) and JavaScript Object Notation for Linked Data (JSON-LD) but JSKOS can
@@ -250,6 +251,7 @@ JSKOS defines the following types of JSON objects:
         * [registries] for collections of items (concepts, concept schemes...)
         * [distributions] for available forms to access the content of an item
     * [occurrences] for counts of concept uses
+* [annotations] to review and comment on individual resources
 
 In addition there are [concept bundles] as part of mappings, occurrences, and composed [concepts].
 
@@ -709,6 +711,24 @@ memberChoice [set]        [concepts] in this bundle to choose from
 
 </div>
 
+## Annotations
+
+[Annotation]: #annotations
+
+An **annotation** links a JSKOS [resource] or another annotation with a review,
+comment or similar document. An annotation is a JSON object that conforms to
+the [Web Annotation Data Model] and further contains the following fields as
+defined:
+
+field       type                              definition
+----------- --------------------------------- ----------------------------------------------------------------------
+@context    [URL]                             the value `http://www.w3.org/ns/anno.jsonld`
+type        string                            the value `Annotation`
+id          [URI]                             globally unique identifier of the annotation
+target      [URI], [Resource] or [Annotation] object being annotated, or its URI
+
+[Web Annotation Data Model]: https://www.w3.org/TR/annotation-model/
+
 # Item and concept types
 
 [item type]: #item-and-concept-types
@@ -792,7 +812,6 @@ Item types MAY be expressed with the following [concept types]:
   }
 ]
 ~~~
-
 
 # Additional rules
 
@@ -931,6 +950,10 @@ The fields `PARTS` and `_id` in the following example does not belong to JSKOS:
 * A. Phillips, M. Davis: *Tags for Identifying Languages*.
   RFC 3066, September 2006. <https://tools.ietf.org/html/rfc3066>
 
+* R. Sanderson, P. Ciccarese, B. Young: *Web Annotation Data Model*.
+  W3C Recommendation, February 2017. <https://www.w3.org/TR/annotation-model/>
+
+
 [RFC 2119]: https://tools.ietf.org/html/rfc2119
 [RFC 4627]: https://tools.ietf.org/html/rfc4627
 [RFC 3987]: https://tools.ietf.org/html/rfc3987
@@ -967,9 +990,6 @@ The fields `PARTS` and `_id` in the following example does not belong to JSKOS:
 * M. Sporny, D. Longley, G. Kellogg, M. Lanthaler, N. Lindström: *JSON-LD 1.0*.
   W3C Recommendation, January 2014.
   <http://www.w3.org/TR/json-ld/>
-
-* J. Voß, M. Horn: *ng-skos 0.0.9*. AngularJS module.
-  <https://github.com/gbv/ng-skos>.
 
 [RFC 5646]: http://tools.ietf.org/html/rfc5646
 [RFC 4647]: http://tools.ietf.org/html/rfc4647
@@ -1027,6 +1047,10 @@ Experimental JSON Schemas exist but don't cover all aspects of JSKOS:
 * [Occurrence](occurrence.schema.json)
 
 ## Changelog {.unnumbered}
+
+### 0.4.5 (2019-04-08) {.unnumbered}
+
+* Add annotations (basic support)
 
 ### 0.4.4 (2018-11-02) {.unnumbered}
 
@@ -1159,7 +1183,7 @@ A concept from the Dewey Decimal Classification, German edition 22:
 </div>
 
 <div class="example">
-A concept from the abbbridget Dewey Decimal Classification, edition 23, in three languages:
+A concept from the abbridget Dewey Decimal Classification, edition 23, in three languages:
 
 `examples/ddc-641.5.concept.json`{.include .codeblock .json}
 </div>

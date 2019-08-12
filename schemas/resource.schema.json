@@ -117,6 +117,12 @@
     "partOf": {
       "description": "resources which this resource is part of (if no other field applies)",
       "$ref": "#/definitions/set"
+    },
+    "annotations": {
+      "type": "array",
+      "items": {
+        "$ref": "annotation.schema.json"
+      }
     }
   },
   "patternProperties": {

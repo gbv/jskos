@@ -1,0 +1,89 @@
+{
+  "$id": "https://gbv.github.io/jskos/annotation.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Annotation",
+  "description": "Annotation adjusted from Web Annotation Data Model",
+  "type": "object",
+  "definitions": {
+    "date": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "date"
+        },
+        {
+          "type": "string",
+          "format": "date-time"
+        },
+        {
+          "type": "string",
+          "pattern": "^\\d{4}-[01]\\d$"
+        },
+        {
+          "type": "string",
+          "pattern": "^\\d{4}$"
+        }
+      ]
+    }
+  },
+  "properties": {
+    "@context": {
+      "description": "reference to a JSON-LD context document",
+      "const": "http://www.w3.org/ns/anno.jsonld"
+    },
+    "id": {
+      "description": "globally unique identifier of the annotation",
+      "type": "string",
+      "format": "uri"
+    },
+    "type": {
+      "const": "Annotation"
+    },
+    "created": {
+      "description": "date of creation",
+      "$ref": "#/definitions/date"
+    },
+    "modified": {
+      "description": "date of last modification",
+      "$ref": "#/definitions/date"
+    },
+    "creator": {
+      "description": "agent primarily responsible for creation of resource",
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "id"
+          ]
+        },
+        {
+          "type": "string",
+          "format": "uri"
+        }
+      ]
+    },
+    "target": {
+      "description": "object being annotated, or its URI",
+      "oneOf": [
+        {
+          "type": "string",
+          "format": "uri"
+        },
+        {
+          "$ref": "#"
+        },
+        {
+          "$ref": "resource.schema.json"
+        }
+      ]
+    },
+    "motivation": {
+      "description": "motivation of the annotation",
+      "type": "string"
+    },
+    "bodyValue": {
+      "description": "optional body value of the annotation",
+      "type": "string"
+    }
+  }
+}

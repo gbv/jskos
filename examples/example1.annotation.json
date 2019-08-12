@@ -1,0 +1,13 @@
+{
+  "target": "https://coli-conc.gbv.de/api/mappings/f0cc5f65-5712-4820-9638-e662c0c4314e",
+  "motivation": "assessing",
+  "bodyValue": "+1",
+  "creator": {
+    "id": "https://coli-conc.gbv.de/login/users/722cc9c5-2ce3-4ca0-b4fb-fef1f62236af",
+    "name": "Jakob Voß"
+  },
+  "created": "2019-03-11T09:11:10.665Z",
+  "id": "https://coli-conc.gbv.de/api/annotations/5f23368f-a63b-4b69-acd6-b403110df97c",
+  "@context": "http://www.w3.org/ns/anno.jsonld",
+  "type": "Annotation"
+}

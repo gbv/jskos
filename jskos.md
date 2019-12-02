@@ -1,11 +1,6 @@
 # Introduction
 
-**JSKOS** defines a JavaScript Object Notation (JSON) structure to encode
-knowledge organization systems (KOS), such as classifications, thesauri, and
-authority files. JSKOS supports encoding of [concepts], [concept schemes],
-[concept occurrences], and [concept mappings] with their common properties.  It
-further defines application profiles for [registries], [distributions], and
-[annotations]. See [object types] for an outline.
+**JSKOS** (**J**avaScript Object Notation for **S**imple **K**nowledge **O**rganization **S**ystems) defines a JavaScript Object Notation (JSON) structure to encode knowledge organization systems (KOS), such as classifications, thesauri, and authority files. JSKOS supports encoding of [concepts], [concept schemes], [concept occurrences], and [concept mappings] with their common properties.  It further defines application profiles for [registries], [distributions], and [annotations]. See [object types] for an outline.
 
 The main part of JSKOS is compatible with Simple Knowledge Organisation System
 (SKOS) and JavaScript Object Notation for Linked Data (JSON-LD) but JSKOS can

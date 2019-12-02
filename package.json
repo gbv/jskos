@@ -8,7 +8,8 @@
     "url": "https://github.com/gbv/jskos/issues"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "html": "make"
   },
   "devDependencies": {
     "ajv": "^6.10.0",

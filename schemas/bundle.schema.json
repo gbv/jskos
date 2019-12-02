@@ -17,6 +17,18 @@
     "memberChoice": {
       "description": "concepts in this bundle to choose from",
       "$ref": "concept.schema.json#/definitions/set"
+    },
+    "memberRoles": {
+      "description": "sets of concepts, specified with a role",
+      "type": "object",
+      "propertyNames": {
+        "format": "uri"
+      },
+      "patternProperties": {
+        ".*": {
+          "$ref": "concept.schema.json#/definitions/set"
+        }
+      }
     }
   },
   "oneOf": [
@@ -36,6 +48,12 @@
       "type": "object",
       "required": [
         "memberChoice"
+      ]
+    },
+    {
+      "type": "object",
+      "required": [
+        "memberRoles"
       ]
     }
   ]

@@ -1,0 +1,17 @@
+{
+  "prefLabel": { "en": "knights armor"},
+  "memberRoles": {
+    "http://example.org/personality": [
+      { "prefLabel": { "en": "knight" } }
+    ],
+    "http://example.org/matter": [
+      { "prefLabel": { "en": "workwear" } }
+    ],
+    "http://example.org/energy": [
+      { "prefLabel": { "en": "fight" } }
+    ],
+    "http://example.org/time": [
+      { "prefLabel": { "en": "Middle Ages" } }
+    ]
+  }
+}

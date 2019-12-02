@@ -324,7 +324,7 @@ fields (in addition to the optional fields `@context`, `altLabel`,
 `editorialNote`, `example`, `hiddenLabel`, `historyNote`, `identifier`,
 `issued`, `modified`, `notation`, `note`, `partOf`, `prefLabel`, `publisher`,
 `scopeNote`, `subjectOf`, `subject`, `type`, `uri`, `url`, `memberSet`,
-`memberList`, and `memberChoice`):
+`memberList`, `memberChoice`, and `memberRoles`):
 
 field        type       description
 ------------ ---------- -------------------------------------------------------------------------------
@@ -350,7 +350,7 @@ element or ignore all but one element of these sets.
 If both fields `broader` and `ancestors` are given, the set `broader` MUST
 include [the same] concept as the first element of `ancestors`.
 
-The [concept bundle] fields `memberSet`, `memberList`, and `memberChoice` can
+The [concept bundle] fields `memberSet`, `memberList`, `memberChoice`, and `memberRoles` can
 be used to express the parts of a **composed concept** (also known as combined
 or synthesized concepts) unsorted or sorted. The field `memberChoice` SHOULD
 NOT be used without proper documentation because its meaning in this context is
@@ -429,7 +429,7 @@ for each concept's `type` other than `http://www.w3.org/2004/02/skos/core#Concep
 An **occurrence** is a [resource] and [concept bundle] with the following
 optional fields (in addition to the optional fields `@context`, `contributor`,
 `created`, `creator`, `identifier`, `issued`, `modified`, `partOf`,
-`publisher`, `type`, `uri`, `memberSet`, `memberChoice`, and `memberList`):
+`publisher`, `type`, `uri`, `memberSet`, `memberList`, `memberChoice`, and `memberRoles`):
 
 field        type                   definition
 ------------ ---------------------- ----------------------------------------------
@@ -681,7 +681,14 @@ field       type          definition
 memberSet   [set]         [concepts] in this bundle (unordered)
 memberList  ordered [set] [concepts] in this bundle (ordered)
 memberChoice [set]        [concepts] in this bundle to choose from
+memberRoles object        Object mapping role URIs to [set]s of [concepts]
 
+Keys of a `memberRoles` object MUST be URIs and their values MUST be of type [set].
+
+
+<div class="example">
+`examples/memberRoles.bundle.json`{.include .codeblock .json}
+</div>
 
 <div class="note">
 
@@ -1046,6 +1053,10 @@ See NodeJS library [jskos-validate] for an implementation.
 [jskos-validate]: https://www.npmjs.com/package/jskos-validate
 
 ## Changelog {.unnumbered}
+
+### 0.4.6 (2019-12-02) {.unnumbered}
+
+* Add memberRoles
 
 ### 0.4.5 (2019-04-08) {.unnumbered}
 

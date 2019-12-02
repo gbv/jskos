@@ -1041,6 +1041,10 @@ Experimental JSON Schemas exist but don't cover all aspects of JSKOS:
 * [Distribution](distribution.schema.json)
 * [Occurrence](occurrence.schema.json)
 
+See NodeJS library [jskos-validate] for an implementation.
+
+[jskos-validate]: https://www.npmjs.com/package/jskos-validate
+
 ## Changelog {.unnumbered}
 
 ### 0.4.5 (2019-04-08) {.unnumbered}

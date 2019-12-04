@@ -1,0 +1,6 @@
+{
+  "prefLabel": { "en": "SKOS in RDF/XML" },
+  "download": "http://example.org/data/dump.rdf",
+  "mimetype": "application/rdf+xml",
+  "format": "http://www.w3.org/2004/02/skos/core"
+}

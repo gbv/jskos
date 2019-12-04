@@ -546,34 +546,16 @@ an alternative and extensible method to express access methods.
 
 Distribution of a newline-delimited JSKOS file:
 
-~~~json
-{
-  "download": "http://example.org/data/dump.ndjson",
-  "mimetype": "application/x-ndjson",
-  "format": "http://format.gbv.de/jskos"
-}
-~~~
+`examples/jskos.distribution.json`{.include .codeblock .json}
 
 Distribution of a RDF/XML with SKOS data:
 
-~~~json
-{
-  "download": "http://example.org/data/dump.rdf",
-  "mimetype": "application/rdf+xml",
-  "format": "http://www.w3.org/2004/02/skos/core"
-}
-~~~
+`examples/rdfxml.distribution.json`{.include .codeblock .json}
 
 Distribution of a gzip-compressed MARC/XML file in [MARC 21 Format for
 Authority Data](https://www.loc.gov/marc/authority/):
 
-~~~json
-{
-  "download": "http://example.org/data/dump.xml.gz",
-  "mimetype": "application/xml+gzip",
-  "format": "http://format.gbv.de/marc/authority"
-}
-~~~
+`examples/marc.distribution.json`{.include .codeblock .json}
 
 </div>
 

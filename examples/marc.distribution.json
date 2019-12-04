@@ -1,0 +1,5 @@
+{
+  "download": "http://example.org/data/dump.xml.gz",
+  "mimetype": "application/xml+gzip",
+  "format": "http://format.gbv.de/marc/authority"
+}

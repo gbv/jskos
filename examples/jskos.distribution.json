@@ -1,0 +1,5 @@
+{
+  "download": "http://example.org/data/dump.ndjson",
+  "mimetype": "application/x-ndjson",
+  "format": "http://format.gbv.de/jskos"
+}

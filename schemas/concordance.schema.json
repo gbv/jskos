@@ -17,13 +17,13 @@
           "$ref": "resource.schema.json#/definitions/url"
         },
         {
-          "$ref": "mapping.schema.json#/definitions/set"
+          "$ref": "mapping.schema.json#/definitions/mappingSet"
         }
       ]
     },
     "distribution": {
       "description": "Distributions to access the concordance",
-      "$ref": "distribution.schema.json#/definitions/set"
+      "$ref": "distribution.schema.json#/definitions/distributionSet"
     },
     "fromScheme": {
       "description": "Source concept scheme",
@@ -39,7 +39,7 @@
     },
     "license": {
       "description": "License which the full concordance can be used under",
-      "$ref": "resource.schema.json#/definitions/set"
+      "$ref": "concept.schema.json#/definitions/conceptSet"
     }
   }
 }

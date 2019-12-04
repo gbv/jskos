@@ -5,7 +5,7 @@
   "description": "compiled collections of concepts (knowledge organization systems)",
   "type": "object",
   "definitions": {
-    "set": {
+    "schemeSet": {
       "type": "array",
       "items": {
         "anyOf": [
@@ -13,7 +13,7 @@
             "type": "null"
           },
           {
-            "$ref": "#"
+            "$ref": "scheme.schema.json#"
           }
         ]
       }
@@ -28,11 +28,11 @@
   "properties": {
     "topConcepts": {
       "description": "top concepts of the scheme",
-      "$ref": "concept.schema.json#/definitions/set"
+      "$ref": "concept.schema.json#/definitions/conceptSet"
     },
     "versionOf": {
       "description": "concept scheme which this scheme is a version or edition of",
-      "$ref": "scheme.schema.json#/definitions/set"
+      "$ref": "scheme.schema.json#/definitions/schemeSet"
     },
     "namespace": {
       "description": "URI namespace that all concepts URIs are expected to start with",
@@ -54,7 +54,7 @@
           "$ref": "resource.schema.json#/definitions/url"
         },
         {
-          "$ref": "concept.schema.json#/definitions/set"
+          "$ref": "concept.schema.json#/definitions/conceptSet"
         }
       ]
     },
@@ -65,13 +65,13 @@
           "$ref": "resource.schema.json#/definitions/url"
         },
         {
-          "$ref": "resource.schema.json#/definitions/set"
+          "$ref": "concept.schema.json#/definitions/conceptSet"
         }
       ]
     },
     "distributions": {
       "description": "Distributions to access the content of the concept scheme",
-      "$ref": "distribution.schema.json#/definitions/set"
+      "$ref": "distribution.schema.json#/definitions/distributionSet"
     },
     "extent": {
       "description": "Size of the concept scheme",
@@ -83,7 +83,7 @@
     },
     "license": {
       "description": "Licenses which the full scheme can be used under",
-      "$ref": "resource.schema.json#/definitions/set"
+      "$ref": "concept.schema.json#/definitions/conceptSet"
     }
   }
 }

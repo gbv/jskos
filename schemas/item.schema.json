@@ -121,11 +121,11 @@
     },
     "subject": {
       "description": "what this item is about (e.g. topic)",
-      "$ref": "resource.schema.json#/definitions/set"
+      "$ref": "concept.schema.json#/definitions/conceptSet"
     },
     "subjectOf": {
       "description": "resources about this item (e.g. documentation)",
-      "$ref": "resource.schema.json#/definitions/set"
+      "$ref": "concept.schema.json#/definitions/conceptSet"
     },
     "depiction": {
       "description": "list of image URLs depicting the item",

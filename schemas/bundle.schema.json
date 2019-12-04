@@ -8,15 +8,15 @@
   "properties": {
     "memberSet": {
       "description": "concepts in this bundle (unordered)",
-      "$ref": "concept.schema.json#/definitions/set"
+      "$ref": "concept.schema.json#/definitions/conceptSet"
     },
     "memberList": {
       "description": "concepts in this bundle (ordered)",
-      "$ref": "concept.schema.json#/definitions/set"
+      "$ref": "concept.schema.json#/definitions/conceptSet"
     },
     "memberChoice": {
       "description": "concepts in this bundle to choose from",
-      "$ref": "concept.schema.json#/definitions/set"
+      "$ref": "concept.schema.json#/definitions/conceptSet"
     },
     "memberRoles": {
       "description": "sets of concepts, specified with a role",
@@ -26,7 +26,7 @@
       },
       "patternProperties": {
         ".*": {
-          "$ref": "concept.schema.json#/definitions/set"
+          "$ref": "concept.schema.json#/definitions/conceptSet"
         }
       }
     }

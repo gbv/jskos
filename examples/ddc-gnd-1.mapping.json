@@ -11,7 +11,7 @@
     "to": {
         "memberSet": [ {
             "uri": "http://d-nb.info/gnd/4074195-3",
-            "preflabel": { "de": "Leukozyt" }
+            "prefLabel": { "de": "Leukozyt" }
         } ]
     }
 }

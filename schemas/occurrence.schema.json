@@ -5,7 +5,7 @@
   "description": "An occurrence gives the number of a times a concept (“occurrence”) or combination of concepts (“co-occurrence”) is used in a specific relation to entities from a particular database. For instance the occurrence could give the number of documents indexed with some term in a catalog. The field url typically includes a deep link into the database.",
   "type": "object",
   "definitions": {
-    "set": {
+    "occurrenceSet": {
       "type": "array",
       "items": {
         "anyOf": [
@@ -13,7 +13,7 @@
             "type": "null"
           },
           {
-            "$ref": "#"
+            "$ref": "occurrence.schema.json#"
           }
         ]
       }

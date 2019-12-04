@@ -10,22 +10,22 @@
     "to": {
         "memberChoice": [ {
             "uri": "http://d-nb.info/gnd/4074195-3",
-            "preflabel": { "de": "Leukozyt" }
+            "prefLabel": { "de": "Leukozyt" }
           },{
             "uri": "http://d-nb.info/gnd/4141893-1",
-            "preflabel": { "de": "Alkalische Leukozytenphosphatase" }
+            "prefLabel": { "de": "Alkalische Leukozytenphosphatase" }
           },{
             "uri": "http://d-nb.info/gnd/7606617-4",
-            "preflabel": { "de": "Blutlymphozyt" }
+            "prefLabel": { "de": "Blutlymphozyt" }
           },{
             "uri": "http://d-nb.info/gnd/4158047-3",
-            "preflabel": { "de": "Granulozyt" }
+            "prefLabel": { "de": "Granulozyt" }
           },{
             "uri": "http://d-nb.info/gnd/4227943-4",
-            "preflabel": { "de": "Leukozytenadhäsion" }
+            "prefLabel": { "de": "Leukozytenadhäsion" }
           },{
             "uri": "http://d-nb.info/gnd/4166696-3",
-            "preflabel": { "de": "Leukozytenphosphatase" }
+            "prefLabel": { "de": "Leukozytenphosphatase" }
           },{
             "uri": "http://d-nb.info/gnd/4285013-7",
             "prefLabel": { "de": "Monozyt" }

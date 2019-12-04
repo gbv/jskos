@@ -465,7 +465,7 @@ Two occurrences and their combined co-occurrence from GBV Union Catalogue (GVK) 
 <div class="example">
 The Wikidata [concept of an individual human](http://www.wikidata.org/entity/Q5) is linked to 206 Wikimedia sites (mostly Wikipedia language editions) and more than 3.7 million people (instances of <http://www.wikidata.org/entity/P31>) at November 15th, 2017.
 
-`examples/wikidata.occurrence.json`{.include .codeblock .json}
+`examples/wikidata-occurrences.concept.json`{.include .codeblock .json}
 </div>
 
 
@@ -687,7 +687,7 @@ Keys of a `memberRoles` object MUST be URIs and their values MUST be of type [se
 
 
 <div class="example">
-`examples/memberRoles.bundle.json`{.include .codeblock .json}
+`examples/memberRoles.concept.json`{.include .codeblock .json}
 </div>
 
 <div class="note">

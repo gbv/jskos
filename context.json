@@ -103,6 +103,14 @@
     "@type": "@id",
     "@container": "@set"
   },
+  "startPlace": {
+    "@id": "https://schema.org/location",
+    "@container": "@set"
+  },
+  "endPlace": {
+    "@id": "https://schema.org/location",
+    "@container": "@set"
+  },
 
   "narrower": {
     "@id": "http://www.w3.org/2004/02/skos/core#narrower",

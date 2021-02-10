@@ -127,6 +127,10 @@
       "description": "resources about this item (e.g. documentation)",
       "$ref": "concept.schema.json#/definitions/conceptSet"
     },
+    "source": {
+      "description": "sources from which the described resource is derived",
+      "$ref": "concept.schema.json#/definitions/conceptSet"
+    },
     "depiction": {
       "description": "list of image URLs depicting the item",
       "type": "array",

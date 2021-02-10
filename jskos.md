@@ -269,6 +269,7 @@ issued      [date]            date of publication
 modified    [date]            date of last modification
 creator     [set]             agent primarily responsible for creation of resource
 contributor [set]             agent responsible for making contributions to the resource
+source      [set]             sources from which the described resource is derived
 publisher   [set]             agent responsible for making the resource available
 partOf      [set]             [resources] which this resource is part of (if no other field applies)
 
@@ -285,7 +286,7 @@ Resources can be [tested for sameness](#resource-sameness) based on field `uri`.
 
 An **item** is a [resource] with the following optional fields (in addition to
 the optional fields `@context`, `contributor`, `created`, `creator`,
-`identifier`, `issued`, `modified`, `partOf`, `publisher`, `type`, and `uri`):
+`identifier`, `issued`, `modified`, `partOf`, `publisher`, `source`, `type`, and `uri`):
 
 field         type                      description
 ------------- ------------------------- ----------------------------------------------
@@ -323,7 +324,7 @@ fields (in addition to the optional fields `@context`, `altLabel`,
 `changeNote`, `contributor`, `created`, `creator`, `definition`, `depiction`,
 `editorialNote`, `example`, `hiddenLabel`, `historyNote`, `identifier`,
 `issued`, `modified`, `notation`, `note`, `partOf`, `prefLabel`, `publisher`,
-`scopeNote`, `subjectOf`, `subject`, `type`, `uri`, `url`, `memberSet`,
+`scopeNote`, `source`, `subjectOf`, `subject`, `type`, `uri`, `url`, `memberSet`,
 `memberList`, `memberChoice`, and `memberRoles`):
 
 field        type       description
@@ -388,7 +389,7 @@ addition to the optional fields `@context`, `altLabel`, `changeNote`,
 `contributor`, `created`, `creator`, `definition`, `depiction`,
 `editorialNote`, `example`, `hiddenLabel`, `historyNote`, `identifier`,
 `issued`, `modified`, `notation`, `note`, `partOf`, `prefLabel`, `publisher`,
-`scopeNote`, `subjectOf`, `subject`, `type`, `uri`, and `url`):
+`scopeNote`, `source`, `subjectOf`, `subject`, `type`, `uri`, and `url`):
 
 property        type                       definition
 --------------- -------------------------- --------------------------------------------------------------------------------------
@@ -429,7 +430,7 @@ for each concept's `type` other than `http://www.w3.org/2004/02/skos/core#Concep
 An **occurrence** is a [resource] and [concept bundle] with the following
 optional fields (in addition to the optional fields `@context`, `contributor`,
 `created`, `creator`, `identifier`, `issued`, `modified`, `partOf`,
-`publisher`, `type`, `uri`, `memberSet`, `memberList`, `memberChoice`, and `memberRoles`):
+`publisher`, `source`, `type`, `uri`, `memberSet`, `memberList`, `memberChoice`, and `memberRoles`):
 
 field        type                   definition
 ------------ ---------------------- ----------------------------------------------
@@ -478,7 +479,7 @@ A **registry** is an [item] with the following optional fields (in addition to
 the optional fields `@context`, `altLabel`, `changeNote`, `contributor`,
 `created`, `creator`, `definition`, `depiction`, `editorialNote`, `example`,
 `hiddenLabel`, `historyNote`, `identifier`, `issued`, `modified`, `notation`,
-`note`, `partOf`, `prefLabel`, `publisher`, `scopeNote`, `subjectOf`,
+`note`, `partOf`, `prefLabel`, `publisher`, `scopeNote`, `source`, `subjectOf`,
 `subject`, `type`, `uri`, and `url`):
 
 field        type           definition
@@ -517,7 +518,7 @@ A **distribution** is an [item] with the following fields (in addition to the
 optional fields `@context`, `altLabel`, `changeNote`, `contributor`, `created`,
 `creator`, `definition`, `depiction`, `editorialNote`, `example`,
 `hiddenLabel`, `historyNote`, `identifier`, `issued`, `modified`, `notation`,
-`note`, `partOf`, `prefLabel`, `publisher`, `scopeNote`, `subjectOf`,
+`note`, `partOf`, `prefLabel`, `publisher`, `scopeNote`, `source`, `subjectOf`,
 `subject`, `type`, `uri`, and `url`):
 
 property     type           definition
@@ -569,7 +570,7 @@ A **concordance** is an [item] with the following fields (in addition to the
 optional fields `@context`, `altLabel`, `changeNote`, `contributor`, `created`,
 `creator`, `definition`, `depiction`, `editorialNote`, `example`,
 `hiddenLabel`, `historyNote`, `identifier`, `issued`, `modified`, `notation`,
-`note`, `partOf`, `prefLabel`, `publisher`, `scopeNote`, `subjectOf`,
+`note`, `partOf`, `prefLabel`, `publisher`, `scopeNote`, `source`, `subjectOf`,
 `subject`, `type`, `uri`, and `url`). All fields except `fromScheme` and
 `toScheme` are optional.
 
@@ -611,7 +612,7 @@ A **mapping** is an [item] with the following fields (in addition to the
 optional fields `@context`, `altLabel`, `changeNote`, `contributor`, `created`,
 `creator`, `definition`, `depiction`, `editorialNote`, `example`,
 `hiddenLabel`, `historyNote`, `identifier`, `issued`, `modified`, `notation`,
-`note`, `partOf`, `prefLabel`, `publisher`, `scopeNote`, `subjectOf`,
+`note`, `partOf`, `prefLabel`, `publisher`, `scopeNote`, `source`, `subjectOf`,
 `subject`, `type`, `uri`, and `url`). All fields except `from` and `to` are
 optional.
 

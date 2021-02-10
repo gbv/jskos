@@ -47,6 +47,19 @@
         "type"
       ],
       "additionalProperties": true
+    },
+    "address": {
+      "type": "object",
+      "properties": {
+        "street":   { "type": "string" },
+        "ext":      { "type": "string" },
+        "pobox":    { "type": "string" },
+        "locality": { "type": "string" },
+        "region":   { "type": "string" },
+        "code":     { "type": "string" },
+        "country":  { "type": "string" }
+      },
+      "additionalProperties": false
     }
   },
   "allOf": [
@@ -118,6 +131,10 @@
     "location": {
       "description": "geographic location of the item",
       "$ref": "#/definitions/location"
+    },
+    "address": {
+      "description": "geographic location of the item",
+      "$ref": "#/definitions/address"
     },
     "subject": {
       "description": "what this item is about (e.g. topic)",

@@ -232,6 +232,19 @@ Position of the RMS Titanic as point:
 ~~~
 </div>
 
+## address
+
+An **address** is a JSON object with any of the following keys, each mapped to a string:
+
+field    description
+-------- -----------
+street   the street address
+ext      the extended address (e.g., apartment or suite number)
+pobox    the post office box
+locality the locality (e.g., city)
+region   the region (e.g., state or province)
+code     the postal code
+country  the country name
 
 # Object types
 
@@ -306,6 +319,7 @@ startDate     [date]                    date of birth, creation, or estabishment
 endDate       [date]                    date death or resolution of the item
 relatedDate   [date]                    other date somehow related to the item
 location      [location]                geographic location of the item
+address       [address]                 postal address of the item
 subject       [set]                     what this item is about (e.g. topic)
 subjectOf     [set]                     resources about this item (e.g. documentation)
 depiction     [list] of [URL]           list of image URLs depicting the item
@@ -320,7 +334,7 @@ element or ignore all preceding elements of these lists.
 [concepts]: #concept
 
 A **concept** is an [item] and [concept bundle] with the following optional
-fields (in addition to the optional fields `@context`, `altLabel`,
+fields (in addition to the optional fields `@context`, `address`, `altLabel`,
 `changeNote`, `contributor`, `created`, `creator`, `definition`, `depiction`,
 `editorialNote`, `example`, `hiddenLabel`, `historyNote`, `identifier`,
 `issued`, `modified`, `notation`, `note`, `partOf`, `prefLabel`, `publisher`,
@@ -385,7 +399,7 @@ connected by the broader relation.
 [scheme]: #schemes
 
 A **concept scheme** is an [item] with the following optional fields (in
-addition to the optional fields `@context`, `altLabel`, `changeNote`,
+addition to the optional fields `@context`, `address`, `altLabel`, `changeNote`,
 `contributor`, `created`, `creator`, `definition`, `depiction`,
 `editorialNote`, `example`, `hiddenLabel`, `historyNote`, `identifier`,
 `issued`, `modified`, `notation`, `note`, `partOf`, `prefLabel`, `publisher`,
@@ -476,7 +490,7 @@ The Wikidata [concept of an individual human](http://www.wikidata.org/entity/Q5)
 [registry]: #registries
 
 A **registry** is an [item] with the following optional fields (in addition to
-the optional fields `@context`, `altLabel`, `changeNote`, `contributor`,
+the optional fields `@context`, `address`,  `altLabel`, `changeNote`, `contributor`,
 `created`, `creator`, `definition`, `depiction`, `editorialNote`, `example`,
 `hiddenLabel`, `historyNote`, `identifier`, `issued`, `modified`, `notation`,
 `note`, `partOf`, `prefLabel`, `publisher`, `scopeNote`, `source`, `subjectOf`,
@@ -515,7 +529,7 @@ Additional integrity rules for registries will be defined.
 [distributions]: #distributions
 
 A **distribution** is an [item] with the following fields (in addition to the
-optional fields `@context`, `altLabel`, `changeNote`, `contributor`, `created`,
+optional fields `@context`, `address`, `altLabel`, `changeNote`, `contributor`, `created`,
 `creator`, `definition`, `depiction`, `editorialNote`, `example`,
 `hiddenLabel`, `historyNote`, `identifier`, `issued`, `modified`, `notation`,
 `note`, `partOf`, `prefLabel`, `publisher`, `scopeNote`, `source`, `subjectOf`,
@@ -567,7 +581,7 @@ Authority Data](https://www.loc.gov/marc/authority/):
 [concordance]: #concordances
 
 A **concordance** is an [item] with the following fields (in addition to the
-optional fields `@context`, `altLabel`, `changeNote`, `contributor`, `created`,
+optional fields `@context`, `address`, `altLabel`, `changeNote`, `contributor`, `created`,
 `creator`, `definition`, `depiction`, `editorialNote`, `example`,
 `hiddenLabel`, `historyNote`, `identifier`, `issued`, `modified`, `notation`,
 `note`, `partOf`, `prefLabel`, `publisher`, `scopeNote`, `source`, `subjectOf`,
@@ -609,7 +623,7 @@ in mappings in concordances.
 [concept mappings]: #concept-mappings
 
 A **mapping** is an [item] with the following fields (in addition to the
-optional fields `@context`, `altLabel`, `changeNote`, `contributor`, `created`,
+optional fields `@context`, `address`,  `altLabel`, `changeNote`, `contributor`, `created`,
 `creator`, `definition`, `depiction`, `editorialNote`, `example`,
 `hiddenLabel`, `historyNote`, `identifier`, `issued`, `modified`, `notation`,
 `note`, `partOf`, `prefLabel`, `publisher`, `scopeNote`, `source`, `subjectOf`,

@@ -318,6 +318,8 @@ note          [language map] of [list]  see [SKOS Documentary Notes]
 startDate     [date]                    date of birth, creation, or estabishment of the item
 endDate       [date]                    date death or resolution of the item
 relatedDate   [date]                    other date somehow related to the item
+startPlace    [set]                     where an item started (e.g. place of birth)
+endPlace      [set]                     where an item ended (e.g. place of death)
 location      [location]                geographic location of the item
 address       [address]                 postal address of the item
 subject       [set]                     what this item is about (e.g. topic)
@@ -336,10 +338,11 @@ element or ignore all preceding elements of these lists.
 A **concept** is an [item] and [concept bundle] with the following optional
 fields (in addition to the optional fields `@context`, `address`, `altLabel`,
 `changeNote`, `contributor`, `created`, `creator`, `definition`, `depiction`,
-`editorialNote`, `example`, `hiddenLabel`, `historyNote`, `identifier`,
-`issued`, `modified`, `notation`, `note`, `partOf`, `prefLabel`, `publisher`,
-`scopeNote`, `source`, `subjectOf`, `subject`, `type`, `uri`, `url`, `memberSet`,
-`memberList`, `memberChoice`, and `memberRoles`):
+`editorialNote`, `endDate`, `endPlace`, `example`, `hiddenLabel`, `historyNote`,
+`identifier`, `issued`, `location`, `modified`, `notation`, `note`, `partOf`,
+`prefLabel`, `publisher`, `scopeNote`, `source`, `startDate`, `startPlace`, 
+`subjectOf`, `subject`, `type`, `uri`, `url`, `memberSet`, `memberList`, 
+`memberChoice`, and `memberRoles`):
 
 field        type       description
 ------------ ---------- -------------------------------------------------------------------------------
@@ -351,8 +354,6 @@ next         [set]      related concepts ordered somehow after the concept
 ancestors    [set]      list of ancestors, possibly up to a top concept
 inScheme     [set]      [concept schemes] or URI of the concept schemes
 topConceptOf [set]      [concept schemes] or URI of the concept schemes
-startPlace   [set]      where a concepts started (e.g. place of birth)
-endPlace     [set]      where a concept ended (e.g. place of death)
 mappings     [set]      [mappings] from and/or to this concept
 occurrences  [set]      [occurrences] with this concept
 
@@ -401,9 +402,9 @@ connected by the broader relation.
 A **concept scheme** is an [item] with the following optional fields (in
 addition to the optional fields `@context`, `address`, `altLabel`, `changeNote`,
 `contributor`, `created`, `creator`, `definition`, `depiction`,
-`editorialNote`, `example`, `hiddenLabel`, `historyNote`, `identifier`,
-`issued`, `modified`, `notation`, `note`, `partOf`, `prefLabel`, `publisher`,
-`scopeNote`, `source`, `subjectOf`, `subject`, `type`, `uri`, and `url`):
+`editorialNote`, `endDate`, `endPlace`, `example`, `hiddenLabel`, `historyNote`, `identifier`,
+`issued`, `location`, `modified`, `notation`, `note`, `partOf`, `prefLabel`, `publisher`,
+`scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`, `subject`, `type`, `uri`, and `url`):
 
 property        type                       definition
 --------------- -------------------------- --------------------------------------------------------------------------------------
@@ -490,11 +491,11 @@ The Wikidata [concept of an individual human](http://www.wikidata.org/entity/Q5)
 [registry]: #registries
 
 A **registry** is an [item] with the following optional fields (in addition to
-the optional fields `@context`, `address`,  `altLabel`, `changeNote`, `contributor`,
-`created`, `creator`, `definition`, `depiction`, `editorialNote`, `example`,
-`hiddenLabel`, `historyNote`, `identifier`, `issued`, `modified`, `notation`,
-`note`, `partOf`, `prefLabel`, `publisher`, `scopeNote`, `source`, `subjectOf`,
-`subject`, `type`, `uri`, and `url`):
+the optional fields `@context`, `address`, `altLabel`, `changeNote`,
+`contributor`, `created`, `creator`, `definition`, `depiction`,
+`editorialNote`, `endDate`, `endPlace`, `example`, `hiddenLabel`, `historyNote`, `identifier`,
+`issued`, `location`, `modified`, `notation`, `note`, `partOf`, `prefLabel`, `publisher`,
+`scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`, `subject`, `type`, `uri`, and `url`):
 
 field        type           definition
 ------------ -------------- --------------------------------------------------------------------------------------
@@ -529,11 +530,11 @@ Additional integrity rules for registries will be defined.
 [distributions]: #distributions
 
 A **distribution** is an [item] with the following fields (in addition to the
-optional fields `@context`, `address`, `altLabel`, `changeNote`, `contributor`, `created`,
-`creator`, `definition`, `depiction`, `editorialNote`, `example`,
-`hiddenLabel`, `historyNote`, `identifier`, `issued`, `modified`, `notation`,
-`note`, `partOf`, `prefLabel`, `publisher`, `scopeNote`, `source`, `subjectOf`,
-`subject`, `type`, `uri`, and `url`):
+optional fields `@context`, `address`, `altLabel`, `changeNote`,
+`contributor`, `created`, `creator`, `definition`, `depiction`,
+`editorialNote`, `endDate`, `endPlace`, `example`, `hiddenLabel`, `historyNote`, `identifier`,
+`issued`, `location`, `modified`, `notation`, `note`, `partOf`, `prefLabel`, `publisher`,
+`scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`, `subject`, `type`, `uri`, and `url`):
 
 property     type           definition
 ------------ -------------- ---------------------------------------------
@@ -581,12 +582,11 @@ Authority Data](https://www.loc.gov/marc/authority/):
 [concordance]: #concordances
 
 A **concordance** is an [item] with the following fields (in addition to the
-optional fields `@context`, `address`, `altLabel`, `changeNote`, `contributor`, `created`,
-`creator`, `definition`, `depiction`, `editorialNote`, `example`,
-`hiddenLabel`, `historyNote`, `identifier`, `issued`, `modified`, `notation`,
-`note`, `partOf`, `prefLabel`, `publisher`, `scopeNote`, `source`, `subjectOf`,
-`subject`, `type`, `uri`, and `url`). All fields except `fromScheme` and
-`toScheme` are optional.
+optional fields `@context`, `address`, `altLabel`, `changeNote`,
+`contributor`, `created`, `creator`, `definition`, `depiction`,
+`editorialNote`, `endDate`, `endPlace`, `example`, `hiddenLabel`, `historyNote`, `identifier`,
+`issued`, `location`, `modified`, `notation`, `note`, `partOf`, `prefLabel`, `publisher`,
+`scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`, `subject`, `type`, `uri`, and `url`). All fields except `fromScheme` and `toScheme` are optional.
 
 property     type             definition
 ------------ ---------------- ------------------------------------------------------
@@ -623,12 +623,11 @@ in mappings in concordances.
 [concept mappings]: #concept-mappings
 
 A **mapping** is an [item] with the following fields (in addition to the
-optional fields `@context`, `address`,  `altLabel`, `changeNote`, `contributor`, `created`,
-`creator`, `definition`, `depiction`, `editorialNote`, `example`,
-`hiddenLabel`, `historyNote`, `identifier`, `issued`, `modified`, `notation`,
-`note`, `partOf`, `prefLabel`, `publisher`, `scopeNote`, `source`, `subjectOf`,
-`subject`, `type`, `uri`, and `url`). All fields except `from` and `to` are
-optional.
+optional fields `@context`, `address`, `altLabel`, `changeNote`,
+`contributor`, `created`, `creator`, `definition`, `depiction`,
+`editorialNote`, `endDate`, `endPlace`, `example`, `hiddenLabel`, `historyNote`, `identifier`,
+`issued`, `location`, `modified`, `notation`, `note`, `partOf`, `prefLabel`, `publisher`,
+`scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`, `subject`, `type`, `uri`, and `url`). All fields except `from` and `to` are optional.
 
 field            type             definition
 ---------------- ---------------- ----------------------------------------------
@@ -1050,6 +1049,12 @@ See NodeJS library [jskos-validate] for an implementation.
 [jskos-validate]: https://www.npmjs.com/package/jskos-validate
 
 ## Changelog {.unnumbered}
+
+### 0.4.7 (2021-02-10) {.unnumbered}
+
+* Add resource field source
+* Add item field address 
+* Move startPlace/endPlace to Item and map them to schema:location
 
 ### 0.4.6 (2019-12-02) {.unnumbered}
 

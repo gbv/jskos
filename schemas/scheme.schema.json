@@ -47,6 +47,13 @@
       "description": "regular expression that all primary notations should follow",
       "type": "string"
     },
+    "notationExamples": {
+      "description": "list of some valid notations as examples",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
     "concepts": {
       "description": "JSKOS API concepts endpoint returning all concepts in this scheme",
       "anyOf": [

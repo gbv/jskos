@@ -1051,6 +1051,10 @@ See NodeJS library [jskos-validate] for an implementation.
 
 ## Changelog {.unnumbered}
 
+### 0.4.9 (2022-01-18) {.unnumbered}
+
+* Change base format of URL in JSON Schema from URI to IRI
+
 ### 0.4.8 (2021-02-18) {.unnumbered}
 
 * Add concept scheme field notationExamples

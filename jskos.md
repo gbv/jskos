@@ -1051,7 +1051,7 @@ See NodeJS library [jskos-validate] for an implementation.
 
 ## Changelog {.unnumbered}
 
-### 0.4.10 (2022-01-19) {.unnumbered}
+### 0.4.10 (2022-0?-??) {.unnumbered}
 
 * Change format of URI in JSON Schema from URI to IRI
 

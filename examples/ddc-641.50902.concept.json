@@ -1,0 +1,18 @@
+{
+  "uri": "http://dewey.info/class/641.50902/e23/",
+  "type": ["http://www.w3.org/2004/02/skos/core#Concept"],
+  "notation": ["641.50902"],
+  "inScheme": [{"uri":"http://dewey.info/edition/e23/"}],
+  "memberList": [
+    {
+      "uri": "http://dewey.info/class/641.5/e23/",
+      "notation": ["641.5"],
+      "prefLabel": {"en": "Cooking"}
+    },
+    {
+      "uri": "http://dewey.info/class/1--0902/e23",
+      "notation": ["T1--0902"],
+      "prefLabel": {"en": "*6th-15th centuries, 500-1499"}
+    }
+  ]
+}

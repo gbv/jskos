@@ -1213,6 +1213,12 @@ A concept from the abbridget Dewey Decimal Classification, edition 23, in three 
 `examples/ddc-641.5.concept.json`{.include .codeblock .json}
 </div>
 
+<div class="example">
+A decomposed DDC number for medieval cooking:
+
+`examples/ddc-641.50902.concept.json`{.include .codeblock .json}
+</div>
+
 ## Mappings {.unnumbered}
 
 <div class="example">

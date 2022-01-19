@@ -41,7 +41,7 @@
     "relation": {
       "description": "type of relation between concepts and entities",
       "type": "string",
-      "format": "uri"
+      "format": "iri"
     },
     "url": {
       "description": "URL of a page with information about the occurrence",

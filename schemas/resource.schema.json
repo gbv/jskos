@@ -7,7 +7,7 @@
   "definitions": {
     "url": {
       "type": "string",
-      "format": "iri",
+      "format": "iri-reference",
       "pattern": "^https?://"
     },
     "non-negative-integer": {
@@ -61,13 +61,13 @@
     "@context": {
       "description": "reference to a JSON-LD context document",
       "type": "string",
-      "format": "uri",
+      "format": "iri",
       "default": "https://gbv.github.io/jskos/context.json"
     },
     "uri": {
       "description": "primary globally unique identifier",
       "type": "string",
-      "format": "uri"
+      "format": "iri"
     },
     "identifier": {
       "description": "additional identifiers",
@@ -78,7 +78,7 @@
       "type": "array",
       "items": {
         "type": "string",
-        "format": "uri"
+        "format": "iri"
       }
     },
     "created": {

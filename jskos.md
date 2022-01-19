@@ -44,7 +44,7 @@ An **URI** is a syntactically correct IRI ([RFC 3987]).
 
 ## URL
 
-An **URL** is a syntactically correct URL with HTTPS (RECOMMENDED) or HTTP scheme.
+An **URL** is a syntactically correct URL with HTTPS (RECOMMENDED) or HTTP scheme. Note that URLs can contain international characters allowed in IRIs.
 
 ## Non-negative integer
 
@@ -1050,6 +1050,10 @@ See NodeJS library [jskos-validate] for an implementation.
 [jskos-validate]: https://www.npmjs.com/package/jskos-validate
 
 ## Changelog {.unnumbered}
+
+### 0.4.10 (2022-01-19) {.unnumbered}
+
+* Change format of URI in JSON Schema from URI to IRI
 
 ### 0.4.9 (2022-01-18) {.unnumbered}
 

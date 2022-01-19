@@ -36,7 +36,7 @@
     "format": {
       "description": "data format identifier of the file",
       "type": "string",
-      "format": "uri"
+      "format": "iri"
     }
   }
 }

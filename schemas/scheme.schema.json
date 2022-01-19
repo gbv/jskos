@@ -37,7 +37,7 @@
     "namespace": {
       "description": "URI namespace that all concepts URIs are expected to start with",
       "type": "string",
-      "format": "uri"
+      "format": "iri"
     },
     "uriPattern": {
       "description": "URI pattern that all concept URIs are expected to match",

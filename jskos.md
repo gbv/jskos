@@ -414,8 +414,8 @@ namespace        [URI]                      URI namespace that all concepts URIs
 uriPattern       string                     regular expression that all concept URIs are expected to match
 notationPattern  string                     regular expression that all primary notations should follow
 notationExamples [list] of string           list of some valid notations as examples
-concepts         [URL] or [set]             JSKOS API concepts endpoint returning all concepts in this scheme
-types            [URL] or [set]             JSKOS API types endpoint returning all [concept types] in this scheme
+concepts         [set]                      concepts in the scheme
+types            [set]                      [concept types] of concepts in this scheme
 distributions    [set]                      [Distributions] to access the content of the concept scheme
 extent           string                     Size of the concept scheme
 languages        [list] of language tags    Supported languages
@@ -500,13 +500,13 @@ the optional fields `@context`, `address`, `altLabel`, `changeNote`,
 
 field        type           definition
 ------------ -------------- --------------------------------------------------------------------------------------
-concepts     [URL] or [set] JSKOS API endpoint with [concepts] in this registry
-schemes      [URL] or [set] JSKOS API endpoint with [concept schemes] in this registry
-types        [URL] or [set] JSKOS API endpoint with [concept types] in this registry
-mappings     [URL] or [set] JSKOS API endpoint with [mappings] in this registry
-registries   [URL] or [set] JSKOS API endpoint with other registries in this registry
-concordances [URL] or [set] JSKOS API endpoint with [concordances] in this registry
-occurrences  [URL] or [set] JSKOS API endpoint with [occurrences] in this registry
+concepts     [set]          [concepts] in this registry
+schemes      [set]          [concept schemes] in this registry
+types        [set]          [concept types] in this registry
+mappings     [set]          [mappings] in this registry
+registries   [set]          other registries in this registry
+concordances [set]          [concordances] in this registry
+occurrences  [set]          [occurrences] in this registry
 extent       string         Size of the registry
 languages    [list]         Supported languages
 license      [set]          Licenses which the full registry content can be used under
@@ -591,7 +591,7 @@ optional fields `@context`, `address`, `altLabel`, `changeNote`,
 
 property      type             definition
 ------------- ---------------- ------------------------------------------------------
-mappings      [URL] or [set]   JSKOS API endpoint with [mappings] in this concordance
+mappings      [set]            [mappings] in this concordance
 distributions [set]            [Distributions] to access the concordance
 fromScheme    [concept scheme] Source concept scheme
 toScheme      [concept scheme] Target concept scheme
@@ -1058,6 +1058,7 @@ Public services to validate JSKOS data are included in instances of
 ### 0.5.0 (2022-0?-??) {.unnumbered}
 
 * Make clear concordance field name distributions (plural)
+* Remove fields for undefined JSKOS-API URLs
 
 ### 0.4.9 (2022-01-18) {.unnumbered}
 

@@ -55,26 +55,12 @@
       }
     },
     "concepts": {
-      "description": "JSKOS API concepts endpoint returning all concepts in this scheme",
-      "anyOf": [
-        {
-          "$ref": "resource.schema.json#/definitions/url"
-        },
-        {
-          "$ref": "concept.schema.json#/definitions/conceptSet"
-        }
-      ]
+      "description": "Concepts in this scheme",
+      "$ref": "concept.schema.json#/definitions/conceptSet"
     },
     "types": {
-      "description": "JSKOS API types endpoint returning all concept types in this scheme",
-      "anyOf": [
-        {
-          "$ref": "resource.schema.json#/definitions/url"
-        },
-        {
-          "$ref": "concept.schema.json#/definitions/conceptSet"
-        }
-      ]
+      "description": "Concept types of concepts in this scheme",
+      "$ref": "concept.schema.json#/definitions/conceptSet"
     },
     "distributions": {
       "description": "Distributions to access the content of the concept scheme",

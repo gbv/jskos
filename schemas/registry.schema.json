@@ -11,25 +11,25 @@
   ],
   "properties": {
     "concepts": {
-      "description": "JSKOS API endpoint with concepts in this registry"
+      "description": "Concepts in this registry"
     },
     "schemes": {
-      "description": "JSKOS API endpoint with concept schemes in this registry"
+      "description": "Concept schemes in this registry"
     },
     "types": {
-      "description": "JSKOS API endpoint with concept types in this registry"
+      "description": "Concept types in this registry"
     },
     "mappings": {
-      "description": "JSKOS API endpoint with mappings in this registry"
+      "description": "Mappings in this registry"
     },
     "registries": {
-      "description": "JSKOS API endpoint with other registries in this registry"
+      "description": "Other registries in this registry"
     },
     "concordances": {
-      "description": "JSKOS API endpoint with concordances in this registry"
+      "description": "Concordances in this registry"
     },
     "occurrences": {
-      "description": "JSKOS API endpoint with occurrences in this registry"
+      "description": "Occurrences in this registry"
     },
     "extent": {
       "description": "Size of the registry"

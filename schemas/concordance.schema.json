@@ -11,15 +11,8 @@
   ],
   "properties": {
     "mappings": {
-      "description": "JSKOS API endpoint with mappings in this concordance",
-      "anyOf": [
-        {
-          "$ref": "resource.schema.json#/definitions/url"
-        },
-        {
-          "$ref": "mapping.schema.json#/definitions/mappingSet"
-        }
-      ]
+      "description": "Mappings in this concordance",
+      "$ref": "mapping.schema.json#/definitions/mappingSet"
     },
     "distribution": {
       "description": "Distributions to access the concordance",

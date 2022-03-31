@@ -589,14 +589,14 @@ optional fields `@context`, `address`, `altLabel`, `changeNote`,
 `issued`, `location`, `modified`, `notation`, `note`, `partOf`, `prefLabel`, `publisher`,
 `scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`, `subject`, `type`, `uri`, and `url`). All fields except `fromScheme` and `toScheme` are optional.
 
-property     type             definition
------------- ---------------- ------------------------------------------------------
-mappings     [URL] or [set]   JSKOS API endpoint with [mappings] in this concordance
-distribution [set]            [Distributions] to access the concordance
-fromScheme   [concept scheme] Source concept scheme
-toScheme     [concept scheme] Target concept scheme
-extent       string           Size of the concordance
-license      [set]            License which the full concordance can be used under
+property      type             definition
+------------- ---------------- ------------------------------------------------------
+mappings      [URL] or [set]   JSKOS API endpoint with [mappings] in this concordance
+distributions [set]            [Distributions] to access the concordance
+fromScheme    [concept scheme] Source concept scheme
+toScheme      [concept scheme] Target concept scheme
+extent        string           Size of the concordance
+license       [set]            License which the full concordance can be used under
 
 The first element of field `type`, if given, MUST be the [item type] URI
 <http://rdfs.org/ns/void#Linkset>.

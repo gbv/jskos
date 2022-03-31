@@ -1030,7 +1030,7 @@ Applications should further add implicit RDF triples, such as `$someConcept
 rdf:type skos:Concept`, if such information can be derived from JSKOS by other
 means.
 
-## JSON Schemas {.unnumbered}
+## JSON Schemas and validation {.unnumbered}
 
 Experimental JSON Schemas exist but don't cover all aspects of JSKOS: 
 
@@ -1047,16 +1047,21 @@ Experimental JSON Schemas exist but don't cover all aspects of JSKOS:
 
 See NodeJS library [jskos-validate] for an implementation.
 
+Public services to validate JSKOS data are included in instances of
+[jskos-server] and at https://format.gbv.de/validate/.
+
 [jskos-validate]: https://www.npmjs.com/package/jskos-validate
+[jskos-validate]: https://www.npmjs.com/package/jskos-server
 
 ## Changelog {.unnumbered}
 
-### 0.4.10 (2022-0?-??) {.unnumbered}
+### 0.5.0 (2022-0?-??) {.unnumbered}
 
-* Change format of URI in JSON Schema from URI to IRI
+* Make clear concordance field name distributions (plural)
 
 ### 0.4.9 (2022-01-18) {.unnumbered}
 
+* Change format of URI in JSON Schema from URI to IRI
 * Change base format of URL in JSON Schema from URI to IRI
 
 ### 0.4.8 (2021-02-18) {.unnumbered}

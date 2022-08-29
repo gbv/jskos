@@ -545,6 +545,7 @@ mimetype       [URI] or string Internet Media Type (also known as MIME type)
 compressFormat [URI]           compression format of the distribution
 packageFormat  [URI]           packaging format when multiple files are grouped together
 license        [set]           license which the data can be used under
+size           string          Size of a distribution in bytes or literal such as "1.5 MB"
 
 The `format` field SHOULD reference a content format rather than its
 serialization and possible wrapping. The URI of JSKOS is
@@ -1065,7 +1066,7 @@ Public services to validate JSKOS data are included in instances of
 ### 0.5.0 (2022-08-29) {.unnumbered}
 
 * Make clear concordance field name distributions (plural)
-* Add license, compressFormat, packageFormat to distribution
+* Add license, compressFormat, packageFormat, size to distribution
 * Remove fields for undefined JSKOS-API URLs
 
 ### 0.4.9 (2022-01-18) {.unnumbered}

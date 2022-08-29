@@ -7,7 +7,7 @@
   "definitions": {
     "url": {
       "type": "string",
-      "format": "iri",
+      "format": "iri-reference",
       "pattern": "^https?://"
     },
     "non-negative-integer": {

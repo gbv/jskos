@@ -234,7 +234,7 @@ Position of the RMS Titanic as point:
 
 ## address
 
-An **address** is a JSON object with any of the following keys, each mapped to a string:
+An **address** is a JSON object with any of the following field, each mapped to a string:
 
 field    description
 -------- -----------
@@ -245,6 +245,17 @@ locality the locality (e.g., city)
 region   the region (e.g., state or province)
 code     the postal code
 country  the country name
+
+## checksum
+
+A **checksum** is a JSON object with two fields:
+
+field       type    description
+----------- ------- -----------
+algorithm   [URI]   checksum algorithm
+value       string  lower case hexidecimal encoded digest value
+
+The value of SHOULD be specified by a URI from SPDX vocabulary, e.g. <http://spdx.org/rdf/terms#checksumAlgorithm_sha256> for SHA-2 with 256 Bit (SHA-256).
 
 # Object types
 
@@ -537,15 +548,19 @@ optional fields `@context`, `address`, `altLabel`, `changeNote`,
 `issued`, `location`, `modified`, `notation`, `note`, `partOf`, `prefLabel`, `publisher`,
 `scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`, `subject`, `type`, `uri`, and `url`):
 
+Distributions mostly cover the [class Distribution](https://www.w3.org/TR/vocab-dcat-3/#Class:Distribution) from [Data Catalog Vocabulary](https://www.w3.org/TR/vocab-dcat-3/).
+
 property       type            definition
--------------- --------------- ---------------------------------------------
-download       [URL]           location of a file in given format
+-------------- --------------- ------------------------------------------------------------------
+download       [URL]           location of a file with distribution content in given format
+accessURL      [URL]           URL of an API or landing page to retrieve the distribution content
 format         [URI]           data format identifier of the distribution content
 mimetype       [URI] or string Internet Media Type (also known as MIME type)
 compressFormat [URI]           compression format of the distribution
 packageFormat  [URI]           packaging format when multiple files are grouped together
 license        [set]           license which the data can be used under
 size           string          Size of a distribution in bytes or literal such as "1.5 MB"
+checksum       [checksum]      Checksum of the download (algorithm and digest value)
 
 The `format` field SHOULD reference a content format rather than its
 serialization and possible wrapping. The URI of JSKOS is
@@ -961,6 +976,8 @@ The fields `PARTS` and `_id` in the following example does not belong to JSKOS:
 * R. Sanderson, P. Ciccarese, B. Young: *Web Annotation Data Model*.
   W3C Recommendation, February 2017. <https://www.w3.org/TR/annotation-model/>
 
+* SPDX: *SPDX 2.3*. <http://spdx.org/rdf/terms#>
+
 [RFC 2119]: https://tools.ietf.org/html/rfc2119
 [RFC 4627]: https://tools.ietf.org/html/rfc4627
 [RFC 3987]: https://tools.ietf.org/html/rfc3987
@@ -968,6 +985,11 @@ The fields `PARTS` and `_id` in the following example does not belong to JSKOS:
 [RFC 7946]: https://tools.ietf.org/html/rfc7946
 
 ## Informative references {.unnumbered}
+
+* R. Albertoni, D. Browning, S. Cox, A. Gonzalez Beltran, A. Perego, P. Winstanley:
+  *Data Catalog Vocabulary (DCAT) - Version 3*.
+  May 2022.
+  <https://www.w3.org/TR/vocab-dcat-3/>.
 
 * K. Alexander, R. Cyganiak, M. Hausenblas, Zhao, J.:
   *Describing Linked Datasets with the VoID Vocabulary*.
@@ -1066,7 +1088,7 @@ Public services to validate JSKOS data are included in instances of
 ### 0.5.0 (2022-08-29) {.unnumbered}
 
 * Make clear concordance field name distributions (plural)
-* Add license, compressFormat, packageFormat, size to distribution
+* Add license, compressFormat, packageFormat, size, checksum, accessURL to distribution
 * Remove fields for undefined JSKOS-API URLs
 
 ### 0.4.9 (2022-01-18) {.unnumbered}

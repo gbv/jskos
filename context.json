@@ -202,9 +202,12 @@
     "@container": "@set"
   },
   "download": "http://www.w3.org/ns/dcat#downloadURL",
+  "accessURL": "http://www.w3.org/ns/dcat#accessURL",
+  "checksum": "http://spdx.org/rdf/terms#checksum",
   "mimetype": "http://www.w3.org/ns/dcat#mediaType",
   "packageFormat": "http://www.w3.org/ns/dcat#packageFormat",
   "compressFormat": "http://www.w3.org/ns/dcat#compressFormat",
   "format": "http://purl.org/dc/terms/format",
-  "size": "http://www.w3.org/ns/dcat#byteSize"  
+  "size": "http://www.w3.org/ns/dcat#byteSize",
+  "value": "http://spdx.org/rdf/terms#checksumValue"  
 }

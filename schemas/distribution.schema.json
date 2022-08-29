@@ -37,6 +37,10 @@
       "description": "data format identifier of the file",
       "type": "string",
       "format": "iri"
+    },
+    "license": {
+      "description": "Licenses which the data can be used under",
+      "$ref": "concept.schema.json#/definitions/conceptSet"
     }
   }
 }

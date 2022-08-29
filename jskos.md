@@ -542,6 +542,7 @@ property     type           definition
 download     [URL]          location of a file in given format
 mimetype     string         Internet Media Type (also known as MIME type)
 format       [URI]          data format identifier of the file
+license      [set]          license which the data can be used under
 
 Field `download` is mandatory but this requirement will be dropped in a later
 version of this specification.
@@ -1055,9 +1056,10 @@ Public services to validate JSKOS data are included in instances of
 
 ## Changelog {.unnumbered}
 
-### 0.5.0 (2022-0?-??) {.unnumbered}
+### 0.5.0 (2022-08-29) {.unnumbered}
 
 * Make clear concordance field name distributions (plural)
+* Add license field to distribution
 * Remove fields for undefined JSKOS-API URLs
 
 ### 0.4.9 (2022-01-18) {.unnumbered}

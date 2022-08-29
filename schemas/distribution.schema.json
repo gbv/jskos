@@ -33,10 +33,17 @@
       "description": "Internet Media Type (also known as MIME type)",
       "type": "string"
     },
+    "compressFormat": {
+      "description": "compression format of the distribution",
+      "$ref": "resource.schema.json#/definitions/uri"
+    },
+    "packageFormat": {
+      "description": "packaging format when multiple files are grouped together",
+      "$ref": "resource.schema.json#/definitions/uri"
+    },
     "format": {
       "description": "data format identifier of the file",
-      "type": "string",
-      "format": "iri"
+      "$ref": "resource.schema.json#/definitions/uri"
     },
     "license": {
       "description": "Licenses which the data can be used under",

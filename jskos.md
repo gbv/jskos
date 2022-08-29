@@ -537,19 +537,20 @@ optional fields `@context`, `address`, `altLabel`, `changeNote`,
 `issued`, `location`, `modified`, `notation`, `note`, `partOf`, `prefLabel`, `publisher`,
 `scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`, `subject`, `type`, `uri`, and `url`):
 
-property     type           definition
------------- -------------- ---------------------------------------------
-download     [URL]          location of a file in given format
-mimetype     string         Internet Media Type (also known as MIME type)
-format       [URI]          data format identifier of the file
-license      [set]          license which the data can be used under
-
-Field `download` is mandatory but this requirement will be dropped in a later
-version of this specification.
+property       type            definition
+-------------- --------------- ---------------------------------------------
+download       [URL]           location of a file in given format
+format         [URI]           data format identifier of the distribution content
+mimetype       [URI] or string Internet Media Type (also known as MIME type)
+compressFormat [URI]           compression format of the distribution
+packageFormat  [URI]           packaging format when multiple files are grouped together
+license        [set]           license which the data can be used under
 
 The `format` field SHOULD reference a content format rather than its
 serialization and possible wrapping. The URI of JSKOS is
 <http://format.gbv.de/jskos>.
+
+Fields `mimetype`, `compressFormat`, and `packageFormat` SHOULD be IANA media type URIs, if available.  Field `mimetype` MAY be a string for backwards-compatibility.
 
 The first element of field `type`, if given, MUST be the [item type] URI
 <http://www.w3.org/ns/dcat#Distribution>.
@@ -950,12 +951,14 @@ The fields `PARTS` and `_id` in the following example does not belong to JSKOS:
 * M. Dürst, M. Suignard: *Internationalized Resource Identifiers (IRIs)*.
   RFC 3987, January 2005. <https://tools.ietf.org/html/rfc3987>
 
+* IANA: *Media Types*.
+  <https://www.iana.org/assignments/media-types/>
+
 * A. Phillips, M. Davis: *Tags for Identifying Languages*.
   RFC 3066, September 2006. <https://tools.ietf.org/html/rfc3066>
 
 * R. Sanderson, P. Ciccarese, B. Young: *Web Annotation Data Model*.
   W3C Recommendation, February 2017. <https://www.w3.org/TR/annotation-model/>
-
 
 [RFC 2119]: https://tools.ietf.org/html/rfc2119
 [RFC 4627]: https://tools.ietf.org/html/rfc4627
@@ -1062,7 +1065,7 @@ Public services to validate JSKOS data are included in instances of
 ### 0.5.0 (2022-08-29) {.unnumbered}
 
 * Make clear concordance field name distributions (plural)
-* Add license field to distribution
+* Add license, compressFormat, packageFormat to distribution
 * Remove fields for undefined JSKOS-API URLs
 
 ### 0.4.9 (2022-01-18) {.unnumbered}

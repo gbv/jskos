@@ -81,8 +81,7 @@
       "description": "URIs of types",
       "type": "array",
       "items": {
-        "type": "string",
-        "format": "iri"
+        "$ref": "#/definitions/uri"
       }
     },
     "created": {

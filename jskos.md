@@ -775,7 +775,10 @@ Item types MAY be expressed with the following [concept types]:
   },
   {
     "uri": "http://rdfs.org/ns/void#Linkset",
-    "identifier": [ "http://purl.org/spar/fabio/VocabularyMapping" ],
+    "identifier": [
+      "http://purl.org/spar/fabio/VocabularyMapping",
+      "http://rdf-vocabulary.ddialliance.org/xkos#Correspondence"
+    ],
     "prefLabel": { "en": "concordance" },
     "altLabel": { "en": [ "linkset" ] }
   },

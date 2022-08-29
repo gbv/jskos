@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "url": {
+      "type": "string",
+      "format": "iri-reference",
+      "pattern": "^https?://"
+    },
+    "uri": {
+      "type": "string",
+      "format": "iri"
+    }
+  }
+}
+ 

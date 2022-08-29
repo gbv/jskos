@@ -1,0 +1,60 @@
+{
+  "$id": "https://gbv.github.io/jskos/bundle.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "JSKOS Concept Bundle",
+  "description": "A concept bundle is a group of concepts. Concept bundles can be used for mappings, composed concepts, and occurrences.",
+  "type": "object",
+  "$comment": "TODO: adjust sets to more specific ones, currently requires exactly one of the three properties to exist (instead of at most one)",
+  "properties": {
+    "memberSet": {
+      "description": "concepts in this bundle (unordered)",
+      "$ref": "concept.schema.json#/definitions/conceptSet"
+    },
+    "memberList": {
+      "description": "concepts in this bundle (ordered)",
+      "$ref": "concept.schema.json#/definitions/conceptSet"
+    },
+    "memberChoice": {
+      "description": "concepts in this bundle to choose from",
+      "$ref": "concept.schema.json#/definitions/conceptSet"
+    },
+    "memberRoles": {
+      "description": "sets of concepts, specified with a role",
+      "type": "object",
+      "propertyNames": {
+        "format": "iri"
+      },
+      "patternProperties": {
+        ".*": {
+          "$ref": "concept.schema.json#/definitions/conceptSet"
+        }
+      }
+    }
+  },
+  "oneOf": [
+    {
+      "type": "object",
+      "required": [
+        "memberSet"
+      ]
+    },
+    {
+      "type": "object",
+      "required": [
+        "memberList"
+      ]
+    },
+    {
+      "type": "object",
+      "required": [
+        "memberChoice"
+      ]
+    },
+    {
+      "type": "object",
+      "required": [
+        "memberRoles"
+      ]
+    }
+  ]
+}

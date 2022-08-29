@@ -1,0 +1,82 @@
+{
+  "$id": "https://gbv.github.io/jskos/scheme.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "JSKOS Concept Scheme",
+  "description": "compiled collections of concepts (knowledge organization systems)",
+  "type": "object",
+  "definitions": {
+    "schemeSet": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "null"
+          },
+          {
+            "$ref": "scheme.schema.json#"
+          }
+        ]
+      }
+    }
+  },
+  "allOf": [
+    {
+      "$ref": "item.schema.json"
+    }
+  ],
+  "$comment": "TODO: types, languages",
+  "properties": {
+    "topConcepts": {
+      "description": "top concepts of the scheme",
+      "$ref": "concept.schema.json#/definitions/conceptSet"
+    },
+    "versionOf": {
+      "description": "concept scheme which this scheme is a version or edition of",
+      "$ref": "scheme.schema.json#/definitions/schemeSet"
+    },
+    "namespace": {
+      "description": "URI namespace that all concepts URIs are expected to start with",
+      "type": "string",
+      "format": "iri"
+    },
+    "uriPattern": {
+      "description": "URI pattern that all concept URIs are expected to match",
+      "type": "string"
+    },
+    "notationPattern": {
+      "description": "regular expression that all primary notations should follow",
+      "type": "string"
+    },
+    "notationExamples": {
+      "description": "list of some valid notations as examples",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "concepts": {
+      "description": "Concepts in this scheme",
+      "$ref": "concept.schema.json#/definitions/conceptSet"
+    },
+    "types": {
+      "description": "Concept types of concepts in this scheme",
+      "$ref": "concept.schema.json#/definitions/conceptSet"
+    },
+    "distributions": {
+      "description": "Distributions to access the content of the concept scheme",
+      "$ref": "distribution.schema.json#/definitions/distributionSet"
+    },
+    "extent": {
+      "description": "Size of the concept scheme",
+      "type": "string"
+    },
+    "languages": {
+      "description": "Supported languages",
+      "$ref": "resource.schema.json#/definitions/list"
+    },
+    "license": {
+      "description": "Licenses which the full scheme can be used under",
+      "$ref": "concept.schema.json#/definitions/conceptSet"
+    }
+  }
+}

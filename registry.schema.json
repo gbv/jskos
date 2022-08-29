@@ -1,0 +1,44 @@
+{
+  "$id": "https://gbv.github.io/jskos/registry.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "JSKOS Registry",
+  "description": "collections of items (concepts, concept schemes, ...)",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "item.schema.json"
+    }
+  ],
+  "properties": {
+    "concepts": {
+      "description": "Concepts in this registry"
+    },
+    "schemes": {
+      "description": "Concept schemes in this registry"
+    },
+    "types": {
+      "description": "Concept types in this registry"
+    },
+    "mappings": {
+      "description": "Mappings in this registry"
+    },
+    "registries": {
+      "description": "Other registries in this registry"
+    },
+    "concordances": {
+      "description": "Concordances in this registry"
+    },
+    "occurrences": {
+      "description": "Occurrences in this registry"
+    },
+    "extent": {
+      "description": "Size of the registry"
+    },
+    "languages": {
+      "description": "Supported languages"
+    },
+    "license": {
+      "description": "Licenses which the full registry content can be used under"
+    }
+  }
+}

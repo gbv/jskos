@@ -1,0 +1,122 @@
+{
+  "$id": "https://gbv.github.io/jskos/resource.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "JSKOS Resource",
+  "description": "all kinds of entities",
+  "type": "object",
+  "definitions": {
+    "url": {
+      "type": "string",
+      "format": "iri",
+      "pattern": "^https?://"
+    },
+    "non-negative-integer": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "percentage": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "date": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "date"
+        },
+        {
+          "type": "string",
+          "format": "date-time"
+        },
+        {
+          "type": "string",
+          "pattern": "^\\d{4}-[01]\\d-[0123]\\dT[0-2]\\d:[0-5]\\d:[0-5]\\d$"
+        },
+        {
+          "type": "string",
+          "pattern": "^\\d{4}-[01]\\d$"
+        },
+        {
+          "type": "string",
+          "pattern": "^\\d{4}$"
+        }
+      ]
+    },
+    "list": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "null"
+          },
+          {
+            "type": "string"
+          }
+        ]
+      }
+    }
+  },
+  "properties": {
+    "@context": {
+      "description": "reference to a JSON-LD context document",
+      "type": "string",
+      "format": "iri",
+      "default": "https://gbv.github.io/jskos/context.json"
+    },
+    "uri": {
+      "description": "primary globally unique identifier",
+      "type": "string",
+      "format": "iri"
+    },
+    "identifier": {
+      "description": "additional identifiers",
+      "$ref": "#/definitions/list"
+    },
+    "type": {
+      "description": "URIs of types",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "iri"
+      }
+    },
+    "created": {
+      "description": "date of creation",
+      "$ref": "#/definitions/date"
+    },
+    "issued": {
+      "description": "date of publication",
+      "$ref": "#/definitions/date"
+    },
+    "modified": {
+      "description": "date of last modification",
+      "$ref": "#/definitions/date"
+    },
+    "creator": {
+      "description": "agent primarily responsible for creation of resource",
+      "$ref": "concept.schema.json#/definitions/conceptSet"
+    },
+    "contributor": {
+      "description": "agent responsible for making contributions to the resource",
+      "$ref": "concept.schema.json#/definitions/conceptSet"
+    },
+    "publisher": {
+      "description": "agent responsible for making the resource available",
+      "$ref": "concept.schema.json#/definitions/conceptSet"
+    },
+    "partOf": {
+      "description": "resources which this resource is part of (if no other field applies)",
+      "$ref": "concept.schema.json#/definitions/conceptSet"
+    },
+    "annotations": {
+      "type": "array",
+      "items": {
+        "$ref": "annotation.schema.json"
+      }
+    }
+  },
+  "patternProperties": {
+    "^_|^[A-Z0-9]+$": {}
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "$id": "https://gbv.github.io/jskos/distribution.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "JSKOS Distribution",
+  "description": "available forms to access the content of an item",
+  "type": "object",
+  "definitions": {
+    "distributionSet": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "null"
+          },
+          {
+            "$ref": "distribution.schema.json#"
+          }
+        ]
+      }
+    }
+  },
+  "allOf": [
+    {
+      "$ref": "item.schema.json"
+    }
+  ],
+  "properties": {
+    "download": {
+      "description": "location of a file in given format",
+      "$ref": "resource.schema.json#/definitions/url"
+    },
+    "size": {
+      "description": "Size of the distribution in bytes",
+      "type": "string"
+    },
+    "mimetype": {
+      "description": "Internet Media Type (also known as MIME type)",
+      "type": "string"
+    },
+    "compressFormat": {
+      "description": "compression format of the distribution",
+      "$ref": "resource.schema.json#/definitions/uri"
+    },
+    "packageFormat": {
+      "description": "packaging format when multiple files are grouped together",
+      "$ref": "resource.schema.json#/definitions/uri"
+    },
+    "format": {
+      "description": "data format identifier of the file",
+      "$ref": "resource.schema.json#/definitions/uri"
+    },
+    "license": {
+      "description": "Licenses which the data can be used under",
+      "$ref": "concept.schema.json#/definitions/conceptSet"
+    }
+  }
+}

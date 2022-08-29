@@ -7,8 +7,13 @@
   "definitions": {
     "url": {
       "type": "string",
-      "format": "iri",
+      "format": "iri-reference",
       "pattern": "^https?://"
+    },
+    "uri": {
+      "type": "string",
+      "format": "iri-reference",
+      "pattern": "^[a-z]+:"
     },
     "non-negative-integer": {
       "type": "integer",
@@ -66,8 +71,7 @@
     },
     "uri": {
       "description": "primary globally unique identifier",
-      "type": "string",
-      "format": "iri"
+      "$ref": "#/definitions/uri"
     },
     "identifier": {
       "description": "additional identifiers",

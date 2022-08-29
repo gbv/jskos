@@ -29,6 +29,10 @@
       "description": "location of a file in given format",
       "$ref": "resource.schema.json#/definitions/url"
     },
+    "accessURL": {
+      "description": "location of an API or landing page",
+      "$ref": "resource.schema.json#/definitions/url"
+    },
     "size": {
       "description": "Size of the distribution in bytes",
       "type": "string"
@@ -52,6 +56,20 @@
     "license": {
       "description": "Licenses which the data can be used under",
       "$ref": "concept.schema.json#/definitions/conceptSet"
+    },
+    "checksum": {
+      "description": "Checksum of the download (algorithm and digest value)",
+      "type": "object",
+      "properties": {
+        "algorithm": {
+          "$ref": "resource.schema.json#/definitions/uri"
+        },
+        "value": {
+          "type": "string",
+          "pattern": "^[0-9a-f]+$"
+        }
+      },
+      "required": [ "algorithm", "value" ]
     }
   }
 }

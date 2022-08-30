@@ -11,9 +11,18 @@
       "pattern": "^https?://"
     },
     "uri": {
-      "type": "string",
-      "format": "iri-reference",
-      "pattern": "^[a-z]+:"
+      "$comment": "workaround for https://github.com/luzlab/ajv-formats-draft2019/issues/16",
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "iri-reference",
+          "pattern": "^[a-z]+:"
+        },
+        {
+          "type": "string",
+          "format": "uri"
+        }
+      ]
     },
     "non-negative-integer": {
       "type": "integer",

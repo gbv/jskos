@@ -1,7 +1,7 @@
-const glob = require("glob")
-const fs = require("fs")
+import fs from "fs"
+import glob from "glob"
 
-module.exports = (name, types, test) => {
+export default (name, types, test) => {
   describe(name, () => {
     for (let type of types) {
       describe(type, () => {

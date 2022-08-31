@@ -1,9 +1,17 @@
-const fs = require("fs")
-const assert = require("assert")
-const testExamples = require('./lib/test-examples.js')
+import fs from "fs"
+import assert from "assert"
+import testExamples from "./lib/test-examples.js"
+
+// Set up Ajv JSON schema validator
+import Ajv from "ajv"
+import ajvFormats from "ajv-formats"
+import ajvFormats2019 from "ajv-formats-draft2019"
+
+const ajv = new Ajv()
+ajvFormats(ajv)
+ajvFormats2019(ajv)
 
 // load schemas
-const ajv = new require("ajv")({ extendRefs: true, errorDataPath: 'property' })
 const types = "resource item concept scheme mapping concordance registry distribution occurrence bundle annotation".split(" ")
 
 let schemas = {}
@@ -16,7 +24,7 @@ for (let type of types) {
   validate[type] = ajv.compile(schemas[type])
 }
 
-
+// validate examples against schemas
 testExamples("JSON Schema examples", types, (objects, file, type) => {
   for (let object of objects) {
     if (validate[type](object)) {

@@ -1,7 +1,8 @@
-const fs = require("fs")
-const assert = require("assert")
-const testExamples = require('./lib/test-examples.js')
-const jsonld = require('jsonld')
+import fs from "fs"
+import assert from "assert"
+import testExamples from "./lib/test-examples.js"
+
+import jsonld from "jsonld"
 
 const types = "resource item concept scheme mapping concordance registry distribution occurrence bundle".split(" ")
 

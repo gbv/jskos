@@ -1,0 +1,213 @@
+{
+  "uri": "@id",
+  "type": {
+    "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+    "@type": "@id",
+    "@container": "@set"
+  },
+  "created": {
+    "@id": "http://purl.org/dc/terms/created",
+    "@type": "xsd:date"
+  },
+  "issued": {
+    "@id": "http://purl.org/dc/terms/issued",
+    "@type": "xsd:date"
+  },
+  "modified": {
+    "@id": "http://purl.org/dc/terms/modified",
+    "@type": "xsd:date"
+  },
+  "creator": {
+    "@id": "http://purl.org/dc/terms/creator",
+    "@container": "@set"
+  },
+  "contributor": {
+    "@id": "http://purl.org/dc/terms/contributor",
+    "@container": "@set"
+  },
+  "publisher": {
+    "@id": "http://purl.org/dc/terms/publisher",
+    "@container": "@set"
+  },
+  "partOf": {
+    "@id": "http://purl.org/dc/terms/isPartOf",
+    "@container": "@set"
+  },
+
+  "url": {
+    "@id": "http://xmlns.com/foaf/0.1/page",
+    "@type": "@id"
+  },
+  "identifier": {
+    "@id": "http://purl.org/dc/terms/identifier",
+    "@container": "@set"
+  },
+  "notation": {
+    "@id": "http://www.w3.org/2004/02/skos/core#notation",
+    "@container": "@set"
+  },
+  "prefLabel": {
+    "@id": "http://www.w3.org/2004/02/skos/core#prefLabel",
+    "@container": "@language"
+  },
+  "altLabel": {
+    "@id": "http://www.w3.org/2004/02/skos/core#altLabel",
+    "@container": "@language"
+  },
+  "hiddenLabel": {
+    "@id": "http://www.w3.org/2004/02/skos/core#hiddenLabel",
+    "@container": "@language"
+  },
+  "note": {
+    "@id": "http://www.w3.org/2004/02/skos/core#note",
+    "@container": "@language"
+  },
+  "scopeNote": {
+    "@id": "http://www.w3.org/2004/02/skos/core#scopeNote",
+    "@container": "@language"
+  },
+  "definition": {
+    "@id": "http://www.w3.org/2004/02/skos/core#definition",
+    "@container": "@language"
+  },
+  "example": {
+    "@id": "http://www.w3.org/2004/02/skos/core#example",
+    "@container": "@language"
+  },
+  "historyNote": {
+    "@id": "http://www.w3.org/2004/02/skos/core#historyNote",
+    "@container": "@language"
+  },
+  "editorialNote": {
+    "@id": "http://www.w3.org/2004/02/skos/core#editorialNote",
+    "@container": "@language"
+  },
+  "changeNote": {
+    "@id": "http://www.w3.org/2004/02/skos/core#changeNote",
+    "@container": "@language"
+  },
+  "subject": {
+    "@id": "http://purl.org/dc/terms/subject",
+    "@container": "@set"
+  },
+  "subjectOf": {
+    "@reverse": "http://purl.org/dc/terms/subject",
+    "@container": "@set"
+  },
+  "source": {
+    "@id": "http://purl.org/dc/terms/source",
+    "@container": "@set"
+  },
+  "depiction": {
+    "@id": "http://xmlns.com/foaf/0.1/depiction",
+    "@type": "@id",
+    "@container": "@set"
+  },
+  "startPlace": {
+    "@id": "https://schema.org/location",
+    "@container": "@set"
+  },
+  "endPlace": {
+    "@id": "https://schema.org/location",
+    "@container": "@set"
+  },
+
+  "narrower": {
+    "@id": "http://www.w3.org/2004/02/skos/core#narrower",
+    "@container": "@set"
+  },
+  "broader": {
+    "@id": "http://www.w3.org/2004/02/skos/core#broader",
+    "@container": "@set"
+  },
+  "related": {
+    "@id": "http://www.w3.org/2004/02/skos/core#related",
+    "@container": "@set"
+  },
+  "previous": {
+    "@id": "http://rdf-vocabulary.ddialliance.org/xkos#previous",
+    "@container": "@set"
+  },
+  "next": {
+    "@id": "http://rdf-vocabulary.ddialliance.org/xkos#next",
+    "@container": "@set"
+  },
+  
+  "startDate": "http://schema.org/startDate",
+  "endDate": "http://schema.org/endDate",
+  "relatedDate": "http://www.w3.org/2000/01/rdf-schema#seeAlso",
+  "location": "http://schema.org/location",
+  "address": "https://schema.org/address",
+  "street": "https://schema.org/streetAddress",
+  "ext": "https://schema.org/streetAddress",
+  "pobox": "https://schema.org/postOfficeBoxNumber",
+  "locality": "https://schema.org/addressLocality",
+  "region": "https://schema.org/addressRegion",
+  "code": "https://schema.org/postalCode",
+  "country": "https://schema.org/addressCountry",
+
+  "ancestors": {
+    "@id": "http://www.w3.org/2004/02/skos/core#broaderTransitive",
+    "@container": "@set"
+  },
+  "inScheme": {
+    "@id": "http://www.w3.org/2004/02/skos/core#inScheme",
+    "@container": "@set"
+  },
+  "topConceptOf": {
+    "@id": "http://www.w3.org/2004/02/skos/core#topConceptOf",
+    "@container": "@set"
+  },
+
+  "topConcepts": {
+    "@id": "http://www.w3.org/2004/02/skos/core#hasTopConcept",
+    "@container": "@set"
+  },
+  "versionOf": {
+    "@id": "http://purl.org/dc/terms/isVersionOf",
+    "@container": "@set"
+  },
+  "extent": "http://purl.org/dc/terms/extent",
+  "languages": {
+    "@id": "http://purl.org/dc/terms/language",
+    "@container": "@set"
+  },
+  "license": {
+    "@id": "http://purl.org/dc/terms/license",
+    "@container": "@set"
+  },
+  "namespace": "http://rdfs.org/ns/void#uriSpace",
+  "uriPattern": "http://rdfs.org/ns/void#voidRegexPattern",
+
+  "fromScheme": "http://rdfs.org/ns/void#subjectsTarget",
+  "toScheme": "http://rdfs.org/ns/void#objectsTarget",
+
+  "memberList": {
+    "@id": "http://www.loc.gov/mads/rdf/v1#componentList",
+    "@container": "@list"
+  },
+  "memberSet": {
+    "@id": "http://www.w3.org/2004/02/skos/core#member",
+    "@container": "@set"
+  },
+  "memberChoice": {
+    "@id": "http://www.w3.org/2004/02/skos/core#member",
+    "@container": "@set"
+  },
+
+  "count": "http://rdfs.org/ns/void#entities",
+
+  "distributions": {
+    "@id": "http://www.w3.org/ns/dcat#distribution",
+    "@container": "@set"
+  },
+  "download": "http://www.w3.org/ns/dcat#downloadURL",
+  "accessURL": "http://www.w3.org/ns/dcat#accessURL",
+  "checksum": "http://spdx.org/rdf/terms#checksum",
+  "mimetype": "http://www.w3.org/ns/dcat#mediaType",
+  "packageFormat": "http://www.w3.org/ns/dcat#packageFormat",
+  "compressFormat": "http://www.w3.org/ns/dcat#compressFormat",
+  "format": "http://purl.org/dc/terms/format",
+  "size": "http://www.w3.org/ns/dcat#byteSize",
+  "value": "http://spdx.org/rdf/terms#checksumValue"  
+}

@@ -22,7 +22,7 @@
       "description": "sets of concepts, specified with a role",
       "type": "object",
       "propertyNames": {
-        "format": "iri"
+        "$ref": "resource.schema.json#/definitions/uri"
       },
       "patternProperties": {
         ".*": {

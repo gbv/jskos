@@ -33,8 +33,7 @@
     },
     "id": {
       "description": "globally unique identifier of the annotation",
-      "type": "string",
-      "format": "iri"
+      "$ref": "resource.schema.json#/definitions/uri"
     },
     "type": {
       "const": "Annotation"
@@ -57,8 +56,7 @@
           ]
         },
         {
-          "type": "string",
-          "format": "iri"
+          "$ref": "resource.schema.json#/definitions/uri"
         }
       ]
     },
@@ -66,8 +64,7 @@
       "description": "object being annotated, or its URI",
       "oneOf": [
         {
-          "type": "string",
-          "format": "iri"
+          "$ref": "resource.schema.json#/definitions/uri"
         },
         {
           "$ref": "annotation.schema.json#"

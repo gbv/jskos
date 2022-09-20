@@ -14,7 +14,7 @@
       "description": "Mappings in this concordance",
       "$ref": "mapping.schema.json#/definitions/mappingSet"
     },
-    "distribution": {
+    "distributions": {
       "description": "Distributions to access the concordance",
       "$ref": "distribution.schema.json#/definitions/distributionSet"
     },

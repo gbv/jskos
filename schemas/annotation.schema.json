@@ -67,7 +67,18 @@
           "$ref": "resource.schema.json#/definitions/uri"
         },
         {
-          "$ref": "annotation.schema.json#"
+          "type": "object",
+          "required": [
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "$ref": "resource.schema.json#/definitions/uri"
+            },
+            "state": {
+              "type": "object"
+            }
+          }
         },
         {
           "$ref": "concept.schema.json#"

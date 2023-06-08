@@ -355,18 +355,18 @@ fields (in addition to the optional fields `@context`, `address`, `altLabel`,
 `subjectOf`, `subject`, `type`, `uri`, `url`, `memberSet`, `memberList`, 
 `memberChoice`, and `memberRoles`):
 
-field        type       description
------------- ---------- -------------------------------------------------------------------------------
-narrower     [set]      narrower concepts
-broader      [set]      broader concepts
-related      [set]      generally related concepts
-previous     [set]      related concepts ordered somehow before the concept
-next         [set]      related concepts ordered somehow after the concept
-ancestors    [set]      list of ancestors, possibly up to a top concept
-inScheme     [set]      [concept schemes] or URI of the concept schemes
-topConceptOf [set]      [concept schemes] or URI of the concept schemes
-mappings     [set]      [mappings] from and/or to this concept
-occurrences  [set]      [occurrences] with this concept
+field        type                       description
+------------ -------------------------- -------------------------------------------------------------------------------
+narrower     [set]                      narrower concepts
+broader      [set]                      broader concepts
+related      [set]                      generally related concepts
+previous     [set]                      related concepts ordered somehow before the concept
+next         [set]                      related concepts ordered somehow after the concept
+ancestors    [set]                      list of ancestors, possibly up to a top concept
+inScheme     [set] of [concept schemes] concept schemes the concept belongs to
+topConceptOf [set] of [concept schemes] concept schemes the concept is a top concept of
+mappings     [set] of [mappings]        mappings from and/or to this concept
+occurrences  [set] of [occurrences]     occurrences with this concept
 
 The first element of field `type`, if given, MUST be the [item type] URI
 <http://www.w3.org/2004/02/skos/core#Concept>.
@@ -425,9 +425,9 @@ namespace        [URI]                      URI namespace that all concepts URIs
 uriPattern       string                     regular expression that all concept URIs are expected to match
 notationPattern  string                     regular expression that all primary notations should follow
 notationExamples [list] of string           list of some valid notations as examples
-concepts         [set]                      concepts in the scheme
-types            [set]                      [concept types] of concepts in this scheme
-distributions    [set]                      [Distributions] to access the content of the concept scheme
+concepts         [set] of [concepts]        concepts in the scheme
+types            [set] of [concepts]        [concept types] of concepts in this scheme
+distributions    [set] of [distributions]   [Distributions] to access the content of the concept scheme
 extent           string                     Size of the concept scheme
 languages        [list] of language tags    Supported languages
 license          [set]                      Licenses which the full scheme can be used under
@@ -509,18 +509,18 @@ the optional fields `@context`, `address`, `altLabel`, `changeNote`,
 `issued`, `location`, `modified`, `notation`, `note`, `partOf`, `prefLabel`, `publisher`,
 `scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`, `subject`, `type`, `uri`, and `url`):
 
-field        type           definition
------------- -------------- --------------------------------------------------------------------------------------
-concepts     [set]          [concepts] in this registry
-schemes      [set]          [concept schemes] in this registry
-types        [set]          [concept types] in this registry
-mappings     [set]          [mappings] in this registry
-registries   [set]          other registries in this registry
-concordances [set]          [concordances] in this registry
-occurrences  [set]          [occurrences] in this registry
-extent       string         Size of the registry
-languages    [list]         Supported languages
-license      [set]          Licenses which the full registry content can be used under
+field        type                       definition
+------------ -------------------------- --------------------------------------------------------------------------------------
+concepts     [set] of [concepts]        [concepts] in this registry
+schemes      [set] of [concept schemes] [concept schemes] in this registry
+types        [set] of [concepts]        [concept types] in this registry
+mappings     [set] of [mappings]        [mappings] in this registry
+registries   [set] of [registries]      other registries in this registry
+concordances [set] of [concordances]    [concordances] in this registry
+occurrences  [set] of [occurrences]     [occurrences] in this registry
+extent       string                     Size of the registry
+languages    [list]                     Supported languages
+license      [set]                      Licenses which the full registry content can be used under
 
 The first element of field `type`, if given, MUST be the [item type] URI
 <http://purl.org/cld/cdtype/CatalogueOrIndex>.
@@ -607,14 +607,14 @@ optional fields `@context`, `address`, `altLabel`, `changeNote`,
 `issued`, `location`, `modified`, `notation`, `note`, `partOf`, `prefLabel`, `publisher`,
 `scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`, `subject`, `type`, `uri`, and `url`). All fields except `fromScheme` and `toScheme` are optional.
 
-property      type             definition
-------------- ---------------- ------------------------------------------------------
-mappings      [set]            [mappings] in this concordance
-distributions [set]            [Distributions] to access the concordance
-fromScheme    [concept scheme] Source concept scheme
-toScheme      [concept scheme] Target concept scheme
-extent        string           Size of the concordance
-license       [set]            License which the full concordance can be used under
+property      type                      definition
+------------- ------------------------- ------------------------------------------------------
+mappings      [set] of [mappings]       [mappings] in this concordance
+distributions [set] of [distributions]  [distributions] to access the concordance
+fromScheme    [concept scheme]          Source concept scheme
+toScheme      [concept scheme]          Target concept scheme
+extent        string                    Size of the concordance
+license       [set]                     License which the full concordance can be used under
 
 The first element of field `type`, if given, MUST be the [item type] URI
 <http://rdfs.org/ns/void#Linkset>.
@@ -678,6 +678,10 @@ When mappings are dynamically created it can be useful to assign a non-HTTP URI
 such as `urn:uuid:687b973c-38ab-48fb-b4ea-2b77abf557b7`.
 </div>
 
+<div class="note">
+Applications MAY use concept mappings to derive simple statements with [SKOS Mapping Properties](https://www.w3.org/TR/skos-reference/#mapping)
+but SKOS integrity rules for mappings do not apply automatically.
+</div>
 
 ## Concept Bundles
 
@@ -691,12 +695,12 @@ A **concept bundle** is a group of [concepts]. Concept bundles can be used for
 
 A concept bundle is a JSON object with at most one of the following fields:
 
-field       type          definition
------------ ------------- ----------------------------------------------------------------------
-memberSet   [set]         [concepts] in this bundle (unordered)
-memberList  ordered [set] [concepts] in this bundle (ordered)
-memberChoice [set]        [concepts] in this bundle to choose from
-memberRoles object        Object mapping role URIs to [set]s of [concepts]
+field       type                        definition
+----------- --------------------------- ----------------------------------------------------------------------
+memberSet   [set] of [concepts]         [concepts] in this bundle (unordered)
+memberList  ordered [set] of [concepts] [concepts] in this bundle (ordered)
+memberChoice [set] of [concepts]        [concepts] in this bundle to choose from
+memberRoles object                      Object mapping role URIs to [set]s of [concepts]
 
 Keys of a `memberRoles` object MUST be URIs and their values MUST be of type [set].
 
@@ -891,17 +895,42 @@ related concepts, and other possible concept properties:
 </div>
 
 
-## Integrity rules
+## Inference rules and integrity constraints
 
-Integrity rules of SKOS should be respected. A later version of this
-specification may list these rules in more detail and also explain converting
-between SKOS and JSKOS.
+### Inference rules
+
+JSKOS records can automatically be expanded with the following inference rules:
+
+- Object types of set elements can be derived from fields the set is used in. For instance members of a set referenced by field `inScheme` can be assumed to be [concept schemes] (SKOS integritry rule S4) and members of a set referenced by field `topConcepts` can be assumed to be [concepts] (SKOS integritry rule S6).
+- If a concept scheme *S* is in set `topConceptOf` of a concept *C* then *S* can be assumed to also be in the set `inScheme` of *C* (SKOS integrity rule S7)
+- If a concept *C* is in set `topConcept` of a concept scheme *S* then *C* can be assumed to be in the set `topConceptOf` of *S* and vice versa (SKOS integrity rule S8)
+
+<!--
+TODO: skos:changeNote, skos:definition, skos:editorialNote, skos:example, skos:historyNote and skos:scopeNote are each sub-properties of skos:note (SKOS integrity rule S8)
+
+TODO: ancestors => broaderTransitive (S22)
+
+TODO: related (S23)
+
+TODO: broader/narrower (S26)
+
+TODO: Mappings (S38-S46)
+-->
+
+### Integritry constraints
+
+Integrity constraints of SKOS SHOULD be respected. Applications MAY reject JSKOS data violating the constraints.
+
+- [concepts], [concept schemes], [registries], [distributions], [concordances], [concept mappings] are pairwise disjoint (SKOS integrity rule S9)
+- 
+
+<!-- TODO: skos:related is disjoint with the property skos:broaderTransitive (S27) -->
+
+*this list is not complete yet*
 
 <!--
 
 # Converting JSKOS to SKOS and vice versa
-
-Notation and label properties do not imply a domain, so they can be used for both, concepts and concept schemes.
 
 Concept types in RDF correspond to subclasses of [SKOS Concept].
 
@@ -921,16 +950,12 @@ A Concept Scheme represents a [SKOS Concept Scheme].
 
 ## Extension with custom fields
 
-<div class="note">
-The following rule may be changed in the final version of JSKOS specification!
-</div>
-
 A JSKOS record MAY contain additional fields for custom usage. These fields
 MUST start with and underscore (`_`) or consist of uppercase letters and digits 
-only (A-Z, 0-1).  The fields SHOULD be ignored by JSKOS applications. 
+only (A-Z, 0-1).  The fields SHOULD be ignored by generic JSKOS applications. 
 
 <div class="example">
-The fields `PARTS` and `_id` in the following example does not belong to JSKOS:
+The fields `PARTS` and `_id` in the following example can be ignored:
 
 ```json
 {
@@ -1084,6 +1109,11 @@ Public services to validate JSKOS data are included in instances of
 [jskos-validate]: https://www.npmjs.com/package/jskos-server
 
 ## Changelog {.unnumbered}
+
+### Next {.unnumbered}
+
+- More precise type of `inScheme`, `topConceptOf`, `mappings`, `occurrences`
+- Add some inference rules and integrity constraints
 
 ### 0.5.0 (2022-08-29) {.unnumbered}
 

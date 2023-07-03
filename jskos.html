@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="generator" content="pandoc" />
   <meta name="author" content="Jakob Voß" />
-  <meta name="date" content="2022-09-20" />
+  <meta name="date" content="2023-07-03" />
   <title>JSKOS data format for Knowledge Organization Systems</title>
    <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -74,7 +74,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <header>
 <h1 class="title">JSKOS data format for Knowledge Organization Systems</h1>
 <h3 class="author">Jakob Voß</h3>
-<h4 class="date">2022-09-20 (version 0.5.0+6)</h4>
+<h4 class="date">2023-07-03 (version 0.5.1)</h4>
 </header>
 
 <h1>Table of Contents</h1>
@@ -97,6 +97,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><a href="#location"><span class="toc-section-number">2.10</span> location</a></li>
 <li><a href="#address"><span class="toc-section-number">2.11</span> address</a></li>
 <li><a href="#checksum"><span class="toc-section-number">2.12</span> checksum</a></li>
+<li><a href="#media"><span class="toc-section-number">2.13</span> media</a></li>
 </ul></li>
 <li><a href="#object-types"><span class="toc-section-number">3</span> Object types</a><ul>
 <li><a href="#resource"><span class="toc-section-number">3.1</span> Resource</a></li>
@@ -115,7 +116,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><a href="#additional-rules"><span class="toc-section-number">5</span> Additional rules</a><ul>
 <li><a href="#resource-sameness"><span class="toc-section-number">5.1</span> Resource sameness</a></li>
 <li><a href="#closed-world-statements"><span class="toc-section-number">5.2</span> Closed world statements</a></li>
-<li><a href="#integrity-rules"><span class="toc-section-number">5.3</span> Integrity rules</a></li>
+<li><a href="#inference-rules-and-integrity-constraints"><span class="toc-section-number">5.3</span> Inference rules and integrity constraints</a></li>
 <li><a href="#extension-with-custom-fields"><span class="toc-section-number">5.4</span> Extension with custom fields</a></li>
 </ul></li>
 <li><a href="#references">References</a><ul>
@@ -381,6 +382,47 @@ alpha          = %x61-7A  ; a-z</code></pre>
 </table>
 <p>The value of SHOULD be specified by a URI from SPDX vocabulary, e.g. <a href="http://spdx.org/rdf/terms#checksumAlgorithm_sha256" class="uri">http://spdx.org/rdf/terms#checksumAlgorithm_sha256</a> for SHA-2 with 256 Bit (SHA-256).</p>
 </section>
+<section id="media" class="level2">
+<h2><span class="header-section-number">2.13</span> media</h2>
+<p>A <strong>media</strong> is a reference to digital content such as images or other audiovisual data. The data model of JSKOS media follows the <em>manifest</em> resource type of <a href="https://iiif.io/api/presentation/3.0/">IIIF Presentation API 3.0</a>.</p>
+<p>A <strong>media</strong> is a JSON object with at least the following fields:</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">field</th>
+<th style="text-align: left;">type</th>
+<th style="text-align: left;">description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">type</td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">the value “Manifest”</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">items</td>
+<td style="text-align: left;">array</td>
+<td style="text-align: left;">list of IIIF Canvas objects</td>
+</tr>
+</tbody>
+</table>
+<p>Additional properties MUST follow the IIIF Presentation API specification. In contrast to IIIF, the fields <code>label</code> and <code>id</code> are not required but RECOMMENDED by JSKOS. JSKOS applications MAY limit the set of supported fields instead of fully implementing all IIIF capabilities.</p>
+<div class="example">
+<p>For example a thumbnail image can be specified as media like this:</p>
+<div class="sourceCode"><pre class="sourceCode json"><code class="sourceCode json"><span class="fu">{</span>
+  <span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;Manifest&quot;</span><span class="fu">,</span>
+  <span class="dt">&quot;items&quot;</span><span class="fu">:</span> <span class="ot">[]</span><span class="fu">,</span>
+  <span class="dt">&quot;thumbnail&quot;</span><span class="fu">:</span> <span class="ot">[</span>
+    <span class="fu">{</span>
+      <span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;Image&quot;</span><span class="fu">,</span>
+      <span class="dt">&quot;id&quot;</span><span class="fu">:</span> <span class="st">&quot;http://example.org/1/thumbnail.jpg&quot;</span><span class="fu">,</span>
+      <span class="dt">&quot;format&quot;</span><span class="fu">:</span> <span class="st">&quot;image/jpeg&quot;</span>
+    <span class="fu">}</span>
+  <span class="ot">]</span>
+<span class="fu">}</span></code></pre></div>
+</div>
+</section>
 </section>
 <section id="object-types" class="level1">
 <h1><span class="header-section-number">3</span> Object types</h1>
@@ -577,29 +619,39 @@ alpha          = %x61-7A  ; a-z</code></pre>
 <td style="text-align: left;">where an item ended (e.g. place of death)</td>
 </tr>
 <tr class="even">
+<td style="text-align: left;">place</td>
+<td style="text-align: left;"><a href="#set">set</a></td>
+<td style="text-align: left;">other relevant place(s) of the item</td>
+</tr>
+<tr class="odd">
 <td style="text-align: left;">location</td>
 <td style="text-align: left;"><a href="#location">location</a></td>
 <td style="text-align: left;">geographic location of the item</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">address</td>
 <td style="text-align: left;"><a href="#address">address</a></td>
 <td style="text-align: left;">postal address of the item</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">subject</td>
 <td style="text-align: left;"><a href="#set">set</a></td>
 <td style="text-align: left;">what this item is about (e.g. topic)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">subjectOf</td>
 <td style="text-align: left;"><a href="#set">set</a></td>
 <td style="text-align: left;">resources about this item (e.g. documentation)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">depiction</td>
 <td style="text-align: left;"><a href="#list">list</a> of <a href="#url">URL</a></td>
 <td style="text-align: left;">list of image URLs depicting the item</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">media</td>
+<td style="text-align: left;"><a href="#list">list</a> of <a href="#media">media</a></td>
+<td style="text-align: left;">audiovisual or other digital content representing the item</td>
 </tr>
 </tbody>
 </table>
@@ -607,7 +659,7 @@ alpha          = %x61-7A  ; a-z</code></pre>
 </section>
 <section id="concept" class="level2">
 <h2><span class="header-section-number">3.3</span> Concept</h2>
-<p>A <strong>concept</strong> is an <a href="#item">item</a> and <a href="#concept-bundles">concept bundle</a> with the following optional fields (in addition to the optional fields <code>@context</code>, <code>address</code>, <code>altLabel</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>editorialNote</code>, <code>endDate</code>, <code>endPlace</code>, <code>example</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issued</code>, <code>location</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>prefLabel</code>, <code>publisher</code>, <code>scopeNote</code>, <code>source</code>, <code>startDate</code>, <code>startPlace</code>, <code>subjectOf</code>, <code>subject</code>, <code>type</code>, <code>uri</code>, <code>url</code>, <code>memberSet</code>, <code>memberList</code>, <code>memberChoice</code>, and <code>memberRoles</code>):</p>
+<p>A <strong>concept</strong> is an <a href="#item">item</a> and <a href="#concept-bundles">concept bundle</a> with the following optional fields (in addition to the optional fields <code>@context</code>, <code>address</code>, <code>altLabel</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>editorialNote</code>, <code>endDate</code>, <code>endPlace</code>, <code>example</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issued</code>, <code>location</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>place</code>, <code>prefLabel</code>, <code>publisher</code>, <code>scopeNote</code>, <code>source</code>, <code>startDate</code>, <code>startPlace</code>, <code>subjectOf</code>, <code>subject</code>, <code>type</code>, <code>uri</code>, <code>url</code>, <code>memberSet</code>, <code>memberList</code>, <code>memberChoice</code>, and <code>memberRoles</code>):</p>
 <table>
 <thead>
 <tr class="header">
@@ -649,23 +701,23 @@ alpha          = %x61-7A  ; a-z</code></pre>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">inScheme</td>
-<td style="text-align: left;"><a href="#set">set</a></td>
-<td style="text-align: left;"><a href="#concept-schemes">concept schemes</a> or URI of the concept schemes</td>
+<td style="text-align: left;"><a href="#set">set</a> of <a href="#concept-schemes">concept schemes</a></td>
+<td style="text-align: left;">concept schemes the concept belongs to</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">topConceptOf</td>
-<td style="text-align: left;"><a href="#set">set</a></td>
-<td style="text-align: left;"><a href="#concept-schemes">concept schemes</a> or URI of the concept schemes</td>
+<td style="text-align: left;"><a href="#set">set</a> of <a href="#concept-schemes">concept schemes</a></td>
+<td style="text-align: left;">concept schemes the concept is a top concept of</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">mappings</td>
-<td style="text-align: left;"><a href="#set">set</a></td>
-<td style="text-align: left;"><a href="#concept-mappings">mappings</a> from and/or to this concept</td>
+<td style="text-align: left;"><a href="#set">set</a> of <a href="#concept-mappings">mappings</a></td>
+<td style="text-align: left;">mappings from and/or to this concept</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">occurrences</td>
-<td style="text-align: left;"><a href="#set">set</a></td>
-<td style="text-align: left;"><a href="#concept-occurrences">occurrences</a> with this concept</td>
+<td style="text-align: left;"><a href="#set">set</a> of <a href="#concept-occurrences">occurrences</a></td>
+<td style="text-align: left;">occurrences with this concept</td>
 </tr>
 </tbody>
 </table>
@@ -749,7 +801,7 @@ alpha          = %x61-7A  ; a-z</code></pre>
 </section>
 <section id="concept-schemes" class="level2">
 <h2><span class="header-section-number">3.4</span> Concept Schemes</h2>
-<p>A <strong>concept scheme</strong> is an <a href="#item">item</a> with the following optional fields (in addition to the optional fields <code>@context</code>, <code>address</code>, <code>altLabel</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>editorialNote</code>, <code>endDate</code>, <code>endPlace</code>, <code>example</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issued</code>, <code>location</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>prefLabel</code>, <code>publisher</code>, <code>scopeNote</code>, <code>source</code>, <code>startDate</code>, <code>startPlace</code>, <code>subjectOf</code>, <code>subject</code>, <code>type</code>, <code>uri</code>, and <code>url</code>):</p>
+<p>A <strong>concept scheme</strong> is an <a href="#item">item</a> with the following optional fields (in addition to the optional fields <code>@context</code>, <code>address</code>, <code>altLabel</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>editorialNote</code>, <code>endDate</code>, <code>endPlace</code>, <code>example</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issued</code>, <code>location</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>place</code>, <code>prefLabel</code>, <code>publisher</code>, <code>scopeNote</code>, <code>source</code>, <code>startDate</code>, <code>startPlace</code>, <code>subjectOf</code>, <code>subject</code>, <code>type</code>, <code>uri</code>, and <code>url</code>):</p>
 <table>
 <thead>
 <tr class="header">
@@ -791,17 +843,17 @@ alpha          = %x61-7A  ; a-z</code></pre>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">concepts</td>
-<td style="text-align: left;"><a href="#set">set</a></td>
+<td style="text-align: left;"><a href="#set">set</a> of <a href="#concept">concepts</a></td>
 <td style="text-align: left;">concepts in the scheme</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">types</td>
-<td style="text-align: left;"><a href="#set">set</a></td>
+<td style="text-align: left;"><a href="#set">set</a> of <a href="#concept">concepts</a></td>
 <td style="text-align: left;"><a href="#item-and-concept-types">concept types</a> of concepts in this scheme</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">distributions</td>
-<td style="text-align: left;"><a href="#set">set</a></td>
+<td style="text-align: left;"><a href="#set">set</a> of <a href="#distributions">distributions</a></td>
 <td style="text-align: left;"><a href="#distributions">Distributions</a> to access the content of the concept scheme</td>
 </tr>
 <tr class="even">
@@ -932,7 +984,7 @@ alpha          = %x61-7A  ; a-z</code></pre>
 </section>
 <section id="registries" class="level2">
 <h2><span class="header-section-number">3.6</span> Registries</h2>
-<p>A <strong>registry</strong> is an <a href="#item">item</a> with the following optional fields (in addition to the optional fields <code>@context</code>, <code>address</code>, <code>altLabel</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>editorialNote</code>, <code>endDate</code>, <code>endPlace</code>, <code>example</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issued</code>, <code>location</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>prefLabel</code>, <code>publisher</code>, <code>scopeNote</code>, <code>source</code>, <code>startDate</code>, <code>startPlace</code>, <code>subjectOf</code>, <code>subject</code>, <code>type</code>, <code>uri</code>, and <code>url</code>):</p>
+<p>A <strong>registry</strong> is an <a href="#item">item</a> with the following optional fields (in addition to the optional fields <code>@context</code>, <code>address</code>, <code>altLabel</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>editorialNote</code>, <code>endDate</code>, <code>endPlace</code>, <code>example</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issued</code>, <code>location</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>place</code>, <code>prefLabel</code>, <code>publisher</code>, <code>scopeNote</code>, <code>source</code>, <code>startDate</code>, <code>startPlace</code>, <code>subjectOf</code>, <code>subject</code>, <code>type</code>, <code>uri</code>, and <code>url</code>):</p>
 <table>
 <thead>
 <tr class="header">
@@ -944,37 +996,37 @@ alpha          = %x61-7A  ; a-z</code></pre>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">concepts</td>
-<td style="text-align: left;"><a href="#set">set</a></td>
+<td style="text-align: left;"><a href="#set">set</a> of <a href="#concept">concepts</a></td>
 <td style="text-align: left;"><a href="#concept">concepts</a> in this registry</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">schemes</td>
-<td style="text-align: left;"><a href="#set">set</a></td>
+<td style="text-align: left;"><a href="#set">set</a> of <a href="#concept-schemes">concept schemes</a></td>
 <td style="text-align: left;"><a href="#concept-schemes">concept schemes</a> in this registry</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">types</td>
-<td style="text-align: left;"><a href="#set">set</a></td>
+<td style="text-align: left;"><a href="#set">set</a> of <a href="#concept">concepts</a></td>
 <td style="text-align: left;"><a href="#item-and-concept-types">concept types</a> in this registry</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">mappings</td>
-<td style="text-align: left;"><a href="#set">set</a></td>
+<td style="text-align: left;"><a href="#set">set</a> of <a href="#concept-mappings">mappings</a></td>
 <td style="text-align: left;"><a href="#concept-mappings">mappings</a> in this registry</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">registries</td>
-<td style="text-align: left;"><a href="#set">set</a></td>
+<td style="text-align: left;"><a href="#set">set</a> of <a href="#registries">registries</a></td>
 <td style="text-align: left;">other registries in this registry</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">concordances</td>
-<td style="text-align: left;"><a href="#set">set</a></td>
+<td style="text-align: left;"><a href="#set">set</a> of <a href="#concordances">concordances</a></td>
 <td style="text-align: left;"><a href="#concordances">concordances</a> in this registry</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">occurrences</td>
-<td style="text-align: left;"><a href="#set">set</a></td>
+<td style="text-align: left;"><a href="#set">set</a> of <a href="#concept-occurrences">occurrences</a></td>
 <td style="text-align: left;"><a href="#concept-occurrences">occurrences</a> in this registry</td>
 </tr>
 <tr class="even">
@@ -1003,7 +1055,7 @@ alpha          = %x61-7A  ; a-z</code></pre>
 </section>
 <section id="distributions" class="level2">
 <h2><span class="header-section-number">3.7</span> Distributions</h2>
-<p>A <strong>distribution</strong> is an <a href="#item">item</a> with the following fields (in addition to the optional fields <code>@context</code>, <code>address</code>, <code>altLabel</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>editorialNote</code>, <code>endDate</code>, <code>endPlace</code>, <code>example</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issued</code>, <code>location</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>prefLabel</code>, <code>publisher</code>, <code>scopeNote</code>, <code>source</code>, <code>startDate</code>, <code>startPlace</code>, <code>subjectOf</code>, <code>subject</code>, <code>type</code>, <code>uri</code>, and <code>url</code>):</p>
+<p>A <strong>distribution</strong> is an <a href="#item">item</a> with the following fields (in addition to the optional fields <code>@context</code>, <code>address</code>, <code>altLabel</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>editorialNote</code>, <code>endDate</code>, <code>endPlace</code>, <code>example</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issued</code>, <code>location</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>place</code>, <code>prefLabel</code>, <code>publisher</code>, <code>scopeNote</code>, <code>source</code>, <code>startDate</code>, <code>startPlace</code>, <code>subjectOf</code>, <code>subject</code>, <code>type</code>, <code>uri</code>, and <code>url</code>):</p>
 <p>Distributions mostly cover the <a href="https://www.w3.org/TR/vocab-dcat-3/#Class:Distribution">class Distribution</a> from <a href="https://www.w3.org/TR/vocab-dcat-3/">Data Catalog Vocabulary</a>.</p>
 <table>
 <thead>
@@ -1104,13 +1156,13 @@ alpha          = %x61-7A  ; a-z</code></pre>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">mappings</td>
-<td style="text-align: left;"><a href="#set">set</a></td>
+<td style="text-align: left;"><a href="#set">set</a> of <a href="#concept-mappings">mappings</a></td>
 <td style="text-align: left;"><a href="#concept-mappings">mappings</a> in this concordance</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">distributions</td>
-<td style="text-align: left;"><a href="#set">set</a></td>
-<td style="text-align: left;"><a href="#distributions">Distributions</a> to access the concordance</td>
+<td style="text-align: left;"><a href="#set">set</a> of <a href="#distributions">distributions</a></td>
+<td style="text-align: left;"><a href="#distributions">distributions</a> to access the concordance</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">fromScheme</td>
@@ -1197,6 +1249,9 @@ alpha          = %x61-7A  ; a-z</code></pre>
 <div class="note">
 <p>When mappings are dynamically created it can be useful to assign a non-HTTP URI such as <code>urn:uuid:687b973c-38ab-48fb-b4ea-2b77abf557b7</code>.</p>
 </div>
+<div class="note">
+<p>Applications MAY use concept mappings to derive simple statements with <a href="https://www.w3.org/TR/skos-reference/#mapping">SKOS Mapping Properties</a> but SKOS integrity rules for mappings do not apply automatically.</p>
+</div>
 </section>
 <section id="concept-bundles" class="level2">
 <h2><span class="header-section-number">3.10</span> Concept Bundles</h2>
@@ -1213,17 +1268,17 @@ alpha          = %x61-7A  ; a-z</code></pre>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">memberSet</td>
-<td style="text-align: left;"><a href="#set">set</a></td>
+<td style="text-align: left;"><a href="#set">set</a> of <a href="#concept">concepts</a></td>
 <td style="text-align: left;"><a href="#concept">concepts</a> in this bundle (unordered)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">memberList</td>
-<td style="text-align: left;">ordered <a href="#set">set</a></td>
+<td style="text-align: left;">ordered <a href="#set">set</a> of <a href="#concept">concepts</a></td>
 <td style="text-align: left;"><a href="#concept">concepts</a> in this bundle (ordered)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">memberChoice</td>
-<td style="text-align: left;"><a href="#set">set</a></td>
+<td style="text-align: left;"><a href="#set">set</a> of <a href="#concept">concepts</a></td>
 <td style="text-align: left;"><a href="#concept">concepts</a> in this bundle to choose from</td>
 </tr>
 <tr class="even">
@@ -1482,14 +1537,40 @@ alpha          = %x61-7A  ; a-z</code></pre>
 <span class="fu">}</span></code></pre></div>
 </div>
 </section>
-<section id="integrity-rules" class="level2">
-<h2><span class="header-section-number">5.3</span> Integrity rules</h2>
-<p>Integrity rules of SKOS should be respected. A later version of this specification may list these rules in more detail and also explain converting between SKOS and JSKOS.</p>
+<section id="inference-rules-and-integrity-constraints" class="level2">
+<h2><span class="header-section-number">5.3</span> Inference rules and integrity constraints</h2>
+<section id="inference-rules" class="level3">
+<h3><span class="header-section-number">5.3.1</span> Inference rules</h3>
+<p>JSKOS records can automatically be expanded with the following inference rules:</p>
+<ul>
+<li>Object types of set elements can be derived from fields the set is used in. For instance members of a set referenced by field <code>inScheme</code> can be assumed to be <a href="#concept-schemes">concept schemes</a> (SKOS integritry rule S4) and members of a set referenced by field <code>topConcepts</code> can be assumed to be <a href="#concept">concepts</a> (SKOS integritry rule S6).</li>
+<li>If a concept scheme <em>S</em> is in set <code>topConceptOf</code> of a concept <em>C</em> then <em>S</em> can be assumed to also be in the set <code>inScheme</code> of <em>C</em> (SKOS integrity rule S7)</li>
+<li>If a concept <em>C</em> is in set <code>topConcept</code> of a concept scheme <em>S</em> then <em>C</em> can be assumed to be in the set <code>topConceptOf</code> of <em>S</em> and vice versa (SKOS integrity rule S8)</li>
+</ul>
+<!--
+TODO: skos:changeNote, skos:definition, skos:editorialNote, skos:example, skos:historyNote and skos:scopeNote are each sub-properties of skos:note (SKOS integrity rule S8)
+
+TODO: ancestors => broaderTransitive (S22)
+
+TODO: related (S23)
+
+TODO: broader/narrower (S26)
+
+TODO: Mappings (S38-S46)
+-->
+</section>
+<section id="integritry-constraints" class="level3">
+<h3><span class="header-section-number">5.3.2</span> Integritry constraints</h3>
+<p>Integrity constraints of SKOS SHOULD be respected. Applications MAY reject JSKOS data violating the constraints.</p>
+<ul>
+<li><a href="#concept">concepts</a>, <a href="#concept-schemes">concept schemes</a>, <a href="#registries">registries</a>, <a href="#distributions">distributions</a>, <a href="#concordances">concordances</a>, <a href="#concept-mappings">concept mappings</a> are pairwise disjoint (SKOS integrity rule S9)</li>
+<li></li>
+</ul>
+<!-- TODO: skos:related is disjoint with the property skos:broaderTransitive (S27) -->
+<p><em>this list is not complete yet</em></p>
 <!--
 
 # Converting JSKOS to SKOS and vice versa
-
-Notation and label properties do not imply a domain, so they can be used for both, concepts and concept schemes.
 
 Concept types in RDF correspond to subclasses of [SKOS Concept].
 
@@ -1501,14 +1582,12 @@ A Concept Scheme represents a [SKOS Concept Scheme].
 
 -->
 </section>
+</section>
 <section id="extension-with-custom-fields" class="level2">
 <h2><span class="header-section-number">5.4</span> Extension with custom fields</h2>
-<div class="note">
-<p>The following rule may be changed in the final version of JSKOS specification!</p>
-</div>
-<p>A JSKOS record MAY contain additional fields for custom usage. These fields MUST start with and underscore (<code>_</code>) or consist of uppercase letters and digits only (A-Z, 0-1). The fields SHOULD be ignored by JSKOS applications.</p>
+<p>A JSKOS record MAY contain additional fields for custom usage. These fields MUST start with and underscore (<code>_</code>) or consist of uppercase letters and digits only (A-Z, 0-1). The fields SHOULD be ignored by generic JSKOS applications.</p>
 <div class="example">
-<p>The fields <code>PARTS</code> and <code>_id</code> in the following example does not belong to JSKOS:</p>
+<p>The fields <code>PARTS</code> and <code>_id</code> in the following example can be ignored:</p>
 <div class="sourceCode"><pre class="sourceCode json"><code class="sourceCode json"><span class="fu">{</span>
   <span class="dt">&quot;_id&quot;</span><span class="fu">:</span> <span class="st">&quot;e5fa44f2b31c1fb553b6021e7360d07d5d91ff5e&quot;</span><span class="fu">,</span>
   <span class="dt">&quot;uri&quot;</span><span class="fu">:</span> <span class="st">&quot;http://www.wikidata.org/entity/Q34095&quot;</span><span class="fu">,</span>
@@ -1523,6 +1602,7 @@ A Concept Scheme represents a [SKOS Concept Scheme].
 <section id="normative-references" class="level2 unnumbered">
 <h2>Normative references</h2>
 <ul>
+<li><p>M. Appleby et al: <em>IIIF Presentation API 3.0</em>. June 202. <a href="https://iiif.io/api/presentation/3.0/" class="uri">https://iiif.io/api/presentation/3.0/</a></p></li>
 <li><p>P. Biron, A. Malhotra: <em>XML Schema Part 2: Datatypes Second Edition</em>. W3C Recommendation, October 2005. <a href="https://www.w3.org/TR/xmlschema-2/" class="uri">https://www.w3.org/TR/xmlschema-2/</a></p></li>
 <li><p>S. Bradner: <em>Key words for use in RFCs to Indicate Requirement Levels</em>. RFC 2119, March 1997. <a href="https://tools.ietf.org/html/rfc2119" class="uri">https://tools.ietf.org/html/rfc2119</a></p></li>
 <li><p>H. Butler, M. Daly, S. Gillies, S. Hagen, T. Schaub: <em>The GeoJSON Format</em>. RFC 7946, August 2016. <a href="https://tools.ietf.org/html/rfc7946" class="uri">https://tools.ietf.org/html/rfc7946</a></p></li>
@@ -1808,7 +1888,22 @@ A Concept Scheme represents a [SKOS Concept Scheme].
 </section>
 <section id="changelog" class="level2 unnumbered">
 <h2>Changelog</h2>
+<section id="next" class="level3 unnumbered">
+<h3>Next</h3>
+<ul>
+<li>…</li>
+</ul>
+</section>
 <section id="section" class="level3 unnumbered">
+<h3>0.5.1 (2023-07-03)</h3>
+<ul>
+<li>More precise type of <code>inScheme</code>, <code>topConceptOf</code>, <code>mappings</code>, <code>occurrences</code></li>
+<li>Add some inference rules and integrity constraints</li>
+<li>Fix JSON Schema files to allow negative dates and strict annotation dates</li>
+<li>Add item fields <code>place</code> and <code>media</code></li>
+</ul>
+</section>
+<section id="section-1" class="level3 unnumbered">
 <h3>0.5.0 (2022-08-29)</h3>
 <ul>
 <li>Make clear concordance field name distributions (plural)</li>
@@ -1816,20 +1911,20 @@ A Concept Scheme represents a [SKOS Concept Scheme].
 <li>Remove fields for undefined JSKOS-API URLs</li>
 </ul>
 </section>
-<section id="section-1" class="level3 unnumbered">
+<section id="section-2" class="level3 unnumbered">
 <h3>0.4.9 (2022-01-18)</h3>
 <ul>
 <li>Change format of URI in JSON Schema from URI to IRI</li>
 <li>Change base format of URL in JSON Schema from URI to IRI</li>
 </ul>
 </section>
-<section id="section-2" class="level3 unnumbered">
+<section id="section-3" class="level3 unnumbered">
 <h3>0.4.8 (2021-02-18)</h3>
 <ul>
 <li>Add concept scheme field notationExamples</li>
 </ul>
 </section>
-<section id="section-3" class="level3 unnumbered">
+<section id="section-4" class="level3 unnumbered">
 <h3>0.4.7 (2021-02-10)</h3>
 <ul>
 <li>Add resource field source</li>
@@ -1837,26 +1932,26 @@ A Concept Scheme represents a [SKOS Concept Scheme].
 <li>Move startPlace/endPlace to Item and map them to schema:location</li>
 </ul>
 </section>
-<section id="section-4" class="level3 unnumbered">
+<section id="section-5" class="level3 unnumbered">
 <h3>0.4.6 (2019-12-02)</h3>
 <ul>
 <li>Add memberRoles</li>
 </ul>
 </section>
-<section id="section-5" class="level3 unnumbered">
+<section id="section-6" class="level3 unnumbered">
 <h3>0.4.5 (2019-04-08)</h3>
 <ul>
 <li>Add annotations (basic support)</li>
 </ul>
 </section>
-<section id="section-6" class="level3 unnumbered">
+<section id="section-7" class="level3 unnumbered">
 <h3>0.4.4 (2018-11-02)</h3>
 <ul>
 <li>Add concept scheme fields notationPattern and uriPattern</li>
 <li>Add concept fields startPlace and endPlace</li>
 </ul>
 </section>
-<section id="section-7" class="level3 unnumbered">
+<section id="section-8" class="level3 unnumbered">
 <h3>0.4.2 (2018-08-22)</h3>
 <ul>
 <li>Move identifier field from item to resource</li>
@@ -1864,14 +1959,14 @@ A Concept Scheme represents a [SKOS Concept Scheme].
 <li>Add optional JSON Schemas</li>
 </ul>
 </section>
-<section id="section-8" class="level3 unnumbered">
+<section id="section-9" class="level3 unnumbered">
 <h3>0.4.1 (2018-06-26)</h3>
 <ul>
 <li>Rename distribution field to distributions</li>
 <li>Allow digits in custom fields</li>
 </ul>
 </section>
-<section id="section-9" class="level3 unnumbered">
+<section id="section-10" class="level3 unnumbered">
 <h3>0.4.0 (2018-06-22)</h3>
 <ul>
 <li>Add Registry field occurrences</li>
@@ -1879,38 +1974,38 @@ A Concept Scheme represents a [SKOS Concept Scheme].
 <li>Change rule for custom fields</li>
 </ul>
 </section>
-<section id="section-10" class="level3 unnumbered">
+<section id="section-11" class="level3 unnumbered">
 <h3>0.3.2 (2018-05-29)</h3>
 <ul>
 <li>Add Concept Scheme field namespace</li>
 </ul>
 </section>
-<section id="section-11" class="level3 unnumbered">
+<section id="section-12" class="level3 unnumbered">
 <h3>0.3.1 (2017-11-22)</h3>
 <ul>
 <li>Extend ocurrences to co-occurrences</li>
 </ul>
 </section>
-<section id="section-12" class="level3 unnumbered">
+<section id="section-13" class="level3 unnumbered">
 <h3>0.3.0 (2017-11-15)</h3>
 <ul>
 <li>Add occurrences</li>
 </ul>
 </section>
-<section id="section-13" class="level3 unnumbered">
+<section id="section-14" class="level3 unnumbered">
 <h3>0.2.2 (2017-11-06)</h3>
 <ul>
 <li>Add mappings field to Concept</li>
 </ul>
 </section>
-<section id="section-14" class="level3 unnumbered">
+<section id="section-15" class="level3 unnumbered">
 <h3>0.2.1 (2017-09-27)</h3>
 <ul>
 <li>Disallow empty strings except as mandatory placeholder with language ranges</li>
 <li>Support composed concepts with <code>memberSet</code> and <code>memberList</code></li>
 </ul>
 </section>
-<section id="section-15" class="level3 unnumbered">
+<section id="section-16" class="level3 unnumbered">
 <h3>0.2.0 (2017-09-21)</h3>
 <ul>
 <li>Rename object to resource</li>
@@ -1919,26 +2014,26 @@ A Concept Scheme represents a [SKOS Concept Scheme].
 <li>Update JSON-LD context document</li>
 </ul>
 </section>
-<section id="section-16" class="level3 unnumbered">
+<section id="section-17" class="level3 unnumbered">
 <h3>0.1.4 (2016-12-02)</h3>
 <ul>
 <li>Update JSON-LD context document</li>
 <li>Change definition of concept bundles to use fields memberSet/List/Choice instead of members</li>
 </ul>
 </section>
-<section id="section-17" class="level3 unnumbered">
+<section id="section-18" class="level3 unnumbered">
 <h3>0.1.3 (2016-10-03)</h3>
 <ul>
 <li>Change definition of “location” field to subset of GeoJSON (RFC 7946)</li>
 </ul>
 </section>
-<section id="section-18" class="level3 unnumbered">
+<section id="section-19" class="level3 unnumbered">
 <h3>0.1.2 (2016-06-13)</h3>
 <ul>
 <li>Add “location” field for geographic coordinates</li>
 </ul>
 </section>
-<section id="section-19" class="level3 unnumbered">
+<section id="section-20" class="level3 unnumbered">
 <h3>0.1.1 (2016-05-20)</h3>
 <ul>
 <li>Make field “license” a set instead of a single URI</li>

@@ -285,7 +285,7 @@ For example a thumbnail image can be specified as media like this:
   "thumbnail": [
     {
       "type": "Image",
-      "id": "http://example.org/1/thumbnail.jpg"
+      "id": "http://example.org/1/thumbnail.jpg",
       "format": "image/jpeg"
     }
   ]
@@ -1158,7 +1158,7 @@ Public services to validate JSKOS data are included in instances of
 - More precise type of `inScheme`, `topConceptOf`, `mappings`, `occurrences`
 - Add some inference rules and integrity constraints
 - Fix JSON Schema files to allow negative dates and strict annotation dates
-- Add item field: `place`
+- Add item fields `place` and `media`
 
 ### 0.5.0 (2022-08-29) {.unnumbered}
 

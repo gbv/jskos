@@ -132,6 +132,18 @@
       "description": "geographic location of the item",
       "$ref": "#/definitions/location"
     },
+    "startPlace": {
+      "description": "where an item started (e.g. place of birth)",
+      "$ref": "concept.schema.json#/definitions/conceptSet"
+    },
+    "endPlace": {
+      "description": "where an item ended (e.g. place of death)",
+      "$ref": "concept.schema.json#/definitions/conceptSet"
+    },
+    "place": {
+      "description": "other relevant place(s) of the item",
+      "$ref": "concept.schema.json#/definitions/conceptSet"
+    },
     "address": {
       "description": "geographic location of the item",
       "$ref": "#/definitions/address"
@@ -160,6 +172,13 @@
             "$ref": "resource.schema.json#/definitions/url"
           }
         ]
+      }
+    },
+    "media": {
+      "description": "audiovisual or other digital content representing the item",
+      "type": "array",
+      "items": {
+        "$ref": "media.schema.json"
       }
     }
   }

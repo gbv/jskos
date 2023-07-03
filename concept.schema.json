@@ -60,14 +60,6 @@
       "description": "concept schemes or URI of the concept schemes",
       "$ref": "scheme.schema.json#/definitions/schemeSet"
     },
-    "startPlace": {
-      "description": "where a concepts started (e.g. place of birth)",
-      "$ref": "#/definitions/conceptSet"
-    },
-    "endPlace": {
-      "description": "where a concept ended (e.g. place of death)",
-      "$ref": "#/definitions/conceptSet"
-    },
     "mappings": {
       "description": "mappings from and/or to this concept",
       "$ref": "mapping.schema.json#/definitions/mappingSet"

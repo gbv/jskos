@@ -1155,6 +1155,10 @@ Public services to validate JSKOS data are included in instances of
 
 ### Next {.unnumbered}
 
+- ...
+
+### 0.5.1 (2023-07-03) {.unnumbered}
+
 - More precise type of `inScheme`, `topConceptOf`, `mappings`, `occurrences`
 - Add some inference rules and integrity constraints
 - Fix JSON Schema files to allow negative dates and strict annotation dates

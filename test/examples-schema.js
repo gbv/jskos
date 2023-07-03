@@ -12,7 +12,7 @@ ajvFormats(ajv)
 ajvFormats2019(ajv)
 
 // load schemas
-const types = "resource item concept scheme mapping concordance registry distribution occurrence bundle annotation media".split(" ")
+const types = "resource item concept scheme mapping concordance registry distribution occurrence bundle annotation".split(" ")
 
 let schemas = {}
 let validate = {}

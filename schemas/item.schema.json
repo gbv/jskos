@@ -60,6 +60,23 @@
         "country":  { "type": "string" }
       },
       "additionalProperties": false
+    },
+    "media": {
+      "description": "Media based on IIIF Manifest Data Model",
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "Manifest"
+        },
+        "items": {
+          "type": "array"
+        }
+      },
+      "additionalProperties": true,
+      "required": [
+        "type",
+        "items"
+      ]
     }
   },
   "allOf": [
@@ -178,7 +195,7 @@
       "description": "audiovisual or other digital content representing the item",
       "type": "array",
       "items": {
-        "$ref": "media.schema.json"
+        "$ref": "#/definitions/media"
       }
     }
   }

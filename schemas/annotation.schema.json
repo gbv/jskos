@@ -6,22 +6,14 @@
   "type": "object",
   "definitions": {
     "date": {
-      "anyOf": [
-        {
-          "type": "string",
-          "format": "date"
-        },
+      "allOf": [
         {
           "type": "string",
           "format": "date-time"
         },
         {
           "type": "string",
-          "pattern": "^\\d{4}-[01]\\d$"
-        },
-        {
-          "type": "string",
-          "pattern": "^\\d{4}$"
+          "pattern": "Z$"
         }
       ]
     }

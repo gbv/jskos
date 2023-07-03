@@ -173,6 +173,13 @@
           }
         ]
       }
+    },
+    "media": {
+      "description": "audiovisual or other digital content representing the item",
+      "type": "array",
+      "items": {
+        "$ref": "media.schema.json"
+      }
     }
   }
 }

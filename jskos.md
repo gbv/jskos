@@ -257,6 +257,42 @@ value       string  lower case hexidecimal encoded digest value
 
 The value of SHOULD be specified by a URI from SPDX vocabulary, e.g. <http://spdx.org/rdf/terms#checksumAlgorithm_sha256> for SHA-2 with 256 Bit (SHA-256).
 
+## media
+
+A **media** is a reference to digital content such as images or other
+audiovisual data. The data model of JSKOS media follows the *manifest* resource
+type of [IIIF Presentation API 3.0](https://iiif.io/api/presentation/3.0/).
+
+A **media** is a JSON object with at least the following fields:
+
+field   type    description
+------- ------- ---------------------------
+type    string  the value "Manifest"
+items   array   list of IIIF Canvas objects
+
+Additional properties MUST follow the IIIF Presentation API specification.  In
+contrast to IIIF, the fields `label` and `id` are not required but RECOMMENDED
+by JSKOS. JSKOS applications MAY limit the set of supported fields instead of
+fully implementing all IIIF capabilities.
+
+<div class="example">
+For example a thumbnail image can be specified as media like this:
+
+~~~json
+{
+  "type": "Manifest",
+  "items": [],
+  "thumbnail": [
+    {
+      "type": "Image",
+      "id": "http://example.org/1/thumbnail.jpg"
+      "format": "image/jpeg"
+    }
+  ]
+}
+~~~
+</div>
+
 # Object types
 
 JSKOS defines the following types of JSON objects:
@@ -273,7 +309,6 @@ JSKOS defines the following types of JSON objects:
 * [annotations] to review and comment on individual resources
 
 In addition there are [concept bundles] as part of mappings, occurrences, and composed [concepts].
-
 
 ## Resource
 
@@ -337,6 +372,7 @@ address       [address]                 postal address of the item
 subject       [set]                     what this item is about (e.g. topic)
 subjectOf     [set]                     resources about this item (e.g. documentation)
 depiction     [list] of [URL]           list of image URLs depicting the item
+media         [list] of [media]         audiovisual or other digital content representing the item
 
 Applications MAY limit the fields `notation` and/or `depiction` to lists of a single
 element or ignore all preceding elements of these lists.
@@ -974,6 +1010,10 @@ The fields `PARTS` and `_id` in the following example can be ignored:
 # References {.unnumbered}
 
 ## Normative references {.unnumbered}
+
+* M. Appleby et al: *IIIF Presentation API 3.0*.
+  June 202.
+  <https://iiif.io/api/presentation/3.0/>
 
 * P. Biron, A. Malhotra: *XML Schema Part 2: Datatypes Second Edition*.
   W3C Recommendation, October 2005.

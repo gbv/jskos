@@ -331,6 +331,7 @@ endDate       [date]                    date death or resolution of the item
 relatedDate   [date]                    other date somehow related to the item
 startPlace    [set]                     where an item started (e.g. place of birth)
 endPlace      [set]                     where an item ended (e.g. place of death)
+place         [set]                     other relevant place(s) of the item
 location      [location]                geographic location of the item
 address       [address]                 postal address of the item
 subject       [set]                     what this item is about (e.g. topic)
@@ -340,7 +341,6 @@ depiction     [list] of [URL]           list of image URLs depicting the item
 Applications MAY limit the fields `notation` and/or `depiction` to lists of a single
 element or ignore all preceding elements of these lists.
 
-
 ## Concept
 
 [concept]: #concept
@@ -349,11 +349,11 @@ element or ignore all preceding elements of these lists.
 A **concept** is an [item] and [concept bundle] with the following optional
 fields (in addition to the optional fields `@context`, `address`, `altLabel`,
 `changeNote`, `contributor`, `created`, `creator`, `definition`, `depiction`,
-`editorialNote`, `endDate`, `endPlace`, `example`, `hiddenLabel`, `historyNote`,
-`identifier`, `issued`, `location`, `modified`, `notation`, `note`, `partOf`,
-`prefLabel`, `publisher`, `scopeNote`, `source`, `startDate`, `startPlace`, 
-`subjectOf`, `subject`, `type`, `uri`, `url`, `memberSet`, `memberList`, 
-`memberChoice`, and `memberRoles`):
+`editorialNote`, `endDate`, `endPlace`, `example`, `hiddenLabel`,
+`historyNote`, `identifier`, `issued`, `location`, `modified`, `notation`,
+`note`, `partOf`, `place`, `prefLabel`, `publisher`, `scopeNote`, `source`,
+`startDate`, `startPlace`, `subjectOf`, `subject`, `type`, `uri`, `url`,
+`memberSet`, `memberList`, `memberChoice`, and `memberRoles`):
 
 field        type                       description
 ------------ -------------------------- -------------------------------------------------------------------------------
@@ -411,11 +411,12 @@ connected by the broader relation.
 [scheme]: #schemes
 
 A **concept scheme** is an [item] with the following optional fields (in
-addition to the optional fields `@context`, `address`, `altLabel`, `changeNote`,
-`contributor`, `created`, `creator`, `definition`, `depiction`,
-`editorialNote`, `endDate`, `endPlace`, `example`, `hiddenLabel`, `historyNote`, `identifier`,
-`issued`, `location`, `modified`, `notation`, `note`, `partOf`, `prefLabel`, `publisher`,
-`scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`, `subject`, `type`, `uri`, and `url`):
+addition to the optional fields `@context`, `address`, `altLabel`,
+`changeNote`, `contributor`, `created`, `creator`, `definition`, `depiction`,
+`editorialNote`, `endDate`, `endPlace`, `example`, `hiddenLabel`,
+`historyNote`, `identifier`, `issued`, `location`, `modified`, `notation`,
+`note`, `partOf`, `place`, `prefLabel`, `publisher`, `scopeNote`, `source`,
+`startDate`, `startPlace`, `subjectOf`, `subject`, `type`, `uri`, and `url`):
 
 property         type                       definition
 ---------------- -------------------------- --------------------------------------------------------------------------------------
@@ -505,9 +506,10 @@ The Wikidata [concept of an individual human](http://www.wikidata.org/entity/Q5)
 A **registry** is an [item] with the following optional fields (in addition to
 the optional fields `@context`, `address`, `altLabel`, `changeNote`,
 `contributor`, `created`, `creator`, `definition`, `depiction`,
-`editorialNote`, `endDate`, `endPlace`, `example`, `hiddenLabel`, `historyNote`, `identifier`,
-`issued`, `location`, `modified`, `notation`, `note`, `partOf`, `prefLabel`, `publisher`,
-`scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`, `subject`, `type`, `uri`, and `url`):
+`editorialNote`, `endDate`, `endPlace`, `example`, `hiddenLabel`,
+`historyNote`, `identifier`, `issued`, `location`, `modified`, `notation`,
+`note`, `partOf`, `place`, `prefLabel`, `publisher`, `scopeNote`, `source`,
+`startDate`, `startPlace`, `subjectOf`, `subject`, `type`, `uri`, and `url`):
 
 field        type                       definition
 ------------ -------------------------- --------------------------------------------------------------------------------------
@@ -542,11 +544,12 @@ Additional integrity rules for registries will be defined.
 [distributions]: #distributions
 
 A **distribution** is an [item] with the following fields (in addition to the
-optional fields `@context`, `address`, `altLabel`, `changeNote`,
-`contributor`, `created`, `creator`, `definition`, `depiction`,
-`editorialNote`, `endDate`, `endPlace`, `example`, `hiddenLabel`, `historyNote`, `identifier`,
-`issued`, `location`, `modified`, `notation`, `note`, `partOf`, `prefLabel`, `publisher`,
-`scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`, `subject`, `type`, `uri`, and `url`):
+optional fields `@context`, `address`, `altLabel`, `changeNote`, `contributor`,
+`created`, `creator`, `definition`, `depiction`, `editorialNote`, `endDate`,
+`endPlace`, `example`, `hiddenLabel`, `historyNote`, `identifier`, `issued`,
+`location`, `modified`, `notation`, `note`, `partOf`, `place`, `prefLabel`,
+`publisher`, `scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`,
+`subject`, `type`, `uri`, and `url`):
 
 Distributions mostly cover the [class Distribution](https://www.w3.org/TR/vocab-dcat-3/#Class:Distribution) from [Data Catalog Vocabulary](https://www.w3.org/TR/vocab-dcat-3/).
 
@@ -1114,6 +1117,8 @@ Public services to validate JSKOS data are included in instances of
 
 - More precise type of `inScheme`, `topConceptOf`, `mappings`, `occurrences`
 - Add some inference rules and integrity constraints
+- Fix JSON Schema files to allow negative dates and strict annotation dates
+- Add item field: `place`
 
 ### 0.5.0 (2022-08-29) {.unnumbered}
 

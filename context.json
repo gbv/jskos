@@ -104,11 +104,11 @@
     "@container": "@set"
   },
   "startPlace": {
-    "@id": "https://schema.org/location",
+    "@id": "http://schema.org/location",
     "@container": "@set"
   },
   "endPlace": {
-    "@id": "https://schema.org/location",
+    "@id": "http://schema.org/location",
     "@container": "@set"
   },
 
@@ -137,14 +137,14 @@
   "endDate": "http://schema.org/endDate",
   "relatedDate": "http://www.w3.org/2000/01/rdf-schema#seeAlso",
   "location": "http://schema.org/location",
-  "address": "https://schema.org/address",
-  "street": "https://schema.org/streetAddress",
-  "ext": "https://schema.org/streetAddress",
-  "pobox": "https://schema.org/postOfficeBoxNumber",
-  "locality": "https://schema.org/addressLocality",
-  "region": "https://schema.org/addressRegion",
-  "code": "https://schema.org/postalCode",
-  "country": "https://schema.org/addressCountry",
+  "address": "http://schema.org/address",
+  "street": "http://schema.org/streetAddress",
+  "ext": "http://schema.org/streetAddress",
+  "pobox": "http://schema.org/postOfficeBoxNumber",
+  "locality": "http://schema.org/addressLocality",
+  "region": "http://schema.org/addressRegion",
+  "code": "http://schema.org/postalCode",
+  "country": "http://schema.org/addressCountry",
 
   "ancestors": {
     "@id": "http://www.w3.org/2004/02/skos/core#broaderTransitive",

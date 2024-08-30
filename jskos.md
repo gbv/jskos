@@ -1150,7 +1150,7 @@ Public services to validate JSKOS data are included in instances of
 [jskos-server] and at https://format.gbv.de/validate/.
 
 [jskos-validate]: https://www.npmjs.com/package/jskos-validate
-[jskos-validate]: https://www.npmjs.com/package/jskos-server
+[jskos-server]: https://www.npmjs.com/package/jskos-server
 
 ## Changelog {.unnumbered}
 
@@ -1158,7 +1158,7 @@ Public services to validate JSKOS data are included in instances of
 
 - ...
 
-### 0.5.2 (2025-08-30) {.unnumbered}
+### 0.5.2 (2024-08-30) {.unnumbered}
 
 - Allow location of type `GeometryCollection`
 - Fix schema.org namespace in JSON-LD context document

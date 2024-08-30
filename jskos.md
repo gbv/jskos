@@ -218,8 +218,9 @@ The language tag "und" can be used to include strings of unknown or unspecified 
 
 A **location** is a JSON object conforming to the GeoJSON specification ([RFC
 7946]) with GeoJSON type being one of `Point`, `MultiPoint`, `LineString`,
-`MultiLineString`, `Polygon`, or `MultiPolygon`. Applications MAY restrict the
-location data type to GeoJSON objects of GeoJSON type `Point`.
+`MultiLineString`, `Polygon`, `MultiPolygon`, or `GeometryCollection`.
+Applications MAY restrict the location data type to GeoJSON objects of GeoJSON
+type `Point`.
 
 <div class="example">
 Position of the RMS Titanic as point:
@@ -1156,6 +1157,11 @@ Public services to validate JSKOS data are included in instances of
 ### Next {.unnumbered}
 
 - ...
+
+### 0.5.2 (2025-08-30) {.unnumbered}
+
+- Allow location of type `GeometryCollection`
+- Fix schema.org namespace in JSON-LD context document
 
 ### 0.5.1 (2023-07-03) {.unnumbered}
 

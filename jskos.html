@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="generator" content="pandoc" />
   <meta name="author" content="Jakob Voß" />
-  <meta name="date" content="2024-08-30" />
+  <meta name="date" content="2024-09-18" />
   <title>JSKOS data format for Knowledge Organization Systems</title>
    <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -104,7 +104,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1 class="title">JSKOS data format for Knowledge Organization
 Systems</h1>
 <h3 class="author">Jakob Voß</h3>
-<h4 class="date">2024-08-30 (version 0.5.3)</h4>
+<h4 class="date">2024-09-18 (version 0.5.3)</h4>
 </header>
 
 <h1>Table of Contents</h1>
@@ -727,7 +727,8 @@ optional fields:</p>
 <tr class="odd">
 <td style="text-align: left;"><span class="citation"
 data-cites="context">@context</span></td>
-<td><a href="#uri">URI</a></td>
+<td><a href="#uri">URI</a> or list of
+URI</td>
 <td style="text-align: left;">reference to a <a
 href="#json-ld-context">JSON-LD context</a> document</td>
 </tr>
@@ -744,7 +745,7 @@ href="#json-ld-context">JSON-LD context</a> document</td>
 <tr class="even">
 <td style="text-align: left;">type</td>
 <td><a href="#list">list</a> of <a
-href="#uri">URI</a>s</td>
+href="#uri">URI</a></td>
 <td style="text-align: left;">URIs of types</td>
 </tr>
 <tr class="odd">
@@ -2662,18 +2663,22 @@ and at https://format.gbv.de/validate/.</p>
 <h2 class="unnumbered">Changelog</h2>
 <section id="next" class="level3 unnumbered">
 <h3 class="unnumbered">Next</h3>
-<ul>
-<li>…</li>
-</ul>
+<p>…</p>
 </section>
 <section id="section" class="level3 unnumbered">
+<h3 class="unnumbered">0.5.3 (2024-09-18)</h3>
+<ul>
+<li>Allow <code>@context</code> to hold an array</li>
+</ul>
+</section>
+<section id="section-1" class="level3 unnumbered">
 <h3 class="unnumbered">0.5.2 (2024-08-30)</h3>
 <ul>
 <li>Allow location of type <code>GeometryCollection</code></li>
 <li>Fix schema.org namespace in JSON-LD context document</li>
 </ul>
 </section>
-<section id="section-1" class="level3 unnumbered">
+<section id="section-2" class="level3 unnumbered">
 <h3 class="unnumbered">0.5.1 (2023-07-03)</h3>
 <ul>
 <li>More precise type of <code>inScheme</code>,
@@ -2685,7 +2690,7 @@ dates</li>
 <li>Add item fields <code>place</code> and <code>media</code></li>
 </ul>
 </section>
-<section id="section-2" class="level3 unnumbered">
+<section id="section-3" class="level3 unnumbered">
 <h3 class="unnumbered">0.5.0 (2022-08-29)</h3>
 <ul>
 <li>Make clear concordance field name distributions (plural)</li>
@@ -2694,20 +2699,20 @@ accessURL to distribution</li>
 <li>Remove fields for undefined JSKOS-API URLs</li>
 </ul>
 </section>
-<section id="section-3" class="level3 unnumbered">
+<section id="section-4" class="level3 unnumbered">
 <h3 class="unnumbered">0.4.9 (2022-01-18)</h3>
 <ul>
 <li>Change format of URI in JSON Schema from URI to IRI</li>
 <li>Change base format of URL in JSON Schema from URI to IRI</li>
 </ul>
 </section>
-<section id="section-4" class="level3 unnumbered">
+<section id="section-5" class="level3 unnumbered">
 <h3 class="unnumbered">0.4.8 (2021-02-18)</h3>
 <ul>
 <li>Add concept scheme field notationExamples</li>
 </ul>
 </section>
-<section id="section-5" class="level3 unnumbered">
+<section id="section-6" class="level3 unnumbered">
 <h3 class="unnumbered">0.4.7 (2021-02-10)</h3>
 <ul>
 <li>Add resource field source</li>
@@ -2716,26 +2721,26 @@ accessURL to distribution</li>
 schema:location</li>
 </ul>
 </section>
-<section id="section-6" class="level3 unnumbered">
+<section id="section-7" class="level3 unnumbered">
 <h3 class="unnumbered">0.4.6 (2019-12-02)</h3>
 <ul>
 <li>Add memberRoles</li>
 </ul>
 </section>
-<section id="section-7" class="level3 unnumbered">
+<section id="section-8" class="level3 unnumbered">
 <h3 class="unnumbered">0.4.5 (2019-04-08)</h3>
 <ul>
 <li>Add annotations (basic support)</li>
 </ul>
 </section>
-<section id="section-8" class="level3 unnumbered">
+<section id="section-9" class="level3 unnumbered">
 <h3 class="unnumbered">0.4.4 (2018-11-02)</h3>
 <ul>
 <li>Add concept scheme fields notationPattern and uriPattern</li>
 <li>Add concept fields startPlace and endPlace</li>
 </ul>
 </section>
-<section id="section-9" class="level3 unnumbered">
+<section id="section-10" class="level3 unnumbered">
 <h3 class="unnumbered">0.4.2 (2018-08-22)</h3>
 <ul>
 <li>Move identifier field from item to resource</li>
@@ -2743,14 +2748,14 @@ schema:location</li>
 <li>Add optional JSON Schemas</li>
 </ul>
 </section>
-<section id="section-10" class="level3 unnumbered">
+<section id="section-11" class="level3 unnumbered">
 <h3 class="unnumbered">0.4.1 (2018-06-26)</h3>
 <ul>
 <li>Rename distribution field to distributions</li>
 <li>Allow digits in custom fields</li>
 </ul>
 </section>
-<section id="section-11" class="level3 unnumbered">
+<section id="section-12" class="level3 unnumbered">
 <h3 class="unnumbered">0.4.0 (2018-06-22)</h3>
 <ul>
 <li>Add Registry field occurrences</li>
@@ -2758,31 +2763,31 @@ schema:location</li>
 <li>Change rule for custom fields</li>
 </ul>
 </section>
-<section id="section-12" class="level3 unnumbered">
+<section id="section-13" class="level3 unnumbered">
 <h3 class="unnumbered">0.3.2 (2018-05-29)</h3>
 <ul>
 <li>Add Concept Scheme field namespace</li>
 </ul>
 </section>
-<section id="section-13" class="level3 unnumbered">
+<section id="section-14" class="level3 unnumbered">
 <h3 class="unnumbered">0.3.1 (2017-11-22)</h3>
 <ul>
 <li>Extend ocurrences to co-occurrences</li>
 </ul>
 </section>
-<section id="section-14" class="level3 unnumbered">
+<section id="section-15" class="level3 unnumbered">
 <h3 class="unnumbered">0.3.0 (2017-11-15)</h3>
 <ul>
 <li>Add occurrences</li>
 </ul>
 </section>
-<section id="section-15" class="level3 unnumbered">
+<section id="section-16" class="level3 unnumbered">
 <h3 class="unnumbered">0.2.2 (2017-11-06)</h3>
 <ul>
 <li>Add mappings field to Concept</li>
 </ul>
 </section>
-<section id="section-16" class="level3 unnumbered">
+<section id="section-17" class="level3 unnumbered">
 <h3 class="unnumbered">0.2.1 (2017-09-27)</h3>
 <ul>
 <li>Disallow empty strings except as mandatory placeholder with language
@@ -2791,7 +2796,7 @@ ranges</li>
 <code>memberList</code></li>
 </ul>
 </section>
-<section id="section-17" class="level3 unnumbered">
+<section id="section-18" class="level3 unnumbered">
 <h3 class="unnumbered">0.2.0 (2017-09-21)</h3>
 <ul>
 <li>Rename object to resource</li>
@@ -2801,7 +2806,7 @@ Item</li>
 <li>Update JSON-LD context document</li>
 </ul>
 </section>
-<section id="section-18" class="level3 unnumbered">
+<section id="section-19" class="level3 unnumbered">
 <h3 class="unnumbered">0.1.4 (2016-12-02)</h3>
 <ul>
 <li>Update JSON-LD context document</li>
@@ -2809,20 +2814,20 @@ Item</li>
 memberSet/List/Choice instead of members</li>
 </ul>
 </section>
-<section id="section-19" class="level3 unnumbered">
+<section id="section-20" class="level3 unnumbered">
 <h3 class="unnumbered">0.1.3 (2016-10-03)</h3>
 <ul>
 <li>Change definition of “location” field to subset of GeoJSON (RFC
 7946)</li>
 </ul>
 </section>
-<section id="section-20" class="level3 unnumbered">
+<section id="section-21" class="level3 unnumbered">
 <h3 class="unnumbered">0.1.2 (2016-06-13)</h3>
 <ul>
 <li>Add “location” field for geographic coordinates</li>
 </ul>
 </section>
-<section id="section-21" class="level3 unnumbered">
+<section id="section-22" class="level3 unnumbered">
 <h3 class="unnumbered">0.1.1 (2016-05-20)</h3>
 <ul>
 <li>Make field “license” a set instead of a single URI</li>

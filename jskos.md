@@ -318,20 +318,20 @@ In addition there are [concept bundles] as part of mappings, occurrences, and co
 
 An **resource** is a JSON object with the following optional fields:
 
-field        type             description
------------ ----------------- ------------------------------------------------------------------
-@context    [URI]             reference to a [JSON-LD context] document
-uri         [URI]             primary globally unique identifier
-identifier  [list]            additional identifiers
-type        [list] of [URI]s  URIs of types
-created     [date]            date of creation
-issued      [date]            date of publication
-modified    [date]            date of last modification
-creator     [set]             agent primarily responsible for creation of resource
-contributor [set]             agent responsible for making contributions to the resource
-source      [set]             sources from which the described resource is derived
-publisher   [set]             agent responsible for making the resource available
-partOf      [set]             [resources] which this resource is part of (if no other field applies)
+field        type                description
+----------- -------------------- ------------------------------------------------------------------
+@context    [URI] or list of URI reference to a [JSON-LD context] document
+uri         [URI]                primary globally unique identifier
+identifier  [list]               additional identifiers
+type        [list] of [URI]      URIs of types
+created     [date]               date of creation
+issued      [date]               date of publication
+modified    [date]               date of last modification
+creator     [set]                agent primarily responsible for creation of resource
+contributor [set]                agent responsible for making contributions to the resource
+source      [set]                sources from which the described resource is derived
+publisher   [set]                agent responsible for making the resource available
+partOf      [set]                [resources] which this resource is part of (if no other field applies)
 
 It is RECOMMENDED to always include the fields `uri`, `type`, and `@context`.
 The value of field `@context` SHOULD be
@@ -1156,7 +1156,11 @@ Public services to validate JSKOS data are included in instances of
 
 ### Next {.unnumbered}
 
-- ...
+...
+
+### 0.5.3 (2024-09-18) {.unnumbered}
+
+- Allow `@context` to hold an array
 
 ### 0.5.2 (2024-08-30) {.unnumbered}
 

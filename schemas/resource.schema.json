@@ -78,9 +78,19 @@
   "properties": {
     "@context": {
       "description": "reference to a JSON-LD context document",
-      "type": "string",
-      "format": "iri",
-      "default": "https://gbv.github.io/jskos/context.json"
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "iri",
+          "default": "https://gbv.github.io/jskos/context.json"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/properties/@context/anyOf/0" 
+          }
+        }
+      ]
     },
     "uri": {
       "description": "primary globally unique identifier",

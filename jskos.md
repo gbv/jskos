@@ -362,8 +362,8 @@ historyNote   [language map] of [list]  see [SKOS Documentary Notes]
 editorialNote [language map] of [list]  see [SKOS Documentary Notes]
 changeNote    [language map] of [list]  see [SKOS Documentary Notes]
 note          [language map] of [list]  see [SKOS Documentary Notes]
-startDate     [date]                    date of birth, creation, or estabishment of the item
-endDate       [date]                    date death or resolution of the item
+startDate     [date]                    date of begin (birth, creation...) of the item
+endDate       [date]                    date of end (death, resolution...) of the item
 relatedDate   [date]                    other date somehow related to the item
 startPlace    [set]                     where an item started (e.g. place of birth)
 endPlace      [set]                     where an item ended (e.g. place of death)

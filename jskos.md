@@ -1078,6 +1078,10 @@ The fields `PARTS` and `_id` in the following example can be ignored:
   RFC 5234, January 2008.
   <http://tools.ietf.org/html/rfc5234>
 
+* F. Cotton (editor): *XKOS: An SKOS extension for representing statistical classifications*.
+  DDI Alliance, May 2019.
+  <https://rdf-vocabulary.ddialliance.org/xkos.html>
+
 * A. Miles, S. Bechhofer: *SKOS Reference*.
   W3C Recommendation, 18 August 2009.
   <http://www.w3.org/TR/skos-reference>
@@ -1163,7 +1167,7 @@ Public services to validate JSKOS data are included in instances of
 
 ## Changelog {.unnumbered}
 
-### Next {.unnumbered}
+### 0.5.4 (2024-09-27) {.unnumbered}
 
 - Change JSON-LD context for spatial fields (`location`, `place`, `startPlace`, `endPlace`)
 - Add Concept field `deprecated`

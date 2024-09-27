@@ -1,5 +1,5 @@
 import fs from "fs"
-import glob from "glob"
+import * as glob from "glob"
 
 export default (name, types, test) => {
   describe(name, () => {

@@ -1094,6 +1094,10 @@ The fields `PARTS` and `_id` in the following example can be ignored:
   W3C Recommendation, January 2014.
   <http://www.w3.org/TR/json-ld/>
 
+* M. Zeng, M. Žumer: *NKOS Dublin Core Application Profile (NKOS AP)*.
+  Version 0.2, October 2015.
+  <https://nkos.dublincore.org/nkos-ap.html>
+
 [RFC 5646]: http://tools.ietf.org/html/rfc5646
 [RFC 4647]: http://tools.ietf.org/html/rfc4647
 [RFC 5234]: http://tools.ietf.org/html/rfc5234

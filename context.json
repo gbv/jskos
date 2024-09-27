@@ -179,6 +179,7 @@
       "@id": "http://purl.org/dc/terms/license",
       "@container": "@set"
     },
+    "deprecated": "http://www.w3.org/2002/07/owl#deprecated",
     "namespace": "http://rdfs.org/ns/void#uriSpace",
     "uriPattern": "http://rdfs.org/ns/void#voidRegexPattern",
     "fromScheme": "http://rdfs.org/ns/void#subjectsTarget",

@@ -404,6 +404,7 @@ inScheme     [set] of [concept schemes] concept schemes the concept belongs to
 topConceptOf [set] of [concept schemes] concept schemes the concept is a top concept of
 mappings     [set] of [mappings]        mappings from and/or to this concept
 occurrences  [set] of [occurrences]     occurrences with this concept
+deprecated   [boolean]                  mark a concept as deprecated (false by default)
 
 The first element of field `type`, if given, MUST be the [item type] URI
 <http://www.w3.org/2004/02/skos/core#Concept>.
@@ -1157,6 +1158,7 @@ Public services to validate JSKOS data are included in instances of
 ### Next {.unnumbered}
 
 - Change JSON-LD context for spatial fields (`location`, `place`, `startPlace`, `endPlace`)
+- Add Concept field `deprecated`
 
 ### 0.5.3 (2024-09-18) {.unnumbered}
 

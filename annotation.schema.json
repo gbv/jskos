@@ -40,7 +40,7 @@
     },
     "creator": {
       "description": "agent primarily responsible for creation of resource",
-      "oneOf": [
+      "anyOf": [
         {
           "type": "object",
           "required": [
@@ -54,7 +54,7 @@
     },
     "target": {
       "description": "object being annotated, or its URI",
-      "oneOf": [
+      "anyOf": [
         {
           "$ref": "resource.schema.json#/definitions/uri"
         },

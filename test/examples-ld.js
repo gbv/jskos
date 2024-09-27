@@ -24,19 +24,19 @@ function cleanup(data) {
   }
 }
 
-testExamples("JSON-LD examples", types, (objects, file, type) => {
+testExamples("JSON-LD examples", types, async (objects, file, type) => {
   objects.forEach( doc => {      
     doc['@context'] = context
     cleanup(doc)
   })
-  jsonld.toRDF(objects, {format: 'application/n-quads'}, (err, nquads) => {
-    ntfile = file.replace(/\.json/,'.nt')
-    nquads = nquads.split("\n").filter( l => l ).sort().join("\n")+"\n"
-    if (fs.existsSync(ntfile)) {
-      let expect = fs.readFileSync(ntfile).toString()
-      assert.equal(expect, nquads)
-    } else {
-      console.log(nquads)
-    }
-  })
+  const ntfile = file.replace(/\.json/,'.nt')
+  const nquads = await jsonld.toRDF(objects, {format: 'application/n-quads'})
+      .then(quads => quads.split("\n").filter( l => l ).sort().join("\n")+"\n")
+  if (fs.existsSync(ntfile)) {
+    let expect = fs.readFileSync(ntfile).toString()
+    assert.equal(expect, nquads, 'ntfile')
+    // console.log(ntfile)
+  } else {
+    // console.log(nquads)
+  }
 })

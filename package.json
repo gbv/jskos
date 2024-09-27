@@ -10,7 +10,8 @@
   },
   "scripts": {
     "test": "mocha",
-    "html": "make"
+    "html": "make",
+    "rdf": "jsonld2rdf -c context.json"
   },
   "devDependencies": {
     "ajv": "^8.11.0",
@@ -18,6 +19,7 @@
     "ajv-formats-draft2019": "^1.6.1",
     "glob": "^8.0.3",
     "jsonld": "^8.1.0",
+    "jsonld2rdf": "^0.3.0",
     "mocha": "^10.0.0"
   }
 }

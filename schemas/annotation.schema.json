@@ -40,7 +40,7 @@
     },
     "creator": {
       "description": "agent primarily responsible for creation of resource",
-      "oneOf": [
+      "anyOf": [
         {
           "type": "object",
           "required": [

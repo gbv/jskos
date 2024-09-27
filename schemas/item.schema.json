@@ -165,6 +165,10 @@
       "description": "geographic location of the item",
       "$ref": "#/definitions/address"
     },
+    "replacedBy": {
+      "description": "A related item that supplants, displaces, or supersedes the described item",
+      "$ref": "#"
+    },
     "subject": {
       "description": "what this item is about (e.g. topic)",
       "$ref": "concept.schema.json#/definitions/conceptSet"

@@ -370,6 +370,7 @@ endPlace      [set]                     where an item ended (e.g. place of death
 place         [set]                     other relevant place(s) of the item
 location      [location]                geographic location of the item
 address       [address]                 postal address of the item
+replacedBy    [item]                    related item that supplants, displaces, or supersedes the item
 subject       [set]                     what this item is about (e.g. topic)
 subjectOf     [set]                     resources about this item (e.g. documentation)
 depiction     [list] of [URL]           list of image URLs depicting the item
@@ -1159,6 +1160,7 @@ Public services to validate JSKOS data are included in instances of
 
 - Change JSON-LD context for spatial fields (`location`, `place`, `startPlace`, `endPlace`)
 - Add Concept field `deprecated`
+- Add Item field `replacedBy`
 
 ### 0.5.3 (2024-09-18) {.unnumbered}
 

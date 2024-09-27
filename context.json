@@ -180,6 +180,7 @@
       "@container": "@set"
     },
     "deprecated": "http://www.w3.org/2002/07/owl#deprecated",
+    "replacedBy": "http://purl.org/dc/terms/isReplacedBy",
     "namespace": "http://rdfs.org/ns/void#uriSpace",
     "uriPattern": "http://rdfs.org/ns/void#voidRegexPattern",
     "fromScheme": "http://rdfs.org/ns/void#subjectsTarget",

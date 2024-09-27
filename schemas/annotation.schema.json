@@ -54,7 +54,7 @@
     },
     "target": {
       "description": "object being annotated, or its URI",
-      "oneOf": [
+      "anyOf": [
         {
           "$ref": "resource.schema.json#/definitions/uri"
         },

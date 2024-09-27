@@ -1156,7 +1156,7 @@ Public services to validate JSKOS data are included in instances of
 
 ### Next {.unnumbered}
 
-...
+- Change JSON-LD context for spatial fields (`location`, `place`, `startPlace`, `endPlace`)
 
 ### 0.5.3 (2024-09-18) {.unnumbered}
 

@@ -103,15 +103,18 @@
     "@type": "@id",
     "@container": "@set"
   },
-  "startPlace": {
+  "place": {
     "@id": "http://schema.org/location",
+    "@container": "@set"
+  },
+  "startPlace": {
+    "@id": "http://schema.org/fromLocation",
     "@container": "@set"
   },
   "endPlace": {
-    "@id": "http://schema.org/location",
+    "@id": "http://schema.org/toLocation",
     "@container": "@set"
   },
-
   "narrower": {
     "@id": "http://www.w3.org/2004/02/skos/core#narrower",
     "@container": "@set"
@@ -136,7 +139,10 @@
   "startDate": "http://schema.org/startDate",
   "endDate": "http://schema.org/endDate",
   "relatedDate": "http://www.w3.org/2000/01/rdf-schema#seeAlso",
-  "location": "http://schema.org/location",
+  "location": {
+    "@id": "http://www.opengis.net/ont/geosparql#asGeoJSON",
+    "@type": "@json"
+  },
   "address": "http://schema.org/address",
   "street": "http://schema.org/streetAddress",
   "ext": "http://schema.org/streetAddress",

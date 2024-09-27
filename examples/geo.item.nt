@@ -1,0 +1,4 @@
+_:b0 <http://schema.org/fromLocation> <https://sws.geonames.org/2655984/> .
+_:b0 <http://schema.org/location> <https://sws.geonames.org/5128581> .
+_:b0 <http://schema.org/toLocation> <https://sws.geonames.org/3411923/> .
+_:b0 <http://www.opengis.net/ont/geosparql#asGeoJSON> "{\"coordinates\":[-49.946944,41.7325,-3803],\"type\":\"Point\"}"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#JSON> .

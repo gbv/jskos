@@ -408,7 +408,9 @@ occurrences  [set] of [occurrences]     occurrences with this concept
 deprecated   [boolean]                  mark a concept as deprecated (false by default)
 
 The first element of field `type`, if given, MUST be the [item type] URI
-<http://www.w3.org/2004/02/skos/core#Concept>.
+<http://www.w3.org/2004/02/skos/core#Concept>. The type URI 
+<http://schema.vocnet.org/NonIndexingConcept> should be used as second element
+for concepts not meant to be used for indexing.
 
 Applications MAY limit the `inScheme` and/or `topConceptOf` to sets of a single
 element or ignore all but one element of these sets.
@@ -1163,6 +1165,7 @@ Public services to validate JSKOS data are included in instances of
 - Add Concept field `deprecated`
 - Add Item field `replacedBy`
 - Clarify anchoring of regular expressions
+- Mention non-indexing concepts
 
 ### 0.5.3 (2024-09-18) {.unnumbered}
 

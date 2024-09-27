@@ -67,6 +67,10 @@
     "occurrences": {
       "description": "occurrences with this concept",
       "$ref": "occurrence.schema.json#/definitions/occurrenceSet"
+    },
+    "deprecated": {
+      "description": "whether the concept has been marked as deprecated",
+      "type": "boolean"
     }
   }
 }

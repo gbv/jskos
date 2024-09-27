@@ -475,9 +475,10 @@ license          [set]                      Licenses which the full scheme can b
 The first element of field `type`, if given, MUST be the [item type] URI
 <http://www.w3.org/2004/02/skos/core#ConceptScheme>.
 
-The value of field `uriPattern` MUST conform to the regular expression syntax used by
-XML Schema ([Appendix F](https://www.w3.org/TR/xmlschema-2/#regexs)) and be anchored
-with `^` as first character.
+The values of field `uriPattern` and `notationPattern` MUST conform to the
+regular expression syntax used by XML Schema ([Appendix F](https://www.w3.org/TR/xmlschema-2/#regexs))
+and SHOULD be anchored with `^` as first and `$` as last character. Applications MAY automatically
+anchor unanchored regular expressions.
 
 If `concepts` is a set, all its member concepts SHOULD contain a field
 `inScheme` and all MUST contain [the same] concept scheme in field `inScheme`
@@ -1161,6 +1162,7 @@ Public services to validate JSKOS data are included in instances of
 - Change JSON-LD context for spatial fields (`location`, `place`, `startPlace`, `endPlace`)
 - Add Concept field `deprecated`
 - Add Item field `replacedBy`
+- Clarify anchoring of regular expressions
 
 ### 0.5.3 (2024-09-18) {.unnumbered}
 

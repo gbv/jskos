@@ -1,4 +1,5 @@
 {
+  "name": "jskos",
   "version": "0.5.4",
   "homepage": "https://gbv.github.io/jskos/",
   "type": "module",

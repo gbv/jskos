@@ -37,27 +37,18 @@
       "anyOf": [
         {
           "type": "string",
-          "format": "date"
+          "pattern": "^Y?-?[0-9X]{4,}[?~%]?(-[01X][012X][?~%]?(-[0-3X][0-9X][?~%]?)?)?$",
+          "$comment": "EDTF Year, Year-Month, Year-Month-Day"
         },
         {
           "type": "string",
-          "format": "date-time"
+          "pattern": "^Y?-?[0-9X?~%-]{4,}T[0-9?~%:.]+(Z|[+-][0-9?~%:]+)?$",
+          "$comment": "EDTF Date and Time"
         },
         {
           "type": "string",
-          "pattern": "^-?\\d{4}-[01]\\d-[0123]\\dT[0-2]\\d:[0-5]\\d:[0-5]\\d$"
-        },
-        {
-          "type": "string",
-          "pattern": "^-?\\d{4}-[01]\\d-[0123]\\d$"
-        },
-        {
-          "type": "string",
-          "pattern": "^-?\\d{4}-[01]\\d$"
-        },
-        {
-          "type": "string",
-          "pattern": "^-?\\d{4}$"
+          "pattern": "^(|\\.\\.|[0-9TXYZ%~?.+-]+)/(|\\.\\.|[0-9TXYZ%~?.+-]+)$",
+          "$comment": "EDTF Interval (very lax)"
         }
       ]
     },

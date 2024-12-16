@@ -60,12 +60,16 @@ A **percentage** is a JSON number with value between zero (0.0 = 0%) and one (1.
 
 ## date
 
-A **date** is a date or datetime as defined with XML Schema datatype
+A **date** is a date or date and time as defined with XML Schema datatype
 [datetime](https://www.w3.org/TR/xmlschema-2/#dateTime)
 (`-?YYYY-MM-DDThh:mm:ss(\.s+)?(Z|[+-]hh:mm)?`)
 [date](https://www.w3.org/TR/xmlschema-2/#date) (`-?YYYY-MM-DD(Z|[+-]hh:mm)?`),
 [gYearMonth](https://www.w3.org/TR/xmlschema-2/#gYearMonth) (`-?YYYY-MM`),
 or [gYear](https://www.w3.org/TR/xmlschema-2/#gYear) (`-?YYYY`).
+
+## extended date
+
+An **extended date** is a date, date and time, or interval in [Extended Date/Time Format (EDTF)](https://www.loc.gov/standards/datetime/) Level 1.
 
 ## list
 
@@ -1044,6 +1048,9 @@ The fields `PARTS` and `_id` in the following example can be ignored:
 * IANA: *Media Types*.
   <https://www.iana.org/assignments/media-types/>
 
+* ISO: *Date and time — Representations for information interchangePart 2: Extensions*.
+  ISO 8601-2:2019. (summary available at <https://www.loc.gov/standards/datetime/>)
+
 * A. Phillips, M. Davis: *Tags for Identifying Languages*.
   RFC 3066, September 2006. <https://tools.ietf.org/html/rfc3066>
 
@@ -1166,6 +1173,10 @@ Public services to validate JSKOS data are included in instances of
 [jskos-server]: https://www.npmjs.com/package/jskos-server
 
 ## Changelog {.unnumbered}
+
+### next
+
+- Add extended dates for `startDate`, `endDate`, and `relatedDate`.
 
 ### 0.5.4 (2024-09-27) {.unnumbered}
 

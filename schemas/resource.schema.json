@@ -64,6 +64,11 @@
           }
         ]
       }
+    },
+    "rank": {
+      "type": "string",
+      "enum": ["normal","preferred","deprecated"],
+      "default": "normal"
     }
   },
   "properties": {
@@ -131,7 +136,10 @@
       "items": {
         "$ref": "annotation.schema.json"
       }
-    }
+   },
+   "rank": {
+     "$ref": "#/definitions/rank"
+   }
   },
   "patternProperties": {
     "^_|^[A-Z0-9]+$": {}

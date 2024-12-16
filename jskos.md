@@ -69,7 +69,13 @@ or [gYear](https://www.w3.org/TR/xmlschema-2/#gYear) (`-?YYYY`).
 
 ## extended date
 
-An **extended date** is a date, date and time, or interval in [Extended Date/Time Format (EDTF)](https://www.loc.gov/standards/datetime/) Level 1.
+An **extended date** is a date, date and time, or interval in [Extended Date/Time Format (EDTF)](https://www.loc.gov/standards/datetime/) Level 1. This includes:
+
+- Intervals of dates (e.g. `1949-10/1990-10`, or `2021/..`)
+- Seasons (e.g. `2001-21`)
+- Years with more then four digits (e.g. `Y-50000`)
+- Qualifiers for uncertain (`?`), approximate (`~`) or both (`%`)
+- Unspecified digits marked with `X`
 
 ## list
 
@@ -366,10 +372,10 @@ historyNote   [language map] of [list]  see [SKOS Documentary Notes]
 editorialNote [language map] of [list]  see [SKOS Documentary Notes]
 changeNote    [language map] of [list]  see [SKOS Documentary Notes]
 note          [language map] of [list]  see [SKOS Documentary Notes]
-startDate     [date]                    date of begin (birth, creation...) of the item
-endDate       [date]                    date of end (death, resolution...) of the item
-relatedDate   [date]                    other date somehow related to the item (deprecated)
-relatedDates  array of [date]           other dates somehow related to the item
+startDate     [extended date]           date of begin (birth, creation...) of the item
+endDate       [extended date]           date of end (death, resolution...) of the item
+relatedDate   [extended date]           other date somehow related to the item (deprecated)
+relatedDates  array of [extended date]  other dates somehow related to the item
 startPlace    [set]                     where an item started (e.g. place of birth)
 endPlace      [set]                     where an item ended (e.g. place of death)
 place         [set]                     other relevant place(s) of the item
@@ -383,6 +389,9 @@ media         [list] of [media]         audiovisual or other digital content rep
 
 Applications MAY limit the fields `notation` and/or `depiction` to lists of a single
 element or ignore all preceding elements of these lists.
+
+If `startDate` is given, the value of `endDate` SHOULD NOT be an interval with open start.
+If `endDate` is given, the value of `startDate` SHOULD NOT be an interval with open end.
 
 ## Concept
 

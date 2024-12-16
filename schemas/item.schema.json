@@ -83,7 +83,7 @@
       "anyOf": [
         {
           "type": "string",
-          "pattern": "^Y?-?[0-9X]{4,}[?~%]?(-[01X][012X][?~%]?(-[0-3X][0-9X][?~%]?)?)?$",
+          "pattern": "^Y?-?[0-9X]{4,}[?~%]?(-[01X][0-9X][?~%]?(-[0-3X][0-9X][?~%]?)?)?$",
           "$comment": "EDTF Year, Year-Month, Year-Month-Day"
         },
         {

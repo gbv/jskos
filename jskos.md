@@ -334,10 +334,10 @@ field        type                description
 uri         [URI]                primary globally unique identifier
 identifier  [list]               additional identifiers
 type        [list] of [URI]      URIs of types
-created     [date]               date of creation
-issued      [date]               date of publication
-modified    [date]               date of last modification
-creator     [set]                agent primarily responsible for creation of resource
+created     [date]               date of creation of the resource
+issued      [date]               date of publication of the resource
+modified    [date]               date of last modification of the resource
+creator     [set]                agent primarily responsible for creation of the resource
 contributor [set]                agent responsible for making contributions to the resource
 source      [set]                sources from which the described resource is derived
 publisher   [set]                agent responsible for making the resource available
@@ -348,6 +348,13 @@ The value of field `@context` SHOULD be
 `https://gbv.github.io/jskos/context.json`.
 
 Resources can be [tested for sameness](#resource-sameness) based on field `uri`.
+
+The fields `created`, `issued`, `modified`, `creator`, `contributor`, `source`,
+`publisher`, and `partOf` do not refer to the entity referenced by the resource
+but to the resource object. For instance a resource about the city of Rome
+might have a recent date `created` while the founding date `-0753` would be
+stated in [item] field `startDate`.
+
 
 ## Item
 
@@ -1188,6 +1195,7 @@ Public services to validate JSKOS data are included in instances of
 
 - Add extended dates for `startDate`, `endDate`, and `relatedDate`.
 - Add `relatedDates` to replace `relatedDate`
+- Clarify semantics of resource fields
 
 ### 0.5.4 (2024-09-27) {.unnumbered}
 

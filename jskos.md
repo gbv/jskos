@@ -368,7 +368,8 @@ changeNote    [language map] of [list]  see [SKOS Documentary Notes]
 note          [language map] of [list]  see [SKOS Documentary Notes]
 startDate     [date]                    date of begin (birth, creation...) of the item
 endDate       [date]                    date of end (death, resolution...) of the item
-relatedDate   [date]                    other date somehow related to the item
+relatedDate   [date]                    other date somehow related to the item (deprecated)
+relatedDates  array of [date]           other dates somehow related to the item
 startPlace    [set]                     where an item started (e.g. place of birth)
 endPlace      [set]                     where an item ended (e.g. place of death)
 place         [set]                     other relevant place(s) of the item
@@ -1177,6 +1178,7 @@ Public services to validate JSKOS data are included in instances of
 ### next
 
 - Add extended dates for `startDate`, `endDate`, and `relatedDate`.
+- Add `relatedDates` to replace `relatedDate`
 
 ### 0.5.4 (2024-09-27) {.unnumbered}
 

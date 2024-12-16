@@ -162,8 +162,15 @@
       "$ref": "#/definitions/edtf"
     },
     "relatedDate": {
-      "description": "other date somehow related to the item",
+      "description": "other date somehow related to the item (deprecated, use relatedDates instead)",
       "$ref": "#/definitions/edtf"
+    },
+    "relatedDates": {
+      "description": "other date somehow related to the item (deprecated, use relatedDates instead)",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/edtf"
+      }
     },
     "location": {
       "description": "geographic location of the item",

@@ -350,11 +350,12 @@ The value of field `@context` SHOULD be
 Resources can be [tested for sameness](#resource-sameness) based on field `uri`.
 
 The fields `created`, `issued`, `modified`, `creator`, `contributor`, `source`,
-`publisher`, and `partOf` do not refer to the entity referenced by the resource
-but to the resource object. For instance a resource about the city of Rome
-might have a recent date `created` while the founding date `-0753` would be
-stated in [item] field `startDate`.
+and `publisher` do not refer to the entity referenced by the resource but to
+the resource object. For instance a resource about the city of Rome might have
+a recent date `created` while the founding date `-0753` would be stated in
+[item] field `startDate`.
 
+For use cases of field `partOf` see also [Concept Schemes].
 
 ## Item
 
@@ -480,7 +481,7 @@ addition to the optional fields `@context`, `address`, `altLabel`,
 `note`, `partOf`, `place`, `prefLabel`, `publisher`, `scopeNote`, `source`,
 `startDate`, `startPlace`, `subjectOf`, `subject`, `type`, `uri`, and `url`):
 
-property         type                       definition
+field            type                       definition
 ---------------- -------------------------- --------------------------------------------------------------------------------------
 topConcepts      [set] of [concepts]        top [concepts] of the scheme
 versionOf        [set] of [concept schemes] [concept scheme] which this scheme is a version or edition of
@@ -510,6 +511,10 @@ if this field is given.
 If `types` and `concepts` are sets, the `types` set SHOULD include all [concept types]
 for each concept's `type` other than `http://www.w3.org/2004/02/skos/core#Concept`.
 
+Field `partOf` at Concept Types MUST be interpreted as following:
+
+- if the linked resource is another [concept scheme], the concept scheme is *subset of* the other concept scheme
+- if the linked resource is a [registry], the concept scheme is *listed in* in the registry
 
 ## Concept Occurrences
 
@@ -616,7 +621,7 @@ optional fields `@context`, `address`, `altLabel`, `changeNote`, `contributor`,
 
 Distributions mostly cover the [class Distribution](https://www.w3.org/TR/vocab-dcat-3/#Class:Distribution) from [Data Catalog Vocabulary](https://www.w3.org/TR/vocab-dcat-3/).
 
-property       type            definition
+field          type            definition
 -------------- --------------- ------------------------------------------------------------------
 download       [URL]           location of a file with distribution content in given format
 accessURL      [URL]           URL of an API or landing page to retrieve the distribution content
@@ -673,7 +678,7 @@ optional fields `@context`, `address`, `altLabel`, `changeNote`,
 `issued`, `location`, `modified`, `notation`, `note`, `partOf`, `prefLabel`, `publisher`,
 `scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`, `subject`, `type`, `uri`, and `url`). All fields except `fromScheme` and `toScheme` are optional.
 
-property      type                      definition
+field         type                      definition
 ------------- ------------------------- ------------------------------------------------------
 mappings      [set] of [mappings]       [mappings] in this concordance
 distributions [set] of [distributions]  [distributions] to access the concordance
@@ -929,7 +934,7 @@ The following resources are same:
 [closed world statements]: #closed-world-statements
 
 By default, a JSKOS document should be interpreted as possibly incomplete: a
-missing property does not imply that no value exists for this property: this
+missing field does not imply that no value exists for this field: this
 assumption is also known as open-world assumption. Applications SHOULD support
 closed world statements to explicitly disable the open world assumption for
 selected properties and explicitly state the known absence or existence of

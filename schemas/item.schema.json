@@ -5,6 +5,19 @@
   "description": "named entities",
   "type": "object",
   "definitions": {
+    "itemSet": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "null"
+          },
+          {
+            "$ref": "#"
+          }
+        ]
+      }
+    },
     "language-map": {
       "type": "object",
       "patternProperties": {
@@ -193,8 +206,8 @@
       "$ref": "#/definitions/address"
     },
     "replacedBy": {
-      "description": "A related item that supplants, displaces, or supersedes the described item",
-      "$ref": "#"
+      "description": "Related items that supplant, displace, or supersede the described item",
+      "$ref": "#/definitions/itemSet"
     },
     "subject": {
       "description": "what this item is about (e.g. topic)",

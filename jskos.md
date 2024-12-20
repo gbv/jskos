@@ -389,7 +389,8 @@ endPlace      [set]                     where an item ended (e.g. place of death
 place         [set]                     other relevant place(s) of the item
 location      [location]                geographic location of the item
 address       [address]                 postal address of the item
-replacedBy    [item]                    related item that supplants, displaces, or supersedes the item
+replacedBy    [set] of [item]           related items that supplant, displace, or supersede this item
+basedOn       [set] of [item]           related items that inspired or led to this item
 subject       [set]                     what this item is about (e.g. topic)
 subjectOf     [set]                     resources about this item (e.g. documentation)
 depiction     [list] of [URL]           list of image URLs depicting the item
@@ -511,10 +512,14 @@ if this field is given.
 If `types` and `concepts` are sets, the `types` set SHOULD include all [concept types]
 for each concept's `type` other than `http://www.w3.org/2004/02/skos/core#Concept`.
 
-Field `partOf` at Concept Types MUST be interpreted as following:
+Resource field `partOf` at a concept scheme MUST be interpreted as following:
 
 - if the linked resource is another [concept scheme], the concept scheme is *subset of* the other concept scheme
 - if the linked resource is a [registry], the concept scheme is *listed in* in the registry
+
+Item field `replacedBy` at a concept schemes SHOULD be used to connect successive editions or concept scheme that have been replaced or renamed.
+
+Item field `basedOn` at a concept schemes SHOULD be used to connect translations, abridged versions, or concept schemes that have been inspired by another concept scheme.
 
 ## Concept Occurrences
 
@@ -1201,6 +1206,8 @@ Public services to validate JSKOS data are included in instances of
 - Add extended dates for `startDate`, `endDate`, and `relatedDate`.
 - Add `relatedDates` to replace `relatedDate`
 - Clarify semantics of resource fields
+- Change item field `replacedBy` to be set (breaking change!)
+- Add item field `basedOn`
 
 ### 0.5.4 (2024-09-27) {.unnumbered}
 

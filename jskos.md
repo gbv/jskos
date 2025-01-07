@@ -50,9 +50,9 @@ An **URL** is a syntactically correct URL with HTTPS (RECOMMENDED) or HTTP schem
 
 A **non-negative integer** is a JSON number without preceding minus part, without fractional part, or exponent.
 
-<div class="note">
+::: {.callout-note}
 Examples of valid JSON values which are *not* non-negative integers: `"42"`, `""`, `null`, `-1`, `6e-3`.
-</div>
+:::
 
 ## percentage
 
@@ -111,7 +111,7 @@ interpreted as following to support [closed world statements]:
 * a set `[..., null]` denotes a set with some known and additional unknown members.
 * any other set `[...]` denotes a set with all members known.
 
-<div class="example">
+:::{#lst-ex-sets}
 The following JSON values are JSKOS sets:
 
 * `[]`{.json}
@@ -127,11 +127,11 @@ The following JSON values are not valid JSKOS sets:
   (`null` only allowed as last member)
 * `[{"uri":"http://example.org/123"},{"uri":"http://example.org/123"}]`{.json}\
   (field `uri` must be unique)
-</div>
+:::
 
-<div class="note">
+::: {.callout-note}
 It is not defined yet whether and when the order of elements is relevant or not.
-</div>
+:::
 
 ## language range
 
@@ -146,7 +146,6 @@ set of [RFC 3066] language tags that start the string `x`. For instance language
 range `en-` includes language tag `en`, `en-US`, and `en-GB` among others.  The
 language range `-` refers to all possible language tags.
 
-<div class="note">
 A language range MUST conform to the following ABNF grammar ([RFC 5234]):
 
 ```abnf
@@ -165,8 +164,6 @@ with "`-`"). For instance "`en`" could be an [RFC 3066] language tag or a
 --------------------------------------- ----- -------- --------
 language tag for English                `en`  `en`
 languag range for all English variants  `en-`          `en`
-
-</div>
 
 ## language map
 
@@ -198,29 +195,31 @@ to support [closed world statements]:
 * A language range field indicates the existence of additional, unknown
   values of unknown number.
 
-<div class="example">
+::: {#lst-language-maps}
+
 The following language maps make use of language ranges and placeholders:
 
-* `{"-":""}`, `{"-":""}`, `{"-":[]}`, and `{"-":[""]}`
+* ` {"-":""}`, ` {"-":""}`, ` {"-":[]}`, and ` {"-":[""]}`
    all denote non-empty language maps with unknown language tags and values.
 
-* `{"en":"bird","-":""}` denotes a language map with an English value
+* ` {"en":"bird","-":""}` denotes a language map with an English value
    and additional values in other language tags.
 
-* `{"en":"bird"}` denotes a language map with an English value only.
+* ` {"en":"bird"}` denotes a language map with an English value only.
 
-* `{"en-":""}` denotes a language map that only
+* ` {"en-":""}` denotes a language map that only
   contains values with language tags starting with `en`.
-</div>
 
-<div class="note">
+:::
+
+::: {.callout-note}
 JSON-LD disallows language map fields ending with `"-"` so all fields that are
 language ranges MUST be removed before reading JSKOS as JSON-LD.
-</div>
+:::
 
-<div class="note">
+::: {.callout-note}
 The language tag "und" can be used to include strings of unknown or unspecified language.
-</div>
+:::
 
 ## location
 
@@ -232,16 +231,15 @@ A **location** is a JSON object conforming to the GeoJSON specification ([RFC
 Applications MAY restrict the location data type to GeoJSON objects of GeoJSON
 type `Point`.
 
-<div class="example">
-Position of the RMS Titanic as point:
 
+::: {#lst-titanic lst-cap="Position of the RMS Titanic as point"}
 ~~~json
 {
   "type": "Point",
   "coordinates": [-49.946944, 41.7325, -3803]
 }
 ~~~
-</div>
+:::
 
 ## address
 
@@ -286,9 +284,7 @@ contrast to IIIF, the fields `label` and `id` are not required but RECOMMENDED
 by JSKOS. JSKOS applications MAY limit the set of supported fields instead of
 fully implementing all IIIF capabilities.
 
-<div class="example">
-For example a thumbnail image can be specified as media like this:
-
+::: {#lst-thubnail lst-cap="Thumbnail image specified as media"}
 ~~~json
 {
   "type": "Manifest",
@@ -302,7 +298,7 @@ For example a thumbnail image can be specified as media like this:
   ]
 }
 ~~~
-</div>
+:::
 
 # Object types
 
@@ -328,7 +324,7 @@ In addition there are [concept bundles] as part of mappings, occurrences, and co
 
 An **resource** is a JSON object with the following optional fields:
 
-field        type                description
+field       type                 description
 ----------- -------------------- ------------------------------------------------------------------
 @context    [URI] or list of URI reference to a [JSON-LD context] document
 uri         [URI]                primary globally unique identifier
@@ -448,24 +444,23 @@ NOT be used without proper documentation because its meaning in this context is
 unclear. A concept MUST NOT include more than one of concept bundle fields. A
 concept SHOULD NOT reference itself as part of its concept bundle.
 
-<div class="note">
+::: {.callout-note}
 The "ancestors" field is useful in particular for monohierarchical classifications
 but it's not forbidden to choose just one arbitrary path of concepts that are
 connected by the broader relation.
-</div>
+:::
 
-<div class="example">
-`examples/example.concept.json`{.include .codeblock .json}
-</div>
+```{.json #lst-concept1 lst-cap="concept"}
+{{< include examples/example.concept.json >}}
+```
 
-<div class="example">
-`examples/gnd-7507432-1.concept.json`{.include .codeblock .json}
-</div>
+```{.json #lst-concept2 lst-cap="concept from GND"}
+{{< include examples/gnd-7507432-1.concept.json >}}
+```
 
-<div class="example">
-`examples/ddc-305.40941109033.concept.json`{.include .codeblock .json}
-</div>
-
+```{.json #lst-concept3 lst-cap="concept from DDC"}
+{{< include examples/ddc-305.40941109033.concept.json >}}
+```
 
 
 ## Concept Schemes
@@ -558,17 +553,21 @@ occurrence is part of a [concept] in field `occurrences`.
 
 <!-- TODO: specify explicit inference rules for implicitly given concepts? -->
 
-<div class="example">
+:::{#lst-ex2}
 Two occurrences and their combined co-occurrence from GBV Union Catalogue (GVK) as of November 22th, 2017: [3657 records](https://gso.gbv.de/DB=2.1/CMD?ACT=SRCHA&IKT=1016&SRT=YOP&TRM=bkl+08.22) are indexed with class `08.22` (medieval philosophy) from Basisklassifikation, [144611](https://gso.gbv.de/DB=2.1/CMD?ACT=SRCHA&IKT=1016&SRT=YOP&TRM=ddc+610) with DDC notation `610` (Medicine & health) and [2 records](https://gso.gbv.de/DB=2.1/CMD?ACT=SRCHA&IKT=1016&SRT=YOP&TRM=bkl+08.22+ddc+610) with both.
 
-`examples/gvk-co.occurrence.json`{.include .codeblock .json}
-</div>
+```{.json}
+{{< include examples/gvk-co.occurrence.json >}}
+```
+:::
 
-<div class="example">
+:::{#lst-ex-wikidata}
 The Wikidata [concept of an individual human](http://www.wikidata.org/entity/Q5) is linked to 206 Wikimedia sites (mostly Wikipedia language editions) and more than 3.7 million people (instances of <http://www.wikidata.org/entity/P31>) at November 15th, 2017.
 
-`examples/wikidata-occurrences.concept.json`{.include .codeblock .json}
-</div>
+```{.json}
+{{< include examples/wikidata-occurrences.concept.json >}}
+```
+:::
 
 
 ## Registries
@@ -603,12 +602,13 @@ The first element of field `type`, if given, MUST be the [item type] URI
 Registries are collection of [concepts], [concept schemes], [concept types],
 [concept mappings], and/or other registries.
 
-<div class="note"> Registries are the top JSKOS entity, followed by
+::: {.callout-note}
+Registries are the top JSKOS entity, followed by
 [concordances], [mappings] [concept schemes], and on the lowest level
 [concepts] and [concept types]. See [Distributions] for an alternative.
 
-Additional integrity rules for registries will be defined.
-</div>
+Additional integrity rules for registries will be defined (TODO).
+:::
 
 
 ## Distributions
@@ -647,28 +647,34 @@ Fields `mimetype`, `compressFormat`, and `packageFormat` SHOULD be IANA media ty
 The first element of field `type`, if given, MUST be the [item type] URI
 <http://www.w3.org/ns/dcat#Distribution>.
 
-<div class="note">
+::: {.callout-note}
 Access to [concept schemes] and [concordances] can also be specified with
 fields `concepts`, `types`, and `mappings`, respectively. Distributions provide
 an alternative and extensible method to express access methods.
-</div>
+:::
 
-<div class="example">
+::: {#lst-ex}
 
 Distribution of a newline-delimited JSKOS file:
 
-`examples/jskos.distribution.json`{.include .codeblock .json}
+```{.json}
+{{< include examples/jskos.distribution.json >}}
+```
 
 Distribution of a RDF/XML with SKOS data:
 
-`examples/rdfxml.distribution.json`{.include .codeblock .json}
+```{.json}
+{{< include examples/rdfxml.distribution.json >}}
+```
 
 Distribution of a gzip-compressed MARC/XML file in [MARC 21 Format for
 Authority Data](https://www.loc.gov/marc/authority/):
 
-`examples/marc.distribution.json`{.include .codeblock .json}
+```{.json}
+{{< include examples/marc.distribution.json >}}
+```
 
-</div>
+:::
 
 
 ## Concordances
@@ -704,11 +710,9 @@ another. If `mappings` is a set then
 * all its members with field `toScheme` MUST have [the same] value
   like concordance field `toScheme`.
 
-<div class="note">
-There is an additional integrity constraint refering to field `inScheme` if concepts
-in mappings in concordances.
-</div>
-
+::: {.callout-note}
+There is an additional integrity constraint refering to field `inScheme` if concepts in mappings in concordances.
+:::
 
 ## Concept Mappings
 
@@ -749,15 +753,15 @@ from [SKOS mapping properties](http://www.w3.org/TR/skos-reference/#mapping).
 The field `type` MAY contain additional values but MUST NOT contain multiple of
 these values.
 
-<div class="note">
+::: {.callout-note}
 When mappings are dynamically created it can be useful to assign a non-HTTP URI
 such as `urn:uuid:687b973c-38ab-48fb-b4ea-2b77abf557b7`.
-</div>
+:::
 
-<div class="note">
+::: {.callout-note}
 Applications MAY use concept mappings to derive simple statements with [SKOS Mapping Properties](https://www.w3.org/TR/skos-reference/#mapping)
 but SKOS integrity rules for mappings do not apply automatically.
-</div>
+:::
 
 ## Concept Bundles
 
@@ -780,12 +784,11 @@ memberRoles object                      Object mapping role URIs to [set]s of [c
 
 Keys of a `memberRoles` object MUST be URIs and their values MUST be of type [set].
 
+```{.json #lst-member-roles lst-cap="..."}
+{{< include examples/memberRoles.concept.json >}}
+```
 
-<div class="example">
-`examples/memberRoles.concept.json`{.include .codeblock .json}
-</div>
-
-<div class="note">
+::: {.callout-note}
 
 * Concept bundles could also be used for
   [SKOS concept collections](http://www.w3.org/TR/skos-reference/#collections),
@@ -805,8 +808,7 @@ Keys of a `memberRoles` object MUST be URIs and their values MUST be of type [se
     ```
 
   Normalization rules may be added to prefer one kind of expressing an empty concept bundle.
-
-</div>
+:::
 
 ## Annotations
 
@@ -924,14 +926,14 @@ Two [resources] are *same* if and only if they both contain field `uri` with
 the same value. A resource without field `uri` is not same to any other
 resource.
 
-<div class="example">
+:::{#lst-sameness}
 The following resources are same:
 
 ~~~{.json}
 { "uri": "http://example.org/123", "created": "2007" }
 { "uri": "http://example.org/123", "created": "2015" }
 ~~~
-</div>
+:::
 
 
 ## Closed world statements
@@ -949,12 +951,12 @@ data type      open world closed world explicit negation explicit existence
 -------------- ---------- ------------ ----------------- ----------------------------
 [list]         no field   `[...]`      `[]`              `[null]` or `[..., null]`
 [set]          no field   `[...]`      `[]`              `[null]` or `[..., null]`
-[language map] no field   `{...}`      no language tag   `{"-":""}` or `{"-":[""]}`
-[resource]     no field   `{...}`      -                 `{}`
+[language map] no field   ` {...}`      no language tag   ` {"-":""}` or ` {"-":[""]}`
+[resource]     no field   ` {...}`      -                 ` {}`
 [URI]/[URL]    no field   `"..."`      -                 -
 [date]         no field   `"..."`      -                 -
 
-<div class="example">
+::: {#lst-closed-world}
 The following concept has preferred labels and narrower concepts.  but no
 alternative labels nor notations. Nothing is known about broader concepts,
 related concepts, and other possible concept properties:
@@ -968,7 +970,7 @@ related concepts, and other possible concept properties:
   "narrower": [ null ]
 }
 ```
-</div>
+:::
 
 
 ## Inference rules and integrity constraints
@@ -1030,7 +1032,7 @@ A JSKOS record MAY contain additional fields for custom usage. These fields
 MUST start with and underscore (`_`) or consist of uppercase letters and digits 
 only (A-Z, 0-1).  The fields SHOULD be ignored by generic JSKOS applications. 
 
-<div class="example">
+::: {#lst-custom-fields}
 The fields `PARTS` and `_id` in the following example can be ignored:
 
 ```json
@@ -1041,7 +1043,7 @@ The fields `PARTS` and `_id` in the following example can be ignored:
   "PARTS": ["copper", "tin"]
 }
 ```
-</div>
+:::
 
 
 # References {.unnumbered}
@@ -1166,7 +1168,9 @@ without [closed world statements] to RDF triples.
 
 [JSON-LD context document]: http://www.w3.org/TR/json-ld/#the-context
 
-`context.json`{.include .codeblock .json}
+```{.json}
+{{< include context.json >}}
+```
 
 JSKOS with closed world statements can be mapped to RDF by ignoring all boolean
 values and/or by mapping selected boolean values to RDF triples with blank
@@ -1366,57 +1370,60 @@ The following features of JSKOS have no corresponce in SKOS:
 
 # Examples  {.unnumbered}
 
-## Integrated Authority File (GND) {.unnumbered}
+:::{#lst-gnd-concept-scheme lst-cap="Integrated Authority File (GND)"}
 
 The Integrated Authority File (German: *Gemeinsame Normdatei*) is an authority
-file managed by the German National Library.
+file managed by the German National Library. This example encodes GND as JSKOS
+concept scheme with explicit knowledge about existence of more identifiers,
+definitions, and preferred labels:
 
-<div class="example">
-GND as JSKOS concept scheme. This example includes explicit knowledge about
-existence of more identifiers, definitions, and preferred labels:
+```{.json}
+{{< include examples/gnd.scheme.json >}}
+```
+:::
 
-`examples/gnd.scheme.json`{.include .codeblock .json}
-</div>
+:::{#lst-gnd-concept lst-cap="GND Concept"}
 
-<div class="example">
-A concept from GND:
+```{.json}
+{{< include examples/gnd-4130604-1.concept.json >}}
+```
+:::
 
-`examples/gnd-4130604-1.concept.json`{.include .codeblock .json}
-</div>
+:::{#lst-ex-ddc-1 lst-cap="DDC Concept"}
 
-## Dewey Decimal Classification (DDC)  {.unnumbered}
-
-<div class="example">
 A concept from the Dewey Decimal Classification, German edition 22:
 
-`examples/ddc-612.112.concept.json`{.include .codeblock .json}
-</div>
+```{.json}
+{{< include examples/ddc-612.112.concept.json >}}
+```
+:::
 
-<div class="example">
+:::{#lst-ex-ddc-2 lst-cap="DDC Concept"}
+
 A concept from the abbridget Dewey Decimal Classification, edition 23, in three languages:
 
-`examples/ddc-641.5.concept.json`{.include .codeblock .json}
-</div>
+```{.json}
+{{< include examples/ddc-641.5.concept.json >}}
+```
+:::
 
-<div class="example">
+:::{#lst-ex-ddc-decomposed lst-cap="DDC Concept"}
 A decomposed DDC number for medieval cooking:
 
-`examples/ddc-641.50902.concept.json`{.include .codeblock .json}
-</div>
+```{.json}
+{{< include examples/ddc-641.50902.concept.json >}}
+```
+:::
 
-## Mappings {.unnumbered}
 
-<div class="example">
+:::{#lst-ex-mappings lst-cap="Mappings"}
 Multiple mappings from one concept (612.112 in DDC) to GND.
 
-`examples/ddc-gnd-1.mapping.json`{.include .codeblock .json}
+```{.json}
+{{< include examples/ddc-gnd-1.mapping.json >}}
+```
 
-`examples/ddc-gnd-2.mapping.json`{.include .codeblock .json}
-</div>
-
-----
-
-Latest version: <http://gbv.github.io/jskos/>
-
-Created with [makespec](http://jakobib.github.io/makespec/)
-
+```{.json}
+{{< include examples/ddc-gnd-2.mapping.json >}}
+```
+:::

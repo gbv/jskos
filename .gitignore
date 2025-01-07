@@ -3,4 +3,7 @@
 vendor/
 node_modules/
 
-!gh-pages/index.html
+.quarto/
+docs/
+
+/.quarto/

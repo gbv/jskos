@@ -1,0 +1,39 @@
+project:
+  type: manuscript
+  output-dir: docs
+  render:
+    - "!*.md"
+  post-render:
+    - "cp -rnv schemas/ docs/schemas/"
+
+repo-url: https://github.com/gbv/jskos
+
+manuscript:
+  article: jskos.md
+  code-links:
+    - repo
+
+title: JSKOS data format for Knowledge Organization Systems
+subtitle: version 0.6.0
+date: "2025"
+authors:
+  - name: Jakob Voß
+    orcid: 0000-0002-7613-4123
+    affiliations:
+    - name: Verbundzentrale des GBV (VZG)    
+# TODO: date
+# abstract: |
+# ...
+
+#resources:
+# TODO: link files to be included
+
+format:
+  html:
+    number-sections: true
+    code-line-numbers: false
+    highlight-style: kate
+    theme: flatly
+    crossref:
+      lst-prefix: "Example"
+      lst-title: "Example"

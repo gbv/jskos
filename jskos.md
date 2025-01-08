@@ -98,8 +98,9 @@ A list MUST NOT contain the empty string except if part of a [language map].
 A **set** is a possibly empty array where all members
 
 * are JSON objects of JSKOS [resources], except the last member optionally being `null`,
-* and have distinct values in field `uri`, if this field is given
-  (members MUST not be the [same resource]).
+* have distinct values in field `uri`, if this field is given
+  (members MUST NOT be the [same resource]),
+* and have at most one member with field [`rank`](#rank) being the string `preferred`.
 
 Member objects SHOULD have a field `uri`. Applications MAY restrict sets to
 require the field `uri` for all non-null members.  Applications MAY ignore or
@@ -131,6 +132,37 @@ The following JSON values are not valid JSKOS sets:
 
 ::: {.callout-note}
 It is not defined yet whether and when the order of elements is relevant or not.
+:::
+
+## rank
+
+A **rank** is one of the strings `preferred`, `normal`, and `deprecated`.
+Applications MAY ignore or limit ranks to selected use cases.
+
+Elements of a [set] and [qualified values] are expected to have a field `rank`
+with a rank value. If an element lacks a rank, its default rank is `normal`.
+
+The rank `deprecated` is used for elements that are known to include errors.
+Applications MAY filter out these elements.
+
+The rank `preferred` is used to allow selection of one most relevant element
+from its array. Applications MAY reduce arrays of multiple elements to an array
+with the single element of rank `preferred`.
+
+::: {.callout-note}
+Wikibase data model includes ranks with same semantics, see
+[ranks in Wikidata](https://www.wikidata.org/wiki/Help:Ranking) for background.
+:::
+
+::: {#lst-ranks lst-cap="A resource with ranked publishers"}
+~~~json
+{
+  "publisher": [
+    { "prefLabel": { "en": "Acme Corporation" }, "rank": "preferred" },
+    { "prefLabel": { "en": "DIY Products" }, "rank": "normal" }
+  ]
+}
+~~~
 :::
 
 ## language range
@@ -324,20 +356,22 @@ In addition there are [concept bundles] as part of mappings, occurrences, and co
 
 An **resource** is a JSON object with the following optional fields:
 
-field       type                 description
------------ -------------------- ------------------------------------------------------------------
-@context    [URI] or list of URI reference to a [JSON-LD context] document
-uri         [URI]                primary globally unique identifier
-identifier  [list]               additional identifiers
-type        [list] of [URI]      URIs of types
-created     [date]               date of creation of the resource
-issued      [date]               date of publication of the resource
-modified    [date]               date of last modification of the resource
-creator     [set]                agent primarily responsible for creation of the resource
-contributor [set]                agent responsible for making contributions to the resource
-source      [set]                sources from which the described resource is derived
-publisher   [set]                agent responsible for making the resource available
-partOf      [set]                [resources] which this resource is part of (if no other field applies)
+field               type                  description
+------------------- --------------------- ------------------------------------------------------------------
+@context            [URI] or list of URI  reference to a [JSON-LD context] document
+uri                 [URI]                 primary globally unique identifier
+identifier          [list]                additional identifiers
+type                [list] of [URI]       URIs of types
+created             [date]                date of creation of the resource
+issued              [date]                date of publication of the resource
+modified            [date]                date of last modification of the resource
+creator             [set]                 agent primarily responsible for creation of the resource
+contributor         [set]                 agent responsible for making contributions to the resource
+source              [set]                 sources from which the described resource is derived
+publisher           [set]                 agent responsible for making the resource available
+partOf              [set]                 [resources] which this resource is part of (if no other field applies)
+qualifiedRelations  [qualified relations] qualified relations to other resources
+rank                [rank]                a [rank] (only relevant if the resource is part of a [set])
 
 It is RECOMMENDED to always include the fields `uri`, `type`, and `@context`.
 The value of field `@context` SHOULD be
@@ -360,13 +394,14 @@ For use cases of field `partOf` see also [Concept Schemes].
 
 An **item** is a [resource] with the following optional fields (in addition to
 the optional fields `@context`, `contributor`, `created`, `creator`,
-`identifier`, `issued`, `modified`, `partOf`, `publisher`, `source`, `type`, and `uri`):
+`identifier`, `issued`, `modified`, `partOf`, `publisher`, `rank`, `source`,
+`type`, and `uri`):
 
 field         type                      description
 ------------- ------------------------- ----------------------------------------------
 url           [URL]                     URL of a page with information about the item
 notation      [list]                    list of notations
-prefLabel     [language map] of strings preferred labels, index by language
+prefLabel     [language map] of strings preferred labels, indexed by language
 altLabel      [language map] of [list]  alternative labels, indexed by language
 hiddenLabel   [language map] of [list]  hidden labels, indexed by language
 scopeNote     [language map] of [list]  see [SKOS Documentary Notes]
@@ -395,8 +430,8 @@ media         [list] of [media]         audiovisual or other digital content rep
 Applications MAY limit the fields `notation` and/or `depiction` to lists of a single
 element or ignore all preceding elements of these lists.
 
-If `startDate` is given, the value of `endDate` SHOULD NOT be an interval with open start.
-If `endDate` is given, the value of `startDate` SHOULD NOT be an interval with open end.
+If `startDate` is given, the value of `endDate` MUST NOT be an interval with open start.
+If `endDate` is given, the value of `startDate` MUST NOT be an interval with open end.
 
 ## Concept
 
@@ -408,9 +443,9 @@ fields (in addition to the optional fields `@context`, `address`, `altLabel`,
 `changeNote`, `contributor`, `created`, `creator`, `definition`, `depiction`,
 `editorialNote`, `endDate`, `endPlace`, `example`, `hiddenLabel`,
 `historyNote`, `identifier`, `issued`, `location`, `modified`, `notation`,
-`note`, `partOf`, `place`, `prefLabel`, `publisher`, `scopeNote`, `source`,
-`startDate`, `startPlace`, `subjectOf`, `subject`, `type`, `uri`, `url`,
-`memberSet`, `memberList`, `memberChoice`, and `memberRoles`):
+`note`, `partOf`, `place`, `prefLabel`, `publisher`, `rank`, `scopeNote`,
+`source`, `startDate`, `startPlace`, `subjectOf`, `subject`, `type`, `uri`,
+`url`, `memberSet`, `memberList`, `memberChoice`, and `memberRoles`):
 
 field        type                       description
 ------------ -------------------------- -------------------------------------------------------------------------------
@@ -474,8 +509,9 @@ addition to the optional fields `@context`, `address`, `altLabel`,
 `changeNote`, `contributor`, `created`, `creator`, `definition`, `depiction`,
 `editorialNote`, `endDate`, `endPlace`, `example`, `hiddenLabel`,
 `historyNote`, `identifier`, `issued`, `location`, `modified`, `notation`,
-`note`, `partOf`, `place`, `prefLabel`, `publisher`, `scopeNote`, `source`,
-`startDate`, `startPlace`, `subjectOf`, `subject`, `type`, `uri`, and `url`):
+`note`, `partOf`, `place`, `prefLabel`, `publisher`, `rank`, `scopeNote`,
+`source`, `startDate`, `startPlace`, `subjectOf`, `subject`, `type`, `uri`, and
+`url`):
 
 field            type                       definition
 ---------------- -------------------------- --------------------------------------------------------------------------------------
@@ -580,8 +616,9 @@ the optional fields `@context`, `address`, `altLabel`, `changeNote`,
 `contributor`, `created`, `creator`, `definition`, `depiction`,
 `editorialNote`, `endDate`, `endPlace`, `example`, `hiddenLabel`,
 `historyNote`, `identifier`, `issued`, `location`, `modified`, `notation`,
-`note`, `partOf`, `place`, `prefLabel`, `publisher`, `scopeNote`, `source`,
-`startDate`, `startPlace`, `subjectOf`, `subject`, `type`, `uri`, and `url`):
+`note`, `partOf`, `place`, `prefLabel`, `publisher`, `rank`, `scopeNote`,
+`source`, `startDate`, `startPlace`, `subjectOf`, `subject`, `type`, `uri`, and
+`url`):
 
 field        type                       definition
 ------------ -------------------------- --------------------------------------------------------------------------------------
@@ -621,8 +658,8 @@ optional fields `@context`, `address`, `altLabel`, `changeNote`, `contributor`,
 `created`, `creator`, `definition`, `depiction`, `editorialNote`, `endDate`,
 `endPlace`, `example`, `hiddenLabel`, `historyNote`, `identifier`, `issued`,
 `location`, `modified`, `notation`, `note`, `partOf`, `place`, `prefLabel`,
-`publisher`, `scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`,
-`subject`, `type`, `uri`, and `url`):
+`publisher`, `rank`, `scopeNote`, `source`, `startDate`, `startPlace`,
+`subjectOf`, `subject`, `type`, `uri`, and `url`):
 
 Distributions mostly cover the [class Distribution](https://www.w3.org/TR/vocab-dcat-3/#Class:Distribution) from [Data Catalog Vocabulary](https://www.w3.org/TR/vocab-dcat-3/).
 
@@ -683,11 +720,13 @@ Authority Data](https://www.loc.gov/marc/authority/):
 [concordance]: #concordances
 
 A **concordance** is an [item] with the following fields (in addition to the
-optional fields `@context`, `address`, `altLabel`, `changeNote`,
-`contributor`, `created`, `creator`, `definition`, `depiction`,
-`editorialNote`, `endDate`, `endPlace`, `example`, `hiddenLabel`, `historyNote`, `identifier`,
-`issued`, `location`, `modified`, `notation`, `note`, `partOf`, `prefLabel`, `publisher`,
-`scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`, `subject`, `type`, `uri`, and `url`). All fields except `fromScheme` and `toScheme` are optional.
+optional fields `@context`, `address`, `altLabel`, `changeNote`, `contributor`,
+`created`, `creator`, `definition`, `depiction`, `editorialNote`, `endDate`,
+`endPlace`, `example`, `hiddenLabel`, `historyNote`, `identifier`, `issued`,
+`location`, `modified`, `notation`, `note`, `partOf`, `prefLabel`, `publisher`,
+`rank`, `scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`,
+`subject`, `type`, `uri`, and `url`). All fields except `fromScheme` and
+`toScheme` are optional.
 
 field         type                      definition
 ------------- ------------------------- ------------------------------------------------------
@@ -722,11 +761,13 @@ There is an additional integrity constraint refering to field `inScheme` if conc
 [concept mappings]: #concept-mappings
 
 A **mapping** is an [item] with the following fields (in addition to the
-optional fields `@context`, `address`, `altLabel`, `changeNote`,
-`contributor`, `created`, `creator`, `definition`, `depiction`,
-`editorialNote`, `endDate`, `endPlace`, `example`, `hiddenLabel`, `historyNote`, `identifier`,
-`issued`, `location`, `modified`, `notation`, `note`, `partOf`, `prefLabel`, `publisher`,
-`scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`, `subject`, `type`, `uri`, and `url`). All fields except `from` and `to` are optional.
+optional fields `@context`, `address`, `altLabel`, `changeNote`, `contributor`,
+`created`, `creator`, `definition`, `depiction`, `editorialNote`, `endDate`,
+`endPlace`, `example`, `hiddenLabel`, `historyNote`, `identifier`, `issued`,
+`location`, `modified`, `notation`, `note`, `partOf`, `prefLabel`, `publisher`,
+`rank`, `scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`,
+`subject`, `type`, `uri`, and `url`). All fields except `from` and `to` are
+optional.
 
 field            type             definition
 ---------------- ---------------- ----------------------------------------------
@@ -828,6 +869,49 @@ target      [URI], [Resource] or [Annotation] object being annotated, or its URI
 
 [Web Annotation Data Model]: https://www.w3.org/TR/annotation-model/
 
+# Qualified relations
+
+[qualified values]: #qualified-relations
+
+Applications MAY support [resources] to have **qualified relations** as
+arbitrary, typed links between ressources with optional properties. Qualified
+relations are a JSON object that maps **relation types** (each being an [URI])
+to objects with the following fields:
+
+field       type                        definition
+----------- --------------------------- ---------------------------------------------------------
+prefLabel   [language map] of strings   optional labels of the relation type, indexed by language (OPTIONAL)
+values      array of qualified values   references to resources (REQUIRED)
+
+A **qualified value** is a JSON object with the following fields (optional unless indicated):
+
+field       type                        definition
+----------- --------------------------- ------------------------------------------------
+resource    [resource]                  linked resource (RECOMMENDED)
+startDate   [extended date]             date when the relation started to be valid
+endDate     [extended date]             date when the relation ended to be valid
+source      [set]                       sources as evidence for the relation
+rank        [rank]                      [rank] of the relation 
+
+If `startDate` is given, the value of `endDate` MUST NOT be an interval with open start.
+If `endDate` is given, the value of `startDate` MUST NOT be an interval with open end.
+
+Application MAY filter out qualified values without field `resource`. Elsewise
+the following semantics SHOULD be applied:
+
+- no field `resource` denotes no resource value exists (closed world)
+- field `resource` having the empty object (`{}`) as value denotes the value is unknown (open world)
+
+Empty arrays of qualified values MUST be ignored.
+
+::: {.callout-note}
+
+Qualified relations are similar but not identical to properties in a property
+graph and to referenced statements in Wikibase data model. They should be
+used with caution because they increase complexity and limit interoperability.
+
+:::
+
 # Item and concept types
 
 [item type]: #item-and-concept-types
@@ -926,9 +1010,7 @@ Two [resources] are *same* if and only if they both contain field `uri` with
 the same value. A resource without field `uri` is not same to any other
 resource.
 
-:::{#lst-sameness}
-The following resources are same:
-
+:::{#lst-sameness lst-cap="Two same resources"}
 ~~~{.json}
 { "uri": "http://example.org/123", "created": "2007" }
 { "uri": "http://example.org/123", "created": "2015" }
@@ -1198,15 +1280,108 @@ Experimental JSON Schemas exist but don't cover all aspects of JSKOS:
 See NodeJS library [jskos-validate] for an implementation.
 
 Public services to validate JSKOS data are included in instances of
-[jskos-server] and at https://format.gbv.de/validate/.
+[jskos-server] and at <https://format.gbv.de/validate/>.
 
 [jskos-validate]: https://www.npmjs.com/package/jskos-validate
 [jskos-server]: https://www.npmjs.com/package/jskos-server
 
-## Changelog {.unnumbered}
+## SKOS features not supported in JSKOS {.unnumbered}
+
+JSKOS is aligned with SKOS but all references to SKOS are informative only.
+The following features of SKOS are not supported in JSKOS:
+
+* SKOS notations can have datatypes. JSKOS notations are plain strings.
+
+* SKOS notations, labels, and values of [documentation properties] can be
+  empty string. In JSKOS empty string values are disallowed.
+
+* SKOS labels and values of [documentation properties] do not need to
+  have a language tag. In JSKOS language tags are mandatory for label
+  and documentation properties.
+
+* JSKOS does not include the SKOS properties `skos:broaderTransitive`,
+  `skos:narrowerTransitive`, and `skos:semanticRelation`.
+
+
+[documentation properties]: http://www.w3.org/TR/2009/REC-skos-reference-20090818/#notes
+[mapping properties]: http://www.w3.org/TR/2009/REC-skos-reference-20090818/#mapping
+
+## JSKOS features not supported in SKOS {.unnumbered}
+
+The following features of JSKOS have no corresponce in SKOS:
+
+* [concept occurrences], [registries], [concordances], [concept mappings] as first-class objects,
+  and composed [concepts]
+* [closed world statements]
+* order of broaderTransitive statements (can be derived)
+* order of multiple notations
+* order of multiple inScheme statements
+
+## Additional examples  {.unnumbered}
+
+:::{#lst-gnd-concept-scheme lst-cap="Integrated Authority File (GND)"}
+
+The Integrated Authority File (German: *Gemeinsame Normdatei*) is an authority
+file managed by the German National Library. This example encodes GND as JSKOS
+concept scheme with explicit knowledge about existence of more identifiers,
+definitions, and preferred labels:
+
+```{.json}
+{{< include examples/gnd.scheme.json >}}
+```
+:::
+
+:::{#lst-gnd-concept lst-cap="GND Concept"}
+
+```{.json}
+{{< include examples/gnd-4130604-1.concept.json >}}
+```
+:::
+
+:::{#lst-ex-ddc-1 lst-cap="DDC Concept"}
+
+A concept from the Dewey Decimal Classification, German edition 22:
+
+```{.json}
+{{< include examples/ddc-612.112.concept.json >}}
+```
+:::
+
+:::{#lst-ex-ddc-2 lst-cap="DDC Concept"}
+
+A concept from the abbridget Dewey Decimal Classification, edition 23, in three languages:
+
+```{.json}
+{{< include examples/ddc-641.5.concept.json >}}
+```
+:::
+
+:::{#lst-ex-ddc-decomposed lst-cap="DDC Concept"}
+A decomposed DDC number for medieval cooking:
+
+```{.json}
+{{< include examples/ddc-641.50902.concept.json >}}
+```
+:::
+
+
+:::{#lst-ex-mappings lst-cap="Mappings"}
+Multiple mappings from one concept (612.112 in DDC) to GND.
+
+```{.json}
+{{< include examples/ddc-gnd-1.mapping.json >}}
+```
+
+```{.json}
+{{< include examples/ddc-gnd-2.mapping.json >}}
+```
+:::
+
+# Changelog {.unnumbered}
 
 ### next {.unnumbered}
 
+- Add [ranks](#rank) and [qualified relations]
 - Add extended dates for `startDate`, `endDate`, and `relatedDate`.
 - Add `relatedDates` to replace `relatedDate`
 - Clarify semantics of resource fields
@@ -1336,94 +1511,3 @@ Public services to validate JSKOS data are included in instances of
 * Add field "extent"
 * Update reference to [RFC 5646] instead of obsoleted RFC 4646
 
-## SKOS features not supported in JSKOS {.unnumbered}
-
-JSKOS is aligned with SKOS but all references to SKOS are informative only.
-The following features of SKOS are not supported in JSKOS:
-
-* SKOS notations can have datatypes. JSKOS notations are plain strings.
-
-* SKOS notations, labels, and values of [documentation properties] can be
-  empty string. In JSKOS empty string values are disallowed.
-
-* SKOS labels and values of [documentation properties] do not need to
-  have a language tag. In JSKOS language tags are mandatory for label
-  and documentation properties.
-
-* JSKOS does not include the SKOS properties `skos:broaderTransitive`,
-  `skos:narrowerTransitive`, and `skos:semanticRelation`.
-
-
-[documentation properties]: http://www.w3.org/TR/2009/REC-skos-reference-20090818/#notes
-[mapping properties]: http://www.w3.org/TR/2009/REC-skos-reference-20090818/#mapping
-
-## JSKOS features not supported in SKOS {.unnumbered}
-
-The following features of JSKOS have no corresponce in SKOS:
-
-* [concept occurrences], [registries], [concordances], [concept mappings] as first-class objects,
-  and composed [concepts]
-* [closed world statements]
-* order of broaderTransitive statements (can be derived)
-* order of multiple notations
-* order of multiple inScheme statements
-
-## Additional examples  {.unnumbered}
-
-:::{#lst-gnd-concept-scheme lst-cap="Integrated Authority File (GND)"}
-
-The Integrated Authority File (German: *Gemeinsame Normdatei*) is an authority
-file managed by the German National Library. This example encodes GND as JSKOS
-concept scheme with explicit knowledge about existence of more identifiers,
-definitions, and preferred labels:
-
-```{.json}
-{{< include examples/gnd.scheme.json >}}
-```
-:::
-
-:::{#lst-gnd-concept lst-cap="GND Concept"}
-
-```{.json}
-{{< include examples/gnd-4130604-1.concept.json >}}
-```
-:::
-
-:::{#lst-ex-ddc-1 lst-cap="DDC Concept"}
-
-A concept from the Dewey Decimal Classification, German edition 22:
-
-```{.json}
-{{< include examples/ddc-612.112.concept.json >}}
-```
-:::
-
-:::{#lst-ex-ddc-2 lst-cap="DDC Concept"}
-
-A concept from the abbridget Dewey Decimal Classification, edition 23, in three languages:
-
-```{.json}
-{{< include examples/ddc-641.5.concept.json >}}
-```
-:::
-
-:::{#lst-ex-ddc-decomposed lst-cap="DDC Concept"}
-A decomposed DDC number for medieval cooking:
-
-```{.json}
-{{< include examples/ddc-641.50902.concept.json >}}
-```
-:::
-
-
-:::{#lst-ex-mappings lst-cap="Mappings"}
-Multiple mappings from one concept (612.112 in DDC) to GND.
-
-```{.json}
-{{< include examples/ddc-gnd-1.mapping.json >}}
-```
-
-```{.json}
-{{< include examples/ddc-gnd-2.mapping.json >}}
-```
-:::

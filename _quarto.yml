@@ -4,10 +4,10 @@ project:
   render:
     - "!*.md"
   post-render:
-    - "cp -rnv schemas/ docs/schemas/"
-#resources:
-# TODO: link files to be included
+    - ./post-render
 
+resources:
+  - context.json
 
 repo-url: https://github.com/gbv/jskos
 

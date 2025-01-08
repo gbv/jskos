@@ -69,7 +69,7 @@ or [gYear](https://www.w3.org/TR/xmlschema-2/#gYear) (`-?YYYY`).
 
 ## extended date
 
-An **extended date** is a date, date and time, or interval in [Extended Date/Time Format (EDTF)](https://www.loc.gov/standards/datetime/) Level 1. This includes:
+An **extended date** is a date, date and time, or interval in [Extended Date/Time Format (EDTF)](https://www.loc.gov/standards/datetime/) Level 1. In adition to [date] this includes:
 
 - Intervals of dates (e.g. `1949-10/1990-10`, or `2021/..`)
 - Seasons (e.g. `2001-21`)
@@ -957,7 +957,7 @@ data type      open world closed world explicit negation explicit existence
 [date]         no field   `"..."`      -                 -
 
 ::: {#lst-closed-world}
-The following concept has preferred labels and narrower concepts.  but no
+The following concept has preferred labels and narrower concepts, but no
 alternative labels nor notations. Nothing is known about broader concepts,
 related concepts, and other possible concept properties:
 
@@ -1205,12 +1205,12 @@ Public services to validate JSKOS data are included in instances of
 
 ## Changelog {.unnumbered}
 
-### next
+### next {.unnumbered}
 
 - Add extended dates for `startDate`, `endDate`, and `relatedDate`.
 - Add `relatedDates` to replace `relatedDate`
 - Clarify semantics of resource fields
-- Change item field `replacedBy` to be set (breaking change!)
+- Change item field `replacedBy` to be set (**breaking change**)
 - Add item field `basedOn`
 
 ### 0.5.4 (2024-09-27) {.unnumbered}
@@ -1368,7 +1368,7 @@ The following features of JSKOS have no corresponce in SKOS:
 * order of multiple notations
 * order of multiple inScheme statements
 
-# Examples  {.unnumbered}
+## Additional examples  {.unnumbered}
 
 :::{#lst-gnd-concept-scheme lst-cap="Integrated Authority File (GND)"}
 

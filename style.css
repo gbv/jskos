@@ -1,0 +1,17 @@
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+.listing {
+  border: 1px solid #95a5a6;
+  border-radius: .375rem;
+  padding: 0em 0.7rem;
+}
+figure > div > .sourceCode {
+  margin: 0 0 0.5rem 0;
+}
+figcaption {
+  margin-bottom: 0.25rem;
+}

@@ -1,0 +1,70 @@
+{
+  "type": ["http://www.w3.org/2004/02/skos/core#ConceptScheme"],
+  "topConcepts": [
+    { "uri": "http://www.w3.org/2004/02/skos/core#Concept" },
+    { "uri": "http://www.w3.org/2004/02/skos/core#ConceptScheme" },
+    { "uri": "http://purl.org/cld/cdtype/CatalogueOrIndex" },
+    { "uri": "http://www.w3.org/ns/dcat#Distribution" },
+    { "uri": "http://rdfs.org/ns/void#Linkset" },
+    { "uri": "http://www.w3.org/2004/02/skos/core#mappingRelation" }
+  ],
+  "concepts": [
+    {
+      "uri": "http://www.w3.org/2004/02/skos/core#Concept",
+      "prefLabel": { "en": "concept" }
+    },
+    {
+      "uri": "http://www.w3.org/2004/02/skos/core#ConceptScheme",
+      "prefLabel": { "en": "concept scheme" }
+    },
+    {
+      "uri": "http://purl.org/cld/cdtype/CatalogueOrIndex",
+      "prefLabel": { "en": "registry" },
+      "altLabel": { "en": [ "catalog", "Catalogue or Index" ] }
+    },
+    {
+      "uri": "http://www.w3.org/ns/dcat#Distribution",
+      "prefLabel": { "en": "distribution" }
+    },
+    {
+      "uri": "http://rdfs.org/ns/void#Linkset",
+      "identifier": [
+        "http://purl.org/spar/fabio/VocabularyMapping",
+        "http://rdf-vocabulary.ddialliance.org/xkos#Correspondence"
+      ],
+      "prefLabel": { "en": "concordance" },
+      "altLabel": { "en": [ "linkset" ] }
+    },
+    {
+      "uri": "http://www.w3.org/2004/02/skos/core#mappingRelation",
+      "prefLabel": { "en": "is in mapping relation with" }
+    },
+    {
+      "uri": "http://www.w3.org/2004/02/skos/core#closeMatch",
+      "prefLabel": { "en": "has close match" },
+      "broader": [ { "uri": "http://www.w3.org/2004/02/skos/core#mappingRelation" } ]
+    },
+    {
+      "uri": "http://www.w3.org/2004/02/skos/core#exactMatch",
+      "prefLabel": { "en": "has exact match" },
+      "broader": [ { "uri": "http://www.w3.org/2004/02/skos/core#closeMatch" } ]
+    },
+    {
+      "uri": "http://www.w3.org/2004/02/skos/core#broadMatch",
+      "prefLabel": { "en": "has broader match" },
+      "broader": [ { "uri": "http://www.w3.org/2004/02/skos/core#mappingRelation" } ],
+      "related": [ { "uri": "http://www.w3.org/2004/02/skos/core#narrowMatch" } ]
+    },
+    {
+      "uri": "http://www.w3.org/2004/02/skos/core#narrowMatch",
+      "prefLabel": { "en": "has narrower match" },
+      "broader": [ { "uri": "http://www.w3.org/2004/02/skos/core#mappingRelation" } ],
+      "related": [ { "uri": "http://www.w3.org/2004/02/skos/core#broadMatch" } ]
+    },
+    {
+      "uri": "http://www.w3.org/2004/02/skos/core#relatedMatch",
+      "prefLabel": { "en": "has related match" },
+      "broader": [ { "uri": "http://www.w3.org/2004/02/skos/core#mappingRelation" } ]
+    }
+  ]
+}

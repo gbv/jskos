@@ -332,7 +332,33 @@ fully implementing all IIIF capabilities.
 ~~~
 :::
 
+## item type
+
+An **item type** is one of the following [URI]s used to identify the different
+kinds of JSKOS [items] and types of [mappings]:
+
+item                item type
+------------------- -----------------------------------------------------
+[concept]           <http://www.w3.org/2004/02/skos/core#Concept>
+[concept scheme]    <http://www.w3.org/2004/02/skos/core#ConceptScheme>
+[registry]          <http://purl.org/cld/cdtype/CatalogueOrIndex>
+[distribution]      <http://www.w3.org/ns/dcat#Distribution>
+[concordance]       <http://rdfs.org/ns/void#Linkset>
+[mapping]           <http://www.w3.org/2004/02/skos/core#mappingRelation>
+                    <http://www.w3.org/2004/02/skos/core#closeMatch>
+                    <http://www.w3.org/2004/02/skos/core#exactMatch>
+                    <http://www.w3.org/2004/02/skos/core#broadMatch>
+                    <http://www.w3.org/2004/02/skos/core#narrowMatch>
+                    <http://www.w3.org/2004/02/skos/core#relatedMatch>
+------------------- -----------------------------------------------------
+
+::: {.callout-note}
+See appendix [item types as concepts] for an encoding of item types as [concepts].
+:::
+
 # Object types
+
+[concept types]: #object-types
 
 JSKOS defines the following types of JSON objects:
 
@@ -348,6 +374,10 @@ JSKOS defines the following types of JSON objects:
 * [annotations] to review and comment on individual resources
 
 In addition there are [concept bundles] as part of mappings, occurrences, and composed [concepts].
+
+A **concept type** is a [concept] used to distinguish different kinds of
+concepts or other [resources]. Concept types are referred to by their URI in
+field `type` of a [resource].
 
 ## Resource
 
@@ -427,6 +457,8 @@ subjectOf     [set]                     resources about this item (e.g. document
 depiction     [list] of [URL]           list of image URLs depicting the item
 media         [list] of [media]         audiovisual or other digital content representing the item
 
+The first element of array `type`, if given, MUST be an [item type].
+
 Applications MAY limit the fields `notation` and/or `depiction` to lists of a single
 element or ignore all preceding elements of these lists.
 
@@ -461,7 +493,7 @@ mappings     [set] of [mappings]        mappings from and/or to this concept
 occurrences  [set] of [occurrences]     occurrences with this concept
 deprecated   [boolean]                  mark a concept as deprecated (false by default)
 
-The first element of field `type`, if given, MUST be the [item type] URI
+The first element of field `type`, if given, MUST be the [item type] 
 <http://www.w3.org/2004/02/skos/core#Concept>. The type URI 
 <http://schema.vocnet.org/NonIndexingConcept> should be used as second element
 for concepts not meant to be used for indexing.
@@ -528,7 +560,7 @@ extent           string                     Size of the concept scheme
 languages        [list] of language tags    Supported languages
 license          [set]                      Licenses which the full scheme can be used under
 
-The first element of field `type`, if given, MUST be the [item type] URI
+The first element of field `type`, if given, MUST be the [item type]
 <http://www.w3.org/2004/02/skos/core#ConceptScheme>.
 
 The values of field `uriPattern` and `notationPattern` MUST conform to the
@@ -633,7 +665,7 @@ extent       string                     Size of the registry
 languages    [list]                     Supported languages
 license      [set]                      Licenses which the full registry content can be used under
 
-The first element of field `type`, if given, MUST be the [item type] URI
+The first element of field `type`, if given, MUST be the [item type]
 <http://purl.org/cld/cdtype/CatalogueOrIndex>.
 
 Registries are collection of [concepts], [concept schemes], [concept types],
@@ -681,7 +713,7 @@ serialization and possible wrapping. The URI of JSKOS is
 
 Fields `mimetype`, `compressFormat`, and `packageFormat` SHOULD be IANA media type URIs, if available.  Field `mimetype` MAY be a string for backwards-compatibility.
 
-The first element of field `type`, if given, MUST be the [item type] URI
+The first element of field `type`, if given, MUST be the [item type]
 <http://www.w3.org/ns/dcat#Distribution>.
 
 ::: {.callout-note}
@@ -737,7 +769,7 @@ toScheme      [concept scheme]          Target concept scheme
 extent        string                    Size of the concordance
 license       [set]                     License which the full concordance can be used under
 
-The first element of field `type`, if given, MUST be the [item type] URI
+The first element of field `type`, if given, MUST be the [item type]
 <http://rdfs.org/ns/void#Linkset>.
 
 Concordances are collections of [mappings] from one [concept scheme] to
@@ -781,18 +813,9 @@ A **mapping** represents a mapping between [concepts] of two [concept schemes].
 It consists two [concept bundles] with additional metadata not fully defined
 yet.
 
-The first element of field `type`, if given, MUST be one of the [item types]
-
-* `http://www.w3.org/2004/02/skos/core#mappingRelation`,
-* `http://www.w3.org/2004/02/skos/core#closeMatch`,
-* `http://www.w3.org/2004/02/skos/core#exactMatch`,
-* `http://www.w3.org/2004/02/skos/core#broadMatch`,
-* `http://www.w3.org/2004/02/skos/core#narrowMatch`, and
-* `http://www.w3.org/2004/02/skos/core#relatedMatch`
-
-from [SKOS mapping properties](http://www.w3.org/TR/skos-reference/#mapping).
-The field `type` MAY contain additional values but MUST NOT contain multiple of
-these values.
+The first element of field `type`, if given, MUST be an [item type] for
+mappings from the [SKOS mapping properties](http://www.w3.org/TR/skos-reference/#mapping).
+The field `type` MAY contain additional values but MUST NOT contain multiple of these values.
 
 ::: {.callout-note}
 When mappings are dynamically created it can be useful to assign a non-HTTP URI
@@ -869,14 +892,15 @@ target      [URI], [Resource] or [Annotation] object being annotated, or its URI
 
 [Web Annotation Data Model]: https://www.w3.org/TR/annotation-model/
 
-# Qualified relations
+# Extended features
+
+## Qualified relations
 
 [qualified values]: #qualified-relations
 
-Applications MAY support [resources] to have **qualified relations** as
-arbitrary, typed links between ressources with optional properties. Qualified
-relations are a JSON object that maps **relation types** (each being an [URI])
-to objects with the following fields:
+[Resources] can be connected with **qualified relations** as arbitrary, typed
+links with optional properties. Qualified relations are a JSON object that maps
+**relation types** (each being an [URI]) to objects with the following fields:
 
 field       type                        definition
 ----------- --------------------------- ---------------------------------------------------------
@@ -915,93 +939,6 @@ used with caution because they increase complexity and limit interoperability.
 ```{.json #lst-qualified-relation lst-cap="Concept with qualified relations (from Wikidata)"}
 {{< include examples/qualified-relation-2.concept.json >}}
 ```
-
-# Item and concept types
-
-[item type]: #item-and-concept-types
-[item types]: #item-and-concept-types
-[concept type]: #item-and-concept-types
-[concept types]: #item-and-concept-types
-
-An **item type** is an URI used to distinguish the different kinds of JSKOS [items]:
-
-item                item type
-------------------- -----------------------------------------------------
-[concept]           <http://www.w3.org/2004/02/skos/core#Concept>
-[concept scheme]    <http://www.w3.org/2004/02/skos/core#ConceptScheme>
-[registry]          <http://purl.org/cld/cdtype/CatalogueOrIndex>
-[distribution]      <http://www.w3.org/ns/dcat#Distribution>
-[concordance]       <http://rdfs.org/ns/void#Linkset>
-[mapping]           <http://www.w3.org/2004/02/skos/core#mappingRelation> and sup-properties
-------------------- ------------------------------------------------------------------------
-
-A concept type is [concept] used to distinguish different kinds of [concepts]
-or other [resources]. Concept types are referred to by their URI in field `type`
-of a [resource].
-
-Item types MAY be expressed with the following [concept types]:
-
-~~~json
-[
-  {
-    "uri": "http://www.w3.org/2004/02/skos/core#Concept",
-    "prefLabel": { "en": "concept" }
-  },
-  {
-    "uri": "http://www.w3.org/2004/02/skos/core#ConceptScheme",
-    "prefLabel": { "en": "concept scheme" }
-  },
-  {
-    "uri": "http://purl.org/cld/cdtype/CatalogueOrIndex",
-    "prefLabel": { "en": "registry" },
-    "altLabel": { "en": [ "catalog", "Catalogue or Index" ] }
-  },
-  {
-    "uri": "http://www.w3.org/ns/dcat#Distribution",
-    "prefLabel": { "en": "distribution" }
-  },
-  {
-    "uri": "http://rdfs.org/ns/void#Linkset",
-    "identifier": [
-      "http://purl.org/spar/fabio/VocabularyMapping",
-      "http://rdf-vocabulary.ddialliance.org/xkos#Correspondence"
-    ],
-    "prefLabel": { "en": "concordance" },
-    "altLabel": { "en": [ "linkset" ] }
-  },
-  {
-    "uri": "http://www.w3.org/2004/02/skos/core#mappingRelation",
-    "prefLabel": { "en": "is in mapping relation with" }
-  },
-  {
-    "uri": "http://www.w3.org/2004/02/skos/core#closeMatch",
-    "prefLabel": { "en": "has close match" },
-    "broader": [ { "uri": "http://www.w3.org/2004/02/skos/core#mappingRelation" } ]
-  },
-  {
-    "uri": "http://www.w3.org/2004/02/skos/core#exactMatch",
-    "prefLabel": { "en": "has exact match" },
-    "broader": [ { "uri": "http://www.w3.org/2004/02/skos/core#closeMatch" } ]
-  },
-  {
-    "uri": "http://www.w3.org/2004/02/skos/core#broadMatch",
-    "prefLabel": { "en": "has broader match" },
-    "broader": [ { "uri": "http://www.w3.org/2004/02/skos/core#mappingRelation" } ],
-    "related": [ { "uri": "http://www.w3.org/2004/02/skos/core#narrowMatch" } ]
-  },
-  {
-    "uri": "http://www.w3.org/2004/02/skos/core#narrowMatch",
-    "prefLabel": { "en": "has narrower match" },
-    "broader": [ { "uri": "http://www.w3.org/2004/02/skos/core#mappingRelation" } ],
-    "related": [ { "uri": "http://www.w3.org/2004/02/skos/core#broadMatch" } ]
-  },
-  {
-    "uri": "http://www.w3.org/2004/02/skos/core#relatedMatch",
-    "prefLabel": { "en": "has related match" },
-    "broader": [ { "uri": "http://www.w3.org/2004/02/skos/core#mappingRelation" } ]
-  }
-]
-~~~
 
 # Additional rules
 
@@ -1288,6 +1225,14 @@ Public services to validate JSKOS data are included in instances of
 
 [jskos-validate]: https://www.npmjs.com/package/jskos-validate
 [jskos-server]: https://www.npmjs.com/package/jskos-server
+
+## Item types as concepts {.unnumbered}
+
+[Item types](#item-type) can be expressed with [concepts] from the following [concept scheme]:
+
+~~~json
+{{< include examples/item-types.scheme.json >}}
+~~~
 
 ## SKOS features not supported in JSKOS {.unnumbered}
 

@@ -912,6 +912,10 @@ used with caution because they increase complexity and limit interoperability.
 
 :::
 
+```{.json #lst-qualified-relation lst-cap="Concept with qualified relations (from Wikidata)"}
+{{< include examples/qualified-relation-2.concept.json >}}
+```
+
 # Item and concept types
 
 [item type]: #item-and-concept-types

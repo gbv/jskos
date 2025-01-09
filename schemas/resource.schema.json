@@ -143,43 +143,54 @@
     },
     "qualifiedRelations": {
       "type": "object",
-      "properties": {
-        "prefLabel": {
-          "description": "labels of the property type, indexed by language",
-          "$ref": "item.schema.json#/definitions/language-map"
-        }
+      "propertyNames": {
+        "$ref": "#/definitions/uri"
       },
-      "values": {
-        "type": "array",
-        "items": {
+      "patternProperties": {
+        ".*": {
           "type": "object",
           "properties": {
-            "resource": {
-              "description": "object of the relation",
-              "$ref": "#"
+            "prefLabel": {
+              "description": "labels of the property type, indexed by language",
+              "$ref": "item.schema.json#/definitions/language-map"
             },
-            "startDate": {
-              "description": "date when the relation started to be valid",
-              "$ref": "item.schema.json#/definitions/edtf"
-            },
-            "endDate": {
-              "description": "date when the relation ended to be valid",
-              "$ref": "item.schema.json#/definitions/edtf"
-            },
-            "source": {
-              "description": "sources as evidence for the relation",
-              "$ref": "concept.schema.json#/definitions/conceptSet"
-            },
-            "rank": {
-              "$ref": "#/definitions/rank"
+            "values": {
+              "description": "qualified values",
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "resource": {
+                    "description": "object of the relation",
+                    "$ref": "#"
+                  },
+                  "startDate": {
+                    "description": "date when the relation started to be valid",
+                    "$ref": "item.schema.json#/definitions/edtf"
+                  },
+                  "endDate": {
+                    "description": "date when the relation ended to be valid",
+                    "$ref": "item.schema.json#/definitions/edtf"
+                  },
+                  "source": {
+                    "description": "sources as evidence for the relation",
+                    "$ref": "concept.schema.json#/definitions/conceptSet"
+                  },
+                  "rank": {
+                    "$ref": "#/definitions/rank"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "additionalProperties": false
             }
           },
-          "additionalProperties": "false"
+          "required": ["values"],
+          "additionalProperties": false
         }
-      }
-    },
-    "required": ["values"],
-    "additionalProperties": "false"
+      },
+      "additionalProperties": false
+    }
   },
   "patternProperties": {
     "^_|^[A-Z0-9]+$": {}

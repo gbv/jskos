@@ -1,0 +1,28 @@
+{
+  "uri": "http://www.wikidata.org/entity/Q3033",
+  "prefLabel": { "en": "Göttingen" },
+  "qualifiedRelations": {
+    "http://www.wikidata.org/entity/P17": {
+      "prefLabel": { "en": "country" },
+      "values": [
+        { 
+          "resource": {
+            "uri": "http://www.wikidata.org/entity/Q183",
+            "prefLabel": { "en": "Germany" }
+          },
+          "startDate": "1990-10-03",
+          "rank": "preferred"
+        },
+        { 
+          "resource": {
+            "uri": "http://www.wikidata.org/entity/Q713750",
+            "prefLabel": { "en": "West Germany" }
+          },
+          "startDate": "1949-05-23",
+          "endDate": "1990-10-02",
+          "rank": "normal"
+        }
+      ]
+    }
+  }
+}

@@ -1,23 +1,39 @@
 # Introduction
 
-**JSKOS** (**J**avaScript Object Notation for **S**imple **K**nowledge **O**rganization **S**ystems) defines a JavaScript Object Notation (JSON) structure to encode knowledge organization systems (KOS), such as classifications, thesauri, and authority files. JSKOS supports encoding of [concepts], [concept schemes], [concept occurrences], and [concept mappings] with their common properties.  It further defines application profiles for [registries], [distributions], and [annotations]. See [object types] for an outline.
+**JSKOS** (**J**avaScript Object Notation for **S**imple **K**nowledge
+**O**rganization **S**ystems) defines a JavaScript Object Notation (JSON)
+structure to encode knowledge organization systems (KOS), such as
+classifications, thesauri, authority files, and knowledge graphs.
 
-The main part of JSKOS is compatible with Simple Knowledge Organisation System
-(SKOS) and JavaScript Object Notation for Linked Data (JSON-LD) but JSKOS can
-be used without having to be experienced in any of these technologies. A simple
-JSKOS document can be mapped to SKOS expressed in the Resource Description
-Framework (RDF), and vice versa. JSKOS further supports [closed world
-statements] to express incomplete information about knowledge organization
-systems to facilitate use in dynamic web applications.
+The core of JSKOS is an encoding of Simple Knowledge Organisation System
+(SKOS), an application of the Resource Description Framework (RDF), in
+JavaScript Object Notation for Linked Data (JSON-LD). JSKOS is compatible but
+it does not require to be experienced in any of these technologies. Another
+influence is the Wikibase data model, which can partly be encoded in JSKOS as
+well.
+
+## Outline
+
+In addition to [concepts] and [concept
+schemes] JSKOS can express information about:
+
+- [mappings] and [concordances] for alignments between concepts
+- [occurrences] of concepts in databases
+- [registries] and [distributions] to package and provide data
+- [annotations] to review and comment on resources
+- general kind of [resources]
+- qualified information with [qualified relations]
+- incomplete and deprecated information via [ranks](#rank) and [closed world statements]
+
+See [object types] for another outline.
 
 ## Status of this document
 
-JSKOS is currently being developed as part of project [coli-conc].  The JSKOS
-specification is hosted at <http://gbv.github.io/jskos/> in the public GitHub
-repository <https://github.com/gbv/jskos>. Feedback is appreciated!  See
+JSKOS is being specified since 2016 based on actual use cases and without a
+committee (see [changelog]). The specification is hosted at
+<http://gbv.github.io/jskos/> in the public GitHub repository
+<https://github.com/gbv/jskos>. Feedback is appreciated!  See
 <https://github.com/gbv/jskos/issues> for a list of open issues.
-
-[coli-conc]: https://coli-conc.gbv.de/
 
 ## Conformance requirements
 
@@ -1327,6 +1343,8 @@ Multiple mappings from one concept (612.112 in DDC) to GND.
 :::
 
 # Changelog {.unnumbered}
+
+JSKOS started in 2016 as as part of project [coli-conc](https://coli-conc.gbv.de/).
 
 ### next {.unnumbered}
 

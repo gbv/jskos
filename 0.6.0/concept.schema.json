@@ -1,0 +1,76 @@
+{
+  "$id": "https://gbv.github.io/jskos/concept.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "JSKOS Concept",
+  "description": "entities from a knowledge organization system",
+  "type": "object",
+  "definitions": {
+    "conceptSet": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "null"
+          },
+          {
+            "$ref": "concept.schema.json#"
+          }
+        ]
+      }
+    }
+  },
+  "anyOf": [
+    {
+      "$ref": "item.schema.json"
+    },
+    {
+      "$ref": "bundle.schema.json"
+    }
+  ],
+  "properties": {
+    "narrower": {
+      "description": "narrower concepts",
+      "$ref": "#/definitions/conceptSet"
+    },
+    "broader": {
+      "description": "broader concepts",
+      "$ref": "#/definitions/conceptSet"
+    },
+    "related": {
+      "description": "generally related concepts",
+      "$ref": "#/definitions/conceptSet"
+    },
+    "previous": {
+      "description": "related concepts ordered somehow before the concept",
+      "$ref": "#/definitions/conceptSet"
+    },
+    "next": {
+      "description": "related concepts ordered somehow after the concept",
+      "$ref": "#/definitions/conceptSet"
+    },
+    "ancestors": {
+      "description": "list of ancestors, possibly up to a top concept",
+      "$ref": "#/definitions/conceptSet"
+    },
+    "inScheme": {
+      "description": "concept schemes or URI of the concept schemes",
+      "$ref": "scheme.schema.json#/definitions/schemeSet"
+    },
+    "topConceptOf": {
+      "description": "concept schemes or URI of the concept schemes",
+      "$ref": "scheme.schema.json#/definitions/schemeSet"
+    },
+    "mappings": {
+      "description": "mappings from and/or to this concept",
+      "$ref": "mapping.schema.json#/definitions/mappingSet"
+    },
+    "occurrences": {
+      "description": "occurrences with this concept",
+      "$ref": "occurrence.schema.json#/definitions/occurrenceSet"
+    },
+    "deprecated": {
+      "description": "whether the concept has been marked as deprecated",
+      "type": "boolean"
+    }
+  }
+}

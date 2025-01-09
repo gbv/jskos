@@ -1,0 +1,50 @@
+{
+  "$id": "https://gbv.github.io/jskos/occurrence.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "JSKOS Concept Occurrence",
+  "description": "An occurrence gives the number of a times a concept (“occurrence”) or combination of concepts (“co-occurrence”) is used in a specific relation to entities from a particular database. For instance the occurrence could give the number of documents indexed with some term in a catalog. The field url typically includes a deep link into the database.",
+  "type": "object",
+  "definitions": {
+    "occurrenceSet": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "null"
+          },
+          {
+            "$ref": "occurrence.schema.json#"
+          }
+        ]
+      }
+    }
+  },
+  "allOf": [
+    {
+      "$ref": "resource.schema.json"
+    }
+  ],
+  "properties": {
+    "count": {
+      "description": "number of times the concepts are used",
+      "type": "integer",
+      "minimum": 0
+    },
+    "database": {
+      "description": "database in which the concepts are used",
+      "$ref": "item.schema.json"
+    },
+    "frequency": {
+      "description": "count divided by total number of possible uses",
+      "$ref": "resource.schema.json#/definitions/percentage"
+    },
+    "relation": {
+      "description": "type of relation between concepts and entities",
+      "$ref": "resource.schema.json#/definitions/uri"
+    },
+    "url": {
+      "description": "URL of a page with information about the occurrence",
+      "$ref": "resource.schema.json#/definitions/url"
+    }
+  }
+}

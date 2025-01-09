@@ -1,0 +1,198 @@
+{
+  "$id": "https://gbv.github.io/jskos/resource.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "JSKOS Resource",
+  "description": "all kinds of entities",
+  "type": "object",
+  "definitions": {
+    "url": {
+      "type": "string",
+      "format": "iri-reference",
+      "pattern": "^https?://"
+    },
+    "uri": {
+      "$comment": "workaround for https://github.com/luzlab/ajv-formats-draft2019/issues/16",
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "iri-reference",
+          "pattern": "^[a-z]+:"
+        },
+        {
+          "type": "string",
+          "format": "uri"
+        }
+      ]
+    },
+    "non-negative-integer": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "percentage": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "date": {
+      "anyOf": [
+         {
+           "type": "string",
+           "format": "date"
+         },
+         {
+           "type": "string",
+           "format": "date-time"
+         },
+         {
+           "type": "string",
+           "pattern": "^-?\\d{4}-[01]\\d-[0123]\\dT[0-2]\\d:[0-5]\\d:[0-5]\\d$"
+        },
+        {
+          "type": "string",
+          "pattern": "^-?\\d{4}(-[01]\\d)?$"
+        }
+      ]
+    },
+    "list": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "null"
+          },
+          {
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "rank": {
+      "type": "string",
+      "enum": ["normal","preferred","deprecated"],
+      "default": "normal"
+    }
+  },
+  "properties": {
+    "@context": {
+      "description": "reference to a JSON-LD context document",
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "iri",
+          "default": "https://gbv.github.io/jskos/context.json"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/properties/@context/anyOf/0" 
+          }
+        }
+      ]
+    },
+    "uri": {
+      "description": "primary globally unique identifier",
+      "$ref": "#/definitions/uri"
+    },
+    "identifier": {
+      "description": "additional identifiers",
+      "$ref": "#/definitions/list"
+    },
+    "type": {
+      "description": "URIs of types",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/uri"
+      }
+    },
+    "created": {
+      "description": "date of creation",
+      "$ref": "#/definitions/date"
+    },
+    "issued": {
+      "description": "date of publication",
+      "$ref": "#/definitions/date"
+    },
+    "modified": {
+      "description": "date of last modification",
+      "$ref": "#/definitions/date"
+    },
+    "creator": {
+      "description": "agent primarily responsible for creation of resource",
+      "$ref": "concept.schema.json#/definitions/conceptSet"
+    },
+    "contributor": {
+      "description": "agent responsible for making contributions to the resource",
+      "$ref": "concept.schema.json#/definitions/conceptSet"
+    },
+    "publisher": {
+      "description": "agent responsible for making the resource available",
+      "$ref": "concept.schema.json#/definitions/conceptSet"
+    },
+    "partOf": {
+      "description": "resources which this resource is part of (if no other field applies)",
+      "$ref": "concept.schema.json#/definitions/conceptSet"
+    },
+    "annotations": {
+      "type": "array",
+      "items": {
+        "$ref": "annotation.schema.json"
+      }
+    },
+    "rank": {
+      "$ref": "#/definitions/rank"
+    },
+    "qualifiedRelations": {
+      "type": "object",
+      "propertyNames": {
+        "$ref": "#/definitions/uri"
+      },
+      "patternProperties": {
+        ".*": {
+          "type": "object",
+          "properties": {
+            "prefLabel": {
+              "description": "labels of the property type, indexed by language",
+              "$ref": "item.schema.json#/definitions/language-map"
+            },
+            "values": {
+              "description": "qualified values",
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "resource": {
+                    "description": "object of the relation",
+                    "$ref": "#"
+                  },
+                  "startDate": {
+                    "description": "date when the relation started to be valid",
+                    "$ref": "item.schema.json#/definitions/edtf"
+                  },
+                  "endDate": {
+                    "description": "date when the relation ended to be valid",
+                    "$ref": "item.schema.json#/definitions/edtf"
+                  },
+                  "source": {
+                    "description": "sources as evidence for the relation",
+                    "$ref": "concept.schema.json#/definitions/conceptSet"
+                  },
+                  "rank": {
+                    "$ref": "#/definitions/rank"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "additionalProperties": false
+            }
+          },
+          "required": ["values"],
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "patternProperties": {
+    "^_|^[A-Z0-9]+$": {}
+  }
+}

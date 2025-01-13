@@ -1,0 +1,24 @@
+{
+  "http://www.w3.org/2008/05/skos-xl#prefLabel": {
+    "prefLabel": { "en": "preferred label",
+    "values": [    
+      {
+        "type": [ "http://www.w3.org/2008/05/skos-xl#Label" ],
+        "literal": "İstanbul",
+        "language": "tr",
+        "rank": "preferred"
+      }, {
+        "type": [ "http://www.w3.org/2008/05/skos-xl#Label" ],
+        "literal": "Constantinople",
+        "language": "en",
+        "endDate": "1930"
+      }
+    ]
+  },
+  "https://www.wikidata.org/wiki/Property:P395": {
+    "prefLabel": { "en": "licence plate code" },
+    "values": [
+      { "literal": "34" }
+    ]
+  }
+}

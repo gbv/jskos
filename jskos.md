@@ -181,13 +181,17 @@ Wikibase data model includes ranks with same semantics, see
 ~~~
 :::
 
+## language tag
+
+A **language tag** is a non-empty string that conforms to the syntax of [RFC
+3066] language tags, limited to lowercase.
+
 ## language range
 
 A **language range** is
 
 * either the character "`-`"
-* or a string that conforms to the syntax of [RFC 3066] language tags,
-  limited to lowercase, followed by the character "`-`",
+* or a [language tag], followed by the character "`-`",
 
 A language range "`x-`", where `x` is a possibly empty string, refers to the
 set of [RFC 3066] language tags that start the string `x`. For instance language
@@ -206,7 +210,7 @@ JSKOS language ranges can be mapped to and from basic language ranges as
 defined in [RFC 4647]. The main difference of JSKOS language ranges is they can
 be distinguished from [RFC 3066] based on their string value (always ending
 with "`-`"). For instance "`en`" could be an [RFC 3066] language tag or a
-[RFC 3647] language range but in JSKOS it is always a language tag only:
+[RFC 4647] language range but in JSKOS it is always a language tag only:
 
                                         JSKOS RFC 3066 RFC 4647
 --------------------------------------- ----- -------- --------
@@ -217,7 +221,7 @@ languag range for all English variants  `en-`          `en`
 
 A **language map** is a JSON object in which every fields is
 
-* either a [RFC 3066] language tag in lowercase that SHOULD also conform to [RFC 5646],
+* either a [language tag] that SHOULD also conform to [RFC 5646],
 * or a [language range],
 
 and
@@ -327,7 +331,7 @@ field   type    description
 type    string  the value "Manifest"
 items   array   list of IIIF Canvas objects
 
-Additional properties MUST follow the IIIF Presentation API specification.  In
+Additional fields MUST follow the IIIF Presentation API specification.  In
 contrast to IIIF, the fields `label` and `id` are not required but RECOMMENDED
 by JSKOS. JSKOS applications MAY limit the set of supported fields instead of
 fully implementing all IIIF capabilities.
@@ -402,22 +406,22 @@ field `type` of a [resource].
 
 An **resource** is a JSON object with the following optional fields:
 
-field               type                  description
-------------------- --------------------- ------------------------------------------------------------------
-@context            [URI] or list of URI  reference to a [JSON-LD context] document
-uri                 [URI]                 primary globally unique identifier
-identifier          [list]                additional identifiers
-type                [list] of [URI]       URIs of types
-created             [date]                date of creation of the resource
-issued              [date]                date of publication of the resource
-modified            [date]                date of last modification of the resource
-creator             [set]                 agent primarily responsible for creation of the resource
-contributor         [set]                 agent responsible for making contributions to the resource
-source              [set]                 sources from which the described resource is derived
-publisher           [set]                 agent responsible for making the resource available
-partOf              [set]                 [resources] which this resource is part of (if no other field applies)
-qualifiedRelations  [qualified relations] qualified relations to other resources
-rank                [rank]                a [rank] (only relevant if the resource is part of a [set])
+field               type                                     description
+------------------- ---------------------------------------- ------------------------------------------------------------------
+@context            [URI] or list of URI                     reference to a [JSON-LD context] document
+uri                 [URI]                                    primary globally unique identifier
+identifier          [list]                                   additional identifiers
+type                [list] of [URI]                          URIs of types
+created             [date]                                   date of creation of the resource
+issued              [date]                                   date of publication of the resource
+modified            [date]                                   date of last modification of the resource
+creator             [set]                                    agent primarily responsible for creation of the resource
+contributor         [set]                                    agent responsible for making contributions to the resource
+source              [set]                                    sources from which the described resource is derived
+publisher           [set]                                    agent responsible for making the resource available
+partOf              [set]                                    [resources] which this resource is part of (if no other field applies)
+qualifiedRelations  [qualified map] of [qualified relations] qualified relations to other resources
+rank                [rank]                                   a [rank] (only relevant if the resource is part of a [set])
 
 It is RECOMMENDED to always include the fields `uri`, `type`, and `@context`.
 The value of field `@context` SHOULD be
@@ -576,7 +580,7 @@ extent           string                     Size of the concept scheme
 languages        [list] of language tags    Supported languages
 license          [set]                      Licenses which the full scheme can be used under
 
-The first element of field `type`, if given, MUST be the [item type]
+The first element of array field `type`, if given, MUST be the [item type]
 <http://www.w3.org/2004/02/skos/core#ConceptScheme>.
 
 The values of field `uriPattern` and `notationPattern` MUST conform to the
@@ -681,7 +685,7 @@ extent       string                     Size of the registry
 languages    [list]                     Supported languages
 license      [set]                      Licenses which the full registry content can be used under
 
-The first element of field `type`, if given, MUST be the [item type]
+The first element of array field `type`, if given, MUST be the [item type]
 <http://purl.org/cld/cdtype/CatalogueOrIndex>.
 
 Registries are collection of [concepts], [concept schemes], [concept types],
@@ -729,7 +733,7 @@ serialization and possible wrapping. The URI of JSKOS is
 
 Fields `mimetype`, `compressFormat`, and `packageFormat` SHOULD be IANA media type URIs, if available.  Field `mimetype` MAY be a string for backwards-compatibility.
 
-The first element of field `type`, if given, MUST be the [item type]
+The first element of array field `type`, if given, MUST be the [item type]
 <http://www.w3.org/ns/dcat#Distribution>.
 
 ::: {.callout-note}
@@ -785,7 +789,7 @@ toScheme      [concept scheme]          Target concept scheme
 extent        string                    Size of the concordance
 license       [set]                     License which the full concordance can be used under
 
-The first element of field `type`, if given, MUST be the [item type]
+The first element of array field `type`, if given, MUST be the [item type]
 <http://rdfs.org/ns/void#Linkset>.
 
 Concordances are collections of [mappings] from one [concept scheme] to
@@ -829,7 +833,7 @@ A **mapping** represents a mapping between [concepts] of two [concept schemes].
 It consists two [concept bundles] with additional metadata not fully defined
 yet.
 
-The first element of field `type`, if given, MUST be an [item type] for
+The first element of array field `type`, if given, MUST be an [item type] for
 mappings from the [SKOS mapping properties](http://www.w3.org/TR/skos-reference/#mapping).
 The field `type` MAY contain additional values but MUST NOT contain multiple of these values.
 
@@ -900,7 +904,7 @@ the [Web Annotation Data Model] and further contains the following fields as
 defined:
 
 field       type                              definition
------------ --------------------------------- ----------------------------------------------------------------------
+----------- --------------------------------- ----------------------------------------------
 @context    [URL]                             the value `http://www.w3.org/ns/anno.jsonld`
 type        string                            the value `Annotation`
 id          [URI]                             globally unique identifier of the annotation
@@ -908,52 +912,123 @@ target      [URI], [Resource] or [Annotation] object being annotated, or its URI
 
 [Web Annotation Data Model]: https://www.w3.org/TR/annotation-model/
 
-# Extended features
+# Qualified statements
 
-## Qualified relations
+[qualified value]: #qualified-statements
+[qualified map]: #qualified-statements
 
-[qualified values]: #qualified-relations
-
-[Resources] can be connected with **qualified relations** as arbitrary, typed
-links with optional properties. Qualified relations are a JSON object that maps
-**relation types** (each being an [URI]) to objects with the following fields:
-
-field       type                        definition
------------ --------------------------- ---------------------------------------------------------
-prefLabel   [language map] of strings   optional labels of the relation type, indexed by language (OPTIONAL)
-values      array of qualified values   references to resources (REQUIRED)
-
-A **qualified value** is a JSON object with the following fields (optional unless indicated):
-
-field       type                        definition
------------ --------------------------- ------------------------------------------------
-resource    [resource]                  linked resource (RECOMMENDED)
-startDate   [extended date]             date when the relation started to be valid
-endDate     [extended date]             date when the relation ended to be valid
-source      [set]                       sources as evidence for the relation
-rank        [rank]                      [rank] of the relation 
-
-If `startDate` is given, the value of `endDate` MUST NOT be an interval with open start.
-If `endDate` is given, the value of `startDate` MUST NOT be an interval with open end.
-
-Application MAY filter out qualified values without field `resource`. Elsewise
-the following semantics SHOULD be applied:
-
-- no field `resource` denotes no resource value exists (closed world)
-- field `resource` having the empty object (`{}`) as value denotes the value is unknown (open world)
-
-Empty arrays of qualified values MUST be ignored.
+JSKOS defines a set of common fields (such as `prefLabel`, `startDate`, `place`, and `media`) to facilitate interoperability across diverse knowledge organization systems. Application of these fields comes with simplification and lack of context information. To allow for more details, qualified statements can express typed and qualified data at cost of interoperability.
 
 ::: {.callout-note}
-
-Qualified relations are similar but not identical to properties in a property
-graph and to referenced statements in Wikibase data model. They should be
-used with caution because they increase complexity and limit interoperability.
-
+Qualified statements are similar but not identical to properties in a property graph and to referenced statements in Wikibase data model.
 :::
+
+The term **qualified statement** refers to the combination of a *property type* and a *qualified value*.  Qualified statements are grouped in *qualified maps* by the data type of their qualified values.
+
+A **qualified map** is a JSON object that maps **property types** (each being an [URI]) to objects with the following fields:
+
+field       type                        definition
+----------- --------------------------- -----------------------------------------------------------
+prefLabel   [language map] of strings   labels of the property type, indexed by language (OPTIONAL)
+values      array of qualified values   qualified values of same qualified data type (REQUIRED)
+
+``` {.json #lst-qualified-map lst-cap="Qualified map with property types from schema.org"}
+{
+  "https://schema.org/award": {
+    "prefLabel": { "en": "award" },
+    "values": [ ... ]
+  },
+  "https://schema.org/performerIn": {
+    "prefLabel": { "en": "performerIn" },
+    "values": [ ... ]
+  }
+}
+```
+
+Objects with empty array field `values` SHOULD be ignored.
+
+A **qualified value** is a JSON object with the following optional fields:
+
+field       type            definition
+----------- --------------- --------------------------------------------
+startDate   [extended date] date when the statement started to be valid
+endDate     [extended date] date when the statementn ended to be valid
+source      [set]           sources as evidence for the statement
+rank        [rank]          [rank] of the statement
+
+If field `startDate` is given in a qualified value, the value of field
+`endDate` MUST NOT be an interval with open start.
+
+If field `endDate` is given in a qualified value, the value of `startDate` MUST
+NOT be an interval with open end.
+
+In addition there are fields depending on the data type of the qualified value. These data types are:
+
+- [Qualified relation] for links between resources
+- [Qualified date] to reference related events and periods
+- [Qualified literal] to reference names and labels
+
+## Qualified relation
+
+[qualified relations]: #qualified-relations
+
+A **qualified relation** is a [qualified value] with the following fields (in addition to the optional fields `rank`, `source`, `startDate`, and `endDate`):
+
+field       type                        definition
+----------- --------------------------- -----------------------------------------------------
+resource    [resource]                  linked resource (RECOMMENDED)
+
+Application MAY disallow or ignore qualified relations without field `resource`.
 
 ```{.json #lst-qualified-relation lst-cap="Concept with qualified relations (from Wikidata)"}
 {{< include examples/qualified-relation-2.concept.json >}}
+```
+
+## Qualified date
+
+A **qualified date** is a [qualified value] with the following fields (in addition to the optional fields `source` and `rank`) to express information about an event:
+
+field       type                        definition
+----------- --------------------------- -----------------------------------------------------
+date        [extended date]             date value of the event (RECOMMENDED)
+place       [set]                       place(s) of the event (OPTIONAL)
+
+```{.json #lst-qualified-date lst-cap="Qualified date of the fall of Constantinople"}
+{{< include examples/istanbul.event.json >}}
+```
+
+::: {.callout-note}
+Optional fields `startDate` and `endDate` of a qualified date do not refer to the actual date but to when the date was valid. For instance the date of historic events may change with a new discovery, so `date` would hold the new date measure and `startDate` would hold the date of the discovery.
+:::
+
+Applications MAY disallow or ignore qualified dates without field `date`.
+
+## Qualified literal
+
+A **Qualified literal** is a [qualified value] with the following fields (in addition to the optional fields `rank`, `source`, `startDate`, and `endDate`):
+
+field       type            definition
+----------- --------------- --------------------------------------------------------------
+literal     string          character string of the literal (RECOMMENDED)
+language    [language tag]  language of the literal (RECOMMENDED, set to `und` by default)
+uri         [URI]           Globally unique identifier of the literal (OPTIONAL)
+type        [list] of [URI] URIs of types (OPTIONAL)
+
+<!-- TODO: make it a subclass of resource? -->
+<!-- TODO: more about relation to plain fields -->
+
+The first element of array field `type`, if given, MUST be <http://www.w3.org/2008/05/skos-xl#Label>.
+
+Application MAY disallow or ignore qualified literals without field `literal`.
+
+::: {.callout-note}
+Qualified labels allow to express [SKOS eXtension for Labels (SKOS-XL)](https://www.w3.org/TR/skos-reference/#xl) in JSKOS.
+:::
+
+Qualified statements of data type qualified literal MUST NOT use the property types <http://www.w3.org/2004/02/skos/core#prefLabel>, <http://www.w3.org/2004/02/skos/core#altLabel>, and <https://www.w3.org/TR/skos-reference/#hiddenLabel> but they MAY use the corresponding URIs <http://www.w3.org/2008/05/skos-xl#prefLabel>, <http://www.w3.org/2008/05/skos-xl#altLabel>, and <http://www.w3.org/2008/05/skos-xl#hiddenLabel> instead.
+
+```{.json #lst-qualified-literal lst-cap="Qualified map of qualified literals"}
+{{< include examples/qualified-literal-map.json >}}
 ```
 
 # Additional rules
@@ -967,13 +1042,10 @@ Two [resources] are *same* if and only if they both contain field `uri` with
 the same value. A resource without field `uri` is not same to any other
 resource.
 
-:::{#lst-sameness lst-cap="Two same resources"}
-~~~{.json}
+```{.json #lst-sameness lst-cap="Two same resources"}
 { "uri": "http://example.org/123", "created": "2007" }
 { "uri": "http://example.org/123", "created": "2015" }
-~~~
-:::
-
+```
 
 ## Closed world statements
 
@@ -1346,9 +1418,9 @@ Multiple mappings from one concept (612.112 in DDC) to GND.
 
 JSKOS started in 2016 as as part of project [coli-conc](https://coli-conc.gbv.de/).
 
-### next {.unnumbered}
+### 0.6.0 {.unnumbered}
 
-- Add [ranks](#rank) and [qualified relations]
+- Add [ranks](#rank) and [qualified statements]
 - Add extended dates for `startDate`, `endDate`, and `relatedDate`.
 - Add `relatedDates` to replace `relatedDate`
 - Clarify semantics of resource fields

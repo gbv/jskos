@@ -1,6 +1,6 @@
 {
   "$id": "https://gbv.github.io/jskos/resource.schema.json",
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "title": "JSKOS Resource",
   "description": "all kinds of entities",
   "type": "object",
@@ -70,6 +70,45 @@
       "type": "string",
       "enum": ["normal","preferred","deprecated"],
       "default": "normal"
+    },
+    "qualifiedValue": {
+      "type": "object",
+      "properties": {
+        "startDate": {
+          "description": "date when the statement started to be valid",
+          "$ref": "item.schema.json#/definitions/edtf"
+        },
+        "endDate": {
+          "description": "date when the statement ended to be valid",
+          "$ref": "item.schema.json#/definitions/edtf"
+        },
+        "source": {
+          "description": "sources as evidence for the statement",
+          "$ref": "concept.schema.json#/definitions/conceptSet"
+        },
+        "rank": {
+          "$ref": "#/definitions/rank"
+        }
+      }
+    },
+    "qualifiedRelation": {
+      "type": "object",
+      "allOf": [
+        { "$ref": "#/definitions/qualifiedValue" }
+      ],
+      "properties": {
+        "resource": {
+          "description": "object of the relation",
+          "$ref": "#"
+        }
+      },
+      "$comment": "TODO: add unevaluatedProperties to disallow undefined properties"
+    },
+    "qualifiedDate": {
+      "type": "object"
+    },
+    "qualifiedLiteral": {
+      "type": "object"
     }
   },
   "properties": {
@@ -151,38 +190,15 @@
           "type": "object",
           "properties": {
             "prefLabel": {
-              "description": "labels of the property type, indexed by language",
+              "description": "labels of the qualified type, indexed by language",
               "$ref": "item.schema.json#/definitions/language-map"
             },
             "values": {
               "description": "qualified values",
               "type": "array",
               "items": {
-                "type": "object",
-                "properties": {
-                  "resource": {
-                    "description": "object of the relation",
-                    "$ref": "#"
-                  },
-                  "startDate": {
-                    "description": "date when the relation started to be valid",
-                    "$ref": "item.schema.json#/definitions/edtf"
-                  },
-                  "endDate": {
-                    "description": "date when the relation ended to be valid",
-                    "$ref": "item.schema.json#/definitions/edtf"
-                  },
-                  "source": {
-                    "description": "sources as evidence for the relation",
-                    "$ref": "concept.schema.json#/definitions/conceptSet"
-                  },
-                  "rank": {
-                    "$ref": "#/definitions/rank"
-                  }
-                },
-                "additionalProperties": false
-              },
-              "additionalProperties": false
+                "$ref": "#/definitions/qualifiedRelation" 
+              }
             }
           },
           "required": ["values"],

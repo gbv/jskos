@@ -3,11 +3,11 @@ import assert from "assert"
 import testExamples from "./lib/test-examples.js"
 
 // Set up Ajv JSON schema validator
-import Ajv from "ajv"
+import Ajv2019 from "ajv/dist/2019.js"
 import ajvFormats from "ajv-formats"
 import ajvFormats2019 from "ajv-formats-draft2019"
 
-const ajv = new Ajv()
+const ajv = new Ajv2019()
 ajvFormats(ajv)
 ajvFormats2019(ajv)
 

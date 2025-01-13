@@ -1,6 +1,6 @@
 {
   "$id": "https://gbv.github.io/jskos/item.schema.json",
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "title": "JSKOS Item",
   "description": "named entities",
   "type": "object",

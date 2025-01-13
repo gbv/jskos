@@ -420,7 +420,9 @@ contributor         [set]                                    agent responsible f
 source              [set]                                    sources from which the described resource is derived
 publisher           [set]                                    agent responsible for making the resource available
 partOf              [set]                                    [resources] which this resource is part of (if no other field applies)
-qualifiedRelations  [qualified map] of [qualified relations] qualified relations to other resources
+qualifiedRelations  [qualified map] of [qualified relation]  qualified relations to other resources
+qualifiedDates      [qualified map] of [qualified date]      qualified dates (related events or periods)
+qualifiedLiterals   [qualified map] of [qualified literal]   qualified literals
 rank                [rank]                                   a [rank] (only relevant if the resource is part of a [set])
 
 It is RECOMMENDED to always include the fields `uri`, `type`, and `@context`.
@@ -993,7 +995,7 @@ field       type                        definition
 date        [extended date]             date value of the event (RECOMMENDED)
 place       [set]                       place(s) of the event (OPTIONAL)
 
-```{.json #lst-qualified-date lst-cap="Qualified date of the fall of Constantinople"}
+```{.json #lst-qualified-date lst-cap="Qualified date (of the fall of Constantinople)"}
 {{< include examples/istanbul.event.json >}}
 ```
 

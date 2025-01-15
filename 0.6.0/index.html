@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.44">
+<meta name="generator" content="quarto-1.6.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -64,10 +64,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-5dbef85374e00b74dcda297261b8f55d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-2ace586e68e8c287d3a0cf7e9c121c83.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 <link rel="stylesheet" href="style.css">
@@ -197,7 +197,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#appendices" id="toc-appendices" class="nav-link" data-scroll-target="#appendices">Appendices</a>
   <ul class="collapse">
-  <li><a href="#glossary" id="toc-glossary" class="nav-link" data-scroll-target="#glossary">Glossary</a></li>
   <li><a href="#json-ld-context" id="toc-json-ld-context" class="nav-link" data-scroll-target="#json-ld-context">JSON-LD context</a></li>
   <li><a href="#json-schemas-and-validation" id="toc-json-schemas-and-validation" class="nav-link" data-scroll-target="#json-schemas-and-validation">JSON Schemas and validation</a></li>
   <li><a href="#item-types-as-concepts" id="toc-item-types-as-concepts" class="nav-link" data-scroll-target="#item-types-as-concepts">Item types as concepts</a></li>
@@ -2282,30 +2281,9 @@ Example&nbsp;19
 <section id="appendices" class="level1 unnumbered">
 <h1 class="unnumbered">Appendices</h1>
 <p>The following appendices are <em>non-normative</em>.</p>
-<section id="glossary" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="glossary">Glossary</h2>
-<dl>
-<dt>JSON</dt>
-<dd>
-JavaScript Object Notation
-</dd>
-<dt>JSON-LD</dt>
-<dd>
-JavaScript Object Notation for Linked Data
-</dd>
-<dt>KOS</dt>
-<dd>
-Knowledge Organization System
-</dd>
-<dt>RDF</dt>
-<dd>
-Resource Description Framework
-</dd>
-</dl>
-</section>
 <section id="json-ld-context" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="json-ld-context">JSON-LD context</h2>
-<p>The following <a href="http://www.w3.org/TR/json-ld/#the-context">JSON-LD context document</a> can be used to map JSKOS without <a href="#closed-world-statements">closed world statements</a> to RDF triples.</p>
+<p>The following <a href="http://www.w3.org/TR/json-ld/#the-context">JSON-LD context document</a>, available <a href="context.json">from here</a>, can be used to map JSKOS without <a href="#closed-world-statements">closed world statements</a> to RDF triples.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"@context"</span><span class="fu">:</span> <span class="fu">{</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"@id"</span><span class="fu">,</span></span>
@@ -2519,9 +2497,16 @@ Resource Description Framework
 <span id="cb10-211"><a href="#cb10-211" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"compressFormat"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/ns/dcat#compressFormat"</span><span class="fu">,</span></span>
 <span id="cb10-212"><a href="#cb10-212" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"format"</span><span class="fu">:</span> <span class="st">"http://purl.org/dc/terms/format"</span><span class="fu">,</span></span>
 <span id="cb10-213"><a href="#cb10-213" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"size"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/ns/dcat#byteSize"</span><span class="fu">,</span></span>
-<span id="cb10-214"><a href="#cb10-214" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"value"</span><span class="fu">:</span> <span class="st">"http://spdx.org/rdf/terms#checksumValue"</span></span>
-<span id="cb10-215"><a href="#cb10-215" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
-<span id="cb10-216"><a href="#cb10-216" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-214"><a href="#cb10-214" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"value"</span><span class="fu">:</span> <span class="st">"http://spdx.org/rdf/terms#checksumValue"</span><span class="fu">,</span></span>
+<span id="cb10-215"><a href="#cb10-215" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"qualifiedRelations"</span><span class="fu">:</span> <span class="st">"@nest"</span><span class="fu">,</span></span>
+<span id="cb10-216"><a href="#cb10-216" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"qualifiedLiterals"</span><span class="fu">:</span> <span class="st">"@nest"</span><span class="fu">,</span></span>
+<span id="cb10-217"><a href="#cb10-217" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"qualifiedDates"</span><span class="fu">:</span> <span class="st">"@nest"</span><span class="fu">,</span></span>
+<span id="cb10-218"><a href="#cb10-218" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"resource"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/1999/02/22-rdf-syntax-ns#object"</span><span class="fu">,</span></span>
+<span id="cb10-219"><a href="#cb10-219" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"date"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/1999/02/22-rdf-syntax-ns#object"</span><span class="fu">,</span></span>
+<span id="cb10-220"><a href="#cb10-220" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"literal"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2008/05/skos-xl#literalForm"</span><span class="fu">,</span></span>
+<span id="cb10-221"><a href="#cb10-221" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"rank"</span><span class="fu">:</span> <span class="st">"http://wikiba.se/ontology#rank"</span></span>
+<span id="cb10-222"><a href="#cb10-222" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
+<span id="cb10-223"><a href="#cb10-223" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>JSKOS with closed world statements can be mapped to RDF by ignoring all boolean values and/or by mapping selected boolean values to RDF triples with blank nodes.</p>
 <p>Applications should further add implicit RDF triples, such as <code>$someConcept rdf:type skos:Concept</code>, if such information can be derived from JSKOS by other means.</p>
 </section>

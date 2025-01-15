@@ -2,11 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.32">
+<meta name="generator" content="quarto-1.5.44">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-01-13">
+<meta name="dcterms.date" content="2025-01-15">
 
 <title>JSKOS data format for Knowledge Organization Systems</title>
 <style>
@@ -64,19 +64,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-5dbef85374e00b74dcda297261b8f55d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-2ace586e68e8c287d3a0cf7e9c121c83.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 
 
 <link rel="stylesheet" href="style.css">
 <meta name="citation_title" content="JSKOS data format for Knowledge Organization Systems">
 <meta name="citation_author" content="Jakob Voß">
-<meta name="citation_publication_date" content="2025-01-13">
-<meta name="citation_cover_date" content="2025-01-13">
+<meta name="citation_publication_date" content="2025-01-15">
+<meta name="citation_cover_date" content="2025-01-15">
 <meta name="citation_year" content="2025">
-<meta name="citation_online_date" content="2025-01-13">
+<meta name="citation_online_date" content="2025-01-15">
 <meta name="citation_language" content="en">
 </head>
 
@@ -86,7 +86,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">JSKOS data format for Knowledge Organization Systems</h1>
-            <p class="subtitle lead">Version 0.6.0</p>
+            <p class="subtitle lead">Version 0.6.0-preview</p>
           </div>
 
     
@@ -112,7 +112,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
                 <div>
             <div class="quarto-title-meta-heading">Published</div>
             <div class="quarto-title-meta-contents">
-              <p class="date">January 13, 2025</p>
+              <p class="date">January 15, 2025</p>
             </div>
           </div>
           
@@ -1844,28 +1844,7 @@ Note
 </div>
 </div>
 <p>The term <strong>qualified statement</strong> refers to the combination of a <em>property type</em> and a <em>qualified value</em>. Qualified statements are grouped in <em>qualified maps</em> by the data type of their qualified values.</p>
-<p>A <strong>qualified map</strong> is a JSON object that maps <strong>property types</strong> (each being an <a href="#uri">URI</a>) to objects with the following fields:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: left;">field</th>
-<th style="text-align: left;">type</th>
-<th style="text-align: left;">definition</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">prefLabel</td>
-<td style="text-align: left;"><a href="#language-map">language map</a> of strings</td>
-<td style="text-align: left;">labels of the property type, indexed by language (OPTIONAL)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">values</td>
-<td style="text-align: left;">array of qualified values</td>
-<td style="text-align: left;">qualified values of same qualified data type (REQUIRED)</td>
-</tr>
-</tbody>
-</table>
+<p>A <strong>qualified map</strong> is a JSON object that maps <strong>property types</strong> (each being an <a href="#uri">URI</a>) to qualified values.</p>
 <div id="lst-qualified-map" class="json listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-qualified-map-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1873,19 +1852,12 @@ Example&nbsp;13: Qualified map with property types from schema.org
 </figcaption>
 <div aria-describedby="lst-qualified-map-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="sourceCode" id="lst-qualified-map"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="lst-qualified-map-1"><a href="#lst-qualified-map-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="lst-qualified-map-2"><a href="#lst-qualified-map-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"https://schema.org/award"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="lst-qualified-map-3"><a href="#lst-qualified-map-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"award"</span> <span class="fu">},</span></span>
-<span id="lst-qualified-map-4"><a href="#lst-qualified-map-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"values"</span><span class="fu">:</span> <span class="ot">[</span> <span class="er">...</span> <span class="ot">]</span></span>
-<span id="lst-qualified-map-5"><a href="#lst-qualified-map-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
-<span id="lst-qualified-map-6"><a href="#lst-qualified-map-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"https://schema.org/performerIn"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="lst-qualified-map-7"><a href="#lst-qualified-map-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"performerIn"</span> <span class="fu">},</span></span>
-<span id="lst-qualified-map-8"><a href="#lst-qualified-map-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"values"</span><span class="fu">:</span> <span class="ot">[</span> <span class="er">...</span> <span class="ot">]</span></span>
-<span id="lst-qualified-map-9"><a href="#lst-qualified-map-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
-<span id="lst-qualified-map-10"><a href="#lst-qualified-map-10" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="lst-qualified-map-2"><a href="#lst-qualified-map-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"https://schema.org/award"</span><span class="fu">:</span> <span class="ot">[</span> <span class="er">...</span> <span class="ot">]</span><span class="fu">,</span></span>
+<span id="lst-qualified-map-3"><a href="#lst-qualified-map-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"https://schema.org/performerIn"</span><span class="fu">:</span> <span class="ot">[</span> <span class="er">...</span> <span class="ot">]</span></span>
+<span id="lst-qualified-map-4"><a href="#lst-qualified-map-4" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </figure>
 </div>
-<p>Objects with empty array field <code>values</code> SHOULD be ignored.</p>
 <p>A <strong>qualified value</strong> is a JSON object with the following optional fields:</p>
 <table class="caption-top table">
 <thead>
@@ -1956,30 +1928,26 @@ Example&nbsp;14: Concept with qualified relations (from Wikidata)
 <span id="lst-qualified-relation-2"><a href="#lst-qualified-relation-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.wikidata.org/entity/Q3033"</span><span class="fu">,</span></span>
 <span id="lst-qualified-relation-3"><a href="#lst-qualified-relation-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"Göttingen"</span> <span class="fu">},</span></span>
 <span id="lst-qualified-relation-4"><a href="#lst-qualified-relation-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"qualifiedRelations"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="lst-qualified-relation-5"><a href="#lst-qualified-relation-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"http://www.wikidata.org/entity/P17"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="lst-qualified-relation-6"><a href="#lst-qualified-relation-6" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"country"</span> <span class="fu">},</span></span>
-<span id="lst-qualified-relation-7"><a href="#lst-qualified-relation-7" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"values"</span><span class="fu">:</span> <span class="ot">[</span></span>
-<span id="lst-qualified-relation-8"><a href="#lst-qualified-relation-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">{</span> </span>
-<span id="lst-qualified-relation-9"><a href="#lst-qualified-relation-9" aria-hidden="true" tabindex="-1"></a>          <span class="dt">"resource"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="lst-qualified-relation-10"><a href="#lst-qualified-relation-10" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.wikidata.org/entity/Q183"</span><span class="fu">,</span></span>
-<span id="lst-qualified-relation-11"><a href="#lst-qualified-relation-11" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"Germany"</span> <span class="fu">}</span></span>
-<span id="lst-qualified-relation-12"><a href="#lst-qualified-relation-12" aria-hidden="true" tabindex="-1"></a>          <span class="fu">},</span></span>
-<span id="lst-qualified-relation-13"><a href="#lst-qualified-relation-13" aria-hidden="true" tabindex="-1"></a>          <span class="dt">"startDate"</span><span class="fu">:</span> <span class="st">"1990-10-03"</span><span class="fu">,</span></span>
-<span id="lst-qualified-relation-14"><a href="#lst-qualified-relation-14" aria-hidden="true" tabindex="-1"></a>          <span class="dt">"rank"</span><span class="fu">:</span> <span class="st">"preferred"</span></span>
-<span id="lst-qualified-relation-15"><a href="#lst-qualified-relation-15" aria-hidden="true" tabindex="-1"></a>        <span class="fu">}</span><span class="ot">,</span></span>
-<span id="lst-qualified-relation-16"><a href="#lst-qualified-relation-16" aria-hidden="true" tabindex="-1"></a>        <span class="fu">{</span> </span>
-<span id="lst-qualified-relation-17"><a href="#lst-qualified-relation-17" aria-hidden="true" tabindex="-1"></a>          <span class="dt">"resource"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="lst-qualified-relation-18"><a href="#lst-qualified-relation-18" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.wikidata.org/entity/Q713750"</span><span class="fu">,</span></span>
-<span id="lst-qualified-relation-19"><a href="#lst-qualified-relation-19" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"West Germany"</span> <span class="fu">}</span></span>
-<span id="lst-qualified-relation-20"><a href="#lst-qualified-relation-20" aria-hidden="true" tabindex="-1"></a>          <span class="fu">},</span></span>
-<span id="lst-qualified-relation-21"><a href="#lst-qualified-relation-21" aria-hidden="true" tabindex="-1"></a>          <span class="dt">"startDate"</span><span class="fu">:</span> <span class="st">"1949-05-23"</span><span class="fu">,</span></span>
-<span id="lst-qualified-relation-22"><a href="#lst-qualified-relation-22" aria-hidden="true" tabindex="-1"></a>          <span class="dt">"endDate"</span><span class="fu">:</span> <span class="st">"1990-10-02"</span><span class="fu">,</span></span>
-<span id="lst-qualified-relation-23"><a href="#lst-qualified-relation-23" aria-hidden="true" tabindex="-1"></a>          <span class="dt">"rank"</span><span class="fu">:</span> <span class="st">"normal"</span></span>
-<span id="lst-qualified-relation-24"><a href="#lst-qualified-relation-24" aria-hidden="true" tabindex="-1"></a>        <span class="fu">}</span></span>
-<span id="lst-qualified-relation-25"><a href="#lst-qualified-relation-25" aria-hidden="true" tabindex="-1"></a>      <span class="ot">]</span></span>
-<span id="lst-qualified-relation-26"><a href="#lst-qualified-relation-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
-<span id="lst-qualified-relation-27"><a href="#lst-qualified-relation-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
-<span id="lst-qualified-relation-28"><a href="#lst-qualified-relation-28" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="lst-qualified-relation-5"><a href="#lst-qualified-relation-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"http://www.wikidata.org/entity/P17"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="lst-qualified-relation-6"><a href="#lst-qualified-relation-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">{</span> </span>
+<span id="lst-qualified-relation-7"><a href="#lst-qualified-relation-7" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"resource"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="lst-qualified-relation-8"><a href="#lst-qualified-relation-8" aria-hidden="true" tabindex="-1"></a>          <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.wikidata.org/entity/Q183"</span><span class="fu">,</span></span>
+<span id="lst-qualified-relation-9"><a href="#lst-qualified-relation-9" aria-hidden="true" tabindex="-1"></a>          <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"Germany"</span> <span class="fu">}</span></span>
+<span id="lst-qualified-relation-10"><a href="#lst-qualified-relation-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">},</span></span>
+<span id="lst-qualified-relation-11"><a href="#lst-qualified-relation-11" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"startDate"</span><span class="fu">:</span> <span class="st">"1990-10-03"</span><span class="fu">,</span></span>
+<span id="lst-qualified-relation-12"><a href="#lst-qualified-relation-12" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"rank"</span><span class="fu">:</span> <span class="st">"preferred"</span></span>
+<span id="lst-qualified-relation-13"><a href="#lst-qualified-relation-13" aria-hidden="true" tabindex="-1"></a>      <span class="fu">}</span><span class="ot">,</span><span class="fu">{</span> </span>
+<span id="lst-qualified-relation-14"><a href="#lst-qualified-relation-14" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"resource"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="lst-qualified-relation-15"><a href="#lst-qualified-relation-15" aria-hidden="true" tabindex="-1"></a>          <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.wikidata.org/entity/Q713750"</span><span class="fu">,</span></span>
+<span id="lst-qualified-relation-16"><a href="#lst-qualified-relation-16" aria-hidden="true" tabindex="-1"></a>          <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"West Germany"</span> <span class="fu">}</span></span>
+<span id="lst-qualified-relation-17"><a href="#lst-qualified-relation-17" aria-hidden="true" tabindex="-1"></a>        <span class="fu">},</span></span>
+<span id="lst-qualified-relation-18"><a href="#lst-qualified-relation-18" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"startDate"</span><span class="fu">:</span> <span class="st">"1949-05-23"</span><span class="fu">,</span></span>
+<span id="lst-qualified-relation-19"><a href="#lst-qualified-relation-19" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"endDate"</span><span class="fu">:</span> <span class="st">"1990-10-02"</span><span class="fu">,</span></span>
+<span id="lst-qualified-relation-20"><a href="#lst-qualified-relation-20" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"rank"</span><span class="fu">:</span> <span class="st">"normal"</span></span>
+<span id="lst-qualified-relation-21"><a href="#lst-qualified-relation-21" aria-hidden="true" tabindex="-1"></a>      <span class="fu">}</span></span>
+<span id="lst-qualified-relation-22"><a href="#lst-qualified-relation-22" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span></span>
+<span id="lst-qualified-relation-23"><a href="#lst-qualified-relation-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
+<span id="lst-qualified-relation-24"><a href="#lst-qualified-relation-24" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </figure>
 </div>
@@ -2053,30 +2021,23 @@ Note
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">literal</td>
-<td style="text-align: left;">string</td>
-<td style="text-align: left;">character string of the literal (RECOMMENDED)</td>
+<td style="text-align: left;"><em>see below</em></td>
+<td style="text-align: left;">character string and optional language tag of the literal (RECOMMENDED)</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">language</td>
-<td style="text-align: left;"><a href="#language-tag">language tag</a></td>
-<td style="text-align: left;">language of the literal (RECOMMENDED, set to <code>und</code> by default)</td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;">uri</td>
 <td style="text-align: left;"><a href="#uri">URI</a></td>
 <td style="text-align: left;">Globally unique identifier of the literal (OPTIONAL)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">type</td>
 <td style="text-align: left;"><a href="#list">list</a> of <a href="#uri">URI</a></td>
 <td style="text-align: left;">URIs of types (OPTIONAL)</td>
 </tr>
 </tbody>
 </table>
-<!-- TODO: make it a subclass of resource? -->
-<!-- TODO: more about relation to plain fields -->
-<p>The first element of array field <code>type</code>, if given, MUST be <a href="http://www.w3.org/2008/05/skos-xl#Label" class="uri">http://www.w3.org/2008/05/skos-xl#Label</a>.</p>
-<p>Application MAY disallow or ignore qualified literals without field <code>literal</code>.</p>
+<p>The value of field <code>literal</code> MUST be a JSON objects with REQUIRED field <code>@value</code> for the character string and OPTIONAL field <code>@language</code> for the language, given as a <a href="#language-tag">language tag</a>. Application MAY disallow or ignore qualified literals without field <code>literal</code>. Applications MAY use <code>und</code> as default value when no <code>@language</code> is specified.</p>
+<p>The first element of qualified literal array field <code>type</code>, if given, MUST be <a href="http://www.w3.org/2008/05/skos-xl#Label" class="uri">http://www.w3.org/2008/05/skos-xl#Label</a>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -2094,33 +2055,30 @@ Note
 <div id="lst-qualified-literal" class="json listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-qualified-literal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Example&nbsp;16: Qualified map of qualified literals
+Example&nbsp;16: Concept with qualified literals
 </figcaption>
 <div aria-describedby="lst-qualified-literal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="sourceCode" id="lst-qualified-literal"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="lst-qualified-literal-1"><a href="#lst-qualified-literal-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="lst-qualified-literal-2"><a href="#lst-qualified-literal-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"http://www.w3.org/2008/05/skos-xl#prefLabel"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="lst-qualified-literal-3"><a href="#lst-qualified-literal-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"preferred label"</span><span class="fu">,</span></span>
-<span id="lst-qualified-literal-4"><a href="#lst-qualified-literal-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"values"</span><span class="fu">:</span> <span class="ot">[</span>    </span>
+<span id="lst-qualified-literal-2"><a href="#lst-qualified-literal-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.wikidata.org/entity/Q406"</span><span class="fu">,</span></span>
+<span id="lst-qualified-literal-3"><a href="#lst-qualified-literal-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"qualifiedLiterals"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="lst-qualified-literal-4"><a href="#lst-qualified-literal-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"http://www.w3.org/2008/05/skos-xl#prefLabel"</span><span class="fu">:</span> <span class="ot">[</span></span>
 <span id="lst-qualified-literal-5"><a href="#lst-qualified-literal-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">{</span></span>
 <span id="lst-qualified-literal-6"><a href="#lst-qualified-literal-6" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"type"</span><span class="fu">:</span> <span class="ot">[</span> <span class="st">"http://www.w3.org/2008/05/skos-xl#Label"</span> <span class="ot">]</span><span class="fu">,</span></span>
-<span id="lst-qualified-literal-7"><a href="#lst-qualified-literal-7" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"literal"</span><span class="fu">:</span> <span class="st">"İstanbul"</span><span class="fu">,</span></span>
-<span id="lst-qualified-literal-8"><a href="#lst-qualified-literal-8" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"language"</span><span class="fu">:</span> <span class="st">"tr"</span><span class="fu">,</span></span>
-<span id="lst-qualified-literal-9"><a href="#lst-qualified-literal-9" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"rank"</span><span class="fu">:</span> <span class="st">"preferred"</span></span>
-<span id="lst-qualified-literal-10"><a href="#lst-qualified-literal-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">}</span><span class="ot">,</span> <span class="fu">{</span></span>
-<span id="lst-qualified-literal-11"><a href="#lst-qualified-literal-11" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"type"</span><span class="fu">:</span> <span class="ot">[</span> <span class="st">"http://www.w3.org/2008/05/skos-xl#Label"</span> <span class="ot">]</span><span class="fu">,</span></span>
-<span id="lst-qualified-literal-12"><a href="#lst-qualified-literal-12" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"literal"</span><span class="fu">:</span> <span class="st">"Constantinople"</span><span class="fu">,</span></span>
-<span id="lst-qualified-literal-13"><a href="#lst-qualified-literal-13" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"language"</span><span class="fu">:</span> <span class="st">"en"</span><span class="fu">,</span></span>
-<span id="lst-qualified-literal-14"><a href="#lst-qualified-literal-14" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"endDate"</span><span class="fu">:</span> <span class="st">"1930"</span></span>
-<span id="lst-qualified-literal-15"><a href="#lst-qualified-literal-15" aria-hidden="true" tabindex="-1"></a>      <span class="fu">}</span></span>
-<span id="lst-qualified-literal-16"><a href="#lst-qualified-literal-16" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span></span>
-<span id="lst-qualified-literal-17"><a href="#lst-qualified-literal-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
-<span id="lst-qualified-literal-18"><a href="#lst-qualified-literal-18" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"https://www.wikidata.org/wiki/Property:P395"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="lst-qualified-literal-19"><a href="#lst-qualified-literal-19" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"licence plate code"</span> <span class="fu">},</span></span>
-<span id="lst-qualified-literal-20"><a href="#lst-qualified-literal-20" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"values"</span><span class="fu">:</span> <span class="ot">[</span></span>
-<span id="lst-qualified-literal-21"><a href="#lst-qualified-literal-21" aria-hidden="true" tabindex="-1"></a>      <span class="fu">{</span> <span class="dt">"literal"</span><span class="fu">:</span> <span class="st">"34"</span> <span class="fu">}</span></span>
-<span id="lst-qualified-literal-22"><a href="#lst-qualified-literal-22" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span></span>
-<span id="lst-qualified-literal-23"><a href="#lst-qualified-literal-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
-<span id="lst-qualified-literal-24"><a href="#lst-qualified-literal-24" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="lst-qualified-literal-7"><a href="#lst-qualified-literal-7" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"literal"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"@value"</span><span class="fu">:</span> <span class="st">"İstanbul"</span><span class="fu">,</span> <span class="dt">"@language"</span><span class="fu">:</span> <span class="st">"tr"</span> <span class="fu">},</span></span>
+<span id="lst-qualified-literal-8"><a href="#lst-qualified-literal-8" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"rank"</span><span class="fu">:</span> <span class="st">"preferred"</span></span>
+<span id="lst-qualified-literal-9"><a href="#lst-qualified-literal-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">}</span><span class="ot">,</span> <span class="fu">{</span></span>
+<span id="lst-qualified-literal-10"><a href="#lst-qualified-literal-10" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"type"</span><span class="fu">:</span> <span class="ot">[</span> <span class="st">"http://www.w3.org/2008/05/skos-xl#Label"</span> <span class="ot">]</span><span class="fu">,</span></span>
+<span id="lst-qualified-literal-11"><a href="#lst-qualified-literal-11" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"literal"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"@value"</span><span class="fu">:</span> <span class="st">"Constantinople"</span><span class="fu">,</span> <span class="dt">"@language"</span><span class="fu">:</span> <span class="st">"en"</span> <span class="fu">},</span></span>
+<span id="lst-qualified-literal-12"><a href="#lst-qualified-literal-12" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"endDate"</span><span class="fu">:</span> <span class="st">"1930"</span></span>
+<span id="lst-qualified-literal-13"><a href="#lst-qualified-literal-13" aria-hidden="true" tabindex="-1"></a>      <span class="fu">}</span></span>
+<span id="lst-qualified-literal-14"><a href="#lst-qualified-literal-14" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span><span class="fu">,</span></span>
+<span id="lst-qualified-literal-15"><a href="#lst-qualified-literal-15" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"https://www.wikidata.org/wiki/Property:P395"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="lst-qualified-literal-16"><a href="#lst-qualified-literal-16" aria-hidden="true" tabindex="-1"></a>      <span class="fu">{</span></span>
+<span id="lst-qualified-literal-17"><a href="#lst-qualified-literal-17" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"literal"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"@value"</span><span class="fu">:</span> <span class="st">"34"</span> <span class="fu">}</span> </span>
+<span id="lst-qualified-literal-18"><a href="#lst-qualified-literal-18" aria-hidden="true" tabindex="-1"></a>      <span class="fu">}</span></span>
+<span id="lst-qualified-literal-19"><a href="#lst-qualified-literal-19" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span></span>
+<span id="lst-qualified-literal-20"><a href="#lst-qualified-literal-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
+<span id="lst-qualified-literal-21"><a href="#lst-qualified-literal-21" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </figure>
 </div>

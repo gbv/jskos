@@ -1,6 +1,6 @@
 {
   "$id": "https://gbv.github.io/jskos/item.schema.json",
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "title": "JSKOS Item",
   "description": "named entities",
   "type": "object",
@@ -17,6 +17,10 @@
           }
         ]
       }
+    },
+    "language-tag": {
+      "type": "string",
+      "pattern": "^([a-z]{1,8}(-[a-z0-9]{1,8})*-?|-)$"
     },
     "language-map": {
       "type": "object",
@@ -90,26 +94,6 @@
         "type",
         "items"
       ]
-    },
-    "edtf": {
-      "$comment": "EDTF Level 1",
-      "anyOf": [
-        {
-          "type": "string",
-          "pattern": "^Y?-?[0-9X]{4,}[?~%]?(-[012X][0-9X][?~%]?(-[0-3X][0-9X][?~%]?)?)?$",
-          "$comment": "EDTF Year, Year-Month, Year-Month-Day"
-        },
-        {
-          "type": "string",
-          "pattern": "^Y?-?[0-9X?~%-]{4,}T[0-9?~%:.]+(Z|[+-][0-9?~%:]+)?$",
-          "$comment": "EDTF Date and Time"
-        },
-        {
-          "type": "string",
-          "pattern": "^(|\\.\\.|[0-9TXYZ%~?.+-]+)/(|\\.\\.|[0-9TXYZ%~?.+-]+)$",
-          "$comment": "EDTF Interval (very lax)"
-        }
-      ]
     }
   },
   "allOf": [
@@ -168,21 +152,21 @@
     },
     "startDate": {
       "description": "date of birth, creation, or estabishment of the item",
-      "$ref": "#/definitions/edtf"
+      "$ref": "resource.schema.json#/definitions/edtf"
     },
     "endDate": {
       "description": "date death or resolution of the item",
-      "$ref": "#/definitions/edtf"
+      "$ref": "resource.schema.json#/definitions/edtf"
     },
     "relatedDate": {
       "description": "other date somehow related to the item (deprecated, use relatedDates instead)",
-      "$ref": "#/definitions/edtf"
+      "$ref": "resource.schema.json#/definitions/edtf"
     },
     "relatedDates": {
       "description": "other date somehow related to the item (deprecated, use relatedDates instead)",
       "type": "array",
       "items": {
-        "$ref": "#/definitions/edtf"
+        "$ref": "resource.schema.json#/definitions/edtf"
       }
     },
     "location": {

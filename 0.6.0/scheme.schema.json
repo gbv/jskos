@@ -1,6 +1,6 @@
 {
   "$id": "https://gbv.github.io/jskos/scheme.schema.json",
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "title": "JSKOS Concept Scheme",
   "description": "compiled collections of concepts (knowledge organization systems)",
   "type": "object",

@@ -1012,7 +1012,7 @@ Qualified labels allow to express [SKOS eXtension for Labels (SKOS-XL)](https://
 Qualified statements of data type qualified literal MUST NOT use the property types <http://www.w3.org/2004/02/skos/core#prefLabel>, <http://www.w3.org/2004/02/skos/core#altLabel>, and <https://www.w3.org/TR/skos-reference/#hiddenLabel> but they MAY use the corresponding URIs <http://www.w3.org/2008/05/skos-xl#prefLabel>, <http://www.w3.org/2008/05/skos-xl#altLabel>, and <http://www.w3.org/2008/05/skos-xl#hiddenLabel> instead.
 
 ```{.json #lst-qualified-literal lst-cap="Concept with qualified literals"}
-{{< include examples/qualified-literal-map.json >}}
+{{< include examples/qualified-literal.concept.json >}}
 ```
 
 # Additional rules

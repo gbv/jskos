@@ -1242,24 +1242,10 @@ The fields `PARTS` and `_id` in the following example can be ignored:
 
 The following appendices are *non-normative*.
 
-## Glossary {.unnumbered}
-
-JSON
-  : JavaScript Object Notation
-
-JSON-LD
-  : JavaScript Object Notation for Linked Data
-
-KOS
-  : Knowledge Organization System
-
-RDF
-  : Resource Description Framework
-
 ## JSON-LD context {.unnumbered}
 
-The following [JSON-LD context document] can be used to map JSKOS
-without [closed world statements] to RDF triples.
+The following [JSON-LD context document], available [from here](context.json),
+can be used to map JSKOS without [closed world statements] to RDF triples.
 
 [JSON-LD context document]: http://www.w3.org/TR/json-ld/#the-context
 

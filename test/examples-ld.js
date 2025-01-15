@@ -35,8 +35,8 @@ testExamples("JSON-LD examples", types, async (objects, file, type) => {
   if (fs.existsSync(ntfile)) {
     let expect = fs.readFileSync(ntfile).toString()
     assert.equal(expect, nquads, 'ntfile')
-    // console.log(ntfile)
+    //console.log(ntfile)
   } else {
-    // console.log(nquads)
+    //console.log(nquads)
   }
 })

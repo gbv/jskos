@@ -211,6 +211,13 @@
     "compressFormat": "http://www.w3.org/ns/dcat#compressFormat",
     "format": "http://purl.org/dc/terms/format",
     "size": "http://www.w3.org/ns/dcat#byteSize",
-    "value": "http://spdx.org/rdf/terms#checksumValue"
+    "value": "http://spdx.org/rdf/terms#checksumValue",
+    "qualifiedRelations": "@nest",
+    "qualifiedLiterals": "@nest",
+    "qualifiedDates": "@nest",
+    "resource": "http://www.w3.org/1999/02/22-rdf-syntax-ns#object",
+    "date": "http://www.w3.org/1999/02/22-rdf-syntax-ns#object",
+    "literal": "http://www.w3.org/2008/05/skos-xl#literalForm",
+    "rank": "http://wikiba.se/ontology#rank"
   }
 }

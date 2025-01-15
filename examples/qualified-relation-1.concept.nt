@@ -1,0 +1,7 @@
+<http://www.wikidata.org/entity/Q42> <http://www.w3.org/2004/02/skos/core#prefLabel> "Douglas Adams"@en .
+<http://www.wikidata.org/entity/Q42> <http://www.wikidata.org/entity/P69> _:b0 .
+_:b0 <http://purl.org/dc/terms/source> _:b1 .
+_:b0 <http://schema.org/endDate> "1970" .
+_:b0 <http://schema.org/startDate> "1959" .
+_:b0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#object> <http://www.wikidata.org/entity/Q4961791> .
+_:b1 <http://xmlns.com/foaf/0.1/page> <https://www.brentwoodschool.co.uk/about/our-history/> .

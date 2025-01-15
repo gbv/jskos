@@ -24,6 +24,13 @@
         }
       ]
     },
+    "type": {
+      "description": "URIs of types",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/uri"
+      }
+    },
     "non-negative-integer": {
       "type": "integer",
       "minimum": 0
@@ -66,6 +73,26 @@
         ]
       }
     },
+    "edtf": {
+      "$comment": "EDTF Level 1",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^Y?-?[0-9X]{4,}[?~%]?(-[012X][0-9X][?~%]?(-[0-3X][0-9X][?~%]?)?)?$",
+          "$comment": "EDTF Year, Year-Month, Year-Month-Day"
+        },
+        {
+          "type": "string",
+          "pattern": "^Y?-?[0-9X?~%-]{4,}T[0-9?~%:.]+(Z|[+-][0-9?~%:]+)?$",
+          "$comment": "EDTF Date and Time"
+        },
+        {
+          "type": "string",
+          "pattern": "^(|\\.\\.|[0-9TXYZ%~?.+-]+)/(|\\.\\.|[0-9TXYZ%~?.+-]+)$",
+          "$comment": "EDTF Interval (very lax)"
+        }
+      ]
+    },
     "rank": {
       "type": "string",
       "enum": ["normal","preferred","deprecated"],
@@ -76,11 +103,11 @@
       "properties": {
         "startDate": {
           "description": "date when the statement started to be valid",
-          "$ref": "item.schema.json#/definitions/edtf"
+          "$ref": "#/definitions/edtf"
         },
         "endDate": {
           "description": "date when the statement ended to be valid",
-          "$ref": "item.schema.json#/definitions/edtf"
+          "$ref": "#/definitions/edtf"
         },
         "source": {
           "description": "sources as evidence for the statement",
@@ -90,25 +117,6 @@
           "$ref": "#/definitions/rank"
         }
       }
-    },
-    "qualifiedRelation": {
-      "type": "object",
-      "allOf": [
-        { "$ref": "#/definitions/qualifiedValue" }
-      ],
-      "properties": {
-        "resource": {
-          "description": "object of the relation",
-          "$ref": "#"
-        }
-      },
-      "$comment": "TODO: add unevaluatedProperties to disallow undefined properties"
-    },
-    "qualifiedDate": {
-      "type": "object"
-    },
-    "qualifiedLiteral": {
-      "type": "object"
     }
   },
   "properties": {
@@ -137,11 +145,7 @@
       "$ref": "#/definitions/list"
     },
     "type": {
-      "description": "URIs of types",
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/uri"
-      }
+      "$ref": "#/definitions/type"
     },
     "created": {
       "description": "date of creation",
@@ -182,33 +186,74 @@
     },
     "qualifiedRelations": {
       "type": "object",
-      "propertyNames": {
-        "$ref": "#/definitions/uri"
-      },
+      "propertyNames": { "$ref": "#/definitions/uri" },
       "patternProperties": {
         ".*": {
-          "type": "object",
-          "properties": {
-            "prefLabel": {
-              "description": "labels of the qualified type, indexed by language",
-              "$ref": "item.schema.json#/definitions/language-map"
-            },
-            "values": {
-              "description": "qualified values",
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/qualifiedRelation" 
+          "type": "array",
+          "items": {
+            "type": "object",
+            "allOf": [ { "$ref": "#/definitions/qualifiedValue" } ],
+            "properties": {
+              "resource": {
+                "description": "object of the relation",
+                "$ref": "#"
               }
-            }
-          },
-          "required": ["values"],
-          "additionalProperties": false
+            },
+            "patternProperties": { "^_|^[A-Z0-9]+$": {} },
+            "unevaluatedProperties": false
+          }
         }
-      },
-      "additionalProperties": false
+      }
+    },
+    "qualifiedDates": {
+      "type": "object",
+      "propertyNames": { "$ref": "#/definitions/uri" },
+      "patternProperties": {
+        ".*": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "allOf": [ { "$ref": "#/definitions/qualifiedValue" } ],
+            "properties": {
+              "date": {
+                "$ref": "#/definitions/edtf"
+              }
+            },
+            "patternProperties": { "^_|^[A-Z0-9]+$": {} },
+            "unevaluatedProperties": false
+          }
+        }
+      }
+    },
+    "qualifiedLiterals": {
+      "type": "object",
+      "propertyNames": { "$ref": "#/definitions/uri" },
+      "patternProperties": {
+        ".*": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "allOf": [
+              { "$ref": "#/definitions/qualifiedValue" }
+            ],
+            "properties": {
+              "type": { "$ref": "#/definitions/type" },
+              "literal": {
+                "type": "object",
+                "properties": {
+                  "@value": { "type": "string" },
+                  "@language": { "$ref": "item.schema.json#/definitions/language-tag" }
+                },
+                "required": [ "@value" ],
+                "additionalProperties": false
+              }
+            },
+            "patternProperties": { "^_|^[A-Z0-9]+$": {} },
+            "unevaluatedProperties": false
+          }
+        }
+      }
     }
   },
-  "patternProperties": {
-    "^_|^[A-Z0-9]+$": {}
-  }
+  "patternProperties": { "^_|^[A-Z0-9]+$": {} }
 }

@@ -927,27 +927,14 @@ Qualified statements are similar but not identical to properties in a property g
 
 The term **qualified statement** refers to the combination of a *property type* and a *qualified value*.  Qualified statements are grouped in *qualified maps* by the data type of their qualified values.
 
-A **qualified map** is a JSON object that maps **property types** (each being an [URI]) to objects with the following fields:
-
-field       type                        definition
------------ --------------------------- -----------------------------------------------------------
-prefLabel   [language map] of strings   labels of the property type, indexed by language (OPTIONAL)
-values      array of qualified values   qualified values of same qualified data type (REQUIRED)
+A **qualified map** is a JSON object that maps **property types** (each being an [URI]) to qualified values.
 
 ``` {.json #lst-qualified-map lst-cap="Qualified map with property types from schema.org"}
 {
-  "https://schema.org/award": {
-    "prefLabel": { "en": "award" },
-    "values": [ ... ]
-  },
-  "https://schema.org/performerIn": {
-    "prefLabel": { "en": "performerIn" },
-    "values": [ ... ]
-  }
+  "https://schema.org/award": [ ... ],
+  "https://schema.org/performerIn": [ ... ]
 }
 ```
-
-Objects with empty array field `values` SHOULD be ignored.
 
 A **qualified value** is a JSON object with the following optional fields:
 
@@ -958,8 +945,7 @@ endDate     [extended date] date when the statementn ended to be valid
 source      [set]           sources as evidence for the statement
 rank        [rank]          [rank] of the statement
 
-If field `startDate` is given in a qualified value, the value of field
-`endDate` MUST NOT be an interval with open start.
+If field `startDate` is given in a qualified value, the value of field `endDate` MUST NOT be an interval with open start.
 
 If field `endDate` is given in a qualified value, the value of `startDate` MUST
 NOT be an interval with open end.
@@ -1010,18 +996,14 @@ Applications MAY disallow or ignore qualified dates without field `date`.
 A **Qualified literal** is a [qualified value] with the following fields (in addition to the optional fields `rank`, `source`, `startDate`, and `endDate`):
 
 field       type            definition
------------ --------------- --------------------------------------------------------------
-literal     string          character string of the literal (RECOMMENDED)
-language    [language tag]  language of the literal (RECOMMENDED, set to `und` by default)
+----------- --------------- -----------------------------------------------------------------------
+literal     *see below*     character string and optional language tag of the literal (RECOMMENDED)
 uri         [URI]           Globally unique identifier of the literal (OPTIONAL)
 type        [list] of [URI] URIs of types (OPTIONAL)
 
-<!-- TODO: make it a subclass of resource? -->
-<!-- TODO: more about relation to plain fields -->
+The value of field `literal` MUST be a JSON objects with REQUIRED field `@value` for the character string and OPTIONAL field `@language` for the language, given as a [language tag]. Application MAY disallow or ignore qualified literals without field `literal`. Applications MAY use `und` as default value when no `@language` is specified.
 
-The first element of array field `type`, if given, MUST be <http://www.w3.org/2008/05/skos-xl#Label>.
-
-Application MAY disallow or ignore qualified literals without field `literal`.
+The first element of qualified literal array field `type`, if given, MUST be <http://www.w3.org/2008/05/skos-xl#Label>.
 
 ::: {.callout-note}
 Qualified labels allow to express [SKOS eXtension for Labels (SKOS-XL)](https://www.w3.org/TR/skos-reference/#xl) in JSKOS.
@@ -1029,7 +1011,7 @@ Qualified labels allow to express [SKOS eXtension for Labels (SKOS-XL)](https://
 
 Qualified statements of data type qualified literal MUST NOT use the property types <http://www.w3.org/2004/02/skos/core#prefLabel>, <http://www.w3.org/2004/02/skos/core#altLabel>, and <https://www.w3.org/TR/skos-reference/#hiddenLabel> but they MAY use the corresponding URIs <http://www.w3.org/2008/05/skos-xl#prefLabel>, <http://www.w3.org/2008/05/skos-xl#altLabel>, and <http://www.w3.org/2008/05/skos-xl#hiddenLabel> instead.
 
-```{.json #lst-qualified-literal lst-cap="Qualified map of qualified literals"}
+```{.json #lst-qualified-literal lst-cap="Concept with qualified literals"}
 {{< include examples/qualified-literal-map.json >}}
 ```
 

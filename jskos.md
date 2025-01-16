@@ -2,20 +2,22 @@
 
 **JSKOS** (**J**avaScript Object Notation for **S**imple **K**nowledge
 **O**rganization **S**ystems) defines a JavaScript Object Notation (JSON)
-structure to encode knowledge organization systems (KOS), such as
-classifications, thesauri, authority files, and knowledge graphs.
+structure to encode knowledge organization systems (KOS) and semantic
+artifacts, such as classifications, thesauri, authority files, and knowledge
+graphs.
 
 The core of JSKOS is an encoding of Simple Knowledge Organisation System
 (SKOS), an application of the Resource Description Framework (RDF), in
 JavaScript Object Notation for Linked Data (JSON-LD). JSKOS is compatible but
-it does not require to be experienced in any of these technologies. Another
-influence is the Wikibase data model, which can partly be encoded in JSKOS as
-well.
+it does not require to be experienced in any of these technologies except for
+basic JSON ([RFC 8259]). Another influence of JSKOS is the data model of
+Wikibase, which can partly be encoded in JSKOS as well.
 
 ## Outline
 
-In addition to [concepts] and [concept
-schemes] JSKOS can express information about:
+In addition to [concepts] and [concept schemes] as known from SKOS
+
+JSKOS can express information about:
 
 - [mappings] and [concordances] for alignments between concepts
 - [occurrences] of concepts in databases
@@ -1001,7 +1003,7 @@ literal     *see below*     character string and optional language tag of the li
 uri         [URI]           Globally unique identifier of the literal (OPTIONAL)
 type        [list] of [URI] URIs of types (OPTIONAL)
 
-The value of field `literal` MUST be a JSON objects with REQUIRED field `@value` for the character string and OPTIONAL field `@language` for the language, given as a [language tag]. Application MAY disallow or ignore qualified literals without field `literal`. Applications MAY use `und` as default value when no `@language` is specified.
+The value of field `literal` MUST be a JSON objects with REQUIRED field `@value` for the character string, OPTIONAL field `@language` for the language, given as a [language tag], and no other field. Application MAY disallow or ignore qualified literals without field `literal`. Applications MAY use `und` as default value when no language is specified.
 
 The first element of qualified literal array field `type`, if given, MUST be <http://www.w3.org/2008/05/skos-xl#Label>.
 
@@ -1095,11 +1097,10 @@ TODO: Mappings (S38-S46)
 Integrity constraints of SKOS SHOULD be respected. Applications MAY reject JSKOS data violating the constraints.
 
 - [concepts], [concept schemes], [registries], [distributions], [concordances], [concept mappings] are pairwise disjoint (SKOS integrity rule S9)
-- 
+ 
+*this list is not complete yet*
 
 <!-- TODO: skos:related is disjoint with the property skos:broaderTransitive (S27) -->
-
-*this list is not complete yet*
 
 <!--
 
@@ -1145,46 +1146,49 @@ The fields `PARTS` and `_id` in the following example can be ignored:
 
 ## Normative references {.unnumbered}
 
-* M. Appleby et al: *IIIF Presentation API 3.0*.
-  June 202.
+- M. Appleby et al: *IIIF Presentation API 3.0*. June 2020.
   <https://iiif.io/api/presentation/3.0/>
 
-* P. Biron, A. Malhotra: *XML Schema Part 2: Datatypes Second Edition*.
+- P. Biron, A. Malhotra: *XML Schema Part 2: Datatypes Second Edition*.
   W3C Recommendation, October 2005.
   <https://www.w3.org/TR/xmlschema-2/>
 
-* S. Bradner: *Key words for use in RFCs to Indicate Requirement Levels*.
+- S. Bradner: *Key words for use in RFCs to Indicate Requirement Levels*.
   RFC 2119, March 1997. <https://tools.ietf.org/html/rfc2119>
 
-* H. Butler, M. Daly, S. Gillies, S. Hagen, T. Schaub: *The GeoJSON Format*.
+- H. Butler, M. Daly, S. Gillies, S. Hagen, T. Schaub: *The GeoJSON Format*.
   RFC 7946, August 2016. <https://tools.ietf.org/html/rfc7946>
 
-* D. Crockford: *The application/json Media Type for JavaScript Object Notation (JSON)*.
-  RFC 4627, July 2006. <https://tools.ietf.org/html/rfc4627>
+- T. Bray: *The JavaScript Object Notation (JSON) Data Interchange Format*.
+  RFC 8259, December 2017. <https://tools.ietf.org/html/rfc8259>
 
-* M. Davis, K. Whistler: *Unicode Normalization Forms*.
+- D. Crocker, P. Overell: *Augmented BNF for Syntax Specifications: ABNF*.
+  RFC 5234, January 2008.
+  <http://tools.ietf.org/html/rfc5234>
+
+- M. Davis, K. Whistler: *Unicode Normalization Forms*.
   Unicode Standard Annex #15.
   <http://www.unicode.org/reports/tr15/>
 
-* M. Dürst, M. Suignard: *Internationalized Resource Identifiers (IRIs)*.
+- M. Dürst, M. Suignard: *Internationalized Resource Identifiers (IRIs)*.
   RFC 3987, January 2005. <https://tools.ietf.org/html/rfc3987>
 
-* IANA: *Media Types*.
+- IANA: *Media Types*.
   <https://www.iana.org/assignments/media-types/>
 
-* ISO: *Date and time — Representations for information interchangePart 2: Extensions*.
+- ISO: *Date and time — Representations for information interchangePart 2: Extensions*.
   ISO 8601-2:2019. (summary available at <https://www.loc.gov/standards/datetime/>)
 
-* A. Phillips, M. Davis: *Tags for Identifying Languages*.
+- A. Phillips, M. Davis: *Tags for Identifying Languages*.
   RFC 3066, September 2006. <https://tools.ietf.org/html/rfc3066>
 
-* R. Sanderson, P. Ciccarese, B. Young: *Web Annotation Data Model*.
+- R. Sanderson, P. Ciccarese, B. Young: *Web Annotation Data Model*.
   W3C Recommendation, February 2017. <https://www.w3.org/TR/annotation-model/>
 
-* SPDX: *SPDX 2.3*. <http://spdx.org/rdf/terms#>
+- SPDX: *SPDX 2.3*. <http://spdx.org/rdf/terms#>
 
 [RFC 2119]: https://tools.ietf.org/html/rfc2119
-[RFC 4627]: https://tools.ietf.org/html/rfc4627
+[RFC 8259]: https://tools.ietf.org/html/rfc8259
 [RFC 3987]: https://tools.ietf.org/html/rfc3987
 [RFC 3066]: https://tools.ietf.org/html/rfc3066
 [RFC 7946]: https://tools.ietf.org/html/rfc7946
@@ -1193,7 +1197,7 @@ The fields `PARTS` and `_id` in the following example can be ignored:
 
 * R. Albertoni, D. Browning, S. Cox, A. Gonzalez Beltran, A. Perego, P. Winstanley:
   *Data Catalog Vocabulary (DCAT) - Version 3*.
-  May 2022.
+  August 2024.
   <https://www.w3.org/TR/vocab-dcat-3/>.
 
 * K. Alexander, R. Cyganiak, M. Hausenblas, Zhao, J.:
@@ -1204,10 +1208,6 @@ The fields `PARTS` and `_id` in the following example can be ignored:
 * DCMI Usage Board: *DCMI Metadata Terms*.
   June 2012.
   <http://dublincore.org/documents/dcmi-terms/>
-
-* D. Crocker, P. Overell: *Augmented BNF for Syntax Specifications: ABNF*.
-  RFC 5234, January 2008.
-  <http://tools.ietf.org/html/rfc5234>
 
 * F. Cotton (editor): *XKOS: An SKOS extension for representing statistical classifications*.
   DDI Alliance, May 2019.
@@ -1225,9 +1225,9 @@ The fields `PARTS` and `_id` in the following example can be ignored:
   RFC 4647, September 2006.
   <http://tools.ietf.org/html/rfc4647>
 
-* M. Sporny, D. Longley, G. Kellogg, M. Lanthaler, N. Lindström: *JSON-LD 1.0*.
-  W3C Recommendation, January 2014.
-  <http://www.w3.org/TR/json-ld/>
+* M. Sporny, P.Champin, D. Longley: *JSON-LD 1.1*.
+  W3C Recommendation, July 2020.
+  <http://www.w3.org/TR/json-ld11/>
 
 * M. Zeng, M. Žumer: *NKOS Dublin Core Application Profile (NKOS AP)*.
   Version 0.2, October 2015.
@@ -1244,10 +1244,9 @@ The following appendices are *non-normative*.
 
 ## JSON-LD context {.unnumbered}
 
-The following [JSON-LD context document], available [from here](context.json),
-can be used to map JSKOS without [closed world statements] to RDF triples.
-
-[JSON-LD context document]: http://www.w3.org/TR/json-ld/#the-context
+The following [JSON-LD 1.1 context document](http://www.w3.org/TR/json-ld/#the-context)
+(available [from here](context.json)) can be used to map JSKOS without
+[closed world statements] and without [language ranges](#language-range) to RDF.
 
 ```{.json}
 {{< include context.json >}}

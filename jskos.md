@@ -489,6 +489,8 @@ element or ignore all preceding elements of these lists.
 If `startDate` is given, the value of `endDate` MUST NOT be an interval with open start.
 If `endDate` is given, the value of `startDate` MUST NOT be an interval with open end.
 
+To state one primary date of an item set `startDate` and `endDate` to the same value.
+
 ## Concept
 
 [concept]: #concept
@@ -949,8 +951,9 @@ rank        [rank]          [rank] of the statement
 
 If field `startDate` is given in a qualified value, the value of field `endDate` MUST NOT be an interval with open start.
 
-If field `endDate` is given in a qualified value, the value of `startDate` MUST
-NOT be an interval with open end.
+If field `endDate` is given in a qualified value, the value of `startDate` MUST NOT be an interval with open end.
+
+To state one primary date of a qualified value, set `startDate` and `endDate` to the same value.
 
 In addition there are fields depending on the data type of the qualified value. These data types are:
 
@@ -1395,6 +1398,7 @@ JSKOS started in 2016 as as part of project [coli-conc](https://coli-conc.gbv.de
 - Clarify semantics of resource fields
 - Change item field `replacedBy` to be set (**breaking change**)
 - Add item field `basedOn`
+- Update references
 
 ### 0.5.4 (2024-09-27) {.unnumbered}
 

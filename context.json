@@ -217,7 +217,13 @@
     "qualifiedDates": "@nest",
     "resource": "http://www.w3.org/1999/02/22-rdf-syntax-ns#object",
     "date": "http://www.w3.org/1999/02/22-rdf-syntax-ns#object",
-    "literal": "http://www.w3.org/2008/05/skos-xl#literalForm",
+    "literal": {
+      "@id": "http://www.w3.org/2008/05/skos-xl#literalForm",
+      "@context": {
+        "string": "@value",
+        "language": "@language"
+      }
+    },
     "rank": "http://wikiba.se/ontology#rank"
   }
 }

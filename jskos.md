@@ -1009,7 +1009,7 @@ literal     *see below*     character string and optional language tag of the li
 uri         [URI]           Globally unique identifier of the literal (OPTIONAL)
 type        [list] of [URI] URIs of types (OPTIONAL)
 
-The value of field `literal` MUST be a JSON objects with REQUIRED field `@value` for the character string, OPTIONAL field `@language` for the language, given as a [language tag], and no other field. Application MAY disallow or ignore qualified literals without field `literal`. Applications MAY use `und` as default value when no language is specified.
+The value of field `literal` MUST be a JSON objects with REQUIRED field `string` for the character string, OPTIONAL field `language` for the language, given as a [language tag], and no other field. Application MAY disallow or ignore qualified literals without field `literal`. Applications MAY use `und` as default value when no language is specified.
 
 The first element of qualified literal array field `type`, if given, MUST be <http://www.w3.org/2008/05/skos-xl#Label>.
 

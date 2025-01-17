@@ -16,7 +16,7 @@
     "http://www.w3.org/2008/05/skos-xl#prefLabel": [
       {
         "type": [ "http://www.w3.org/2008/05/skos-xl#Label" ],
-        "literal": { "@value": "Göttingen", "@language": "de" },
+        "literal": { "string": "Göttingen", "language": "de" },
         "startDate": "1447",
         "_comment": "Davor andere Schreibweisen ohne Umlaut"
       }

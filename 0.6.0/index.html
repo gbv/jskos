@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-01-15">
+<meta name="dcterms.date" content="2025-01-16">
 
 <title>JSKOS data format for Knowledge Organization Systems</title>
 <style>
@@ -73,10 +73,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="style.css">
 <meta name="citation_title" content="JSKOS data format for Knowledge Organization Systems">
 <meta name="citation_author" content="Jakob Voß">
-<meta name="citation_publication_date" content="2025-01-15">
-<meta name="citation_cover_date" content="2025-01-15">
+<meta name="citation_publication_date" content="2025-01-16">
+<meta name="citation_cover_date" content="2025-01-16">
 <meta name="citation_year" content="2025">
-<meta name="citation_online_date" content="2025-01-15">
+<meta name="citation_online_date" content="2025-01-16">
 <meta name="citation_language" content="en">
 </head>
 
@@ -112,7 +112,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
                 <div>
             <div class="quarto-title-meta-heading">Published</div>
             <div class="quarto-title-meta-contents">
-              <p class="date">January 15, 2025</p>
+              <p class="date">January 16, 2025</p>
             </div>
           </div>
           
@@ -175,9 +175,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#qualified-statements" id="toc-qualified-statements" class="nav-link" data-scroll-target="#qualified-statements"><span class="header-section-number">4</span> Qualified statements</a>
   <ul class="collapse">
-  <li><a href="#qualified-relation" id="toc-qualified-relation" class="nav-link" data-scroll-target="#qualified-relation"><span class="header-section-number">4.1</span> Qualified relation</a></li>
-  <li><a href="#qualified-date" id="toc-qualified-date" class="nav-link" data-scroll-target="#qualified-date"><span class="header-section-number">4.2</span> Qualified date</a></li>
-  <li><a href="#qualified-literal" id="toc-qualified-literal" class="nav-link" data-scroll-target="#qualified-literal"><span class="header-section-number">4.3</span> Qualified literal</a></li>
+  <li><a href="#qualified-value" id="toc-qualified-value" class="nav-link" data-scroll-target="#qualified-value"><span class="header-section-number">4.1</span> Qualified value</a></li>
+  <li><a href="#qualified-relation" id="toc-qualified-relation" class="nav-link" data-scroll-target="#qualified-relation"><span class="header-section-number">4.2</span> Qualified relation</a></li>
+  <li><a href="#qualified-date" id="toc-qualified-date" class="nav-link" data-scroll-target="#qualified-date"><span class="header-section-number">4.3</span> Qualified date</a></li>
+  <li><a href="#qualified-literal" id="toc-qualified-literal" class="nav-link" data-scroll-target="#qualified-literal"><span class="header-section-number">4.4</span> Qualified literal</a></li>
   </ul></li>
   <li><a href="#additional-rules" id="toc-additional-rules" class="nav-link" data-scroll-target="#additional-rules"><span class="header-section-number">5</span> Additional rules</a>
   <ul class="collapse">
@@ -246,8 +247,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="introduction" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
-<p><strong>JSKOS</strong> (<strong>J</strong>avaScript Object Notation for <strong>S</strong>imple <strong>K</strong>nowledge <strong>O</strong>rganization <strong>S</strong>ystems) defines a JavaScript Object Notation (JSON) structure to encode knowledge organization systems (KOS), such as classifications, thesauri, authority files, and knowledge graphs.</p>
-<p>The core of JSKOS is an encoding of Simple Knowledge Organisation System (SKOS), an application of the Resource Description Framework (RDF), in JavaScript Object Notation for Linked Data (JSON-LD). JSKOS is compatible but it does not require to be experienced in any of these technologies. Another influence is the Wikibase data model, which can partly be encoded in JSKOS as well.</p>
+<p><strong>JSKOS</strong> (<strong>JS</strong>ON for <strong>K</strong>nowledge <strong>O</strong>rganization <strong>S</strong>ystems) defines a JavaScript Object Notation (JSON) structure to encode knowledge organization systems (KOS) and semantic artifacts, such as classifications, thesauri, authority files, and knowledge graphs.</p>
+<p>The core of JSKOS is an encoding of Simple Knowledge Organisation System (SKOS), an application of the Resource Description Framework (RDF), in JavaScript Object Notation for Linked Data (JSON-LD). JSKOS is compatible with these technologies but it does notrequire to be experienced with more than plain JSON (<a href="https://tools.ietf.org/html/rfc8259">RFC 8259</a>). Another influence of JSKOS is the data model of Wikibase, which can partly be encoded in JSKOS as well.</p>
 <section id="outline" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="outline"><span class="header-section-number">1.1</span> Outline</h2>
 <p>In addition to <a href="#concept">concepts</a> and <a href="#concept-schemes">concept schemes</a> JSKOS can express information about:</p>
@@ -255,12 +256,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><a href="#concept-mappings">mappings</a> and <a href="#concordances">concordances</a> for alignments between concepts</li>
 <li><a href="#concept-occurrences">occurrences</a> of concepts in databases</li>
 <li><a href="#registries">registries</a> and <a href="#distributions">distributions</a> to package and provide data</li>
+<li>general <a href="#resource">resources</a> (any kind of entities)</li>
 <li><a href="#annotations">annotations</a> to review and comment on resources</li>
-<li>general kind of <a href="#resource">resources</a></li>
-<li>qualified information with <a href="#qualified-relations">qualified relations</a></li>
+<li>qualified information with <a href="#qualified-statements">qualified statements</a></li>
 <li>incomplete and deprecated information via <a href="#rank">ranks</a> and <a href="#closed-world-statements">closed world statements</a></li>
 </ul>
-<p>See <a href="#object-types">object types</a> for another outline.</p>
+<p>See <a href="#object-types">object types</a> for an outline of the hierarchy of JSKOS data elements.</p>
 </section>
 <section id="status-of-this-document" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="status-of-this-document"><span class="header-section-number">1.2</span> Status of this document</h2>
@@ -273,35 +274,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="data-types" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Data types</h1>
-<p>JSKOS is based on JSON which consists of <em>objects</em> with pairs of <em>fields</em> and <em>values</em>, <em>arrays</em> with <em>members</em>, <em>strings</em>, <em>numbers</em>, and the special values <code>true</code>, <code>false</code>, and <code>null</code>. All strings and fields of a JSKOS document MUST be normalized to Unicode Normalization Form C (NFC). Applications processing JSON MAY accept JSON documents not normalized in NFC by performing NFC normalization. JSKOS further restricts JSON with reference to the following data types:</p>
+<p>JSKOS is based on JSON which consists of <em>objects</em> with pairs of <em>fields</em> and <em>values</em>, <em>arrays</em> with <em>members</em>, <em>strings</em>, <em>numbers</em>, and the special values <code>true</code>, <code>false</code>, and <code>null</code>. All strings and fields of a JSKOS document MUST be normalized to Unicode Normalization Form C (NFC). Applications processing JSON MAY accept JSON documents not normalized in NFC by performing NFC normalization.</p>
+<p>JSKOS further restricts JSON with reference to the following data types:</p>
 <section id="uri" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="uri"><span class="header-section-number">2.1</span> URI</h2>
 <p>An <strong>URI</strong> is a syntactically correct IRI (<a href="https://tools.ietf.org/html/rfc3987">RFC 3987</a>).</p>
 </section>
 <section id="url" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="url"><span class="header-section-number">2.2</span> URL</h2>
-<p>An <strong>URL</strong> is a syntactically correct URL with HTTPS (RECOMMENDED) or HTTP scheme. Note that URLs can contain international characters allowed in IRIs.</p>
+<p>An <strong>URL</strong> is a syntactically correct URL with scheme <code>https</code> (RECOMMENDED) or <code>http</code> (<a href="https://tools.ietf.org/html/rfc3986">RFC 3986</a>).</p>
 </section>
 <section id="non-negative-integer" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="non-negative-integer"><span class="header-section-number">2.3</span> Non-negative integer</h2>
-<p>A <strong>non-negative integer</strong> is a JSON number without preceding minus part, without fractional part, or exponent.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Examples of valid JSON values which are <em>not</em> non-negative integers: <code>"42"</code>, <code>""</code>, <code>null</code>, <code>-1</code>, <code>6e-3</code>.</p>
-</div>
-</div>
+<p>A <strong>non-negative integer</strong> is a JSON number without preceding minus part, fractional part, and exponent.</p>
 </section>
 <section id="percentage" class="level2" data-number="2.4">
 <h2 data-number="2.4" class="anchored" data-anchor-id="percentage"><span class="header-section-number">2.4</span> percentage</h2>
-<p>A <strong>percentage</strong> is a JSON number with value between zero (0.0 = 0%) and one (1.0 = 100%).</p>
+<p>A <strong>percentage</strong> is a JSON number with value between zero (<code>0.0</code> = 0%) and one (<code>1.0</code> = 100%).</p>
 </section>
 <section id="date" class="level2" data-number="2.5">
 <h2 data-number="2.5" class="anchored" data-anchor-id="date"><span class="header-section-number">2.5</span> date</h2>
@@ -386,7 +375,7 @@ Note
 <section id="rank" class="level2" data-number="2.9">
 <h2 data-number="2.9" class="anchored" data-anchor-id="rank"><span class="header-section-number">2.9</span> rank</h2>
 <p>A <strong>rank</strong> is one of the strings <code>preferred</code>, <code>normal</code>, and <code>deprecated</code>. Applications MAY ignore or limit ranks to selected use cases.</p>
-<p>Elements of a <a href="#set">set</a> and [qualified values] are expected to have a field <code>rank</code> with a rank value. If an element lacks a rank, its default rank is <code>normal</code>.</p>
+<p>Elements of a <a href="#set">set</a> and <a href="#qualified-value">qualified values</a> are expected to have a field <code>rank</code> with a rank value. If an element lacks a rank, its default rank is <code>normal</code>.</p>
 <p>The rank <code>deprecated</code> is used for elements that are known to include errors. Applications MAY filter out these elements.</p>
 <p>The rank <code>preferred</code> is used to allow selection of one most relevant element from its array. Applications MAY reduce arrays of multiple elements to an array with the single element of rank <code>preferred</code>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -750,7 +739,8 @@ Note
 <li><a href="#annotations">annotations</a> to review and comment on individual resources</li>
 </ul>
 <p>In addition there are <a href="#concept-bundles">concept bundles</a> as part of mappings, occurrences, and composed <a href="#concept">concepts</a>.</p>
-<p>A <strong>concept type</strong> is a <a href="#concept">concept</a> used to distinguish different kinds of concepts or other <a href="#resource">resources</a>. Concept types are referred to by their URI in field <code>type</code> of a <a href="#resource">resource</a>.</p>
+<p>A <strong>concept type</strong> is a <a href="#concept">concept</a> used to distinguish different kinds of concepts or other <a href="#resource">resources</a>. Concept types are referred to by their <a href="#uri">URI</a> in array field <code>type</code> of a <a href="#resource">resource</a>.</p>
+<p>A <strong>property type</strong> is a <a href="#concept">concept</a> used to specify the type of a <a href="#qualified-statements">qualified statement</a>. Property types are referenced by their <a href="#uri">URI</a> in the keys of a <a href="#qualified-statements">qualified map</a>.</p>
 <section id="resource" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="resource"><span class="header-section-number">3.1</span> Resource</h2>
 <p>An <strong>resource</strong> is a JSON object with the following optional fields:</p>
@@ -1002,6 +992,7 @@ Note
 <p>The first element of array <code>type</code>, if given, MUST be an <a href="#item-type">item type</a>.</p>
 <p>Applications MAY limit the fields <code>notation</code> and/or <code>depiction</code> to lists of a single element or ignore all preceding elements of these lists.</p>
 <p>If <code>startDate</code> is given, the value of <code>endDate</code> MUST NOT be an interval with open start. If <code>endDate</code> is given, the value of <code>startDate</code> MUST NOT be an interval with open end.</p>
+<p>To state one primary date of an item set <code>startDate</code> and <code>endDate</code> to the same value.</p>
 </section>
 <section id="concept" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="concept"><span class="header-section-number">3.3</span> Concept</h2>
@@ -1842,8 +1833,8 @@ Note
 <p>Qualified statements are similar but not identical to properties in a property graph and to referenced statements in Wikibase data model.</p>
 </div>
 </div>
-<p>The term <strong>qualified statement</strong> refers to the combination of a <em>property type</em> and a <em>qualified value</em>. Qualified statements are grouped in <em>qualified maps</em> by the data type of their qualified values.</p>
-<p>A <strong>qualified map</strong> is a JSON object that maps <strong>property types</strong> (each being an <a href="#uri">URI</a>) to qualified values.</p>
+<p>The term <strong>qualified statement</strong> refers to the combination of a <a href="#object-types">property type</a> and a <a href="#qualified-value">qualified value</a>. Qualified statements are grouped in <em>qualified maps</em> by the data type of their qualified values.</p>
+<p>A <strong>qualified map</strong> is a JSON object that maps <a href="#object-types">property types</a> to <a href="#qualified-value">qualified values</a>.</p>
 <div id="lst-qualified-map" class="json listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-qualified-map-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1857,6 +1848,8 @@ Example&nbsp;13: Qualified map with property types from schema.org
 </div>
 </figure>
 </div>
+<section id="qualified-value" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="qualified-value"><span class="header-section-number">4.1</span> Qualified value</h2>
 <p>A <strong>qualified value</strong> is a JSON object with the following optional fields:</p>
 <table class="caption-top table">
 <thead>
@@ -1891,15 +1884,17 @@ Example&nbsp;13: Qualified map with property types from schema.org
 </table>
 <p>If field <code>startDate</code> is given in a qualified value, the value of field <code>endDate</code> MUST NOT be an interval with open start.</p>
 <p>If field <code>endDate</code> is given in a qualified value, the value of <code>startDate</code> MUST NOT be an interval with open end.</p>
+<p>To state one primary date of a qualified value, set <code>startDate</code> and <code>endDate</code> to the same value.</p>
 <p>In addition there are fields depending on the data type of the qualified value. These data types are:</p>
 <ul>
 <li><a href="#qualified-relation">Qualified relation</a> for links between resources</li>
 <li><a href="#qualified-date">Qualified date</a> to reference related events and periods</li>
 <li><a href="#qualified-literal">Qualified literal</a> to reference names and labels</li>
 </ul>
-<section id="qualified-relation" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="qualified-relation"><span class="header-section-number">4.1</span> Qualified relation</h2>
-<p>A <strong>qualified relation</strong> is a <a href="#qualified-statements">qualified value</a> with the following fields (in addition to the optional fields <code>rank</code>, <code>source</code>, <code>startDate</code>, and <code>endDate</code>):</p>
+</section>
+<section id="qualified-relation" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="qualified-relation"><span class="header-section-number">4.2</span> Qualified relation</h2>
+<p>A <strong>qualified relation</strong> is a <a href="#qualified-value">qualified value</a> with the following fields (in addition to the optional fields <code>rank</code>, <code>source</code>, <code>startDate</code>, and <code>endDate</code>):</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1951,9 +1946,9 @@ Example&nbsp;14: Concept with qualified relations (from Wikidata)
 </figure>
 </div>
 </section>
-<section id="qualified-date" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="qualified-date"><span class="header-section-number">4.2</span> Qualified date</h2>
-<p>A <strong>qualified date</strong> is a <a href="#qualified-statements">qualified value</a> with the following fields (in addition to the optional fields <code>source</code> and <code>rank</code>) to express information about an event:</p>
+<section id="qualified-date" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="qualified-date"><span class="header-section-number">4.3</span> Qualified date</h2>
+<p>A <strong>qualified date</strong> is a <a href="#qualified-value">qualified value</a> with the following fields (in addition to the optional fields <code>source</code> and <code>rank</code>) to express information about an event:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -2006,9 +2001,9 @@ Note
 </div>
 <p>Applications MAY disallow or ignore qualified dates without field <code>date</code>.</p>
 </section>
-<section id="qualified-literal" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="qualified-literal"><span class="header-section-number">4.3</span> Qualified literal</h2>
-<p>A <strong>Qualified literal</strong> is a <a href="#qualified-statements">qualified value</a> with the following fields (in addition to the optional fields <code>rank</code>, <code>source</code>, <code>startDate</code>, and <code>endDate</code>):</p>
+<section id="qualified-literal" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="qualified-literal"><span class="header-section-number">4.4</span> Qualified literal</h2>
+<p>A <strong>Qualified literal</strong> is a <a href="#qualified-value">qualified value</a> with the following fields (in addition to the optional fields <code>rank</code>, <code>source</code>, <code>startDate</code>, and <code>endDate</code>):</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -2035,7 +2030,7 @@ Note
 </tr>
 </tbody>
 </table>
-<p>The value of field <code>literal</code> MUST be a JSON objects with REQUIRED field <code>@value</code> for the character string and OPTIONAL field <code>@language</code> for the language, given as a <a href="#language-tag">language tag</a>. Application MAY disallow or ignore qualified literals without field <code>literal</code>. Applications MAY use <code>und</code> as default value when no <code>@language</code> is specified.</p>
+<p>The value of field <code>literal</code> MUST be a JSON objects with REQUIRED field <code>string</code> for the character string, OPTIONAL field <code>language</code> for the language, given as a <a href="#language-tag">language tag</a>, and no other field. Application MAY disallow or ignore qualified literals without field <code>literal</code>. Applications MAY use <code>und</code> as default value when no language is specified.</p>
 <p>The first element of qualified literal array field <code>type</code>, if given, MUST be <a href="http://www.w3.org/2008/05/skos-xl#Label" class="uri">http://www.w3.org/2008/05/skos-xl#Label</a>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -2063,17 +2058,17 @@ Example&nbsp;16: Concept with qualified literals
 <span id="lst-qualified-literal-4"><a href="#lst-qualified-literal-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"http://www.w3.org/2008/05/skos-xl#prefLabel"</span><span class="fu">:</span> <span class="ot">[</span></span>
 <span id="lst-qualified-literal-5"><a href="#lst-qualified-literal-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">{</span></span>
 <span id="lst-qualified-literal-6"><a href="#lst-qualified-literal-6" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"type"</span><span class="fu">:</span> <span class="ot">[</span> <span class="st">"http://www.w3.org/2008/05/skos-xl#Label"</span> <span class="ot">]</span><span class="fu">,</span></span>
-<span id="lst-qualified-literal-7"><a href="#lst-qualified-literal-7" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"literal"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"@value"</span><span class="fu">:</span> <span class="st">"İstanbul"</span><span class="fu">,</span> <span class="dt">"@language"</span><span class="fu">:</span> <span class="st">"tr"</span> <span class="fu">},</span></span>
+<span id="lst-qualified-literal-7"><a href="#lst-qualified-literal-7" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"literal"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"string"</span><span class="fu">:</span> <span class="st">"İstanbul"</span><span class="fu">,</span> <span class="dt">"language"</span><span class="fu">:</span> <span class="st">"tr"</span> <span class="fu">},</span></span>
 <span id="lst-qualified-literal-8"><a href="#lst-qualified-literal-8" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"rank"</span><span class="fu">:</span> <span class="st">"preferred"</span></span>
 <span id="lst-qualified-literal-9"><a href="#lst-qualified-literal-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">}</span><span class="ot">,</span> <span class="fu">{</span></span>
 <span id="lst-qualified-literal-10"><a href="#lst-qualified-literal-10" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"type"</span><span class="fu">:</span> <span class="ot">[</span> <span class="st">"http://www.w3.org/2008/05/skos-xl#Label"</span> <span class="ot">]</span><span class="fu">,</span></span>
-<span id="lst-qualified-literal-11"><a href="#lst-qualified-literal-11" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"literal"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"@value"</span><span class="fu">:</span> <span class="st">"Constantinople"</span><span class="fu">,</span> <span class="dt">"@language"</span><span class="fu">:</span> <span class="st">"en"</span> <span class="fu">},</span></span>
+<span id="lst-qualified-literal-11"><a href="#lst-qualified-literal-11" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"literal"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"string"</span><span class="fu">:</span> <span class="st">"Constantinople"</span><span class="fu">,</span> <span class="dt">"language"</span><span class="fu">:</span> <span class="st">"en"</span> <span class="fu">},</span></span>
 <span id="lst-qualified-literal-12"><a href="#lst-qualified-literal-12" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"endDate"</span><span class="fu">:</span> <span class="st">"1930"</span></span>
 <span id="lst-qualified-literal-13"><a href="#lst-qualified-literal-13" aria-hidden="true" tabindex="-1"></a>      <span class="fu">}</span></span>
 <span id="lst-qualified-literal-14"><a href="#lst-qualified-literal-14" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span><span class="fu">,</span></span>
 <span id="lst-qualified-literal-15"><a href="#lst-qualified-literal-15" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"https://www.wikidata.org/wiki/Property:P395"</span><span class="fu">:</span> <span class="ot">[</span></span>
 <span id="lst-qualified-literal-16"><a href="#lst-qualified-literal-16" aria-hidden="true" tabindex="-1"></a>      <span class="fu">{</span></span>
-<span id="lst-qualified-literal-17"><a href="#lst-qualified-literal-17" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"literal"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"@value"</span><span class="fu">:</span> <span class="st">"34"</span> <span class="fu">}</span> </span>
+<span id="lst-qualified-literal-17"><a href="#lst-qualified-literal-17" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"literal"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"string"</span><span class="fu">:</span> <span class="st">"34"</span> <span class="fu">}</span> </span>
 <span id="lst-qualified-literal-18"><a href="#lst-qualified-literal-18" aria-hidden="true" tabindex="-1"></a>      <span class="fu">}</span></span>
 <span id="lst-qualified-literal-19"><a href="#lst-qualified-literal-19" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span></span>
 <span id="lst-qualified-literal-20"><a href="#lst-qualified-literal-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
@@ -2203,10 +2198,9 @@ TODO: Mappings (S38-S46)
 <p>Integrity constraints of SKOS SHOULD be respected. Applications MAY reject JSKOS data violating the constraints.</p>
 <ul>
 <li><a href="#concept">concepts</a>, <a href="#concept-schemes">concept schemes</a>, <a href="#registries">registries</a>, <a href="#distributions">distributions</a>, <a href="#concordances">concordances</a>, <a href="#concept-mappings">concept mappings</a> are pairwise disjoint (SKOS integrity rule S9)</li>
-<li></li>
 </ul>
-<!-- TODO: skos:related is disjoint with the property skos:broaderTransitive (S27) -->
 <p><em>this list is not complete yet</em></p>
+<!-- TODO: skos:related is disjoint with the property skos:broaderTransitive (S27) -->
 <!--
 
 # Converting JSKOS to SKOS and vice versa
@@ -2248,11 +2242,13 @@ Example&nbsp;19
 <section id="normative-references" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="normative-references">Normative references</h2>
 <ul>
-<li><p>M. Appleby et al: <em>IIIF Presentation API 3.0</em>. June 202. <a href="https://iiif.io/api/presentation/3.0/" class="uri">https://iiif.io/api/presentation/3.0/</a></p></li>
+<li><p>M. Appleby et al: <em>IIIF Presentation API 3.0</em>. June 2020. <a href="https://iiif.io/api/presentation/3.0/" class="uri">https://iiif.io/api/presentation/3.0/</a></p></li>
+<li><p>T. Berners-Lee, R. Fielding, L. Masinter: <em>Uniform Resource Identifier (URI): Generic Syntax</em>. RFC 3986, January 2005. <a href="https://tools.ietf.org/html/rfc3986" class="uri">https://tools.ietf.org/html/rfc3986</a></p></li>
 <li><p>P. Biron, A. Malhotra: <em>XML Schema Part 2: Datatypes Second Edition</em>. W3C Recommendation, October 2005. <a href="https://www.w3.org/TR/xmlschema-2/" class="uri">https://www.w3.org/TR/xmlschema-2/</a></p></li>
 <li><p>S. Bradner: <em>Key words for use in RFCs to Indicate Requirement Levels</em>. RFC 2119, March 1997. <a href="https://tools.ietf.org/html/rfc2119" class="uri">https://tools.ietf.org/html/rfc2119</a></p></li>
 <li><p>H. Butler, M. Daly, S. Gillies, S. Hagen, T. Schaub: <em>The GeoJSON Format</em>. RFC 7946, August 2016. <a href="https://tools.ietf.org/html/rfc7946" class="uri">https://tools.ietf.org/html/rfc7946</a></p></li>
-<li><p>D. Crockford: <em>The application/json Media Type for JavaScript Object Notation (JSON)</em>. RFC 4627, July 2006. <a href="https://tools.ietf.org/html/rfc4627" class="uri">https://tools.ietf.org/html/rfc4627</a></p></li>
+<li><p>T. Bray: <em>The JavaScript Object Notation (JSON) Data Interchange Format</em>. RFC 8259, December 2017. <a href="https://tools.ietf.org/html/rfc8259" class="uri">https://tools.ietf.org/html/rfc8259</a></p></li>
+<li><p>D. Crocker, P. Overell: <em>Augmented BNF for Syntax Specifications: ABNF</em>. RFC 5234, January 2008. <a href="http://tools.ietf.org/html/rfc5234" class="uri">http://tools.ietf.org/html/rfc5234</a></p></li>
 <li><p>M. Davis, K. Whistler: <em>Unicode Normalization Forms</em>. Unicode Standard Annex #15. <a href="http://www.unicode.org/reports/tr15/" class="uri">http://www.unicode.org/reports/tr15/</a></p></li>
 <li><p>M. Dürst, M. Suignard: <em>Internationalized Resource Identifiers (IRIs)</em>. RFC 3987, January 2005. <a href="https://tools.ietf.org/html/rfc3987" class="uri">https://tools.ietf.org/html/rfc3987</a></p></li>
 <li><p>IANA: <em>Media Types</em>. <a href="https://www.iana.org/assignments/media-types/" class="uri">https://www.iana.org/assignments/media-types/</a></p></li>
@@ -2265,15 +2261,14 @@ Example&nbsp;19
 <section id="informative-references" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="informative-references">Informative references</h2>
 <ul>
-<li><p>R. Albertoni, D. Browning, S. Cox, A. Gonzalez Beltran, A. Perego, P. Winstanley: <em>Data Catalog Vocabulary (DCAT) - Version 3</em>. May 2022. <a href="https://www.w3.org/TR/vocab-dcat-3/" class="uri">https://www.w3.org/TR/vocab-dcat-3/</a>.</p></li>
+<li><p>R. Albertoni, D. Browning, S. Cox, A. Gonzalez Beltran, A. Perego, P. Winstanley: <em>Data Catalog Vocabulary (DCAT) - Version 3</em>. August 2024. <a href="https://www.w3.org/TR/vocab-dcat-3/" class="uri">https://www.w3.org/TR/vocab-dcat-3/</a>.</p></li>
 <li><p>K. Alexander, R. Cyganiak, M. Hausenblas, Zhao, J.: <em>Describing Linked Datasets with the VoID Vocabulary</em>. March 2011. <a href="http://www.w3.org/TR/void/" class="uri">http://www.w3.org/TR/void/</a></p></li>
 <li><p>DCMI Usage Board: <em>DCMI Metadata Terms</em>. June 2012. <a href="http://dublincore.org/documents/dcmi-terms/" class="uri">http://dublincore.org/documents/dcmi-terms/</a></p></li>
-<li><p>D. Crocker, P. Overell: <em>Augmented BNF for Syntax Specifications: ABNF</em>. RFC 5234, January 2008. <a href="http://tools.ietf.org/html/rfc5234" class="uri">http://tools.ietf.org/html/rfc5234</a></p></li>
 <li><p>F. Cotton (editor): <em>XKOS: An SKOS extension for representing statistical classifications</em>. DDI Alliance, May 2019. <a href="https://rdf-vocabulary.ddialliance.org/xkos.html" class="uri">https://rdf-vocabulary.ddialliance.org/xkos.html</a></p></li>
 <li><p>A. Miles, S. Bechhofer: <em>SKOS Reference</em>. W3C Recommendation, 18 August 2009. <a href="http://www.w3.org/TR/skos-reference" class="uri">http://www.w3.org/TR/skos-reference</a></p></li>
 <li><p>A. Phillips, M. Davis: <em>Tags for Identifying Languages</em>. RFC 5646, September 2009. <a href="http://tools.ietf.org/html/rfc5646" class="uri">http://tools.ietf.org/html/rfc5646</a></p></li>
 <li><p>A. Phillips, M. Davis: <em>Matching of Language Tags</em>. RFC 4647, September 2006. <a href="http://tools.ietf.org/html/rfc4647" class="uri">http://tools.ietf.org/html/rfc4647</a></p></li>
-<li><p>M. Sporny, D. Longley, G. Kellogg, M. Lanthaler, N. Lindström: <em>JSON-LD 1.0</em>. W3C Recommendation, January 2014. <a href="http://www.w3.org/TR/json-ld/" class="uri">http://www.w3.org/TR/json-ld/</a></p></li>
+<li><p>M. Sporny, P.Champin, D. Longley: <em>JSON-LD 1.1</em>. W3C Recommendation, July 2020. <a href="http://www.w3.org/TR/json-ld11/" class="uri">http://www.w3.org/TR/json-ld11/</a></p></li>
 <li><p>M. Zeng, M. Žumer: <em>NKOS Dublin Core Application Profile (NKOS AP)</em>. Version 0.2, October 2015. <a href="https://nkos.dublincore.org/nkos-ap.html" class="uri">https://nkos.dublincore.org/nkos-ap.html</a></p></li>
 </ul>
 </section>
@@ -2283,7 +2278,7 @@ Example&nbsp;19
 <p>The following appendices are <em>non-normative</em>.</p>
 <section id="json-ld-context" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="json-ld-context">JSON-LD context</h2>
-<p>The following <a href="http://www.w3.org/TR/json-ld/#the-context">JSON-LD context document</a>, available <a href="context.json">from here</a>, can be used to map JSKOS without <a href="#closed-world-statements">closed world statements</a> to RDF triples.</p>
+<p>The following <a href="http://www.w3.org/TR/json-ld/#the-context">JSON-LD 1.1 context document</a> (available <a href="context.json">from here</a>) can be used to map JSKOS without <a href="#closed-world-statements">closed world statements</a> and without <a href="#language-range">language ranges</a> to RDF.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"@context"</span><span class="fu">:</span> <span class="fu">{</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"@id"</span><span class="fu">,</span></span>
@@ -2503,10 +2498,16 @@ Example&nbsp;19
 <span id="cb10-217"><a href="#cb10-217" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"qualifiedDates"</span><span class="fu">:</span> <span class="st">"@nest"</span><span class="fu">,</span></span>
 <span id="cb10-218"><a href="#cb10-218" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"resource"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/1999/02/22-rdf-syntax-ns#object"</span><span class="fu">,</span></span>
 <span id="cb10-219"><a href="#cb10-219" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"date"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/1999/02/22-rdf-syntax-ns#object"</span><span class="fu">,</span></span>
-<span id="cb10-220"><a href="#cb10-220" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"literal"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2008/05/skos-xl#literalForm"</span><span class="fu">,</span></span>
-<span id="cb10-221"><a href="#cb10-221" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"rank"</span><span class="fu">:</span> <span class="st">"http://wikiba.se/ontology#rank"</span></span>
-<span id="cb10-222"><a href="#cb10-222" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
-<span id="cb10-223"><a href="#cb10-223" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-220"><a href="#cb10-220" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"literal"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb10-221"><a href="#cb10-221" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"@id"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2008/05/skos-xl#literalForm"</span><span class="fu">,</span></span>
+<span id="cb10-222"><a href="#cb10-222" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"@context"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb10-223"><a href="#cb10-223" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"string"</span><span class="fu">:</span> <span class="st">"@value"</span><span class="fu">,</span></span>
+<span id="cb10-224"><a href="#cb10-224" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"language"</span><span class="fu">:</span> <span class="st">"@language"</span></span>
+<span id="cb10-225"><a href="#cb10-225" aria-hidden="true" tabindex="-1"></a>      <span class="fu">}</span></span>
+<span id="cb10-226"><a href="#cb10-226" aria-hidden="true" tabindex="-1"></a>    <span class="fu">},</span></span>
+<span id="cb10-227"><a href="#cb10-227" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"rank"</span><span class="fu">:</span> <span class="st">"http://wikiba.se/ontology#rank"</span></span>
+<span id="cb10-228"><a href="#cb10-228" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
+<span id="cb10-229"><a href="#cb10-229" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>JSKOS with closed world statements can be mapped to RDF by ignoring all boolean values and/or by mapping selected boolean values to RDF triples with blank nodes.</p>
 <p>Applications should further add implicit RDF triples, such as <code>$someConcept rdf:type skos:Concept</code>, if such information can be derived from JSKOS by other means.</p>
 </section>
@@ -2944,6 +2945,7 @@ Example&nbsp;25: Mappings
 <li>Clarify semantics of resource fields</li>
 <li>Change item field <code>replacedBy</code> to be set (<strong>breaking change</strong>)</li>
 <li>Add item field <code>basedOn</code></li>
+<li>Update references</li>
 </ul>
 </section>
 <section id="section-1" class="level3 unnumbered">

@@ -241,10 +241,10 @@
               "literal": {
                 "type": "object",
                 "properties": {
-                  "@value": { "type": "string" },
-                  "@language": { "$ref": "item.schema.json#/definitions/language-tag" }
+                  "string": { "type": "string" },
+                  "language": { "$ref": "item.schema.json#/definitions/language-tag" }
                 },
-                "required": [ "@value" ],
+                "required": [ "string" ],
                 "additionalProperties": false
               }
             },

@@ -4,14 +4,24 @@ a {
 a:hover {
   text-decoration: underline;
 }
+div.callout.callout-note {
+  border: 1px solid #95a5a6;
+}
+.callout.callout-style-default .callout-body {
+  font-size: 1rem;
+}
 .listing {
   border: 1px solid #95a5a6;
   border-radius: .375rem;
-  padding: 0em 0.7rem;
 }
 figure > div > .sourceCode {
   margin: 0 0 0.5rem 0;
 }
-figcaption {
-  margin-bottom: 0.25rem;
+.listing > figure > figcaption {
+  background-color: #eaecee;
+  margin: 0;
+  padding: 0.25rem 0.5rem;
+}
+.listing > figure > div {
+  padding: 0.25rem 0.5rem;
 }

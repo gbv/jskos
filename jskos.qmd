@@ -24,7 +24,7 @@ In addition to [concepts] and [concept schemes] JSKOS can express information ab
 - qualified information with [qualified statements]
 - incomplete and deprecated information via [ranks](#rank) and [closed world statements]
 
-See [object types] for an outline of the hierarchy of JSKOS data elements.
+See [object types] for the class hierarchy of JSKOS data elements.
 
 ## Status of this document
 
@@ -40,7 +40,16 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
 interpreted as described in [RFC 2119].
 
-# Data types
+Only @sec-data-types to @sec-additional-rules of this document and its
+[normative references] are normative. Examples and notes (such as the following)
+are neither part of conformance requirements.
+
+::: {.callout-note}
+The appendix includes information how to [validate against this specification](#validation),
+for instance with JSON Schema, but these methods do not fully cover all aspects of JSKOS.
+:::
+
+# Data types {#sec-data-types}
 
 [string]: #data-types
 [boolean]: #data-types
@@ -62,7 +71,7 @@ An **URI** is a syntactically correct IRI ([RFC 3987]).
 
 An **URL** is a syntactically correct URL with scheme `https` (RECOMMENDED) or `http` ([RFC 3986]).
 
-## Non-negative integer
+## non-negative integer
 
 A **non-negative integer** is a JSON number without preceding minus part, fractional part, and exponent.
 
@@ -81,13 +90,21 @@ or [gYear](https://www.w3.org/TR/xmlschema-2/#gYear) (`-?YYYY`).
 
 ## extended date
 
-An **extended date** is a date, date and time, or interval in [Extended Date/Time Format (EDTF)](https://www.loc.gov/standards/datetime/) Level 1. In adition to [date] this includes:
+An **extended date** is a date, date and time, or interval in [Extended Date/Time Format (EDTF)](https://www.loc.gov/standards/datetime/) Level 1.
+
+::: {.callout-note}
+An extended date includes, in adition to [date]:
 
 - Intervals of dates (e.g. `1949-10/1990-10`, or `2021/..`)
 - Seasons (e.g. `2001-21`)
 - Years with more then four digits (e.g. `Y-50000`)
 - Qualifiers for uncertain (`?`), approximate (`~`) or both (`%`)
 - Unspecified digits marked with `X`
+:::
+
+## language tag
+
+A **language tag** is a non-empty string that conforms to the syntax of [RFC 3066] language tags, limited to lowercase.
 
 ## list
 
@@ -177,11 +194,6 @@ Wikibase data model includes ranks with same semantics, see
 ~~~
 :::
 
-## language tag
-
-A **language tag** is a non-empty string that conforms to the syntax of [RFC
-3066] language tags, limited to lowercase.
-
 ## language range
 
 A **language range** is
@@ -262,12 +274,23 @@ The following language maps make use of language ranges and placeholders:
 
 ::: {.callout-note}
 JSON-LD disallows language map fields ending with `"-"` so all fields that are
-language ranges MUST be removed before reading JSKOS as JSON-LD.
+language ranges MUST be removed before reading [JSKOS as JSON-LD].
 :::
 
 ::: {.callout-note}
-The language tag "und" can be used to include strings of unknown or unspecified language.
+The language tag `und` can be used to include strings of unknown or unspecified language.
 :::
+
+## checksum
+
+A **checksum** is a JSON object with two fields:
+
+field       type    description
+----------- ------- -----------
+algorithm   [URI]   checksum algorithm
+value       string  lower case hexidecimal encoded digest value
+
+The value of SHOULD be specified by a URI from SPDX vocabulary, e.g. <http://spdx.org/rdf/terms#checksumAlgorithm_sha256> for SHA-2 with 256 Bit (SHA-256).
 
 ## location
 
@@ -291,28 +314,21 @@ type `Point`.
 
 ## address
 
-An **address** is a JSON object with any of the following field, each mapped to a string:
+An **address** is a JSON object with any of the following fields, each mapped to a string.
 
-field    description
--------- -----------
-street   the street address
-ext      the extended address (e.g., apartment or suite number)
-pobox    the post office box
-locality the locality (e.g., city)
-region   the region (e.g., state or province)
-code     the postal code
-country  the country name
+::: {.callout-note}
+The adress format is based on vCard ADR value components of same name ([RFC 6350, section 6.3.1](https://www.rfc-editor.org/rfc/rfc6350.html#section-6.3.1)) and on schema.org type [PostalAddress](https://schema.org/PostalAddress) but both of these standards are non-normative.
+:::
 
-## checksum
-
-A **checksum** is a JSON object with two fields:
-
-field       type    description
------------ ------- -----------
-algorithm   [URI]   checksum algorithm
-value       string  lower case hexidecimal encoded digest value
-
-The value of SHOULD be specified by a URI from SPDX vocabulary, e.g. <http://spdx.org/rdf/terms#checksumAlgorithm_sha256> for SHA-2 with 256 Bit (SHA-256).
+field    description                                                schema.org property                                           
+-------- ---------------------------------------------------------- ------------------------------------------------------------
+pobox    the post office box                                        [postOfficeBoxNumber](http://schema.org/postOfficeBoxNumber)   
+ext      the extended address (e.g., apartment or suite number)     [streetAddress](http://schema.org/streetAddress)               
+street   the street address                                         [streetAddress](http://schema.org/streetAddress)               
+locality the locality (e.g., city)                                  [addressLocality](http://schema.org/addressLocality)           
+region   the region (e.g., state or province)                       [addressRegion](http://schema.org/addressRegion)               
+code     the postal code                                            [postalCode](http://schema.org/postalCode)                     
+country  the country name                                           [addressCountry](http://schema.org/addressCountry)             
 
 ## media
 
@@ -348,10 +364,30 @@ fully implementing all IIIF capabilities.
 ~~~
 :::
 
-## item type
+# Resource and property types
 
-An **item type** is one of the following [URI]s used to identify the different
-kinds of JSKOS [items] and types of [mappings]:
+[resource type]: #resource-and-property-types
+[resource types]: #resource-and-property-types
+[property type]: #resource-and-property-types
+[property types]: #resource-and-property-types
+[item type]: #item-types
+
+Resource types and property types are [concepts] with MANDATORY field `uri`.
+Both can be referred to implicitly ba referencing their [URI] and they can be
+expressed explicitly, for instance in a [registry].
+
+::: {.callout-note}
+Ressource types and property types roughly map to RDF classes and RDF properties
+but JSKOS does not require or imply the RDF data model.
+:::
+
+A **resource type** is a [concept] used to distinguish different kinds of
+concepts or other [resources]. Concept types are referred to by their [URI] in
+array field `type` of a [resource].
+
+An **item type** is a resource type with one of the following [URI]s. Item
+types are used to identify the different kinds of JSKOS [items](#item)
+(see [object types]) and types of [mappings]:
 
 item                item type
 ------------------- -----------------------------------------------------
@@ -369,37 +405,30 @@ item                item type
 ------------------- -----------------------------------------------------
 
 ::: {.callout-note}
-See appendix [item types as concepts] for an encoding of item types as [concepts].
+See appendix [item types as concepts] for a partial explicit encoding of item types.
 :::
+
+A **property type** is a [concept] used to specify the type of a [qualified
+statement]. Property types are referenced by their [URI] in the keys of
+a [qualified map].
+
 
 # Object types
 
 JSKOS defines the following types of JSON objects:
 
-* [resources] for all kinds of entities
-    * [items] for named entities
-        * [concepts] for entities from a knowledge organization system
-        * [concept schemes] for compiled collections of concepts (knowledge organization systems)
-        * [mappings] for mappings between concepts of two concept schemes
-        * [concordances] for curated collections of mappings
-        * [registries] for collections of items (concepts, concept schemes...)
-        * [distributions] for available forms to access the content of an item
-    * [occurrences] for counts of concept uses
-* [annotations] to review and comment on individual resources
+- [resources] for all kinds of entities
+    - [items] for named entities
+        - [concepts] for entities from a knowledge organization system
+        - [concept schemes] for compiled collections of concepts (knowledge organization systems)
+        - [mappings] for mappings between concepts of two concept schemes
+        - [concordances] for curated collections of mappings
+        - [registries] for collections of items (concepts, concept schemes...)
+        - [distributions] for available forms to access the content of an item
+    - [occurrences] for counts of concept uses
+- [annotations] to review and comment on individual resources
 
-In addition there are [concept bundles] as part of mappings, occurrences, and composed [concepts].
-
-[concept types]: #object-types
-[property type]: #object-types
-[property types]: #object-types
-
-A **concept type** is a [concept] used to distinguish different kinds of
-concepts or other [resources]. Concept types are referred to by their [URI] in
-array field `type` of a [resource].
-
-A **property type** is a [concept] used to specify the type of a [qualified
-statement]. Property types are referenced by their [URI] in the keys of
-a [qualified map].
+Object types [concept], [mapping], and [occurrence] are also [concept bundles].
 
 ## Resource
 
@@ -410,7 +439,7 @@ An **resource** is a JSON object with the following optional fields:
 
 field               type                                     description
 ------------------- ---------------------------------------- ------------------------------------------------------------------
-@context            [URI] or list of URI                     reference to a [JSON-LD context] document
+@context            [URI] or list of URI                     reference to a JSON-LD context document (see [appendix](#json-ld))
 uri                 [URI]                                    primary globally unique identifier
 identifier          [list]                                   additional identifiers
 type                [list] of [URI]                          URIs of types
@@ -481,7 +510,7 @@ subjectOf     [set]                     resources about this item (e.g. document
 depiction     [list] of [URL]           list of image URLs depicting the item
 media         [list] of [media]         audiovisual or other digital content representing the item
 
-The first element of array `type`, if given, MUST be an [item type].
+The first element of array `type`, if given, MUST be an [item type] URI.
 
 Applications MAY limit the fields `notation` and/or `depiction` to lists of a single
 element or ignore all preceding elements of these lists.
@@ -519,7 +548,7 @@ mappings     [set] of [mappings]        mappings from and/or to this concept
 occurrences  [set] of [occurrences]     occurrences with this concept
 deprecated   [boolean]                  mark a concept as deprecated (false by default)
 
-The first element of field `type`, if given, MUST be the [item type] 
+The first element of field `type`, if given, MUST be the [item type] URI 
 <http://www.w3.org/2004/02/skos/core#Concept>. The type URI 
 <http://schema.vocnet.org/NonIndexingConcept> should be used as second element
 for concepts not meant to be used for indexing.
@@ -580,13 +609,13 @@ uriPattern       string                     regular expression that all concept 
 notationPattern  string                     regular expression that all primary notations should follow
 notationExamples [list] of string           list of some valid notations as examples
 concepts         [set] of [concepts]        concepts in the scheme
-types            [set] of [concepts]        [concept types] of concepts in this scheme
+types            [set] of [concepts]        [resource type] URIs of concepts in this scheme
 distributions    [set] of [distributions]   [Distributions] to access the content of the concept scheme
 extent           string                     Size of the concept scheme
 languages        [list] of language tags    Supported languages
 license          [set]                      Licenses which the full scheme can be used under
 
-The first element of array field `type`, if given, MUST be the [item type]
+The first element of array field `type`, if given, MUST be the [item type] URI
 <http://www.w3.org/2004/02/skos/core#ConceptScheme>.
 
 The values of field `uriPattern` and `notationPattern` MUST conform to the
@@ -598,7 +627,7 @@ If `concepts` is a set, all its member concepts SHOULD contain a field
 `inScheme` and all MUST contain [the same] concept scheme in field `inScheme`
 if this field is given.
 
-If `types` and `concepts` are sets, the `types` set SHOULD include all [concept types]
+If `types` and `concepts` are sets, the `types` set SHOULD include all [resource type] URIs
 for each concept's `type` other than `http://www.w3.org/2004/02/skos/core#Concept`.
 
 Resource field `partOf` at a concept scheme MUST be interpreted as following:
@@ -682,7 +711,8 @@ field        type                       definition
 ------------ -------------------------- --------------------------------------------------------------------------------------
 concepts     [set] of [concepts]        [concepts] in this registry
 schemes      [set] of [concept schemes] [concept schemes] in this registry
-types        [set] of [concepts]        [concept types] in this registry
+types        [set] of [concepts]        [resource types] in this registry
+properties   [set] of [concepts]        [property types] in this registry
 mappings     [set] of [mappings]        [mappings] in this registry
 registries   [set] of [registries]      other registries in this registry
 concordances [set] of [concordances]    [concordances] in this registry
@@ -691,16 +721,16 @@ extent       string                     Size of the registry
 languages    [list]                     Supported languages
 license      [set]                      Licenses which the full registry content can be used under
 
-The first element of array field `type`, if given, MUST be the [item type]
+The first element of array field `type`, if given, MUST be the [item type] URI
 <http://purl.org/cld/cdtype/CatalogueOrIndex>.
 
-Registries are collection of [concepts], [concept schemes], [concept types],
-[concept mappings], and/or other registries.
+Registries are collection of [concepts], [concept schemes], [resource types],
+[property types], [concept mappings], and/or other registries.
 
 ::: {.callout-note}
 Registries are the top JSKOS entity, followed by
 [concordances], [mappings] [concept schemes], and on the lowest level
-[concepts] and [concept types]. See [Distributions] for an alternative.
+[concepts] and [resource types]. See [Distributions] for an alternative.
 
 Additional integrity rules for registries will be defined (TODO).
 :::
@@ -739,7 +769,7 @@ serialization and possible wrapping. The URI of JSKOS is
 
 Fields `mimetype`, `compressFormat`, and `packageFormat` SHOULD be IANA media type URIs, if available.  Field `mimetype` MAY be a string for backwards-compatibility.
 
-The first element of array field `type`, if given, MUST be the [item type]
+The first element of array field `type`, if given, MUST be the [item type] URI
 <http://www.w3.org/ns/dcat#Distribution>.
 
 ::: {.callout-note}
@@ -795,7 +825,7 @@ toScheme      [concept scheme]          Target concept scheme
 extent        string                    Size of the concordance
 license       [set]                     License which the full concordance can be used under
 
-The first element of array field `type`, if given, MUST be the [item type]
+The first element of array field `type`, if given, MUST be the [item type] URI
 <http://rdfs.org/ns/void#Linkset>.
 
 Concordances are collections of [mappings] from one [concept scheme] to
@@ -1023,7 +1053,7 @@ Qualified statements of data type qualified literal MUST NOT use the property ty
 {{< include examples/qualified-literal.concept.json >}}
 ```
 
-# Additional rules
+# Additional rules {#sec-additional-rules}
 
 ## Resource sameness
 
@@ -1208,7 +1238,7 @@ The fields `PARTS` and `_id` in the following example can be ignored:
 * R. Albertoni, D. Browning, S. Cox, A. Gonzalez Beltran, A. Perego, P. Winstanley:
   *Data Catalog Vocabulary (DCAT) - Version 3*.
   August 2024.
-  <https://www.w3.org/TR/vocab-dcat-3/>.
+  <https://www.w3.org/TR/vocab-dcat-3/>
 
 * K. Alexander, R. Cyganiak, M. Hausenblas, Zhao, J.:
   *Describing Linked Datasets with the VoID Vocabulary*.
@@ -1226,6 +1256,10 @@ The fields `PARTS` and `_id` in the following example can be ignored:
 * A. Miles, S. Bechhofer: *SKOS Reference*.
   W3C Recommendation, 18 August 2009.
   <http://www.w3.org/TR/skos-reference>
+
+* S. Perreault: *vCard Format Specification*.
+  RFC 6350, August 2011
+  <http://tools.ietf.org/html/rfc6350>
 
 * A. Phillips, M. Davis: *Tags for Identifying Languages*.
   RFC 5646, September 2009.
@@ -1252,7 +1286,7 @@ The fields `PARTS` and `_id` in the following example can be ignored:
 
 The following appendices are *non-normative*.
 
-## JSON-LD context {.unnumbered}
+## JSON-LD {.unnumbered #json-ld}
 
 The following [JSON-LD 1.1 context document](http://www.w3.org/TR/json-ld/#the-context)
 (available [from here](context.json)) can be used to map JSKOS without
@@ -1270,7 +1304,7 @@ Applications should further add implicit RDF triples, such as `$someConcept
 rdf:type skos:Concept`, if such information can be derived from JSKOS by other
 means.
 
-## JSON Schemas and validation {.unnumbered}
+## Validation {.unnumbered #validation}
 
 Experimental JSON Schemas exist but don't cover all aspects of JSKOS: 
 
@@ -1397,7 +1431,7 @@ Multiple mappings from one concept (612.112 in DDC) to GND.
 
 JSKOS started in 2016 as as part of project [coli-conc](https://coli-conc.gbv.de/).
 
-### 0.6.0 {.unnumbered}
+### 0.6.0 (2025-01-20) {.unnumbered}
 
 - Add [ranks](#rank) and [qualified statements]
 - Add extended dates for `startDate`, `endDate`, and `relatedDate`.
@@ -1405,7 +1439,7 @@ JSKOS started in 2016 as as part of project [coli-conc](https://coli-conc.gbv.de
 - Clarify semantics of resource fields
 - Change item field `replacedBy` to be set (**breaking change**)
 - Add item field `basedOn`
-- Update references
+- Update references, layout and wording
 
 ### 0.5.4 (2024-09-27) {.unnumbered}
 

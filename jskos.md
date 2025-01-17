@@ -1,33 +1,30 @@
 # Introduction
 
-**JSKOS** (**J**avaScript Object Notation for **S**imple **K**nowledge
-**O**rganization **S**ystems) defines a JavaScript Object Notation (JSON)
-structure to encode knowledge organization systems (KOS) and semantic
-artifacts, such as classifications, thesauri, authority files, and knowledge
-graphs.
+**JSKOS** (**JS**ON for **K**nowledge **O**rganization **S**ystems) defines
+a JavaScript Object Notation (JSON) structure to encode knowledge organization
+systems (KOS) and semantic artifacts, such as classifications, thesauri,
+authority files, and knowledge graphs.
 
 The core of JSKOS is an encoding of Simple Knowledge Organisation System
 (SKOS), an application of the Resource Description Framework (RDF), in
-JavaScript Object Notation for Linked Data (JSON-LD). JSKOS is compatible but
-it does not require to be experienced in any of these technologies except for
-basic JSON ([RFC 8259]). Another influence of JSKOS is the data model of
+JavaScript Object Notation for Linked Data (JSON-LD). JSKOS is compatible with
+these technologies but it does notrequire to be experienced with more than
+plain JSON ([RFC 8259]). Another influence of JSKOS is the data model of
 Wikibase, which can partly be encoded in JSKOS as well.
 
 ## Outline
 
-In addition to [concepts] and [concept schemes] as known from SKOS
-
-JSKOS can express information about:
+In addition to [concepts] and [concept schemes] JSKOS can express information about:
 
 - [mappings] and [concordances] for alignments between concepts
 - [occurrences] of concepts in databases
 - [registries] and [distributions] to package and provide data
+- general [resources] (any kind of entities)
 - [annotations] to review and comment on resources
-- general kind of [resources]
-- qualified information with [qualified relations]
+- qualified information with [qualified statements]
 - incomplete and deprecated information via [ranks](#rank) and [closed world statements]
 
-See [object types] for another outline.
+See [object types] for an outline of the hierarchy of JSKOS data elements.
 
 ## Status of this document
 
@@ -53,8 +50,9 @@ JSKOS is based on JSON which consists of *objects* with pairs of *fields* and
 `true`, `false`, and `null`.  All strings and fields of a JSKOS document MUST
 be normalized to Unicode Normalization Form C (NFC). Applications processing
 JSON MAY accept JSON documents not normalized in NFC by performing NFC
-normalization.  JSKOS further restricts JSON with reference to the following
-data types:
+normalization.
+
+JSKOS further restricts JSON with reference to the following data types:
 
 ## URI
 
@@ -62,19 +60,15 @@ An **URI** is a syntactically correct IRI ([RFC 3987]).
 
 ## URL
 
-An **URL** is a syntactically correct URL with HTTPS (RECOMMENDED) or HTTP scheme. Note that URLs can contain international characters allowed in IRIs.
+An **URL** is a syntactically correct URL with scheme `https` (RECOMMENDED) or `http` ([RFC 3986]).
 
 ## Non-negative integer
 
-A **non-negative integer** is a JSON number without preceding minus part, without fractional part, or exponent.
-
-::: {.callout-note}
-Examples of valid JSON values which are *not* non-negative integers: `"42"`, `""`, `null`, `-1`, `6e-3`.
-:::
+A **non-negative integer** is a JSON number without preceding minus part, fractional part, and exponent.
 
 ## percentage
 
-A **percentage** is a JSON number with value between zero (0.0 = 0%) and one (1.0 = 100%).
+A **percentage** is a JSON number with value between zero (`0.0` = 0%) and one (`1.0` = 100%).
 
 ## date
 
@@ -380,8 +374,6 @@ See appendix [item types as concepts] for an encoding of item types as [concepts
 
 # Object types
 
-[concept types]: #object-types
-
 JSKOS defines the following types of JSON objects:
 
 * [resources] for all kinds of entities
@@ -397,9 +389,17 @@ JSKOS defines the following types of JSON objects:
 
 In addition there are [concept bundles] as part of mappings, occurrences, and composed [concepts].
 
+[concept types]: #object-types
+[property type]: #object-types
+[property types]: #object-types
+
 A **concept type** is a [concept] used to distinguish different kinds of
-concepts or other [resources]. Concept types are referred to by their URI in
-field `type` of a [resource].
+concepts or other [resources]. Concept types are referred to by their [URI] in
+array field `type` of a [resource].
+
+A **property type** is a [concept] used to specify the type of a [qualified
+statement]. Property types are referenced by their [URI] in the keys of
+a [qualified map].
 
 ## Resource
 
@@ -920,8 +920,8 @@ target      [URI], [Resource] or [Annotation] object being annotated, or its URI
 
 # Qualified statements
 
-[qualified value]: #qualified-statements
 [qualified map]: #qualified-statements
+[qualified statement]: #qualified-statements
 
 JSKOS defines a set of common fields (such as `prefLabel`, `startDate`, `place`, and `media`) to facilitate interoperability across diverse knowledge organization systems. Application of these fields comes with simplification and lack of context information. To allow for more details, qualified statements can express typed and qualified data at cost of interoperability.
 
@@ -929,9 +929,9 @@ JSKOS defines a set of common fields (such as `prefLabel`, `startDate`, `place`,
 Qualified statements are similar but not identical to properties in a property graph and to referenced statements in Wikibase data model.
 :::
 
-The term **qualified statement** refers to the combination of a *property type* and a *qualified value*.  Qualified statements are grouped in *qualified maps* by the data type of their qualified values.
+The term **qualified statement** refers to the combination of a [property type] and a [qualified value].  Qualified statements are grouped in *qualified maps* by the data type of their qualified values.
 
-A **qualified map** is a JSON object that maps **property types** (each being an [URI]) to qualified values.
+A **qualified map** is a JSON object that maps [property types] to [qualified values].
 
 ``` {.json #lst-qualified-map lst-cap="Qualified map with property types from schema.org"}
 {
@@ -939,6 +939,9 @@ A **qualified map** is a JSON object that maps **property types** (each being an
   "https://schema.org/performerIn": [ ... ]
 }
 ```
+
+## Qualified value
+[qualified values]: #qualified-value
 
 A **qualified value** is a JSON object with the following optional fields:
 
@@ -1152,6 +1155,9 @@ The fields `PARTS` and `_id` in the following example can be ignored:
 - M. Appleby et al: *IIIF Presentation API 3.0*. June 2020.
   <https://iiif.io/api/presentation/3.0/>
 
+- T. Berners-Lee, R. Fielding, L. Masinter: *Uniform Resource Identifier (URI): Generic Syntax*.
+  RFC 3986, January 2005. <https://tools.ietf.org/html/rfc3986>
+
 - P. Biron, A. Malhotra: *XML Schema Part 2: Datatypes Second Edition*.
   W3C Recommendation, October 2005.
   <https://www.w3.org/TR/xmlschema-2/>
@@ -1192,6 +1198,7 @@ The fields `PARTS` and `_id` in the following example can be ignored:
 
 [RFC 2119]: https://tools.ietf.org/html/rfc2119
 [RFC 8259]: https://tools.ietf.org/html/rfc8259
+[RFC 3986]: https://tools.ietf.org/html/rfc3986
 [RFC 3987]: https://tools.ietf.org/html/rfc3987
 [RFC 3066]: https://tools.ietf.org/html/rfc3066
 [RFC 7946]: https://tools.ietf.org/html/rfc7946

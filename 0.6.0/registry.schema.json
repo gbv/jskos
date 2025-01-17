@@ -17,7 +17,10 @@
       "description": "Concept schemes in this registry"
     },
     "types": {
-      "description": "Concept types in this registry"
+      "description": "Resource types in this registry"
+    },
+    "properties": {
+      "description": "Property types in this registry"
     },
     "mappings": {
       "description": "Mappings in this registry"

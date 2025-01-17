@@ -1,6 +1,6 @@
 {
   "$id": "https://gbv.github.io/jskos/registry.schema.json",
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "title": "JSKOS Registry",
   "description": "collections of items (concepts, concept schemes, ...)",
   "type": "object",
@@ -17,7 +17,10 @@
       "description": "Concept schemes in this registry"
     },
     "types": {
-      "description": "Concept types in this registry"
+      "description": "Resource types in this registry"
+    },
+    "properties": {
+      "description": "Property types in this registry"
     },
     "mappings": {
       "description": "Mappings in this registry"

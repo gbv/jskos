@@ -1,10 +1,27 @@
 {
   "$id": "https://gbv.github.io/jskos/item.schema.json",
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "title": "JSKOS Item",
   "description": "named entities",
   "type": "object",
   "definitions": {
+    "itemSet": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "null"
+          },
+          {
+            "$ref": "#"
+          }
+        ]
+      }
+    },
+    "language-tag": {
+      "type": "string",
+      "pattern": "^([a-z]{1,8}(-[a-z0-9]{1,8})*-?|-)$"
+    },
     "language-map": {
       "type": "object",
       "patternProperties": {
@@ -135,15 +152,22 @@
     },
     "startDate": {
       "description": "date of birth, creation, or estabishment of the item",
-      "$ref": "resource.schema.json#/definitions/date"
+      "$ref": "resource.schema.json#/definitions/edtf"
     },
     "endDate": {
       "description": "date death or resolution of the item",
-      "$ref": "resource.schema.json#/definitions/date"
+      "$ref": "resource.schema.json#/definitions/edtf"
     },
     "relatedDate": {
-      "description": "other date somehow related to the item",
-      "$ref": "resource.schema.json#/definitions/date"
+      "description": "other date somehow related to the item (deprecated, use relatedDates instead)",
+      "$ref": "resource.schema.json#/definitions/edtf"
+    },
+    "relatedDates": {
+      "description": "other date somehow related to the item (deprecated, use relatedDates instead)",
+      "type": "array",
+      "items": {
+        "$ref": "resource.schema.json#/definitions/edtf"
+      }
     },
     "location": {
       "description": "geographic location of the item",
@@ -166,8 +190,8 @@
       "$ref": "#/definitions/address"
     },
     "replacedBy": {
-      "description": "A related item that supplants, displaces, or supersedes the described item",
-      "$ref": "#"
+      "description": "Related items that supplant, displace, or supersede the described item",
+      "$ref": "#/definitions/itemSet"
     },
     "subject": {
       "description": "what this item is about (e.g. topic)",

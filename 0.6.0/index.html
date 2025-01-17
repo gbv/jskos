@@ -2,11 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.32">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-01-16">
+<meta name="dcterms.date" content="2025-01-20">
 
 <title>JSKOS data format for Knowledge Organization Systems</title>
 <style>
@@ -64,19 +64,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-5dbef85374e00b74dcda297261b8f55d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-cf6bd38ce02cfde6b42a4d5e4ff5e993.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-2ace586e68e8c287d3a0cf7e9c121c83.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-c6159576ac5f633598b1c5dd3a4d9daa.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 <link rel="stylesheet" href="style.css">
 <meta name="citation_title" content="JSKOS data format for Knowledge Organization Systems">
 <meta name="citation_author" content="Jakob Voß">
-<meta name="citation_publication_date" content="2025-01-16">
-<meta name="citation_cover_date" content="2025-01-16">
+<meta name="citation_publication_date" content="2025-01-20">
+<meta name="citation_cover_date" content="2025-01-20">
 <meta name="citation_year" content="2025">
-<meta name="citation_online_date" content="2025-01-16">
+<meta name="citation_online_date" content="2025-01-20">
 <meta name="citation_language" content="en">
 </head>
 
@@ -86,7 +86,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">JSKOS data format for Knowledge Organization Systems</h1>
-            <p class="subtitle lead">Version 0.6.0-preview</p>
+            <p class="subtitle lead">Version 0.6.0</p>
           </div>
 
     
@@ -112,7 +112,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
                 <div>
             <div class="quarto-title-meta-heading">Published</div>
             <div class="quarto-title-meta-contents">
-              <p class="date">January 16, 2025</p>
+              <p class="date">January 20, 2025</p>
             </div>
           </div>
           
@@ -139,57 +139,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#status-of-this-document" id="toc-status-of-this-document" class="nav-link" data-scroll-target="#status-of-this-document"><span class="header-section-number">1.2</span> Status of this document</a></li>
   <li><a href="#conformance-requirements" id="toc-conformance-requirements" class="nav-link" data-scroll-target="#conformance-requirements"><span class="header-section-number">1.3</span> Conformance requirements</a></li>
   </ul></li>
-  <li><a href="#data-types" id="toc-data-types" class="nav-link" data-scroll-target="#data-types"><span class="header-section-number">2</span> Data types</a>
+  <li><a href="#sec-data-types" id="toc-sec-data-types" class="nav-link" data-scroll-target="#sec-data-types"><span class="header-section-number">2</span> Data types</a>
   <ul class="collapse">
   <li><a href="#uri" id="toc-uri" class="nav-link" data-scroll-target="#uri"><span class="header-section-number">2.1</span> URI</a></li>
   <li><a href="#url" id="toc-url" class="nav-link" data-scroll-target="#url"><span class="header-section-number">2.2</span> URL</a></li>
-  <li><a href="#non-negative-integer" id="toc-non-negative-integer" class="nav-link" data-scroll-target="#non-negative-integer"><span class="header-section-number">2.3</span> Non-negative integer</a></li>
+  <li><a href="#non-negative-integer" id="toc-non-negative-integer" class="nav-link" data-scroll-target="#non-negative-integer"><span class="header-section-number">2.3</span> non-negative integer</a></li>
   <li><a href="#percentage" id="toc-percentage" class="nav-link" data-scroll-target="#percentage"><span class="header-section-number">2.4</span> percentage</a></li>
   <li><a href="#date" id="toc-date" class="nav-link" data-scroll-target="#date"><span class="header-section-number">2.5</span> date</a></li>
   <li><a href="#extended-date" id="toc-extended-date" class="nav-link" data-scroll-target="#extended-date"><span class="header-section-number">2.6</span> extended date</a></li>
-  <li><a href="#list" id="toc-list" class="nav-link" data-scroll-target="#list"><span class="header-section-number">2.7</span> list</a></li>
-  <li><a href="#set" id="toc-set" class="nav-link" data-scroll-target="#set"><span class="header-section-number">2.8</span> set</a></li>
-  <li><a href="#rank" id="toc-rank" class="nav-link" data-scroll-target="#rank"><span class="header-section-number">2.9</span> rank</a></li>
-  <li><a href="#language-tag" id="toc-language-tag" class="nav-link" data-scroll-target="#language-tag"><span class="header-section-number">2.10</span> language tag</a></li>
+  <li><a href="#language-tag" id="toc-language-tag" class="nav-link" data-scroll-target="#language-tag"><span class="header-section-number">2.7</span> language tag</a></li>
+  <li><a href="#list" id="toc-list" class="nav-link" data-scroll-target="#list"><span class="header-section-number">2.8</span> list</a></li>
+  <li><a href="#set" id="toc-set" class="nav-link" data-scroll-target="#set"><span class="header-section-number">2.9</span> set</a></li>
+  <li><a href="#rank" id="toc-rank" class="nav-link" data-scroll-target="#rank"><span class="header-section-number">2.10</span> rank</a></li>
   <li><a href="#language-range" id="toc-language-range" class="nav-link" data-scroll-target="#language-range"><span class="header-section-number">2.11</span> language range</a></li>
   <li><a href="#language-map" id="toc-language-map" class="nav-link" data-scroll-target="#language-map"><span class="header-section-number">2.12</span> language map</a></li>
-  <li><a href="#location" id="toc-location" class="nav-link" data-scroll-target="#location"><span class="header-section-number">2.13</span> location</a></li>
-  <li><a href="#address" id="toc-address" class="nav-link" data-scroll-target="#address"><span class="header-section-number">2.14</span> address</a></li>
-  <li><a href="#checksum" id="toc-checksum" class="nav-link" data-scroll-target="#checksum"><span class="header-section-number">2.15</span> checksum</a></li>
+  <li><a href="#checksum" id="toc-checksum" class="nav-link" data-scroll-target="#checksum"><span class="header-section-number">2.13</span> checksum</a></li>
+  <li><a href="#location" id="toc-location" class="nav-link" data-scroll-target="#location"><span class="header-section-number">2.14</span> location</a></li>
+  <li><a href="#address" id="toc-address" class="nav-link" data-scroll-target="#address"><span class="header-section-number">2.15</span> address</a></li>
   <li><a href="#media" id="toc-media" class="nav-link" data-scroll-target="#media"><span class="header-section-number">2.16</span> media</a></li>
-  <li><a href="#item-type" id="toc-item-type" class="nav-link" data-scroll-target="#item-type"><span class="header-section-number">2.17</span> item type</a></li>
   </ul></li>
-  <li><a href="#object-types" id="toc-object-types" class="nav-link" data-scroll-target="#object-types"><span class="header-section-number">3</span> Object types</a>
+  <li><a href="#resource-and-property-types" id="toc-resource-and-property-types" class="nav-link" data-scroll-target="#resource-and-property-types"><span class="header-section-number">3</span> Resource and property types</a></li>
+  <li><a href="#object-types" id="toc-object-types" class="nav-link" data-scroll-target="#object-types"><span class="header-section-number">4</span> Object types</a>
   <ul class="collapse">
-  <li><a href="#resource" id="toc-resource" class="nav-link" data-scroll-target="#resource"><span class="header-section-number">3.1</span> Resource</a></li>
-  <li><a href="#item" id="toc-item" class="nav-link" data-scroll-target="#item"><span class="header-section-number">3.2</span> Item</a></li>
-  <li><a href="#concept" id="toc-concept" class="nav-link" data-scroll-target="#concept"><span class="header-section-number">3.3</span> Concept</a></li>
-  <li><a href="#concept-schemes" id="toc-concept-schemes" class="nav-link" data-scroll-target="#concept-schemes"><span class="header-section-number">3.4</span> Concept Schemes</a></li>
-  <li><a href="#concept-occurrences" id="toc-concept-occurrences" class="nav-link" data-scroll-target="#concept-occurrences"><span class="header-section-number">3.5</span> Concept Occurrences</a></li>
-  <li><a href="#registries" id="toc-registries" class="nav-link" data-scroll-target="#registries"><span class="header-section-number">3.6</span> Registries</a></li>
-  <li><a href="#distributions" id="toc-distributions" class="nav-link" data-scroll-target="#distributions"><span class="header-section-number">3.7</span> Distributions</a></li>
-  <li><a href="#concordances" id="toc-concordances" class="nav-link" data-scroll-target="#concordances"><span class="header-section-number">3.8</span> Concordances</a></li>
-  <li><a href="#concept-mappings" id="toc-concept-mappings" class="nav-link" data-scroll-target="#concept-mappings"><span class="header-section-number">3.9</span> Concept Mappings</a></li>
-  <li><a href="#concept-bundles" id="toc-concept-bundles" class="nav-link" data-scroll-target="#concept-bundles"><span class="header-section-number">3.10</span> Concept Bundles</a></li>
-  <li><a href="#annotations" id="toc-annotations" class="nav-link" data-scroll-target="#annotations"><span class="header-section-number">3.11</span> Annotations</a></li>
+  <li><a href="#resource" id="toc-resource" class="nav-link" data-scroll-target="#resource"><span class="header-section-number">4.1</span> Resource</a></li>
+  <li><a href="#item" id="toc-item" class="nav-link" data-scroll-target="#item"><span class="header-section-number">4.2</span> Item</a></li>
+  <li><a href="#concept" id="toc-concept" class="nav-link" data-scroll-target="#concept"><span class="header-section-number">4.3</span> Concept</a></li>
+  <li><a href="#concept-schemes" id="toc-concept-schemes" class="nav-link" data-scroll-target="#concept-schemes"><span class="header-section-number">4.4</span> Concept Schemes</a></li>
+  <li><a href="#concept-occurrences" id="toc-concept-occurrences" class="nav-link" data-scroll-target="#concept-occurrences"><span class="header-section-number">4.5</span> Concept Occurrences</a></li>
+  <li><a href="#registries" id="toc-registries" class="nav-link" data-scroll-target="#registries"><span class="header-section-number">4.6</span> Registries</a></li>
+  <li><a href="#distributions" id="toc-distributions" class="nav-link" data-scroll-target="#distributions"><span class="header-section-number">4.7</span> Distributions</a></li>
+  <li><a href="#concordances" id="toc-concordances" class="nav-link" data-scroll-target="#concordances"><span class="header-section-number">4.8</span> Concordances</a></li>
+  <li><a href="#concept-mappings" id="toc-concept-mappings" class="nav-link" data-scroll-target="#concept-mappings"><span class="header-section-number">4.9</span> Concept Mappings</a></li>
+  <li><a href="#concept-bundles" id="toc-concept-bundles" class="nav-link" data-scroll-target="#concept-bundles"><span class="header-section-number">4.10</span> Concept Bundles</a></li>
+  <li><a href="#annotations" id="toc-annotations" class="nav-link" data-scroll-target="#annotations"><span class="header-section-number">4.11</span> Annotations</a></li>
   </ul></li>
-  <li><a href="#qualified-statements" id="toc-qualified-statements" class="nav-link" data-scroll-target="#qualified-statements"><span class="header-section-number">4</span> Qualified statements</a>
+  <li><a href="#qualified-statements" id="toc-qualified-statements" class="nav-link" data-scroll-target="#qualified-statements"><span class="header-section-number">5</span> Qualified statements</a>
   <ul class="collapse">
-  <li><a href="#qualified-value" id="toc-qualified-value" class="nav-link" data-scroll-target="#qualified-value"><span class="header-section-number">4.1</span> Qualified value</a></li>
-  <li><a href="#qualified-relation" id="toc-qualified-relation" class="nav-link" data-scroll-target="#qualified-relation"><span class="header-section-number">4.2</span> Qualified relation</a></li>
-  <li><a href="#qualified-date" id="toc-qualified-date" class="nav-link" data-scroll-target="#qualified-date"><span class="header-section-number">4.3</span> Qualified date</a></li>
-  <li><a href="#qualified-literal" id="toc-qualified-literal" class="nav-link" data-scroll-target="#qualified-literal"><span class="header-section-number">4.4</span> Qualified literal</a></li>
+  <li><a href="#qualified-value" id="toc-qualified-value" class="nav-link" data-scroll-target="#qualified-value"><span class="header-section-number">5.1</span> Qualified value</a></li>
+  <li><a href="#qualified-relation" id="toc-qualified-relation" class="nav-link" data-scroll-target="#qualified-relation"><span class="header-section-number">5.2</span> Qualified relation</a></li>
+  <li><a href="#qualified-date" id="toc-qualified-date" class="nav-link" data-scroll-target="#qualified-date"><span class="header-section-number">5.3</span> Qualified date</a></li>
+  <li><a href="#qualified-literal" id="toc-qualified-literal" class="nav-link" data-scroll-target="#qualified-literal"><span class="header-section-number">5.4</span> Qualified literal</a></li>
   </ul></li>
-  <li><a href="#additional-rules" id="toc-additional-rules" class="nav-link" data-scroll-target="#additional-rules"><span class="header-section-number">5</span> Additional rules</a>
+  <li><a href="#sec-additional-rules" id="toc-sec-additional-rules" class="nav-link" data-scroll-target="#sec-additional-rules"><span class="header-section-number">6</span> Additional rules</a>
   <ul class="collapse">
-  <li><a href="#resource-sameness" id="toc-resource-sameness" class="nav-link" data-scroll-target="#resource-sameness"><span class="header-section-number">5.1</span> Resource sameness</a></li>
-  <li><a href="#closed-world-statements" id="toc-closed-world-statements" class="nav-link" data-scroll-target="#closed-world-statements"><span class="header-section-number">5.2</span> Closed world statements</a></li>
-  <li><a href="#inference-rules-and-integrity-constraints" id="toc-inference-rules-and-integrity-constraints" class="nav-link" data-scroll-target="#inference-rules-and-integrity-constraints"><span class="header-section-number">5.3</span> Inference rules and integrity constraints</a>
+  <li><a href="#resource-sameness" id="toc-resource-sameness" class="nav-link" data-scroll-target="#resource-sameness"><span class="header-section-number">6.1</span> Resource sameness</a></li>
+  <li><a href="#closed-world-statements" id="toc-closed-world-statements" class="nav-link" data-scroll-target="#closed-world-statements"><span class="header-section-number">6.2</span> Closed world statements</a></li>
+  <li><a href="#inference-rules-and-integrity-constraints" id="toc-inference-rules-and-integrity-constraints" class="nav-link" data-scroll-target="#inference-rules-and-integrity-constraints"><span class="header-section-number">6.3</span> Inference rules and integrity constraints</a>
   <ul class="collapse">
-  <li><a href="#inference-rules" id="toc-inference-rules" class="nav-link" data-scroll-target="#inference-rules"><span class="header-section-number">5.3.1</span> Inference rules</a></li>
-  <li><a href="#integritry-constraints" id="toc-integritry-constraints" class="nav-link" data-scroll-target="#integritry-constraints"><span class="header-section-number">5.3.2</span> Integritry constraints</a></li>
+  <li><a href="#inference-rules" id="toc-inference-rules" class="nav-link" data-scroll-target="#inference-rules"><span class="header-section-number">6.3.1</span> Inference rules</a></li>
+  <li><a href="#integritry-constraints" id="toc-integritry-constraints" class="nav-link" data-scroll-target="#integritry-constraints"><span class="header-section-number">6.3.2</span> Integritry constraints</a></li>
   </ul></li>
-  <li><a href="#extension-with-custom-fields" id="toc-extension-with-custom-fields" class="nav-link" data-scroll-target="#extension-with-custom-fields"><span class="header-section-number">5.4</span> Extension with custom fields</a></li>
+  <li><a href="#extension-with-custom-fields" id="toc-extension-with-custom-fields" class="nav-link" data-scroll-target="#extension-with-custom-fields"><span class="header-section-number">6.4</span> Extension with custom fields</a></li>
   </ul></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a>
   <ul class="collapse">
@@ -198,8 +198,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#appendices" id="toc-appendices" class="nav-link" data-scroll-target="#appendices">Appendices</a>
   <ul class="collapse">
-  <li><a href="#json-ld-context" id="toc-json-ld-context" class="nav-link" data-scroll-target="#json-ld-context">JSON-LD context</a></li>
-  <li><a href="#json-schemas-and-validation" id="toc-json-schemas-and-validation" class="nav-link" data-scroll-target="#json-schemas-and-validation">JSON Schemas and validation</a></li>
+  <li><a href="#json-ld" id="toc-json-ld" class="nav-link" data-scroll-target="#json-ld">JSON-LD</a></li>
+  <li><a href="#validation" id="toc-validation" class="nav-link" data-scroll-target="#validation">Validation</a></li>
   <li><a href="#item-types-as-concepts" id="toc-item-types-as-concepts" class="nav-link" data-scroll-target="#item-types-as-concepts">Item types as concepts</a></li>
   <li><a href="#skos-features-not-supported-in-jskos" id="toc-skos-features-not-supported-in-jskos" class="nav-link" data-scroll-target="#skos-features-not-supported-in-jskos">SKOS features not supported in JSKOS</a></li>
   <li><a href="#jskos-features-not-supported-in-skos" id="toc-jskos-features-not-supported-in-skos" class="nav-link" data-scroll-target="#jskos-features-not-supported-in-skos">JSKOS features not supported in SKOS</a></li>
@@ -207,7 +207,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#changelog" id="toc-changelog" class="nav-link" data-scroll-target="#changelog">Changelog</a>
   <ul class="collapse">
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">0.6.0</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">0.6.0 (2025-01-20)</a></li>
   <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">0.5.4 (2024-09-27)</a></li>
   <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">0.5.3 (2024-09-18)</a></li>
   <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">0.5.2 (2024-08-30)</a></li>
@@ -261,7 +261,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>qualified information with <a href="#qualified-statements">qualified statements</a></li>
 <li>incomplete and deprecated information via <a href="#rank">ranks</a> and <a href="#closed-world-statements">closed world statements</a></li>
 </ul>
-<p>See <a href="#object-types">object types</a> for an outline of the hierarchy of JSKOS data elements.</p>
+<p>See <a href="#object-types">object types</a> for the class hierarchy of JSKOS data elements.</p>
 </section>
 <section id="status-of-this-document" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="status-of-this-document"><span class="header-section-number">1.2</span> Status of this document</h2>
@@ -270,9 +270,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="conformance-requirements" class="level2" data-number="1.3">
 <h2 data-number="1.3" class="anchored" data-anchor-id="conformance-requirements"><span class="header-section-number">1.3</span> Conformance requirements</h2>
 <p>The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL” in this document are to be interpreted as described in <a href="https://tools.ietf.org/html/rfc2119">RFC 2119</a>.</p>
+<p>Only <a href="#sec-data-types" class="quarto-xref">Section&nbsp;2</a> to <a href="#sec-additional-rules" class="quarto-xref">Section&nbsp;6</a> of this document and its <a href="#normative-references">normative references</a> are normative. Examples and notes (such as the following) are neither part of conformance requirements.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The appendix includes information how to <a href="#validation">validate against this specification</a>, for instance with JSON Schema, but these methods do not fully cover all aspects of JSKOS.</p>
+</div>
+</div>
 </section>
 </section>
-<section id="data-types" class="level1" data-number="2">
+<section id="sec-data-types" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Data types</h1>
 <p>JSKOS is based on JSON which consists of <em>objects</em> with pairs of <em>fields</em> and <em>values</em>, <em>arrays</em> with <em>members</em>, <em>strings</em>, <em>numbers</em>, and the special values <code>true</code>, <code>false</code>, and <code>null</code>. All strings and fields of a JSKOS document MUST be normalized to Unicode Normalization Form C (NFC). Applications processing JSON MAY accept JSON documents not normalized in NFC by performing NFC normalization.</p>
 <p>JSKOS further restricts JSON with reference to the following data types:</p>
@@ -285,7 +299,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>An <strong>URL</strong> is a syntactically correct URL with scheme <code>https</code> (RECOMMENDED) or <code>http</code> (<a href="https://tools.ietf.org/html/rfc3986">RFC 3986</a>).</p>
 </section>
 <section id="non-negative-integer" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="non-negative-integer"><span class="header-section-number">2.3</span> Non-negative integer</h2>
+<h2 data-number="2.3" class="anchored" data-anchor-id="non-negative-integer"><span class="header-section-number">2.3</span> non-negative integer</h2>
 <p>A <strong>non-negative integer</strong> is a JSON number without preceding minus part, fractional part, and exponent.</p>
 </section>
 <section id="percentage" class="level2" data-number="2.4">
@@ -298,7 +312,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="extended-date" class="level2" data-number="2.6">
 <h2 data-number="2.6" class="anchored" data-anchor-id="extended-date"><span class="header-section-number">2.6</span> extended date</h2>
-<p>An <strong>extended date</strong> is a date, date and time, or interval in <a href="https://www.loc.gov/standards/datetime/">Extended Date/Time Format (EDTF)</a> Level 1. In adition to <a href="#date">date</a> this includes:</p>
+<p>An <strong>extended date</strong> is a date, date and time, or interval in <a href="https://www.loc.gov/standards/datetime/">Extended Date/Time Format (EDTF)</a> Level 1.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>An extended date includes, in adition to <a href="#date">date</a>:</p>
 <ul>
 <li>Intervals of dates (e.g.&nbsp;<code>1949-10/1990-10</code>, or <code>2021/..</code>)</li>
 <li>Seasons (e.g.&nbsp;<code>2001-21</code>)</li>
@@ -306,9 +331,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Qualifiers for uncertain (<code>?</code>), approximate (<code>~</code>) or both (<code>%</code>)</li>
 <li>Unspecified digits marked with <code>X</code></li>
 </ul>
+</div>
+</div>
 </section>
-<section id="list" class="level2" data-number="2.7">
-<h2 data-number="2.7" class="anchored" data-anchor-id="list"><span class="header-section-number">2.7</span> list</h2>
+<section id="language-tag" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="language-tag"><span class="header-section-number">2.7</span> language tag</h2>
+<p>A <strong>language tag</strong> is a non-empty string that conforms to the syntax of <a href="https://tools.ietf.org/html/rfc3066">RFC 3066</a> language tags, limited to lowercase.</p>
+</section>
+<section id="list" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="list"><span class="header-section-number">2.8</span> list</h2>
 <p>A <strong>list</strong> is a possibly empty array of strings and an optional last member <code>null</code>. Applications MAY ignore or disallow the value <code>null</code> in lists. If <code>null</code> is allowed, lists MUST be interpreted as following to support <a href="#closed-world-statements">closed world statements</a>:</p>
 <ul>
 <li>the list <code>[]</code> denotes an empty list.</li>
@@ -318,8 +349,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>A list MUST NOT contain the empty string except if part of a <a href="#language-map">language map</a>.</p>
 </section>
-<section id="set" class="level2" data-number="2.8">
-<h2 data-number="2.8" class="anchored" data-anchor-id="set"><span class="header-section-number">2.8</span> set</h2>
+<section id="set" class="level2" data-number="2.9">
+<h2 data-number="2.9" class="anchored" data-anchor-id="set"><span class="header-section-number">2.9</span> set</h2>
 <p>A <strong>set</strong> is a possibly empty array where all members</p>
 <ul>
 <li>are JSON objects of JSKOS <a href="#resource">resources</a>, except the last member optionally being <code>null</code>,</li>
@@ -372,8 +403,8 @@ Note
 </div>
 </div>
 </section>
-<section id="rank" class="level2" data-number="2.9">
-<h2 data-number="2.9" class="anchored" data-anchor-id="rank"><span class="header-section-number">2.9</span> rank</h2>
+<section id="rank" class="level2" data-number="2.10">
+<h2 data-number="2.10" class="anchored" data-anchor-id="rank"><span class="header-section-number">2.10</span> rank</h2>
 <p>A <strong>rank</strong> is one of the strings <code>preferred</code>, <code>normal</code>, and <code>deprecated</code>. Applications MAY ignore or limit ranks to selected use cases.</p>
 <p>Elements of a <a href="#set">set</a> and <a href="#qualified-value">qualified values</a> are expected to have a field <code>rank</code> with a rank value. If an element lacks a rank, its default rank is <code>normal</code>.</p>
 <p>The rank <code>deprecated</code> is used for elements that are known to include errors. Applications MAY filter out these elements.</p>
@@ -406,10 +437,6 @@ Example&nbsp;2: A resource with ranked publishers
 </div>
 </figure>
 </div>
-</section>
-<section id="language-tag" class="level2" data-number="2.10">
-<h2 data-number="2.10" class="anchored" data-anchor-id="language-tag"><span class="header-section-number">2.10</span> language tag</h2>
-<p>A <strong>language tag</strong> is a non-empty string that conforms to the syntax of <a href="https://tools.ietf.org/html/rfc3066">RFC 3066</a> language tags, limited to lowercase.</p>
 </section>
 <section id="language-range" class="level2" data-number="2.11">
 <h2 data-number="2.11" class="anchored" data-anchor-id="language-range"><span class="header-section-number">2.11</span> language range</h2>
@@ -498,7 +525,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>JSON-LD disallows language map fields ending with <code>"-"</code> so all fields that are language ranges MUST be removed before reading JSKOS as JSON-LD.</p>
+<p>JSON-LD disallows language map fields ending with <code>"-"</code> so all fields that are language ranges MUST be removed before reading [JSKOS as JSON-LD].</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -511,71 +538,12 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The language tag “und” can be used to include strings of unknown or unspecified language.</p>
+<p>The language tag <code>und</code> can be used to include strings of unknown or unspecified language.</p>
 </div>
 </div>
 </section>
-<section id="location" class="level2" data-number="2.13">
-<h2 data-number="2.13" class="anchored" data-anchor-id="location"><span class="header-section-number">2.13</span> location</h2>
-<p>A <strong>location</strong> is a JSON object conforming to the GeoJSON specification (<a href="https://tools.ietf.org/html/rfc7946">RFC 7946</a>) with GeoJSON type being one of <code>Point</code>, <code>MultiPoint</code>, <code>LineString</code>, <code>MultiLineString</code>, <code>Polygon</code>, <code>MultiPolygon</code>, or <code>GeometryCollection</code>. Applications MAY restrict the location data type to GeoJSON objects of GeoJSON type <code>Point</code>.</p>
-<div id="lst-titanic" class="listing quarto-float quarto-figure quarto-figure-left anchored">
-<figure class="quarto-float quarto-float-lst figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-titanic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Example&nbsp;4: Position of the RMS Titanic as point
-</figcaption>
-<div aria-describedby="lst-titanic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="sourceCode" id="lst-titanic"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="lst-titanic-1"><a href="#lst-titanic-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="lst-titanic-2"><a href="#lst-titanic-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"type"</span><span class="fu">:</span> <span class="st">"Point"</span><span class="fu">,</span></span>
-<span id="lst-titanic-3"><a href="#lst-titanic-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"coordinates"</span><span class="fu">:</span> <span class="ot">[</span><span class="fl">-49.946944</span><span class="ot">,</span> <span class="fl">41.7325</span><span class="ot">,</span> <span class="dv">-3803</span><span class="ot">]</span></span>
-<span id="lst-titanic-4"><a href="#lst-titanic-4" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</figure>
-</div>
-</section>
-<section id="address" class="level2" data-number="2.14">
-<h2 data-number="2.14" class="anchored" data-anchor-id="address"><span class="header-section-number">2.14</span> address</h2>
-<p>An <strong>address</strong> is a JSON object with any of the following field, each mapped to a string:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: left;">field</th>
-<th>description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">street</td>
-<td>the street address</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">ext</td>
-<td>the extended address (e.g., apartment or suite number)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">pobox</td>
-<td>the post office box</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">locality</td>
-<td>the locality (e.g., city)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">region</td>
-<td>the region (e.g., state or province)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">code</td>
-<td>the postal code</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">country</td>
-<td>the country name</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="checksum" class="level2" data-number="2.15">
-<h2 data-number="2.15" class="anchored" data-anchor-id="checksum"><span class="header-section-number">2.15</span> checksum</h2>
+<section id="checksum" class="level2" data-number="2.13">
+<h2 data-number="2.13" class="anchored" data-anchor-id="checksum"><span class="header-section-number">2.13</span> checksum</h2>
 <p>A <strong>checksum</strong> is a JSON object with two fields:</p>
 <table class="caption-top table">
 <thead>
@@ -599,6 +567,86 @@ Example&nbsp;4: Position of the RMS Titanic as point
 </tbody>
 </table>
 <p>The value of SHOULD be specified by a URI from SPDX vocabulary, e.g.&nbsp;<a href="http://spdx.org/rdf/terms#checksumAlgorithm_sha256" class="uri">http://spdx.org/rdf/terms#checksumAlgorithm_sha256</a> for SHA-2 with 256 Bit (SHA-256).</p>
+</section>
+<section id="location" class="level2" data-number="2.14">
+<h2 data-number="2.14" class="anchored" data-anchor-id="location"><span class="header-section-number">2.14</span> location</h2>
+<p>A <strong>location</strong> is a JSON object conforming to the GeoJSON specification (<a href="https://tools.ietf.org/html/rfc7946">RFC 7946</a>) with GeoJSON type being one of <code>Point</code>, <code>MultiPoint</code>, <code>LineString</code>, <code>MultiLineString</code>, <code>Polygon</code>, <code>MultiPolygon</code>, or <code>GeometryCollection</code>. Applications MAY restrict the location data type to GeoJSON objects of GeoJSON type <code>Point</code>.</p>
+<div id="lst-titanic" class="listing quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-lst figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-titanic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Example&nbsp;4: Position of the RMS Titanic as point
+</figcaption>
+<div aria-describedby="lst-titanic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode" id="lst-titanic"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="lst-titanic-1"><a href="#lst-titanic-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="lst-titanic-2"><a href="#lst-titanic-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"type"</span><span class="fu">:</span> <span class="st">"Point"</span><span class="fu">,</span></span>
+<span id="lst-titanic-3"><a href="#lst-titanic-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"coordinates"</span><span class="fu">:</span> <span class="ot">[</span><span class="fl">-49.946944</span><span class="ot">,</span> <span class="fl">41.7325</span><span class="ot">,</span> <span class="dv">-3803</span><span class="ot">]</span></span>
+<span id="lst-titanic-4"><a href="#lst-titanic-4" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</figure>
+</div>
+</section>
+<section id="address" class="level2" data-number="2.15">
+<h2 data-number="2.15" class="anchored" data-anchor-id="address"><span class="header-section-number">2.15</span> address</h2>
+<p>An <strong>address</strong> is a JSON object with any of the following fields, each mapped to a string.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The adress format is based on vCard ADR value components of same name (<a href="https://www.rfc-editor.org/rfc/rfc6350.html#section-6.3.1">RFC 6350, section 6.3.1</a>) and on schema.org type <a href="https://schema.org/PostalAddress">PostalAddress</a> but both of these standards are non-normative.</p>
+</div>
+</div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">field</th>
+<th style="text-align: left;">description</th>
+<th style="text-align: left;">schema.org property</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">pobox</td>
+<td style="text-align: left;">the post office box</td>
+<td style="text-align: left;"><a href="http://schema.org/postOfficeBoxNumber">postOfficeBoxNumber</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ext</td>
+<td style="text-align: left;">the extended address (e.g., apartment or suite number)</td>
+<td style="text-align: left;"><a href="http://schema.org/streetAddress">streetAddress</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">street</td>
+<td style="text-align: left;">the street address</td>
+<td style="text-align: left;"><a href="http://schema.org/streetAddress">streetAddress</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">locality</td>
+<td style="text-align: left;">the locality (e.g., city)</td>
+<td style="text-align: left;"><a href="http://schema.org/addressLocality">addressLocality</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">region</td>
+<td style="text-align: left;">the region (e.g., state or province)</td>
+<td style="text-align: left;"><a href="http://schema.org/addressRegion">addressRegion</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">code</td>
+<td style="text-align: left;">the postal code</td>
+<td style="text-align: left;"><a href="http://schema.org/postalCode">postalCode</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">country</td>
+<td style="text-align: left;">the country name</td>
+<td style="text-align: left;"><a href="http://schema.org/addressCountry">addressCountry</a></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="media" class="level2" data-number="2.16">
 <h2 data-number="2.16" class="anchored" data-anchor-id="media"><span class="header-section-number">2.16</span> media</h2>
@@ -647,9 +695,25 @@ Example&nbsp;5: Thumbnail image specified as media
 </figure>
 </div>
 </section>
-<section id="item-type" class="level2" data-number="2.17">
-<h2 data-number="2.17" class="anchored" data-anchor-id="item-type"><span class="header-section-number">2.17</span> item type</h2>
-<p>An <strong>item type</strong> is one of the following <a href="#uri">URI</a>s used to identify the different kinds of JSKOS <a href="#item">items</a> and types of <a href="#concept-mappings">mappings</a>:</p>
+</section>
+<section id="resource-and-property-types" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Resource and property types</h1>
+<p>Resource types and property types are <a href="#concept">concepts</a> with MANDATORY field <code>uri</code>. Both can be referred to implicitly ba referencing their <a href="#uri">URI</a> and they can be expressed explicitly, for instance in a <a href="#registries">registry</a>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Ressource types and property types roughly map to RDF classes and RDF properties but JSKOS does not require or imply the RDF data model.</p>
+</div>
+</div>
+<p>A <strong>resource type</strong> is a <a href="#concept">concept</a> used to distinguish different kinds of concepts or other <a href="#resource">resources</a>. Concept types are referred to by their <a href="#uri">URI</a> in array field <code>type</code> of a <a href="#resource">resource</a>.</p>
+<p>An <strong>item type</strong> is a resource type with one of the following <a href="#uri">URI</a>s. Item types are used to identify the different kinds of JSKOS <a href="#item">items</a> (see <a href="#object-types">object types</a>) and types of <a href="#concept-mappings">mappings</a>:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -714,13 +778,13 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>See appendix <a href="#item-types-as-concepts">item types as concepts</a> for an encoding of item types as <a href="#concept">concepts</a>.</p>
+<p>See appendix <a href="#item-types-as-concepts">item types as concepts</a> for a partial explicit encoding of item types.</p>
 </div>
 </div>
+<p>A <strong>property type</strong> is a <a href="#concept">concept</a> used to specify the type of a <a href="#qualified-statements">qualified statement</a>. Property types are referenced by their <a href="#uri">URI</a> in the keys of a <a href="#qualified-statements">qualified map</a>.</p>
 </section>
-</section>
-<section id="object-types" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Object types</h1>
+<section id="object-types" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Object types</h1>
 <p>JSKOS defines the following types of JSON objects:</p>
 <ul>
 <li><a href="#resource">resources</a> for all kinds of entities
@@ -738,11 +802,9 @@ Note
 </ul></li>
 <li><a href="#annotations">annotations</a> to review and comment on individual resources</li>
 </ul>
-<p>In addition there are <a href="#concept-bundles">concept bundles</a> as part of mappings, occurrences, and composed <a href="#concept">concepts</a>.</p>
-<p>A <strong>concept type</strong> is a <a href="#concept">concept</a> used to distinguish different kinds of concepts or other <a href="#resource">resources</a>. Concept types are referred to by their <a href="#uri">URI</a> in array field <code>type</code> of a <a href="#resource">resource</a>.</p>
-<p>A <strong>property type</strong> is a <a href="#concept">concept</a> used to specify the type of a <a href="#qualified-statements">qualified statement</a>. Property types are referenced by their <a href="#uri">URI</a> in the keys of a <a href="#qualified-statements">qualified map</a>.</p>
-<section id="resource" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="resource"><span class="header-section-number">3.1</span> Resource</h2>
+<p>Object types <a href="#concept">concept</a>, <a href="#concept-mappings">mapping</a>, and <a href="#concept-occurrences">occurrence</a> are also <a href="#concept-bundles">concept bundles</a>.</p>
+<section id="resource" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="resource"><span class="header-section-number">4.1</span> Resource</h2>
 <p>An <strong>resource</strong> is a JSON object with the following optional fields:</p>
 <table class="caption-top table">
 <thead>
@@ -756,7 +818,7 @@ Note
 <tr class="odd">
 <td style="text-align: left;"><span class="citation" data-cites="context">@context</span></td>
 <td style="text-align: left;"><a href="#uri">URI</a> or list of URI</td>
-<td style="text-align: left;">reference to a <a href="#json-ld-context">JSON-LD context</a> document</td>
+<td style="text-align: left;">reference to a JSON-LD context document (see <a href="#json-ld">appendix</a>)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">uri</td>
@@ -840,8 +902,8 @@ Note
 <p>The fields <code>created</code>, <code>issued</code>, <code>modified</code>, <code>creator</code>, <code>contributor</code>, <code>source</code>, and <code>publisher</code> do not refer to the entity referenced by the resource but to the resource object. For instance a resource about the city of Rome might have a recent date <code>created</code> while the founding date <code>-0753</code> would be stated in <a href="#item">item</a> field <code>startDate</code>.</p>
 <p>For use cases of field <code>partOf</code> see also <a href="#concept-schemes">Concept Schemes</a>.</p>
 </section>
-<section id="item" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="item"><span class="header-section-number">3.2</span> Item</h2>
+<section id="item" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="item"><span class="header-section-number">4.2</span> Item</h2>
 <p>An <strong>item</strong> is a <a href="#resource">resource</a> with the following optional fields (in addition to the optional fields <code>@context</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>identifier</code>, <code>issued</code>, <code>modified</code>, <code>partOf</code>, <code>publisher</code>, <code>rank</code>, <code>source</code>, <code>type</code>, and <code>uri</code>):</p>
 <table class="caption-top table">
 <thead>
@@ -989,13 +1051,13 @@ Note
 </tr>
 </tbody>
 </table>
-<p>The first element of array <code>type</code>, if given, MUST be an <a href="#item-type">item type</a>.</p>
+<p>The first element of array <code>type</code>, if given, MUST be an <a href="#item-types">item type</a> URI.</p>
 <p>Applications MAY limit the fields <code>notation</code> and/or <code>depiction</code> to lists of a single element or ignore all preceding elements of these lists.</p>
 <p>If <code>startDate</code> is given, the value of <code>endDate</code> MUST NOT be an interval with open start. If <code>endDate</code> is given, the value of <code>startDate</code> MUST NOT be an interval with open end.</p>
 <p>To state one primary date of an item set <code>startDate</code> and <code>endDate</code> to the same value.</p>
 </section>
-<section id="concept" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="concept"><span class="header-section-number">3.3</span> Concept</h2>
+<section id="concept" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="concept"><span class="header-section-number">4.3</span> Concept</h2>
 <p>A <strong>concept</strong> is an <a href="#item">item</a> and <a href="#concept-bundles">concept bundle</a> with the following optional fields (in addition to the optional fields <code>@context</code>, <code>address</code>, <code>altLabel</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>editorialNote</code>, <code>endDate</code>, <code>endPlace</code>, <code>example</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issued</code>, <code>location</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>place</code>, <code>prefLabel</code>, <code>publisher</code>, <code>rank</code>, <code>scopeNote</code>, <code>source</code>, <code>startDate</code>, <code>startPlace</code>, <code>subjectOf</code>, <code>subject</code>, <code>type</code>, <code>uri</code>, <code>url</code>, <code>memberSet</code>, <code>memberList</code>, <code>memberChoice</code>, and <code>memberRoles</code>):</p>
 <table class="caption-top table">
 <thead>
@@ -1063,7 +1125,7 @@ Note
 </tr>
 </tbody>
 </table>
-<p>The first element of field <code>type</code>, if given, MUST be the <a href="#item-type">item type</a> <a href="http://www.w3.org/2004/02/skos/core#Concept" class="uri">http://www.w3.org/2004/02/skos/core#Concept</a>. The type URI <a href="http://schema.vocnet.org/NonIndexingConcept" class="uri">http://schema.vocnet.org/NonIndexingConcept</a> should be used as second element for concepts not meant to be used for indexing.</p>
+<p>The first element of field <code>type</code>, if given, MUST be the <a href="#item-types">item type</a> URI <a href="http://www.w3.org/2004/02/skos/core#Concept" class="uri">http://www.w3.org/2004/02/skos/core#Concept</a>. The type URI <a href="http://schema.vocnet.org/NonIndexingConcept" class="uri">http://schema.vocnet.org/NonIndexingConcept</a> should be used as second element for concepts not meant to be used for indexing.</p>
 <p>Applications MAY limit the <code>inScheme</code> and/or <code>topConceptOf</code> to sets of a single element or ignore all but one element of these sets.</p>
 <p>If both fields <code>broader</code> and <code>ancestors</code> are given, the set <code>broader</code> MUST include <a href="#resource-sameness">the same</a> concept as the first element of <code>ancestors</code>.</p>
 <p>The <a href="#concept-bundles">concept bundle</a> fields <code>memberSet</code>, <code>memberList</code>, <code>memberChoice</code>, and <code>memberRoles</code> can be used to express the parts of a <strong>composed concept</strong> (also known as combined or synthesized concepts) unsorted or sorted. The field <code>memberChoice</code> SHOULD NOT be used without proper documentation because its meaning in this context is unclear. A concept MUST NOT include more than one of concept bundle fields. A concept SHOULD NOT reference itself as part of its concept bundle.</p>
@@ -1172,8 +1234,8 @@ Example&nbsp;8: concept from DDC
 </figure>
 </div>
 </section>
-<section id="concept-schemes" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="concept-schemes"><span class="header-section-number">3.4</span> Concept Schemes</h2>
+<section id="concept-schemes" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="concept-schemes"><span class="header-section-number">4.4</span> Concept Schemes</h2>
 <p>A <strong>concept scheme</strong> is an <a href="#item">item</a> with the following optional fields (in addition to the optional fields <code>@context</code>, <code>address</code>, <code>altLabel</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>editorialNote</code>, <code>endDate</code>, <code>endPlace</code>, <code>example</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issued</code>, <code>location</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>place</code>, <code>prefLabel</code>, <code>publisher</code>, <code>rank</code>, <code>scopeNote</code>, <code>source</code>, <code>startDate</code>, <code>startPlace</code>, <code>subjectOf</code>, <code>subject</code>, <code>type</code>, <code>uri</code>, and <code>url</code>):</p>
 <table class="caption-top table">
 <thead>
@@ -1222,7 +1284,7 @@ Example&nbsp;8: concept from DDC
 <tr class="even">
 <td style="text-align: left;">types</td>
 <td style="text-align: left;"><a href="#set">set</a> of <a href="#concept">concepts</a></td>
-<td style="text-align: left;"><a href="#object-types">concept types</a> of concepts in this scheme</td>
+<td style="text-align: left;"><a href="#resource-and-property-types">resource type</a> URIs of concepts in this scheme</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">distributions</td>
@@ -1246,10 +1308,10 @@ Example&nbsp;8: concept from DDC
 </tr>
 </tbody>
 </table>
-<p>The first element of array field <code>type</code>, if given, MUST be the <a href="#item-type">item type</a> <a href="http://www.w3.org/2004/02/skos/core#ConceptScheme" class="uri">http://www.w3.org/2004/02/skos/core#ConceptScheme</a>.</p>
+<p>The first element of array field <code>type</code>, if given, MUST be the <a href="#item-types">item type</a> URI <a href="http://www.w3.org/2004/02/skos/core#ConceptScheme" class="uri">http://www.w3.org/2004/02/skos/core#ConceptScheme</a>.</p>
 <p>The values of field <code>uriPattern</code> and <code>notationPattern</code> MUST conform to the regular expression syntax used by XML Schema (<a href="https://www.w3.org/TR/xmlschema-2/#regexs">Appendix F</a>) and SHOULD be anchored with <code>^</code> as first and <code>$</code> as last character. Applications MAY automatically anchor unanchored regular expressions.</p>
 <p>If <code>concepts</code> is a set, all its member concepts SHOULD contain a field <code>inScheme</code> and all MUST contain <a href="#resource-sameness">the same</a> concept scheme in field <code>inScheme</code> if this field is given.</p>
-<p>If <code>types</code> and <code>concepts</code> are sets, the <code>types</code> set SHOULD include all <a href="#object-types">concept types</a> for each concept’s <code>type</code> other than <code>http://www.w3.org/2004/02/skos/core#Concept</code>.</p>
+<p>If <code>types</code> and <code>concepts</code> are sets, the <code>types</code> set SHOULD include all <a href="#resource-and-property-types">resource type</a> URIs for each concept’s <code>type</code> other than <code>http://www.w3.org/2004/02/skos/core#Concept</code>.</p>
 <p>Resource field <code>partOf</code> at a concept scheme MUST be interpreted as following:</p>
 <ul>
 <li>if the linked resource is another <a href="#concept-schemes">concept scheme</a>, the concept scheme is <em>subset of</em> the other concept scheme</li>
@@ -1258,8 +1320,8 @@ Example&nbsp;8: concept from DDC
 <p>Item field <code>replacedBy</code> at a concept schemes SHOULD be used to connect successive editions or concept scheme that have been replaced or renamed.</p>
 <p>Item field <code>basedOn</code> at a concept schemes SHOULD be used to connect translations, abridged versions, or concept schemes that have been inspired by another concept scheme.</p>
 </section>
-<section id="concept-occurrences" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="concept-occurrences"><span class="header-section-number">3.5</span> Concept Occurrences</h2>
+<section id="concept-occurrences" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="concept-occurrences"><span class="header-section-number">4.5</span> Concept Occurrences</h2>
 <p>An <strong>occurrence</strong> is a <a href="#resource">resource</a> and <a href="#concept-bundles">concept bundle</a> with the following optional fields (in addition to the optional fields <code>@context</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>identifier</code>, <code>issued</code>, <code>modified</code>, <code>partOf</code>, <code>publisher</code>, <code>source</code>, <code>type</code>, <code>uri</code>, <code>memberSet</code>, <code>memberList</code>, <code>memberChoice</code>, and <code>memberRoles</code>):</p>
 <table class="caption-top table">
 <thead>
@@ -1376,8 +1438,8 @@ Example&nbsp;10
 </figure>
 </div>
 </section>
-<section id="registries" class="level2" data-number="3.6">
-<h2 data-number="3.6" class="anchored" data-anchor-id="registries"><span class="header-section-number">3.6</span> Registries</h2>
+<section id="registries" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="registries"><span class="header-section-number">4.6</span> Registries</h2>
 <p>A <strong>registry</strong> is an <a href="#item">item</a> with the following optional fields (in addition to the optional fields <code>@context</code>, <code>address</code>, <code>altLabel</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>editorialNote</code>, <code>endDate</code>, <code>endPlace</code>, <code>example</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issued</code>, <code>location</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>place</code>, <code>prefLabel</code>, <code>publisher</code>, <code>rank</code>, <code>scopeNote</code>, <code>source</code>, <code>startDate</code>, <code>startPlace</code>, <code>subjectOf</code>, <code>subject</code>, <code>type</code>, <code>uri</code>, and <code>url</code>):</p>
 <table class="caption-top table">
 <thead>
@@ -1401,47 +1463,52 @@ Example&nbsp;10
 <tr class="odd">
 <td style="text-align: left;">types</td>
 <td style="text-align: left;"><a href="#set">set</a> of <a href="#concept">concepts</a></td>
-<td style="text-align: left;"><a href="#object-types">concept types</a> in this registry</td>
+<td style="text-align: left;"><a href="#resource-and-property-types">resource types</a> in this registry</td>
 </tr>
 <tr class="even">
+<td style="text-align: left;">properties</td>
+<td style="text-align: left;"><a href="#set">set</a> of <a href="#concept">concepts</a></td>
+<td style="text-align: left;"><a href="#resource-and-property-types">property types</a> in this registry</td>
+</tr>
+<tr class="odd">
 <td style="text-align: left;">mappings</td>
 <td style="text-align: left;"><a href="#set">set</a> of <a href="#concept-mappings">mappings</a></td>
 <td style="text-align: left;"><a href="#concept-mappings">mappings</a> in this registry</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">registries</td>
 <td style="text-align: left;"><a href="#set">set</a> of <a href="#registries">registries</a></td>
 <td style="text-align: left;">other registries in this registry</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">concordances</td>
 <td style="text-align: left;"><a href="#set">set</a> of <a href="#concordances">concordances</a></td>
 <td style="text-align: left;"><a href="#concordances">concordances</a> in this registry</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">occurrences</td>
 <td style="text-align: left;"><a href="#set">set</a> of <a href="#concept-occurrences">occurrences</a></td>
 <td style="text-align: left;"><a href="#concept-occurrences">occurrences</a> in this registry</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">extent</td>
 <td style="text-align: left;">string</td>
 <td style="text-align: left;">Size of the registry</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">languages</td>
 <td style="text-align: left;"><a href="#list">list</a></td>
 <td style="text-align: left;">Supported languages</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">license</td>
 <td style="text-align: left;"><a href="#set">set</a></td>
 <td style="text-align: left;">Licenses which the full registry content can be used under</td>
 </tr>
 </tbody>
 </table>
-<p>The first element of array field <code>type</code>, if given, MUST be the <a href="#item-type">item type</a> <a href="http://purl.org/cld/cdtype/CatalogueOrIndex" class="uri">http://purl.org/cld/cdtype/CatalogueOrIndex</a>.</p>
-<p>Registries are collection of <a href="#concept">concepts</a>, <a href="#concept-schemes">concept schemes</a>, <a href="#object-types">concept types</a>, <a href="#concept-mappings">concept mappings</a>, and/or other registries.</p>
+<p>The first element of array field <code>type</code>, if given, MUST be the <a href="#item-types">item type</a> URI <a href="http://purl.org/cld/cdtype/CatalogueOrIndex" class="uri">http://purl.org/cld/cdtype/CatalogueOrIndex</a>.</p>
+<p>Registries are collection of <a href="#concept">concepts</a>, <a href="#concept-schemes">concept schemes</a>, <a href="#resource-and-property-types">resource types</a>, <a href="#resource-and-property-types">property types</a>, <a href="#concept-mappings">concept mappings</a>, and/or other registries.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1452,13 +1519,13 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Registries are the top JSKOS entity, followed by <a href="#concordances">concordances</a>, <a href="#concept-mappings">mappings</a> <a href="#concept-schemes">concept schemes</a>, and on the lowest level <a href="#concept">concepts</a> and <a href="#object-types">concept types</a>. See <a href="#distributions">Distributions</a> for an alternative.</p>
+<p>Registries are the top JSKOS entity, followed by <a href="#concordances">concordances</a>, <a href="#concept-mappings">mappings</a> <a href="#concept-schemes">concept schemes</a>, and on the lowest level <a href="#concept">concepts</a> and <a href="#resource-and-property-types">resource types</a>. See <a href="#distributions">Distributions</a> for an alternative.</p>
 <p>Additional integrity rules for registries will be defined (TODO).</p>
 </div>
 </div>
 </section>
-<section id="distributions" class="level2" data-number="3.7">
-<h2 data-number="3.7" class="anchored" data-anchor-id="distributions"><span class="header-section-number">3.7</span> Distributions</h2>
+<section id="distributions" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="distributions"><span class="header-section-number">4.7</span> Distributions</h2>
 <p>A <strong>distribution</strong> is an <a href="#item">item</a> with the following fields (in addition to the optional fields <code>@context</code>, <code>address</code>, <code>altLabel</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>editorialNote</code>, <code>endDate</code>, <code>endPlace</code>, <code>example</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issued</code>, <code>location</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>place</code>, <code>prefLabel</code>, <code>publisher</code>, <code>rank</code>, <code>scopeNote</code>, <code>source</code>, <code>startDate</code>, <code>startPlace</code>, <code>subjectOf</code>, <code>subject</code>, <code>type</code>, <code>uri</code>, and <code>url</code>):</p>
 <p>Distributions mostly cover the <a href="https://www.w3.org/TR/vocab-dcat-3/#Class:Distribution">class Distribution</a> from <a href="https://www.w3.org/TR/vocab-dcat-3/">Data Catalog Vocabulary</a>.</p>
 <table class="caption-top table">
@@ -1519,7 +1586,7 @@ Note
 </table>
 <p>The <code>format</code> field SHOULD reference a content format rather than its serialization and possible wrapping. The URI of JSKOS is <a href="http://format.gbv.de/jskos" class="uri">http://format.gbv.de/jskos</a>.</p>
 <p>Fields <code>mimetype</code>, <code>compressFormat</code>, and <code>packageFormat</code> SHOULD be IANA media type URIs, if available. Field <code>mimetype</code> MAY be a string for backwards-compatibility.</p>
-<p>The first element of array field <code>type</code>, if given, MUST be the <a href="#item-type">item type</a> <a href="http://www.w3.org/ns/dcat#Distribution" class="uri">http://www.w3.org/ns/dcat#Distribution</a>.</p>
+<p>The first element of array field <code>type</code>, if given, MUST be the <a href="#item-types">item type</a> URI <a href="http://www.w3.org/ns/dcat#Distribution" class="uri">http://www.w3.org/ns/dcat#Distribution</a>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1563,8 +1630,8 @@ Example&nbsp;11
 </figure>
 </div>
 </section>
-<section id="concordances" class="level2" data-number="3.8">
-<h2 data-number="3.8" class="anchored" data-anchor-id="concordances"><span class="header-section-number">3.8</span> Concordances</h2>
+<section id="concordances" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="concordances"><span class="header-section-number">4.8</span> Concordances</h2>
 <p>A <strong>concordance</strong> is an <a href="#item">item</a> with the following fields (in addition to the optional fields <code>@context</code>, <code>address</code>, <code>altLabel</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>editorialNote</code>, <code>endDate</code>, <code>endPlace</code>, <code>example</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issued</code>, <code>location</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>prefLabel</code>, <code>publisher</code>, <code>rank</code>, <code>scopeNote</code>, <code>source</code>, <code>startDate</code>, <code>startPlace</code>, <code>subjectOf</code>, <code>subject</code>, <code>type</code>, <code>uri</code>, and <code>url</code>). All fields except <code>fromScheme</code> and <code>toScheme</code> are optional.</p>
 <table class="caption-top table">
 <thead>
@@ -1607,7 +1674,7 @@ Example&nbsp;11
 </tr>
 </tbody>
 </table>
-<p>The first element of array field <code>type</code>, if given, MUST be the <a href="#item-type">item type</a> <a href="http://rdfs.org/ns/void#Linkset" class="uri">http://rdfs.org/ns/void#Linkset</a>.</p>
+<p>The first element of array field <code>type</code>, if given, MUST be the <a href="#item-types">item type</a> URI <a href="http://rdfs.org/ns/void#Linkset" class="uri">http://rdfs.org/ns/void#Linkset</a>.</p>
 <p>Concordances are collections of <a href="#concept-mappings">mappings</a> from one <a href="#concept-schemes">concept scheme</a> to another. If <code>mappings</code> is a set then</p>
 <ul>
 <li><p>all its members with field <code>fromScheme</code> MUST have <a href="#resource-sameness">the same</a> value like concordance field <code>fromScheme</code>.</p></li>
@@ -1627,8 +1694,8 @@ Note
 </div>
 </div>
 </section>
-<section id="concept-mappings" class="level2" data-number="3.9">
-<h2 data-number="3.9" class="anchored" data-anchor-id="concept-mappings"><span class="header-section-number">3.9</span> Concept Mappings</h2>
+<section id="concept-mappings" class="level2" data-number="4.9">
+<h2 data-number="4.9" class="anchored" data-anchor-id="concept-mappings"><span class="header-section-number">4.9</span> Concept Mappings</h2>
 <p>A <strong>mapping</strong> is an <a href="#item">item</a> with the following fields (in addition to the optional fields <code>@context</code>, <code>address</code>, <code>altLabel</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>editorialNote</code>, <code>endDate</code>, <code>endPlace</code>, <code>example</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issued</code>, <code>location</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>prefLabel</code>, <code>publisher</code>, <code>rank</code>, <code>scopeNote</code>, <code>source</code>, <code>startDate</code>, <code>startPlace</code>, <code>subjectOf</code>, <code>subject</code>, <code>type</code>, <code>uri</code>, and <code>url</code>). All fields except <code>from</code> and <code>to</code> are optional.</p>
 <table class="caption-top table">
 <thead>
@@ -1667,7 +1734,7 @@ Note
 </tbody>
 </table>
 <p>A <strong>mapping</strong> represents a mapping between <a href="#concept">concepts</a> of two <a href="#concept-schemes">concept schemes</a>. It consists two <a href="#concept-bundles">concept bundles</a> with additional metadata not fully defined yet.</p>
-<p>The first element of array field <code>type</code>, if given, MUST be an <a href="#item-type">item type</a> for mappings from the <a href="http://www.w3.org/TR/skos-reference/#mapping">SKOS mapping properties</a>. The field <code>type</code> MAY contain additional values but MUST NOT contain multiple of these values.</p>
+<p>The first element of array field <code>type</code>, if given, MUST be an <a href="#item-types">item type</a> for mappings from the <a href="http://www.w3.org/TR/skos-reference/#mapping">SKOS mapping properties</a>. The field <code>type</code> MAY contain additional values but MUST NOT contain multiple of these values.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1695,8 +1762,8 @@ Note
 </div>
 </div>
 </section>
-<section id="concept-bundles" class="level2" data-number="3.10">
-<h2 data-number="3.10" class="anchored" data-anchor-id="concept-bundles"><span class="header-section-number">3.10</span> Concept Bundles</h2>
+<section id="concept-bundles" class="level2" data-number="4.10">
+<h2 data-number="4.10" class="anchored" data-anchor-id="concept-bundles"><span class="header-section-number">4.10</span> Concept Bundles</h2>
 <p>A <strong>concept bundle</strong> is a group of <a href="#concept">concepts</a>. Concept bundles can be used for <a href="#concept-mappings">mappings</a>, composed concepts, and <a href="#concept-occurrences">occurrences</a>.</p>
 <p>A concept bundle is a JSON object with at most one of the following fields:</p>
 <table class="caption-top table">
@@ -1781,8 +1848,8 @@ Note
 </div>
 </div>
 </section>
-<section id="annotations" class="level2" data-number="3.11">
-<h2 data-number="3.11" class="anchored" data-anchor-id="annotations"><span class="header-section-number">3.11</span> Annotations</h2>
+<section id="annotations" class="level2" data-number="4.11">
+<h2 data-number="4.11" class="anchored" data-anchor-id="annotations"><span class="header-section-number">4.11</span> Annotations</h2>
 <p>An <strong>annotation</strong> links a JSKOS <a href="#resource">resource</a> or another annotation with a review, comment or similar document. An annotation is a JSON object that conforms to the <a href="https://www.w3.org/TR/annotation-model/">Web Annotation Data Model</a> and further contains the following fields as defined:</p>
 <table class="caption-top table">
 <thead>
@@ -1817,8 +1884,8 @@ Note
 </table>
 </section>
 </section>
-<section id="qualified-statements" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Qualified statements</h1>
+<section id="qualified-statements" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Qualified statements</h1>
 <p>JSKOS defines a set of common fields (such as <code>prefLabel</code>, <code>startDate</code>, <code>place</code>, and <code>media</code>) to facilitate interoperability across diverse knowledge organization systems. Application of these fields comes with simplification and lack of context information. To allow for more details, qualified statements can express typed and qualified data at cost of interoperability.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1833,8 +1900,8 @@ Note
 <p>Qualified statements are similar but not identical to properties in a property graph and to referenced statements in Wikibase data model.</p>
 </div>
 </div>
-<p>The term <strong>qualified statement</strong> refers to the combination of a <a href="#object-types">property type</a> and a <a href="#qualified-value">qualified value</a>. Qualified statements are grouped in <em>qualified maps</em> by the data type of their qualified values.</p>
-<p>A <strong>qualified map</strong> is a JSON object that maps <a href="#object-types">property types</a> to <a href="#qualified-value">qualified values</a>.</p>
+<p>The term <strong>qualified statement</strong> refers to the combination of a <a href="#resource-and-property-types">property type</a> and a <a href="#qualified-value">qualified value</a>. Qualified statements are grouped in <em>qualified maps</em> by the data type of their qualified values.</p>
+<p>A <strong>qualified map</strong> is a JSON object that maps <a href="#resource-and-property-types">property types</a> to <a href="#qualified-value">qualified values</a>.</p>
 <div id="lst-qualified-map" class="json listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-qualified-map-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1848,8 +1915,8 @@ Example&nbsp;13: Qualified map with property types from schema.org
 </div>
 </figure>
 </div>
-<section id="qualified-value" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="qualified-value"><span class="header-section-number">4.1</span> Qualified value</h2>
+<section id="qualified-value" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="qualified-value"><span class="header-section-number">5.1</span> Qualified value</h2>
 <p>A <strong>qualified value</strong> is a JSON object with the following optional fields:</p>
 <table class="caption-top table">
 <thead>
@@ -1892,8 +1959,8 @@ Example&nbsp;13: Qualified map with property types from schema.org
 <li><a href="#qualified-literal">Qualified literal</a> to reference names and labels</li>
 </ul>
 </section>
-<section id="qualified-relation" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="qualified-relation"><span class="header-section-number">4.2</span> Qualified relation</h2>
+<section id="qualified-relation" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="qualified-relation"><span class="header-section-number">5.2</span> Qualified relation</h2>
 <p>A <strong>qualified relation</strong> is a <a href="#qualified-value">qualified value</a> with the following fields (in addition to the optional fields <code>rank</code>, <code>source</code>, <code>startDate</code>, and <code>endDate</code>):</p>
 <table class="caption-top table">
 <thead>
@@ -1946,8 +2013,8 @@ Example&nbsp;14: Concept with qualified relations (from Wikidata)
 </figure>
 </div>
 </section>
-<section id="qualified-date" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="qualified-date"><span class="header-section-number">4.3</span> Qualified date</h2>
+<section id="qualified-date" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="qualified-date"><span class="header-section-number">5.3</span> Qualified date</h2>
 <p>A <strong>qualified date</strong> is a <a href="#qualified-value">qualified value</a> with the following fields (in addition to the optional fields <code>source</code> and <code>rank</code>) to express information about an event:</p>
 <table class="caption-top table">
 <thead>
@@ -2001,8 +2068,8 @@ Note
 </div>
 <p>Applications MAY disallow or ignore qualified dates without field <code>date</code>.</p>
 </section>
-<section id="qualified-literal" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="qualified-literal"><span class="header-section-number">4.4</span> Qualified literal</h2>
+<section id="qualified-literal" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="qualified-literal"><span class="header-section-number">5.4</span> Qualified literal</h2>
 <p>A <strong>Qualified literal</strong> is a <a href="#qualified-value">qualified value</a> with the following fields (in addition to the optional fields <code>rank</code>, <code>source</code>, <code>startDate</code>, and <code>endDate</code>):</p>
 <table class="caption-top table">
 <thead>
@@ -2078,10 +2145,10 @@ Example&nbsp;16: Concept with qualified literals
 </div>
 </section>
 </section>
-<section id="additional-rules" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Additional rules</h1>
-<section id="resource-sameness" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="resource-sameness"><span class="header-section-number">5.1</span> Resource sameness</h2>
+<section id="sec-additional-rules" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Additional rules</h1>
+<section id="resource-sameness" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="resource-sameness"><span class="header-section-number">6.1</span> Resource sameness</h2>
 <p>Two <a href="#resource">resources</a> are <em>same</em> if and only if they both contain field <code>uri</code> with the same value. A resource without field <code>uri</code> is not same to any other resource.</p>
 <div id="lst-sameness" class="json listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
@@ -2095,8 +2162,8 @@ Example&nbsp;17: Two same resources
 </figure>
 </div>
 </section>
-<section id="closed-world-statements" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="closed-world-statements"><span class="header-section-number">5.2</span> Closed world statements</h2>
+<section id="closed-world-statements" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="closed-world-statements"><span class="header-section-number">6.2</span> Closed world statements</h2>
 <p>By default, a JSKOS document should be interpreted as possibly incomplete: a missing field does not imply that no value exists for this field: this assumption is also known as open-world assumption. Applications SHOULD support closed world statements to explicitly disable the open world assumption for selected properties and explicitly state the known absence or existence of unknown values:</p>
 <table class="caption-top table">
 <thead>
@@ -2171,10 +2238,10 @@ Example&nbsp;18
 </figure>
 </div>
 </section>
-<section id="inference-rules-and-integrity-constraints" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="inference-rules-and-integrity-constraints"><span class="header-section-number">5.3</span> Inference rules and integrity constraints</h2>
-<section id="inference-rules" class="level3" data-number="5.3.1">
-<h3 data-number="5.3.1" class="anchored" data-anchor-id="inference-rules"><span class="header-section-number">5.3.1</span> Inference rules</h3>
+<section id="inference-rules-and-integrity-constraints" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="inference-rules-and-integrity-constraints"><span class="header-section-number">6.3</span> Inference rules and integrity constraints</h2>
+<section id="inference-rules" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="inference-rules"><span class="header-section-number">6.3.1</span> Inference rules</h3>
 <p>JSKOS records can automatically be expanded with the following inference rules:</p>
 <ul>
 <li>Object types of set elements can be derived from fields the set is used in. For instance members of a set referenced by field <code>inScheme</code> can be assumed to be <a href="#concept-schemes">concept schemes</a> (SKOS integritry rule S4) and members of a set referenced by field <code>topConcepts</code> can be assumed to be <a href="#concept">concepts</a> (SKOS integritry rule S6).</li>
@@ -2193,8 +2260,8 @@ TODO: broader/narrower (S26)
 TODO: Mappings (S38-S46)
 -->
 </section>
-<section id="integritry-constraints" class="level3" data-number="5.3.2">
-<h3 data-number="5.3.2" class="anchored" data-anchor-id="integritry-constraints"><span class="header-section-number">5.3.2</span> Integritry constraints</h3>
+<section id="integritry-constraints" class="level3" data-number="6.3.2">
+<h3 data-number="6.3.2" class="anchored" data-anchor-id="integritry-constraints"><span class="header-section-number">6.3.2</span> Integritry constraints</h3>
 <p>Integrity constraints of SKOS SHOULD be respected. Applications MAY reject JSKOS data violating the constraints.</p>
 <ul>
 <li><a href="#concept">concepts</a>, <a href="#concept-schemes">concept schemes</a>, <a href="#registries">registries</a>, <a href="#distributions">distributions</a>, <a href="#concordances">concordances</a>, <a href="#concept-mappings">concept mappings</a> are pairwise disjoint (SKOS integrity rule S9)</li>
@@ -2216,8 +2283,8 @@ A Concept Scheme represents a [SKOS Concept Scheme].
 -->
 </section>
 </section>
-<section id="extension-with-custom-fields" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="extension-with-custom-fields"><span class="header-section-number">5.4</span> Extension with custom fields</h2>
+<section id="extension-with-custom-fields" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="extension-with-custom-fields"><span class="header-section-number">6.4</span> Extension with custom fields</h2>
 <p>A JSKOS record MAY contain additional fields for custom usage. These fields MUST start with and underscore (<code>_</code>) or consist of uppercase letters and digits only (A-Z, 0-1). The fields SHOULD be ignored by generic JSKOS applications.</p>
 <div id="lst-custom-fields" class="listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
@@ -2261,11 +2328,12 @@ Example&nbsp;19
 <section id="informative-references" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="informative-references">Informative references</h2>
 <ul>
-<li><p>R. Albertoni, D. Browning, S. Cox, A. Gonzalez Beltran, A. Perego, P. Winstanley: <em>Data Catalog Vocabulary (DCAT) - Version 3</em>. August 2024. <a href="https://www.w3.org/TR/vocab-dcat-3/" class="uri">https://www.w3.org/TR/vocab-dcat-3/</a>.</p></li>
+<li><p>R. Albertoni, D. Browning, S. Cox, A. Gonzalez Beltran, A. Perego, P. Winstanley: <em>Data Catalog Vocabulary (DCAT) - Version 3</em>. August 2024. <a href="https://www.w3.org/TR/vocab-dcat-3/" class="uri">https://www.w3.org/TR/vocab-dcat-3/</a></p></li>
 <li><p>K. Alexander, R. Cyganiak, M. Hausenblas, Zhao, J.: <em>Describing Linked Datasets with the VoID Vocabulary</em>. March 2011. <a href="http://www.w3.org/TR/void/" class="uri">http://www.w3.org/TR/void/</a></p></li>
 <li><p>DCMI Usage Board: <em>DCMI Metadata Terms</em>. June 2012. <a href="http://dublincore.org/documents/dcmi-terms/" class="uri">http://dublincore.org/documents/dcmi-terms/</a></p></li>
 <li><p>F. Cotton (editor): <em>XKOS: An SKOS extension for representing statistical classifications</em>. DDI Alliance, May 2019. <a href="https://rdf-vocabulary.ddialliance.org/xkos.html" class="uri">https://rdf-vocabulary.ddialliance.org/xkos.html</a></p></li>
 <li><p>A. Miles, S. Bechhofer: <em>SKOS Reference</em>. W3C Recommendation, 18 August 2009. <a href="http://www.w3.org/TR/skos-reference" class="uri">http://www.w3.org/TR/skos-reference</a></p></li>
+<li><p>S. Perreault: <em>vCard Format Specification</em>. RFC 6350, August 2011 <a href="http://tools.ietf.org/html/rfc6350" class="uri">http://tools.ietf.org/html/rfc6350</a></p></li>
 <li><p>A. Phillips, M. Davis: <em>Tags for Identifying Languages</em>. RFC 5646, September 2009. <a href="http://tools.ietf.org/html/rfc5646" class="uri">http://tools.ietf.org/html/rfc5646</a></p></li>
 <li><p>A. Phillips, M. Davis: <em>Matching of Language Tags</em>. RFC 4647, September 2006. <a href="http://tools.ietf.org/html/rfc4647" class="uri">http://tools.ietf.org/html/rfc4647</a></p></li>
 <li><p>M. Sporny, P.Champin, D. Longley: <em>JSON-LD 1.1</em>. W3C Recommendation, July 2020. <a href="http://www.w3.org/TR/json-ld11/" class="uri">http://www.w3.org/TR/json-ld11/</a></p></li>
@@ -2276,8 +2344,8 @@ Example&nbsp;19
 <section id="appendices" class="level1 unnumbered">
 <h1 class="unnumbered">Appendices</h1>
 <p>The following appendices are <em>non-normative</em>.</p>
-<section id="json-ld-context" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="json-ld-context">JSON-LD context</h2>
+<section id="json-ld" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="json-ld">JSON-LD</h2>
 <p>The following <a href="http://www.w3.org/TR/json-ld/#the-context">JSON-LD 1.1 context document</a> (available <a href="context.json">from here</a>) can be used to map JSKOS without <a href="#closed-world-statements">closed world statements</a> and without <a href="#language-range">language ranges</a> to RDF.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"@context"</span><span class="fu">:</span> <span class="fu">{</span></span>
@@ -2511,8 +2579,8 @@ Example&nbsp;19
 <p>JSKOS with closed world statements can be mapped to RDF by ignoring all boolean values and/or by mapping selected boolean values to RDF triples with blank nodes.</p>
 <p>Applications should further add implicit RDF triples, such as <code>$someConcept rdf:type skos:Concept</code>, if such information can be derived from JSKOS by other means.</p>
 </section>
-<section id="json-schemas-and-validation" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="json-schemas-and-validation">JSON Schemas and validation</h2>
+<section id="validation" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="validation">Validation</h2>
 <p>Experimental JSON Schemas exist but don’t cover all aspects of JSKOS:</p>
 <ul>
 <li><a href="resource.schema.json">Resource</a></li>
@@ -2937,7 +3005,7 @@ Example&nbsp;25: Mappings
 <h1 class="unnumbered">Changelog</h1>
 <p>JSKOS started in 2016 as as part of project <a href="https://coli-conc.gbv.de/">coli-conc</a>.</p>
 <section id="section" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="section">0.6.0</h3>
+<h3 class="unnumbered anchored" data-anchor-id="section">0.6.0 (2025-01-20)</h3>
 <ul>
 <li>Add <a href="#rank">ranks</a> and <a href="#qualified-statements">qualified statements</a></li>
 <li>Add extended dates for <code>startDate</code>, <code>endDate</code>, and <code>relatedDate</code>.</li>
@@ -2945,7 +3013,7 @@ Example&nbsp;25: Mappings
 <li>Clarify semantics of resource fields</li>
 <li>Change item field <code>replacedBy</code> to be set (<strong>breaking change</strong>)</li>
 <li>Add item field <code>basedOn</code></li>
-<li>Update references</li>
+<li>Update references, layout and wording</li>
 </ul>
 </section>
 <section id="section-1" class="level3 unnumbered">
@@ -3204,8 +3272,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -3316,7 +3382,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

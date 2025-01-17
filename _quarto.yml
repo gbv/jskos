@@ -12,7 +12,7 @@ resources:
 repo-url: https://github.com/gbv/jskos
 
 manuscript:
-  article: jskos.md
+  article: jskos.qmd
   code-links:
     - repo
 

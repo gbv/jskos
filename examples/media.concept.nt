@@ -1,0 +1,6 @@
+<http://example.org/1/thumbnail.jpg> <http://purl.org/dc/elements/1.1/format> "image/jpeg" .
+<http://example.org/1/thumbnail.jpg> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/dc/dcmitype/StillImage> .
+_:b0 <http://xmlns.com/foaf/0.1/depiction> _:b1 .
+_:b1 <http://iiif.io/api/presentation/3#thumbnail> <http://example.org/1/thumbnail.jpg> .
+_:b1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://iiif.io/api/presentation/3#Manifest> .
+_:b1 <http://www.w3.org/ns/activitystreams#items> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .

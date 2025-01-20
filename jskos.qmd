@@ -28,7 +28,7 @@ See [object types] for the class hierarchy of JSKOS data elements.
 
 ## Status of this document
 
-JSKOS is being specified since 2016 based on actual use cases and without a
+JSKOS is being specified since 2014 based on actual use cases and without a
 committee (see [changelog]). The specification is hosted at
 <http://gbv.github.io/jskos/> in the public GitHub repository
 <https://github.com/gbv/jskos>. Feedback is appreciated!  See
@@ -1429,7 +1429,7 @@ Multiple mappings from one concept (612.112 in DDC) to GND.
 
 # Changelog {.unnumbered}
 
-JSKOS started in 2016 as as part of project [coli-conc](https://coli-conc.gbv.de/).
+JSKOS started in 2014 as as part of project [coli-conc](https://coli-conc.gbv.de/).
 
 ### 0.6.0 (2025-01-20) {.unnumbered}
 

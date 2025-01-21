@@ -13,7 +13,7 @@
   "scripts": {
     "test": "mocha",
     "html": "make",
-    "rdf": "jsonld2rdf -c context.json"
+    "rdf": "jsonld2rdf -c context.json -p prefixes.json"
   },
   "devDependencies": {
     "ajv": "^8.17.1",

@@ -1290,7 +1290,7 @@ The following appendices are *non-normative*.
 
 The following [JSON-LD 1.1 context document](http://www.w3.org/TR/json-ld/#the-context)
 (available [from here](context.json)) can be used to map JSKOS without
-[closed world statements] and without [language ranges](#language-range) to RDF.
+[closed world statements] and without [language ranges](#language-range) to RDF.There is also a [list of namespace prefixes](prefixes.json).
 
 ```{.json}
 {{< include context.json >}}

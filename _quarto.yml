@@ -8,6 +8,7 @@ project:
 
 resources:
   - context.json
+  - prefixes.json
 
 repo-url: https://github.com/gbv/jskos
 

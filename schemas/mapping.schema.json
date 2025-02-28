@@ -42,7 +42,7 @@
       "$ref": "scheme.schema.json"
     },
     "mappingRelevance": {
-      "description": "numerical value between 0 and 1 (experimental)",
+      "description": "numerical confidence value between 0 and 1",
       "type": "number",
       "minimum": 0,
       "maximum": 1

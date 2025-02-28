@@ -863,7 +863,7 @@ from             [concept bundle] concepts mapped from
 to               [concept bundle] concepts mapped to
 fromScheme       [concept scheme] source concept scheme
 toScheme         [concept scheme] target concept scheme
-mappingRelevance number           numerical value between 0 and 1 (experimental)
+mappingRelevance number           numerical confidence value between 0 and 1
 
 A **mapping** represents a mapping between [concepts] of two [concept schemes].
 It consists two [concept bundles] with additional metadata not fully defined
@@ -1430,6 +1430,10 @@ Multiple mappings from one concept (612.112 in DDC) to GND.
 # Changelog {.unnumbered}
 
 JSKOS started in 2014 as as part of project [coli-conc](https://coli-conc.gbv.de/).
+
+### 0.7.0 (draft) {-}
+
+- `mappingRelevance` is not experimental anymore 
 
 ### 0.6.0 (2025-01-20) {.unnumbered}
 

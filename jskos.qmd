@@ -1568,3 +1568,6 @@ JSKOS started in 2014 as as part of project [coli-conc](https://coli-conc.gbv.de
 * Add field "extent"
 * Update reference to [RFC 5646] instead of obsoleted RFC 4646
 
+### 0.0.1 (2014-09-11) {-}
+
+* first draft

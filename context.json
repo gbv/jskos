@@ -228,6 +228,7 @@
         "language": "@language"
       }
     },
-    "rank": "http://wikiba.se/ontology#rank"
+    "rank": "http://wikiba.se/ontology#rank",
+    "version": "http://www.w3.org/2002/07/owl#versionInfo"
   }
 }

@@ -46,6 +46,10 @@
       "type": "number",
       "minimum": 0,
       "maximum": 1
+    },
+    "justification": {
+      "description": "mapping justification",
+      "$ref": "resource.schema.json#/definitions/uri"
     }
   },
   "required": [

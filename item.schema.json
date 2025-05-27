@@ -225,6 +225,10 @@
       "items": {
         "$ref": "#/definitions/media"
       }
+    },
+    "version": {
+      "description": "version number",
+      "type": "string"
     }
   }
 }

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.7.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -66,10 +66,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-f1f3b3fd89b16212fde59a2af78f1759.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-4c54c7a4b54fd2e89864b79ead122636.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-52e319997c2ec0aa941f66324c1448d5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-b8ef938cb582a919fb99b69e59ea5831.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 <link rel="stylesheet" href="style.css">
@@ -1053,6 +1053,21 @@ Note
 <td style="text-align: left;"><a href="#list">list</a> of <a href="#media">media</a></td>
 <td style="text-align: left;">audiovisual or other digital content representing the item</td>
 </tr>
+<tr class="even">
+<td style="text-align: left;">tool</td>
+<td style="text-align: left;"><a href="#set">set</a> of <a href="#item">item</a></td>
+<td style="text-align: left;">Tool used to create or manage the item</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">version</td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">Version number</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">versionOf</td>
+<td style="text-align: left;"><a href="#set">set</a> of <a href="#item">item</a></td>
+<td style="text-align: left;">Items which this item is a version or edition of</td>
+</tr>
 </tbody>
 </table>
 <p>The first element of array <code>type</code>, if given, MUST be an <a href="#item-types">item type</a> URI.</p>
@@ -1062,7 +1077,7 @@ Note
 </section>
 <section id="concept" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="concept"><span class="header-section-number">4.3</span> Concept</h2>
-<p>A <strong>concept</strong> is an <a href="#item">item</a> and <a href="#concept-bundles">concept bundle</a> with the following optional fields (in addition to the optional fields <code>@context</code>, <code>address</code>, <code>altLabel</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>editorialNote</code>, <code>endDate</code>, <code>endPlace</code>, <code>example</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issued</code>, <code>location</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>place</code>, <code>prefLabel</code>, <code>publisher</code>, <code>rank</code>, <code>scopeNote</code>, <code>source</code>, <code>startDate</code>, <code>startPlace</code>, <code>subjectOf</code>, <code>subject</code>, <code>type</code>, <code>uri</code>, <code>url</code>, <code>memberSet</code>, <code>memberList</code>, <code>memberChoice</code>, and <code>memberRoles</code>):</p>
+<p>A <strong>concept</strong> is an <a href="#item">item</a> and <a href="#concept-bundles">concept bundle</a> with the following optional fields (in addition to the optional fields <code>@context</code>, <code>address</code>, <code>altLabel</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>editorialNote</code>, <code>endDate</code>, <code>endPlace</code>, <code>example</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issued</code>, <code>location</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>place</code>, <code>prefLabel</code>, <code>publisher</code>, <code>rank</code>, <code>scopeNote</code>, <code>source</code>, <code>startDate</code>, <code>startPlace</code>, <code>subjectOf</code>, <code>subject</code>, <code>tool</code>, <code>type</code>, <code>uri</code>, <code>url</code>, <code>version</code>, <code>versionOf</code>, <code>memberSet</code>, <code>memberList</code>, <code>memberChoice</code>, and <code>memberRoles</code>):</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1240,7 +1255,7 @@ Example&nbsp;8: concept from DDC
 </section>
 <section id="concept-schemes" class="level2" data-number="4.4">
 <h2 data-number="4.4" class="anchored" data-anchor-id="concept-schemes"><span class="header-section-number">4.4</span> Concept Schemes</h2>
-<p>A <strong>concept scheme</strong> is an <a href="#item">item</a> with the following optional fields (in addition to the optional fields <code>@context</code>, <code>address</code>, <code>altLabel</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>editorialNote</code>, <code>endDate</code>, <code>endPlace</code>, <code>example</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issued</code>, <code>location</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>place</code>, <code>prefLabel</code>, <code>publisher</code>, <code>rank</code>, <code>scopeNote</code>, <code>source</code>, <code>startDate</code>, <code>startPlace</code>, <code>subjectOf</code>, <code>subject</code>, <code>type</code>, <code>uri</code>, and <code>url</code>):</p>
+<p>A <strong>concept scheme</strong> is an <a href="#item">item</a> with the following optional fields (in addition to the optional fields <code>@context</code>, <code>address</code>, <code>altLabel</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>editorialNote</code>, <code>endDate</code>, <code>endPlace</code>, <code>example</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issued</code>, <code>location</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>place</code>, <code>prefLabel</code>, <code>publisher</code>, <code>rank</code>, <code>scopeNote</code>, <code>source</code>, <code>startDate</code>, <code>startPlace</code>, <code>subjectOf</code>, <code>subject</code>, <code>tool</code>, <code>type</code>, <code>uri</code>, <code>url</code>, <code>version</code>, and <code>versionOf</code>):</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1256,56 +1271,51 @@ Example&nbsp;8: concept from DDC
 <td style="text-align: left;">top <a href="#concept">concepts</a> of the scheme</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">versionOf</td>
-<td style="text-align: left;"><a href="#set">set</a> of <a href="#concept-schemes">concept schemes</a></td>
-<td style="text-align: left;"><a href="#concept-schemes">concept scheme</a> which this scheme is a version or edition of</td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;">namespace</td>
 <td style="text-align: left;"><a href="#uri">URI</a></td>
 <td style="text-align: left;">URI namespace that all concepts URIs are expected to start with</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">uriPattern</td>
 <td style="text-align: left;">string</td>
 <td style="text-align: left;">regular expression that all concept URIs are expected to match</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">notationPattern</td>
 <td style="text-align: left;">string</td>
 <td style="text-align: left;">regular expression that all primary notations should follow</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">notationExamples</td>
 <td style="text-align: left;"><a href="#list">list</a> of string</td>
 <td style="text-align: left;">list of some valid notations as examples</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">concepts</td>
 <td style="text-align: left;"><a href="#set">set</a> of <a href="#concept">concepts</a></td>
 <td style="text-align: left;">concepts in the scheme</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">types</td>
 <td style="text-align: left;"><a href="#set">set</a> of <a href="#concept">concepts</a></td>
 <td style="text-align: left;"><a href="#resource-and-property-types">resource type</a> URIs of concepts in this scheme</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">distributions</td>
 <td style="text-align: left;"><a href="#set">set</a> of <a href="#distributions">distributions</a></td>
 <td style="text-align: left;"><a href="#distributions">Distributions</a> to access the content of the concept scheme</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">extent</td>
 <td style="text-align: left;">string</td>
 <td style="text-align: left;">Size of the concept scheme</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">languages</td>
 <td style="text-align: left;"><a href="#list">list</a> of language tags</td>
 <td style="text-align: left;">Supported languages</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">license</td>
 <td style="text-align: left;"><a href="#set">set</a></td>
 <td style="text-align: left;">Licenses which the full scheme can be used under</td>
@@ -1444,7 +1454,7 @@ Example&nbsp;10
 </section>
 <section id="registries" class="level2" data-number="4.6">
 <h2 data-number="4.6" class="anchored" data-anchor-id="registries"><span class="header-section-number">4.6</span> Registries</h2>
-<p>A <strong>registry</strong> is an <a href="#item">item</a> with the following optional fields (in addition to the optional fields <code>@context</code>, <code>address</code>, <code>altLabel</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>editorialNote</code>, <code>endDate</code>, <code>endPlace</code>, <code>example</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issued</code>, <code>location</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>place</code>, <code>prefLabel</code>, <code>publisher</code>, <code>rank</code>, <code>scopeNote</code>, <code>source</code>, <code>startDate</code>, <code>startPlace</code>, <code>subjectOf</code>, <code>subject</code>, <code>type</code>, <code>uri</code>, and <code>url</code>):</p>
+<p>A <strong>registry</strong> is an <a href="#item">item</a> with the following optional fields (in addition to the optional fields <code>@context</code>, <code>address</code>, <code>altLabel</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>editorialNote</code>, <code>endDate</code>, <code>endPlace</code>, <code>example</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issued</code>, <code>location</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>place</code>, <code>prefLabel</code>, <code>publisher</code>, <code>rank</code>, <code>scopeNote</code>, <code>source</code>, <code>startDate</code>, <code>startPlace</code>, <code>subjectOf</code>, <code>subject</code>, <code>tool</code>, <code>type</code>, <code>uri</code>, <code>url</code>, <code>version</code>, and <code>versionOf</code>):</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1530,7 +1540,7 @@ Note
 </section>
 <section id="distributions" class="level2" data-number="4.7">
 <h2 data-number="4.7" class="anchored" data-anchor-id="distributions"><span class="header-section-number">4.7</span> Distributions</h2>
-<p>A <strong>distribution</strong> is an <a href="#item">item</a> with the following fields (in addition to the optional fields <code>@context</code>, <code>address</code>, <code>altLabel</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>editorialNote</code>, <code>endDate</code>, <code>endPlace</code>, <code>example</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issued</code>, <code>location</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>place</code>, <code>prefLabel</code>, <code>publisher</code>, <code>rank</code>, <code>scopeNote</code>, <code>source</code>, <code>startDate</code>, <code>startPlace</code>, <code>subjectOf</code>, <code>subject</code>, <code>type</code>, <code>uri</code>, and <code>url</code>):</p>
+<p>A <strong>distribution</strong> is an <a href="#item">item</a> with the following fields (in addition to the optional fields <code>@context</code>, <code>address</code>, <code>altLabel</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>editorialNote</code>, <code>endDate</code>, <code>endPlace</code>, <code>example</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issued</code>, <code>location</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>place</code>, <code>prefLabel</code>, <code>publisher</code>, <code>rank</code>, <code>scopeNote</code>, <code>source</code>, <code>startDate</code>, <code>startPlace</code>, <code>subjectOf</code>, <code>subject</code>, <code>tool</code>, <code>type</code>, <code>uri</code>, <code>url</code>, <code>version</code>, and <code>versionOf</code>):</p>
 <p>Distributions mostly cover the <a href="https://www.w3.org/TR/vocab-dcat-3/#Class:Distribution">class Distribution</a> from <a href="https://www.w3.org/TR/vocab-dcat-3/">Data Catalog Vocabulary</a>.</p>
 <table class="caption-top table">
 <thead>
@@ -1636,7 +1646,7 @@ Example&nbsp;11
 </section>
 <section id="concordances" class="level2" data-number="4.8">
 <h2 data-number="4.8" class="anchored" data-anchor-id="concordances"><span class="header-section-number">4.8</span> Concordances</h2>
-<p>A <strong>concordance</strong> is an <a href="#item">item</a> with the following fields (in addition to the optional fields <code>@context</code>, <code>address</code>, <code>altLabel</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>editorialNote</code>, <code>endDate</code>, <code>endPlace</code>, <code>example</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issued</code>, <code>location</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>prefLabel</code>, <code>publisher</code>, <code>rank</code>, <code>scopeNote</code>, <code>source</code>, <code>startDate</code>, <code>startPlace</code>, <code>subjectOf</code>, <code>subject</code>, <code>type</code>, <code>uri</code>, and <code>url</code>). All fields except <code>fromScheme</code> and <code>toScheme</code> are optional.</p>
+<p>A <strong>concordance</strong> is an <a href="#item">item</a> with the following fields (in addition to the optional fields <code>@context</code>, <code>address</code>, <code>altLabel</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>editorialNote</code>, <code>endDate</code>, <code>endPlace</code>, <code>example</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issued</code>, <code>location</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>place</code>, <code>prefLabel</code>, <code>publisher</code>, <code>rank</code>, <code>scopeNote</code>, <code>source</code>, <code>startDate</code>, <code>startPlace</code>, <code>subjectOf</code>, <code>subject</code>, <code>tool</code>, <code>type</code>, <code>uri</code>, <code>url</code>, <code>version</code>, and <code>versionOf</code>). All fields except <code>fromScheme</code> and <code>toScheme</code> are optional.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1700,7 +1710,7 @@ Note
 </section>
 <section id="concept-mappings" class="level2" data-number="4.9">
 <h2 data-number="4.9" class="anchored" data-anchor-id="concept-mappings"><span class="header-section-number">4.9</span> Concept Mappings</h2>
-<p>A <strong>mapping</strong> is an <a href="#item">item</a> with the following fields (in addition to the optional fields <code>@context</code>, <code>address</code>, <code>altLabel</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>editorialNote</code>, <code>endDate</code>, <code>endPlace</code>, <code>example</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issued</code>, <code>location</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>prefLabel</code>, <code>publisher</code>, <code>rank</code>, <code>scopeNote</code>, <code>source</code>, <code>startDate</code>, <code>startPlace</code>, <code>subjectOf</code>, <code>subject</code>, <code>type</code>, <code>uri</code>, and <code>url</code>). All fields except <code>from</code> and <code>to</code> are optional.</p>
+<p>A <strong>mapping</strong> is an <a href="#item">item</a> with the following fields (in addition to the optional fields <code>@context</code>, <code>address</code>, <code>altLabel</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>editorialNote</code>, <code>endDate</code>, <code>endPlace</code>, <code>example</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issued</code>, <code>location</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>place</code>, <code>prefLabel</code>, <code>publisher</code>, <code>rank</code>, <code>scopeNote</code>, <code>source</code>, <code>startDate</code>, <code>startPlace</code>, <code>subjectOf</code>, <code>subject</code>, <code>tool</code>, <code>type</code>, <code>uri</code>, <code>url</code>, <code>version</code>, and <code>versionOf</code>). All fields except <code>from</code> and <code>to</code> are optional.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -3016,6 +3026,8 @@ Example&nbsp;25: Mappings
 <h3 class="unnumbered anchored" data-anchor-id="draft">0.7.0 (draft)</h3>
 <ul>
 <li><code>mappingRelevance</code> is not experimental anymore</li>
+<li>Add item fields <code>tool</code> and <code>version</code></li>
+<li>Move concept scheme field <code>versionOf</code> to item</li>
 </ul>
 </section>
 <section id="section" class="level3 unnumbered">

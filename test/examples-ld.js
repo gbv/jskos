@@ -8,6 +8,10 @@ const types = "resource item concept scheme mapping concordance registry distrib
 
 const context = JSON.parse(fs.readFileSync('./context.json'))
 
+// Avoid downloading <http://iiif.io/api/presentation/3/context.json>
+const iiifContext = JSON.parse(fs.readFileSync("./test/iiif-context.json"))
+context["@context"].media["@context"] = iiifContext["@context"]
+
 // TODO: move to jskos-tools
 // or fix https://github.com/digitalbazaar/jsonld.js/issues/271
 function cleanup(data) {

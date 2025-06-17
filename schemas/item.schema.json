@@ -229,6 +229,10 @@
     "version": {
       "description": "version number",
       "type": "string"
+    },
+    "tool": {
+      "description": "Tool used to create or manage the item",
+      "$ref": "#/definitions/itemSet"
     }
   }
 }

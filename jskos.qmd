@@ -509,6 +509,7 @@ subject       [set]                     what this item is about (e.g. topic)
 subjectOf     [set]                     resources about this item (e.g. documentation)
 depiction     [list] of [URL]           list of image URLs depicting the item
 media         [list] of [media]         audiovisual or other digital content representing the item
+tool          [set] of [item]           Tool used to create or manage the item
 
 The first element of array `type`, if given, MUST be an [item type] URI.
 
@@ -1434,6 +1435,7 @@ JSKOS started in 2014 as as part of project [coli-conc](https://coli-conc.gbv.de
 ### 0.7.0 (draft) {-}
 
 - `mappingRelevance` is not experimental anymore 
+- Add item field `tool`
 
 ### 0.6.0 (2025-01-20) {.unnumbered}
 

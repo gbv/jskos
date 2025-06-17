@@ -230,6 +230,10 @@
       "description": "version number",
       "type": "string"
     },
+    "versionOf": {
+      "description": "items which this item is a version or edition of",
+      "$ref": "#/definitions/itemSet"
+    },
     "tool": {
       "description": "Tool used to create or manage the item",
       "$ref": "#/definitions/itemSet"

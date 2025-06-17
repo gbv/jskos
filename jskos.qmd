@@ -510,6 +510,8 @@ subjectOf     [set]                     resources about this item (e.g. document
 depiction     [list] of [URL]           list of image URLs depicting the item
 media         [list] of [media]         audiovisual or other digital content representing the item
 tool          [set] of [item]           Tool used to create or manage the item
+version       string                    Version number
+versionOf     [set] of [item]           Items which this item is a version or edition of
 
 The first element of array `type`, if given, MUST be an [item type] URI.
 
@@ -532,8 +534,9 @@ fields (in addition to the optional fields `@context`, `address`, `altLabel`,
 `editorialNote`, `endDate`, `endPlace`, `example`, `hiddenLabel`,
 `historyNote`, `identifier`, `issued`, `location`, `modified`, `notation`,
 `note`, `partOf`, `place`, `prefLabel`, `publisher`, `rank`, `scopeNote`,
-`source`, `startDate`, `startPlace`, `subjectOf`, `subject`, `type`, `uri`,
-`url`, `memberSet`, `memberList`, `memberChoice`, and `memberRoles`):
+`source`, `startDate`, `startPlace`, `subjectOf`, `subject`, `tool`, `type`,
+`uri`, `url`, `version`, `versionOf`, `memberSet`, `memberList`,
+`memberChoice`, and `memberRoles`):
 
 field        type                       description
 ------------ -------------------------- -------------------------------------------------------------------------------
@@ -598,13 +601,12 @@ addition to the optional fields `@context`, `address`, `altLabel`,
 `editorialNote`, `endDate`, `endPlace`, `example`, `hiddenLabel`,
 `historyNote`, `identifier`, `issued`, `location`, `modified`, `notation`,
 `note`, `partOf`, `place`, `prefLabel`, `publisher`, `rank`, `scopeNote`,
-`source`, `startDate`, `startPlace`, `subjectOf`, `subject`, `type`, `uri`, and
-`url`):
+`source`, `startDate`, `startPlace`, `subjectOf`, `subject`, `tool`, `type`,
+`uri`, `url`, `version`, and `versionOf`):
 
 field            type                       definition
 ---------------- -------------------------- --------------------------------------------------------------------------------------
 topConcepts      [set] of [concepts]        top [concepts] of the scheme
-versionOf        [set] of [concept schemes] [concept scheme] which this scheme is a version or edition of
 namespace        [URI]                      URI namespace that all concepts URIs are expected to start with
 uriPattern       string                     regular expression that all concept URIs are expected to match
 notationPattern  string                     regular expression that all primary notations should follow
@@ -705,8 +707,8 @@ the optional fields `@context`, `address`, `altLabel`, `changeNote`,
 `editorialNote`, `endDate`, `endPlace`, `example`, `hiddenLabel`,
 `historyNote`, `identifier`, `issued`, `location`, `modified`, `notation`,
 `note`, `partOf`, `place`, `prefLabel`, `publisher`, `rank`, `scopeNote`,
-`source`, `startDate`, `startPlace`, `subjectOf`, `subject`, `type`, `uri`, and
-`url`):
+`source`, `startDate`, `startPlace`, `subjectOf`, `subject`, `tool`, `type`,
+`uri`, `url`, `version`, and `versionOf`):
 
 field        type                       definition
 ------------ -------------------------- --------------------------------------------------------------------------------------
@@ -748,7 +750,8 @@ optional fields `@context`, `address`, `altLabel`, `changeNote`, `contributor`,
 `endPlace`, `example`, `hiddenLabel`, `historyNote`, `identifier`, `issued`,
 `location`, `modified`, `notation`, `note`, `partOf`, `place`, `prefLabel`,
 `publisher`, `rank`, `scopeNote`, `source`, `startDate`, `startPlace`,
-`subjectOf`, `subject`, `type`, `uri`, and `url`):
+`subjectOf`, `subject`, `tool`, `type`, `uri`, `url`, `version`, and
+`versionOf`):
 
 Distributions mostly cover the [class Distribution](https://www.w3.org/TR/vocab-dcat-3/#Class:Distribution) from [Data Catalog Vocabulary](https://www.w3.org/TR/vocab-dcat-3/).
 
@@ -812,10 +815,11 @@ A **concordance** is an [item] with the following fields (in addition to the
 optional fields `@context`, `address`, `altLabel`, `changeNote`, `contributor`,
 `created`, `creator`, `definition`, `depiction`, `editorialNote`, `endDate`,
 `endPlace`, `example`, `hiddenLabel`, `historyNote`, `identifier`, `issued`,
-`location`, `modified`, `notation`, `note`, `partOf`, `prefLabel`, `publisher`,
-`rank`, `scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`,
-`subject`, `type`, `uri`, and `url`). All fields except `fromScheme` and
-`toScheme` are optional.
+`location`, `modified`, `notation`, `note`, `partOf`, `place`, `prefLabel`,
+`publisher`, `rank`, `scopeNote`, `source`, `startDate`, `startPlace`,
+`subjectOf`, `subject`, `tool`, `type`, `uri`, `url`, `version`, and
+`versionOf`). All fields except `fromScheme` and `toScheme` are optional.
+
 
 field         type                      definition
 ------------- ------------------------- ------------------------------------------------------
@@ -853,10 +857,10 @@ A **mapping** is an [item] with the following fields (in addition to the
 optional fields `@context`, `address`, `altLabel`, `changeNote`, `contributor`,
 `created`, `creator`, `definition`, `depiction`, `editorialNote`, `endDate`,
 `endPlace`, `example`, `hiddenLabel`, `historyNote`, `identifier`, `issued`,
-`location`, `modified`, `notation`, `note`, `partOf`, `prefLabel`, `publisher`,
-`rank`, `scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`,
-`subject`, `type`, `uri`, and `url`). All fields except `from` and `to` are
-optional.
+`location`, `modified`, `notation`, `note`, `partOf`, `place`, `prefLabel`,
+`publisher`, `rank`, `scopeNote`, `source`, `startDate`, `startPlace`,
+`subjectOf`, `subject`, `tool`, `type`, `uri`, `url`, `version`, and
+`versionOf`). All fields except `from` and `to` are optional.
 
 field            type             definition
 ---------------- ---------------- ----------------------------------------------
@@ -1435,7 +1439,8 @@ JSKOS started in 2014 as as part of project [coli-conc](https://coli-conc.gbv.de
 ### 0.7.0 (draft) {-}
 
 - `mappingRelevance` is not experimental anymore 
-- Add item field `tool`
+- Add item fields `tool` and `version`
+- Move concept scheme field `versionOf` to item
 
 ### 0.6.0 (2025-01-20) {.unnumbered}
 

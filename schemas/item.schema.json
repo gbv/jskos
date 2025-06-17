@@ -237,6 +237,14 @@
     "tool": {
       "description": "Tool used to create or manage the item",
       "$ref": "#/definitions/itemSet"
+    },
+    "issueTracker": {
+      "description": "Issue tracker for this item",
+      "$ref": "#/definitions/itemSet"
+    },
+    "issue": {
+      "description": "Specific issue for this item",
+      "$ref": "#/definitions/itemSet"
     }
   }
 }

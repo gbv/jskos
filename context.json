@@ -171,6 +171,10 @@
       "@id": "http://www.w3.org/2004/02/skos/core#hasTopConcept",
       "@container": "@set"
     },
+    "concepts: {
+      "@reverse": "http://www.w3.org/2004/02/skos/core#inScheme",
+      "@container": "@set"
+    },
     "versionOf": {
       "@id": "http://purl.org/dc/terms/isVersionOf",
       "@container": "@set"

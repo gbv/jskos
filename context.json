@@ -234,6 +234,7 @@
     },
     "rank": "http://wikiba.se/ontology#rank",
     "version": "http://www.w3.org/2002/07/owl#versionInfo",
-    "justification": "https://w3id.org/sssom/mapping_justification"
+    "justification": "https://w3id.org/sssom/mapping_justification",
+    "tool": "https://w3id.org/sssom/mapping_tool"
   }
 }

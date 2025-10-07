@@ -1209,9 +1209,9 @@ The fields `PARTS` and `_id` in the following example can be ignored:
 :::
 
 
-# References {.unnumbered}
+# References {-}
 
-## Normative references {.unnumbered}
+## Normative references {-}
 
 - M. Appleby et al: *IIIF Presentation API 3.0*. June 2020.
   <https://iiif.io/api/presentation/3.0/>
@@ -1267,7 +1267,7 @@ The fields `PARTS` and `_id` in the following example can be ignored:
 [RFC 3066]: https://tools.ietf.org/html/rfc3066
 [RFC 7946]: https://tools.ietf.org/html/rfc7946
 
-## Informative references {.unnumbered}
+## Informative references {-}
 
 * R. Albertoni, D. Browning, S. Cox, A. Gonzalez Beltran, A. Perego, P. Winstanley:
   *Data Catalog Vocabulary (DCAT) - Version 3*.
@@ -1316,11 +1316,11 @@ The fields `PARTS` and `_id` in the following example can be ignored:
 [RFC 5234]: http://tools.ietf.org/html/rfc5234
 [ng-skos]: http://gbv.github.io/ng-skos/
 
-# Appendices {.unnumbered}
+# Appendices {-}
 
 The following appendices are *non-normative*.
 
-## JSON-LD {.unnumbered #json-ld}
+## JSON-LD {- #json-ld}
 
 The following [JSON-LD 1.1 context document](http://www.w3.org/TR/json-ld/#the-context)
 (available [from here](context.json)) can be used to map JSKOS without
@@ -1338,7 +1338,7 @@ Applications should further add implicit RDF triples, such as `$someConcept
 rdf:type skos:Concept`, if such information can be derived from JSKOS by other
 means.
 
-## Validation {.unnumbered #validation}
+## Validation {- #validation}
 
 Experimental JSON Schemas exist but don't cover all aspects of JSKOS: 
 
@@ -1361,7 +1361,7 @@ Public services to validate JSKOS data are included in instances of
 [jskos-validate]: https://www.npmjs.com/package/jskos-validate
 [jskos-server]: https://www.npmjs.com/package/jskos-server
 
-## Item types as concepts {.unnumbered}
+## Item types as concepts {-}
 
 [Item types](#item-type) can be expressed with [concepts] from the following [concept scheme]:
 
@@ -1369,7 +1369,7 @@ Public services to validate JSKOS data are included in instances of
 {{< include examples/item-types.scheme.json >}}
 ~~~
 
-## SKOS features not supported in JSKOS {.unnumbered}
+## SKOS features not supported in JSKOS {-}
 
 JSKOS is aligned with SKOS but all references to SKOS are informative only.
 The following features of SKOS are not supported in JSKOS:
@@ -1390,7 +1390,7 @@ The following features of SKOS are not supported in JSKOS:
 [documentation properties]: http://www.w3.org/TR/2009/REC-skos-reference-20090818/#notes
 [mapping properties]: http://www.w3.org/TR/2009/REC-skos-reference-20090818/#mapping
 
-## JSKOS features not supported in SKOS {.unnumbered}
+## JSKOS features not supported in SKOS {-}
 
 The following features of JSKOS have no corresponce in SKOS:
 
@@ -1401,7 +1401,7 @@ The following features of JSKOS have no corresponce in SKOS:
 * order of multiple notations
 * order of multiple inScheme statements
 
-## Additional examples  {.unnumbered}
+## Additional examples  {-}
 
 :::{#lst-gnd-concept-scheme lst-cap="Integrated Authority File (GND)"}
 
@@ -1461,18 +1461,22 @@ Multiple mappings from one concept (612.112 in DDC) to GND.
 ```
 :::
 
-# Changelog {.unnumbered}
+# Changelog {-}
 
 JSKOS started in 2014 as as part of project [coli-conc](https://coli-conc.gbv.de/).
 
 ### 0.7.0 (draft) {-}
+
+- ...
+
+### 0.6.1 (2025-10-07) {-}
 
 - Mapping field `mappingRelevance` is not experimental anymore 
 - Add mapping field `justification`
 - Add item fields `tool`, `version`, `issue`, `issueTracker`, and `guidelines`
 - Move concept scheme field `versionOf` to item
 
-### 0.6.0 (2025-01-20) {.unnumbered}
+### 0.6.0 (2025-01-20) {-}
 
 - Add [ranks](#rank) and [qualified statements]
 - Add extended dates for `startDate`, `endDate`, and `relatedDate`.
@@ -1482,7 +1486,7 @@ JSKOS started in 2014 as as part of project [coli-conc](https://coli-conc.gbv.de
 - Add item field `basedOn`
 - Update references, layout and wording
 
-### 0.5.4 (2024-09-27) {.unnumbered}
+### 0.5.4 (2024-09-27) {-}
 
 - Change JSON-LD context for spatial fields (`location`, `place`, `startPlace`, `endPlace`)
 - Add Concept field `deprecated`
@@ -1490,116 +1494,116 @@ JSKOS started in 2014 as as part of project [coli-conc](https://coli-conc.gbv.de
 - Clarify anchoring of regular expressions
 - Mention non-indexing concepts
 
-### 0.5.3 (2024-09-18) {.unnumbered}
+### 0.5.3 (2024-09-18) {-}
 
 - Allow `@context` to hold an array
 
-### 0.5.2 (2024-08-30) {.unnumbered}
+### 0.5.2 (2024-08-30) {-}
 
 - Allow location of type `GeometryCollection`
 - Fix schema.org namespace in JSON-LD context document
 
-### 0.5.1 (2023-07-03) {.unnumbered}
+### 0.5.1 (2023-07-03) {-}
 
 - More precise type of `inScheme`, `topConceptOf`, `mappings`, `occurrences`
 - Add some inference rules and integrity constraints
 - Fix JSON Schema files to allow negative dates and strict annotation dates
 - Add item fields `place` and `media`
 
-### 0.5.0 (2022-08-29) {.unnumbered}
+### 0.5.0 (2022-08-29) {-}
 
 * Make clear concordance field name distributions (plural)
 * Add license, compressFormat, packageFormat, size, checksum, accessURL to distribution
 * Remove fields for undefined JSKOS-API URLs
 
-### 0.4.9 (2022-01-18) {.unnumbered}
+### 0.4.9 (2022-01-18) {-}
 
 * Change format of URI in JSON Schema from URI to IRI
 * Change base format of URL in JSON Schema from URI to IRI
 
-### 0.4.8 (2021-02-18) {.unnumbered}
+### 0.4.8 (2021-02-18) {-}
 
 * Add concept scheme field notationExamples
 
-### 0.4.7 (2021-02-10) {.unnumbered}
+### 0.4.7 (2021-02-10) {-}
 
 * Add resource field source
 * Add item field address 
 * Move startPlace/endPlace to Item and map them to schema:location
 
-### 0.4.6 (2019-12-02) {.unnumbered}
+### 0.4.6 (2019-12-02) {-}
 
 * Add memberRoles
 
-### 0.4.5 (2019-04-08) {.unnumbered}
+### 0.4.5 (2019-04-08) {-}
 
 * Add annotations (basic support)
 
-### 0.4.4 (2018-11-02) {.unnumbered}
+### 0.4.4 (2018-11-02) {-}
 
 * Add concept scheme fields notationPattern and uriPattern
 * Add concept fields startPlace and endPlace
 
-### 0.4.2 (2018-08-22) {.unnumbered}
+### 0.4.2 (2018-08-22) {-}
 
 * Move identifier field from item to resource
 * Add SKOS documentation field note to item
 * Add optional JSON Schemas
 
-### 0.4.1 (2018-06-26) {.unnumbered}
+### 0.4.1 (2018-06-26) {-}
 
 * Rename distribution field to distributions
 * Allow digits in custom fields
 
-### 0.4.0 (2018-06-22) {.unnumbered}
+### 0.4.0 (2018-06-22) {-}
 
 * Add Registry field occurrences
 * Add Distribution object type
 * Change rule for custom fields
 
-### 0.3.2 (2018-05-29) {.unnumbered}
+### 0.3.2 (2018-05-29) {-}
 
 * Add Concept Scheme field namespace
 
-### 0.3.1 (2017-11-22) {.unnumbered}
+### 0.3.1 (2017-11-22) {-}
 
 * Extend ocurrences to co-occurrences
 
-### 0.3.0 (2017-11-15) {.unnumbered}
+### 0.3.0 (2017-11-15) {-}
 
 * Add occurrences
 
-### 0.2.2 (2017-11-06) {.unnumbered}
+### 0.2.2 (2017-11-06) {-}
 
 * Add mappings field to Concept 
 
-### 0.2.1 (2017-09-27) {.unnumbered}
+### 0.2.1 (2017-09-27) {-}
 
 * Disallow empty strings except as mandatory placeholder with language ranges
 * Support composed concepts with `memberSet` and `memberList`
 
-### 0.2.0 (2017-09-21) {.unnumbered}
+### 0.2.0 (2017-09-21) {-}
 
 * Rename object to resource
 * Move startDate, endDate, relatedDate, and location from Concept to Item
 * Add item types
 * Update JSON-LD context document
 
-### 0.1.4 (2016-12-02) {.unnumbered}
+### 0.1.4 (2016-12-02) {-}
 
 * Update JSON-LD context document
 * Change definition of concept bundles to use fields memberSet/List/Choice
   instead of members
 
-### 0.1.3 (2016-10-03) {.unnumbered}
+### 0.1.3 (2016-10-03) {-}
 
 * Change definition of "location" field to subset of GeoJSON (RFC 7946)
 
-### 0.1.2 (2016-06-13) {.unnumbered}
+### 0.1.2 (2016-06-13) {-}
 
 * Add "location" field for geographic coordinates
 
-### 0.1.1 (2016-05-20) {.unnumbered}
+### 0.1.1 (2016-05-20) {-}
 
 * Make field "license" a set instead of a single URI
 * Add field "extent"

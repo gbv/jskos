@@ -2,5 +2,8 @@
   "startDate": "Y-12424",
   "endDate": "2016/2023",
   "relatedDate": "2012T12:07",
-  "relatedDates": ["2007-03-01T13:00:00Z","-2012","-0043-05-22","2001-21"]
+  "relatedDates": ["2007-03-01T13:00:00Z","-2012","-0043-05-22","2001-21"],
+  "issue": [ { "uri": "https://github.com/gbv/jskos/issues/154" } ],
+  "issueTracker": [ { "uri": "https://github.com/gbv/jskos/issues" } ],
+  "guidelines": [ { "uri": "https://github.com/gbv/jskos#" } ]
 }

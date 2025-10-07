@@ -512,6 +512,7 @@ media         [list] of [media]         audiovisual or other digital content rep
 tool          [set] of [item]           Tools used to create or manage the item
 issue         [set] of [item]           Individual issues or discussion threads about this item
 issueTracker  [set] of [item]           Issue trackers, forums or similar to discuss this item
+guidelines    [set] of [item]           Standards or guidelines followed in creation of this item
 version       string                    Version number
 versionOf     [set] of [item]           Items which this item is a version or edition of
 
@@ -533,7 +534,7 @@ To state one primary date of an item set `startDate` and `endDate` to the same v
 A **concept** is an [item] and [concept bundle] with the following optional
 fields (in addition to the optional fields `@context`, `address`, `altLabel`,
 `changeNote`, `contributor`, `created`, `creator`, `definition`, `depiction`,
-`editorialNote`, `endDate`, `endPlace`, `example`, `hiddenLabel`,
+`editorialNote`, `endDate`, `endPlace`, `example`, `guidelines`, `hiddenLabel`,
 `historyNote`, `identifier`, `issue`, `issueTracker`, `issued`, `location`,
 `modified`, `notation`, `note`, `partOf`, `place`, `prefLabel`, `publisher`,
 `rank`, `scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`,
@@ -600,7 +601,7 @@ connected by the broader relation.
 A **concept scheme** is an [item] with the following optional fields (in
 addition to the optional fields `@context`, `address`, `altLabel`,
 `changeNote`, `contributor`, `created`, `creator`, `definition`, `depiction`,
-`editorialNote`, `endDate`, `endPlace`, `example`, `hiddenLabel`,
+`editorialNote`, `endDate`, `endPlace`, `example`, `guidelines`, `hiddenLabel`,
 `historyNote`, `identifier`, `issue`, `issueTracker`, `issued`, `location`,
 `modified`, `notation`, `note`, `partOf`, `place`, `prefLabel`, `publisher`,
 `rank`, `scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`,
@@ -707,7 +708,7 @@ The Wikidata [concept of an individual human](http://www.wikidata.org/entity/Q5)
 A **registry** is an [item] with the following optional fields (in addition to
 the optional fields `@context`, `address`, `altLabel`, `changeNote`,
 `contributor`, `created`, `creator`, `definition`, `depiction`,
-`editorialNote`, `endDate`, `endPlace`, `example`, `hiddenLabel`,
+`editorialNote`, `endDate`, `endPlace`, `example`, `guidelines`, `hiddenLabel`,
 `historyNote`, `identifier`, `issue`, `issueTracker`, `issued`, `location`,
 `modified`, `notation`, `note`, `partOf`, `place`, `prefLabel`, `publisher`,
 `rank`, `scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`,
@@ -750,11 +751,11 @@ Additional integrity rules for registries will be defined (TODO).
 A **distribution** is an [item] with the following fields (in addition to the
 optional fields `@context`, `address`, `altLabel`, `changeNote`, `contributor`,
 `created`, `creator`, `definition`, `depiction`, `editorialNote`, `endDate`,
-`endPlace`, `example`, `hiddenLabel`, `historyNote`, `identifier`, `issue`,
-`issueTracker`,  `issued`, `location`, `modified`, `notation`, `note`,
-`partOf`, `place`, `prefLabel`, `publisher`, `rank`, `scopeNote`, `source`,
-`startDate`, `startPlace`, `subjectOf`, `subject`, `tool`, `type`, `uri`,
-`url`, `version`, and `versionOf`):
+`endPlace`, `example`, `guidelines`, `hiddenLabel`, `historyNote`,
+`identifier`, `issue`, `issueTracker`,  `issued`, `location`, `modified`,
+`notation`, `note`, `partOf`, `place`, `prefLabel`, `publisher`, `rank`,
+`scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`, `subject`,
+`tool`, `type`, `uri`, `url`, `version`, and `versionOf`):
 
 Distributions mostly cover the [class Distribution](https://www.w3.org/TR/vocab-dcat-3/#Class:Distribution) from [Data Catalog Vocabulary](https://www.w3.org/TR/vocab-dcat-3/).
 
@@ -817,12 +818,12 @@ Authority Data](https://www.loc.gov/marc/authority/):
 A **concordance** is an [item] with the following fields (in addition to the
 optional fields `@context`, `address`, `altLabel`, `changeNote`, `contributor`,
 `created`, `creator`, `definition`, `depiction`, `editorialNote`, `endDate`,
-`endPlace`, `example`, `hiddenLabel`, `historyNote`, `identifier`, `issue`,
-`issueTracker`,  `issued`, `location`, `modified`, `notation`, `note`,
-`partOf`, `place`, `prefLabel`, `publisher`, `rank`, `scopeNote`, `source`,
-`startDate`, `startPlace`, `subjectOf`, `subject`, `tool`, `type`, `uri`,
-`url`, `version`, and `versionOf`). All fields except `fromScheme` and
-`toScheme` are optional.
+`endPlace`, `example`, `guidelines`, `hiddenLabel`, `historyNote`,
+`identifier`, `issue`, `issueTracker`,  `issued`, `location`, `modified`,
+`notation`, `note`, `partOf`, `place`, `prefLabel`, `publisher`, `rank`,
+`scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`, `subject`,
+`tool`, `type`, `uri`, `url`, `version`, and `versionOf`). All fields except
+`fromScheme` and `toScheme` are optional.
  
 
 field         type                      definition
@@ -860,11 +861,12 @@ There is an additional integrity constraint refering to field `inScheme` if conc
 A **mapping** is an [item] with the following fields (in addition to the
 optional fields `@context`, `address`, `altLabel`, `changeNote`, `contributor`,
 `created`, `creator`, `definition`, `depiction`, `editorialNote`, `endDate`,
-`endPlace`, `example`, `hiddenLabel`, `historyNote`, `identifier`, `issue`,
-`issueTracker`, `issued`, `location`, `modified`, `notation`, `note`, `partOf`,
-`place`, `prefLabel`, `publisher`, `rank`, `scopeNote`, `source`, `startDate`,
-`startPlace`, `subjectOf`, `subject`, `tool`, `type`, `uri`, `url`, `version`,
-and `versionOf`). All fields except `from` and `to` are optional.
+`endPlace`, `example`, `guidelines`, `hiddenLabel`, `historyNote`,
+`identifier`, `issue`, `issueTracker`, `issued`, `location`, `modified`,
+`notation`, `note`, `partOf`, `place`, `prefLabel`, `publisher`, `rank`,
+`scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`, `subject`,
+`tool`, `type`, `uri`, `url`, `version`, and `versionOf`). All fields except
+`from` and `to` are optional.
 
 field            type             definition
 ---------------- ---------------- ----------------------------------------------
@@ -1451,7 +1453,7 @@ JSKOS started in 2014 as as part of project [coli-conc](https://coli-conc.gbv.de
 
 - Mapping field `mappingRelevance` is not experimental anymore 
 - Add mapping field `justification`
-- Add item fields `tool`, `version`, `issue`, and `issueTracker`
+- Add item fields `tool`, `version`, `issue`, `issueTracker`, and `guidelines`
 - Move concept scheme field `versionOf` to item
 
 ### 0.6.0 (2025-01-20) {.unnumbered}

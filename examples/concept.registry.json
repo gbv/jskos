@@ -1,0 +1,13 @@
+{
+  "type": [ "http://purl.org/cld/cdtype/CatalogueOrIndex", "http://www.w3.org/ns/dcat#Catalog" ],
+  "types": [
+    "http://www.w3.org/2004/02/skos/core#Concept",
+    "http://www.w3.org/2002/07/owl#Class"
+  ],
+  "prefLabel": { "en": "People" },
+  "concepts": [
+    { "uri": "http://schema.org/Person" },
+    { "uri": "http://xmlns.com/foaf/0.1/Person" },
+    { "uri": "http://www.wikidata.org/entity/Q5" }
+  ]
+}

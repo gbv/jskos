@@ -718,29 +718,43 @@ field        type                       definition
 ------------ -------------------------- --------------------------------------------------------------------------------------
 concepts     [set] of [concepts]        [concepts] in this registry
 schemes      [set] of [concept schemes] [concept schemes] in this registry
-types        [set] of [concepts]        [resource types] in this registry
-properties   [set] of [concepts]        [property types] in this registry
 mappings     [set] of [mappings]        [mappings] in this registry
-registries   [set] of [registries]      other registries in this registry
 concordances [set] of [concordances]    [concordances] in this registry
 occurrences  [set] of [occurrences]     [occurrences] in this registry
+registries   [set] of [registries]      other registries in this registry
+types        [set] of [concepts]        [resource types] in this registry
+properties   [set] of [concepts]        [property types] of [qualified statements] in this registry
 extent       string                     Size of the registry
 languages    [list]                     Supported languages
 license      [set]                      Licenses which the full registry content can be used under
 
 The first element of array field `type`, if given, MUST be the [item type] URI
-<http://purl.org/cld/cdtype/CatalogueOrIndex>.
+<http://purl.org/cld/cdtype/CatalogueOrIndex>. Applications SHOULD also accept
+alternative URI <http://www.w3.org/ns/dcat#Catalog> because the item type URI
+for registries is going to be changed to this value a future version of JSKOS
+specification.
 
-Registries are collection of [concepts], [concept schemes], [resource types],
-[property types], [concept mappings], and/or other registries.
+Registries are collection of [concepts], [concept schemes], [concept mappings],
+[concordances], [occurrences], and/or other registries with information about
+[resource types] and [property types].
+
+A registry limited to only one of the fields `concepts`, `schemes`, `mappings`,
+`concordances`, and `occurrences`, `registries` is also called a **collection**
+of the corresponding [item type]. Registry field `types` SHOULD include the
+corresponding item type URI.
 
 ::: {.callout-note}
 Registries are the top JSKOS entity, followed by
 [concordances], [mappings] [concept schemes], and on the lowest level
 [concepts] and [resource types]. See [Distributions] for an alternative.
 
-Additional integrity rules for registries will be defined (TODO).
+Conversion of JSKOS registries to RDF requires a different value for field
+`concepts` to not infer the RDF property `skos:inScheme` but `dct:isPartOf`!
 :::
+
+```{.json #lst-concept1 lst-cap="A concept collection"}
+{{< include examples/concept.registry.json >}}
+```
 
 
 ## Distributions
@@ -846,6 +860,8 @@ another. If `mappings` is a set then
 
 * all its members with field `toScheme` MUST have [the same] value
   like concordance field `toScheme`.
+
+A [registry] object can be used to combine arbitrary mappings without this constraint.
 
 ::: {.callout-note}
 There is an additional integrity constraint refering to field `inScheme` if concepts in mappings in concordances.

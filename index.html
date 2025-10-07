@@ -1746,10 +1746,16 @@ Note
 <td style="text-align: left;">number</td>
 <td style="text-align: left;">numerical confidence value between 0 and 1</td>
 </tr>
+<tr class="even">
+<td style="text-align: left;">justification</td>
+<td style="text-align: left;"><a href="#uri">uri</a></td>
+<td style="text-align: left;">action that resulted creation of the mapping</td>
+</tr>
 </tbody>
 </table>
 <p>A <strong>mapping</strong> represents a mapping between <a href="#concept">concepts</a> of two <a href="#concept-schemes">concept schemes</a>. It consists two <a href="#concept-bundles">concept bundles</a> with additional metadata not fully defined yet.</p>
 <p>The first element of array field <code>type</code>, if given, MUST be an <a href="#item-types">item type</a> for mappings from the <a href="http://www.w3.org/TR/skos-reference/#mapping">SKOS mapping properties</a>. The field <code>type</code> MAY contain additional values but MUST NOT contain multiple of these values.</p>
+<p>Values of field <code>justification</code> SHOULD be subclasses of <code>https://w3id.org/semapv/vocab/Matching</code> from the Semantic Mapping Vocabulary.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -2335,6 +2341,7 @@ Example&nbsp;19
 <li><p>M. Dürst, M. Suignard: <em>Internationalized Resource Identifiers (IRIs)</em>. RFC 3987, January 2005. <a href="https://tools.ietf.org/html/rfc3987" class="uri">https://tools.ietf.org/html/rfc3987</a></p></li>
 <li><p>IANA: <em>Media Types</em>. <a href="https://www.iana.org/assignments/media-types/" class="uri">https://www.iana.org/assignments/media-types/</a></p></li>
 <li><p>ISO: <em>Date and time — Representations for information interchangePart 2: Extensions</em>. ISO 8601-2:2019. (summary available at <a href="https://www.loc.gov/standards/datetime/" class="uri">https://www.loc.gov/standards/datetime/</a>)</p></li>
+<li><p>N. Matentzoglu et. al: <em>Semantic Mapping Vocabulary (SEMAPV)</em>. January 2025. <a href="https://mapping-commons.github.io/semantic-mapping-vocabulary/" class="uri">https://mapping-commons.github.io/semantic-mapping-vocabulary/</a></p></li>
 <li><p>A. Phillips, M. Davis: <em>Tags for Identifying Languages</em>. RFC 3066, September 2006. <a href="https://tools.ietf.org/html/rfc3066" class="uri">https://tools.ietf.org/html/rfc3066</a></p></li>
 <li><p>R. Sanderson, P. Ciccarese, B. Young: <em>Web Annotation Data Model</em>. W3C Recommendation, February 2017. <a href="https://www.w3.org/TR/annotation-model/" class="uri">https://www.w3.org/TR/annotation-model/</a></p></li>
 <li><p>SPDX: <em>SPDX 2.3</em>. <a href="http://spdx.org/rdf/terms#" class="uri">http://spdx.org/rdf/terms#</a></p></li>
@@ -2598,12 +2605,15 @@ Example&nbsp;19
 <span id="cb22-234"><a href="#cb22-234" aria-hidden="true" tabindex="-1"></a>    <span class="fu">},</span></span>
 <span id="cb22-235"><a href="#cb22-235" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"rank"</span><span class="fu">:</span> <span class="st">"http://wikiba.se/ontology#rank"</span><span class="fu">,</span></span>
 <span id="cb22-236"><a href="#cb22-236" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"version"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2002/07/owl#versionInfo"</span><span class="fu">,</span></span>
-<span id="cb22-237"><a href="#cb22-237" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"justification"</span><span class="fu">:</span> <span class="st">"https://w3id.org/sssom/mapping_justification"</span><span class="fu">,</span></span>
-<span id="cb22-238"><a href="#cb22-238" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"tool"</span><span class="fu">:</span> <span class="st">"https://w3id.org/sssom/mapping_tool"</span><span class="fu">,</span></span>
-<span id="cb22-239"><a href="#cb22-239" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"issue"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2005/01/wf/flow#task"</span><span class="fu">,</span></span>
-<span id="cb22-240"><a href="#cb22-240" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"issueTracker"</span><span class="fu">:</span> <span class="st">"http://schema.org/discussionUrl"</span></span>
-<span id="cb22-241"><a href="#cb22-241" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
-<span id="cb22-242"><a href="#cb22-242" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb22-237"><a href="#cb22-237" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"justification"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb22-238"><a href="#cb22-238" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"@id"</span><span class="fu">:</span> <span class="st">"https://w3id.org/sssom/mapping_justification"</span><span class="fu">,</span></span>
+<span id="cb22-239"><a href="#cb22-239" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"@type"</span><span class="fu">:</span> <span class="st">"@id"</span></span>
+<span id="cb22-240"><a href="#cb22-240" aria-hidden="true" tabindex="-1"></a>    <span class="fu">},</span></span>
+<span id="cb22-241"><a href="#cb22-241" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"tool"</span><span class="fu">:</span> <span class="st">"https://w3id.org/sssom/mapping_tool"</span><span class="fu">,</span></span>
+<span id="cb22-242"><a href="#cb22-242" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"issue"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2005/01/wf/flow#task"</span><span class="fu">,</span></span>
+<span id="cb22-243"><a href="#cb22-243" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"issueTracker"</span><span class="fu">:</span> <span class="st">"http://schema.org/discussionUrl"</span></span>
+<span id="cb22-244"><a href="#cb22-244" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
+<span id="cb22-245"><a href="#cb22-245" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>JSKOS with closed world statements can be mapped to RDF by ignoring all boolean values and/or by mapping selected boolean values to RDF triples with blank nodes.</p>
 <p>Applications should further add implicit RDF triples, such as <code>$someConcept rdf:type skos:Concept</code>, if such information can be derived from JSKOS by other means.</p>
 </section>
@@ -2985,8 +2995,10 @@ Example&nbsp;25: Mappings
 <span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://d-nb.info/gnd/4074195-3"</span><span class="fu">,</span></span>
 <span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"de"</span><span class="fu">:</span> <span class="st">"Leukozyt"</span> <span class="fu">}</span></span>
 <span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>        <span class="fu">}</span> <span class="ot">]</span></span>
-<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
-<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">},</span></span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"justification"</span><span class="fu">:</span> <span class="st">"https://w3id.org/semapv/vocab/ManualMappingCuration"</span><span class="fu">,</span></span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"tool"</span><span class="fu">:</span> <span class="ot">[</span> <span class="fu">{</span> <span class="dt">"url"</span><span class="fu">:</span> <span class="st">"https://coli-conc.gbv.de/cocoda/"</span> <span class="fu">}</span> <span class="ot">]</span></span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"fromScheme"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"uri"</span><span class="fu">:</span><span class="st">"http://dewey.info/scheme/edition/e22/"</span><span class="fu">},</span></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"from"</span><span class="fu">:</span> <span class="fu">{</span></span>
@@ -3033,7 +3045,8 @@ Example&nbsp;25: Mappings
 <section id="draft" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="draft">0.7.0 (draft)</h3>
 <ul>
-<li><code>mappingRelevance</code> is not experimental anymore</li>
+<li>Mapping field <code>mappingRelevance</code> is not experimental anymore</li>
+<li>Add mapping field <code>justification</code></li>
 <li>Add item fields <code>tool</code> and <code>version</code></li>
 <li>Move concept scheme field <code>versionOf</code> to item</li>
 </ul>

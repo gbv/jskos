@@ -245,6 +245,10 @@
     "issue": {
       "description": "Specific issue for this item",
       "$ref": "#/definitions/itemSet"
+    },
+    "guidelines": {
+      "description": "Standards or guidelines followed in creation of this item",
+      "$ref": "#/definitions/itemSet"
     }
   }
 }

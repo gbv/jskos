@@ -240,6 +240,7 @@
     },
     "tool": "https://w3id.org/sssom/mapping_tool",
     "issue": "http://www.w3.org/2005/01/wf/flow#task",
-    "issueTracker": "http://schema.org/discussionUrl"
+    "issueTracker": "http://schema.org/discussionUrl",
+    "guidelines": "http://purl.org/dc/terms/conformsTo"
   }
 }

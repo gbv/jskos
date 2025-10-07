@@ -869,6 +869,7 @@ to               [concept bundle] concepts mapped to
 fromScheme       [concept scheme] source concept scheme
 toScheme         [concept scheme] target concept scheme
 mappingRelevance number           numerical confidence value between 0 and 1
+justification    [uri]            action that resulted creation of the mapping
 
 A **mapping** represents a mapping between [concepts] of two [concept schemes].
 It consists two [concept bundles] with additional metadata not fully defined
@@ -877,6 +878,9 @@ yet.
 The first element of array field `type`, if given, MUST be an [item type] for
 mappings from the [SKOS mapping properties](http://www.w3.org/TR/skos-reference/#mapping).
 The field `type` MAY contain additional values but MUST NOT contain multiple of these values.
+
+Values of field `justification` SHOULD be subclasses of
+`https://w3id.org/semapv/vocab/Matching` from the Semantic Mapping Vocabulary.
 
 ::: {.callout-note}
 When mappings are dynamically created it can be useful to assign a non-HTTP URI
@@ -1223,6 +1227,9 @@ The fields `PARTS` and `_id` in the following example can be ignored:
 - ISO: *Date and time — Representations for information interchangePart 2: Extensions*.
   ISO 8601-2:2019. (summary available at <https://www.loc.gov/standards/datetime/>)
 
+- N. Matentzoglu et. al: *Semantic Mapping Vocabulary (SEMAPV)*.
+  January 2025. <https://mapping-commons.github.io/semantic-mapping-vocabulary/>
+
 - A. Phillips, M. Davis: *Tags for Identifying Languages*.
   RFC 3066, September 2006. <https://tools.ietf.org/html/rfc3066>
 
@@ -1438,7 +1445,8 @@ JSKOS started in 2014 as as part of project [coli-conc](https://coli-conc.gbv.de
 
 ### 0.7.0 (draft) {-}
 
-- `mappingRelevance` is not experimental anymore 
+- Mapping field `mappingRelevance` is not experimental anymore 
+- Add mapping field `justification`
 - Add item fields `tool` and `version`
 - Move concept scheme field `versionOf` to item
 

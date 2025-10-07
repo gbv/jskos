@@ -83,6 +83,7 @@
             "url": "http://ixtrieve.fh-koeln.de/crisscross/index.html"
         }],
         "mappingRelevance": 0.2,
+        "justification": "https://w3id.org/semapv/vocab/ManualMappingCuration",
         "fromScheme": {"notation":["DDC"]},
         "from": {
             "memberChoice": [ {

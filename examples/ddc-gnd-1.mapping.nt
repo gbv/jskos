@@ -1,0 +1,6 @@
+_:b0 <http://rdfs.org/ns/void#objectsTarget> <http://d-nb.info/gnd/7749153-1> .
+_:b0 <http://rdfs.org/ns/void#subjectsTarget> <http://dewey.info/scheme/edition/e22/> .
+_:b0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#closeMatch> .
+_:b0 <https://w3id.org/sssom/mapping_justification> <https://w3id.org/semapv/vocab/ManualMappingCuration> .
+_:b0 <https://w3id.org/sssom/mapping_tool> _:b1 .
+_:b1 <http://xmlns.com/foaf/0.1/page> <https://coli-conc.gbv.de/cocoda/> .

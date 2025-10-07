@@ -13,5 +13,7 @@
             "uri": "http://d-nb.info/gnd/4074195-3",
             "prefLabel": { "de": "Leukozyt" }
         } ]
-    }
+    },
+    "justification": "https://w3id.org/semapv/vocab/ManualMappingCuration",
+    "tool": [ { "url": "https://coli-conc.gbv.de/cocoda/" } ]
 }

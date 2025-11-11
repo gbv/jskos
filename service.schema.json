@@ -1,0 +1,26 @@
+{
+  "$id": "https://gbv.github.io/jskos/service.schema.json",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "title": "JSKOS Service",
+  "description": "A web service to read and/or write data via an API",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "item.schema.json"
+    }
+  ],
+  "properties": {
+    "api": {
+      "description": "API type",
+      "$ref": "resource.schema.json#/definitions/uri"
+    },
+    "endpoint": {
+      "description": "API endpoint",
+      "$ref": "resource.schema.json#/definitions/uri"
+    },
+    "serves": {
+      "description": "Specific versions of items served via this API",
+      "$ref": "item.schema.json#/definitions/itemSet"
+    }
+  }
+}

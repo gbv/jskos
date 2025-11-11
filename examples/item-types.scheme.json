@@ -28,13 +28,12 @@
       "prefLabel": { "en": "distribution" }
     },
     {
-      "uri": "http://rdfs.org/ns/void#Linkset",
+      "uri": "http://rdf-vocabulary.ddialliance.org/xkos#Correspondence",
       "identifier": [
         "http://purl.org/spar/fabio/VocabularyMapping",
-        "http://rdf-vocabulary.ddialliance.org/xkos#Correspondence"
+        "http://rdfs.org/ns/void#Linkset"
       ],
-      "prefLabel": { "en": "concordance" },
-      "altLabel": { "en": [ "linkset" ] }
+      "prefLabel": { "en": "concordance" }
     },
     {
       "uri": "http://www.w3.org/2004/02/skos/core#mappingRelation",

@@ -395,7 +395,7 @@ item                item type
 [concept scheme]    <http://www.w3.org/2004/02/skos/core#ConceptScheme>
 [registry]          <http://www.w3.org/ns/dcat#Catalog>
 [distribution]      <http://www.w3.org/ns/dcat#Distribution>
-[concordance]       <http://rdfs.org/ns/void#Linkset>
+[concordance]       <http://rdf-vocabulary.ddialliance.org/xkos#Correspondence>
 [mapping]           <http://www.w3.org/2004/02/skos/core#mappingRelation>
                     <http://www.w3.org/2004/02/skos/core#closeMatch>
                     <http://www.w3.org/2004/02/skos/core#exactMatch>
@@ -849,7 +849,9 @@ extent        string                    Size of the concordance
 license       [set]                     License which the full concordance can be used under
 
 The first element of array field `type`, if given, MUST be the [item type] URI
-<http://rdfs.org/ns/void#Linkset>.
+<http://rdf-vocabulary.ddialliance.org/xkos#Correspondence>. Applications
+SHOULD also support URI <http://rdfs.org/ns/void#Linkset> for backwards
+compatability.
 
 Concordances are collections of [mappings] from one [concept scheme] to
 another. If `mappings` is a set then
@@ -1466,7 +1468,8 @@ JSKOS started in 2014 as as part of project [coli-conc](https://coli-conc.gbv.de
 
 ### 0.7.0 (draft) {-}
 
-- Change item time URI of registry from <http://purl.org/cld/cdtype/CatalogueOrIndex> to <http://www.w3.org/ns/dcat#Catalog>
+- Change item type URI of registry from <http://purl.org/cld/cdtype/CatalogueOrIndex> to <http://www.w3.org/ns/dcat#Catalog>
+- Change item type URI of concordance from <http://rdfs.org/ns/void#Linkset> for <http://rdf-vocabulary.ddialliance.org/xkos#Correspondence>
 - ...
 
 ### 0.6.1 (2025-10-07) {-}

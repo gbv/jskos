@@ -393,7 +393,7 @@ item                item type
 ------------------- -----------------------------------------------------
 [concept]           <http://www.w3.org/2004/02/skos/core#Concept>
 [concept scheme]    <http://www.w3.org/2004/02/skos/core#ConceptScheme>
-[registry]          <http://purl.org/cld/cdtype/CatalogueOrIndex>
+[registry]          <http://www.w3.org/ns/dcat#Catalog>
 [distribution]      <http://www.w3.org/ns/dcat#Distribution>
 [concordance]       <http://rdfs.org/ns/void#Linkset>
 [mapping]           <http://www.w3.org/2004/02/skos/core#mappingRelation>
@@ -729,10 +729,9 @@ languages    [list]                     Supported languages
 license      [set]                      Licenses which the full registry content can be used under
 
 The first element of array field `type`, if given, MUST be the [item type] URI
-<http://purl.org/cld/cdtype/CatalogueOrIndex>. Applications SHOULD also accept
-alternative URI <http://www.w3.org/ns/dcat#Catalog> because the item type URI
-for registries is going to be changed to this value a future version of JSKOS
-specification.
+<http://www.w3.org/ns/dcat#Catalog> . Applications SHOULD also accept
+alternative URI <http://purl.org/cld/cdtype/CatalogueOrIndex> for backwards
+compatibility.
 
 Registries are collection of [concepts], [concept schemes], [concept mappings],
 [concordances], [occurrences], and/or other registries with information about
@@ -1467,6 +1466,7 @@ JSKOS started in 2014 as as part of project [coli-conc](https://coli-conc.gbv.de
 
 ### 0.7.0 (draft) {-}
 
+- Change item time URI of registry from <http://purl.org/cld/cdtype/CatalogueOrIndex> to <http://www.w3.org/ns/dcat#Catalog>
 - ...
 
 ### 0.6.1 (2025-10-07) {-}

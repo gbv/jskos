@@ -3,7 +3,7 @@
   "topConcepts": [
     { "uri": "http://www.w3.org/2004/02/skos/core#Concept" },
     { "uri": "http://www.w3.org/2004/02/skos/core#ConceptScheme" },
-    { "uri": "http://purl.org/cld/cdtype/CatalogueOrIndex" },
+    { "uri": "http://www.w3.org/ns/dcat#Catalog" },
     { "uri": "http://www.w3.org/ns/dcat#Distribution" },
     { "uri": "http://rdfs.org/ns/void#Linkset" },
     { "uri": "http://www.w3.org/2004/02/skos/core#mappingRelation" }
@@ -18,7 +18,8 @@
       "prefLabel": { "en": "concept scheme" }
     },
     {
-      "uri": "http://purl.org/cld/cdtype/CatalogueOrIndex",
+      "uri": "http://www.w3.org/ns/dcat#Catalog",
+      "identifier": [ "http://purl.org/cld/cdtype/CatalogueOrIndex" ],
       "prefLabel": { "en": "registry" },
       "altLabel": { "en": [ "catalog", "Catalogue or Index" ] }
     },

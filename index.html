@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-10-07">
+<meta name="dcterms.date" content="2025-11-11">
 
 <title>JSKOS data format for Knowledge Organization Systems</title>
 <style>
@@ -76,10 +76,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="style.css">
 <meta name="citation_title" content="JSKOS data format for Knowledge Organization Systems">
 <meta name="citation_author" content="Jakob Voß">
-<meta name="citation_publication_date" content="2025-10-07">
-<meta name="citation_cover_date" content="2025-10-07">
+<meta name="citation_publication_date" content="2025-11-11">
+<meta name="citation_cover_date" content="2025-11-11">
 <meta name="citation_year" content="2025">
-<meta name="citation_online_date" content="2025-10-07">
+<meta name="citation_online_date" content="2025-11-11">
 <meta name="citation_language" content="en">
 </head>
 
@@ -89,7 +89,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">JSKOS data format for Knowledge Organization Systems</h1>
-            <p class="subtitle lead">Version 0.6.1</p>
+            <p class="subtitle lead">Version 0.7.0-draft</p>
           </div>
 
     
@@ -115,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
                 <div>
             <div class="quarto-title-meta-heading">Published</div>
             <div class="quarto-title-meta-contents">
-              <p class="date">October 7, 2025</p>
+              <p class="date">November 11, 2025</p>
             </div>
           </div>
           
@@ -738,7 +738,7 @@ Note
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><a href="#registries">registry</a></td>
-<td style="text-align: left;"><a href="http://purl.org/cld/cdtype/CatalogueOrIndex" class="uri">http://purl.org/cld/cdtype/CatalogueOrIndex</a></td>
+<td style="text-align: left;"><a href="http://www.w3.org/ns/dcat#Catalog" class="uri">http://www.w3.org/ns/dcat#Catalog</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><a href="#distributions">distribution</a></td>
@@ -746,7 +746,7 @@ Note
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><a href="#concordances">concordance</a></td>
-<td style="text-align: left;"><a href="http://rdfs.org/ns/void#Linkset" class="uri">http://rdfs.org/ns/void#Linkset</a></td>
+<td style="text-align: left;"><a href="http://rdf-vocabulary.ddialliance.org/xkos#Correspondence" class="uri">http://rdf-vocabulary.ddialliance.org/xkos#Correspondence</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><a href="#concept-mappings">mapping</a></td>
@@ -1538,7 +1538,7 @@ Example&nbsp;10
 </tr>
 </tbody>
 </table>
-<p>The first element of array field <code>type</code>, if given, MUST be the <a href="#item-types">item type</a> URI <a href="http://purl.org/cld/cdtype/CatalogueOrIndex" class="uri">http://purl.org/cld/cdtype/CatalogueOrIndex</a>. Applications SHOULD also accept alternative URI <a href="http://www.w3.org/ns/dcat#Catalog" class="uri">http://www.w3.org/ns/dcat#Catalog</a> because the item type URI for registries is going to be changed to this value a future version of JSKOS specification.</p>
+<p>The first element of array field <code>type</code>, if given, MUST be the <a href="#item-types">item type</a> URI <a href="http://www.w3.org/ns/dcat#Catalog" class="uri">http://www.w3.org/ns/dcat#Catalog</a> . Applications SHOULD also accept alternative URI <a href="http://purl.org/cld/cdtype/CatalogueOrIndex" class="uri">http://purl.org/cld/cdtype/CatalogueOrIndex</a> for backwards compatibility.</p>
 <p>Registries are collection of <a href="#concept">concepts</a>, <a href="#concept-schemes">concept schemes</a>, <a href="#concept-mappings">concept mappings</a>, <a href="#concordances">concordances</a>, <a href="#concept-occurrences">occurrences</a>, and/or other registries with information about <a href="#resource-and-property-types">resource types</a> and <a href="#resource-and-property-types">property types</a>.</p>
 <p>A registry limited to only one of the fields <code>concepts</code>, <code>schemes</code>, <code>mappings</code>, <code>concordances</code>, and <code>occurrences</code>, <code>registries</code> is also called a <strong>collection</strong> of the corresponding <a href="#item-types">item type</a>. Registry field <code>types</code> SHOULD include the corresponding item type URI.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -1562,7 +1562,7 @@ Example&nbsp;11: A concept collection
 </figcaption>
 <div aria-describedby="lst-concept1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"type"</span><span class="fu">:</span> <span class="ot">[</span> <span class="st">"http://purl.org/cld/cdtype/CatalogueOrIndex"</span><span class="ot">,</span> <span class="st">"http://www.w3.org/ns/dcat#Catalog"</span> <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"type"</span><span class="fu">:</span> <span class="ot">[</span> <span class="st">"http://www.w3.org/ns/dcat#Catalog"</span> <span class="ot">]</span><span class="fu">,</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"types"</span><span class="fu">:</span> <span class="ot">[</span></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"http://www.w3.org/2004/02/skos/core#Concept"</span><span class="ot">,</span></span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"http://www.w3.org/2002/07/owl#Class"</span></span>
@@ -1728,7 +1728,7 @@ Example&nbsp;12
 </tr>
 </tbody>
 </table>
-<p>The first element of array field <code>type</code>, if given, MUST be the <a href="#item-types">item type</a> URI <a href="http://rdfs.org/ns/void#Linkset" class="uri">http://rdfs.org/ns/void#Linkset</a>.</p>
+<p>The first element of array field <code>type</code>, if given, MUST be the <a href="#item-types">item type</a> URI <a href="http://rdf-vocabulary.ddialliance.org/xkos#Correspondence" class="uri">http://rdf-vocabulary.ddialliance.org/xkos#Correspondence</a>. Applications SHOULD also support URI <a href="http://rdfs.org/ns/void#Linkset" class="uri">http://rdfs.org/ns/void#Linkset</a> for backwards compatability.</p>
 <p>Concordances are collections of <a href="#concept-mappings">mappings</a> from one <a href="#concept-schemes">concept scheme</a> to another. If <code>mappings</code> is a set then</p>
 <ul>
 <li><p>all its members with field <code>fromScheme</code> MUST have <a href="#resource-sameness">the same</a> value like concordance field <code>fromScheme</code>.</p></li>
@@ -2684,7 +2684,7 @@ Example&nbsp;20
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"topConcepts"</span><span class="fu">:</span> <span class="ot">[</span></span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2004/02/skos/core#Concept"</span> <span class="fu">}</span><span class="ot">,</span></span>
 <span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2004/02/skos/core#ConceptScheme"</span> <span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://purl.org/cld/cdtype/CatalogueOrIndex"</span> <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/ns/dcat#Catalog"</span> <span class="fu">}</span><span class="ot">,</span></span>
 <span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/ns/dcat#Distribution"</span> <span class="fu">}</span><span class="ot">,</span></span>
 <span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://rdfs.org/ns/void#Linkset"</span> <span class="fu">}</span><span class="ot">,</span></span>
 <span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2004/02/skos/core#mappingRelation"</span> <span class="fu">}</span></span>
@@ -2699,22 +2699,22 @@ Example&nbsp;20
 <span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"concept scheme"</span> <span class="fu">}</span></span>
 <span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
 <span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
-<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://purl.org/cld/cdtype/CatalogueOrIndex"</span><span class="fu">,</span></span>
-<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"registry"</span> <span class="fu">},</span></span>
-<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"altLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="ot">[</span> <span class="st">"catalog"</span><span class="ot">,</span> <span class="st">"Catalogue or Index"</span> <span class="ot">]</span> <span class="fu">}</span></span>
-<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
-<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/ns/dcat#Distribution"</span><span class="fu">,</span></span>
-<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"distribution"</span> <span class="fu">}</span></span>
-<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb24-29"><a href="#cb24-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
-<span id="cb24-30"><a href="#cb24-30" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://rdfs.org/ns/void#Linkset"</span><span class="fu">,</span></span>
-<span id="cb24-31"><a href="#cb24-31" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"identifier"</span><span class="fu">:</span> <span class="ot">[</span></span>
-<span id="cb24-32"><a href="#cb24-32" aria-hidden="true" tabindex="-1"></a>        <span class="st">"http://purl.org/spar/fabio/VocabularyMapping"</span><span class="ot">,</span></span>
-<span id="cb24-33"><a href="#cb24-33" aria-hidden="true" tabindex="-1"></a>        <span class="st">"http://rdf-vocabulary.ddialliance.org/xkos#Correspondence"</span></span>
-<span id="cb24-34"><a href="#cb24-34" aria-hidden="true" tabindex="-1"></a>      <span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb24-35"><a href="#cb24-35" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"concordance"</span> <span class="fu">},</span></span>
-<span id="cb24-36"><a href="#cb24-36" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"altLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="ot">[</span> <span class="st">"linkset"</span> <span class="ot">]</span> <span class="fu">}</span></span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/ns/dcat#Catalog"</span><span class="fu">,</span></span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"identifier"</span><span class="fu">:</span> <span class="ot">[</span> <span class="st">"http://purl.org/cld/cdtype/CatalogueOrIndex"</span> <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"registry"</span> <span class="fu">},</span></span>
+<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"altLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="ot">[</span> <span class="st">"catalog"</span><span class="ot">,</span> <span class="st">"Catalogue or Index"</span> <span class="ot">]</span> <span class="fu">}</span></span>
+<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/ns/dcat#Distribution"</span><span class="fu">,</span></span>
+<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"distribution"</span> <span class="fu">}</span></span>
+<span id="cb24-29"><a href="#cb24-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb24-30"><a href="#cb24-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb24-31"><a href="#cb24-31" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://rdf-vocabulary.ddialliance.org/xkos#Correspondence"</span><span class="fu">,</span></span>
+<span id="cb24-32"><a href="#cb24-32" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"identifier"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb24-33"><a href="#cb24-33" aria-hidden="true" tabindex="-1"></a>        <span class="st">"http://purl.org/spar/fabio/VocabularyMapping"</span><span class="ot">,</span></span>
+<span id="cb24-34"><a href="#cb24-34" aria-hidden="true" tabindex="-1"></a>        <span class="st">"http://rdfs.org/ns/void#Linkset"</span></span>
+<span id="cb24-35"><a href="#cb24-35" aria-hidden="true" tabindex="-1"></a>      <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb24-36"><a href="#cb24-36" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"concordance"</span> <span class="fu">}</span></span>
 <span id="cb24-37"><a href="#cb24-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
 <span id="cb24-38"><a href="#cb24-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
 <span id="cb24-39"><a href="#cb24-39" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2004/02/skos/core#mappingRelation"</span><span class="fu">,</span></span>
@@ -3086,6 +3086,8 @@ Example&nbsp;26: Mappings
 <section id="draft" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="draft">0.7.0 (draft)</h3>
 <ul>
+<li>Change item type URI of registry from <a href="http://purl.org/cld/cdtype/CatalogueOrIndex" class="uri">http://purl.org/cld/cdtype/CatalogueOrIndex</a> to <a href="http://www.w3.org/ns/dcat#Catalog" class="uri">http://www.w3.org/ns/dcat#Catalog</a></li>
+<li>Change item type URI of concordance from <a href="http://rdfs.org/ns/void#Linkset" class="uri">http://rdfs.org/ns/void#Linkset</a> for <a href="http://rdf-vocabulary.ddialliance.org/xkos#Correspondence" class="uri">http://rdf-vocabulary.ddialliance.org/xkos#Correspondence</a></li>
 <li>…</li>
 </ul>
 </section>

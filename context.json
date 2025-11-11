@@ -241,6 +241,9 @@
     "tool": "https://w3id.org/sssom/mapping_tool",
     "issue": "http://www.w3.org/2005/01/wf/flow#task",
     "issueTracker": "http://schema.org/discussionUrl",
-    "guidelines": "http://purl.org/dc/terms/conformsTo"
+    "guidelines": "http://purl.org/dc/terms/conformsTo",
+    "api": "http://purl.org/dc/terms/conformsTo",
+    "endpoint": "http://www.w3.org/ns/dcat#endpointURL",
+    "serves": "http://www.w3.org/ns/dcat#servesDataset"
   }
 }

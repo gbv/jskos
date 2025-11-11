@@ -28,6 +28,10 @@
       "prefLabel": { "en": "distribution" }
     },
     {
+      "uri": "https://www.w3.org/ns/dcat#DataService",
+      "prefLabel": { "en": "service" }
+    },
+    {
       "uri": "http://rdf-vocabulary.ddialliance.org/xkos#Correspondence",
       "identifier": [
         "http://purl.org/spar/fabio/VocabularyMapping",

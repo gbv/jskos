@@ -18,7 +18,7 @@ In addition to [concepts] and [concept schemes] JSKOS can express information ab
 
 - [mappings] and [concordances] for alignments between concepts
 - [occurrences] of concepts in databases
-- [registries] and [distributions] to package and provide data
+- [registries], [distributions], and [services] to package and provide data
 - general [resources] (any kind of entities)
 - [annotations] to review and comment on resources
 - qualified information with [qualified statements]
@@ -395,6 +395,7 @@ item                item type
 [concept scheme]    <http://www.w3.org/2004/02/skos/core#ConceptScheme>
 [registry]          <http://www.w3.org/ns/dcat#Catalog>
 [distribution]      <http://www.w3.org/ns/dcat#Distribution>
+[service]           <http://www.w3.org/ns/dcat#DataService>
 [concordance]       <http://rdf-vocabulary.ddialliance.org/xkos#Correspondence>
 [mapping]           <http://www.w3.org/2004/02/skos/core#mappingRelation>
                     <http://www.w3.org/2004/02/skos/core#closeMatch>
@@ -424,7 +425,8 @@ JSKOS defines the following types of JSON objects:
         - [mappings] for mappings between concepts of two concept schemes
         - [concordances] for curated collections of mappings
         - [registries] for collections of items (concepts, concept schemes...)
-        - [distributions] for available forms to access the content of an item
+        - [distributions] for available forms to access items
+        - [services] for APIs to access items
     - [occurrences] for counts of concept uses
 - [annotations] to review and comment on individual resources
 
@@ -770,7 +772,7 @@ optional fields `@context`, `address`, `altLabel`, `changeNote`, `contributor`,
 `scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`, `subject`,
 `tool`, `type`, `uri`, `url`, `version`, and `versionOf`):
 
-Distributions mostly cover the [class Distribution](https://www.w3.org/TR/vocab-dcat-3/#Class:Distribution) from [Data Catalog Vocabulary](https://www.w3.org/TR/vocab-dcat-3/).
+Distributions roughly cover the [class Distribution](https://www.w3.org/TR/vocab-dcat-3/#Class:Distribution) from [Data Catalog Vocabulary](https://www.w3.org/TR/vocab-dcat-3/).
 
 field          type            definition
 -------------- --------------- ------------------------------------------------------------------
@@ -822,6 +824,37 @@ Authority Data](https://www.loc.gov/marc/authority/):
 
 :::
 
+## Service
+
+[service]: #services
+[services]: #services
+
+A **service** is an [item] with the following fields (in addition to the
+optional fields `@context`, `address`, `altLabel`, `changeNote`, `contributor`,
+`created`, `creator`, `definition`, `depiction`, `editorialNote`, `endDate`,
+`endPlace`, `example`, `guidelines`, `hiddenLabel`, `historyNote`,
+`identifier`, `issue`, `issueTracker`,  `issued`, `location`, `modified`,
+`notation`, `note`, `partOf`, `place`, `prefLabel`, `publisher`, `rank`,
+`scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`, `subject`,
+`tool`, `type`, `uri`, `url`, `version`, and `versionOf`):
+
+field         type              definition
+------------- ----------------- ------------------------------------------------------------------
+api           [URI]             API type, for instance from BARTOC vocabulary API types vocabulary
+endpoint      [URI]             API endpoint (SHOULD be an URL)
+serves        [set] of [items]  Specific versions of items served via this API
+
+Field `type` SHOULD be used to provide the technical type of the service.
+
+Field `url` SHOULD be used to provide a landing page or information about the service. 
+
+```{.json #lst-service lst-cap="A service"}
+{{< include examples/example.service.json >}}
+```
+
+The first element of array field `type`, if given, MUST be the [item type] URI <http://www.w3.org/ns/dcat#DataService>.
+
+Services roughly cover the [class DataService](https://www.w3.org/TR/vocab-dcat-3/#Class:Data_Service) from [Data Catalog Vocabulary](https://www.w3.org/TR/vocab-dcat-3/).
 
 ## Concordances
 

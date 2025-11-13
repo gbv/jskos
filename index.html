@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.8.26">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -67,7 +67,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-20f424e7bd2e25dfd45129c9906c9df5.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-5a65f6d6a6cb2564d1aec56f7fed0acc.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-1d3a88f5acc567a6ed2519245f6f4ff5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -911,7 +911,6 @@ Note
 </table>
 <p>It is RECOMMENDED to always include the fields <code>uri</code>, <code>type</code>, and <code>@context</code>. The value of field <code>@context</code> SHOULD be <code>https://gbv.github.io/jskos/context.json</code>.</p>
 <p>Resources can be <a href="#resource-sameness">tested for sameness</a> based on field <code>uri</code>.</p>
-<p>The fields <code>created</code>, <code>issued</code>, <code>modified</code>, <code>creator</code>, <code>contributor</code>, <code>source</code>, and <code>publisher</code> do not refer to the entity referenced by the resource but to the resource object. For instance a resource about the city of Rome might have a recent date <code>created</code> while the founding date <code>-0753</code> would be stated in <a href="#item">item</a> field <code>startDate</code>.</p>
 <p>For use cases of field <code>partOf</code> see also <a href="#concept-schemes">Concept Schemes</a>.</p>
 </section>
 <section id="item" class="level2" data-number="4.2">
@@ -1097,6 +1096,7 @@ Note
 <p>Applications MAY limit the fields <code>notation</code> and/or <code>depiction</code> to lists of a single element or ignore all preceding elements of these lists.</p>
 <p>If <code>startDate</code> is given, the value of <code>endDate</code> MUST NOT be an interval with open start. If <code>endDate</code> is given, the value of <code>startDate</code> MUST NOT be an interval with open end.</p>
 <p>To state one primary date of an item set <code>startDate</code> and <code>endDate</code> to the same value.</p>
+<p>Fields <code>created</code>, <code>issued</code>, <code>modified</code>, <code>creator</code>, <code>contributor</code> and <code>source</code> of an item do not refer to the entity referenced by the item but to the item record. For instance an item about the city of Rome might have a recent date <code>created</code> while the founding date such as <code>-0753</code> would be stated in field <code>startDate</code>.</p>
 </section>
 <section id="concept" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="concept"><span class="header-section-number">4.3</span> Concept</h2>
@@ -3158,6 +3158,7 @@ Example&nbsp;27: Mappings
 <ul>
 <li>Change item type URI of registry from <a href="http://purl.org/cld/cdtype/CatalogueOrIndex" class="uri">http://purl.org/cld/cdtype/CatalogueOrIndex</a> to <a href="http://www.w3.org/ns/dcat#Catalog" class="uri">http://www.w3.org/ns/dcat#Catalog</a></li>
 <li>Change item type URI of concordance from <a href="http://rdfs.org/ns/void#Linkset" class="uri">http://rdfs.org/ns/void#Linkset</a> for <a href="http://rdf-vocabulary.ddialliance.org/xkos#Correspondence" class="uri">http://rdf-vocabulary.ddialliance.org/xkos#Correspondence</a></li>
+<li>Clarify semantics of metadata fields <code>created</code>, <code>issued</code>, <code>modified</code>, <code>creator</code>, <code>contributor</code> and <code>source</code></li>
 <li>…</li>
 </ul>
 </section>

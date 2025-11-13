@@ -822,8 +822,8 @@ Authority Data](https://www.loc.gov/marc/authority/):
 
 ## Service
 
-[service]: #services
-[services]: #services
+[service]: #service
+[services]: #service
 
 A **service** is an [item] with the following fields (in addition to the
 optional fields `@context`, `address`, `altLabel`, `changeNote`, `contributor`,

@@ -464,12 +464,6 @@ The value of field `@context` SHOULD be
 
 Resources can be [tested for sameness](#resource-sameness) based on field `uri`.
 
-The fields `created`, `issued`, `modified`, `creator`, `contributor`, `source`,
-and `publisher` do not refer to the entity referenced by the resource but to
-the resource object. For instance a resource about the city of Rome might have
-a recent date `created` while the founding date `-0753` would be stated in
-[item] field `startDate`.
-
 For use cases of field `partOf` see also [Concept Schemes].
 
 ## Item
@@ -527,6 +521,8 @@ If `startDate` is given, the value of `endDate` MUST NOT be an interval with ope
 If `endDate` is given, the value of `startDate` MUST NOT be an interval with open end.
 
 To state one primary date of an item set `startDate` and `endDate` to the same value.
+
+Fields `created`, `issued`, `modified`, `creator`, `contributor` and `source` of an item do not refer to the entity referenced by the item but to the item record. For instance an item about the city of Rome might have a recent date `created` while the founding date such as `-0753` would be stated in field `startDate`.
 
 ## Concept
 
@@ -1503,6 +1499,7 @@ JSKOS started in 2014 as as part of project [coli-conc](https://coli-conc.gbv.de
 
 - Change item type URI of registry from <http://purl.org/cld/cdtype/CatalogueOrIndex> to <http://www.w3.org/ns/dcat#Catalog>
 - Change item type URI of concordance from <http://rdfs.org/ns/void#Linkset> for <http://rdf-vocabulary.ddialliance.org/xkos#Correspondence>
+- Clarify semantics of metadata fields `created`, `issued`, `modified`, `creator`, `contributor` and `source` 
 - ...
 
 ### 0.6.1 (2025-10-07) {-}

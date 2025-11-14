@@ -22,5 +22,6 @@
       "description": "Specific versions of items served via this API",
       "$ref": "item.schema.json#/definitions/itemSet"
     }
-  }
+  },
+  "required": [ "endpoint" ]
 }

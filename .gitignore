@@ -7,3 +7,5 @@ node_modules/
 docs/
 
 /.quarto/
+
+**/*.quarto_ipynb

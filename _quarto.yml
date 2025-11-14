@@ -39,3 +39,6 @@ format:
     crossref:
       lst-prefix: "Example"
       lst-title: "Example"
+    mermaid:
+      class:
+        hideEmptyMembersBox: true

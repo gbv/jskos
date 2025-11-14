@@ -860,20 +860,18 @@ optional fields `@context`, `address`, `altLabel`, `changeNote`, `contributor`,
 `tool`, `type`, `uri`, `url`, `version`, and `versionOf`):
 
 field         type              definition
-------------- ----------------- ------------------------------------------------------------------
-api           [URI]             API type, for instance from BARTOC vocabulary API types vocabulary
-endpoint      [URI]             API endpoint (SHOULD be an URL)
-serves        [set] of [items]  Specific versions of items served via this API
-
-Field `type` SHOULD be used to provide the technical type of the service.
+------------- ----------------- --------------------------------------------------------------------------------
+api           [URI]             API type, for instance from BARTOC vocabulary API types vocabulary (RECOMMENDED)
+endpoint      [URI]             API endpoint (REQUIRED, SHOULD be an URL)
+serves        [set] of [items]  Specific versions of items served via this API (OPTIONAL)
 
 Field `url` SHOULD be used to provide a landing page or information about the service. 
+
+The first element of array field `type`, if given, MUST be the [item type] URI <http://www.w3.org/ns/dcat#DataService>.
 
 ```{.json #lst-service lst-cap="A service"}
 {{< include examples/example.service.json >}}
 ```
-
-The first element of array field `type`, if given, MUST be the [item type] URI <http://www.w3.org/ns/dcat#DataService>.
 
 Services roughly cover the [class DataService](https://www.w3.org/TR/vocab-dcat-3/#Class:Data_Service) from [Data Catalog Vocabulary](https://www.w3.org/TR/vocab-dcat-3/).
 

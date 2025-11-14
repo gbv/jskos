@@ -480,6 +480,7 @@ contributor         [set]                                    agent responsible f
 source              [set]                                    sources from which the described resource is derived
 publisher           [set]                                    agent responsible for making the resource available
 partOf              [set]                                    [resources] which this resource is part of (if no other field applies)
+annotations         [set] of [annotations]                   annotations of the resource or related resources
 qualifiedRelations  [qualified map] of [qualified relation]  qualified relations to other resources
 qualifiedDates      [qualified map] of [qualified date]      qualified dates (related events or periods)
 qualifiedLiterals   [qualified map] of [qualified literal]   qualified literals
@@ -499,9 +500,9 @@ For use cases of field `partOf` see also [Concept Scheme].
 [items]: #item
 
 An **item** is a [resource] with the following optional fields (in addition to
-the optional fields `@context`, `contributor`, `created`, `creator`,
-`identifier`, `issued`, `modified`, `partOf`, `publisher`, `rank`, `source`,
-`type`, and `uri`):
+the optional fields `@context`, `annotations`, `contributor`, `created`,
+`creator`, `identifier`, `issued`, `modified`, `partOf`, `publisher`, `rank`,
+`source`, `type`, and `uri`):
 
 field         type                      description
 ------------- ------------------------- ----------------------------------------------
@@ -558,13 +559,13 @@ Fields `created`, `issued`, `modified`, `creator`, `contributor` and `source` of
 
 A **concept** is an [item] and [concept bundle] with the following optional
 fields (in addition to the optional fields `@context`, `address`, `altLabel`,
-`changeNote`, `contributor`, `created`, `creator`, `definition`, `depiction`,
-`editorialNote`, `endDate`, `endPlace`, `example`, `guidelines`, `hiddenLabel`,
-`historyNote`, `identifier`, `issue`, `issueTracker`, `issued`, `location`,
-`modified`, `notation`, `note`, `partOf`, `place`, `prefLabel`, `publisher`,
-`rank`, `scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`,
-`subject`, `tool`, `type`, `uri`, `url`, `version`, `versionOf`, `memberSet`,
-`memberList`, `memberChoice`, and `memberRoles`):
+`annotations`, `changeNote`, `contributor`, `created`, `creator`, `definition`,
+`depiction`, `editorialNote`, `endDate`, `endPlace`, `example`, `guidelines`,
+`hiddenLabel`, `historyNote`, `identifier`, `issue`, `issueTracker`, `issued`,
+`location`, `modified`, `notation`, `note`, `partOf`, `place`, `prefLabel`,
+`publisher`, `rank`, `scopeNote`, `source`, `startDate`, `startPlace`,
+`subjectOf`, `subject`, `tool`, `type`, `uri`, `url`, `version`, `versionOf`,
+`memberSet`, `memberList`, `memberChoice`, and `memberRoles`):
 
 field        type                       description
 ------------ -------------------------- -------------------------------------------------------------------------------
@@ -624,7 +625,7 @@ connected by the broader relation.
 [scheme]: #schemes
 
 A **concept scheme** is an [item] with the following optional fields (in
-addition to the optional fields `@context`, `address`, `altLabel`,
+addition to the optional fields `@context`, `address`, `altLabel`, `annotations`,
 `changeNote`, `contributor`, `created`, `creator`, `definition`, `depiction`,
 `editorialNote`, `endDate`, `endPlace`, `example`, `guidelines`, `hiddenLabel`,
 `historyNote`, `identifier`, `issue`, `issueTracker`, `issued`, `location`,
@@ -676,9 +677,9 @@ Item field `basedOn` at a concept schemes SHOULD be used to connect translations
 [occurrence]: #occurrences
 
 An **occurrence** is a [resource] and [concept bundle] with the following
-optional fields (in addition to the optional fields `@context`, `contributor`,
-`created`, `creator`, `identifier`, `issued`, `modified`, `partOf`,
-`publisher`, `source`, `type`, `uri`, `memberSet`, `memberList`,
+optional fields (in addition to the optional fields `@context`, `annotations`,
+`contributor`, `created`, `creator`, `identifier`, `issued`, `modified`,
+`partOf`, `publisher`, `source`, `type`, `uri`, `memberSet`, `memberList`,
 `memberChoice`, and `memberRoles`):
 
 field        type                   definition
@@ -729,8 +730,8 @@ The Wikidata [concept of an individual human](http://www.wikidata.org/entity/Q5)
 [registry]: #registry
 
 A **registry** is an [item] with the following optional fields (in addition to
-the optional fields `@context`, `address`, `altLabel`, `changeNote`,
-`contributor`, `created`, `creator`, `definition`, `depiction`,
+the optional fields `@context`, `address`, `altLabel`, `annotations`,
+`changeNote`, `contributor`, `created`, `creator`, `definition`, `depiction`,
 `editorialNote`, `endDate`, `endPlace`, `example`, `guidelines`, `hiddenLabel`,
 `historyNote`, `identifier`, `issue`, `issueTracker`, `issued`, `location`,
 `modified`, `notation`, `note`, `partOf`, `place`, `prefLabel`, `publisher`,
@@ -785,13 +786,13 @@ Conversion of JSKOS registries to RDF requires a different value for field
 [distributions]: #distribution
 
 A **distribution** is an [item] with the following fields (in addition to the
-optional fields `@context`, `address`, `altLabel`, `changeNote`, `contributor`,
-`created`, `creator`, `definition`, `depiction`, `editorialNote`, `endDate`,
-`endPlace`, `example`, `guidelines`, `hiddenLabel`, `historyNote`,
-`identifier`, `issue`, `issueTracker`,  `issued`, `location`, `modified`,
-`notation`, `note`, `partOf`, `place`, `prefLabel`, `publisher`, `rank`,
-`scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`, `subject`,
-`tool`, `type`, `uri`, `url`, `version`, and `versionOf`):
+optional fields `@context`, `address`, `altLabel`, `annotations`, `changeNote`,
+`contributor`, `created`, `creator`, `definition`, `depiction`,
+`editorialNote`, `endDate`, `endPlace`, `example`, `guidelines`, `hiddenLabel`,
+`historyNote`, `identifier`, `issue`, `issueTracker`,  `issued`, `location`,
+`modified`, `notation`, `note`, `partOf`, `place`, `prefLabel`, `publisher`,
+`rank`, `scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`,
+`subject`, `tool`, `type`, `uri`, `url`, `version`, and `versionOf`):
 
 Distributions roughly cover the class [Distribution](https://www.w3.org/TR/vocab-dcat-3/#Class:Distribution) from [Data Catalog Vocabulary](https://www.w3.org/TR/vocab-dcat-3/).
 
@@ -851,13 +852,13 @@ Authority Data](https://www.loc.gov/marc/authority/):
 [services]: #service
 
 A **service** is an [item] with the following fields (in addition to the
-optional fields `@context`, `address`, `altLabel`, `changeNote`, `contributor`,
-`created`, `creator`, `definition`, `depiction`, `editorialNote`, `endDate`,
-`endPlace`, `example`, `guidelines`, `hiddenLabel`, `historyNote`,
-`identifier`, `issue`, `issueTracker`,  `issued`, `location`, `modified`,
-`notation`, `note`, `partOf`, `place`, `prefLabel`, `publisher`, `rank`,
-`scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`, `subject`,
-`tool`, `type`, `uri`, `url`, `version`, and `versionOf`):
+optional fields `@context`, `address`, `altLabel`, `annotations`, `changeNote`,
+`contributor`, `created`, `creator`, `definition`, `depiction`,
+`editorialNote`, `endDate`, `endPlace`, `example`, `guidelines`, `hiddenLabel`,
+`historyNote`, `identifier`, `issue`, `issueTracker`,  `issued`, `location`,
+`modified`, `notation`, `note`, `partOf`, `place`, `prefLabel`, `publisher`,
+`rank`, `scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`,
+`subject`, `tool`, `type`, `uri`, `url`, `version`, and `versionOf`):
 
 field         type              definition
 ------------- ----------------- --------------------------------------------------------------------------------
@@ -881,14 +882,14 @@ Services roughly cover the [class DataService](https://www.w3.org/TR/vocab-dcat-
 [concordance]: #concordance
 
 A **concordance** is an [item] with the following fields (in addition to the
-optional fields `@context`, `address`, `altLabel`, `changeNote`, `contributor`,
-`created`, `creator`, `definition`, `depiction`, `editorialNote`, `endDate`,
-`endPlace`, `example`, `guidelines`, `hiddenLabel`, `historyNote`,
-`identifier`, `issue`, `issueTracker`,  `issued`, `location`, `modified`,
-`notation`, `note`, `partOf`, `place`, `prefLabel`, `publisher`, `rank`,
-`scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`, `subject`,
-`tool`, `type`, `uri`, `url`, `version`, and `versionOf`). All fields except
-`fromScheme` and `toScheme` are optional.
+optional fields `@context`, `address`, `altLabel`, `annotations`, `changeNote`,
+`contributor`, `created`, `creator`, `definition`, `depiction`,
+`editorialNote`, `endDate`, `endPlace`, `example`, `guidelines`, `hiddenLabel`,
+`historyNote`, `identifier`, `issue`, `issueTracker`,  `issued`, `location`,
+`modified`, `notation`, `note`, `partOf`, `place`, `prefLabel`, `publisher`,
+`rank`, `scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`,
+`subject`, `tool`, `type`, `uri`, `url`, `version`, and `versionOf`). All
+fields except `fromScheme` and `toScheme` are optional.
  
 
 field         type                      definition
@@ -929,7 +930,7 @@ A (concept) mapping is a link between [concepts] of two [concept schemes]. It
 consists of two [concept bundles] with additional metadata.
 
 A **mapping** is an [item] with the following fields (in
-addition to the optional fields `@context`, `address`, `altLabel`,
+addition to the optional fields `@context`, `address`, `altLabel`, `annotations`,
 `changeNote`, `contributor`, `created`, `creator`, `definition`, `depiction`,
 `editorialNote`, `endDate`, `endPlace`, `example`, `guidelines`, `hiddenLabel`,
 `historyNote`, `identifier`, `issue`, `issueTracker`, `issued`, `location`,

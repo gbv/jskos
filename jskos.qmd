@@ -71,6 +71,13 @@ An **URI** is a syntactically correct IRI ([RFC 3987]).
 
 An **URL** is a syntactically correct URL with scheme `https` (RECOMMENDED) or `http` ([RFC 3986]).
 
+## Link template
+
+[link template]: #link-template
+[link templates]: #link-template
+
+*Not specified yet, see <https://github.com/gbv/jskos/issues/158>*
+
 ## non-negative integer
 
 A **non-negative integer** is a JSON number without preceding minus part, fractional part, and exponent.
@@ -1501,7 +1508,7 @@ JSKOS started in 2014 as as part of project [coli-conc](https://coli-conc.gbv.de
 - Change item type URI of concordance from <http://rdfs.org/ns/void#Linkset> for <http://rdf-vocabulary.ddialliance.org/xkos#Correspondence>
 - Clarify semantics of metadata fields `created`, `issued`, `modified`, `creator`, `contributor` and `source` 
 - Object types: align naming, add new type [service], make [annotation] a data type
-- ...
+- Add [link templates]
 
 ### 0.6.1 (2025-10-07) {-}
 

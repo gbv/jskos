@@ -8,7 +8,7 @@ authority files, and knowledge graphs.
 The core of JSKOS is an encoding of Simple Knowledge Organisation System
 (SKOS), an application of the Resource Description Framework (RDF), in
 JavaScript Object Notation for Linked Data (JSON-LD). JSKOS is compatible with
-these technologies but it does notrequire to be experienced with more than
+these technologies but it does not require to be experienced with more than
 plain JSON ([RFC 8259]). Another influence of JSKOS is the data model of
 Wikibase, which can partly be encoded in JSKOS as well.
 
@@ -364,6 +364,26 @@ fully implementing all IIIF capabilities.
 ~~~
 :::
 
+## annotation
+
+[annotation]: #annotations
+[annotations]: #annotations
+
+An **annotation** links a JSKOS [resource] or another annotation with a review,
+comment or similar document. An annotation is a JSON object that conforms to
+the [Web Annotation Data Model] and further contains the following fields as
+defined:
+
+field       type                              definition
+----------- --------------------------------- ----------------------------------------------
+@context    [URL]                             the value `http://www.w3.org/ns/anno.jsonld`
+type        string                            the value `Annotation`
+id          [URI]                             globally unique identifier of the annotation
+target      [URI], [Resource] or [Annotation] object being annotated, or its URI
+
+[Web Annotation Data Model]: https://www.w3.org/TR/annotation-model/
+
+
 # Resource and property types
 
 [resource type]: #resource-and-property-types
@@ -428,9 +448,16 @@ JSKOS defines the following types of JSON objects:
         - [distributions] for available forms to access items
         - [services] for APIs to access items
     - [occurrences] for counts of concept uses
-- [annotations] to review and comment on individual resources
+- [concept bundle] for groups of concepts
 
 Object types [concept], [mapping], and [occurrence] are also [concept bundles].
+
+In addition there are JSON objects to encode entities of the following [data types](#sec-data-types):
+
+- [location] for geospatial data (based on GeoJSON)
+- [media] for media files (based on IIIF)
+- [annotation] to review and comment on resources (based on Web Annotation Data Model)
+- [address] for postal addresses (based on vCard and schema.org)
 
 ## Resource
 
@@ -464,7 +491,7 @@ The value of field `@context` SHOULD be
 
 Resources can be [tested for sameness](#resource-sameness) based on field `uri`.
 
-For use cases of field `partOf` see also [Concept Schemes].
+For use cases of field `partOf` see also [Concept Scheme].
 
 ## Item
 
@@ -590,10 +617,10 @@ connected by the broader relation.
 ```
 
 
-## Concept Schemes
+## Concept Scheme
 
-[concept scheme]: #concept-schemes
-[concept schemes]: #concept-schemes
+[concept scheme]: #concept-scheme
+[concept schemes]: #concept-scheme
 [scheme]: #schemes
 
 A **concept scheme** is an [item] with the following optional fields (in
@@ -643,12 +670,10 @@ Item field `replacedBy` at a concept schemes SHOULD be used to connect successiv
 
 Item field `basedOn` at a concept schemes SHOULD be used to connect translations, abridged versions, or concept schemes that have been inspired by another concept scheme.
 
-## Concept Occurrences
+## Occurrence
 
-[occurrences]: #concept-occurrences
-[occurrence]: #concept-occurrences
-[concept occurrence]: #concept-occurrence
-[concept occurrences]: #concept-occurrences
+[occurrences]: #occurrence
+[occurrence]: #occurrences
 
 An **occurrence** is a [resource] and [concept bundle] with the following
 optional fields (in addition to the optional fields `@context`, `contributor`,
@@ -698,10 +723,10 @@ The Wikidata [concept of an individual human](http://www.wikidata.org/entity/Q5)
 :::
 
 
-## Registries
+## Registry
 
-[registries]: #registries
-[registry]: #registries
+[registries]: #registry
+[registry]: #registry
 
 A **registry** is an [item] with the following optional fields (in addition to
 the optional fields `@context`, `address`, `altLabel`, `changeNote`,
@@ -731,7 +756,7 @@ The first element of array field `type`, if given, MUST be the [item type] URI
 alternative URI <http://purl.org/cld/cdtype/CatalogueOrIndex> for backwards
 compatibility.
 
-Registries are collection of [concepts], [concept schemes], [concept mappings],
+Registries are collection of [concepts], [concept schemes], [mappings],
 [concordances], [occurrences], and/or other registries with information about
 [resource types] and [property types].
 
@@ -754,10 +779,10 @@ Conversion of JSKOS registries to RDF requires a different value for field
 ```
 
 
-## Distributions
+## Distribution
 
-[distribution]: #distributions
-[distributions]: #distributions
+[distribution]: #distribution
+[distributions]: #distribution
 
 A **distribution** is an [item] with the following fields (in addition to the
 optional fields `@context`, `address`, `altLabel`, `changeNote`, `contributor`,
@@ -768,7 +793,7 @@ optional fields `@context`, `address`, `altLabel`, `changeNote`, `contributor`,
 `scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`, `subject`,
 `tool`, `type`, `uri`, `url`, `version`, and `versionOf`):
 
-Distributions roughly cover the [class Distribution](https://www.w3.org/TR/vocab-dcat-3/#Class:Distribution) from [Data Catalog Vocabulary](https://www.w3.org/TR/vocab-dcat-3/).
+Distributions roughly cover the class [Distribution](https://www.w3.org/TR/vocab-dcat-3/#Class:Distribution) from [Data Catalog Vocabulary](https://www.w3.org/TR/vocab-dcat-3/).
 
 field          type            definition
 -------------- --------------- ------------------------------------------------------------------
@@ -852,10 +877,10 @@ The first element of array field `type`, if given, MUST be the [item type] URI <
 
 Services roughly cover the [class DataService](https://www.w3.org/TR/vocab-dcat-3/#Class:Data_Service) from [Data Catalog Vocabulary](https://www.w3.org/TR/vocab-dcat-3/).
 
-## Concordances
+## Concordance
 
-[concordances]: #concordances
-[concordance]: #concordances
+[concordances]: #concordance
+[concordance]: #concordance
 
 A **concordance** is an [item] with the following fields (in addition to the
 optional fields `@context`, `address`, `altLabel`, `changeNote`, `contributor`,
@@ -897,22 +922,23 @@ A [registry] object can be used to combine arbitrary mappings without this const
 There is an additional integrity constraint refering to field `inScheme` if concepts in mappings in concordances.
 :::
 
-## Concept Mappings
+## Mapping
 
-[mappings]: #concept-mappings
-[mapping]: #concept-mappings
-[concept mapping]: #concept-mappings
-[concept mappings]: #concept-mappings
+[mappings]: #mapping
+[mapping]: #mapping
 
-A **mapping** is an [item] with the following fields (in addition to the
-optional fields `@context`, `address`, `altLabel`, `changeNote`, `contributor`,
-`created`, `creator`, `definition`, `depiction`, `editorialNote`, `endDate`,
-`endPlace`, `example`, `guidelines`, `hiddenLabel`, `historyNote`,
-`identifier`, `issue`, `issueTracker`, `issued`, `location`, `modified`,
-`notation`, `note`, `partOf`, `place`, `prefLabel`, `publisher`, `rank`,
-`scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`, `subject`,
-`tool`, `type`, `uri`, `url`, `version`, and `versionOf`). All fields except
-`from` and `to` are optional.
+A (concept) mapping is a link between [concepts] of two [concept schemes]. It
+consists of two [concept bundles] with additional metadata.
+
+A **mapping** is an [item] with the following fields (in
+addition to the optional fields `@context`, `address`, `altLabel`,
+`changeNote`, `contributor`, `created`, `creator`, `definition`, `depiction`,
+`editorialNote`, `endDate`, `endPlace`, `example`, `guidelines`, `hiddenLabel`,
+`historyNote`, `identifier`, `issue`, `issueTracker`, `issued`, `location`,
+`modified`, `notation`, `note`, `partOf`, `place`, `prefLabel`, `publisher`,
+`rank`, `scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`,
+`subject`, `tool`, `type`, `uri`, `url`, `version`, and `versionOf`). All
+fields except `from` and `to` are optional.
 
 field            type             definition
 ---------------- ---------------- ----------------------------------------------
@@ -922,10 +948,6 @@ fromScheme       [concept scheme] source concept scheme
 toScheme         [concept scheme] target concept scheme
 mappingRelevance number           numerical confidence value between 0 and 1
 justification    [uri]            action that resulted creation of the mapping
-
-A **mapping** represents a mapping between [concepts] of two [concept schemes].
-It consists two [concept bundles] with additional metadata not fully defined
-yet.
 
 The first element of array field `type`, if given, MUST be an [item type] for
 mappings from the [SKOS mapping properties](http://www.w3.org/TR/skos-reference/#mapping).
@@ -940,21 +962,19 @@ such as `urn:uuid:687b973c-38ab-48fb-b4ea-2b77abf557b7`.
 :::
 
 ::: {.callout-note}
-Applications MAY use concept mappings to derive simple statements with [SKOS Mapping Properties](https://www.w3.org/TR/skos-reference/#mapping)
+Applications MAY use mappings to derive simple statements with [SKOS Mapping Properties](https://www.w3.org/TR/skos-reference/#mapping)
 but SKOS integrity rules for mappings do not apply automatically.
 :::
 
-## Concept Bundles
+## Concept Bundle
 
-[concept bundles]: #concept-bundles
-[concept bundle]: #concept-bundles
-[collections]: #concept-bundles
-[concept collections]: #concept-bundles
+[concept bundles]: #concept-bundle
+[concept bundle]: #concept-bundle
 
-A **concept bundle** is a group of [concepts]. Concept bundles can be used for
+A concept bundle is a group of [concepts]. Concept bundles can be used for
 [mappings], composed concepts, and [occurrences].
 
-A concept bundle is a JSON object with at most one of the following fields:
+A **concept bundle** is a JSON object with at most one of the following fields:
 
 field       type                        definition
 ----------- --------------------------- ----------------------------------------------------------------------
@@ -990,24 +1010,6 @@ Keys of a `memberRoles` object MUST be URIs and their values MUST be of type [se
 
   Normalization rules may be added to prefer one kind of expressing an empty concept bundle.
 :::
-
-## Annotations
-
-[annotation]: #annotations
-
-An **annotation** links a JSKOS [resource] or another annotation with a review,
-comment or similar document. An annotation is a JSON object that conforms to
-the [Web Annotation Data Model] and further contains the following fields as
-defined:
-
-field       type                              definition
------------ --------------------------------- ----------------------------------------------
-@context    [URL]                             the value `http://www.w3.org/ns/anno.jsonld`
-type        string                            the value `Annotation`
-id          [URI]                             globally unique identifier of the annotation
-target      [URI], [Resource] or [Annotation] object being annotated, or its URI
-
-[Web Annotation Data Model]: https://www.w3.org/TR/annotation-model/
 
 # Qualified statements
 
@@ -1193,7 +1195,7 @@ TODO: Mappings (S38-S46)
 
 Integrity constraints of SKOS SHOULD be respected. Applications MAY reject JSKOS data violating the constraints.
 
-- [concepts], [concept schemes], [registries], [distributions], [concordances], [concept mappings] are pairwise disjoint (SKOS integrity rule S9)
+- [concepts], [concept schemes], [registries], [distributions], [concordances], and [mappings] are pairwise disjoint (SKOS integrity rule S9)
  
 *this list is not complete yet*
 
@@ -1424,8 +1426,7 @@ The following features of SKOS are not supported in JSKOS:
 
 The following features of JSKOS have no corresponce in SKOS:
 
-* [concept occurrences], [registries], [concordances], [concept mappings] as first-class objects,
-  and composed [concepts]
+* [occurrences], [registries], [concordances], [mappings] as first-class objects, and composed [concepts]
 * [closed world statements]
 * order of broaderTransitive statements (can be derived)
 * order of multiple notations
@@ -1500,6 +1501,7 @@ JSKOS started in 2014 as as part of project [coli-conc](https://coli-conc.gbv.de
 - Change item type URI of registry from <http://purl.org/cld/cdtype/CatalogueOrIndex> to <http://www.w3.org/ns/dcat#Catalog>
 - Change item type URI of concordance from <http://rdfs.org/ns/void#Linkset> for <http://rdf-vocabulary.ddialliance.org/xkos#Correspondence>
 - Clarify semantics of metadata fields `created`, `issued`, `modified`, `creator`, `contributor` and `source` 
+- Object types: align naming, add new type [service], make [annotation] a data type
 - ...
 
 ### 0.6.1 (2025-10-07) {-}

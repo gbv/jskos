@@ -45,6 +45,18 @@
     "url": {
       "description": "URL of a page with information about the occurrence",
       "$ref": "resource.schema.json#/definitions/url"
+    },
+    "schemes": {
+      "description": "schemes of the concepts",
+      "$ref": "item.schema.json#/definitions/itemSet"
+    }, 
+    "template": {
+      "description": "Link template to link into the database",
+      "$ref": "resource.schema.json#/definitions/url"
+    },
+    "separator": {
+      "description": "Separator of the link template",
+      "type": "string"
     }
   }
 }

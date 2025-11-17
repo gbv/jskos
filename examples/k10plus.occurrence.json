@@ -1,0 +1,6 @@
+{
+  "database": { "uri": "http://uri.gbv.de/database/opac-de-627" },
+  "schemes": [ { "uri": "http://dewey.info/scheme/ddc/" } ],
+  "template": "https://opac.k10plus.de/DB=2.299/CMD?ACT=SRCHA&IKT=3011&NOABS=Y&TRM={notation}",
+  "separator": "+and+"
+}

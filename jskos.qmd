@@ -71,12 +71,12 @@ An **URI** is a syntactically correct IRI ([RFC 3987]).
 
 An **URL** is a syntactically correct URL with scheme `https` (RECOMMENDED) or `http` ([RFC 3986]).
 
-## Link template
+## link template
 
 [link template]: #link-template
 [link templates]: #link-template
 
-*Not specified yet, see <https://github.com/gbv/jskos/issues/158>*
+A **link template** is a Level 2 URI Template as defined in [RFC 6570]. This includes expressions such as `` {var} `` (simple string expansion), `` {+var} `` (reserved expansion), and `` {#var} `` (fragment expansion) to be replaced with the expanded value of a variable.
 
 ## non-negative integer
 
@@ -691,15 +691,21 @@ optional fields (in addition to the optional fields `@context`, `annotations`,
 
 field        type                   definition
 ------------ ---------------------- ----------------------------------------------
-count        [non-negative integer] number of times the concepts are used
 database     [item]                 database in which the concepts are used
+count        [non-negative integer] number of times the concepts are used
 frequency    [percentage]           count divided by total number of possible uses
 relation     [URI]                  type of relation between concepts and entities
+schemes      [set] of [schemes]     Concept Schemes the concepts come from
 url          [URL]                  URL of a page with information about the occurrence
+template     [link template]        Link template to generate an URL from concepts
+separator    string                 Separator to combine multiple concepts in the link template
 
-An occurrence gives the number of a times a concept ("occurrence") or
-combination of concepts ("co-occurrence") is used in a specific relation to
-entities from a particular database. For instance the occurrence could give the
+An occurrence gives the number of a times a concept ("occurrence"), a
+combination of concepts ("co-occurrence"), or a set of concepts is used in some
+context. The context is typically a database with entities having some relation
+to the concepts.
+
+For instance the occurrence could give the
 number of documents indexed with some term in a catalog. The field `url`
 typically includes a deep link into the database. 
 
@@ -707,14 +713,25 @@ If both `count` and `frequency` are given, the total size of the database can
 derived by multiplication. In this case either both or none of the two fields
 MUST be zero.
 
-A timestamp, if given, should be stored in field `modified`.
+A timestamp, if given, SHOULD be stored in field `modified`.
 
-The actual concept or concepts MAY be given implictly, for instance if the
-occurrence is part of a [concept] in field `occurrences`.
+The value of field `url`, if missing, SHOULD be derived from field `template` and from concepts of the occurrence, if existing, by [RFC 6570] expansion with variables determines as following:
 
-<!-- TODO: specify explicit inference rules for implicitly given concepts? -->
+- Get a list of concepts from the [concept bundle] field `memberSet`, `memberList`, `memberChoice`, or `memberRoles`, respectively
+- Variable `notation` is set to the first notation of each concept, combined with separator from occurrence field `separator`
+- Variable `uri` is set to the URI of each concept, combined with separator from occurrence field `separator`
+- Variable `prefLabel` is set to one of the labels in field `prefLabel` of each concept, combined with separator from occurrence field `separator`. Application SHOULD choose the label based on its language configuration, if applicable.
+- Missing values are ignored
+
+<!-- TODO: specify explicit inference rules for implicitly given concepts etc. -->
 
 :::{#lst-ex2}
+The occurrence of DDC classes in K10plus catalogue:
+
+```{.json}
+{{< include examples/k10plus.occurrence.json >}}
+```
+
 Two occurrences and their combined co-occurrence from GBV Union Catalogue (GVK) as of November 22th, 2017: [3657 records](https://gso.gbv.de/DB=2.1/CMD?ACT=SRCHA&IKT=1016&SRT=YOP&TRM=bkl+08.22) are indexed with class `08.22` (medieval philosophy) from Basisklassifikation, [144611](https://gso.gbv.de/DB=2.1/CMD?ACT=SRCHA&IKT=1016&SRT=YOP&TRM=ddc+610) with DDC notation `610` (Medicine & health) and [2 records](https://gso.gbv.de/DB=2.1/CMD?ACT=SRCHA&IKT=1016&SRT=YOP&TRM=bkl+08.22+ddc+610) with both.
 
 ```{.json}
@@ -1272,7 +1289,7 @@ The fields `PARTS` and `_id` in the following example can be ignored:
 
 - D. Crocker, P. Overell: *Augmented BNF for Syntax Specifications: ABNF*.
   RFC 5234, January 2008.
-  <http://tools.ietf.org/html/rfc5234>
+  <https://tools.ietf.org/html/rfc5234>
 
 - M. Davis, K. Whistler: *Unicode Normalization Forms*.
   Unicode Standard Annex #15.
@@ -1280,6 +1297,9 @@ The fields `PARTS` and `_id` in the following example can be ignored:
 
 - M. Dürst, M. Suignard: *Internationalized Resource Identifiers (IRIs)*.
   RFC 3987, January 2005. <https://tools.ietf.org/html/rfc3987>
+
+- J. Gregorio, R. Fielding, M. Hadley, M. Nottingham, D. Orchard: *URI Template*
+  RFC 6570, March 2021. <http://tools.ietf.org/html/rfc6570>
 
 - IANA: *Media Types*.
   <https://www.iana.org/assignments/media-types/>
@@ -1303,6 +1323,7 @@ The fields `PARTS` and `_id` in the following example can be ignored:
 [RFC 3986]: https://tools.ietf.org/html/rfc3986
 [RFC 3987]: https://tools.ietf.org/html/rfc3987
 [RFC 3066]: https://tools.ietf.org/html/rfc3066
+[RFC 6570]: https://tools.ietf.org/html/rfc6570
 [RFC 7946]: https://tools.ietf.org/html/rfc7946
 
 ## Informative references {-}
@@ -1502,7 +1523,7 @@ Multiple mappings from one concept (612.112 in DDC) to GND.
 
 JSKOS started in 2014 as as part of project [coli-conc](https://coli-conc.gbv.de/).
 
-### 0.7.0 (draft) {-}
+### 0.7.0 {-}
 
 - Change item type URI of registry from <http://purl.org/cld/cdtype/CatalogueOrIndex> to <http://www.w3.org/ns/dcat#Catalog>
 - Change item type URI of concordance from <http://rdfs.org/ns/void#Linkset> for <http://rdf-vocabulary.ddialliance.org/xkos#Correspondence>

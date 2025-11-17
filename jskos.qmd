@@ -1523,7 +1523,7 @@ Multiple mappings from one concept (612.112 in DDC) to GND.
 
 JSKOS started in 2014 as as part of project [coli-conc](https://coli-conc.gbv.de/).
 
-### 0.7.0 {-}
+### 0.7.0 (2025-11-18) {-}
 
 - Change item type URI of registry from <http://purl.org/cld/cdtype/CatalogueOrIndex> to <http://www.w3.org/ns/dcat#Catalog>
 - Change item type URI of concordance from <http://rdfs.org/ns/void#Linkset> for <http://rdf-vocabulary.ddialliance.org/xkos#Correspondence>

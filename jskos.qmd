@@ -683,7 +683,7 @@ Item field `basedOn` at a concept schemes SHOULD be used to connect translations
 ## Occurrence
 
 [occurrences]: #occurrence
-[occurrence]: #occurrences
+[occurrence]: #occurrence
 
 An **occurrence** is a [resource] and [concept bundle] with the following
 optional fields (in addition to the optional fields `@context`, `annotations`,

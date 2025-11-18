@@ -3,3 +3,7 @@ default:
 
 preview:
 	quarto preview
+
+.PHONY: test
+test:
+	npm test

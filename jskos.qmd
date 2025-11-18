@@ -76,7 +76,7 @@ An **URL** is a syntactically correct URL with scheme `https` (RECOMMENDED) or `
 [link template]: #link-template
 [link templates]: #link-template
 
-A **link template** is a Level 2 URI Template as defined in [RFC 6570]. This includes expressions such as `` {var} `` (simple string expansion), `` {+var} `` (reserved expansion), and `` {#var} `` (fragment expansion) to be replaced with the expanded value of a variable.
+A **link template** is a Level 2 URI Template as defined in [RFC 6570]. This includes expressions such as `` {var} `` (simple string expansion), `` {+var} `` (reserved expansion), and `` {#var} `` (fragment expansion) to be replaced with the expanded value of a variable. See [expansion of link templates](#expansion-of-link-templates) for examples and how to derive these variables from an [occurrence] objects.
 
 ## non-negative integer
 
@@ -111,6 +111,8 @@ An extended date includes, in adition to [date]:
 
 ## language tag
 
+[language tags]: #language-tag
+
 A **language tag** is a non-empty string that conforms to the syntax of [RFC 3066] language tags, limited to lowercase.
 
 ## list
@@ -134,22 +136,25 @@ A list MUST NOT contain the empty string except if part of a [language map].
 A **set** is a possibly empty array where all members
 
 * are JSON objects of JSKOS [resources], except the last member optionally being `null`,
-* have distinct values in field `uri`, if this field is given
-  (members MUST NOT be the [same resource]),
+* are not [same resources] (have distinct values in field `uri` for members with this field),
 * and have at most one member with field [`rank`](#rank) being the string `preferred`.
 
+Applications MAY allow arrays with [same] members by merging or removing elements.
+
 Member objects SHOULD have a field `uri`. Applications MAY restrict sets to
-require the field `uri` for all non-null members.  Applications MAY ignore or
-disallow the value `null` in sets. If `null` is allowed, sets MUST be
-interpreted as following to support [closed world statements]:
+require the field `uri` for all non-null members.
+
+Applications SHOULD NOT change the order of elements in a set.
+
+Applications MAY ignore or disallow the value `null` in sets. If `null` is allowed, sets MUST be interpreted as following to support [closed world statements]:
 
 * the set `[]` denotes an empty set.
 * the set `[null]` denotes a non-empty set with unknown members.
 * a set `[..., null]` denotes a set with some known and additional unknown members.
 * any other set `[...]` denotes a set with all members known.
 
-:::{#lst-ex-sets}
-The following JSON values are JSKOS sets:
+:::{#lst-ex-sets lst-cap="JSKOS sets"}
+The following JSON arrays are JSKOS sets:
 
 * `[]`{.json}
 * `[null]`{.json}
@@ -158,16 +163,12 @@ The following JSON values are JSKOS sets:
 * `[{"uri":"http://example.org/123"},{"uri":"http://example.org/456"}]`{.json}
 * `[{"uri":"http://example.org/123"},{"notation":["xyz"]}]`{.json}
 
-The following JSON values are not valid JSKOS sets:
+The following JSON arrays are not valid JSKOS sets:
 
 * `[null,{"uri":"http://example.org/123"}]`{.json}\
   (`null` only allowed as last member)
 * `[{"uri":"http://example.org/123"},{"uri":"http://example.org/123"}]`{.json}\
   (field `uri` must be unique)
-:::
-
-::: {.callout-note}
-It is not defined yet whether and when the order of elements is relevant or not.
 :::
 
 ## rank
@@ -629,7 +630,8 @@ connected by the broader relation.
 
 [concept scheme]: #concept-scheme
 [concept schemes]: #concept-scheme
-[scheme]: #schemes
+[scheme]: #concept-schemes
+[schemes]: #concept-schemes
 
 A **concept scheme** is an [item] with the following optional fields (in
 addition to the optional fields `@context`, `address`, `altLabel`, `annotations`,
@@ -705,23 +707,12 @@ combination of concepts ("co-occurrence"), or a set of concepts is used in some
 context. The context is typically a database with entities having some relation
 to the concepts.
 
-For instance the occurrence could give the
-number of documents indexed with some term in a catalog. The field `url`
-typically includes a deep link into the database. 
+For instance the occurrence could give the number of documents indexed with some term in a catalog. The field `url`
+typically includes a deep link into the database. Applications SHOULD replace the value of field `url` by [link expansion](#expansion-of-link-templates) if both field `template` and one of the [concept bundle] fields (`memberSet`, `memberList`, `memberChoice`, or `memberRoles`) are given.
 
-If both `count` and `frequency` are given, the total size of the database can
-derived by multiplication. In this case either both or none of the two fields
-MUST be zero.
+If both `count` and `frequency` are given, the total size of the database can derived by multiplication. In this case either both or none of the two fields MUST be zero.
 
 A timestamp, if given, SHOULD be stored in field `modified`.
-
-The value of field `url`, if missing, SHOULD be derived from field `template` and from concepts of the occurrence, if existing, by [RFC 6570] expansion with variables determines as following:
-
-- Get a list of concepts from the [concept bundle] field `memberSet`, `memberList`, `memberChoice`, or `memberRoles`, respectively
-- Variable `notation` is set to the first notation of each concept, combined with separator from occurrence field `separator`
-- Variable `uri` is set to the URI of each concept, combined with separator from occurrence field `separator`
-- Variable `prefLabel` is set to one of the labels in field `prefLabel` of each concept, combined with separator from occurrence field `separator`. Application SHOULD choose the label based on its language configuration, if applicable.
-- Missing values are ignored
 
 <!-- TODO: specify explicit inference rules for implicitly given concepts etc. -->
 
@@ -1144,6 +1135,7 @@ Qualified statements of data type qualified literal MUST NOT use the property ty
 ## Resource sameness
 
 [same resource]: #resource-sameness
+[same resources]: #resource-sameness
 [the same]: #resource-sameness
 
 Two [resources] are *same* if and only if they both contain field `uri` with
@@ -1243,6 +1235,46 @@ A Concept Scheme represents a [SKOS Concept Scheme].
 [JSKOS-LD context]: #json-ld-context
 [SKOS Documentary Notes]: http://www.w3.org/TR/skos-primer/#secdocumentation
 
+## Expansion of link templates
+
+A [link template] can be expanded to an [URL] as following from the combination of
+
+- a non-empty [set] of [concepts],
+- an optional **separator**, and
+- an optional [list] of wanted [language tags].
+
+If no separator is given, applications MUST:
+
+- either reject expansion,
+- or reduce the set of concepts to its first member,
+- or use a default value as separator.
+
+The variables used for template expansion, as defined by [RFC 6570], are:
+
+- Variable `uri` is set to the URIs (field `uri`) of each concept, concatenated with the separator
+- Variable `notation` is set to the first notations (field `notation`) of each concept, concatenated with the separator
+- Variable `prefLabel` is set to the labels of each concept, concatenated with the separator.
+  A labels is derived from the [language map] in field `prefLabel` by getting the first matching language tag from the list of wanted language tags. 
+  Applications MAY choose another label if there is no match.
+- Variable `language` is set to the first of the list of language tags
+
+Empty values MUST be ignored.
+
+:::{#lst-ex-link-templates lst-cap="Link templates"}
+
+Link template to search for a concept in Wikipedia:
+
+    https://{language}.wikipedia.org/w/index.php?title=Special:Search&search={prefLabel}
+
+Link into K10plus catalogue by a GND identifier
+
+    https://opac.k10plus.de/DB=2.299/CLK?IKT=8549&TRM={notation}
+
+Link into K10plus catalogue by one or more DDC notations (separator `"+and+"`)
+
+    https://opac.k10plus.de/DB=2.299/CMD?ACT=SRCHA&IKT=3011&NOABS=Y&TRM={notation}
+
+:::
 
 ## Extension with custom fields
 

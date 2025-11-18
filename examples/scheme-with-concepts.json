@@ -1,6 +1,6 @@
 {
   "uri": "https://example.org/scheme",
-  "type": [ "http://www.w3.org/2004/02/skos/core#ConceptScheme" ]
+  "type": [ "http://www.w3.org/2004/02/skos/core#ConceptScheme" ],
   "topConcepts": 
     { "uri": "https://nbnl.info/meta/asset-vocab/c1" }
 }

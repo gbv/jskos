@@ -27,7 +27,7 @@
     "link-template": {
       "type": "string",
       "$comment": "Level 2 URI Template",
-      "pattern": "^([^\\x00-\\x20\\x7f\"'%<>\\\\^`{|}]|%[0-9A-Fa-f]{2}|\\{[+#?(\\w|%[0-9A-Fa-f]{2})(\\.?(\\w|%[0-9A-Fa-f]{2}))*\\})*$"
+      "pattern": "^([^\\x00-\\x20\\x7f\"'%<>\\\\^`{|}]|%[0-9A-Fa-f]{2}|\\{[+#]?(\\w|%[0-9A-Fa-f]{2})(\\.?(\\w|%[0-9A-Fa-f]{2}))*\\})*$"
     },
     "type": {
       "description": "URIs of types",

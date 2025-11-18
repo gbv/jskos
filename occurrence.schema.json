@@ -52,7 +52,7 @@
     }, 
     "template": {
       "description": "Link template to link into the database",
-      "$ref": "resource.schema.json#/definitions/url"
+      "$ref": "resource.schema.json#/definitions/link-template"
     },
     "separator": {
       "description": "Separator of the link template",

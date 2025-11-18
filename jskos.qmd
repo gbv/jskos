@@ -1444,10 +1444,11 @@ Experimental JSON Schemas exist but don't cover all aspects of JSKOS:
 * [Distribution](distribution.schema.json)
 * [Occurrence](occurrence.schema.json)
 
-See NodeJS library [jskos-validate] for an implementation.
+The schemas allow arbitrary unknonw fields for upwards compatibility, so they won't catch typos in field names!
 
-Public services to validate JSKOS data are included in instances of
-[jskos-server] and at <https://format.gbv.de/validate/>.
+See NodeJS library [jskos-validate] for an implementation with additional rules not covered by JSON Schema alone.
+
+Public services to validate JSKOS data are included in instances of [jskos-server] and at <https://format.gbv.de/validate/>.
 
 [jskos-validate]: https://www.npmjs.com/package/jskos-validate
 [jskos-server]: https://www.npmjs.com/package/jskos-server

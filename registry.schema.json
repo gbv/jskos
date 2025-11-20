@@ -34,6 +34,9 @@
     "occurrences": {
       "description": "Occurrences in this registry"
     },
+    "annotations": {
+      "description": "Annotations in this registry"
+    },
     "extent": {
       "description": "Size of the registry"
     },

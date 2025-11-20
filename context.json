@@ -211,6 +211,10 @@
       "@id": "http://www.w3.org/ns/dcat#distribution",
       "@container": "@set"
     },
+    "services": {
+      "@id": "http://www.w3.org/ns/dcat#accessService",
+      "@container": "@set"
+    },
     "download": "http://www.w3.org/ns/dcat#downloadURL",
     "accessURL": "http://www.w3.org/ns/dcat#accessURL",
     "checksum": "http://spdx.org/rdf/terms#checksum",

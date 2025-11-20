@@ -814,17 +814,18 @@ optional fields `@context`, `address`, `altLabel`, `annotations`, `changeNote`,
 
 Distributions roughly cover the class [Distribution](https://www.w3.org/TR/vocab-dcat-3/#Class:Distribution) from [Data Catalog Vocabulary](https://www.w3.org/TR/vocab-dcat-3/).
 
-field          type            definition
--------------- --------------- ------------------------------------------------------------------
-download       [URL]           location of a file with distribution content in given format
-accessURL      [URL]           URL of an API or landing page to retrieve the distribution content
-format         [URI]           data format identifier of the distribution content
-mimetype       [URI] or string Internet Media Type (also known as MIME type)
-compressFormat [URI]           compression format of the distribution
-packageFormat  [URI]           packaging format when multiple files are grouped together
-license        [set]           license which the data can be used under
-size           string          Size of a distribution in bytes or literal such as "1.5 MB"
-checksum       [checksum]      Checksum of the download (algorithm and digest value)
+field          type               definition
+-------------- ------------------ ------------------------------------------------------------------
+download       [URL]              location of a file with distribution content in given format
+accessURL      [URL]              URL of an API or landing page to retrieve the distribution content
+format         [URI]              data format identifier of the distribution content
+mimetype       [URI] or string    Internet Media Type (also known as MIME type)
+compressFormat [URI]              compression format of the distribution
+packageFormat  [URI]              packaging format when multiple files are grouped together
+services       [set] of [service] Services to retrieve the distribution (e.g. via an API)
+license        [set]              license which the data can be used under
+size           string             Size of a distribution in bytes or literal such as "1.5 MB"
+checksum       [checksum]         Checksum of the download (algorithm and digest value)
 
 The `format` field SHOULD reference a content format rather than its
 serialization and possible wrapping. The URI of JSKOS is
@@ -862,6 +863,11 @@ Authority Data](https://www.loc.gov/marc/authority/):
 {{< include examples/marc.distribution.json >}}
 ```
 
+A distribution via physical delivery:
+
+```{.json}
+{{< include examples/physical.distribution.json >}}
+```
 :::
 
 ## Service
@@ -881,7 +887,7 @@ optional fields `@context`, `address`, `altLabel`, `annotations`, `changeNote`,
 field         type              definition
 ------------- ----------------- --------------------------------------------------------------------------------
 api           [URI]             API type, for instance from BARTOC vocabulary API types vocabulary (RECOMMENDED)
-endpoint      [URI]             API endpoint (REQUIRED, SHOULD be an URL)
+endpoint      [URI]             API endpoint (RECOMMENDED, SHOULD be an URL)
 serves        [set] of [items]  Specific versions of items served via this API (OPTIONAL)
 
 Field `url` SHOULD be used to provide a landing page or information about the service. 
@@ -1562,6 +1568,8 @@ JSKOS started in 2014 as as part of project [coli-conc](https://coli-conc.gbv.de
 ### 0.7.1 (draft) {-}
 
 - Add [registry] field `annotations`
+- Connect [distribution] and [service] via field `services`
+- Make [service] field `endpoint` optional
 
 ### 0.7.0 (2025-11-18) {-}
 

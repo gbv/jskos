@@ -53,6 +53,11 @@
       "description": "data format identifier of the file",
       "$ref": "resource.schema.json#/definitions/uri"
     },
+    "services": {
+      "description": "Services to access the distribution via an API",
+      "type": "array",
+      "items": { "$ref": "service.schema.json" }
+    },
     "license": {
       "description": "Licenses which the data can be used under",
       "$ref": "concept.schema.json#/definitions/conceptSet"

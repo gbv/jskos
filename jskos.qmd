@@ -374,8 +374,8 @@ fully implementing all IIIF capabilities.
 
 ## annotation
 
-[annotation]: #annotations
-[annotations]: #annotations
+[annotation]: #annotation
+[annotations]: #annotation
 
 An **annotation** links a JSKOS [resource] or another annotation with a review,
 comment or similar document. An annotation is a JSON object that conforms to
@@ -432,6 +432,8 @@ item                item type
                     <http://www.w3.org/2004/02/skos/core#narrowMatch>
                     <http://www.w3.org/2004/02/skos/core#relatedMatch>
 ------------------- -----------------------------------------------------
+
+In addition URIs <http://www.w3.org/ns/oa#Annotation> SHOULD be used to refer to [annotations] and URI <http://iiif.io/api/presentation/2#Manifest> SHOULD be used to refer to [media] objects, if needed.
 
 ::: {.callout-note}
 See appendix [item types as concepts] for a partial explicit encoding of item types.
@@ -763,6 +765,7 @@ occurrences  [set] of [occurrences]     [occurrences] in this registry
 registries   [set] of [registries]      other registries in this registry
 types        [set] of [concepts]        [resource types] in this registry
 properties   [set] of [concepts]        [property types] of [qualified statements] in this registry
+annotations  [set] of [annotations]     [annotations] in this registry
 extent       string                     Size of the registry
 languages    [list]                     Supported languages
 license      [set]                      Licenses which the full registry content can be used under
@@ -1555,6 +1558,10 @@ Multiple mappings from one concept (612.112 in DDC) to GND.
 # Changelog {-}
 
 JSKOS started in 2014 as as part of project [coli-conc](https://coli-conc.gbv.de/).
+
+### 0.7.1 (draft) {-}
+
+- Add [registry] field `annotations`
 
 ### 0.7.0 (2025-11-18) {-}
 

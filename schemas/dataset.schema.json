@@ -1,0 +1,25 @@
+{
+  "$id": "https://gbv.github.io/jskos/dataset.schema.json",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "title": "JSKOS Dataset",
+  "type": "object",
+  "properties": {
+    "distributions": {
+      "description": "Distributions to access the content of the dataset",
+      "$ref": "distribution.schema.json#/definitions/distributionSet"
+    },
+    "services": {
+      "description": "Services to access the dataset via an API",
+      "type": "array",
+      "items": { "$ref": "service.schema.json" }
+    },  
+    "extent": {
+      "description": "Size of the dataset",
+      "type": "string"
+    },
+    "license": {
+      "description": "Licenses which the dataset can be used under",
+      "$ref": "item.schema.json#/definitions/itemSet"
+    }
+  }
+}

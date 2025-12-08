@@ -1,0 +1,53 @@
+{
+  "$id": "https://gbv.github.io/jskos/registry.schema.json",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "title": "JSKOS Registry",
+  "description": "collections of items (concepts, concept schemes, ...)",
+  "type": "object",
+  "allOf": [
+    { "$ref": "item.schema.json" },
+    { "$ref": "dataset.schema.json" }    
+  ],
+  "properties": {
+    "concepts": {
+      "description": "Concepts in this registry",
+      "$ref": "concept.schema.json#/definitions/conceptSet"
+    },
+    "schemes": {
+      "description": "Concept schemes in this registry",
+      "$ref": "item.schema.json#/definitions/itemSet"
+    },
+    "types": {
+      "description": "Resource types in this registry",
+      "$ref": "item.schema.json#/definitions/itemSet"
+    },
+    "properties": {
+      "description": "Property types in this registry",
+      "$ref": "item.schema.json#/definitions/itemSet"
+    },
+    "mappings": {
+      "description": "Mappings in this registry",
+      "$ref": "item.schema.json#/definitions/itemSet"
+    },
+    "registries": {
+      "description": "Other registries in this registry",
+      "$ref": "item.schema.json#/definitions/itemSet"
+    },
+    "concordances": {
+      "description": "Concordances in this registry",
+      "$ref": "item.schema.json#/definitions/itemSet"
+    },
+    "occurrences": {
+      "description": "Occurrences in this registry",
+      "$ref": "item.schema.json#/definitions/itemSet"
+    },
+    "annotations": {
+      "description": "Annotations in this registry",
+      "type": "array"
+    },
+    "languages": {
+      "description": "Supported languages",
+      "type": "array"
+    }
+  }
+}

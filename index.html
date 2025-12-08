@@ -1374,16 +1374,21 @@ Example&nbsp;8: concept from DDC
 <td style="text-align: left;"><a href="#distribution">Distributions</a> to access the content of the concept scheme</td>
 </tr>
 <tr class="odd">
+<td style="text-align: left;">services</td>
+<td style="text-align: left;"><a href="#set">set</a> of <a href="#service">service</a></td>
+<td style="text-align: left;">Services to access the content of the concept scheme</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">extent</td>
 <td style="text-align: left;">string</td>
 <td style="text-align: left;">Size of the concept scheme</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">languages</td>
 <td style="text-align: left;"><a href="#list">list</a> of language tags</td>
 <td style="text-align: left;">Supported languages</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">license</td>
 <td style="text-align: left;"><a href="#set">set</a></td>
 <td style="text-align: left;">Licenses which the full scheme can be used under</td>
@@ -1614,6 +1619,16 @@ Example&nbsp;10
 <td style="text-align: left;"><a href="#set">set</a></td>
 <td style="text-align: left;">Licenses which the full registry content can be used under</td>
 </tr>
+<tr class="odd">
+<td style="text-align: left;">distributions</td>
+<td style="text-align: left;"><a href="#set">set</a> of <a href="#distribution">distributions</a></td>
+<td style="text-align: left;"><a href="#distribution">Distributions</a> to access the content of the registry</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">services</td>
+<td style="text-align: left;"><a href="#set">set</a> of <a href="#service">service</a></td>
+<td style="text-align: left;">Services to access the content of the registry</td>
+</tr>
 </tbody>
 </table>
 <p>The first element of array field <code>type</code>, if given, MUST be the <a href="#item-types">item type</a> URI <a href="http://www.w3.org/ns/dcat#Catalog" class="uri">http://www.w3.org/ns/dcat#Catalog</a> . Applications SHOULD also accept alternative URI <a href="http://purl.org/cld/cdtype/CatalogueOrIndex" class="uri">http://purl.org/cld/cdtype/CatalogueOrIndex</a> for backwards compatibility.</p>
@@ -1642,8 +1657,8 @@ Example&nbsp;11: A concept collection
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"type"</span><span class="fu">:</span> <span class="ot">[</span> <span class="st">"http://www.w3.org/ns/dcat#Catalog"</span> <span class="ot">]</span><span class="fu">,</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"types"</span><span class="fu">:</span> <span class="ot">[</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"http://www.w3.org/2004/02/skos/core#Concept"</span><span class="ot">,</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"http://www.w3.org/2002/07/owl#Class"</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2004/02/skos/core#Concept"</span> <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2002/07/owl#Class"</span> <span class="fu">}</span></span>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span><span class="fu">,</span></span>
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"People"</span> <span class="fu">},</span></span>
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"concepts"</span><span class="fu">:</span> <span class="ot">[</span></span>
@@ -1724,19 +1739,6 @@ Example&nbsp;11: A concept collection
 <p>The <code>format</code> field SHOULD reference a content format rather than its serialization and possible wrapping. The URI of JSKOS is <a href="http://format.gbv.de/jskos" class="uri">http://format.gbv.de/jskos</a>.</p>
 <p>Fields <code>mimetype</code>, <code>compressFormat</code>, and <code>packageFormat</code> SHOULD be IANA media type URIs, if available. Field <code>mimetype</code> MAY be a string for backwards-compatibility.</p>
 <p>The first element of array field <code>type</code>, if given, MUST be the <a href="#item-types">item type</a> URI <a href="http://www.w3.org/ns/dcat#Distribution" class="uri">http://www.w3.org/ns/dcat#Distribution</a>.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Access to <a href="#concept-scheme">concept schemes</a> and <a href="#concordance">concordances</a> can also be specified with fields <code>concepts</code>, <code>types</code>, and <code>mappings</code>, respectively. Distributions provide an alternative and extensible method to express access methods.</p>
-</div>
-</div>
 <div id="lst-ex" class="listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst quarto-uncaptioned" id="lst-ex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1812,23 +1814,39 @@ Example&nbsp;13: A service
 </figcaption>
 <div aria-describedby="lst-service-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"type"</span><span class="fu">:</span> <span class="ot">[</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"http://www.w3.org/ns/dcat#DataService"</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"api"</span><span class="fu">:</span> <span class="st">"http://bartoc.org/api-type/jskos"</span><span class="fu">,</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"endpoint"</span><span class="fu">:</span> <span class="st">"https://example.org/api/"</span><span class="fu">,</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"url"</span><span class="fu">:</span> <span class="st">"https://example.org/api/about"</span><span class="fu">,</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"serves"</span><span class="fu">:</span> <span class="ot">[</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"versionOf"</span><span class="fu">:</span> <span class="ot">[</span> <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://example.org/my-terminology"</span> <span class="fu">}</span> <span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"version"</span><span class="fu">:</span> <span class="st">"1.0"</span></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"type"</span><span class="fu">:</span> <span class="ot">[</span> <span class="st">"http://www.w3.org/ns/dcat#DataService"</span> <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"api"</span><span class="fu">:</span> <span class="st">"http://bartoc.org/api-type/jskos"</span><span class="fu">,</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"endpoint"</span><span class="fu">:</span> <span class="st">"https://example.org/api/"</span><span class="fu">,</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"url"</span><span class="fu">:</span> <span class="st">"https://example.org/api/about"</span><span class="fu">,</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"serves"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"versionOf"</span><span class="fu">:</span> <span class="ot">[</span> <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://example.org/my-terminology"</span> <span class="fu">}</span> <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"version"</span><span class="fu">:</span> <span class="st">"1.0"</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </figure>
 </div>
 <p>Services roughly cover the <a href="https://www.w3.org/TR/vocab-dcat-3/#Class:Data_Service">class DataService</a> from <a href="https://www.w3.org/TR/vocab-dcat-3/">Data Catalog Vocabulary</a>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Services to access datasets (<a href="#concept-scheme">concept schemes</a>, <a href="#concordance">concordances</a> and <a href="#registry">registries</a>) can be specified with either field <code>services</code> or via a <a href="#distribution">distribution</a>.</p>
+<!--{mermaid}
+classDiagram
+  direction LR
+  Service -->
+<p>Dataset : serves Dataset –&gt; Service : services Distribution –&gt; Service : services Dataset –&gt; Distribution : distributions note for Dataset “ConceptScheme, Concordance, Registry”–&gt;</p>
+</div>
+</div>
 </section>
 <section id="concordance" class="level2" data-number="4.9">
 <h2 data-number="4.9" class="anchored" data-anchor-id="concordance"><span class="header-section-number">4.9</span> Concordance</h2>
@@ -1853,21 +1871,26 @@ Example&nbsp;13: A service
 <td style="text-align: left;"><a href="#distribution">distributions</a> to access the concordance</td>
 </tr>
 <tr class="odd">
+<td style="text-align: left;">services</td>
+<td style="text-align: left;"><a href="#set">set</a> of <a href="#service">service</a></td>
+<td style="text-align: left;">Services to access the content of the concordance</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">fromScheme</td>
 <td style="text-align: left;"><a href="#concept-scheme">concept scheme</a></td>
 <td style="text-align: left;">Source concept scheme</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">toScheme</td>
 <td style="text-align: left;"><a href="#concept-scheme">concept scheme</a></td>
 <td style="text-align: left;">Target concept scheme</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">extent</td>
 <td style="text-align: left;">string</td>
 <td style="text-align: left;">Size of the concordance</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">license</td>
 <td style="text-align: left;"><a href="#set">set</a></td>
 <td style="text-align: left;">License which the full concordance can be used under</td>

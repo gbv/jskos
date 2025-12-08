@@ -900,14 +900,14 @@ Services roughly cover the [class DataService](https://www.w3.org/TR/vocab-dcat-
 ::: {.callout-note}
 Services to access datasets ([concept schemes], [concordances] and [registries]) can be specified with either field `services` or via a [distribution].
 
-```{mermaid}
+<!--{mermaid}
 classDiagram
   direction LR
   Service --> Dataset : serves
   Dataset --> Service : services
   Distribution --> Service : services
   Dataset --> Distribution : distributions
-  note for Dataset "ConceptScheme, Concordance, Registry"```
+  note for Dataset "ConceptScheme, Concordance, Registry"-->
 :::
 
 ## Concordance

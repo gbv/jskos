@@ -5,5 +5,14 @@
   "concepts": [
     { "uri": "https://example.org/concept/1", "prefLabel": { "en": "A" } },
     { "uri": "https://example.org/concept/2", "prefLabel": { "en": "B" } }
+  ],
+  "distributions": [
+    {
+      "services": [
+        {
+          "endpoint": "https://example.org/api/"
+        }
+      ]
+    }  
   ]
 }

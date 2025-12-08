@@ -5,46 +5,49 @@
   "description": "collections of items (concepts, concept schemes, ...)",
   "type": "object",
   "allOf": [
-    {
-      "$ref": "item.schema.json"
-    }
+    { "$ref": "item.schema.json" },
+    { "$ref": "dataset.schema.json" }    
   ],
   "properties": {
     "concepts": {
-      "description": "Concepts in this registry"
+      "description": "Concepts in this registry",
+      "$ref": "concept.schema.json#/definitions/conceptSet"
     },
     "schemes": {
-      "description": "Concept schemes in this registry"
+      "description": "Concept schemes in this registry",
+      "$ref": "item.schema.json#/definitions/itemSet"
     },
     "types": {
-      "description": "Resource types in this registry"
+      "description": "Resource types in this registry",
+      "$ref": "item.schema.json#/definitions/itemSet"
     },
     "properties": {
-      "description": "Property types in this registry"
+      "description": "Property types in this registry",
+      "$ref": "item.schema.json#/definitions/itemSet"
     },
     "mappings": {
-      "description": "Mappings in this registry"
+      "description": "Mappings in this registry",
+      "$ref": "item.schema.json#/definitions/itemSet"
     },
     "registries": {
-      "description": "Other registries in this registry"
+      "description": "Other registries in this registry",
+      "$ref": "item.schema.json#/definitions/itemSet"
     },
     "concordances": {
-      "description": "Concordances in this registry"
+      "description": "Concordances in this registry",
+      "$ref": "item.schema.json#/definitions/itemSet"
     },
     "occurrences": {
-      "description": "Occurrences in this registry"
+      "description": "Occurrences in this registry",
+      "$ref": "item.schema.json#/definitions/itemSet"
     },
     "annotations": {
-      "description": "Annotations in this registry"
-    },
-    "extent": {
-      "description": "Size of the registry"
+      "description": "Annotations in this registry",
+      "type": "array"
     },
     "languages": {
-      "description": "Supported languages"
-    },
-    "license": {
-      "description": "Licenses which the full registry content can be used under"
+      "description": "Supported languages",
+      "type": "array"
     }
   }
 }

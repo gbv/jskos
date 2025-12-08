@@ -1,7 +1,5 @@
 {
-  "type": [
-    "http://www.w3.org/ns/dcat#DataService"
-  ],
+  "type": [ "http://www.w3.org/ns/dcat#DataService" ],
   "api": "http://bartoc.org/api-type/jskos",
   "endpoint": "https://example.org/api/",
   "url": "https://example.org/api/about",

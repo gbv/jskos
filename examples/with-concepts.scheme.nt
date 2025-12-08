@@ -5,3 +5,6 @@
 <https://example.org/concept/2> <http://www.w3.org/2004/02/skos/core#prefLabel> "B"@en .
 <https://example.org/scheme> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#ConceptScheme> .
 <https://example.org/scheme> <http://www.w3.org/2004/02/skos/core#hasTopConcept> <https://example.org/concept/1> .
+<https://example.org/scheme> <http://www.w3.org/ns/dcat#distribution> _:b0 .
+_:b0 <http://www.w3.org/ns/dcat#accessService> _:b1 .
+_:b1 <http://www.w3.org/ns/dcat#endpointURL> "https://example.org/api/" .

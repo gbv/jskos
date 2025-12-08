@@ -3,12 +3,11 @@ project:
   output-dir: docs
   render:
     - "!*.md"
-  post-render:
-    - ./post-render
 
 resources:
   - context.json
   - prefixes.json
+  - schemas/*.json
 
 repo-url: https://github.com/gbv/jskos
 

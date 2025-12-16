@@ -458,6 +458,7 @@ JSKOS defines the following types of JSON objects:
         - [distributions] for available forms to access items
         - [services] for APIs to access items
     - [occurrences] for counts of concept uses
+- [dataset] for collections if items
 - [concept bundle] for groups of concepts
 
 Object types [concept], [mapping], and [occurrence] are also [concept bundles].
@@ -637,11 +638,11 @@ connected by the broader relation.
 
 A **concept scheme** is an [item] with the following optional fields (in
 addition to the optional fields `@context`, `address`, `altLabel`, `annotations`,
-`changeNote`, `contributor`, `created`, `creator`, `definition`, `depiction`,
+`changeNote`, `contributor`, `created`, `creator`, `definition`, `depiction`, `distributions`,
 `editorialNote`, `endDate`, `endPlace`, `example`, `guidelines`, `hiddenLabel`,
 `historyNote`, `identifier`, `issue`, `issueTracker`, `issued`, `location`,
 `modified`, `notation`, `note`, `partOf`, `place`, `prefLabel`, `publisher`,
-`rank`, `scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`,
+`rank`, `services`, `scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`,
 `subject`, `tool`, `type`, `uri`, `url`, `version`, and `versionOf`):
 
 field            type                       definition
@@ -653,11 +654,7 @@ notationPattern  string                     regular expression that all primary 
 notationExamples [list] of string           list of some valid notations as examples
 concepts         [set] of [concepts]        concepts in the scheme
 types            [set] of [concepts]        [resource type] URIs of concepts in this scheme
-distributions    [set] of [distributions]   [Distributions] to access the content of the concept scheme
-services         [set] of [service]         Services to access the content of the concept scheme
-extent           string                     Size of the concept scheme
 languages        [list] of language tags    Supported languages
-license          [set]                      Licenses which the full scheme can be used under
 
 The first element of array field `type`, if given, MUST be the [item type] URI
 <http://www.w3.org/2004/02/skos/core#ConceptScheme>.
@@ -747,13 +744,14 @@ The Wikidata [concept of an individual human](http://www.wikidata.org/entity/Q5)
 [registries]: #registry
 [registry]: #registry
 
-A **registry** is an [item] with the following optional fields (in addition to
+A **registry** is an [item] and a [dataset] with the following optional fields (in addition to
 the optional fields `@context`, `address`, `altLabel`, `annotations`,
 `changeNote`, `contributor`, `created`, `creator`, `definition`, `depiction`,
+`distributions`,
 `editorialNote`, `endDate`, `endPlace`, `example`, `guidelines`, `hiddenLabel`,
 `historyNote`, `identifier`, `issue`, `issueTracker`, `issued`, `location`,
 `modified`, `notation`, `note`, `partOf`, `place`, `prefLabel`, `publisher`,
-`rank`, `scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`,
+`rank`, `services`, `scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`,
 `subject`, `tool`, `type`, `uri`, `url`, `version`, and `versionOf`):
 
 field         type                       definition
@@ -767,11 +765,7 @@ registries    [set] of [registries]      other registries in this registry
 types         [set] of [concepts]        [resource types] in this registry
 properties    [set] of [concepts]        [property types] of [qualified statements] in this registry
 annotations   [set] of [annotations]     [annotations] in this registry
-extent        string                     Size of the registry
 languages     [list]                     Supported languages
-license       [set]                      Licenses which the full registry content can be used under
-distributions [set] of [distributions]   [Distributions] to access the content of the registry
-services      [set] of [service]         Services to access the content of the registry
 
 The first element of array field `type`, if given, MUST be the [item type] URI
 <http://www.w3.org/ns/dcat#Catalog> . Applications SHOULD also accept
@@ -898,7 +892,7 @@ The first element of array field `type`, if given, MUST be the [item type] URI <
 Services roughly cover the [class DataService](https://www.w3.org/TR/vocab-dcat-3/#Class:Data_Service) from [Data Catalog Vocabulary](https://www.w3.org/TR/vocab-dcat-3/).
 
 ::: {.callout-note}
-Services to access datasets ([concept schemes], [concordances] and [registries]) can be specified with either field `services` or via a [distribution].
+Services to access [datasets] ([concept schemes], [concordances] and [registries]) can be specified with either field `services` or via a [distribution].
 
 <!--{mermaid}
 classDiagram
@@ -915,13 +909,13 @@ classDiagram
 [concordances]: #concordance
 [concordance]: #concordance
 
-A **concordance** is an [item] with the following fields (in addition to the
+A **concordance** is an [item] and a [dataset] with the following fields (in addition to the
 optional fields `@context`, `address`, `altLabel`, `annotations`, `changeNote`,
-`contributor`, `created`, `creator`, `definition`, `depiction`,
+`contributor`, `created`, `creator`, `definition`, `depiction`, `distributions`,
 `editorialNote`, `endDate`, `endPlace`, `example`, `guidelines`, `hiddenLabel`,
 `historyNote`, `identifier`, `issue`, `issueTracker`,  `issued`, `location`,
 `modified`, `notation`, `note`, `partOf`, `place`, `prefLabel`, `publisher`,
-`rank`, `scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`,
+`rank`, `services`, `scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`,
 `subject`, `tool`, `type`, `uri`, `url`, `version`, and `versionOf`). All
 fields except `fromScheme` and `toScheme` are optional.
  
@@ -929,12 +923,8 @@ fields except `fromScheme` and `toScheme` are optional.
 field         type                      definition
 ------------- ------------------------- ------------------------------------------------------
 mappings      [set] of [mappings]       [mappings] in this concordance
-distributions [set] of [distributions]  [distributions] to access the concordance
-services      [set] of [service]        Services to access the content of the concordance
 fromScheme    [concept scheme]          Source concept scheme
 toScheme      [concept scheme]          Target concept scheme
-extent        string                    Size of the concordance
-license       [set]                     License which the full concordance can be used under
 
 The first element of array field `type`, if given, MUST be the [item type] URI
 <http://rdf-vocabulary.ddialliance.org/xkos#Correspondence>. Applications
@@ -999,6 +989,19 @@ such as `urn:uuid:687b973c-38ab-48fb-b4ea-2b77abf557b7`.
 Applications MAY use mappings to derive simple statements with [SKOS Mapping Properties](https://www.w3.org/TR/skos-reference/#mapping)
 but SKOS integrity rules for mappings do not apply automatically.
 :::
+
+## Dataset
+
+[dataset]: #dataset
+
+A dataset is collection of [items]. In JSKOS this object type is used to group fields of object types [concept scheme], [registry], and [concordance]. A **dataset** can have the following optional fields:
+
+field         type                      definition
+------------- ------------------------- ----------------------------------------------
+distributions [set] of [distributions]  [distributions] to access the content of the dataset
+services      [set] of [service]        Services to access the content of the dataset
+extent        string                    Size of the concept scheme
+license       [set]                     Licenses which the full scheme can be used under
 
 ## Concept Bundle
 
@@ -1581,6 +1584,7 @@ JSKOS started in 2014 as as part of project [coli-conc](https://coli-conc.gbv.de
 - Add [registry] field `annotations`
 - Connect [distribution] and [service] via field `services`
 - Make [service] field `endpoint` optional
+- Add abstract object type [dataset]
 
 ### 0.7.0 (2025-11-18) {-}
 

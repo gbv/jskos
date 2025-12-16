@@ -176,7 +176,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#service" id="toc-service" class="nav-link" data-scroll-target="#service"><span class="header-section-number">4.8</span> Service</a></li>
   <li><a href="#concordance" id="toc-concordance" class="nav-link" data-scroll-target="#concordance"><span class="header-section-number">4.9</span> Concordance</a></li>
   <li><a href="#mapping" id="toc-mapping" class="nav-link" data-scroll-target="#mapping"><span class="header-section-number">4.10</span> Mapping</a></li>
-  <li><a href="#concept-bundle" id="toc-concept-bundle" class="nav-link" data-scroll-target="#concept-bundle"><span class="header-section-number">4.11</span> Concept Bundle</a></li>
+  <li><a href="#dataset" id="toc-dataset" class="nav-link" data-scroll-target="#dataset"><span class="header-section-number">4.11</span> Dataset</a></li>
+  <li><a href="#concept-bundle" id="toc-concept-bundle" class="nav-link" data-scroll-target="#concept-bundle"><span class="header-section-number">4.12</span> Concept Bundle</a></li>
   </ul></li>
   <li><a href="#qualified-statements" id="toc-qualified-statements" class="nav-link" data-scroll-target="#qualified-statements"><span class="header-section-number">5</span> Qualified statements</a>
   <ul class="collapse">
@@ -845,6 +846,7 @@ Note
 </ul></li>
 <li><a href="#occurrence">occurrences</a> for counts of concept uses</li>
 </ul></li>
+<li><a href="#dataset">dataset</a> for collections if items</li>
 <li><a href="#concept-bundle">concept bundle</a> for groups of concepts</li>
 </ul>
 <p>Object types <a href="#concept">concept</a>, <a href="#mapping">mapping</a>, and <a href="#occurrence">occurrence</a> are also <a href="#concept-bundle">concept bundles</a>.</p>
@@ -1323,7 +1325,7 @@ Example&nbsp;8: concept from DDC
 </section>
 <section id="concept-scheme" class="level2" data-number="4.4">
 <h2 data-number="4.4" class="anchored" data-anchor-id="concept-scheme"><span class="header-section-number">4.4</span> Concept Scheme</h2>
-<p>A <strong>concept scheme</strong> is an <a href="#item">item</a> with the following optional fields (in addition to the optional fields <code>@context</code>, <code>address</code>, <code>altLabel</code>, <code>annotations</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>editorialNote</code>, <code>endDate</code>, <code>endPlace</code>, <code>example</code>, <code>guidelines</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issue</code>, <code>issueTracker</code>, <code>issued</code>, <code>location</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>place</code>, <code>prefLabel</code>, <code>publisher</code>, <code>rank</code>, <code>scopeNote</code>, <code>source</code>, <code>startDate</code>, <code>startPlace</code>, <code>subjectOf</code>, <code>subject</code>, <code>tool</code>, <code>type</code>, <code>uri</code>, <code>url</code>, <code>version</code>, and <code>versionOf</code>):</p>
+<p>A <strong>concept scheme</strong> is an <a href="#item">item</a> with the following optional fields (in addition to the optional fields <code>@context</code>, <code>address</code>, <code>altLabel</code>, <code>annotations</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>distributions</code>, <code>editorialNote</code>, <code>endDate</code>, <code>endPlace</code>, <code>example</code>, <code>guidelines</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issue</code>, <code>issueTracker</code>, <code>issued</code>, <code>location</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>place</code>, <code>prefLabel</code>, <code>publisher</code>, <code>rank</code>, <code>services</code>, <code>scopeNote</code>, <code>source</code>, <code>startDate</code>, <code>startPlace</code>, <code>subjectOf</code>, <code>subject</code>, <code>tool</code>, <code>type</code>, <code>uri</code>, <code>url</code>, <code>version</code>, and <code>versionOf</code>):</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1369,29 +1371,9 @@ Example&nbsp;8: concept from DDC
 <td style="text-align: left;"><a href="#resource-and-property-types">resource type</a> URIs of concepts in this scheme</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">distributions</td>
-<td style="text-align: left;"><a href="#set">set</a> of <a href="#distribution">distributions</a></td>
-<td style="text-align: left;"><a href="#distribution">Distributions</a> to access the content of the concept scheme</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">services</td>
-<td style="text-align: left;"><a href="#set">set</a> of <a href="#service">service</a></td>
-<td style="text-align: left;">Services to access the content of the concept scheme</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">extent</td>
-<td style="text-align: left;">string</td>
-<td style="text-align: left;">Size of the concept scheme</td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;">languages</td>
 <td style="text-align: left;"><a href="#list">list</a> of language tags</td>
 <td style="text-align: left;">Supported languages</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">license</td>
-<td style="text-align: left;"><a href="#set">set</a></td>
-<td style="text-align: left;">Licenses which the full scheme can be used under</td>
 </tr>
 </tbody>
 </table>
@@ -1549,7 +1531,7 @@ Example&nbsp;10
 </section>
 <section id="registry" class="level2" data-number="4.6">
 <h2 data-number="4.6" class="anchored" data-anchor-id="registry"><span class="header-section-number">4.6</span> Registry</h2>
-<p>A <strong>registry</strong> is an <a href="#item">item</a> with the following optional fields (in addition to the optional fields <code>@context</code>, <code>address</code>, <code>altLabel</code>, <code>annotations</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>editorialNote</code>, <code>endDate</code>, <code>endPlace</code>, <code>example</code>, <code>guidelines</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issue</code>, <code>issueTracker</code>, <code>issued</code>, <code>location</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>place</code>, <code>prefLabel</code>, <code>publisher</code>, <code>rank</code>, <code>scopeNote</code>, <code>source</code>, <code>startDate</code>, <code>startPlace</code>, <code>subjectOf</code>, <code>subject</code>, <code>tool</code>, <code>type</code>, <code>uri</code>, <code>url</code>, <code>version</code>, and <code>versionOf</code>):</p>
+<p>A <strong>registry</strong> is an <a href="#item">item</a> and a <a href="#dataset">dataset</a> with the following optional fields (in addition to the optional fields <code>@context</code>, <code>address</code>, <code>altLabel</code>, <code>annotations</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>distributions</code>, <code>editorialNote</code>, <code>endDate</code>, <code>endPlace</code>, <code>example</code>, <code>guidelines</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issue</code>, <code>issueTracker</code>, <code>issued</code>, <code>location</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>place</code>, <code>prefLabel</code>, <code>publisher</code>, <code>rank</code>, <code>services</code>, <code>scopeNote</code>, <code>source</code>, <code>startDate</code>, <code>startPlace</code>, <code>subjectOf</code>, <code>subject</code>, <code>tool</code>, <code>type</code>, <code>uri</code>, <code>url</code>, <code>version</code>, and <code>versionOf</code>):</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1605,29 +1587,9 @@ Example&nbsp;10
 <td style="text-align: left;"><a href="#annotation">annotations</a> in this registry</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">extent</td>
-<td style="text-align: left;">string</td>
-<td style="text-align: left;">Size of the registry</td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;">languages</td>
 <td style="text-align: left;"><a href="#list">list</a></td>
 <td style="text-align: left;">Supported languages</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">license</td>
-<td style="text-align: left;"><a href="#set">set</a></td>
-<td style="text-align: left;">Licenses which the full registry content can be used under</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">distributions</td>
-<td style="text-align: left;"><a href="#set">set</a> of <a href="#distribution">distributions</a></td>
-<td style="text-align: left;"><a href="#distribution">Distributions</a> to access the content of the registry</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">services</td>
-<td style="text-align: left;"><a href="#set">set</a> of <a href="#service">service</a></td>
-<td style="text-align: left;">Services to access the content of the registry</td>
 </tr>
 </tbody>
 </table>
@@ -1839,7 +1801,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Services to access datasets (<a href="#concept-scheme">concept schemes</a>, <a href="#concordance">concordances</a> and <a href="#registry">registries</a>) can be specified with either field <code>services</code> or via a <a href="#distribution">distribution</a>.</p>
+<p>Services to access [datasets] (<a href="#concept-scheme">concept schemes</a>, <a href="#concordance">concordances</a> and <a href="#registry">registries</a>) can be specified with either field <code>services</code> or via a <a href="#distribution">distribution</a>.</p>
 <!--{mermaid}
 classDiagram
   direction LR
@@ -1850,7 +1812,7 @@ classDiagram
 </section>
 <section id="concordance" class="level2" data-number="4.9">
 <h2 data-number="4.9" class="anchored" data-anchor-id="concordance"><span class="header-section-number">4.9</span> Concordance</h2>
-<p>A <strong>concordance</strong> is an <a href="#item">item</a> with the following fields (in addition to the optional fields <code>@context</code>, <code>address</code>, <code>altLabel</code>, <code>annotations</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>editorialNote</code>, <code>endDate</code>, <code>endPlace</code>, <code>example</code>, <code>guidelines</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issue</code>, <code>issueTracker</code>, <code>issued</code>, <code>location</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>place</code>, <code>prefLabel</code>, <code>publisher</code>, <code>rank</code>, <code>scopeNote</code>, <code>source</code>, <code>startDate</code>, <code>startPlace</code>, <code>subjectOf</code>, <code>subject</code>, <code>tool</code>, <code>type</code>, <code>uri</code>, <code>url</code>, <code>version</code>, and <code>versionOf</code>). All fields except <code>fromScheme</code> and <code>toScheme</code> are optional.</p>
+<p>A <strong>concordance</strong> is an <a href="#item">item</a> and a <a href="#dataset">dataset</a> with the following fields (in addition to the optional fields <code>@context</code>, <code>address</code>, <code>altLabel</code>, <code>annotations</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>distributions</code>, <code>editorialNote</code>, <code>endDate</code>, <code>endPlace</code>, <code>example</code>, <code>guidelines</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issue</code>, <code>issueTracker</code>, <code>issued</code>, <code>location</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>place</code>, <code>prefLabel</code>, <code>publisher</code>, <code>rank</code>, <code>services</code>, <code>scopeNote</code>, <code>source</code>, <code>startDate</code>, <code>startPlace</code>, <code>subjectOf</code>, <code>subject</code>, <code>tool</code>, <code>type</code>, <code>uri</code>, <code>url</code>, <code>version</code>, and <code>versionOf</code>). All fields except <code>fromScheme</code> and <code>toScheme</code> are optional.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1866,16 +1828,6 @@ classDiagram
 <td style="text-align: left;"><a href="#mapping">mappings</a> in this concordance</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">distributions</td>
-<td style="text-align: left;"><a href="#set">set</a> of <a href="#distribution">distributions</a></td>
-<td style="text-align: left;"><a href="#distribution">distributions</a> to access the concordance</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">services</td>
-<td style="text-align: left;"><a href="#set">set</a> of <a href="#service">service</a></td>
-<td style="text-align: left;">Services to access the content of the concordance</td>
-</tr>
-<tr class="even">
 <td style="text-align: left;">fromScheme</td>
 <td style="text-align: left;"><a href="#concept-scheme">concept scheme</a></td>
 <td style="text-align: left;">Source concept scheme</td>
@@ -1884,16 +1836,6 @@ classDiagram
 <td style="text-align: left;">toScheme</td>
 <td style="text-align: left;"><a href="#concept-scheme">concept scheme</a></td>
 <td style="text-align: left;">Target concept scheme</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">extent</td>
-<td style="text-align: left;">string</td>
-<td style="text-align: left;">Size of the concordance</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">license</td>
-<td style="text-align: left;"><a href="#set">set</a></td>
-<td style="text-align: left;">License which the full concordance can be used under</td>
 </tr>
 </tbody>
 </table>
@@ -1992,8 +1934,43 @@ Note
 </div>
 </div>
 </section>
-<section id="concept-bundle" class="level2" data-number="4.11">
-<h2 data-number="4.11" class="anchored" data-anchor-id="concept-bundle"><span class="header-section-number">4.11</span> Concept Bundle</h2>
+<section id="dataset" class="level2" data-number="4.11">
+<h2 data-number="4.11" class="anchored" data-anchor-id="dataset"><span class="header-section-number">4.11</span> Dataset</h2>
+<p>A dataset is collection of <a href="#item">items</a>. In JSKOS this object type is used to group fields of object types <a href="#concept-scheme">concept scheme</a>, <a href="#registry">registry</a>, and <a href="#concordance">concordance</a>. A <strong>dataset</strong> can have the following optional fields:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">field</th>
+<th style="text-align: left;">type</th>
+<th style="text-align: left;">definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">distributions</td>
+<td style="text-align: left;"><a href="#set">set</a> of <a href="#distribution">distributions</a></td>
+<td style="text-align: left;"><a href="#distribution">distributions</a> to access the content of the dataset</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">services</td>
+<td style="text-align: left;"><a href="#set">set</a> of <a href="#service">service</a></td>
+<td style="text-align: left;">Services to access the content of the dataset</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">extent</td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">Size of the concept scheme</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">license</td>
+<td style="text-align: left;"><a href="#set">set</a></td>
+<td style="text-align: left;">Licenses which the full scheme can be used under</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="concept-bundle" class="level2" data-number="4.12">
+<h2 data-number="4.12" class="anchored" data-anchor-id="concept-bundle"><span class="header-section-number">4.12</span> Concept Bundle</h2>
 <p>A concept bundle is a group of <a href="#concept">concepts</a>. Concept bundles can be used for <a href="#mapping">mappings</a>, composed concepts, and <a href="#occurrence">occurrences</a>.</p>
 <p>A <strong>concept bundle</strong> is a JSON object with at most one of the following fields:</p>
 <table class="caption-top table">
@@ -3274,6 +3251,7 @@ Example&nbsp;28: Mappings
 <li>Add <a href="#registry">registry</a> field <code>annotations</code></li>
 <li>Connect <a href="#distribution">distribution</a> and <a href="#service">service</a> via field <code>services</code></li>
 <li>Make <a href="#service">service</a> field <code>endpoint</code> optional</li>
+<li>Add abstract object type <a href="#dataset">dataset</a></li>
 </ul>
 </section>
 <section id="section" class="level3 unnumbered">

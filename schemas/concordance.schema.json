@@ -20,14 +20,6 @@
     "toScheme": {
       "description": "Target concept scheme",
       "$ref": "scheme.schema.json"
-    },
-    "extent": {
-      "description": "Size of the concordance",
-      "type": "string"
-    },
-    "license": {
-      "description": "License which the full concordance can be used under",
-      "$ref": "concept.schema.json#/definitions/conceptSet"
     }
   }
 }

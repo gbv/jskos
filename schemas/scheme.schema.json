@@ -20,11 +20,9 @@
     }
   },
   "allOf": [
-    {
-      "$ref": "item.schema.json"
-    }
+    { "$ref": "item.schema.json" },
+    { "$ref": "dataset.schema.json" }    
   ],
-  "$comment": "TODO: types, languages",
   "properties": {
     "topConcepts": {
       "description": "top concepts of the scheme",
@@ -57,21 +55,9 @@
       "description": "Concept types of concepts in this scheme",
       "$ref": "concept.schema.json#/definitions/conceptSet"
     },
-    "distributions": {
-      "description": "Distributions to access the content of the concept scheme",
-      "$ref": "distribution.schema.json#/definitions/distributionSet"
-    },
-    "extent": {
-      "description": "Size of the concept scheme",
-      "type": "string"
-    },
     "languages": {
       "description": "Supported languages",
       "$ref": "resource.schema.json#/definitions/list"
-    },
-    "license": {
-      "description": "Licenses which the full scheme can be used under",
-      "$ref": "concept.schema.json#/definitions/conceptSet"
     }
   }
 }

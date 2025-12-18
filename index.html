@@ -741,7 +741,8 @@ Example&nbsp;5: Thumbnail image specified as media
 </section>
 <section id="resource-and-property-types" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Resource and property types</h1>
-<p>Resource types and property types are <a href="#concept">concepts</a> with MANDATORY field <code>uri</code>. Both can be referred to implicitly ba referencing their <a href="#uri">URI</a> and they can be expressed explicitly, for instance in a <a href="#registry">registry</a>.</p>
+<p>A <strong>resource type</strong> is a <a href="#concept">concept</a> with MANDATORY field <code>uri</code>. It is used to distinguish different kinds of concepts or other <a href="#resource">resources</a>. Concept types are referred to by their <a href="#uri">URI</a> in array field <code>type</code> of a <a href="#resource">resource</a>.</p>
+<p>A <strong>property type</strong> is a <a href="#concept">concept</a> with MANDATORY field <code>uri</code>. It is used to specify the type of a <a href="#qualified-statements">qualified statement</a>. Property types are referenced by their <a href="#uri">URI</a> in the keys of a <a href="#qualified-statements">qualified map</a>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -755,13 +756,12 @@ Note
 <p>Ressource types and property types roughly map to RDF classes and RDF properties but JSKOS does not require or imply the RDF data model.</p>
 </div>
 </div>
-<p>A <strong>resource type</strong> is a <a href="#concept">concept</a> used to distinguish different kinds of concepts or other <a href="#resource">resources</a>. Concept types are referred to by their <a href="#uri">URI</a> in array field <code>type</code> of a <a href="#resource">resource</a>.</p>
 <p>An <strong>item type</strong> is a resource type with one of the following <a href="#uri">URI</a>s. Item types are used to identify the different kinds of JSKOS <a href="#item">items</a> (see <a href="#object-types">object types</a>) and types of <a href="#mapping">mappings</a>:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">item</th>
-<th style="text-align: left;">item type</th>
+<th style="text-align: left;">item type URI</th>
 </tr>
 </thead>
 <tbody>
@@ -816,6 +816,7 @@ Note
 </tbody>
 </table>
 <p>In addition URIs <a href="http://www.w3.org/ns/oa#Annotation" class="uri">http://www.w3.org/ns/oa#Annotation</a> SHOULD be used to refer to <a href="#annotation">annotations</a> and URI <a href="http://iiif.io/api/presentation/2#Manifest" class="uri">http://iiif.io/api/presentation/2#Manifest</a> SHOULD be used to refer to <a href="#media">media</a> objects, if needed.</p>
+<p>An <strong>object type URI</strong> is an item type URI, or the URI <a href="http://www.w3.org/ns/oa#Annotation" class="uri">http://www.w3.org/ns/oa#Annotation</a>, or an URI for <a href="#occurrence">occurrences</a> (not specified yet).</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -829,7 +830,6 @@ Note
 <p>See appendix <a href="#item-types-as-concepts">item types as concepts</a> for a partial explicit encoding of item types.</p>
 </div>
 </div>
-<p>A <strong>property type</strong> is a <a href="#concept">concept</a> used to specify the type of a <a href="#qualified-statements">qualified statement</a>. Property types are referenced by their <a href="#uri">URI</a> in the keys of a <a href="#qualified-statements">qualified map</a>.</p>
 </section>
 <section id="object-types" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Object types</h1>
@@ -855,7 +855,7 @@ Note
 <li><a href="#concept-bundle">concept bundle</a> for groups of concepts</li>
 </ul>
 <p>Object types <a href="#concept">concept</a>, <a href="#mapping">mapping</a>, and <a href="#occurrence">occurrence</a> are also <a href="#concept-bundle">concept bundles</a>.</p>
-<p>In addition there are JSON objects to encode entities of the following <a href="#sec-data-types">data types</a>:</p>
+<p>In addition there are JSON objects based on other specifications. These are listed as <a href="#sec-data-types">data types</a> in the previous section:</p>
 <ul>
 <li><a href="#location">location</a> for geospatial data (based on GeoJSON)</li>
 <li><a href="#media">media</a> for media files (based on IIIF)</li>
@@ -1164,7 +1164,7 @@ Diagram&nbsp;2: connections between main object types
 </tr>
 </tbody>
 </table>
-<p>The first element of array <code>type</code>, if given, MUST be an <a href="#item-types">item type</a> URI.</p>
+<p>The first element of array <code>type</code>, if given, MUST be an <a href="#resource-and-property-types">item type</a> URI.</p>
 <p>Applications MAY limit the fields <code>notation</code> and/or <code>depiction</code> to lists of a single element or ignore all preceding elements of these lists.</p>
 <p>If <code>startDate</code> is given, the value of <code>endDate</code> MUST NOT be an interval with open start. If <code>endDate</code> is given, the value of <code>startDate</code> MUST NOT be an interval with open end.</p>
 <p>To state one primary date of an item set <code>startDate</code> and <code>endDate</code> to the same value.</p>
@@ -1239,7 +1239,7 @@ Diagram&nbsp;2: connections between main object types
 </tr>
 </tbody>
 </table>
-<p>The first element of field <code>type</code>, if given, MUST be the <a href="#item-types">item type</a> URI <a href="http://www.w3.org/2004/02/skos/core#Concept" class="uri">http://www.w3.org/2004/02/skos/core#Concept</a>. The type URI <a href="http://schema.vocnet.org/NonIndexingConcept" class="uri">http://schema.vocnet.org/NonIndexingConcept</a> should be used as second element for concepts not meant to be used for indexing.</p>
+<p>The first element of field <code>type</code>, if given, MUST be the <a href="#resource-and-property-types">item type</a> URI <a href="http://www.w3.org/2004/02/skos/core#Concept" class="uri">http://www.w3.org/2004/02/skos/core#Concept</a>. The type URI <a href="http://schema.vocnet.org/NonIndexingConcept" class="uri">http://schema.vocnet.org/NonIndexingConcept</a> should be used as second element for concepts not meant to be used for indexing.</p>
 <p>Applications MAY limit the <code>inScheme</code> and/or <code>topConceptOf</code> to sets of a single element or ignore all but one element of these sets.</p>
 <p>If both fields <code>broader</code> and <code>ancestors</code> are given, the set <code>broader</code> MUST include <a href="#resource-sameness">the same</a> concept as the first element of <code>ancestors</code>.</p>
 <p>The <a href="#concept-bundle">concept bundle</a> fields <code>memberSet</code>, <code>memberList</code>, <code>memberChoice</code>, and <code>memberRoles</code> can be used to express the parts of a <strong>composed concept</strong> (also known as combined or synthesized concepts) unsorted or sorted. The field <code>memberChoice</code> SHOULD NOT be used without proper documentation because its meaning in this context is unclear. A concept MUST NOT include more than one of concept bundle fields. A concept SHOULD NOT reference itself as part of its concept bundle.</p>
@@ -1350,7 +1350,7 @@ Example&nbsp;8: concept from DDC
 </section>
 <section id="concept-scheme" class="level2" data-number="4.4">
 <h2 data-number="4.4" class="anchored" data-anchor-id="concept-scheme"><span class="header-section-number">4.4</span> Concept Scheme</h2>
-<p>A <strong>concept scheme</strong> is a <a href="#dataset">dataset</a> with the following optional fields (in addition to the optional fields <code>@context</code>, <code>address</code>, <code>altLabel</code>, <code>annotations</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>distributions</code>, <code>editorialNote</code>, <code>endDate</code>, <code>endPlace</code>, <code>example</code>, <code>guidelines</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issue</code>, <code>issueTracker</code>, <code>issued</code>, <code>location</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>place</code>, <code>prefLabel</code>, <code>publisher</code>, <code>rank</code>, <code>services</code>, <code>scopeNote</code>, <code>source</code>, <code>startDate</code>, <code>startPlace</code>, <code>subjectOf</code>, <code>subject</code>, <code>tool</code>, <code>type</code>, <code>uri</code>, <code>url</code>, <code>version</code>, and <code>versionOf</code>):</p>
+<p>A <strong>concept scheme</strong> is a <a href="#dataset">dataset</a> with the following optional fields (in addition to the optional fields <code>@context</code>, <code>address</code>, <code>altLabel</code>, <code>annotations</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>distributions</code>, <code>editorialNote</code>, <code>endDate</code>, <code>endPlace</code>, <code>example</code>, <code>guidelines</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issue</code>, <code>issueTracker</code>, <code>issued</code>, <code>location</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>place</code>, <code>prefLabel</code>, <code>publisher</code>, <code>rank</code>, <code>objectTypes</code>, <code>services</code>, <code>scopeNote</code>, <code>source</code>, <code>startDate</code>, <code>startPlace</code>, <code>subjectOf</code>, <code>subject</code>, <code>tool</code>, <code>type</code>, <code>uri</code>, <code>url</code>, <code>version</code>, and <code>versionOf</code>):</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1402,7 +1402,8 @@ Example&nbsp;8: concept from DDC
 </tr>
 </tbody>
 </table>
-<p>The first element of array field <code>type</code>, if given, MUST be the <a href="#item-types">item type</a> URI <a href="http://www.w3.org/2004/02/skos/core#ConceptScheme" class="uri">http://www.w3.org/2004/02/skos/core#ConceptScheme</a>.</p>
+<p>The first element of array field <code>type</code>, if given, MUST be the <a href="#resource-and-property-types">item type</a> URI <a href="http://www.w3.org/2004/02/skos/core#ConceptScheme" class="uri">http://www.w3.org/2004/02/skos/core#ConceptScheme</a>.</p>
+<p>Field <code>objectTypes</code>, if given, SHOULD include the URI <a href="http://www.w3.org/2004/02/skos/core#ConceptScheme" class="uri">http://www.w3.org/2004/02/skos/core#ConceptScheme</a>.</p>
 <p>The values of field <code>uriPattern</code> and <code>notationPattern</code> MUST conform to the regular expression syntax used by XML Schema (<a href="https://www.w3.org/TR/xmlschema-2/#regexs">Appendix F</a>) and SHOULD be anchored with <code>^</code> as first and <code>$</code> as last character. Applications MAY automatically anchor unanchored regular expressions.</p>
 <p>If <code>concepts</code> is a set, all its member concepts SHOULD contain a field <code>inScheme</code> and all MUST contain <a href="#resource-sameness">the same</a> concept scheme in field <code>inScheme</code> if this field is given.</p>
 <p>If <code>types</code> and <code>concepts</code> are sets, the <code>types</code> set SHOULD include all <a href="#resource-and-property-types">resource type</a> URIs for each concept’s <code>type</code> other than <code>http://www.w3.org/2004/02/skos/core#Concept</code>.</p>
@@ -1618,9 +1619,48 @@ Example&nbsp;10
 </tr>
 </tbody>
 </table>
-<p>The first element of array field <code>type</code>, if given, MUST be the <a href="#item-types">item type</a> URI <a href="http://www.w3.org/ns/dcat#Catalog" class="uri">http://www.w3.org/ns/dcat#Catalog</a> . Applications SHOULD also accept alternative URI <a href="http://purl.org/cld/cdtype/CatalogueOrIndex" class="uri">http://purl.org/cld/cdtype/CatalogueOrIndex</a> for backwards compatibility.</p>
+<p>The first element of array field <code>type</code>, if given, MUST be the <a href="#resource-and-property-types">item type</a> URI <a href="http://www.w3.org/ns/dcat#Catalog" class="uri">http://www.w3.org/ns/dcat#Catalog</a> . Applications SHOULD also accept alternative URI <a href="http://purl.org/cld/cdtype/CatalogueOrIndex" class="uri">http://purl.org/cld/cdtype/CatalogueOrIndex</a> for backwards compatibility.</p>
 <p>Registries are collection of <a href="#concept">concepts</a>, <a href="#concept-scheme">concept schemes</a>, <a href="#mapping">mappings</a>, <a href="#concordance">concordances</a>, <a href="#occurrence">occurrences</a>, and/or other registries with information about <a href="#resource-and-property-types">resource types</a> and <a href="#resource-and-property-types">property types</a>.</p>
-<p>A registry limited to only one of the fields <code>concepts</code>, <code>schemes</code>, <code>mappings</code>, <code>concordances</code>, and <code>occurrences</code>, <code>registries</code> is also called a <strong>collection</strong> of the corresponding <a href="#item-types">item type</a>. Registry field <code>types</code> SHOULD include the corresponding item type URI.</p>
+<p>Field <code>objectTypes</code> SHOULD list <a href="#resource-and-property-types">object type URIs</a> of entities included in the registry:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">resource type URI</th>
+<th style="text-align: left;">if it contains</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><a href="http://www.w3.org/2004/02/skos/core#Concept" class="uri">http://www.w3.org/2004/02/skos/core#Concept</a></td>
+<td style="text-align: left;"><a href="#concept">concepts</a> (field <code>concepts</code>, <code>types</code>, and <code>properties</code>)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="http://www.w3.org/2004/02/skos/core#ConceptScheme" class="uri">http://www.w3.org/2004/02/skos/core#ConceptScheme</a></td>
+<td style="text-align: left;"><a href="#concept-scheme">concept schemes</a> (field <code>schemes</code>)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="http://www.w3.org/2004/02/skos/core#mappingRelation" class="uri">http://www.w3.org/2004/02/skos/core#mappingRelation</a></td>
+<td style="text-align: left;"><a href="#mapping">mappings</a> (field <code>mappings</code>)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="http://rdf-vocabulary.ddialliance.org/xkos#Correspondence" class="uri">http://rdf-vocabulary.ddialliance.org/xkos#Correspondence</a></td>
+<td style="text-align: left;"><a href="#concordance">concordances</a> (field <code>concordances</code>)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">??? (not specified yet)</td>
+<td style="text-align: left;"><a href="#occurrence">occurrences</a> (field <code>occurrences</code>)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="http://www.w3.org/ns/dcat#Catalog" class="uri">http://www.w3.org/ns/dcat#Catalog</a></td>
+<td style="text-align: left;"><a href="#registry">registries</a> (field <code>registries</code>)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="http://www.w3.org/ns/oa#Annotation" class="uri">http://www.w3.org/ns/oa#Annotation</a></td>
+<td style="text-align: left;"><a href="#annotation">annotations</a> (field <code>annotations</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>A registry limited to only one of the fields <code>concepts</code>, <code>schemes</code>, <code>mappings</code>, <code>concordances</code>, and <code>occurrences</code>, <code>registries</code> is also called a <strong>collection</strong> of the corresponding <a href="#resource-and-property-types">item type</a>. Registry field <code>types</code> SHOULD include the corresponding item type URI.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1725,7 +1765,7 @@ Example&nbsp;11: A concept collection
 </table>
 <p>The <code>format</code> field SHOULD reference a content format rather than its serialization and possible wrapping. The URI of JSKOS is <a href="http://format.gbv.de/jskos" class="uri">http://format.gbv.de/jskos</a>.</p>
 <p>Fields <code>mimetype</code>, <code>compressFormat</code>, and <code>packageFormat</code> SHOULD be IANA media type URIs, if available. Field <code>mimetype</code> MAY be a string for backwards-compatibility.</p>
-<p>The first element of array field <code>type</code>, if given, MUST be the <a href="#item-types">item type</a> URI <a href="http://www.w3.org/ns/dcat#Distribution" class="uri">http://www.w3.org/ns/dcat#Distribution</a>.</p>
+<p>The first element of array field <code>type</code>, if given, MUST be the <a href="#resource-and-property-types">item type</a> URI <a href="http://www.w3.org/ns/dcat#Distribution" class="uri">http://www.w3.org/ns/dcat#Distribution</a>.</p>
 <div id="lst-ex" class="listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst quarto-uncaptioned" id="lst-ex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1793,7 +1833,7 @@ Example&nbsp;12
 </tbody>
 </table>
 <p>Field <code>url</code> SHOULD be used to provide a landing page or information about the service.</p>
-<p>The first element of array field <code>type</code>, if given, MUST be the <a href="#item-types">item type</a> URI <a href="http://www.w3.org/ns/dcat#DataService" class="uri">http://www.w3.org/ns/dcat#DataService</a>.</p>
+<p>The first element of array field <code>type</code>, if given, MUST be the <a href="#resource-and-property-types">item type</a> URI <a href="http://www.w3.org/ns/dcat#DataService" class="uri">http://www.w3.org/ns/dcat#DataService</a>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1851,7 +1891,7 @@ Example&nbsp;13: A service to access a terminology via JSKOS API
 </section>
 <section id="concordance" class="level2" data-number="4.9">
 <h2 data-number="4.9" class="anchored" data-anchor-id="concordance"><span class="header-section-number">4.9</span> Concordance</h2>
-<p>A <strong>concordance</strong> is a <a href="#dataset">dataset</a> with the following fields (in addition to the optional fields <code>@context</code>, <code>address</code>, <code>altLabel</code>, <code>annotations</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>distributions</code>, <code>editorialNote</code>, <code>endDate</code>, <code>endPlace</code>, <code>example</code>, <code>guidelines</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issue</code>, <code>issueTracker</code>, <code>issued</code>, <code>location</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>place</code>, <code>prefLabel</code>, <code>publisher</code>, <code>rank</code>, <code>services</code>, <code>scopeNote</code>, <code>source</code>, <code>startDate</code>, <code>startPlace</code>, <code>subjectOf</code>, <code>subject</code>, <code>tool</code>, <code>type</code>, <code>uri</code>, <code>url</code>, <code>version</code>, and <code>versionOf</code>). All fields except <code>fromScheme</code> and <code>toScheme</code> are optional.</p>
+<p>A <strong>concordance</strong> is a <a href="#dataset">dataset</a> with the following fields (in addition to the optional fields <code>@context</code>, <code>address</code>, <code>altLabel</code>, <code>annotations</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>distributions</code>, <code>editorialNote</code>, <code>endDate</code>, <code>endPlace</code>, <code>example</code>, <code>guidelines</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issue</code>, <code>issueTracker</code>, <code>issued</code>, <code>location</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>place</code>, <code>prefLabel</code>, <code>publisher</code>, <code>rank</code>, <code>objectTypes</code>, <code>services</code>, <code>scopeNote</code>, <code>source</code>, <code>startDate</code>, <code>startPlace</code>, <code>subjectOf</code>, <code>subject</code>, <code>tool</code>, <code>type</code>, <code>uri</code>, <code>url</code>, <code>version</code>, and <code>versionOf</code>). All fields except <code>fromScheme</code> and <code>toScheme</code> are optional.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1878,7 +1918,8 @@ Example&nbsp;13: A service to access a terminology via JSKOS API
 </tr>
 </tbody>
 </table>
-<p>The first element of array field <code>type</code>, if given, MUST be the <a href="#item-types">item type</a> URI <a href="http://rdf-vocabulary.ddialliance.org/xkos#Correspondence" class="uri">http://rdf-vocabulary.ddialliance.org/xkos#Correspondence</a>. Applications SHOULD also support URI <a href="http://rdfs.org/ns/void#Linkset" class="uri">http://rdfs.org/ns/void#Linkset</a> for backwards compatability.</p>
+<p>The first element of array field <code>type</code>, if given, MUST be the <a href="#resource-and-property-types">item type</a> URI <a href="http://rdf-vocabulary.ddialliance.org/xkos#Correspondence" class="uri">http://rdf-vocabulary.ddialliance.org/xkos#Correspondence</a>. Applications SHOULD also support URI <a href="http://rdfs.org/ns/void#Linkset" class="uri">http://rdfs.org/ns/void#Linkset</a> for backwards compatability.</p>
+<p>Field <code>objectTypes</code>, if given, SHOULD include the URI <a href="http://rdf-vocabulary.ddialliance.org/xkos#Correspondence" class="uri">http://rdf-vocabulary.ddialliance.org/xkos#Correspondence</a>.</p>
 <p>Concordances are collections of <a href="#mapping">mappings</a> from one <a href="#concept-scheme">concept scheme</a> to another. If <code>mappings</code> is a set then</p>
 <ul>
 <li><p>all its members with field <code>fromScheme</code> MUST have <a href="#resource-sameness">the same</a> value like concordance field <code>fromScheme</code>.</p></li>
@@ -1944,7 +1985,7 @@ Note
 </tr>
 </tbody>
 </table>
-<p>The first element of array field <code>type</code>, if given, MUST be an <a href="#item-types">item type</a> for mappings from the <a href="http://www.w3.org/TR/skos-reference/#mapping">SKOS mapping properties</a>. The field <code>type</code> MAY contain additional values but MUST NOT contain multiple of these values.</p>
+<p>The first element of array field <code>type</code>, if given, MUST be an <a href="#resource-and-property-types">item type</a> for mappings from the <a href="http://www.w3.org/TR/skos-reference/#mapping">SKOS mapping properties</a>. The field <code>type</code> MAY contain additional values but MUST NOT contain multiple of these values.</p>
 <p>Values of field <code>justification</code> SHOULD be subclasses of <code>https://w3id.org/semapv/vocab/Matching</code> from the Semantic Mapping Vocabulary.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -2004,6 +2045,11 @@ Note
 <td style="text-align: left;">license</td>
 <td style="text-align: left;"><a href="#set">set</a></td>
 <td style="text-align: left;">Licenses which the full scheme can be used under</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">objectTypes</td>
+<td style="text-align: left;"><a href="#list">list</a> of <a href="#uri">URI</a></td>
+<td style="text-align: left;">URIs of types of records in this dataset</td>
 </tr>
 </tbody>
 </table>
@@ -2886,7 +2932,7 @@ Example&nbsp;22
 </section>
 <section id="item-types-as-concepts" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="item-types-as-concepts">Item types as concepts</h2>
-<p><a href="#item-type">Item types</a> can be expressed with <a href="#concept">concepts</a> from the following <a href="#concept-scheme">concept scheme</a>:</p>
+<p><a href="#resource-and-property-types">Item types</a> can be expressed with <a href="#concept">concepts</a> from the following <a href="#concept-scheme">concept scheme</a>:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"type"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"http://www.w3.org/2004/02/skos/core#ConceptScheme"</span><span class="ot">]</span><span class="fu">,</span></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"topConcepts"</span><span class="fu">:</span> <span class="ot">[</span></span>

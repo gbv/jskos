@@ -4,7 +4,7 @@
   "title": "JSKOS Distribution",
   "description": "available forms to access the content of an item",
   "type": "object",
-  "definitions": {
+  "$defs": {
     "distributionSet": {
       "type": "array",
       "items": {
@@ -27,11 +27,11 @@
   "properties": {
     "download": {
       "description": "location of a file in given format",
-      "$ref": "resource.schema.json#/definitions/url"
+      "$ref": "resource.schema.json#/$defs/url"
     },
     "accessURL": {
       "description": "location of an API or landing page",
-      "$ref": "resource.schema.json#/definitions/url"
+      "$ref": "resource.schema.json#/$defs/url"
     },
     "size": {
       "description": "Size of the distribution in bytes",
@@ -43,15 +43,15 @@
     },
     "compressFormat": {
       "description": "compression format of the distribution",
-      "$ref": "resource.schema.json#/definitions/uri"
+      "$ref": "resource.schema.json#/$defs/uri"
     },
     "packageFormat": {
       "description": "packaging format when multiple files are grouped together",
-      "$ref": "resource.schema.json#/definitions/uri"
+      "$ref": "resource.schema.json#/$defs/uri"
     },
     "format": {
       "description": "data format identifier of the file",
-      "$ref": "resource.schema.json#/definitions/uri"
+      "$ref": "resource.schema.json#/$defs/uri"
     },
     "services": {
       "description": "Services to access the distribution via an API",
@@ -60,14 +60,14 @@
     },
     "license": {
       "description": "Licenses which the data can be used under",
-      "$ref": "concept.schema.json#/definitions/conceptSet"
+      "$ref": "concept.schema.json#/$defs/conceptSet"
     },
     "checksum": {
       "description": "Checksum of the download (algorithm and digest value)",
       "type": "object",
       "properties": {
         "algorithm": {
-          "$ref": "resource.schema.json#/definitions/uri"
+          "$ref": "resource.schema.json#/$defs/uri"
         },
         "value": {
           "type": "string",

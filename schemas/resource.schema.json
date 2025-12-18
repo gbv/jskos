@@ -4,7 +4,7 @@
   "title": "JSKOS Resource",
   "description": "all kinds of entities",
   "type": "object",
-  "definitions": {
+  "$defs": {
     "url": {
       "type": "string",
       "format": "iri-reference",
@@ -33,7 +33,7 @@
       "description": "URIs of types",
       "type": "array",
       "items": {
-        "$ref": "#/definitions/uri"
+        "$ref": "#/$defs/uri"
       }
     },
     "non-negative-integer": {
@@ -108,18 +108,18 @@
       "properties": {
         "startDate": {
           "description": "date when the statement started to be valid",
-          "$ref": "#/definitions/edtf"
+          "$ref": "#/$defs/edtf"
         },
         "endDate": {
           "description": "date when the statement ended to be valid",
-          "$ref": "#/definitions/edtf"
+          "$ref": "#/$defs/edtf"
         },
         "source": {
           "description": "sources as evidence for the statement",
-          "$ref": "concept.schema.json#/definitions/conceptSet"
+          "$ref": "concept.schema.json#/$defs/conceptSet"
         },
         "rank": {
-          "$ref": "#/definitions/rank"
+          "$ref": "#/$defs/rank"
         }
       }
     }
@@ -143,42 +143,42 @@
     },
     "uri": {
       "description": "primary globally unique identifier",
-      "$ref": "#/definitions/uri"
+      "$ref": "#/$defs/uri"
     },
     "identifier": {
       "description": "additional identifiers",
-      "$ref": "#/definitions/list"
+      "$ref": "#/$defs/list"
     },
     "type": {
-      "$ref": "#/definitions/type"
+      "$ref": "#/$defs/type"
     },
     "created": {
       "description": "date of creation",
-      "$ref": "#/definitions/date"
+      "$ref": "#/$defs/date"
     },
     "issued": {
       "description": "date of publication",
-      "$ref": "#/definitions/date"
+      "$ref": "#/$defs/date"
     },
     "modified": {
       "description": "date of last modification",
-      "$ref": "#/definitions/date"
+      "$ref": "#/$defs/date"
     },
     "creator": {
       "description": "agent primarily responsible for creation of resource",
-      "$ref": "concept.schema.json#/definitions/conceptSet"
+      "$ref": "concept.schema.json#/$defs/conceptSet"
     },
     "contributor": {
       "description": "agent responsible for making contributions to the resource",
-      "$ref": "concept.schema.json#/definitions/conceptSet"
+      "$ref": "concept.schema.json#/$defs/conceptSet"
     },
     "publisher": {
       "description": "agent responsible for making the resource available",
-      "$ref": "concept.schema.json#/definitions/conceptSet"
+      "$ref": "concept.schema.json#/$defs/conceptSet"
     },
     "partOf": {
       "description": "resources which this resource is part of (if no other field applies)",
-      "$ref": "concept.schema.json#/definitions/conceptSet"
+      "$ref": "concept.schema.json#/$defs/conceptSet"
     },
     "annotations": {
       "type": "array",
@@ -187,17 +187,17 @@
       }
     },
     "rank": {
-      "$ref": "#/definitions/rank"
+      "$ref": "#/$defs/rank"
     },
     "qualifiedRelations": {
       "type": "object",
-      "propertyNames": { "$ref": "#/definitions/uri" },
+      "propertyNames": { "$ref": "#/$defs/uri" },
       "patternProperties": {
         ".*": {
           "type": "array",
           "items": {
             "type": "object",
-            "allOf": [ { "$ref": "#/definitions/qualifiedValue" } ],
+            "allOf": [ { "$ref": "#/$defs/qualifiedValue" } ],
             "properties": {
               "resource": {
                 "description": "object of the relation",
@@ -212,16 +212,16 @@
     },
     "qualifiedDates": {
       "type": "object",
-      "propertyNames": { "$ref": "#/definitions/uri" },
+      "propertyNames": { "$ref": "#/$defs/uri" },
       "patternProperties": {
         ".*": {
           "type": "array",
           "items": {
             "type": "object",
-            "allOf": [ { "$ref": "#/definitions/qualifiedValue" } ],
+            "allOf": [ { "$ref": "#/$defs/qualifiedValue" } ],
             "properties": {
               "date": {
-                "$ref": "#/definitions/edtf"
+                "$ref": "#/$defs/edtf"
               }
             },
             "patternProperties": { "^_|^[A-Z0-9]+$": {} },
@@ -232,22 +232,22 @@
     },
     "qualifiedLiterals": {
       "type": "object",
-      "propertyNames": { "$ref": "#/definitions/uri" },
+      "propertyNames": { "$ref": "#/$defs/uri" },
       "patternProperties": {
         ".*": {
           "type": "array",
           "items": {
             "type": "object",
             "allOf": [
-              { "$ref": "#/definitions/qualifiedValue" }
+              { "$ref": "#/$defs/qualifiedValue" }
             ],
             "properties": {
-              "type": { "$ref": "#/definitions/type" },
+              "type": { "$ref": "#/$defs/type" },
               "literal": {
                 "type": "object",
                 "properties": {
                   "string": { "type": "string" },
-                  "language": { "$ref": "item.schema.json#/definitions/language-tag" }
+                  "language": { "$ref": "item.schema.json#/$defs/language-tag" }
                 },
                 "required": [ "string" ],
                 "additionalProperties": false

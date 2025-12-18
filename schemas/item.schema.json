@@ -4,7 +4,7 @@
   "title": "JSKOS Item",
   "description": "named entities",
   "type": "object",
-  "definitions": {
+  "$defs": {
     "itemSet": {
       "type": "array",
       "items": {
@@ -104,106 +104,106 @@
   "properties": {
     "url": {
       "description": "URL of a page with information about the item",
-      "$ref": "resource.schema.json#/definitions/url"
+      "$ref": "resource.schema.json#/$defs/url"
     },
     "notation": {
       "description": "list of notations",
-      "$ref": "resource.schema.json#/definitions/list"
+      "$ref": "resource.schema.json#/$defs/list"
     },
     "prefLabel": {
       "description": "preferred labels, index by language",
-      "$ref": "#/definitions/language-map"
+      "$ref": "#/$defs/language-map"
     },
     "altLabel": {
       "description": "alternative labels, indexed by language",
-      "$ref": "#/definitions/language-map-of-lists"
+      "$ref": "#/$defs/language-map-of-lists"
     },
     "hiddenLabel": {
       "description": "hidden labels, indexed by language",
-      "$ref": "#/definitions/language-map-of-lists"
+      "$ref": "#/$defs/language-map-of-lists"
     },
     "scopeNote": {
       "description": "see SKOS Documentary Notes",
-      "$ref": "#/definitions/language-map-of-lists"
+      "$ref": "#/$defs/language-map-of-lists"
     },
     "definition": {
       "description": "see SKOS Documentary Notes",
-      "$ref": "#/definitions/language-map-of-lists"
+      "$ref": "#/$defs/language-map-of-lists"
     },
     "example": {
       "description": "see SKOS Documentary Notes",
-      "$ref": "#/definitions/language-map-of-lists"
+      "$ref": "#/$defs/language-map-of-lists"
     },
     "historyNote": {
       "description": "see SKOS Documentary Notes",
-      "$ref": "#/definitions/language-map-of-lists"
+      "$ref": "#/$defs/language-map-of-lists"
     },
     "editorialNote": {
       "description": "see SKOS Documentary Notes",
-      "$ref": "#/definitions/language-map-of-lists"
+      "$ref": "#/$defs/language-map-of-lists"
     },
     "changeNote": {
       "description": "see SKOS Documentary Notes",
-      "$ref": "#/definitions/language-map-of-lists"
+      "$ref": "#/$defs/language-map-of-lists"
     },
     "note": {
       "description": "see SKOS Documentary Notes",
-      "$ref": "#/definitions/language-map-of-lists"
+      "$ref": "#/$defs/language-map-of-lists"
     },
     "startDate": {
       "description": "date of birth, creation, or estabishment of the item",
-      "$ref": "resource.schema.json#/definitions/edtf"
+      "$ref": "resource.schema.json#/$defs/edtf"
     },
     "endDate": {
       "description": "date death or resolution of the item",
-      "$ref": "resource.schema.json#/definitions/edtf"
+      "$ref": "resource.schema.json#/$defs/edtf"
     },
     "relatedDate": {
       "description": "other date somehow related to the item (deprecated, use relatedDates instead)",
-      "$ref": "resource.schema.json#/definitions/edtf"
+      "$ref": "resource.schema.json#/$defs/edtf"
     },
     "relatedDates": {
       "description": "other date somehow related to the item (deprecated, use relatedDates instead)",
       "type": "array",
       "items": {
-        "$ref": "resource.schema.json#/definitions/edtf"
+        "$ref": "resource.schema.json#/$defs/edtf"
       }
     },
     "location": {
       "description": "geographic location of the item",
-      "$ref": "#/definitions/location"
+      "$ref": "#/$defs/location"
     },
     "startPlace": {
       "description": "where an item started (e.g. place of birth)",
-      "$ref": "concept.schema.json#/definitions/conceptSet"
+      "$ref": "concept.schema.json#/$defs/conceptSet"
     },
     "endPlace": {
       "description": "where an item ended (e.g. place of death)",
-      "$ref": "concept.schema.json#/definitions/conceptSet"
+      "$ref": "concept.schema.json#/$defs/conceptSet"
     },
     "place": {
       "description": "other relevant place(s) of the item",
-      "$ref": "concept.schema.json#/definitions/conceptSet"
+      "$ref": "concept.schema.json#/$defs/conceptSet"
     },
     "address": {
       "description": "geographic location of the item",
-      "$ref": "#/definitions/address"
+      "$ref": "#/$defs/address"
     },
     "replacedBy": {
       "description": "Related items that supplant, displace, or supersede the described item",
-      "$ref": "#/definitions/itemSet"
+      "$ref": "#/$defs/itemSet"
     },
     "subject": {
       "description": "what this item is about (e.g. topic)",
-      "$ref": "concept.schema.json#/definitions/conceptSet"
+      "$ref": "concept.schema.json#/$defs/conceptSet"
     },
     "subjectOf": {
       "description": "resources about this item (e.g. documentation)",
-      "$ref": "concept.schema.json#/definitions/conceptSet"
+      "$ref": "concept.schema.json#/$defs/conceptSet"
     },
     "source": {
       "description": "sources from which the described resource is derived",
-      "$ref": "concept.schema.json#/definitions/conceptSet"
+      "$ref": "concept.schema.json#/$defs/conceptSet"
     },
     "depiction": {
       "description": "list of image URLs depicting the item",
@@ -214,7 +214,7 @@
             "type": "null"
           },
           {
-            "$ref": "resource.schema.json#/definitions/url"
+            "$ref": "resource.schema.json#/$defs/url"
           }
         ]
       }
@@ -223,7 +223,7 @@
       "description": "audiovisual or other digital content representing the item",
       "type": "array",
       "items": {
-        "$ref": "#/definitions/media"
+        "$ref": "#/$defs/media"
       }
     },
     "version": {
@@ -232,23 +232,23 @@
     },
     "versionOf": {
       "description": "items which this item is a version or edition of",
-      "$ref": "#/definitions/itemSet"
+      "$ref": "#/$defs/itemSet"
     },
     "tool": {
       "description": "Tool used to create or manage the item",
-      "$ref": "#/definitions/itemSet"
+      "$ref": "#/$defs/itemSet"
     },
     "issueTracker": {
       "description": "Issue tracker for this item",
-      "$ref": "#/definitions/itemSet"
+      "$ref": "#/$defs/itemSet"
     },
     "issue": {
       "description": "Specific issue for this item",
-      "$ref": "#/definitions/itemSet"
+      "$ref": "#/$defs/itemSet"
     },
     "guidelines": {
       "description": "Standards or guidelines followed in creation of this item",
-      "$ref": "#/definitions/itemSet"
+      "$ref": "#/$defs/itemSet"
     }
   }
 }

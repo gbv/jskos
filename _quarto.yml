@@ -38,6 +38,9 @@ format:
     crossref:
       lst-prefix: "Example"
       lst-title: "Example"
+      fig-prefix: "Diagram"
+      fig-title: "Diagram"
+    fig-cap-location: top
     mermaid:
       class:
         hideEmptyMembersBox: true

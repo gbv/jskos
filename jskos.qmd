@@ -449,16 +449,16 @@ a [qualified map].
 JSKOS defines the following types of JSON objects:
 
 - [resources] for all kinds of entities
-    - [items] for named entities
+    - [items] for named entities      
         - [concepts] for entities from a knowledge organization system
-        - [concept schemes] for compiled collections of concepts (knowledge organization systems)
         - [mappings] for mappings between concepts of two concept schemes
-        - [concordances] for curated collections of mappings
-        - [registries] for collections of items (concepts, concept schemes...)
+        - [dataset] for collections if items
+            - [concept schemes] for compiled collections of concepts (knowledge organization systems)
+            - [concordances] for curated collections of mappings
+            - [registries] for collections of items (concepts, concept schemes...)
         - [distributions] for available forms to access items
         - [services] for APIs to access items
-    - [occurrences] for counts of concept uses
-- [dataset] for collections if items
+    - [occurrences] for uses of concepts
 - [concept bundle] for groups of concepts
 
 Object types [concept], [mapping], and [occurrence] are also [concept bundles].
@@ -636,7 +636,7 @@ connected by the broader relation.
 [scheme]: #concept-schemes
 [schemes]: #concept-schemes
 
-A **concept scheme** is an [item] with the following optional fields (in
+A **concept scheme** is a [dataset] with the following optional fields (in
 addition to the optional fields `@context`, `address`, `altLabel`, `annotations`,
 `changeNote`, `contributor`, `created`, `creator`, `definition`, `depiction`, `distributions`,
 `editorialNote`, `endDate`, `endPlace`, `example`, `guidelines`, `hiddenLabel`,
@@ -693,7 +693,7 @@ optional fields (in addition to the optional fields `@context`, `annotations`,
 
 field        type                   definition
 ------------ ---------------------- ----------------------------------------------
-database     [item]                 database in which the concepts are used
+database     [dataset]              database in which the concepts are used
 count        [non-negative integer] number of times the concepts are used
 frequency    [percentage]           count divided by total number of possible uses
 relation     [URI]                  type of relation between concepts and entities
@@ -744,7 +744,7 @@ The Wikidata [concept of an individual human](http://www.wikidata.org/entity/Q5)
 [registries]: #registry
 [registry]: #registry
 
-A **registry** is an [item] and a [dataset] with the following optional fields (in addition to
+A **registry** is a [dataset] with the following optional fields (in addition to
 the optional fields `@context`, `address`, `altLabel`, `annotations`,
 `changeNote`, `contributor`, `created`, `creator`, `definition`, `depiction`,
 `distributions`,
@@ -875,41 +875,61 @@ optional fields `@context`, `address`, `altLabel`, `annotations`, `changeNote`,
 `rank`, `scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`,
 `subject`, `tool`, `type`, `uri`, `url`, `version`, and `versionOf`):
 
-field         type              definition
-------------- ----------------- --------------------------------------------------------------------------------
-api           [URI]             API type, for instance from BARTOC vocabulary API types vocabulary (RECOMMENDED)
-endpoint      [URI]             API endpoint (RECOMMENDED, SHOULD be an URL)
-serves        [set] of [items]  Specific versions of items served via this API (OPTIONAL)
+field         type               definition
+------------- ------------------ --------------------------------------------------------------------------------
+api           [URI]              API type, for instance from BARTOC vocabulary API types vocabulary (RECOMMENDED)
+endpoint      [URI]              API endpoint (RECOMMENDED, SHOULD be an URL)
+serves        [set] of [dataset] Datasets served via this service
 
-Field `url` SHOULD be used to provide a landing page or information about the service. 
+Field `url` SHOULD be used to provide a landing page or information about the service.
 
 The first element of array field `type`, if given, MUST be the [item type] URI <http://www.w3.org/ns/dcat#DataService>.
 
-```{.json #lst-service lst-cap="A service"}
+::: {.callout-note}
+Services roughly cover the [class DataService](https://www.w3.org/TR/vocab-dcat-3/#Class:Data_Service) from [Data Catalog Vocabulary](https://www.w3.org/TR/vocab-dcat-3/). A [dataset] being made available via a service can be linked:
+
+a) via dataset field `services`
+b) via dataset field `distributions` and [distribution] field `services`
+c) via service field `serves`
+:::
+
+Field `serves` is not the direct inverse of [dataset] field `services`, but applications SHOULD imply the following: if `dataset:A` includes `service:B` in the set of its field `services`
+
+~~~json
+{
+  "uri": "dataset:A",
+  "services": [ { "uri": "service:B" } ]
+}
+~~~
+
+than the `serves` set of `service:B` either contains `dataset:A`
+
+~~~json
+{
+  "uri": "service:B",
+  "serves": [ { "uri": "service:A" } ]
+}
+~~~
+
+or it contains another dataset being a version of `dataset:A`:
+
+~~~json
+{
+  "uri": "service:B",
+  "serves": [ { "versionOf": [ { "uri": "service:A" } ] } ]
+}
+~~~
+
+```{.json #lst-service lst-cap="A service to access a terminology via JSKOS API"}
 {{< include examples/example.service.json >}}
 ```
-
-Services roughly cover the [class DataService](https://www.w3.org/TR/vocab-dcat-3/#Class:Data_Service) from [Data Catalog Vocabulary](https://www.w3.org/TR/vocab-dcat-3/).
-
-::: {.callout-note}
-Services to access [datasets] ([concept schemes], [concordances] and [registries]) can be specified with either field `services` or via a [distribution].
-
-<!--{mermaid}
-classDiagram
-  direction LR
-  Service --> Dataset : serves
-  Dataset --> Service : services
-  Distribution --> Service : services
-  Dataset --> Distribution : distributions
-  note for Dataset "ConceptScheme, Concordance, Registry"-->
-:::
 
 ## Concordance
 
 [concordances]: #concordance
 [concordance]: #concordance
 
-A **concordance** is an [item] and a [dataset] with the following fields (in addition to the
+A **concordance** is a [dataset] with the following fields (in addition to the
 optional fields `@context`, `address`, `altLabel`, `annotations`, `changeNote`,
 `contributor`, `created`, `creator`, `definition`, `depiction`, `distributions`,
 `editorialNote`, `endDate`, `endPlace`, `example`, `guidelines`, `hiddenLabel`,
@@ -994,7 +1014,15 @@ but SKOS integrity rules for mappings do not apply automatically.
 
 [dataset]: #dataset
 
-A dataset is collection of [items]. In JSKOS this object type is used to group fields of object types [concept scheme], [registry], and [concordance]. A **dataset** can have the following optional fields:
+A dataset is an [item] being made available via [distributions] and/or [services].
+A **dataset** is a JSON object with the following optional fields (in addition to the
+optional fields `@context`, `address`, `altLabel`, `annotations`, `changeNote`,
+`contributor`, `created`, `creator`, `definition`, `depiction`,
+`editorialNote`, `endDate`, `endPlace`, `example`, `guidelines`, `hiddenLabel`,
+`historyNote`, `identifier`, `issue`, `issueTracker`,  `issued`, `location`,
+`modified`, `notation`, `note`, `partOf`, `place`, `prefLabel`, `publisher`,
+`rank`, `scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`,
+`subject`, `tool`, `type`, `uri`, `url`, `version`, and `versionOf`):
 
 field         type                      definition
 ------------- ------------------------- ----------------------------------------------
@@ -1002,6 +1030,10 @@ distributions [set] of [distributions]  [distributions] to access the content of
 services      [set] of [service]        Services to access the content of the dataset
 extent        string                    Size of the concept scheme
 license       [set]                     Licenses which the full scheme can be used under
+
+Object subtypes of dataset include [concept scheme], [registry], and [concordance].
+
+![dataset and connected object types](dataset.svg){#fig-dataset}
 
 ## Concept Bundle
 

@@ -13,7 +13,8 @@
   "scripts": {
     "test": "mocha",
     "html": "make",
-    "rdf": "jsonld2rdf -c context.json -p prefixes.json"
+    "rdf": "jsonld2rdf -c context.json -p prefixes.json",
+    "plantuml": "plantuml-cli"
   },
   "devDependencies": {
     "ajv": "^8.17.1",
@@ -23,6 +24,7 @@
     "glob": "^13.0.0",
     "jsonld": "^9.0.0",
     "jsonld2rdf": "^0.5.1",
-    "mocha": "^11.0.0"
+    "mocha": "^11.0.0",
+    "plantuml-cli": "^1.2025.10"
   }
 }

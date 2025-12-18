@@ -32,7 +32,7 @@
     },
     "database": {
       "description": "database in which the concepts are used",
-      "$ref": "item.schema.json"
+      "$ref": "dataset.schema.json"
     },
     "frequency": {
       "description": "count divided by total number of possible uses",

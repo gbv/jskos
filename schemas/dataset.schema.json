@@ -3,6 +3,7 @@
   "$schema": "https://json-schema.org/draft/2019-09/schema",
   "title": "JSKOS Dataset",
   "type": "object",
+  "allOf": [ { "$ref": "item.schema.json" } ],
   "properties": {
     "distributions": {
       "description": "Distributions to access the content of the dataset",

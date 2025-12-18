@@ -10,18 +10,19 @@ div.callout.callout-note {
 .callout.callout-style-default .callout-body {
   font-size: 1rem;
 }
-.listing {
-  border: 1px solid #95a5a6;
-  border-radius: .375rem;
-}
 figure > div > .sourceCode {
   margin: 0 0 0.5rem 0;
 }
-.listing > figure > figcaption {
+.quarto-figure {
+  border: 1px solid #95a5a6;
+  border-radius: .375rem;
+}
+.quarto-figure > figure > figcaption {
   background-color: #eaecee;
   margin: 0;
   padding: 0.25rem 0.5rem;
 }
-.listing > figure > div {
+.quarto-figure > figure > div,
+.quarto-figure > figure > p {
   padding: 0.25rem 0.5rem;
 }

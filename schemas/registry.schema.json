@@ -4,10 +4,7 @@
   "title": "JSKOS Registry",
   "description": "collections of items (concepts, concept schemes, ...)",
   "type": "object",
-  "allOf": [
-    { "$ref": "item.schema.json" },
-    { "$ref": "dataset.schema.json" }    
-  ],
+  "allOf": [ { "$ref": "dataset.schema.json" } ],
   "properties": {
     "concepts": {
       "description": "Concepts in this registry",

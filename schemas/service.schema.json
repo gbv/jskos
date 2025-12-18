@@ -19,8 +19,14 @@
       "$ref": "resource.schema.json#/definitions/uri"
     },
     "serves": {
-      "description": "Specific versions of items served via this API",
-      "$ref": "item.schema.json#/definitions/itemSet"
+      "description": "Specific versions of datasets served via this API",
+      "type": "array",
+      "items": {
+        "anyOf": [
+          { "type": "null" },
+          { "$ref": "dataset.schema.json" }
+        ]
+      }
     }
   }
 }

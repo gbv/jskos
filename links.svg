@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   contentStyleType="text/css"
+   data-diagram-type="CLASS"
+   height="312px"
+   preserveAspectRatio="none"
+   style="width:849px;height:312px;background:#FFFFFF;"
+   version="1.1"
+   viewBox="0 0 849 312"
+   width="849px"
+   zoomAndPan="magnify"
+   id="svg25"
+   sodipodi:docname="links.svg"
+   inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview25"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="4.009437"
+     inkscape:cx="411.5291"
+     inkscape:cy="135.8046"
+     inkscape:window-width="2560"
+     inkscape:window-height="1371"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg25" />
+  <defs
+     id="defs1" />
+  <g
+     class="entity"
+     data-entity="ConceptScheme"
+     data-source-line="5"
+     data-uid="ent0002"
+     id="entity_ConceptScheme">
+    <rect
+       fill="#f1f1f1"
+       height="29.0679"
+       rx="2.5"
+       ry="2.5"
+       style="stroke:#181818;stroke-width:0.5"
+       width="115.8296"
+       x="24.17"
+       y="8.6899996"
+       id="rect1" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="109.8296"
+       x="27.17"
+       y="28.655899"
+       id="text1">Concept Scheme</text>
+  </g>
+  <g
+     class="entity"
+     data-entity="Bundle"
+     data-source-line="6"
+     data-uid="ent0003"
+     id="entity_Bundle">
+    <rect
+       fill="#f1f1f1"
+       height="29.0679"
+       rx="2.5"
+       ry="2.5"
+       style="stroke:#181818;stroke-width:0.5"
+       width="110.4116"
+       x="456.17001"
+       y="8.6899996"
+       id="rect2" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="104.4116"
+       x="459.17001"
+       y="28.655899"
+       id="text2">Concept Bundle</text>
+  </g>
+  <g
+     class="entity"
+     data-entity="Concept"
+     data-source-line="8"
+     data-uid="ent0004"
+     id="entity_Concept">
+    <rect
+       fill="#f1f1f1"
+       height="29.0679"
+       rx="2.5"
+       ry="2.5"
+       style="stroke:#181818;stroke-width:0.5"
+       width="60.249802"
+       x="317.17001"
+       y="169.69"
+       id="rect3" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="54.249802"
+       x="320.17001"
+       y="189.6559"
+       id="text3">Concept</text>
+  </g>
+  <g
+     class="entity"
+     data-entity="Mapping"
+     data-source-line="13"
+     data-uid="ent0009"
+     id="entity_Mapping">
+    <rect
+       fill="#f1f1f1"
+       height="29.0679"
+       rx="2.5"
+       ry="2.5"
+       style="stroke:#181818;stroke-width:0.5"
+       width="64.645798"
+       x="634.66998"
+       y="277.69"
+       id="rect4" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="58.645802"
+       x="637.66998"
+       y="297.65591"
+       id="text4">Mapping</text>
+  </g>
+  <g
+     class="entity"
+     data-entity="Occurrence"
+     data-source-line="14"
+     data-uid="ent0011"
+     id="entity_Occurrence">
+    <rect
+       fill="#f1f1f1"
+       height="29.0679"
+       rx="2.5"
+       ry="2.5"
+       style="stroke:#181818;stroke-width:0.5"
+       width="81.7537"
+       x="306.17001"
+       y="277.69"
+       id="rect5" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="75.7537"
+       x="309.17001"
+       y="297.65591"
+       id="text5">Occurrence</text>
+  </g>
+  <g
+     class="entity"
+     data-entity="Registry"
+     data-source-line="23"
+     data-uid="ent0017"
+     id="entity_Registry">
+    <rect
+       fill="#f1f1f1"
+       height="29.0679"
+       rx="2.5"
+       ry="2.5"
+       style="stroke:#181818;stroke-width:0.5"
+       width="59.507801"
+       x="678.16998"
+       y="8.6899996"
+       id="rect6" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="14px"
+       lengthAdjust="spacing"
+       textLength="53.507801"
+       x="681.16998"
+       y="28.655899"
+       id="text6">Registry</text>
+  </g>
+  <path
+     codeLine="8"
+     d="m 81.927509,37.955277 c 0.348881,23.996743 4.925375,73.919423 35.144601,100.140643 29.89088,25.93577 142.7182,36.65595 199.8936,40.58323"
+     fill="none"
+     id="ConceptScheme-to-Concept"
+     style="stroke:#181818;stroke-width:1.00498" />
+  <polygon
+     fill="#181818"
+     points="307.6973,184.697 316.96,181.35 308.2687,176.7174 311.9728,180.9929 "
+     style="stroke:#181818;stroke-width:1"
+     id="polygon6"
+     transform="translate(0,2.7529421)" />
+  <text
+     fill="#000000"
+     font-family="sans-serif"
+     font-size="13px"
+     lengthAdjust="spacing"
+     textLength="59.462101"
+     x="117.248"
+     y="100.087"
+     id="text7"
+     transform="translate(-18.694225,-5.2908184)">concepts/</text>
+  <text
+     fill="#000000"
+     font-family="sans-serif"
+     font-size="13px"
+     lengthAdjust="spacing"
+     textLength="59.618099"
+     x="117.17"
+     y="117.793"
+     id="text8"
+     transform="translate(-16.930619,-7.7598671)">inScheme</text>
+  <path
+     codeLine="9"
+     d="m 126.43143,37.764289 c 18.80025,7.009564 39.99569,16.878949 56.5143,29.928136 31.37503,24.788456 20.62761,48.017005 52.65307,71.995515 25.98584,19.44879 55.93924,29.52746 81.46049,35.77707"
+     fill="none"
+     id="ConceptScheme-to-Concept-1"
+     style="stroke:#181818;stroke-width:1.01605" />
+  <text
+     fill="#000000"
+     font-family="sans-serif"
+     font-size="13px"
+     lengthAdjust="spacing"
+     textLength="81.991096"
+     x="234.951"
+     y="100.087"
+     id="text9"
+     transform="translate(-20.810553,-7.4071458)">topConcepts/</text>
+  <text
+     fill="#000000"
+     font-family="sans-serif"
+     font-size="13px"
+     lengthAdjust="spacing"
+     textLength="85.553101"
+     x="233.17"
+     y="117.793"
+     id="text10"
+     transform="translate(-16.810553,-9.4071458)">topConceptOf</text>
+  <path
+     codeLine="10"
+     d="m 64.94,37.97 c -8.28,7.74 -17.34,18.16 -21.77,29.72 -11.43,29.89 -20.96,47.82 0,72 35.28,40.68 198.1601,44.2767 267.8401,43.9667"
+     fill="none"
+     id="ConceptScheme-to-Concept-2"
+     style="stroke:#181818;stroke-width:1" />
+  <text
+     fill="#000000"
+     font-family="sans-serif"
+     font-size="13px"
+     lengthAdjust="spacing"
+     textLength="32.876999"
+     x="44.169998"
+     y="109.087"
+     id="text11"
+     transform="translate(-5.6435397,8.4653095)">types</text>
+  <g
+     class="link"
+     data-entity-1="Bundle"
+     data-entity-2="Concept"
+     data-source-line="12"
+     data-uid="lnk8"
+     id="link_Bundle_Concept">
+    <path
+       codeLine="12"
+       d="M 494.5619,53.4368 C 477.6719,83.1368 447.5,135.8 443.17,139.69 c -18.78,16.88 -45.21,28.2 -65.58,35.05"
+       fill="none"
+       id="Bundle-backto-Concept"
+       style="stroke:#181818;stroke-width:1" />
+    <polygon
+       fill="none"
+       points="499.7775,56.4029 503.46,37.79 489.3462,50.4708 "
+       style="stroke:#181818;stroke-width:1"
+       id="polygon11" />
+  </g>
+  <g
+     class="link"
+     data-entity-1="Bundle"
+     data-entity-2="Concept"
+     data-source-line="16"
+     data-uid="lnk13"
+     id="g15">
+    <path
+       codeLine="16"
+       d="m 456.08,30.86 c -44.39,6.64 -101.66,18.51 -115.91,36.83 -23.18,29.82 -10.7675,72.5588 -1.3475,96.1188"
+       fill="none"
+       id="Bundle-to-Concept"
+       style="stroke:#181818;stroke-width:1" />
+    <polygon
+       fill="#181818"
+       points="339.1937,164.7373 333.9946,162.5082 341.05,169.38 341.4228,159.5382 "
+       style="stroke:#181818;stroke-width:1"
+       id="polygon12" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="13px"
+       lengthAdjust="spacing"
+       textLength="71.500099"
+       x="352.1095"
+       y="82.586998"
+       id="text12">memberSet</text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="13px"
+       lengthAdjust="spacing"
+       textLength="73.424103"
+       x="351.14749"
+       y="100.293"
+       id="text13">memberList</text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="13px"
+       lengthAdjust="spacing"
+       textLength="93.379097"
+       x="341.17001"
+       y="117.999"
+       id="text14">memberChoice</text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="13px"
+       lengthAdjust="spacing"
+       textLength="85.202103"
+       x="345.25851"
+       y="135.70509"
+       id="text15">memberRoles</text>
+  </g>
+  <g
+     class="link"
+     data-entity-1="Bundle"
+     data-entity-2="Mapping"
+     data-source-line="13"
+     data-uid="lnk10"
+     id="link_Bundle_Mapping">
+    <path
+       codeLine="13"
+       d="m 584.0332,33.9567 c 25.3,5.61 35.8468,12.6033 53.1368,33.7333 51.71,63.17 39.09,171.7 32.63,209.8"
+       fill="none"
+       id="Bundle-backto-Mapping"
+       style="stroke:#181818;stroke-width:1" />
+    <polygon
+       fill="none"
+       points="585.332,28.0989 566.46,30.06 582.7343,39.8144 "
+       style="stroke:#181818;stroke-width:1"
+       id="polygon15" />
+  </g>
+  <g
+     class="link"
+     data-entity-1="Bundle"
+     data-entity-2="Occurrence"
+     data-source-line="14"
+     data-uid="lnk12"
+     id="link_Bundle_Occurrence">
+    <path
+       codeLine="14"
+       d="m 569.8069,45.7223 c 13.82,6.7 11.4331,8.4677 19.3631,21.9677 16.48,28.06 -14.44,179.42 -15,180 -24.94,26.26 -127.56,37.11 -185.92,41.23"
+       fill="none"
+       id="Bundle-backto-Occurrence"
+       style="stroke:#181818;stroke-width:1" />
+    <polygon
+       fill="none"
+       points="572.4244,40.3234 553.61,37.87 567.1895,51.1213 "
+       style="stroke:#181818;stroke-width:1"
+       id="polygon16" />
+  </g>
+  <path
+     codeLine="18"
+     d="m 377.28,195.16 c 60.21,19.95 189.3244,62.7131 251.5644,83.3331"
+     fill="none"
+     id="Concept-to-Mapping"
+     style="stroke:#181818;stroke-width:1" />
+  <polygon
+     fill="#181818"
+     points="634.54,280.38 627.2546,273.7526 629.7937,278.8076 624.7387,281.3466 "
+     style="stroke:#181818;stroke-width:1"
+     id="polygon17" />
+  <text
+     fill="#000000"
+     font-family="sans-serif"
+     font-size="13px"
+     lengthAdjust="spacing"
+     textLength="61.0481"
+     x="536.16998"
+     y="243.58701"
+     id="text17"
+     transform="translate(-51.628196,-15.214106)">mappings</text>
+  <g
+     class="link"
+     data-entity-1="Concept"
+     data-entity-2="Occurrence"
+     data-source-line="19"
+     data-uid="lnk15"
+     id="link_Concept_Occurrence">
+    <path
+       codeLine="19"
+       d="m 347.17,199.05 c 0,20.42 0,52.38 0,72.61"
+       fill="none"
+       id="Concept-to-Occurrence"
+       style="stroke:#181818;stroke-width:1" />
+    <polygon
+       fill="#181818"
+       points="347.17,272.66 343.17,268.66 347.17,277.66 351.17,268.66 "
+       style="stroke:#181818;stroke-width:1"
+       id="polygon18" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="13px"
+       lengthAdjust="spacing"
+       textLength="74.282097"
+       x="348.17001"
+       y="243.58701"
+       id="text18">occurrences</text>
+  </g>
+  <path
+     codeLine="21"
+     d="M 306.02,285.98 C 233.92,274.37 86.43,239.1 23.17,139.69 6,112.69 8.75,96.25 23.17,67.69 29.66,54.85 36.7919,48.0014 48.4619,40.8614"
+     fill="none"
+     id="Occurrence-to-ConceptScheme"
+     style="stroke:#181818;stroke-width:1" />
+  <polygon
+     fill="#181818"
+     points="53.58,37.73 43.8153,39.015 49.3149,40.3395 47.9905,45.8391 "
+     style="stroke:#181818;stroke-width:1"
+     id="polygon19" />
+  <text
+     fill="#000000"
+     font-family="sans-serif"
+     font-size="13px"
+     lengthAdjust="spacing"
+     textLength="53.547001"
+     x="78.169998"
+     y="189.58701"
+     id="text19"
+     transform="translate(3.5272123,54.671791)">schemes</text>
+  <g
+     class="link"
+     data-entity-1="Registry"
+     data-entity-2="Concept"
+     data-source-line="23"
+     data-uid="lnk18"
+     id="link_Registry_Concept">
+    <path
+       codeLine="23"
+       d="M 684.93,37.85 C 644.92,60.97 560,108.37 484.17,139.69 c -35.86,14.82 -72.9195,26.0719 -101.0295,33.8919"
+       fill="none"
+       id="Registry-to-Concept"
+       style="stroke:#181818;stroke-width:1" />
+    <polygon
+       fill="#181818"
+       points="382.1771,173.8499 384.9587,168.9242 377.36,175.19 387.1028,176.6315 "
+       style="stroke:#181818;stroke-width:1"
+       id="polygon20" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="13px"
+       lengthAdjust="spacing"
+       textLength="54.626099"
+       x="634.6225"
+       y="82.586998"
+       id="text20">concepts</text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="13px"
+       lengthAdjust="spacing"
+       textLength="53.547001"
+       x="635.16199"
+       y="100.293"
+       id="text21">schemes</text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="13px"
+       lengthAdjust="spacing"
+       textLength="32.876999"
+       x="645.49701"
+       y="117.999"
+       id="text22">types</text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="13px"
+       lengthAdjust="spacing"
+       textLength="63.531101"
+       x="630.16998"
+       y="135.70509"
+       id="text23">properties</text>
+  </g>
+  <g
+     class="link"
+     data-entity-1="Registry"
+     data-entity-2="Mapping"
+     data-source-line="24"
+     data-uid="lnk19"
+     id="link_Registry_Mapping">
+    <path
+       codeLine="24"
+       d="m 709.44,37.95 c 2.8,35.63 7.57,133.46 -16.27,209.74 -3.35,10.75 -6.4388,16.684 -12.0988,24.874"
+       fill="none"
+       id="Registry-to-Mapping"
+       style="stroke:#181818;stroke-width:1" />
+    <polygon
+       fill="#181818"
+       points="680.5027,273.3867 679.4861,267.8219 677.66,277.5 686.0674,272.3702 "
+       style="stroke:#181818;stroke-width:1"
+       id="polygon23" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="13px"
+       lengthAdjust="spacing"
+       textLength="61.0481"
+       x="709.16998"
+       y="189.58701"
+       id="text24">mappings</text>
+  </g>
+  <g
+     class="link"
+     data-entity-1="Registry"
+     data-entity-2="Registry"
+     data-source-line="25"
+     data-uid="lnk20"
+     id="link_Registry_Registry">
+    <path
+       codeLine="25"
+       d="m 738.26,9.13 c 17.99,-3.13 34.91,1.56 34.91,14.06 0,12.5 -11.0088,18.2185 -28.9988,15.0885"
+       fill="none"
+       id="Registry-to-Registry"
+       style="stroke:#181818;stroke-width:1" />
+    <polygon
+       fill="#181818"
+       points="743.186,38.1071 747.8124,34.8519 738.26,37.25 746.4412,42.7335 "
+       style="stroke:#181818;stroke-width:1"
+       id="polygon24" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="13px"
+       lengthAdjust="spacing"
+       textLength="57.251999"
+       x="779.16998"
+       y="28.587"
+       id="text25">registries</text>
+  </g>
+</svg>

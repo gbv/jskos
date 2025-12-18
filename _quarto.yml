@@ -38,7 +38,7 @@ format:
     crossref:
       lst-prefix: "Example"
       lst-title: "Example"
-      fig-prefix: "Diagram"
+      fig-prefix: "diagram"
       fig-title: "Diagram"
     fig-cap-location: top
     mermaid:

@@ -4,9 +4,9 @@ default:
 preview:
 	quarto preview
 
-img: dataset.svg
+img: types.svg dataset.svg
 
-dataset.svg: dataset.puml
+%.svg: %.puml
 	npm run plantuml -- $< --svg
 
 .PHONY: test

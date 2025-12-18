@@ -1,0 +1,24 @@
+@startuml
+hide methods
+hide circles
+hide fields
+
+class "Concept Scheme" as ConceptScheme
+class "Concept Bundle" as Bundle
+
+Resource <|-- Item
+Resource <|-- Occurrence
+Item <|-- Dataset
+Dataset <|-- Registry
+Dataset <|-- ConceptScheme
+Dataset <|-- Concordance
+
+Item <|-- Service
+Item <|-- Distribution
+Item <|-- Concept
+Item <|-- Mapping
+
+Bundle <|-- Mapping
+Bundle <|-- Concept
+Bundle <|-- Occurrence
+@enduml

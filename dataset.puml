@@ -1,0 +1,32 @@
+@startuml
+hide methods
+hide circles
+
+Item <|-- Dataset
+Dataset <|-- Registry
+Dataset <|-- ConceptScheme
+Dataset <|-- Concordance
+
+class Dataset {
+  extent
+  license
+}
+
+class Distribution {
+  download
+  license
+  ...
+}
+
+class Service {
+  api
+  endpoint
+}
+
+Dataset -- Dataset : version/versionOf
+
+Dataset --> Service : services
+Dataset --> Distribution : distributions
+Distribution --> Service : services
+Service --> Dataset : serves
+@enduml

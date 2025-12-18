@@ -24,7 +24,7 @@ In addition to [concepts] and [concept schemes] JSKOS can express information ab
 - qualified information with [qualified statements]
 - incomplete and deprecated information via [ranks](#rank) and [closed world statements]
 
-See [object types] for the class hierarchy of JSKOS data elements.
+See @fig-types for the class hierarchy of JSKOS data elements and @fig-links for connections between main types.
 
 ## Status of this document
 
@@ -443,7 +443,6 @@ A **property type** is a [concept] used to specify the type of a [qualified
 statement]. Property types are referenced by their [URI] in the keys of
 a [qualified map].
 
-
 # Object types
 
 JSKOS defines the following types of JSON objects:
@@ -469,6 +468,10 @@ In addition there are JSON objects to encode entities of the following [data typ
 - [media] for media files (based on IIIF)
 - [annotation] to review and comment on resources (based on Web Annotation Data Model)
 - [address] for postal addresses (based on vCard and schema.org)
+
+![hierarchy of JSKOS object types](types.svg){#fig-types}
+
+![connections between main object types](links.svg){#fig-links}
 
 ## Resource
 

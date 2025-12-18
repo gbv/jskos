@@ -1,0 +1,27 @@
+@startuml
+hide methods
+hide circles
+hide fields
+
+class "Concept Scheme" as ConceptScheme
+class "Concept Bundle" as Bundle
+
+ConceptScheme --> Concept : "concepts/\ninScheme"
+ConceptScheme --> Concept : "topConcepts/\ntopConceptOf"
+ConceptScheme --> Concept : types
+
+Bundle <|-- Concept
+Bundle <|-- Mapping
+Bundle <|-- Occurrence
+
+Bundle --> Concept : "memberSet\nmemberList\nmemberChoice\nmemberRoles"
+
+Concept --> Mapping : mappings
+Concept --> Occurrence : occurrences
+
+Occurrence --> ConceptScheme : schemes
+
+Registry --> Concept : "concepts\nschemes\ntypes\nproperties"
+Registry --> Mapping : mappings
+Registry --> Registry : registries
+@enduml

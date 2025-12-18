@@ -12,11 +12,11 @@
   "properties": {
     "api": {
       "description": "API type",
-      "$ref": "resource.schema.json#/definitions/uri"
+      "$ref": "resource.schema.json#/$defs/uri"
     },
     "endpoint": {
       "description": "API endpoint",
-      "$ref": "resource.schema.json#/definitions/uri"
+      "$ref": "resource.schema.json#/$defs/uri"
     },
     "serves": {
       "description": "Specific versions of datasets served via this API",

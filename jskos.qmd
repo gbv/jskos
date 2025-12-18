@@ -398,26 +398,27 @@ target      [URI], [Resource] or [Annotation] object being annotated, or its URI
 [resource types]: #resource-and-property-types
 [property type]: #resource-and-property-types
 [property types]: #resource-and-property-types
-[item type]: #item-types
+[item type]: #resource-and-property-types
+[Item types]: #resource-and-property-types
 
-Resource types and property types are [concepts] with MANDATORY field `uri`.
-Both can be referred to implicitly ba referencing their [URI] and they can be
-expressed explicitly, for instance in a [registry].
+A **resource type** is a [concept] with MANDATORY field `uri`. It is used to
+distinguish different kinds of concepts or other [resources]. Concept types are
+referred to by their [URI] in array field `type` of a [resource].
+
+A **property type** is a [concept] with MANDATORY field `uri`. It is used to
+specify the type of a [qualified statement]. Property types are referenced by
+their [URI] in the keys of a [qualified map].
 
 ::: {.callout-note}
 Ressource types and property types roughly map to RDF classes and RDF properties
 but JSKOS does not require or imply the RDF data model.
 :::
 
-A **resource type** is a [concept] used to distinguish different kinds of
-concepts or other [resources]. Concept types are referred to by their [URI] in
-array field `type` of a [resource].
-
 An **item type** is a resource type with one of the following [URI]s. Item
 types are used to identify the different kinds of JSKOS [items](#item)
 (see [object types]) and types of [mappings]:
 
-item                item type
+item                item type URI
 ------------------- -----------------------------------------------------
 [concept]           <http://www.w3.org/2004/02/skos/core#Concept>
 [concept scheme]    <http://www.w3.org/2004/02/skos/core#ConceptScheme>
@@ -435,13 +436,11 @@ item                item type
 
 In addition URIs <http://www.w3.org/ns/oa#Annotation> SHOULD be used to refer to [annotations] and URI <http://iiif.io/api/presentation/2#Manifest> SHOULD be used to refer to [media] objects, if needed.
 
+An **object type URI** is an item type URI, or the URI <http://www.w3.org/ns/oa#Annotation>, or an URI for [occurrences] (not specified yet).
+
 ::: {.callout-note}
 See appendix [item types as concepts] for a partial explicit encoding of item types.
 :::
-
-A **property type** is a [concept] used to specify the type of a [qualified
-statement]. Property types are referenced by their [URI] in the keys of
-a [qualified map].
 
 # Object types
 
@@ -462,7 +461,7 @@ JSKOS defines the following types of JSON objects:
 
 Object types [concept], [mapping], and [occurrence] are also [concept bundles].
 
-In addition there are JSON objects to encode entities of the following [data types](#sec-data-types):
+In addition there are JSON objects based on other specifications. These are listed as [data types](#sec-data-types) in the previous section:
 
 - [location] for geospatial data (based on GeoJSON)
 - [media] for media files (based on IIIF)
@@ -645,7 +644,7 @@ addition to the optional fields `@context`, `address`, `altLabel`, `annotations`
 `editorialNote`, `endDate`, `endPlace`, `example`, `guidelines`, `hiddenLabel`,
 `historyNote`, `identifier`, `issue`, `issueTracker`, `issued`, `location`,
 `modified`, `notation`, `note`, `partOf`, `place`, `prefLabel`, `publisher`,
-`rank`, `services`, `scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`,
+`rank`, `objectTypes`, `services`, `scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`,
 `subject`, `tool`, `type`, `uri`, `url`, `version`, and `versionOf`):
 
 field            type                       definition
@@ -661,6 +660,8 @@ languages        [list] of language tags    Supported languages
 
 The first element of array field `type`, if given, MUST be the [item type] URI
 <http://www.w3.org/2004/02/skos/core#ConceptScheme>.
+
+Field `objectTypes`, if given, SHOULD include the URI <http://www.w3.org/2004/02/skos/core#ConceptScheme>.
 
 The values of field `uriPattern` and `notationPattern` MUST conform to the
 regular expression syntax used by XML Schema ([Appendix F](https://www.w3.org/TR/xmlschema-2/#regexs))
@@ -778,6 +779,18 @@ compatibility.
 Registries are collection of [concepts], [concept schemes], [mappings],
 [concordances], [occurrences], and/or other registries with information about
 [resource types] and [property types].
+
+Field `objectTypes` SHOULD list [object type URIs](#resource-and-property-types) of entities included in the registry:
+
+resource type URI                                           if it contains  
+----------------------------------------------------------- ------------------
+<http://www.w3.org/2004/02/skos/core#Concept>               [concepts] (field `concepts`, `types`, and `properties`)
+<http://www.w3.org/2004/02/skos/core#ConceptScheme>         [concept schemes] (field `schemes`)
+<http://www.w3.org/2004/02/skos/core#mappingRelation>       [mappings] (field `mappings`)
+<http://rdf-vocabulary.ddialliance.org/xkos#Correspondence> [concordances] (field `concordances`)
+??? (not specified yet)                                     [occurrences] (field `occurrences`)
+<http://www.w3.org/ns/dcat#Catalog>                         [registries] (field `registries`)
+<http://www.w3.org/ns/oa#Annotation>                        [annotations] (field `annotations`)
 
 A registry limited to only one of the fields `concepts`, `schemes`, `mappings`,
 `concordances`, and `occurrences`, `registries` is also called a **collection**
@@ -938,7 +951,7 @@ optional fields `@context`, `address`, `altLabel`, `annotations`, `changeNote`,
 `editorialNote`, `endDate`, `endPlace`, `example`, `guidelines`, `hiddenLabel`,
 `historyNote`, `identifier`, `issue`, `issueTracker`,  `issued`, `location`,
 `modified`, `notation`, `note`, `partOf`, `place`, `prefLabel`, `publisher`,
-`rank`, `services`, `scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`,
+`rank`, `objectTypes`, `services`, `scopeNote`, `source`, `startDate`, `startPlace`, `subjectOf`,
 `subject`, `tool`, `type`, `uri`, `url`, `version`, and `versionOf`). All
 fields except `fromScheme` and `toScheme` are optional.
  
@@ -953,6 +966,8 @@ The first element of array field `type`, if given, MUST be the [item type] URI
 <http://rdf-vocabulary.ddialliance.org/xkos#Correspondence>. Applications
 SHOULD also support URI <http://rdfs.org/ns/void#Linkset> for backwards
 compatability.
+
+Field `objectTypes`, if given, SHOULD include the URI <http://rdf-vocabulary.ddialliance.org/xkos#Correspondence>.
 
 Concordances are collections of [mappings] from one [concept scheme] to
 another. If `mappings` is a set then
@@ -1033,10 +1048,12 @@ distributions [set] of [distributions]  [distributions] to access the content of
 services      [set] of [service]        Services to access the content of the dataset
 extent        string                    Size of the concept scheme
 license       [set]                     Licenses which the full scheme can be used under
+objectTypes   [list] of [URI]           URIs of types of records in this dataset
 
 Object subtypes of dataset include [concept scheme], [registry], and [concordance].
 
 ![dataset and connected object types](dataset.svg){#fig-dataset}
+
 
 ## Concept Bundle
 
@@ -1513,7 +1530,7 @@ Public services to validate JSKOS data are included in instances of [jskos-serve
 
 ## Item types as concepts {-}
 
-[Item types](#item-type) can be expressed with [concepts] from the following [concept scheme]:
+[Item types] can be expressed with [concepts] from the following [concept scheme]:
 
 ~~~json
 {{< include examples/item-types.scheme.json >}}

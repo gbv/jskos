@@ -10,6 +10,7 @@ Dataset <|-- Concordance
 class Dataset {
   extent
   license
+  objectTypes
 }
 
 class Distribution {

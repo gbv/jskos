@@ -4,7 +4,7 @@
   "title": "Annotation",
   "description": "Annotation adjusted from Web Annotation Data Model",
   "type": "object",
-  "definitions": {
+  "$defs": {
     "date": {
       "allOf": [
         {
@@ -25,18 +25,18 @@
     },
     "id": {
       "description": "globally unique identifier of the annotation",
-      "$ref": "resource.schema.json#/definitions/uri"
+      "$ref": "resource.schema.json#/$defs/uri"
     },
     "type": {
       "const": "Annotation"
     },
     "created": {
       "description": "date of creation",
-      "$ref": "#/definitions/date"
+      "$ref": "#/$defs/date"
     },
     "modified": {
       "description": "date of last modification",
-      "$ref": "#/definitions/date"
+      "$ref": "#/$defs/date"
     },
     "creator": {
       "description": "agent primarily responsible for creation of resource",
@@ -48,7 +48,7 @@
           ]
         },
         {
-          "$ref": "resource.schema.json#/definitions/uri"
+          "$ref": "resource.schema.json#/$defs/uri"
         }
       ]
     },
@@ -56,7 +56,7 @@
       "description": "object being annotated, or its URI",
       "anyOf": [
         {
-          "$ref": "resource.schema.json#/definitions/uri"
+          "$ref": "resource.schema.json#/$defs/uri"
         },
         {
           "type": "object",
@@ -65,7 +65,7 @@
           ],
           "properties": {
             "id": {
-              "$ref": "resource.schema.json#/definitions/uri"
+              "$ref": "resource.schema.json#/$defs/uri"
             },
             "state": {
               "type": "object"

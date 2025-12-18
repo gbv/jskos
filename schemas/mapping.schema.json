@@ -4,7 +4,7 @@
   "title": "JSKOS Concept Mapping",
   "description": "A mapping represents a mapping between concepts of two concept schemes. It consists two concept bundles with additional metadata not fully defined yet.",
   "type": "object",
-  "definitions": {
+  "$defs": {
     "mappingSet": {
       "type": "array",
       "items": {
@@ -49,7 +49,7 @@
     },
     "justification": {
       "description": "mapping justification",
-      "$ref": "resource.schema.json#/definitions/uri"
+      "$ref": "resource.schema.json#/$defs/uri"
     }
   },
   "required": [

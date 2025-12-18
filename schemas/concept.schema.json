@@ -4,7 +4,7 @@
   "title": "JSKOS Concept",
   "description": "entities from a knowledge organization system",
   "type": "object",
-  "definitions": {
+  "$defs": {
     "conceptSet": {
       "type": "array",
       "items": {
@@ -30,43 +30,43 @@
   "properties": {
     "narrower": {
       "description": "narrower concepts",
-      "$ref": "#/definitions/conceptSet"
+      "$ref": "#/$defs/conceptSet"
     },
     "broader": {
       "description": "broader concepts",
-      "$ref": "#/definitions/conceptSet"
+      "$ref": "#/$defs/conceptSet"
     },
     "related": {
       "description": "generally related concepts",
-      "$ref": "#/definitions/conceptSet"
+      "$ref": "#/$defs/conceptSet"
     },
     "previous": {
       "description": "related concepts ordered somehow before the concept",
-      "$ref": "#/definitions/conceptSet"
+      "$ref": "#/$defs/conceptSet"
     },
     "next": {
       "description": "related concepts ordered somehow after the concept",
-      "$ref": "#/definitions/conceptSet"
+      "$ref": "#/$defs/conceptSet"
     },
     "ancestors": {
       "description": "list of ancestors, possibly up to a top concept",
-      "$ref": "#/definitions/conceptSet"
+      "$ref": "#/$defs/conceptSet"
     },
     "inScheme": {
       "description": "concept schemes or URI of the concept schemes",
-      "$ref": "scheme.schema.json#/definitions/schemeSet"
+      "$ref": "scheme.schema.json#/$defs/schemeSet"
     },
     "topConceptOf": {
       "description": "concept schemes or URI of the concept schemes",
-      "$ref": "scheme.schema.json#/definitions/schemeSet"
+      "$ref": "scheme.schema.json#/$defs/schemeSet"
     },
     "mappings": {
       "description": "mappings from and/or to this concept",
-      "$ref": "mapping.schema.json#/definitions/mappingSet"
+      "$ref": "mapping.schema.json#/$defs/mappingSet"
     },
     "occurrences": {
       "description": "occurrences with this concept",
-      "$ref": "occurrence.schema.json#/definitions/occurrenceSet"
+      "$ref": "occurrence.schema.json#/$defs/occurrenceSet"
     },
     "deprecated": {
       "description": "whether the concept has been marked as deprecated",

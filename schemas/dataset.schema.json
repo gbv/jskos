@@ -7,7 +7,7 @@
   "properties": {
     "distributions": {
       "description": "Distributions to access the content of the dataset",
-      "$ref": "distribution.schema.json#/definitions/distributionSet"
+      "$ref": "distribution.schema.json#/$defs/distributionSet"
     },
     "services": {
       "description": "Services to access the dataset via an API",
@@ -20,7 +20,11 @@
     },
     "license": {
       "description": "Licenses which the dataset can be used under",
-      "$ref": "item.schema.json#/definitions/itemSet"
+      "$ref": "item.schema.json#/$defs/itemSet"
+    },
+    "objectTypes": {      
+      "description": "Type of objects in this dataset",
+      "$ref": "resource.schema.json#/$defs/type"
     }
   }
 }

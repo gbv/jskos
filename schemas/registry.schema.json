@@ -8,35 +8,35 @@
   "properties": {
     "concepts": {
       "description": "Concepts in this registry",
-      "$ref": "concept.schema.json#/definitions/conceptSet"
+      "$ref": "concept.schema.json#/$defs/conceptSet"
     },
     "schemes": {
       "description": "Concept schemes in this registry",
-      "$ref": "item.schema.json#/definitions/itemSet"
+      "$ref": "item.schema.json#/$defs/itemSet"
     },
     "types": {
       "description": "Resource types in this registry",
-      "$ref": "item.schema.json#/definitions/itemSet"
+      "$ref": "item.schema.json#/$defs/itemSet"
     },
     "properties": {
       "description": "Property types in this registry",
-      "$ref": "item.schema.json#/definitions/itemSet"
+      "$ref": "item.schema.json#/$defs/itemSet"
     },
     "mappings": {
       "description": "Mappings in this registry",
-      "$ref": "item.schema.json#/definitions/itemSet"
+      "$ref": "item.schema.json#/$defs/itemSet"
     },
     "registries": {
       "description": "Other registries in this registry",
-      "$ref": "item.schema.json#/definitions/itemSet"
+      "$ref": "item.schema.json#/$defs/itemSet"
     },
     "concordances": {
       "description": "Concordances in this registry",
-      "$ref": "item.schema.json#/definitions/itemSet"
+      "$ref": "item.schema.json#/$defs/itemSet"
     },
     "occurrences": {
       "description": "Occurrences in this registry",
-      "$ref": "item.schema.json#/definitions/itemSet"
+      "$ref": "item.schema.json#/$defs/itemSet"
     },
     "annotations": {
       "description": "Annotations in this registry",

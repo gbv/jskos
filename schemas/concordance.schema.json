@@ -8,7 +8,7 @@
   "properties": {
     "mappings": {
       "description": "Mappings in this concordance",
-      "$ref": "mapping.schema.json#/definitions/mappingSet"
+      "$ref": "mapping.schema.json#/$defs/mappingSet"
     },
     "fromScheme": {
       "description": "Source concept scheme",

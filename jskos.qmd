@@ -434,9 +434,15 @@ item                item type URI
                     <http://www.w3.org/2004/02/skos/core#relatedMatch>
 ------------------- -----------------------------------------------------
 
-In addition URIs <http://www.w3.org/ns/oa#Annotation> SHOULD be used to refer to [annotations] and URI <http://iiif.io/api/presentation/2#Manifest> SHOULD be used to refer to [media] objects, if needed.
+An **object type URI** is an item type URI, or one of the following:
 
-An **object type URI** is an item type URI, or the URI <http://www.w3.org/ns/oa#Annotation>, or an URI for [occurrences] (not specified yet).
+object type         object type URI
+------------------- -----------------------------------------------------
+[occurrence]        ?
+[location]          <http://www.opengis.net/ont/geosparql#Geometry>
+[media]             <http://iiif.io/api/presentation/2#Manifest> 
+[annotation]        <http://www.w3.org/ns/oa#Annotation>
+[address]           ?
 
 ::: {.callout-note}
 See appendix [item types as concepts] for a partial explicit encoding of item types.
@@ -661,7 +667,7 @@ languages        [list] of language tags    Supported languages
 The first element of array field `type`, if given, MUST be the [item type] URI
 <http://www.w3.org/2004/02/skos/core#ConceptScheme>.
 
-Field `objectTypes`, if given, SHOULD include the URI <http://www.w3.org/2004/02/skos/core#ConceptScheme>.
+Field `objectTypes`, if given, SHOULD include the URI <http://www.w3.org/2004/02/skos/core#Concept>.
 
 The values of field `uriPattern` and `notationPattern` MUST conform to the
 regular expression syntax used by XML Schema ([Appendix F](https://www.w3.org/TR/xmlschema-2/#regexs))
@@ -708,10 +714,11 @@ separator    string                 Separator to combine multiple concepts in th
 
 An occurrence gives the number of a times a concept ("occurrence"), a
 combination of concepts ("co-occurrence"), or a set of concepts is used in some
-context. The context is typically a database with entities having some relation
-to the concepts.
+context. The context is typically a database ([dataset]) with entities having some relation
+to the concepts -- for instance an occurrence could give the number of documents indexed
+with some term in a catalog. 
 
-For instance the occurrence could give the number of documents indexed with some term in a catalog. The field `url`
+The field `url`
 typically includes a deep link into the database. Applications SHOULD replace the value of field `url` by [link expansion](#expansion-of-link-templates) if both field `template` and one of the [concept bundle] fields (`memberSet`, `memberList`, `memberChoice`, or `memberRoles`) are given.
 
 If both `count` and `frequency` are given, the total size of the database can derived by multiplication. In this case either both or none of the two fields MUST be zero.
@@ -735,7 +742,7 @@ Two occurrences and their combined co-occurrence from GBV Union Catalogue (GVK) 
 :::
 
 :::{#lst-ex-wikidata}
-The Wikidata [concept of an individual human](http://www.wikidata.org/entity/Q5) is linked to 206 Wikimedia sites (mostly Wikipedia language editions) and more than 3.7 million people (instances of <http://www.wikidata.org/entity/P31>) at November 15th, 2017.
+The Wikidata [concept of an individual human](http://www.wikidata.org/entity/Q5) was linked to 206 Wikimedia sites (mostly Wikipedia language editions) and more than 3.7 million people (instances of <http://www.wikidata.org/entity/P31>) at November 15th, 2017.
 
 ```{.json}
 {{< include examples/wikidata-occurrences.concept.json >}}

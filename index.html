@@ -815,8 +815,37 @@ Note
 </tr>
 </tbody>
 </table>
-<p>In addition URIs <a href="http://www.w3.org/ns/oa#Annotation" class="uri">http://www.w3.org/ns/oa#Annotation</a> SHOULD be used to refer to <a href="#annotation">annotations</a> and URI <a href="http://iiif.io/api/presentation/2#Manifest" class="uri">http://iiif.io/api/presentation/2#Manifest</a> SHOULD be used to refer to <a href="#media">media</a> objects, if needed.</p>
-<p>An <strong>object type URI</strong> is an item type URI, or the URI <a href="http://www.w3.org/ns/oa#Annotation" class="uri">http://www.w3.org/ns/oa#Annotation</a>, or an URI for <a href="#occurrence">occurrences</a> (not specified yet).</p>
+<p>An <strong>object type URI</strong> is an item type URI, or one of the following:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">object type</th>
+<th style="text-align: left;">object type URI</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><a href="#occurrence">occurrence</a></td>
+<td style="text-align: left;">?</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="#location">location</a></td>
+<td style="text-align: left;"><a href="http://www.opengis.net/ont/geosparql#Geometry" class="uri">http://www.opengis.net/ont/geosparql#Geometry</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="#media">media</a></td>
+<td style="text-align: left;"><a href="http://iiif.io/api/presentation/2#Manifest" class="uri">http://iiif.io/api/presentation/2#Manifest</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="#annotation">annotation</a></td>
+<td style="text-align: left;"><a href="http://www.w3.org/ns/oa#Annotation" class="uri">http://www.w3.org/ns/oa#Annotation</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="#address">address</a></td>
+<td style="text-align: left;">?</td>
+</tr>
+</tbody>
+</table>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1403,7 +1432,7 @@ Example&nbsp;8: concept from DDC
 </tbody>
 </table>
 <p>The first element of array field <code>type</code>, if given, MUST be the <a href="#resource-and-property-types">item type</a> URI <a href="http://www.w3.org/2004/02/skos/core#ConceptScheme" class="uri">http://www.w3.org/2004/02/skos/core#ConceptScheme</a>.</p>
-<p>Field <code>objectTypes</code>, if given, SHOULD include the URI <a href="http://www.w3.org/2004/02/skos/core#ConceptScheme" class="uri">http://www.w3.org/2004/02/skos/core#ConceptScheme</a>.</p>
+<p>Field <code>objectTypes</code>, if given, SHOULD include the URI <a href="http://www.w3.org/2004/02/skos/core#Concept" class="uri">http://www.w3.org/2004/02/skos/core#Concept</a>.</p>
 <p>The values of field <code>uriPattern</code> and <code>notationPattern</code> MUST conform to the regular expression syntax used by XML Schema (<a href="https://www.w3.org/TR/xmlschema-2/#regexs">Appendix F</a>) and SHOULD be anchored with <code>^</code> as first and <code>$</code> as last character. Applications MAY automatically anchor unanchored regular expressions.</p>
 <p>If <code>concepts</code> is a set, all its member concepts SHOULD contain a field <code>inScheme</code> and all MUST contain <a href="#resource-sameness">the same</a> concept scheme in field <code>inScheme</code> if this field is given.</p>
 <p>If <code>types</code> and <code>concepts</code> are sets, the <code>types</code> set SHOULD include all <a href="#resource-and-property-types">resource type</a> URIs for each concept’s <code>type</code> other than <code>http://www.w3.org/2004/02/skos/core#Concept</code>.</p>
@@ -1469,8 +1498,8 @@ Example&nbsp;8: concept from DDC
 </tr>
 </tbody>
 </table>
-<p>An occurrence gives the number of a times a concept (“occurrence”), a combination of concepts (“co-occurrence”), or a set of concepts is used in some context. The context is typically a database with entities having some relation to the concepts.</p>
-<p>For instance the occurrence could give the number of documents indexed with some term in a catalog. The field <code>url</code> typically includes a deep link into the database. Applications SHOULD replace the value of field <code>url</code> by <a href="#expansion-of-link-templates">link expansion</a> if both field <code>template</code> and one of the <a href="#concept-bundle">concept bundle</a> fields (<code>memberSet</code>, <code>memberList</code>, <code>memberChoice</code>, or <code>memberRoles</code>) are given.</p>
+<p>An occurrence gives the number of a times a concept (“occurrence”), a combination of concepts (“co-occurrence”), or a set of concepts is used in some context. The context is typically a database (<a href="#dataset">dataset</a>) with entities having some relation to the concepts – for instance an occurrence could give the number of documents indexed with some term in a catalog.</p>
+<p>The field <code>url</code> typically includes a deep link into the database. Applications SHOULD replace the value of field <code>url</code> by <a href="#expansion-of-link-templates">link expansion</a> if both field <code>template</code> and one of the <a href="#concept-bundle">concept bundle</a> fields (<code>memberSet</code>, <code>memberList</code>, <code>memberChoice</code>, or <code>memberRoles</code>) are given.</p>
 <p>If both <code>count</code> and <code>frequency</code> are given, the total size of the database can derived by multiplication. In this case either both or none of the two fields MUST be zero.</p>
 <p>A timestamp, if given, SHOULD be stored in field <code>modified</code>.</p>
 <!-- TODO: specify explicit inference rules for implicitly given concepts etc. -->
@@ -1533,7 +1562,7 @@ Example&nbsp;9
 Example&nbsp;10
 </figcaption>
 <div aria-describedby="lst-ex-wikidata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<p>The Wikidata <a href="http://www.wikidata.org/entity/Q5">concept of an individual human</a> is linked to 206 Wikimedia sites (mostly Wikipedia language editions) and more than 3.7 million people (instances of <a href="http://www.wikidata.org/entity/P31" class="uri">http://www.wikidata.org/entity/P31</a>) at November 15th, 2017.</p>
+<p>The Wikidata <a href="http://www.wikidata.org/entity/Q5">concept of an individual human</a> was linked to 206 Wikimedia sites (mostly Wikipedia language editions) and more than 3.7 million people (instances of <a href="http://www.wikidata.org/entity/P31" class="uri">http://www.wikidata.org/entity/P31</a>) at November 15th, 2017.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"type"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"http://www.w3.org/2004/02/skos/core#Concept"</span><span class="ot">]</span><span class="fu">,</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.wikidata.org/entity/Q5"</span><span class="fu">,</span></span>

@@ -27,4 +27,12 @@ Registry --> Registry : registries
 
 Concordance --> Mapping : mappings
 Concordance --> ConceptScheme : "fromScheme\ntoScheme"
+
+Dataset <|- Concordance
+Dataset <|- Registry 
+Dataset <|- ConceptScheme
+
+Dataset --> Service : services
+Dataset --> Distribution : distributions
+Distribution --> Service : services
 @enduml

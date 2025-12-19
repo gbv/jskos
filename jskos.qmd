@@ -24,7 +24,7 @@ In addition to [concepts] and [concept schemes] JSKOS can express information ab
 - qualified information with [qualified statements]
 - incomplete and deprecated information via [ranks](#rank) and [closed world statements]
 
-See @fig-types for the class hierarchy of JSKOS data elements and @fig-links for connections between main types.
+See @fig-types for the class hierarchy of JSKOS data elements and @fig-links for connections between these main [object types].
 
 ## Status of this document
 
@@ -47,6 +47,8 @@ are neither part of conformance requirements.
 ::: {.callout-note}
 The appendix includes information how to [validate against this specification](#validation),
 for instance with JSON Schema, but these methods do not fully cover all aspects of JSKOS.
+
+Neither is mapping from JSKOS data to RDF a normative part of this specification.
 :::
 
 # Data types {#sec-data-types}
@@ -467,16 +469,16 @@ JSKOS defines the following types of JSON objects:
 
 Object types [concept], [mapping], and [occurrence] are also subtypes of [concept bundle] (see @fig-types).
 
-In addition there are JSON objects based on other specifications. These are listed as [data types](#sec-data-types) in the previous section:
+![hierarchy of main JSKOS object types](types.svg){#fig-types}
+
+![connections between main JSKOS object types](links.svg){#fig-links}
+
+In addition to these main object types, JSKOS defines the following types based on other specifications. These object types are listed as [data types](#sec-data-types) in the previous section:
 
 - [location] for geospatial data (based on GeoJSON)
 - [media] for media files (based on IIIF)
 - [annotation] to review and comment on resources (based on Web Annotation Data Model)
 - [address] for postal addresses (based on vCard and schema.org)
-
-![hierarchy of JSKOS object types](types.svg){#fig-types}
-
-![connections between main object types](links.svg){#fig-links}
 
 ## Resource
 
@@ -976,19 +978,14 @@ compatability.
 
 Field `objectTypes`, if given, SHOULD include the URI <http://rdf-vocabulary.ddialliance.org/xkos#Correspondence>.
 
-Concordances are collections of [mappings] from one [concept scheme] to
-another. If `mappings` is a set then
+::: {.callout-important title="Inference rules"}
+For every [mapping] *M* of a [concordance] with `fromScheme` *S*, the set `fromScheme` of *M* also includes *S*.
 
-* all its members with field `fromScheme` MUST have [the same] value
-  like concordance field `fromScheme`.
-
-* all its members with field `toScheme` MUST have [the same] value
-  like concordance field `toScheme`.
-
-A [registry] object can be used to combine arbitrary mappings without this constraint.
+For every [mapping] *M* of a [concordance] with `toScheme` *S*, the set `toScheme` of *M* also includes *S*.
+:::
 
 ::: {.callout-note}
-There is an additional integrity constraint refering to field `inScheme` if concepts in mappings in concordances.
+Concordances are used to collect multiple [mappings] that all share the same two [concept schemes]. For collections of mappings between arbitrary concept schemes use [registry] with field `objectTypes` including <http://rdf-vocabulary.ddialliance.org/xkos#Correspondence>.
 :::
 
 ## Mapping

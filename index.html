@@ -275,7 +275,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>qualified information with <a href="#qualified-statements">qualified statements</a></li>
 <li>incomplete and deprecated information via <a href="#rank">ranks</a> and <a href="#closed-world-statements">closed world statements</a></li>
 </ul>
-<p>See <a href="#fig-types" class="quarto-xref">diagram&nbsp;1</a> for the class hierarchy of JSKOS data elements and <a href="#fig-links" class="quarto-xref">diagram&nbsp;2</a> for connections between main types.</p>
+<p>See <a href="#fig-types" class="quarto-xref">diagram&nbsp;1</a> for the class hierarchy of JSKOS data elements and <a href="#fig-links" class="quarto-xref">diagram&nbsp;2</a> for connections between these main <a href="#object-types">object types</a>.</p>
 </section>
 <section id="status-of-this-document" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="status-of-this-document"><span class="header-section-number">1.2</span> Status of this document</h2>
@@ -296,6 +296,7 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p>The appendix includes information how to <a href="#validation">validate against this specification</a>, for instance with JSON Schema, but these methods do not fully cover all aspects of JSKOS.</p>
+<p>Neither is mapping from JSKOS data to RDF a normative part of this specification.</p>
 </div>
 </div>
 </section>
@@ -884,33 +885,33 @@ Note
 <li><a href="#concept-bundle">concept bundle</a> for groups of concepts</li>
 </ul>
 <p>Object types <a href="#concept">concept</a>, <a href="#mapping">mapping</a>, and <a href="#occurrence">occurrence</a> are also subtypes of <a href="#concept-bundle">concept bundle</a> (see <a href="#fig-types" class="quarto-xref">diagram&nbsp;1</a>).</p>
-<p>In addition there are JSON objects based on other specifications. These are listed as <a href="#sec-data-types">data types</a> in the previous section:</p>
-<ul>
-<li><a href="#location">location</a> for geospatial data (based on GeoJSON)</li>
-<li><a href="#media">media</a> for media files (based on IIIF)</li>
-<li><a href="#annotation">annotation</a> to review and comment on resources (based on Web Annotation Data Model)</li>
-<li><a href="#address">address</a> for postal addresses (based on vCard and schema.org)</li>
-</ul>
 <div id="fig-types" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-types-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Diagram&nbsp;1: hierarchy of JSKOS object types
+Diagram&nbsp;1: hierarchy of main JSKOS object types
 </figcaption>
 <div aria-describedby="fig-types-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="types.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Diagram&nbsp;1: hierarchy of JSKOS object types"><img src="types.svg" class="img-fluid figure-img"></a>
+<a href="types.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Diagram&nbsp;1: hierarchy of main JSKOS object types"><img src="types.svg" class="img-fluid figure-img"></a>
 </div>
 </figure>
 </div>
 <div id="fig-links" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-links-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Diagram&nbsp;2: connections between main object types
+Diagram&nbsp;2: connections between main JSKOS object types
 </figcaption>
 <div aria-describedby="fig-links-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="links.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Diagram&nbsp;2: connections between main object types"><img src="links.svg" class="img-fluid figure-img"></a>
+<a href="links.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Diagram&nbsp;2: connections between main JSKOS object types"><img src="links.svg" class="img-fluid figure-img"></a>
 </div>
 </figure>
 </div>
+<p>In addition to these main object types, JSKOS defines the following types based on other specifications. These object types are listed as <a href="#sec-data-types">data types</a> in the previous section:</p>
+<ul>
+<li><a href="#location">location</a> for geospatial data (based on GeoJSON)</li>
+<li><a href="#media">media</a> for media files (based on IIIF)</li>
+<li><a href="#annotation">annotation</a> to review and comment on resources (based on Web Annotation Data Model)</li>
+<li><a href="#address">address</a> for postal addresses (based on vCard and schema.org)</li>
+</ul>
 <section id="resource" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="resource"><span class="header-section-number">4.1</span> Resource</h2>
 <p>An <strong>resource</strong> is a JSON object with the following optional fields:</p>
@@ -1949,12 +1950,20 @@ Example&nbsp;13: A service to access a terminology via JSKOS API
 </table>
 <p>The first element of array field <code>type</code>, if given, MUST be the <a href="#resource-and-property-types">item type</a> URI <a href="http://rdf-vocabulary.ddialliance.org/xkos#Correspondence" class="uri">http://rdf-vocabulary.ddialliance.org/xkos#Correspondence</a>. Applications SHOULD also support URI <a href="http://rdfs.org/ns/void#Linkset" class="uri">http://rdfs.org/ns/void#Linkset</a> for backwards compatability.</p>
 <p>Field <code>objectTypes</code>, if given, SHOULD include the URI <a href="http://rdf-vocabulary.ddialliance.org/xkos#Correspondence" class="uri">http://rdf-vocabulary.ddialliance.org/xkos#Correspondence</a>.</p>
-<p>Concordances are collections of <a href="#mapping">mappings</a> from one <a href="#concept-scheme">concept scheme</a> to another. If <code>mappings</code> is a set then</p>
-<ul>
-<li><p>all its members with field <code>fromScheme</code> MUST have <a href="#resource-sameness">the same</a> value like concordance field <code>fromScheme</code>.</p></li>
-<li><p>all its members with field <code>toScheme</code> MUST have <a href="#resource-sameness">the same</a> value like concordance field <code>toScheme</code>.</p></li>
-</ul>
-<p>A <a href="#registry">registry</a> object can be used to combine arbitrary mappings without this constraint.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Inference rules">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Inference rules
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For every <a href="#mapping">mapping</a> <em>M</em> of a <a href="#concordance">concordance</a> with <code>fromScheme</code> <em>S</em>, the set <code>fromScheme</code> of <em>M</em> also includes <em>S</em>.</p>
+<p>For every <a href="#mapping">mapping</a> <em>M</em> of a <a href="#concordance">concordance</a> with <code>toScheme</code> <em>S</em>, the set <code>toScheme</code> of <em>M</em> also includes <em>S</em>.</p>
+</div>
+</div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1965,7 +1974,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>There is an additional integrity constraint refering to field <code>inScheme</code> if concepts in mappings in concordances.</p>
+<p>Concordances are used to collect multiple <a href="#mapping">mappings</a> that all share the same two <a href="#concept-scheme">concept schemes</a>. For collections of mappings between arbitrary concept schemes use <a href="#registry">registry</a> with field <code>objectTypes</code> including <a href="http://rdf-vocabulary.ddialliance.org/xkos#Correspondence" class="uri">http://rdf-vocabulary.ddialliance.org/xkos#Correspondence</a>.</p>
 </div>
 </div>
 </section>

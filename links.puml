@@ -24,4 +24,7 @@ Occurrence --> ConceptScheme : schemes
 Registry --> Concept : "concepts\nschemes\ntypes\nproperties"
 Registry --> Mapping : mappings
 Registry --> Registry : registries
+
+Concordance --> Mapping : mappings
+Concordance --> ConceptScheme : "fromScheme\ntoScheme"
 @enduml

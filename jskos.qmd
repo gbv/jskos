@@ -465,7 +465,7 @@ JSKOS defines the following types of JSON objects:
     - [occurrences] for uses of concepts
 - [concept bundle] for groups of concepts
 
-Object types [concept], [mapping], and [occurrence] are also [concept bundles].
+Object types [concept], [mapping], and [occurrence] are also subtypes of [concept bundle] (see @fig-types).
 
 In addition there are JSON objects based on other specifications. These are listed as [data types](#sec-data-types) in the previous section:
 

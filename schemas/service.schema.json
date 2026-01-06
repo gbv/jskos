@@ -1,6 +1,6 @@
 {
   "$id": "https://gbv.github.io/jskos/service.schema.json",
-  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "JSKOS Service",
   "description": "A service to read and/or write data (in most cases an web service with API)",
   "type": "object",

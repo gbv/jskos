@@ -2962,7 +2962,7 @@ Example&nbsp;22
 <li><a href="distribution.schema.json">Distribution</a></li>
 <li><a href="occurrence.schema.json">Occurrence</a></li>
 </ul>
-<p>The schemas allow arbitrary unknonw fields for upwards compatibility, so they won’t catch typos in field names!</p>
+<p>The schemas allow arbitrary unknonw fields for upwards compatibility, so they won’t catch typos in field names! To forbid unknown fields, you can add <code>"unevaluatedProperties": false</code> to schemas of <a href="#object-types">object types</a> not having subtypes.</p>
 <p>See NodeJS library <a href="https://www.npmjs.com/package/jskos-validate">jskos-validate</a> for an implementation with additional rules not covered by JSON Schema alone.</p>
 <p>Public services to validate JSKOS data are included in instances of <a href="https://www.npmjs.com/package/jskos-server">jskos-server</a> and at <a href="https://format.gbv.de/validate/" class="uri">https://format.gbv.de/validate/</a>.</p>
 </section>

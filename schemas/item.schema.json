@@ -1,6 +1,6 @@
 {
   "$id": "https://gbv.github.io/jskos/item.schema.json",
-  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "JSKOS Item",
   "description": "named entities",
   "type": "object",
@@ -250,5 +250,9 @@
       "description": "Standards or guidelines followed in creation of this item",
       "$ref": "#/$defs/itemSet"
     }
+  },
+  "patternProperties": {
+    "^_": true,
+    "^[A-Z0-9]+$": true 
   }
 }

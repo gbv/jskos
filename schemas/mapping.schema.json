@@ -1,6 +1,6 @@
 {
   "$id": "https://gbv.github.io/jskos/mapping.schema.json",
-  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "JSKOS Concept Mapping",
   "description": "A mapping represents a mapping between concepts of two concept schemes. It consists two concept bundles with additional metadata not fully defined yet.",
   "type": "object",

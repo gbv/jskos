@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-12-19">
+<meta name="dcterms.date" content="2026-01-06">
 
 <title>JSKOS data format for Knowledge Organization Systems</title>
 <style>
@@ -79,10 +79,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="style.css">
 <meta name="citation_title" content="JSKOS data format for Knowledge Organization Systems">
 <meta name="citation_author" content="Jakob Voß">
-<meta name="citation_publication_date" content="2025-12-19">
-<meta name="citation_cover_date" content="2025-12-19">
-<meta name="citation_year" content="2025">
-<meta name="citation_online_date" content="2025-12-19">
+<meta name="citation_publication_date" content="2026-01-06">
+<meta name="citation_cover_date" content="2026-01-06">
+<meta name="citation_year" content="2026">
+<meta name="citation_online_date" content="2026-01-06">
 <meta name="citation_language" content="en">
 </head>
 
@@ -118,7 +118,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
                 <div>
             <div class="quarto-title-meta-heading">Published</div>
             <div class="quarto-title-meta-contents">
-              <p class="date">December 19, 2025</p>
+              <p class="date">January 6, 2026</p>
             </div>
           </div>
           
@@ -208,6 +208,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#appendices" id="toc-appendices" class="nav-link" data-scroll-target="#appendices">Appendices</a>
   <ul class="collapse">
+  <li><a href="#mapping-to-rdf" id="toc-mapping-to-rdf" class="nav-link" data-scroll-target="#mapping-to-rdf"><span class="header-section-number">6.6</span> Mapping to RDF</a></li>
   <li><a href="#json-ld" id="toc-json-ld" class="nav-link" data-scroll-target="#json-ld">JSON-LD</a></li>
   <li><a href="#validation" id="toc-validation" class="nav-link" data-scroll-target="#validation">Validation</a></li>
   <li><a href="#item-types-as-concepts" id="toc-item-types-as-concepts" class="nav-link" data-scroll-target="#item-types-as-concepts">Item types as concepts</a></li>
@@ -285,6 +286,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="1.3" class="anchored" data-anchor-id="conformance-requirements"><span class="header-section-number">1.3</span> Conformance requirements</h2>
 <p>The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL” in this document are to be interpreted as described in <a href="https://tools.ietf.org/html/rfc2119">RFC 2119</a>.</p>
 <p>Only <a href="#sec-data-types" class="quarto-xref">Section&nbsp;2</a> to <a href="#sec-additional-rules" class="quarto-xref">Section&nbsp;6</a> of this document and its <a href="#normative-references">normative references</a> are normative. Examples and notes (such as the following) are neither part of conformance requirements.</p>
+<p>JSKOS has been designed to be easily convertible to and from RDF, but <a href="#mapping-to-rdf">mapping from JSKOS data to RDF</a> is no normative part of the specification.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -296,7 +298,6 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p>The appendix includes information how to <a href="#validation">validate against this specification</a>, for instance with JSON Schema, but these methods do not fully cover all aspects of JSKOS.</p>
-<p>Neither is mapping from JSKOS data to RDF a normative part of this specification.</p>
 </div>
 </div>
 </section>
@@ -1702,7 +1703,7 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p>Registries are the top JSKOS entity, followed by <a href="#concordance">concordances</a>, <a href="#mapping">mappings</a> <a href="#concept-scheme">concept schemes</a>, and on the lowest level <a href="#concept">concepts</a> and <a href="#resource-and-property-types">resource types</a>. See <a href="#distribution">Distributions</a> for an alternative.</p>
-<p>Conversion of JSKOS registries to RDF requires a different value for field <code>concepts</code> to not infer the RDF property <code>skos:inScheme</code> but <code>dct:isPartOf</code>!</p>
+<p>Conversion of JSKOS registries to RDF (see <a href="#mapping-to-rdf">appendix</a>) requires a different value for field <code>concepts</code> to not infer the RDF property <code>skos:inScheme</code> but <code>dct:isPartOf</code>.</p>
 </div>
 </div>
 <div id="lst-concept1" class="json listing quarto-float quarto-figure quarto-figure-left anchored">
@@ -2574,19 +2575,6 @@ TODO: Mappings (S38-S46)
 </ul>
 <p><em>this list is not complete yet</em></p>
 <!-- TODO: skos:related is disjoint with the property skos:broaderTransitive (S27) -->
-<!--
-
-# Converting JSKOS to SKOS and vice versa
-
-Concept types in RDF correspond to subclasses of [SKOS Concept].
-
-A Concept represents a [SKOS Concept].
-
-[SKOS Concept]: http://www.w3.org/TR/skos-primer/#secconcept
-
-A Concept Scheme represents a [SKOS Concept Scheme].
-
--->
 </section>
 </section>
 <section id="expansion-of-link-templates" class="level2" data-number="6.4">
@@ -2677,7 +2665,8 @@ Example&nbsp;22
 <li><p>R. Albertoni, D. Browning, S. Cox, A. Gonzalez Beltran, A. Perego, P. Winstanley: <em>Data Catalog Vocabulary (DCAT) - Version 3</em>. August 2024. <a href="https://www.w3.org/TR/vocab-dcat-3/" class="uri">https://www.w3.org/TR/vocab-dcat-3/</a></p></li>
 <li><p>K. Alexander, R. Cyganiak, M. Hausenblas, Zhao, J.: <em>Describing Linked Datasets with the VoID Vocabulary</em>. March 2011. <a href="http://www.w3.org/TR/void/" class="uri">http://www.w3.org/TR/void/</a></p></li>
 <li><p>DCMI Usage Board: <em>DCMI Metadata Terms</em>. June 2012. <a href="http://dublincore.org/documents/dcmi-terms/" class="uri">http://dublincore.org/documents/dcmi-terms/</a></p></li>
-<li><p>F. Cotton (editor): <em>XKOS: An SKOS extension for representing statistical classifications</em>. DDI Alliance, May 2019. <a href="https://rdf-vocabulary.ddialliance.org/xkos.html" class="uri">https://rdf-vocabulary.ddialliance.org/xkos.html</a></p></li>
+<li><p>F. Cotton: <em>XKOS: An SKOS extension for representing statistical classifications</em>. DDI Alliance, May 2019. <a href="https://rdf-vocabulary.ddialliance.org/xkos.html" class="uri">https://rdf-vocabulary.ddialliance.org/xkos.html</a></p></li>
+<li><p>O. Harting, P. Champin, G. Kellogg, A. Seaborne: <em>RDF-star and SPARQL-star</em>. W3C Community Group Report, December 2012 <a href="https://w3c.github.io/rdf-star/" class="uri">https://w3c.github.io/rdf-star/</a></p></li>
 <li><p>A. Miles, S. Bechhofer: <em>SKOS Reference</em>. W3C Recommendation, 18 August 2009. <a href="http://www.w3.org/TR/skos-reference" class="uri">http://www.w3.org/TR/skos-reference</a></p></li>
 <li><p>S. Perreault: <em>vCard Format Specification</em>. RFC 6350, August 2011 <a href="http://tools.ietf.org/html/rfc6350" class="uri">http://tools.ietf.org/html/rfc6350</a></p></li>
 <li><p>A. Phillips, M. Davis: <em>Tags for Identifying Languages</em>. RFC 5646, September 2009. <a href="http://tools.ietf.org/html/rfc5646" class="uri">http://tools.ietf.org/html/rfc5646</a></p></li>
@@ -2690,6 +2679,15 @@ Example&nbsp;22
 <section id="appendices" class="level1 unnumbered">
 <h1 class="unnumbered">Appendices</h1>
 <p>The following appendices are <em>non-normative</em>.</p>
+<section id="mapping-to-rdf" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="mapping-to-rdf"><span class="header-section-number">6.6</span> Mapping to RDF</h2>
+<p>JSKOS has been designed for compatibility with RDF in general and with <a href="http://www.w3.org/TR/skos-reference">SKOS</a> in particular. Most basic JSKOS data should be convertible to SKOS RDF and vice versa with a <a href="#json-ld">JSON-LD context</a>. Nevertheless there are cases and features where either JSKOS or RDF is a simplification or where opinions differ about the best way to model the same information in RDF. In particular:</p>
+<ul>
+<li><p>RDF Ontologies expressed with OWL and/or RDFS are expressed the same way like SKOS terminologies in JSKOS, except for an addition value <code>type</code> (e.g. <a href="http://www.w3.org/2002/07/owl#Class" class="uri">http://www.w3.org/2002/07/owl#Class</a>). This requires a distinction of cases when mapping JSKOS back to RDF.</p></li>
+<li><p><a href="#mapping">JSKOS Mappings</a> in RDF can be expressed as plain triples, as reified triples, as objects of their own right, or with <a href="https://w3c.github.io/rdf-star/">RDF-star</a>. The most suitable form depends on use case and application, so there is no “right” way.</p></li>
+<li><p>Semantics of most JSKOS fields is independent from object type, so they directly map to an RDF property. Known examples include field <code>concepts</code> of <a href="#concept-scheme">concept scheme</a> (<code>skos:inScheme</code> for SKOS, <code>rdfs:isDefinedBy</code> for ontologies), vs.&nbsp;field <code>concepts</code> of <a href="#registry">registry</a> (<code>dct:isPartOf</code>).</p></li>
+</ul>
+</section>
 <section id="json-ld" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="json-ld">JSON-LD</h2>
 <p>The following <a href="http://www.w3.org/TR/json-ld/#the-context">JSON-LD 1.1 context document</a> (available <a href="context.json">from here</a>) can be used to map JSKOS without <a href="#closed-world-statements">closed world statements</a> and without <a href="#language-range">language ranges</a> to RDF.There is also a <a href="prefixes.json">list of namespace prefixes</a>.</p>
@@ -3386,6 +3384,7 @@ Example&nbsp;28: Mappings
 <li>Connect <a href="#distribution">distribution</a> and <a href="#service">service</a> via field <code>services</code></li>
 <li>Make <a href="#service">service</a> field <code>endpoint</code> optional</li>
 <li>Add abstract object type <a href="#dataset">dataset</a></li>
+<li>Add non-normative appendix on <a href="#mapping-to-rdf">mapping to RDF</a></li>
 </ul>
 </section>
 <section id="section" class="level3 unnumbered">

@@ -1,6 +1,6 @@
 {
   "$id": "https://gbv.github.io/jskos/concordance.schema.json",
-  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "JSKOS Concordance",
   "description": "curated collections of mappings",
   "type": "object",

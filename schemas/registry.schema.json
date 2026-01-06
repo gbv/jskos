@@ -1,6 +1,6 @@
 {
   "$id": "https://gbv.github.io/jskos/registry.schema.json",
-  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "JSKOS Registry",
   "description": "collections of items (concepts, concept schemes, ...)",
   "type": "object",

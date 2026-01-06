@@ -28,7 +28,7 @@ function cleanup(data) {
   }
 }
 
-testExamples("JSON-LD examples", types, async (objects, file, type) => {
+testExamples("JSON-LD examples", "examples", types, async (objects, file, type) => {
   objects.forEach( doc => {      
     doc['@context'] = context
     cleanup(doc)

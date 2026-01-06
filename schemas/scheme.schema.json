@@ -19,7 +19,10 @@
       }
     }
   },
-  "allOf": [ { "$ref": "dataset.schema.json" } ],
+  "allOf": [
+    { "$ref": "item.schema.json" },
+    { "$ref": "dataset.schema.json" }
+  ],
   "properties": {
     "topConcepts": {
       "description": "top concepts of the scheme",

@@ -1540,6 +1540,7 @@ Experimental JSON Schemas exist but don't cover all aspects of JSKOS:
 * [Occurrence](occurrence.schema.json)
 
 The schemas allow arbitrary unknonw fields for upwards compatibility, so they won't catch typos in field names!
+To forbid unknown fields, you can add `"unevaluatedProperties": false` to schemas of [object types] not having subtypes.
 
 See NodeJS library [jskos-validate] for an implementation with additional rules not covered by JSON Schema alone.
 

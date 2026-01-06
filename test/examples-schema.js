@@ -14,18 +14,14 @@ ajvFormats2019(ajv)
 // load schemas
 const types = "resource dataset item concept scheme mapping concordance registry distribution service occurrence bundle annotation".split(" ")
 
-let schemas = {}
-let validate = {}
+const schemas = {}
 for (let type of types) {
   schemas[type] = JSON.parse(fs.readFileSync(`./schemas/${type}.schema.json`))
   ajv.addSchema(schemas[type])
 }
-for (let type of types) {
-  validate[type] = ajv.compile(schemas[type])
-}
+const validate = Object.fromEntries(types.map(type => [type, ajv.compile(schemas[type])]))
 
-// validate examples against schemas
-testExamples("JSON Schema examples", types, (objects, file, type) => {
+testExamples("Valid against JSON Schema", "examples", types, (objects, file, type) => {
   for (let object of objects) {
     if (validate[type](object)) {
       assert.ok(true)
@@ -33,4 +29,32 @@ testExamples("JSON Schema examples", types, (objects, file, type) => {
       assert.fail(`${validate[type].errors.reduce((t, c) => `${t}- ${c.dataPath} ${c.message}\n`, "")}`)
     }
   }
+})
+
+testExamples("Invalid against JSON Schema", "examples/invalid", types, (objects, file, type) => {
+  for (let object of objects) {
+    if (validate[type](object)) {
+      assert.fail(`${file} should have been detected as invalid JSKOS ${type}`)
+    } else {
+      assert.ok(true)
+    }
+  }
+})
+
+describe("Strict checking (no unknown fields)", () => {
+  const ajv = new Ajv2020()
+  ajvFormats(ajv)
+  ajvFormats2019(ajv)
+
+  const strict = "occurrence mapping concept scheme registry concordance service distribution".split(" ")
+  strict.forEach(type => schemas[type].unevaluatedProperties = false)
+   
+  types.forEach(type => ajv.addSchema(schemas[type]))
+
+  strict.forEach(type => it(type, () => {
+    const valid = ajv.compile(schemas[type])
+    const example = type === "mapping" ? { from: {memberSet:[]}, to: {memberSet:[]} } : {}
+    example.unknown = []
+    assert.equal(valid(example), false)
+  }))
 })

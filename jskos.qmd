@@ -44,11 +44,12 @@ Only @sec-data-types to @sec-additional-rules of this document and its
 [normative references] are normative. Examples and notes (such as the following)
 are neither part of conformance requirements.
 
+JSKOS has been designed to be easily convertible to and from RDF, but
+[mapping from JSKOS data to RDF](#mapping-to-rdf) is no normative part of the specification.
+
 ::: {.callout-note}
 The appendix includes information how to [validate against this specification](#validation),
 for instance with JSON Schema, but these methods do not fully cover all aspects of JSKOS.
-
-Neither is mapping from JSKOS data to RDF a normative part of this specification.
 :::
 
 # Data types {#sec-data-types}
@@ -811,8 +812,9 @@ Registries are the top JSKOS entity, followed by
 [concordances], [mappings] [concept schemes], and on the lowest level
 [concepts] and [resource types]. See [Distributions] for an alternative.
 
-Conversion of JSKOS registries to RDF requires a different value for field
-`concepts` to not infer the RDF property `skos:inScheme` but `dct:isPartOf`!
+Conversion of JSKOS registries to RDF (see [appendix](#mapping-to-rdf))
+requires a different value for field `concepts` to not infer the RDF property
+`skos:inScheme` but `dct:isPartOf`.
 :::
 
 ```{.json #lst-concept1 lst-cap="A concept collection"}
@@ -1295,20 +1297,6 @@ Integrity constraints of SKOS SHOULD be respected. Applications MAY reject JSKOS
 
 <!-- TODO: skos:related is disjoint with the property skos:broaderTransitive (S27) -->
 
-<!--
-
-# Converting JSKOS to SKOS and vice versa
-
-Concept types in RDF correspond to subclasses of [SKOS Concept].
-
-A Concept represents a [SKOS Concept].
-
-[SKOS Concept]: http://www.w3.org/TR/skos-primer/#secconcept
-
-A Concept Scheme represents a [SKOS Concept Scheme].
-
--->
-
 [RDF/SKOS]: http://www.w3.org/2004/02/skos/
 [SKOS Concept Scheme]: http://www.w3.org/TR/skos-primer/#secscheme
 [JSKOS-LD context]: #json-ld-context
@@ -1453,9 +1441,13 @@ The fields `PARTS` and `_id` in the following example can be ignored:
   June 2012.
   <http://dublincore.org/documents/dcmi-terms/>
 
-* F. Cotton (editor): *XKOS: An SKOS extension for representing statistical classifications*.
+* F. Cotton: *XKOS: An SKOS extension for representing statistical classifications*.
   DDI Alliance, May 2019.
   <https://rdf-vocabulary.ddialliance.org/xkos.html>
+
+* O. Harting, P. Champin, G. Kellogg, A. Seaborne: *RDF-star and SPARQL-star*.
+  W3C Community Group Report, December 2012
+  <https://w3c.github.io/rdf-star/>
 
 * A. Miles, S. Bechhofer: *SKOS Reference*.
   W3C Recommendation, 18 August 2009.
@@ -1485,10 +1477,34 @@ The fields `PARTS` and `_id` in the following example can be ignored:
 [RFC 4647]: http://tools.ietf.org/html/rfc4647
 [RFC 5234]: http://tools.ietf.org/html/rfc5234
 [ng-skos]: http://gbv.github.io/ng-skos/
+[RDF-star]: https://w3c.github.io/rdf-star/
+[SKOS]: http://www.w3.org/TR/skos-reference
 
 # Appendices {-}
 
 The following appendices are *non-normative*.
+
+## Mapping to RDF
+
+JSKOS has been designed for compatibility with RDF in general and with [SKOS]
+in particular. Most basic JSKOS data should be convertible to SKOS RDF and vice
+versa with a [JSON-LD context](#json-ld). Nevertheless there are cases and
+features where either JSKOS or RDF is a simplification or where opinions differ
+about the best way to model the same information in RDF. In particular:
+
+- RDF Ontologies expressed with OWL and/or RDFS are expressed the same way like
+  SKOS terminologies in JSKOS, except for an addition value `type` (e.g.
+  <http://www.w3.org/2002/07/owl#Class>). This requires a distinction of cases
+  when mapping JSKOS back to RDF.
+
+- [JSKOS Mappings](#mapping) in RDF can be expressed as plain triples, as
+  reified triples, as objects of their own right, or with [RDF-star]. The most
+  suitable form depends on use case and application, so there is no "right" way.
+
+- Semantics of most JSKOS fields is independent from object type, so they directly
+  map to an RDF property. Known examples include field `concepts` of [concept scheme]
+  (`skos:inScheme` for SKOS, `rdfs:isDefinedBy` for ontologies), vs. field 
+  `concepts` of [registry] (`dct:isPartOf`).
 
 ## JSON-LD {- #json-ld}
 
@@ -1641,6 +1657,7 @@ JSKOS started in 2014 as as part of project [coli-conc](https://coli-conc.gbv.de
 - Connect [distribution] and [service] via field `services`
 - Make [service] field `endpoint` optional
 - Add abstract object type [dataset]
+- Add non-normative appendix on [mapping to RDF]
 
 ### 0.7.0 (2025-11-18) {-}
 

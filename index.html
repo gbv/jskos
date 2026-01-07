@@ -92,7 +92,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">JSKOS data format for Knowledge Organization Systems</h1>
-            <p class="subtitle lead">Version 0.7.1-draft</p>
+            <p class="subtitle lead">Version 0.7.1</p>
           </div>
 
     
@@ -208,45 +208,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#appendices" id="toc-appendices" class="nav-link" data-scroll-target="#appendices">Appendices</a>
   <ul class="collapse">
-  <li><a href="#mapping-to-rdf" id="toc-mapping-to-rdf" class="nav-link" data-scroll-target="#mapping-to-rdf"><span class="header-section-number">6.6</span> Mapping to RDF</a></li>
-  <li><a href="#json-ld" id="toc-json-ld" class="nav-link" data-scroll-target="#json-ld">JSON-LD</a></li>
   <li><a href="#validation" id="toc-validation" class="nav-link" data-scroll-target="#validation">Validation</a></li>
-  <li><a href="#object-type-classification" id="toc-object-type-classification" class="nav-link" data-scroll-target="#object-type-classification">Object type classification</a></li>
+  <li><a href="#mapping-to-rdf" id="toc-mapping-to-rdf" class="nav-link" data-scroll-target="#mapping-to-rdf">Mapping to RDF</a></li>
+  <li><a href="#json-ld" id="toc-json-ld" class="nav-link" data-scroll-target="#json-ld">JSON-LD</a></li>
   <li><a href="#skos-features-not-supported-in-jskos" id="toc-skos-features-not-supported-in-jskos" class="nav-link" data-scroll-target="#skos-features-not-supported-in-jskos">SKOS features not supported in JSKOS</a></li>
   <li><a href="#jskos-features-not-supported-in-skos" id="toc-jskos-features-not-supported-in-skos" class="nav-link" data-scroll-target="#jskos-features-not-supported-in-skos">JSKOS features not supported in SKOS</a></li>
+  <li><a href="#object-type-classification" id="toc-object-type-classification" class="nav-link" data-scroll-target="#object-type-classification">Object type classification</a></li>
   <li><a href="#additional-examples" id="toc-additional-examples" class="nav-link" data-scroll-target="#additional-examples">Additional examples</a></li>
   </ul></li>
   <li><a href="#changelog" id="toc-changelog" class="nav-link" data-scroll-target="#changelog">Changelog</a>
   <ul class="collapse">
-  <li><a href="#draft" id="toc-draft" class="nav-link" data-scroll-target="#draft">0.7.1 (draft)</a></li>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">0.7.0 (2025-11-18)</a></li>
-  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">0.6.1 (2025-10-07)</a></li>
-  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">0.6.0 (2025-01-20)</a></li>
-  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">0.5.4 (2024-09-27)</a></li>
-  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4">0.5.3 (2024-09-18)</a></li>
-  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5">0.5.2 (2024-08-30)</a></li>
-  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6">0.5.1 (2023-07-03)</a></li>
-  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7">0.5.0 (2022-08-29)</a></li>
-  <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8">0.4.9 (2022-01-18)</a></li>
-  <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9">0.4.8 (2021-02-18)</a></li>
-  <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10">0.4.7 (2021-02-10)</a></li>
-  <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11">0.4.6 (2019-12-02)</a></li>
-  <li><a href="#section-12" id="toc-section-12" class="nav-link" data-scroll-target="#section-12">0.4.5 (2019-04-08)</a></li>
-  <li><a href="#section-13" id="toc-section-13" class="nav-link" data-scroll-target="#section-13">0.4.4 (2018-11-02)</a></li>
-  <li><a href="#section-14" id="toc-section-14" class="nav-link" data-scroll-target="#section-14">0.4.2 (2018-08-22)</a></li>
-  <li><a href="#section-15" id="toc-section-15" class="nav-link" data-scroll-target="#section-15">0.4.1 (2018-06-26)</a></li>
-  <li><a href="#section-16" id="toc-section-16" class="nav-link" data-scroll-target="#section-16">0.4.0 (2018-06-22)</a></li>
-  <li><a href="#section-17" id="toc-section-17" class="nav-link" data-scroll-target="#section-17">0.3.2 (2018-05-29)</a></li>
-  <li><a href="#section-18" id="toc-section-18" class="nav-link" data-scroll-target="#section-18">0.3.1 (2017-11-22)</a></li>
-  <li><a href="#section-19" id="toc-section-19" class="nav-link" data-scroll-target="#section-19">0.3.0 (2017-11-15)</a></li>
-  <li><a href="#section-20" id="toc-section-20" class="nav-link" data-scroll-target="#section-20">0.2.2 (2017-11-06)</a></li>
-  <li><a href="#section-21" id="toc-section-21" class="nav-link" data-scroll-target="#section-21">0.2.1 (2017-09-27)</a></li>
-  <li><a href="#section-22" id="toc-section-22" class="nav-link" data-scroll-target="#section-22">0.2.0 (2017-09-21)</a></li>
-  <li><a href="#section-23" id="toc-section-23" class="nav-link" data-scroll-target="#section-23">0.1.4 (2016-12-02)</a></li>
-  <li><a href="#section-24" id="toc-section-24" class="nav-link" data-scroll-target="#section-24">0.1.3 (2016-10-03)</a></li>
-  <li><a href="#section-25" id="toc-section-25" class="nav-link" data-scroll-target="#section-25">0.1.2 (2016-06-13)</a></li>
-  <li><a href="#section-26" id="toc-section-26" class="nav-link" data-scroll-target="#section-26">0.1.1 (2016-05-20)</a></li>
-  <li><a href="#section-27" id="toc-section-27" class="nav-link" data-scroll-target="#section-27">0.0.1 (2014-09-11)</a></li>
+  <li><a href="#next-draft" id="toc-next-draft" class="nav-link" data-scroll-target="#next-draft">next draft</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">0.7.1 (2026-01-07)</a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">0.7.0 (2025-11-18)</a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">0.6.1 (2025-10-07)</a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">0.6.0 (2025-01-20)</a></li>
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4">0.5.4 (2024-09-27)</a></li>
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5">0.5.3 (2024-09-18)</a></li>
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6">0.5.2 (2024-08-30)</a></li>
+  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7">0.5.1 (2023-07-03)</a></li>
+  <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8">0.5.0 (2022-08-29)</a></li>
+  <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9">0.4.9 (2022-01-18)</a></li>
+  <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10">0.4.8 (2021-02-18)</a></li>
+  <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11">0.4.7 (2021-02-10)</a></li>
+  <li><a href="#section-12" id="toc-section-12" class="nav-link" data-scroll-target="#section-12">0.4.6 (2019-12-02)</a></li>
+  <li><a href="#section-13" id="toc-section-13" class="nav-link" data-scroll-target="#section-13">0.4.5 (2019-04-08)</a></li>
+  <li><a href="#section-14" id="toc-section-14" class="nav-link" data-scroll-target="#section-14">0.4.4 (2018-11-02)</a></li>
+  <li><a href="#section-15" id="toc-section-15" class="nav-link" data-scroll-target="#section-15">0.4.2 (2018-08-22)</a></li>
+  <li><a href="#section-16" id="toc-section-16" class="nav-link" data-scroll-target="#section-16">0.4.1 (2018-06-26)</a></li>
+  <li><a href="#section-17" id="toc-section-17" class="nav-link" data-scroll-target="#section-17">0.4.0 (2018-06-22)</a></li>
+  <li><a href="#section-18" id="toc-section-18" class="nav-link" data-scroll-target="#section-18">0.3.2 (2018-05-29)</a></li>
+  <li><a href="#section-19" id="toc-section-19" class="nav-link" data-scroll-target="#section-19">0.3.1 (2017-11-22)</a></li>
+  <li><a href="#section-20" id="toc-section-20" class="nav-link" data-scroll-target="#section-20">0.3.0 (2017-11-15)</a></li>
+  <li><a href="#section-21" id="toc-section-21" class="nav-link" data-scroll-target="#section-21">0.2.2 (2017-11-06)</a></li>
+  <li><a href="#section-22" id="toc-section-22" class="nav-link" data-scroll-target="#section-22">0.2.1 (2017-09-27)</a></li>
+  <li><a href="#section-23" id="toc-section-23" class="nav-link" data-scroll-target="#section-23">0.2.0 (2017-09-21)</a></li>
+  <li><a href="#section-24" id="toc-section-24" class="nav-link" data-scroll-target="#section-24">0.1.4 (2016-12-02)</a></li>
+  <li><a href="#section-25" id="toc-section-25" class="nav-link" data-scroll-target="#section-25">0.1.3 (2016-10-03)</a></li>
+  <li><a href="#section-26" id="toc-section-26" class="nav-link" data-scroll-target="#section-26">0.1.2 (2016-06-13)</a></li>
+  <li><a href="#section-27" id="toc-section-27" class="nav-link" data-scroll-target="#section-27">0.1.1 (2016-05-20)</a></li>
+  <li><a href="#section-28" id="toc-section-28" class="nav-link" data-scroll-target="#section-28">0.0.1 (2014-09-11)</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -2708,12 +2709,31 @@ Example&nbsp;23
 <section id="appendices" class="level1 unnumbered">
 <h1 class="unnumbered">Appendices</h1>
 <p>The following appendices are <em>non-normative</em>.</p>
-<section id="mapping-to-rdf" class="level2" data-number="6.6">
-<h2 data-number="6.6" class="anchored" data-anchor-id="mapping-to-rdf"><span class="header-section-number">6.6</span> Mapping to RDF</h2>
+<section id="validation" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="validation">Validation</h2>
+<p>Experimental JSON Schemas exist but don’t cover all aspects of JSKOS:</p>
+<ul>
+<li><a href="resource.schema.json">Resource</a></li>
+<li><a href="item.schema.json">Item</a></li>
+<li><a href="concept.schema.json">Concept</a></li>
+<li><a href="scheme.schema.json">Scheme</a></li>
+<li><a href="mapping.schema.json">Mapping</a></li>
+<li><a href="bundle.schema.json">Bundle</a></li>
+<li><a href="bundle.schema.json">Registry</a></li>
+<li><a href="concordance.schema.json">Concordance</a></li>
+<li><a href="distribution.schema.json">Distribution</a></li>
+<li><a href="occurrence.schema.json">Occurrence</a></li>
+</ul>
+<p>The schemas allow arbitrary unknonw fields for upwards compatibility, so they won’t catch typos in field names! To forbid unknown fields, you can add <code>"unevaluatedProperties": false</code> to schemas of <a href="#object-types">object types</a> not having subtypes.</p>
+<p>See NodeJS library <a href="https://www.npmjs.com/package/jskos-validate">jskos-validate</a> for an implementation with some additional rules not covered by JSON Schema alone.</p>
+<p>Public services to validate JSKOS data are included in instances of <a href="https://www.npmjs.com/package/jskos-server">jskos-server</a> and at <a href="https://format.gbv.de/validate/" class="uri">https://format.gbv.de/validate/</a>.</p>
+</section>
+<section id="mapping-to-rdf" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="mapping-to-rdf">Mapping to RDF</h2>
 <p>JSKOS has been designed for compatibility with RDF in general and with <a href="http://www.w3.org/TR/skos-reference">SKOS</a> in particular. Most basic JSKOS data should be convertible to SKOS RDF and vice versa with a <a href="#json-ld">JSON-LD context</a>. Nevertheless there are cases and features where either JSKOS or RDF is a simplification or where opinions differ about the best way to model the same information in RDF. In particular:</p>
 <ul>
 <li><p>RDF Ontologies expressed with OWL and/or RDFS are expressed the same way like SKOS terminologies in JSKOS, except for an addition value <code>type</code> (e.g. <a href="http://www.w3.org/2002/07/owl#Class" class="uri">http://www.w3.org/2002/07/owl#Class</a>). This requires a distinction of cases when mapping JSKOS back to RDF.</p></li>
-<li><p><a href="#mapping">JSKOS Mappings</a> in RDF can be expressed as plain triples, as reified triples, as objects of their own right, or with <a href="https://w3c.github.io/rdf-star/">RDF-star</a>. The most suitable form depends on use case and application, so there is no “right” way.</p></li>
+<li><p><a href="#mapping">JSKOS Mappings</a> in RDF can be expressed as plain triples, as reified triples, as resources of their own right, or with <a href="https://w3c.github.io/rdf-star/">RDF-star</a>. The most suitable form depends on use case and application, so there is no “right” way. Recommended classes to express mappings as resources include <a href="http://rdf-vocabulary.ddialliance.org/xkos#ConceptAssociation" class="uri">http://rdf-vocabulary.ddialliance.org/xkos#ConceptAssociation</a> and <a href="http://www.w3.org/2002/07/owl#Axiom" class="uri">http://www.w3.org/2002/07/owl#Axiom</a>.</p></li>
 <li><p>Semantics of most JSKOS fields is independent from object type, so they directly map to an RDF property. Known examples include field <code>concepts</code> of <a href="#concept-scheme">concept scheme</a> (<code>skos:inScheme</code> for SKOS, <code>rdfs:isDefinedBy</code> for ontologies), vs.&nbsp;field <code>concepts</code> of <a href="#registry">registry</a> (<code>dct:isPartOf</code>).</p></li>
 <li><p>The hierarchy of JSKOS <a href="#object-types">object types</a> (see <a href="#fig-types" class="quarto-xref">diagram&nbsp;1</a>) does not imply a corresponding hierarchy of RDF classes.</p></li>
 </ul>
@@ -2977,28 +2997,30 @@ Example&nbsp;23
 <p>JSKOS with closed world statements can be mapped to RDF by ignoring all boolean values and/or by mapping selected boolean values to RDF triples with blank nodes.</p>
 <p>Applications should further add implicit RDF triples, such as <code>$someConcept rdf:type skos:Concept</code>, if such information can be derived from JSKOS by other means.</p>
 </section>
-<section id="validation" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="validation">Validation</h2>
-<p>Experimental JSON Schemas exist but don’t cover all aspects of JSKOS:</p>
+<section id="skos-features-not-supported-in-jskos" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="skos-features-not-supported-in-jskos">SKOS features not supported in JSKOS</h2>
+<p>JSKOS is aligned with SKOS but all references to SKOS are informative only. The following features of SKOS are not supported in JSKOS:</p>
 <ul>
-<li><a href="resource.schema.json">Resource</a></li>
-<li><a href="item.schema.json">Item</a></li>
-<li><a href="concept.schema.json">Concept</a></li>
-<li><a href="scheme.schema.json">Scheme</a></li>
-<li><a href="mapping.schema.json">Mapping</a></li>
-<li><a href="bundle.schema.json">Bundle</a></li>
-<li><a href="bundle.schema.json">Registry</a></li>
-<li><a href="concordance.schema.json">Concordance</a></li>
-<li><a href="distribution.schema.json">Distribution</a></li>
-<li><a href="occurrence.schema.json">Occurrence</a></li>
+<li><p>SKOS notations can have datatypes. JSKOS notations are plain strings.</p></li>
+<li><p>SKOS notations, labels, and values of <a href="http://www.w3.org/TR/2009/REC-skos-reference-20090818/#notes">documentation properties</a> can be empty string. In JSKOS empty string values are disallowed.</p></li>
+<li><p>SKOS labels and values of <a href="http://www.w3.org/TR/2009/REC-skos-reference-20090818/#notes">documentation properties</a> do not need to have a language tag. In JSKOS language tags are mandatory for label and documentation properties.</p></li>
+<li><p>JSKOS does not include the SKOS properties <code>skos:broaderTransitive</code>, <code>skos:narrowerTransitive</code>, and <code>skos:semanticRelation</code>.</p></li>
 </ul>
-<p>The schemas allow arbitrary unknonw fields for upwards compatibility, so they won’t catch typos in field names! To forbid unknown fields, you can add <code>"unevaluatedProperties": false</code> to schemas of <a href="#object-types">object types</a> not having subtypes.</p>
-<p>See NodeJS library <a href="https://www.npmjs.com/package/jskos-validate">jskos-validate</a> for an implementation with additional rules not covered by JSON Schema alone.</p>
-<p>Public services to validate JSKOS data are included in instances of <a href="https://www.npmjs.com/package/jskos-server">jskos-server</a> and at <a href="https://format.gbv.de/validate/" class="uri">https://format.gbv.de/validate/</a>.</p>
+</section>
+<section id="jskos-features-not-supported-in-skos" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="jskos-features-not-supported-in-skos">JSKOS features not supported in SKOS</h2>
+<p>The following features of JSKOS have no corresponce in SKOS:</p>
+<ul>
+<li><a href="#occurrence">occurrences</a>, <a href="#registry">registries</a>, <a href="#concordance">concordances</a>, <a href="#mapping">mappings</a> as first-class objects, and composed <a href="#concept">concepts</a></li>
+<li><a href="#closed-world-statements">closed world statements</a></li>
+<li>order of broaderTransitive statements (can be derived)</li>
+<li>order of multiple notations</li>
+<li>order of multiple inScheme statements</li>
+</ul>
 </section>
 <section id="object-type-classification" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="object-type-classification">Object type classification</h2>
-<p><a href="#object-types">Object types</a> can be expressed with <a href="#concept">concepts</a> from the following <a href="#concept-scheme">concept scheme</a>:</p>
+<p><a href="#object-types">Object types</a> can be expressed with <a href="#concept">concepts</a> from the following <a href="#concept-scheme">concept scheme</a> (available <a href="examples/object-types.scheme.json">from here</a>):</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://gbv.github.io/jskos/examples/object-types.scheme.json"</span><span class="fu">,</span></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"type"</span><span class="fu">:</span> <span class="ot">[</span> <span class="st">"http://www.w3.org/2004/02/skos/core#ConceptScheme"</span> <span class="ot">]</span><span class="fu">,</span></span>
@@ -3092,27 +3114,6 @@ Example&nbsp;23
 <span id="cb33-91"><a href="#cb33-91" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
 <span id="cb33-92"><a href="#cb33-92" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span></span>
 <span id="cb33-93"><a href="#cb33-93" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="skos-features-not-supported-in-jskos" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="skos-features-not-supported-in-jskos">SKOS features not supported in JSKOS</h2>
-<p>JSKOS is aligned with SKOS but all references to SKOS are informative only. The following features of SKOS are not supported in JSKOS:</p>
-<ul>
-<li><p>SKOS notations can have datatypes. JSKOS notations are plain strings.</p></li>
-<li><p>SKOS notations, labels, and values of <a href="http://www.w3.org/TR/2009/REC-skos-reference-20090818/#notes">documentation properties</a> can be empty string. In JSKOS empty string values are disallowed.</p></li>
-<li><p>SKOS labels and values of <a href="http://www.w3.org/TR/2009/REC-skos-reference-20090818/#notes">documentation properties</a> do not need to have a language tag. In JSKOS language tags are mandatory for label and documentation properties.</p></li>
-<li><p>JSKOS does not include the SKOS properties <code>skos:broaderTransitive</code>, <code>skos:narrowerTransitive</code>, and <code>skos:semanticRelation</code>.</p></li>
-</ul>
-</section>
-<section id="jskos-features-not-supported-in-skos" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="jskos-features-not-supported-in-skos">JSKOS features not supported in SKOS</h2>
-<p>The following features of JSKOS have no corresponce in SKOS:</p>
-<ul>
-<li><a href="#occurrence">occurrences</a>, <a href="#registry">registries</a>, <a href="#concordance">concordances</a>, <a href="#mapping">mappings</a> as first-class objects, and composed <a href="#concept">concepts</a></li>
-<li><a href="#closed-world-statements">closed world statements</a></li>
-<li>order of broaderTransitive statements (can be derived)</li>
-<li>order of multiple notations</li>
-<li>order of multiple inScheme statements</li>
-</ul>
 </section>
 <section id="additional-examples" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="additional-examples">Additional examples</h2>
@@ -3426,18 +3427,23 @@ Example&nbsp;29: Mappings
 <section id="changelog" class="level1 unnumbered">
 <h1 class="unnumbered">Changelog</h1>
 <p>JSKOS started in 2014 as as part of project <a href="https://coli-conc.gbv.de/">coli-conc</a>.</p>
-<section id="draft" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="draft">0.7.1 (draft)</h3>
+<section id="next-draft" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="next-draft">next draft</h3>
+<p><em>See <a href="https://github.com/gbv/jskos/issues" class="uri">https://github.com/gbv/jskos/issues</a> for open issues</em></p>
+</section>
+<section id="section" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="section">0.7.1 (2026-01-07)</h3>
 <ul>
 <li>Add <a href="#registry">registry</a> field <code>annotations</code></li>
 <li>Connect <a href="#distribution">distribution</a> and <a href="#service">service</a> via field <code>services</code></li>
 <li>Make <a href="#service">service</a> field <code>endpoint</code> optional</li>
 <li>Add abstract object type <a href="#dataset">dataset</a></li>
 <li>Add documentation of SKOS collections and non-normative appendix on <a href="#mapping-to-rdf">mapping to RDF</a></li>
+<li>Improve JSON Schema files</li>
 </ul>
 </section>
-<section id="section" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="section">0.7.0 (2025-11-18)</h3>
+<section id="section-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="section-1">0.7.0 (2025-11-18)</h3>
 <ul>
 <li>Change item type URI of registry from <a href="http://purl.org/cld/cdtype/CatalogueOrIndex" class="uri">http://purl.org/cld/cdtype/CatalogueOrIndex</a> to <a href="http://www.w3.org/ns/dcat#Catalog" class="uri">http://www.w3.org/ns/dcat#Catalog</a></li>
 <li>Change item type URI of concordance from <a href="http://rdfs.org/ns/void#Linkset" class="uri">http://rdfs.org/ns/void#Linkset</a> for <a href="http://rdf-vocabulary.ddialliance.org/xkos#Correspondence" class="uri">http://rdf-vocabulary.ddialliance.org/xkos#Correspondence</a></li>
@@ -3446,8 +3452,8 @@ Example&nbsp;29: Mappings
 <li>Add <a href="#link-template">link templates</a></li>
 </ul>
 </section>
-<section id="section-1" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="section-1">0.6.1 (2025-10-07)</h3>
+<section id="section-2" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="section-2">0.6.1 (2025-10-07)</h3>
 <ul>
 <li>Mapping field <code>mappingRelevance</code> is not experimental anymore</li>
 <li>Add mapping field <code>justification</code></li>
@@ -3455,8 +3461,8 @@ Example&nbsp;29: Mappings
 <li>Move concept scheme field <code>versionOf</code> to item</li>
 </ul>
 </section>
-<section id="section-2" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="section-2">0.6.0 (2025-01-20)</h3>
+<section id="section-3" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="section-3">0.6.0 (2025-01-20)</h3>
 <ul>
 <li>Add <a href="#rank">ranks</a> and <a href="#qualified-statements">qualified statements</a></li>
 <li>Add extended dates for <code>startDate</code>, <code>endDate</code>, and <code>relatedDate</code>.</li>
@@ -3467,8 +3473,8 @@ Example&nbsp;29: Mappings
 <li>Update references, layout and wording</li>
 </ul>
 </section>
-<section id="section-3" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="section-3">0.5.4 (2024-09-27)</h3>
+<section id="section-4" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="section-4">0.5.4 (2024-09-27)</h3>
 <ul>
 <li>Change JSON-LD context for spatial fields (<code>location</code>, <code>place</code>, <code>startPlace</code>, <code>endPlace</code>)</li>
 <li>Add Concept field <code>deprecated</code></li>
@@ -3477,21 +3483,21 @@ Example&nbsp;29: Mappings
 <li>Mention non-indexing concepts</li>
 </ul>
 </section>
-<section id="section-4" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="section-4">0.5.3 (2024-09-18)</h3>
+<section id="section-5" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="section-5">0.5.3 (2024-09-18)</h3>
 <ul>
 <li>Allow <code>@context</code> to hold an array</li>
 </ul>
 </section>
-<section id="section-5" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="section-5">0.5.2 (2024-08-30)</h3>
+<section id="section-6" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="section-6">0.5.2 (2024-08-30)</h3>
 <ul>
 <li>Allow location of type <code>GeometryCollection</code></li>
 <li>Fix schema.org namespace in JSON-LD context document</li>
 </ul>
 </section>
-<section id="section-6" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="section-6">0.5.1 (2023-07-03)</h3>
+<section id="section-7" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="section-7">0.5.1 (2023-07-03)</h3>
 <ul>
 <li>More precise type of <code>inScheme</code>, <code>topConceptOf</code>, <code>mappings</code>, <code>occurrences</code></li>
 <li>Add some inference rules and integrity constraints</li>
@@ -3499,110 +3505,110 @@ Example&nbsp;29: Mappings
 <li>Add item fields <code>place</code> and <code>media</code></li>
 </ul>
 </section>
-<section id="section-7" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="section-7">0.5.0 (2022-08-29)</h3>
+<section id="section-8" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="section-8">0.5.0 (2022-08-29)</h3>
 <ul>
 <li>Make clear concordance field name distributions (plural)</li>
 <li>Add license, compressFormat, packageFormat, size, checksum, accessURL to distribution</li>
 <li>Remove fields for undefined JSKOS-API URLs</li>
 </ul>
 </section>
-<section id="section-8" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="section-8">0.4.9 (2022-01-18)</h3>
+<section id="section-9" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="section-9">0.4.9 (2022-01-18)</h3>
 <ul>
 <li>Change format of URI in JSON Schema from URI to IRI</li>
 <li>Change base format of URL in JSON Schema from URI to IRI</li>
 </ul>
 </section>
-<section id="section-9" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="section-9">0.4.8 (2021-02-18)</h3>
+<section id="section-10" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="section-10">0.4.8 (2021-02-18)</h3>
 <ul>
 <li>Add concept scheme field notationExamples</li>
 </ul>
 </section>
-<section id="section-10" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="section-10">0.4.7 (2021-02-10)</h3>
+<section id="section-11" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="section-11">0.4.7 (2021-02-10)</h3>
 <ul>
 <li>Add resource field source</li>
 <li>Add item field address</li>
 <li>Move startPlace/endPlace to Item and map them to schema:location</li>
 </ul>
 </section>
-<section id="section-11" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="section-11">0.4.6 (2019-12-02)</h3>
+<section id="section-12" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="section-12">0.4.6 (2019-12-02)</h3>
 <ul>
 <li>Add memberRoles</li>
 </ul>
 </section>
-<section id="section-12" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="section-12">0.4.5 (2019-04-08)</h3>
+<section id="section-13" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="section-13">0.4.5 (2019-04-08)</h3>
 <ul>
 <li>Add annotations (basic support)</li>
 </ul>
 </section>
-<section id="section-13" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="section-13">0.4.4 (2018-11-02)</h3>
+<section id="section-14" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="section-14">0.4.4 (2018-11-02)</h3>
 <ul>
 <li>Add concept scheme fields notationPattern and uriPattern</li>
 <li>Add concept fields startPlace and endPlace</li>
 </ul>
 </section>
-<section id="section-14" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="section-14">0.4.2 (2018-08-22)</h3>
+<section id="section-15" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="section-15">0.4.2 (2018-08-22)</h3>
 <ul>
 <li>Move identifier field from item to resource</li>
 <li>Add SKOS documentation field note to item</li>
 <li>Add optional JSON Schemas</li>
 </ul>
 </section>
-<section id="section-15" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="section-15">0.4.1 (2018-06-26)</h3>
+<section id="section-16" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="section-16">0.4.1 (2018-06-26)</h3>
 <ul>
 <li>Rename distribution field to distributions</li>
 <li>Allow digits in custom fields</li>
 </ul>
 </section>
-<section id="section-16" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="section-16">0.4.0 (2018-06-22)</h3>
+<section id="section-17" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="section-17">0.4.0 (2018-06-22)</h3>
 <ul>
 <li>Add Registry field occurrences</li>
 <li>Add Distribution object type</li>
 <li>Change rule for custom fields</li>
 </ul>
 </section>
-<section id="section-17" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="section-17">0.3.2 (2018-05-29)</h3>
+<section id="section-18" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="section-18">0.3.2 (2018-05-29)</h3>
 <ul>
 <li>Add Concept Scheme field namespace</li>
 </ul>
 </section>
-<section id="section-18" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="section-18">0.3.1 (2017-11-22)</h3>
+<section id="section-19" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="section-19">0.3.1 (2017-11-22)</h3>
 <ul>
 <li>Extend ocurrences to co-occurrences</li>
 </ul>
 </section>
-<section id="section-19" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="section-19">0.3.0 (2017-11-15)</h3>
+<section id="section-20" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="section-20">0.3.0 (2017-11-15)</h3>
 <ul>
 <li>Add occurrences</li>
 </ul>
 </section>
-<section id="section-20" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="section-20">0.2.2 (2017-11-06)</h3>
+<section id="section-21" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="section-21">0.2.2 (2017-11-06)</h3>
 <ul>
 <li>Add mappings field to Concept</li>
 </ul>
 </section>
-<section id="section-21" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="section-21">0.2.1 (2017-09-27)</h3>
+<section id="section-22" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="section-22">0.2.1 (2017-09-27)</h3>
 <ul>
 <li>Disallow empty strings except as mandatory placeholder with language ranges</li>
 <li>Support composed concepts with <code>memberSet</code> and <code>memberList</code></li>
 </ul>
 </section>
-<section id="section-22" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="section-22">0.2.0 (2017-09-21)</h3>
+<section id="section-23" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="section-23">0.2.0 (2017-09-21)</h3>
 <ul>
 <li>Rename object to resource</li>
 <li>Move startDate, endDate, relatedDate, and location from Concept to Item</li>
@@ -3610,35 +3616,35 @@ Example&nbsp;29: Mappings
 <li>Update JSON-LD context document</li>
 </ul>
 </section>
-<section id="section-23" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="section-23">0.1.4 (2016-12-02)</h3>
+<section id="section-24" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="section-24">0.1.4 (2016-12-02)</h3>
 <ul>
 <li>Update JSON-LD context document</li>
 <li>Change definition of concept bundles to use fields memberSet/List/Choice instead of members</li>
 </ul>
 </section>
-<section id="section-24" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="section-24">0.1.3 (2016-10-03)</h3>
+<section id="section-25" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="section-25">0.1.3 (2016-10-03)</h3>
 <ul>
 <li>Change definition of “location” field to subset of GeoJSON (RFC 7946)</li>
 </ul>
 </section>
-<section id="section-25" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="section-25">0.1.2 (2016-06-13)</h3>
+<section id="section-26" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="section-26">0.1.2 (2016-06-13)</h3>
 <ul>
 <li>Add “location” field for geographic coordinates</li>
 </ul>
 </section>
-<section id="section-26" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="section-26">0.1.1 (2016-05-20)</h3>
+<section id="section-27" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="section-27">0.1.1 (2016-05-20)</h3>
 <ul>
 <li>Make field “license” a set instead of a single URI</li>
 <li>Add field “extent”</li>
 <li>Update reference to <a href="http://tools.ietf.org/html/rfc5646">RFC 5646</a> instead of obsoleted RFC 4646</li>
 </ul>
 </section>
-<section id="section-27" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="section-27">0.0.1 (2014-09-11)</h3>
+<section id="section-28" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="section-28">0.0.1 (2014-09-11)</h3>
 <ul>
 <li>first draft</li>
 </ul>

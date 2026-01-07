@@ -1480,7 +1480,33 @@ The fields `PARTS` and `_id` in the following example can be ignored:
 
 The following appendices are *non-normative*.
 
-## Mapping to RDF
+## Validation {- #validation}
+
+Experimental JSON Schemas exist but don't cover all aspects of JSKOS: 
+
+* [Resource](resource.schema.json)
+* [Item](item.schema.json)
+* [Concept](concept.schema.json)
+* [Scheme](scheme.schema.json)
+* [Mapping](mapping.schema.json)
+* [Bundle](bundle.schema.json)
+* [Registry](bundle.schema.json)
+* [Concordance](concordance.schema.json)
+* [Distribution](distribution.schema.json)
+* [Occurrence](occurrence.schema.json)
+
+The schemas allow arbitrary unknonw fields for upwards compatibility, so they won't catch typos in field names!
+To forbid unknown fields, you can add `"unevaluatedProperties": false` to schemas of [object types] not having subtypes.
+
+See NodeJS library [jskos-validate] for an implementation with some additional rules not covered by JSON Schema alone.
+
+Public services to validate JSKOS data are included in instances of [jskos-server] and at <https://format.gbv.de/validate/>.
+
+[jskos-validate]: https://www.npmjs.com/package/jskos-validate
+[jskos-server]: https://www.npmjs.com/package/jskos-server
+
+
+## Mapping to RDF {-}
 
 JSKOS has been designed for compatibility with RDF in general and with [SKOS]
 in particular. Most basic JSKOS data should be convertible to SKOS RDF and vice
@@ -1494,8 +1520,11 @@ about the best way to model the same information in RDF. In particular:
   when mapping JSKOS back to RDF.
 
 - [JSKOS Mappings](#mapping) in RDF can be expressed as plain triples, as
-  reified triples, as objects of their own right, or with [RDF-star]. The most
+  reified triples, as resources of their own right, or with [RDF-star]. The most
   suitable form depends on use case and application, so there is no "right" way.
+  Recommended classes to express mappings as resources include 
+  <http://rdf-vocabulary.ddialliance.org/xkos#ConceptAssociation> and
+  <http://www.w3.org/2002/07/owl#Axiom>.
 
 - Semantics of most JSKOS fields is independent from object type, so they directly
   map to an RDF property. Known examples include field `concepts` of [concept scheme]
@@ -1522,39 +1551,6 @@ nodes.
 Applications should further add implicit RDF triples, such as `$someConcept
 rdf:type skos:Concept`, if such information can be derived from JSKOS by other
 means.
-
-## Validation {- #validation}
-
-Experimental JSON Schemas exist but don't cover all aspects of JSKOS: 
-
-* [Resource](resource.schema.json)
-* [Item](item.schema.json)
-* [Concept](concept.schema.json)
-* [Scheme](scheme.schema.json)
-* [Mapping](mapping.schema.json)
-* [Bundle](bundle.schema.json)
-* [Registry](bundle.schema.json)
-* [Concordance](concordance.schema.json)
-* [Distribution](distribution.schema.json)
-* [Occurrence](occurrence.schema.json)
-
-The schemas allow arbitrary unknonw fields for upwards compatibility, so they won't catch typos in field names!
-To forbid unknown fields, you can add `"unevaluatedProperties": false` to schemas of [object types] not having subtypes.
-
-See NodeJS library [jskos-validate] for an implementation with additional rules not covered by JSON Schema alone.
-
-Public services to validate JSKOS data are included in instances of [jskos-server] and at <https://format.gbv.de/validate/>.
-
-[jskos-validate]: https://www.npmjs.com/package/jskos-validate
-[jskos-server]: https://www.npmjs.com/package/jskos-server
-
-## Object type classification {-}
-
-[Object types] can be expressed with [concepts] from the following [concept scheme]:
-
-~~~json
-{{< include examples/object-types.scheme.json >}}
-~~~
 
 ## SKOS features not supported in JSKOS {-}
 
@@ -1586,6 +1582,16 @@ The following features of JSKOS have no corresponce in SKOS:
 * order of broaderTransitive statements (can be derived)
 * order of multiple notations
 * order of multiple inScheme statements
+
+## Object type classification {-}
+
+[Object types] can be expressed with [concepts] from the following [concept scheme]
+(available [from here](examples/object-types.scheme.json)):
+
+~~~json
+{{< include examples/object-types.scheme.json >}}
+~~~
+
 
 ## Additional examples  {-}
 
@@ -1651,13 +1657,18 @@ Multiple mappings from one concept (612.112 in DDC) to GND.
 
 JSKOS started in 2014 as as part of project [coli-conc](https://coli-conc.gbv.de/).
 
-### 0.7.1 (draft) {-}
+### next draft {-}
+
+*See <https://github.com/gbv/jskos/issues> for open issues*
+
+### 0.7.1 (2026-01-07) {-}
 
 - Add [registry] field `annotations`
 - Connect [distribution] and [service] via field `services`
 - Make [service] field `endpoint` optional
 - Add abstract object type [dataset]
 - Add documentation of SKOS collections and non-normative appendix on [mapping to RDF]
+- Improve JSON Schema files
 
 ### 0.7.0 (2025-11-18) {-}
 

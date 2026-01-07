@@ -1,0 +1,5 @@
+{
+  "memberList": [],
+  "memberSet": [],
+  "_comment": "Should fail because only one of memberList and memberSet is allowed."
+}

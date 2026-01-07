@@ -921,7 +921,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>See appendix <a href="#object-type-classification">object types classification</a> for an encoding of object types as concept scheme.</p>
+<p>See appendix <a href="#object-type-classification">object types classification</a> for an encoding of main object types as concept scheme.</p>
 </div>
 </div>
 <section id="resource" class="level2" data-number="4.1">
@@ -1674,31 +1674,31 @@ Example&nbsp;10
 <tbody>
 <tr class="odd">
 <td style="text-align: left;"><a href="http://www.w3.org/2004/02/skos/core#Concept" class="uri">http://www.w3.org/2004/02/skos/core#Concept</a></td>
-<td style="text-align: left;"><a href="#concept">concepts</a> (field <code>concepts</code>, <code>types</code>, and <code>properties</code>)</td>
+<td style="text-align: left;"><a href="#concept">concepts</a> (<code>concepts</code>, <code>types</code>, <code>properties</code>)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><a href="http://www.w3.org/2004/02/skos/core#ConceptScheme" class="uri">http://www.w3.org/2004/02/skos/core#ConceptScheme</a></td>
-<td style="text-align: left;"><a href="#concept-scheme">concept schemes</a> (field <code>schemes</code>)</td>
+<td style="text-align: left;"><a href="#concept-scheme">concept schemes</a> (<code>schemes</code>)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><a href="http://www.w3.org/2004/02/skos/core#mappingRelation" class="uri">http://www.w3.org/2004/02/skos/core#mappingRelation</a></td>
-<td style="text-align: left;"><a href="#mapping">mappings</a> (field <code>mappings</code>)</td>
+<td style="text-align: left;"><a href="#mapping">mappings</a> (<code>mappings</code>)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><a href="http://rdf-vocabulary.ddialliance.org/xkos#Correspondence" class="uri">http://rdf-vocabulary.ddialliance.org/xkos#Correspondence</a></td>
-<td style="text-align: left;"><a href="#concordance">concordances</a> (field <code>concordances</code>)</td>
+<td style="text-align: left;"><a href="#concordance">concordances</a> (<code>concordances</code>)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">??? (not specified yet)</td>
-<td style="text-align: left;"><a href="#occurrence">occurrences</a> (field <code>occurrences</code>)</td>
+<td style="text-align: left;"><a href="#occurrence">occurrences</a> (<code>occurrences</code>)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><a href="http://www.w3.org/ns/dcat#Catalog" class="uri">http://www.w3.org/ns/dcat#Catalog</a></td>
-<td style="text-align: left;"><a href="#registry">registries</a> (field <code>registries</code>)</td>
+<td style="text-align: left;"><a href="#registry">registries</a> (<code>registries</code>)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><a href="http://www.w3.org/ns/oa#Annotation" class="uri">http://www.w3.org/ns/oa#Annotation</a></td>
-<td style="text-align: left;"><a href="#annotation">annotations</a> (field <code>annotations</code>)</td>
+<td style="text-align: left;"><a href="#annotation">annotations</a> (<code>annotations</code>)</td>
 </tr>
 </tbody>
 </table>
@@ -1720,22 +1720,25 @@ Note
 <div id="lst-concept1" class="json listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-concept1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Example&nbsp;11: A concept collection
+Example&nbsp;11: A registry with concepts and its subtypes
 </figcaption>
 <div aria-describedby="lst-concept1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"type"</span><span class="fu">:</span> <span class="ot">[</span> <span class="st">"http://www.w3.org/ns/dcat#Catalog"</span> <span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"types"</span><span class="fu">:</span> <span class="ot">[</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2004/02/skos/core#Concept"</span> <span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2002/07/owl#Class"</span> <span class="fu">}</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"People entities"</span> <span class="fu">},</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"objectTypes"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"http://www.w3.org/2004/02/skos/core#Concept"</span></span>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"People"</span> <span class="fu">},</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"concepts"</span><span class="fu">:</span> <span class="ot">[</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://schema.org/Person"</span> <span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://xmlns.com/foaf/0.1/Person"</span> <span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.wikidata.org/entity/Q5"</span> <span class="fu">}</span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"types"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2004/02/skos/core#Concept"</span> <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2002/07/owl#Class"</span> <span class="fu">}</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"concepts"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://schema.org/Person"</span> <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://xmlns.com/foaf/0.1/Person"</span> <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.wikidata.org/entity/Q5"</span> <span class="fu">}</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </figure>
 </div>
@@ -2712,6 +2715,7 @@ Example&nbsp;23
 <li><p>RDF Ontologies expressed with OWL and/or RDFS are expressed the same way like SKOS terminologies in JSKOS, except for an addition value <code>type</code> (e.g. <a href="http://www.w3.org/2002/07/owl#Class" class="uri">http://www.w3.org/2002/07/owl#Class</a>). This requires a distinction of cases when mapping JSKOS back to RDF.</p></li>
 <li><p><a href="#mapping">JSKOS Mappings</a> in RDF can be expressed as plain triples, as reified triples, as objects of their own right, or with <a href="https://w3c.github.io/rdf-star/">RDF-star</a>. The most suitable form depends on use case and application, so there is no “right” way.</p></li>
 <li><p>Semantics of most JSKOS fields is independent from object type, so they directly map to an RDF property. Known examples include field <code>concepts</code> of <a href="#concept-scheme">concept scheme</a> (<code>skos:inScheme</code> for SKOS, <code>rdfs:isDefinedBy</code> for ontologies), vs.&nbsp;field <code>concepts</code> of <a href="#registry">registry</a> (<code>dct:isPartOf</code>).</p></li>
+<li><p>The hierarchy of JSKOS <a href="#object-types">object types</a> (see <a href="#fig-types" class="quarto-xref">diagram&nbsp;1</a>) does not imply a corresponding hierarchy of RDF classes.</p></li>
 </ul>
 </section>
 <section id="json-ld" class="level2 unnumbered">

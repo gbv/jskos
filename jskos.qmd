@@ -487,7 +487,7 @@ In addition to these main object types, JSKOS defines the following types based 
 Each object type can identified with an [object type URI](#resource-and-property-types).
 
 ::: {.callout-note}
-See appendix [object types classification](#object-type-classification) for an encoding of object types as concept scheme.
+See appendix [object types classification](#object-type-classification) for an encoding of main object types as concept scheme.
 :::
 
 ## Resource
@@ -801,15 +801,15 @@ Registries are collection of [concepts], [concept schemes], [mappings],
 
 Field `objectTypes` SHOULD list [object type URIs](#resource-and-property-types) of entities included in the registry:
 
-resource type URI                                           if it contains  
+resource type URI                                           if it contains 
 ----------------------------------------------------------- ------------------
-<http://www.w3.org/2004/02/skos/core#Concept>               [concepts] (field `concepts`, `types`, and `properties`)
-<http://www.w3.org/2004/02/skos/core#ConceptScheme>         [concept schemes] (field `schemes`)
-<http://www.w3.org/2004/02/skos/core#mappingRelation>       [mappings] (field `mappings`)
-<http://rdf-vocabulary.ddialliance.org/xkos#Correspondence> [concordances] (field `concordances`)
-??? (not specified yet)                                     [occurrences] (field `occurrences`)
-<http://www.w3.org/ns/dcat#Catalog>                         [registries] (field `registries`)
-<http://www.w3.org/ns/oa#Annotation>                        [annotations] (field `annotations`)
+<http://www.w3.org/2004/02/skos/core#Concept>               [concepts] (`concepts`, `types`, `properties`)
+<http://www.w3.org/2004/02/skos/core#ConceptScheme>         [concept schemes] (`schemes`)
+<http://www.w3.org/2004/02/skos/core#mappingRelation>       [mappings] (`mappings`)
+<http://rdf-vocabulary.ddialliance.org/xkos#Correspondence> [concordances] (`concordances`)
+??? (not specified yet)                                     [occurrences] (`occurrences`)
+<http://www.w3.org/ns/dcat#Catalog>                         [registries] (`registries`)
+<http://www.w3.org/ns/oa#Annotation>                        [annotations] (`annotations`)
 
 A registry limited to only one of the fields `concepts`, `schemes`, `mappings`,
 `concordances`, and `occurrences`, `registries` is also called a **collection**
@@ -826,7 +826,7 @@ requires a different value for field `concepts` to not infer the RDF property
 `skos:inScheme` but `dct:isPartOf`.
 :::
 
-```{.json #lst-concept1 lst-cap="A concept collection"}
+```{.json #lst-concept1 lst-cap="A registry with concepts and its subtypes"}
 {{< include examples/concept.registry.json >}}
 ```
 
@@ -1501,6 +1501,9 @@ about the best way to model the same information in RDF. In particular:
   map to an RDF property. Known examples include field `concepts` of [concept scheme]
   (`skos:inScheme` for SKOS, `rdfs:isDefinedBy` for ontologies), vs. field 
   `concepts` of [registry] (`dct:isPartOf`).
+
+- The hierarchy of JSKOS [object types] (see @fig-types) does not imply a corresponding
+  hierarchy of RDF classes.
 
 ## JSON-LD {- #json-ld}
 

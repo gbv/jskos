@@ -7,9 +7,10 @@ project:
 resources:
   - context.json
   - prefixes.json
+  - examples/*.json
   - schemas/*.json
 
-repo-url: https://github.com/gbv/jskos
+repo-url: "https://github.com/gbv/jskos"
 
 manuscript:
   article: jskos.qmd

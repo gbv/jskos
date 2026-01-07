@@ -428,6 +428,7 @@ item                item type URI
 [registry]          <http://www.w3.org/ns/dcat#Catalog>
 [distribution]      <http://www.w3.org/ns/dcat#Distribution>
 [service]           <http://www.w3.org/ns/dcat#DataService>
+[dataset]           <http://www.w3.org/ns/dcat#Dataset>
 [concordance]       <http://rdf-vocabulary.ddialliance.org/xkos#Correspondence>
 [mapping]           <http://www.w3.org/2004/02/skos/core#mappingRelation>
                     <http://www.w3.org/2004/02/skos/core#closeMatch>
@@ -445,11 +446,13 @@ object type         object type URI
 [location]          <http://www.opengis.net/ont/geosparql#Geometry>
 [media]             <http://iiif.io/api/presentation/2#Manifest> 
 [annotation]        <http://www.w3.org/ns/oa#Annotation>
-[address]           ?
+[address]           <https://schema.org/PostalAddress>
 
-::: {.callout-note}
-See appendix [item types as concepts] for a partial explicit encoding of item types.
-:::
+Application SHOULD also support the following type URIs for additional subtypes of [concept]:
+
+- <http://schema.vocnet.org/NonIndexingConcept> for SKOS collections
+- <http://www.w3.org/2002/07/owl#Class> for RDF classes
+- <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> for RDF properties
 
 # Object types
 
@@ -480,6 +483,12 @@ In addition to these main object types, JSKOS defines the following types based 
 - [media] for media files (based on IIIF)
 - [annotation] to review and comment on resources (based on Web Annotation Data Model)
 - [address] for postal addresses (based on vCard and schema.org)
+
+Each object type can identified with an [object type URI](#resource-and-property-types).
+
+::: {.callout-note}
+See appendix [object types classification](#object-type-classification) for an encoding of object types as concept scheme.
+:::
 
 ## Resource
 
@@ -1066,8 +1075,7 @@ Object subtypes of dataset include [concept scheme], [registry], and [concordanc
 [concept bundles]: #concept-bundle
 [concept bundle]: #concept-bundle
 
-A concept bundle is a group of [concepts]. Concept bundles can be used for
-[mappings], composed concepts, and [occurrences].
+A concept bundle is a group of [concepts]. Concept bundles can be used for [mappings], [occurrences], and composed concepts.
 
 A **concept bundle** is a JSON object with at most one of the following fields:
 
@@ -1078,33 +1086,21 @@ memberList  ordered [set] of [concepts] [concepts] in this bundle (ordered)
 memberChoice [set] of [concepts]        [concepts] in this bundle to choose from
 memberRoles object                      Object mapping role URIs to [set]s of [concepts]
 
-Keys of a `memberRoles` object MUST be URIs and their values MUST be of type [set].
+Concept bundles are allowed to empty. Keys of a `memberRoles` object MUST be URIs and their values MUST be of type [set].
 
-```{.json #lst-member-roles lst-cap="..."}
+```{.json #lst-member-roles lst-cap="A composed concept"}
 {{< include examples/memberRoles.concept.json >}}
 ```
 
 ::: {.callout-note}
-
-* Concept bundles could also be used for
-  [SKOS concept collections](http://www.w3.org/TR/skos-reference/#collections),
-  see <https://github.com/gbv/jskos/issues/7> for discussion.
-
-* Concepts from a bundle may also come from different concept schemes!
-
-* A concept bundle may be empty, for instance to indicate that no appropriate
-  concepts exists for a given concept scheme:
-
-    ```json
-    {
-      ...
-      "to": { "memberSet": [] },
-      "toScheme": {"uri": "http://dewey.info/scheme/ddc/"}
-    }
-    ```
-
-  Normalization rules may be added to prefer one kind of expressing an empty concept bundle.
+Concept bundles can also be used to express [SKOS concept collections](https://www.w3.org/TR/skos-primer/#seccollections).
+Use type URI <http://schema.vocnet.org/NonIndexingConcept> to differentiate collections (aka "node labels") and normal concepts.
+Details how to process and display these special concepts depend on use cases and applications.
 :::
+
+```{.json #lst-member-roles lst-cap="A concept bundle encoding a SKOS concept collection"}
+{{< include examples/collection.concept.json >}}
+```
 
 # Qualified statements
 
@@ -1549,12 +1545,12 @@ Public services to validate JSKOS data are included in instances of [jskos-serve
 [jskos-validate]: https://www.npmjs.com/package/jskos-validate
 [jskos-server]: https://www.npmjs.com/package/jskos-server
 
-## Item types as concepts {-}
+## Object type classification {-}
 
-[Item types] can be expressed with [concepts] from the following [concept scheme]:
+[Object types] can be expressed with [concepts] from the following [concept scheme]:
 
 ~~~json
-{{< include examples/item-types.scheme.json >}}
+{{< include examples/object-types.scheme.json >}}
 ~~~
 
 ## SKOS features not supported in JSKOS {-}
@@ -1658,7 +1654,7 @@ JSKOS started in 2014 as as part of project [coli-conc](https://coli-conc.gbv.de
 - Connect [distribution] and [service] via field `services`
 - Make [service] field `endpoint` optional
 - Add abstract object type [dataset]
-- Add non-normative appendix on [mapping to RDF]
+- Add documentation of SKOS collections and non-normative appendix on [mapping to RDF]
 
 ### 0.7.0 (2025-11-18) {-}
 

@@ -1,0 +1,18 @@
+{
+  "uri": "https://example.org/scheme",
+  "type": [ "http://www.w3.org/2004/02/skos/core#ConceptScheme" ],
+  "topConcepts": [ { "uri": "https://example.org/concept/1", "notation": ["1"] } ],
+  "concepts": [
+    { "uri": "https://example.org/concept/1", "prefLabel": { "en": "A" } },
+    { "uri": "https://example.org/concept/2", "prefLabel": { "en": "B" } }
+  ],
+  "distributions": [
+    {
+      "services": [
+        {
+          "endpoint": "https://example.org/api/"
+        }
+      ]
+    }  
+  ]
+}

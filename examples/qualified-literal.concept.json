@@ -1,0 +1,21 @@
+{
+  "uri": "http://www.wikidata.org/entity/Q406",
+  "qualifiedLiterals": {
+    "http://www.w3.org/2008/05/skos-xl#prefLabel": [
+      {
+        "type": [ "http://www.w3.org/2008/05/skos-xl#Label" ],
+        "literal": { "string": "İstanbul", "language": "tr" },
+        "rank": "preferred"
+      }, {
+        "type": [ "http://www.w3.org/2008/05/skos-xl#Label" ],
+        "literal": { "string": "Constantinople", "language": "en" },
+        "endDate": "1930"
+      }
+    ],
+    "https://www.wikidata.org/wiki/Property:P395": [
+      {
+        "literal": { "string": "34" } 
+      }
+    ]
+  }
+}

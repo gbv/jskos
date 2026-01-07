@@ -1,0 +1,14 @@
+{
+  "uri": "http://www.wikidata.org/entity/Q42",
+  "prefLabel": { "en": "Douglas Adams" },
+  "qualifiedRelations": {
+    "http://www.wikidata.org/entity/P69": [
+      { 
+        "resource": { "uri": "http://www.wikidata.org/entity/Q4961791" },
+        "startDate": "1959",
+        "endDate": "1970",
+        "source": [ { "url": "https://www.brentwoodschool.co.uk/about/our-history/" } ]
+      }
+    ]
+  }
+}

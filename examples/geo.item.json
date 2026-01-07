@@ -1,0 +1,9 @@
+{
+  "startPlace": [{ "uri": "https://sws.geonames.org/2655984/" }],
+  "endPlace": [{ "uri": "https://sws.geonames.org/3411923/" }],
+  "place": [{ "uri": "https://sws.geonames.org/5128581" }],
+  "location": {
+    "type": "Point",
+    "coordinates": [-49.946944, 41.7325, -3803]
+  }
+}

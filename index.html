@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-01-06">
+<meta name="dcterms.date" content="2026-01-07">
 
 <title>JSKOS data format for Knowledge Organization Systems</title>
 <style>
@@ -79,10 +79,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="style.css">
 <meta name="citation_title" content="JSKOS data format for Knowledge Organization Systems">
 <meta name="citation_author" content="Jakob Voß">
-<meta name="citation_publication_date" content="2026-01-06">
-<meta name="citation_cover_date" content="2026-01-06">
+<meta name="citation_publication_date" content="2026-01-07">
+<meta name="citation_cover_date" content="2026-01-07">
 <meta name="citation_year" content="2026">
-<meta name="citation_online_date" content="2026-01-06">
+<meta name="citation_online_date" content="2026-01-07">
 <meta name="citation_language" content="en">
 </head>
 
@@ -118,7 +118,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
                 <div>
             <div class="quarto-title-meta-heading">Published</div>
             <div class="quarto-title-meta-contents">
-              <p class="date">January 6, 2026</p>
+              <p class="date">January 7, 2026</p>
             </div>
           </div>
           
@@ -211,7 +211,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#mapping-to-rdf" id="toc-mapping-to-rdf" class="nav-link" data-scroll-target="#mapping-to-rdf"><span class="header-section-number">6.6</span> Mapping to RDF</a></li>
   <li><a href="#json-ld" id="toc-json-ld" class="nav-link" data-scroll-target="#json-ld">JSON-LD</a></li>
   <li><a href="#validation" id="toc-validation" class="nav-link" data-scroll-target="#validation">Validation</a></li>
-  <li><a href="#item-types-as-concepts" id="toc-item-types-as-concepts" class="nav-link" data-scroll-target="#item-types-as-concepts">Item types as concepts</a></li>
+  <li><a href="#object-type-classification" id="toc-object-type-classification" class="nav-link" data-scroll-target="#object-type-classification">Object type classification</a></li>
   <li><a href="#skos-features-not-supported-in-jskos" id="toc-skos-features-not-supported-in-jskos" class="nav-link" data-scroll-target="#skos-features-not-supported-in-jskos">SKOS features not supported in JSKOS</a></li>
   <li><a href="#jskos-features-not-supported-in-skos" id="toc-jskos-features-not-supported-in-skos" class="nav-link" data-scroll-target="#jskos-features-not-supported-in-skos">JSKOS features not supported in SKOS</a></li>
   <li><a href="#additional-examples" id="toc-additional-examples" class="nav-link" data-scroll-target="#additional-examples">Additional examples</a></li>
@@ -788,30 +788,34 @@ Note
 <td style="text-align: left;"><a href="http://www.w3.org/ns/dcat#DataService" class="uri">http://www.w3.org/ns/dcat#DataService</a></td>
 </tr>
 <tr class="even">
+<td style="text-align: left;"><a href="#dataset">dataset</a></td>
+<td style="text-align: left;"><a href="http://www.w3.org/ns/dcat#Dataset" class="uri">http://www.w3.org/ns/dcat#Dataset</a></td>
+</tr>
+<tr class="odd">
 <td style="text-align: left;"><a href="#concordance">concordance</a></td>
 <td style="text-align: left;"><a href="http://rdf-vocabulary.ddialliance.org/xkos#Correspondence" class="uri">http://rdf-vocabulary.ddialliance.org/xkos#Correspondence</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;"><a href="#mapping">mapping</a></td>
 <td style="text-align: left;"><a href="http://www.w3.org/2004/02/skos/core#mappingRelation" class="uri">http://www.w3.org/2004/02/skos/core#mappingRelation</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><a href="http://www.w3.org/2004/02/skos/core#closeMatch" class="uri">http://www.w3.org/2004/02/skos/core#closeMatch</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><a href="http://www.w3.org/2004/02/skos/core#exactMatch" class="uri">http://www.w3.org/2004/02/skos/core#exactMatch</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><a href="http://www.w3.org/2004/02/skos/core#broadMatch" class="uri">http://www.w3.org/2004/02/skos/core#broadMatch</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><a href="http://www.w3.org/2004/02/skos/core#narrowMatch" class="uri">http://www.w3.org/2004/02/skos/core#narrowMatch</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><a href="http://www.w3.org/2004/02/skos/core#relatedMatch" class="uri">http://www.w3.org/2004/02/skos/core#relatedMatch</a></td>
 </tr>
@@ -844,23 +848,16 @@ Note
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><a href="#address">address</a></td>
-<td style="text-align: left;">?</td>
+<td style="text-align: left;"><a href="https://schema.org/PostalAddress" class="uri">https://schema.org/PostalAddress</a></td>
 </tr>
 </tbody>
 </table>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>See appendix <a href="#item-types-as-concepts">item types as concepts</a> for a partial explicit encoding of item types.</p>
-</div>
-</div>
+<p>Application SHOULD also support the following type URIs for additional subtypes of <a href="#concept">concept</a>:</p>
+<ul>
+<li><a href="http://schema.vocnet.org/NonIndexingConcept" class="uri">http://schema.vocnet.org/NonIndexingConcept</a> for SKOS collections</li>
+<li><a href="http://www.w3.org/2002/07/owl#Class" class="uri">http://www.w3.org/2002/07/owl#Class</a> for RDF classes</li>
+<li><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property" class="uri">http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</a> for RDF properties</li>
+</ul>
 </section>
 <section id="object-types" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Object types</h1>
@@ -913,6 +910,20 @@ Diagram&nbsp;2: connections between main JSKOS object types
 <li><a href="#annotation">annotation</a> to review and comment on resources (based on Web Annotation Data Model)</li>
 <li><a href="#address">address</a> for postal addresses (based on vCard and schema.org)</li>
 </ul>
+<p>Each object type can identified with an <a href="#resource-and-property-types">object type URI</a>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>See appendix <a href="#object-type-classification">object types classification</a> for an encoding of object types as concept scheme.</p>
+</div>
+</div>
 <section id="resource" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="resource"><span class="header-section-number">4.1</span> Resource</h2>
 <p>An <strong>resource</strong> is a JSON object with the following optional fields:</p>
@@ -2106,7 +2117,7 @@ Diagram&nbsp;3: dataset and connected object types
 </section>
 <section id="concept-bundle" class="level2" data-number="4.12">
 <h2 data-number="4.12" class="anchored" data-anchor-id="concept-bundle"><span class="header-section-number">4.12</span> Concept Bundle</h2>
-<p>A concept bundle is a group of <a href="#concept">concepts</a>. Concept bundles can be used for <a href="#mapping">mappings</a>, composed concepts, and <a href="#occurrence">occurrences</a>.</p>
+<p>A concept bundle is a group of <a href="#concept">concepts</a>. Concept bundles can be used for <a href="#mapping">mappings</a>, <a href="#occurrence">occurrences</a>, and composed concepts.</p>
 <p>A <strong>concept bundle</strong> is a JSON object with at most one of the following fields:</p>
 <table class="caption-top table">
 <thead>
@@ -2139,11 +2150,11 @@ Diagram&nbsp;3: dataset and connected object types
 </tr>
 </tbody>
 </table>
-<p>Keys of a <code>memberRoles</code> object MUST be URIs and their values MUST be of type <a href="#set">set</a>.</p>
+<p>Concept bundles are allowed to empty. Keys of a <code>memberRoles</code> object MUST be URIs and their values MUST be of type <a href="#set">set</a>.</p>
 <div id="lst-member-roles" class="json listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-member-roles-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Example&nbsp;14: …
+Example&nbsp;14: A composed concept
 </figcaption>
 <div aria-describedby="lst-member-roles-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
@@ -2176,18 +2187,33 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<ul>
-<li><p>Concept bundles could also be used for <a href="http://www.w3.org/TR/skos-reference/#collections">SKOS concept collections</a>, see <a href="https://github.com/gbv/jskos/issues/7" class="uri">https://github.com/gbv/jskos/issues/7</a> for discussion.</p></li>
-<li><p>Concepts from a bundle may also come from different concept schemes!</p></li>
-<li><p>A concept bundle may be empty, for instance to indicate that no appropriate concepts exists for a given concept scheme:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="er">...</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"to"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"memberSet"</span><span class="fu">:</span> <span class="ot">[]</span> <span class="fu">},</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"toScheme"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://dewey.info/scheme/ddc/"</span><span class="fu">}</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Normalization rules may be added to prefer one kind of expressing an empty concept bundle.</p></li>
-</ul>
+<p>Concept bundles can also be used to express <a href="https://www.w3.org/TR/skos-primer/#seccollections">SKOS concept collections</a>. Use type URI <a href="http://schema.vocnet.org/NonIndexingConcept" class="uri">http://schema.vocnet.org/NonIndexingConcept</a> to differentiate collections (aka “node labels”) and normal concepts. Details how to process and display these special concepts depend on use cases and applications.</p>
 </div>
+</div>
+<div id="lst-member-roles" class="json listing quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-lst figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-member-roles-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Example&nbsp;15: A concept bundle encoding a SKOS concept collection
+</figcaption>
+<div aria-describedby="lst-member-roles-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"milk"</span> <span class="fu">},</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"type"</span><span class="fu">:</span> <span class="ot">[</span> <span class="st">"http://www.w3.org/2004/02/skos/core#Concept"</span> <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"narrower"</span><span class="fu">:</span> <span class="ot">[</span> <span class="fu">{</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>     <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"milk by source animal"</span> <span class="fu">},</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>     <span class="dt">"type"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>       <span class="st">"http://www.w3.org/2004/02/skos/core#Concept"</span><span class="ot">,</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>       <span class="st">"http://schema.vocnet.org/NonIndexingConcept"</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>     <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>     <span class="dt">"memberList"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>       <span class="fu">{</span> <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"cow milk"</span> <span class="fu">}</span> <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>       <span class="fu">{</span> <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">" goat milk"</span> <span class="fu">}</span> <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>       <span class="fu">{</span> <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"buffalo milk"</span> <span class="fu">}</span> <span class="fu">}</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>     <span class="ot">]</span></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span> <span class="ot">]</span></span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</figure>
 </div>
 </section>
 </section>
@@ -2212,7 +2238,7 @@ Note
 <div id="lst-qualified-map" class="json listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-qualified-map-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Example&nbsp;15: Qualified map with property types from schema.org
+Example&nbsp;16: Qualified map with property types from schema.org
 </figcaption>
 <div aria-describedby="lst-qualified-map-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
@@ -2289,7 +2315,7 @@ Example&nbsp;15: Qualified map with property types from schema.org
 <div id="lst-qualified-relation" class="json listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-qualified-relation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Example&nbsp;16: Concept with qualified relations (from Wikidata)
+Example&nbsp;17: Concept with qualified relations (from Wikidata)
 </figcaption>
 <div aria-describedby="lst-qualified-relation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
@@ -2347,7 +2373,7 @@ Example&nbsp;16: Concept with qualified relations (from Wikidata)
 <div id="lst-qualified-date" class="json listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-qualified-date-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Example&nbsp;17: Qualified date (of the fall of Constantinople)
+Example&nbsp;18: Qualified date (of the fall of Constantinople)
 </figcaption>
 <div aria-describedby="lst-qualified-date-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
@@ -2423,7 +2449,7 @@ Note
 <div id="lst-qualified-literal" class="json listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-qualified-literal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Example&nbsp;18: Concept with qualified literals
+Example&nbsp;19: Concept with qualified literals
 </figcaption>
 <div aria-describedby="lst-qualified-literal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
@@ -2460,7 +2486,7 @@ Example&nbsp;18: Concept with qualified literals
 <div id="lst-sameness" class="json listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-sameness-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Example&nbsp;19: Two same resources
+Example&nbsp;20: Two same resources
 </figcaption>
 <div aria-describedby="lst-sameness-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://example.org/123"</span><span class="fu">,</span> <span class="dt">"created"</span><span class="fu">:</span> <span class="st">"2007"</span> <span class="fu">}</span></span>
@@ -2530,7 +2556,7 @@ Example&nbsp;19: Two same resources
 <div id="lst-closed-world" class="listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst quarto-uncaptioned" id="lst-closed-world-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Example&nbsp;20
+Example&nbsp;21
 </figcaption>
 <div aria-describedby="lst-closed-world-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <p>The following concept has preferred labels and narrower concepts, but no alternative labels nor notations. Nothing is known about broader concepts, related concepts, and other possible concept properties:</p>
@@ -2602,7 +2628,7 @@ TODO: Mappings (S38-S46)
 <div id="lst-ex-link-templates" class="listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-ex-link-templates-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Example&nbsp;21: Link templates
+Example&nbsp;22: Link templates
 </figcaption>
 <div aria-describedby="lst-ex-link-templates-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <p>Link template to search for a concept in Wikipedia:</p>
@@ -2621,7 +2647,7 @@ Example&nbsp;21: Link templates
 <div id="lst-custom-fields" class="listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst quarto-uncaptioned" id="lst-custom-fields-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Example&nbsp;22
+Example&nbsp;23
 </figcaption>
 <div aria-describedby="lst-custom-fields-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <p>The fields <code>PARTS</code> and <code>_id</code> in the following example can be ignored:</p>
@@ -2966,83 +2992,102 @@ Example&nbsp;22
 <p>See NodeJS library <a href="https://www.npmjs.com/package/jskos-validate">jskos-validate</a> for an implementation with additional rules not covered by JSON Schema alone.</p>
 <p>Public services to validate JSKOS data are included in instances of <a href="https://www.npmjs.com/package/jskos-server">jskos-server</a> and at <a href="https://format.gbv.de/validate/" class="uri">https://format.gbv.de/validate/</a>.</p>
 </section>
-<section id="item-types-as-concepts" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="item-types-as-concepts">Item types as concepts</h2>
-<p><a href="#resource-and-property-types">Item types</a> can be expressed with <a href="#concept">concepts</a> from the following <a href="#concept-scheme">concept scheme</a>:</p>
+<section id="object-type-classification" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="object-type-classification">Object type classification</h2>
+<p><a href="#object-types">Object types</a> can be expressed with <a href="#concept">concepts</a> from the following <a href="#concept-scheme">concept scheme</a>:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"type"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"http://www.w3.org/2004/02/skos/core#ConceptScheme"</span><span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"topConcepts"</span><span class="fu">:</span> <span class="ot">[</span></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2004/02/skos/core#Concept"</span> <span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2004/02/skos/core#ConceptScheme"</span> <span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/ns/dcat#Catalog"</span> <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://gbv.github.io/jskos/examples/object-types.scheme.json"</span><span class="fu">,</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"type"</span><span class="fu">:</span> <span class="ot">[</span> <span class="st">"http://www.w3.org/2004/02/skos/core#ConceptScheme"</span> <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"topConcepts"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2004/02/skos/core#Concept"</span> <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/ns/dcat#Dataset"</span> <span class="fu">}</span><span class="ot">,</span></span>
 <span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/ns/dcat#Distribution"</span> <span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://rdfs.org/ns/void#Linkset"</span> <span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2004/02/skos/core#mappingRelation"</span> <span class="fu">}</span></span>
-<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"concepts"</span><span class="fu">:</span> <span class="ot">[</span></span>
-<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
-<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2004/02/skos/core#Concept"</span><span class="fu">,</span></span>
-<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"concept"</span> <span class="fu">}</span></span>
-<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
-<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2004/02/skos/core#ConceptScheme"</span><span class="fu">,</span></span>
-<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"concept scheme"</span> <span class="fu">}</span></span>
-<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
-<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/ns/dcat#Catalog"</span><span class="fu">,</span></span>
-<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"identifier"</span><span class="fu">:</span> <span class="ot">[</span> <span class="st">"http://purl.org/cld/cdtype/CatalogueOrIndex"</span> <span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"registry"</span> <span class="fu">},</span></span>
-<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"altLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="ot">[</span> <span class="st">"catalog"</span><span class="ot">,</span> <span class="st">"Catalogue or Index"</span> <span class="ot">]</span> <span class="fu">}</span></span>
-<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb33-26"><a href="#cb33-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
-<span id="cb33-27"><a href="#cb33-27" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/ns/dcat#Distribution"</span><span class="fu">,</span></span>
-<span id="cb33-28"><a href="#cb33-28" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"distribution"</span> <span class="fu">}</span></span>
-<span id="cb33-29"><a href="#cb33-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb33-30"><a href="#cb33-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
-<span id="cb33-31"><a href="#cb33-31" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"https://www.w3.org/ns/dcat#DataService"</span><span class="fu">,</span></span>
-<span id="cb33-32"><a href="#cb33-32" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"service"</span> <span class="fu">}</span></span>
-<span id="cb33-33"><a href="#cb33-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb33-34"><a href="#cb33-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
-<span id="cb33-35"><a href="#cb33-35" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://rdf-vocabulary.ddialliance.org/xkos#Correspondence"</span><span class="fu">,</span></span>
-<span id="cb33-36"><a href="#cb33-36" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"identifier"</span><span class="fu">:</span> <span class="ot">[</span></span>
-<span id="cb33-37"><a href="#cb33-37" aria-hidden="true" tabindex="-1"></a>        <span class="st">"http://purl.org/spar/fabio/VocabularyMapping"</span><span class="ot">,</span></span>
-<span id="cb33-38"><a href="#cb33-38" aria-hidden="true" tabindex="-1"></a>        <span class="st">"http://rdfs.org/ns/void#Linkset"</span></span>
-<span id="cb33-39"><a href="#cb33-39" aria-hidden="true" tabindex="-1"></a>      <span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb33-40"><a href="#cb33-40" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"concordance"</span> <span class="fu">}</span></span>
-<span id="cb33-41"><a href="#cb33-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb33-42"><a href="#cb33-42" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
-<span id="cb33-43"><a href="#cb33-43" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2004/02/skos/core#mappingRelation"</span><span class="fu">,</span></span>
-<span id="cb33-44"><a href="#cb33-44" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"is in mapping relation with"</span> <span class="fu">}</span></span>
-<span id="cb33-45"><a href="#cb33-45" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb33-46"><a href="#cb33-46" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
-<span id="cb33-47"><a href="#cb33-47" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2004/02/skos/core#closeMatch"</span><span class="fu">,</span></span>
-<span id="cb33-48"><a href="#cb33-48" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"has close match"</span> <span class="fu">},</span></span>
-<span id="cb33-49"><a href="#cb33-49" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"broader"</span><span class="fu">:</span> <span class="ot">[</span> <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2004/02/skos/core#mappingRelation"</span> <span class="fu">}</span> <span class="ot">]</span></span>
-<span id="cb33-50"><a href="#cb33-50" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb33-51"><a href="#cb33-51" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
-<span id="cb33-52"><a href="#cb33-52" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2004/02/skos/core#exactMatch"</span><span class="fu">,</span></span>
-<span id="cb33-53"><a href="#cb33-53" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"has exact match"</span> <span class="fu">},</span></span>
-<span id="cb33-54"><a href="#cb33-54" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"broader"</span><span class="fu">:</span> <span class="ot">[</span> <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2004/02/skos/core#closeMatch"</span> <span class="fu">}</span> <span class="ot">]</span></span>
-<span id="cb33-55"><a href="#cb33-55" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb33-56"><a href="#cb33-56" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
-<span id="cb33-57"><a href="#cb33-57" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2004/02/skos/core#broadMatch"</span><span class="fu">,</span></span>
-<span id="cb33-58"><a href="#cb33-58" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"has broader match"</span> <span class="fu">},</span></span>
-<span id="cb33-59"><a href="#cb33-59" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"broader"</span><span class="fu">:</span> <span class="ot">[</span> <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2004/02/skos/core#mappingRelation"</span> <span class="fu">}</span> <span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb33-60"><a href="#cb33-60" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"related"</span><span class="fu">:</span> <span class="ot">[</span> <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2004/02/skos/core#narrowMatch"</span> <span class="fu">}</span> <span class="ot">]</span></span>
-<span id="cb33-61"><a href="#cb33-61" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb33-62"><a href="#cb33-62" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
-<span id="cb33-63"><a href="#cb33-63" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2004/02/skos/core#narrowMatch"</span><span class="fu">,</span></span>
-<span id="cb33-64"><a href="#cb33-64" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"has narrower match"</span> <span class="fu">},</span></span>
-<span id="cb33-65"><a href="#cb33-65" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"broader"</span><span class="fu">:</span> <span class="ot">[</span> <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2004/02/skos/core#mappingRelation"</span> <span class="fu">}</span> <span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb33-66"><a href="#cb33-66" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"related"</span><span class="fu">:</span> <span class="ot">[</span> <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2004/02/skos/core#broadMatch"</span> <span class="fu">}</span> <span class="ot">]</span></span>
-<span id="cb33-67"><a href="#cb33-67" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb33-68"><a href="#cb33-68" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
-<span id="cb33-69"><a href="#cb33-69" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2004/02/skos/core#relatedMatch"</span><span class="fu">,</span></span>
-<span id="cb33-70"><a href="#cb33-70" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"has related match"</span> <span class="fu">},</span></span>
-<span id="cb33-71"><a href="#cb33-71" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"broader"</span><span class="fu">:</span> <span class="ot">[</span> <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2004/02/skos/core#mappingRelation"</span> <span class="fu">}</span> <span class="ot">]</span></span>
-<span id="cb33-72"><a href="#cb33-72" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
-<span id="cb33-73"><a href="#cb33-73" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span></span>
-<span id="cb33-74"><a href="#cb33-74" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"https://www.w3.org/ns/dcat#DataService"</span> <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2004/02/skos/core#mappingRelation"</span> <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.opengis.net/ont/geosparql#Geometry"</span> <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://iiif.io/api/presentation/2#Manifest"</span> <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/ns/oa#Annotation"</span> <span class="fu">}</span></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"concepts"</span><span class="fu">:</span> <span class="ot">[</span> <span class="fu">{</span></span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2004/02/skos/core#Concept"</span><span class="fu">,</span></span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"concept"</span> <span class="fu">},</span></span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"url"</span><span class="fu">:</span> <span class="st">"https://gbv.github.io/jskos/#concept"</span><span class="fu">,</span></span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"narrower"</span><span class="fu">:</span> <span class="ot">[</span> <span class="fu">{</span></span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>          <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://schema.vocnet.org/NonIndexingConcept"</span><span class="fu">,</span></span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>          <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"non-indexing concept"</span> <span class="fu">}</span></span>
+<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a>        <span class="fu">}</span><span class="ot">,</span> <span class="fu">{</span></span>
+<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a>          <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2002/07/owl#Class"</span><span class="fu">,</span></span>
+<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a>          <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"class"</span> <span class="fu">}</span></span>
+<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a>        <span class="fu">}</span><span class="ot">,</span> <span class="fu">{</span></span>
+<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a>          <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"</span><span class="fu">,</span></span>
+<span id="cb33-26"><a href="#cb33-26" aria-hidden="true" tabindex="-1"></a>          <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"property"</span> <span class="fu">}</span></span>
+<span id="cb33-27"><a href="#cb33-27" aria-hidden="true" tabindex="-1"></a>        <span class="fu">}</span> <span class="ot">]</span></span>
+<span id="cb33-28"><a href="#cb33-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span> <span class="fu">{</span></span>
+<span id="cb33-29"><a href="#cb33-29" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/ns/dcat#Dataset"</span><span class="fu">,</span></span>
+<span id="cb33-30"><a href="#cb33-30" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"dataset"</span> <span class="fu">},</span></span>
+<span id="cb33-31"><a href="#cb33-31" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"url"</span><span class="fu">:</span> <span class="st">"http://gbv.github.io/jskos/#dataset"</span><span class="fu">,</span></span>
+<span id="cb33-32"><a href="#cb33-32" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"narrower"</span><span class="fu">:</span> <span class="ot">[</span> <span class="fu">{</span></span>
+<span id="cb33-33"><a href="#cb33-33" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2004/02/skos/core#ConceptScheme"</span><span class="fu">,</span></span>
+<span id="cb33-34"><a href="#cb33-34" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"concept scheme"</span> <span class="fu">},</span></span>
+<span id="cb33-35"><a href="#cb33-35" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"url"</span><span class="fu">:</span> <span class="st">"https://gbv.github.io/jskos/#concept-scheme"</span></span>
+<span id="cb33-36"><a href="#cb33-36" aria-hidden="true" tabindex="-1"></a>      <span class="fu">}</span><span class="ot">,</span> <span class="fu">{</span></span>
+<span id="cb33-37"><a href="#cb33-37" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/ns/dcat#Catalog"</span><span class="fu">,</span></span>
+<span id="cb33-38"><a href="#cb33-38" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"identifier"</span><span class="fu">:</span> <span class="ot">[</span> <span class="st">"http://purl.org/cld/cdtype/CatalogueOrIndex"</span> <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb33-39"><a href="#cb33-39" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"registry"</span> <span class="fu">},</span></span>
+<span id="cb33-40"><a href="#cb33-40" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"url"</span><span class="fu">:</span> <span class="st">"https://gbv.github.io/jskos/#registry"</span></span>
+<span id="cb33-41"><a href="#cb33-41" aria-hidden="true" tabindex="-1"></a>      <span class="fu">}</span><span class="ot">,</span> <span class="fu">{</span></span>
+<span id="cb33-42"><a href="#cb33-42" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://rdf-vocabulary.ddialliance.org/xkos#Correspondence"</span><span class="fu">,</span></span>
+<span id="cb33-43"><a href="#cb33-43" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"identifier"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb33-44"><a href="#cb33-44" aria-hidden="true" tabindex="-1"></a>          <span class="st">"http://purl.org/spar/fabio/VocabularyMapping"</span><span class="ot">,</span></span>
+<span id="cb33-45"><a href="#cb33-45" aria-hidden="true" tabindex="-1"></a>          <span class="st">"http://rdfs.org/ns/void#Linkset"</span></span>
+<span id="cb33-46"><a href="#cb33-46" aria-hidden="true" tabindex="-1"></a>        <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb33-47"><a href="#cb33-47" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"concordance"</span> <span class="fu">},</span></span>
+<span id="cb33-48"><a href="#cb33-48" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"url"</span><span class="fu">:</span> <span class="st">"https://gbv.github.io/jskos/#concordance"</span></span>
+<span id="cb33-49"><a href="#cb33-49" aria-hidden="true" tabindex="-1"></a>      <span class="fu">}</span> <span class="ot">]</span></span>
+<span id="cb33-50"><a href="#cb33-50" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span> <span class="fu">{</span></span>
+<span id="cb33-51"><a href="#cb33-51" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/ns/dcat#Distribution"</span><span class="fu">,</span></span>
+<span id="cb33-52"><a href="#cb33-52" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"distribution"</span> <span class="fu">},</span></span>
+<span id="cb33-53"><a href="#cb33-53" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"url"</span><span class="fu">:</span> <span class="st">"https://gbv.github.io/jskos/#distribution"</span></span>
+<span id="cb33-54"><a href="#cb33-54" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span> <span class="fu">{</span></span>
+<span id="cb33-55"><a href="#cb33-55" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"https://www.w3.org/ns/dcat#DataService"</span><span class="fu">,</span></span>
+<span id="cb33-56"><a href="#cb33-56" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"service"</span> <span class="fu">},</span></span>
+<span id="cb33-57"><a href="#cb33-57" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"url"</span><span class="fu">:</span> <span class="st">"https://gbv.github.io/jskos/#service"</span></span>
+<span id="cb33-58"><a href="#cb33-58" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span> <span class="fu">{</span></span>
+<span id="cb33-59"><a href="#cb33-59" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2004/02/skos/core#mappingRelation"</span><span class="fu">,</span></span>
+<span id="cb33-60"><a href="#cb33-60" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"is in mapping relation with"</span> <span class="fu">},</span></span>
+<span id="cb33-61"><a href="#cb33-61" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"narrower"</span><span class="fu">:</span> <span class="ot">[</span> <span class="fu">{</span></span>
+<span id="cb33-62"><a href="#cb33-62" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2004/02/skos/core#closeMatch"</span><span class="fu">,</span></span>
+<span id="cb33-63"><a href="#cb33-63" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"has close match"</span> <span class="fu">}</span></span>
+<span id="cb33-64"><a href="#cb33-64" aria-hidden="true" tabindex="-1"></a>      <span class="fu">}</span><span class="ot">,</span> <span class="fu">{</span></span>
+<span id="cb33-65"><a href="#cb33-65" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2004/02/skos/core#exactMatch"</span><span class="fu">,</span></span>
+<span id="cb33-66"><a href="#cb33-66" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"has exact match"</span> <span class="fu">}</span></span>
+<span id="cb33-67"><a href="#cb33-67" aria-hidden="true" tabindex="-1"></a>      <span class="fu">}</span><span class="ot">,</span> <span class="fu">{</span></span>
+<span id="cb33-68"><a href="#cb33-68" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2004/02/skos/core#broadMatch"</span><span class="fu">,</span></span>
+<span id="cb33-69"><a href="#cb33-69" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"has broader match"</span> <span class="fu">},</span></span>
+<span id="cb33-70"><a href="#cb33-70" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"related"</span><span class="fu">:</span> <span class="ot">[</span> <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2004/02/skos/core#narrowMatch"</span> <span class="fu">}</span> <span class="ot">]</span></span>
+<span id="cb33-71"><a href="#cb33-71" aria-hidden="true" tabindex="-1"></a>      <span class="fu">}</span><span class="ot">,</span> <span class="fu">{</span></span>
+<span id="cb33-72"><a href="#cb33-72" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2004/02/skos/core#narrowMatch"</span><span class="fu">,</span></span>
+<span id="cb33-73"><a href="#cb33-73" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"has narrower match"</span> <span class="fu">},</span></span>
+<span id="cb33-74"><a href="#cb33-74" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"related"</span><span class="fu">:</span> <span class="ot">[</span> <span class="fu">{</span> <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2004/02/skos/core#broadMatch"</span> <span class="fu">}</span> <span class="ot">]</span></span>
+<span id="cb33-75"><a href="#cb33-75" aria-hidden="true" tabindex="-1"></a>      <span class="fu">}</span><span class="ot">,</span> <span class="fu">{</span></span>
+<span id="cb33-76"><a href="#cb33-76" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2004/02/skos/core#relatedMatch"</span><span class="fu">,</span></span>
+<span id="cb33-77"><a href="#cb33-77" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"has related match"</span> <span class="fu">}</span></span>
+<span id="cb33-78"><a href="#cb33-78" aria-hidden="true" tabindex="-1"></a>      <span class="fu">}</span> <span class="ot">]</span></span>
+<span id="cb33-79"><a href="#cb33-79" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span> <span class="fu">{</span></span>
+<span id="cb33-80"><a href="#cb33-80" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.opengis.net/ont/geosparql#Geometry"</span><span class="fu">,</span></span>
+<span id="cb33-81"><a href="#cb33-81" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"location"</span> <span class="fu">}</span></span>
+<span id="cb33-82"><a href="#cb33-82" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span> <span class="fu">{</span></span>
+<span id="cb33-83"><a href="#cb33-83" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://iiif.io/api/presentation/2#Manifest"</span><span class="fu">,</span></span>
+<span id="cb33-84"><a href="#cb33-84" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"media"</span> <span class="fu">}</span></span>
+<span id="cb33-85"><a href="#cb33-85" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span> <span class="fu">{</span></span>
+<span id="cb33-86"><a href="#cb33-86" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/ns/oa#Annotation"</span><span class="fu">,</span></span>
+<span id="cb33-87"><a href="#cb33-87" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"annotation"</span> <span class="fu">}</span></span>
+<span id="cb33-88"><a href="#cb33-88" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span> <span class="fu">{</span></span>
+<span id="cb33-89"><a href="#cb33-89" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"uri"</span><span class="fu">:</span> <span class="st">"https://schema.org/PostalAddress"</span><span class="fu">,</span></span>
+<span id="cb33-90"><a href="#cb33-90" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"prefLabel"</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">"en"</span><span class="fu">:</span> <span class="st">"address"</span> <span class="fu">}</span></span>
+<span id="cb33-91"><a href="#cb33-91" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb33-92"><a href="#cb33-92" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span></span>
+<span id="cb33-93"><a href="#cb33-93" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="skos-features-not-supported-in-jskos" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="skos-features-not-supported-in-jskos">SKOS features not supported in JSKOS</h2>
@@ -3070,7 +3115,7 @@ Example&nbsp;22
 <div id="lst-gnd-concept-scheme" class="listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-gnd-concept-scheme-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Example&nbsp;23: Integrated Authority File (GND)
+Example&nbsp;24: Integrated Authority File (GND)
 </figcaption>
 <div aria-describedby="lst-gnd-concept-scheme-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <p>The Integrated Authority File (German: <em>Gemeinsame Normdatei</em>) is an authority file managed by the German National Library. This example encodes GND as JSKOS concept scheme with explicit knowledge about existence of more identifiers, definitions, and preferred labels:</p>
@@ -3111,7 +3156,7 @@ Example&nbsp;23: Integrated Authority File (GND)
 <div id="lst-gnd-concept" class="listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-gnd-concept-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Example&nbsp;24: GND Concept
+Example&nbsp;25: GND Concept
 </figcaption>
 <div aria-describedby="lst-gnd-concept-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
@@ -3144,7 +3189,7 @@ Example&nbsp;24: GND Concept
 <div id="lst-ex-ddc-1" class="listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-ex-ddc-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Example&nbsp;25: DDC Concept
+Example&nbsp;26: DDC Concept
 </figcaption>
 <div aria-describedby="lst-ex-ddc-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <p>A concept from the Dewey Decimal Classification, German edition 22:</p>
@@ -3202,7 +3247,7 @@ Example&nbsp;25: DDC Concept
 <div id="lst-ex-ddc-2" class="listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-ex-ddc-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Example&nbsp;26: DDC Concept
+Example&nbsp;27: DDC Concept
 </figcaption>
 <div aria-describedby="lst-ex-ddc-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <p>A concept from the abbridget Dewey Decimal Classification, edition 23, in three languages:</p>
@@ -3283,7 +3328,7 @@ Example&nbsp;26: DDC Concept
 <div id="lst-ex-ddc-decomposed" class="listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-ex-ddc-decomposed-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Example&nbsp;27: DDC Concept
+Example&nbsp;28: DDC Concept
 </figcaption>
 <div aria-describedby="lst-ex-ddc-decomposed-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <p>A decomposed DDC number for medieval cooking:</p>
@@ -3311,7 +3356,7 @@ Example&nbsp;27: DDC Concept
 <div id="lst-ex-mappings" class="listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-ex-mappings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Example&nbsp;28: Mappings
+Example&nbsp;29: Mappings
 </figcaption>
 <div aria-describedby="lst-ex-mappings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <p>Multiple mappings from one concept (612.112 in DDC) to GND.</p>
@@ -3384,7 +3429,7 @@ Example&nbsp;28: Mappings
 <li>Connect <a href="#distribution">distribution</a> and <a href="#service">service</a> via field <code>services</code></li>
 <li>Make <a href="#service">service</a> field <code>endpoint</code> optional</li>
 <li>Add abstract object type <a href="#dataset">dataset</a></li>
-<li>Add non-normative appendix on <a href="#mapping-to-rdf">mapping to RDF</a></li>
+<li>Add documentation of SKOS collections and non-normative appendix on <a href="#mapping-to-rdf">mapping to RDF</a></li>
 </ul>
 </section>
 <section id="section" class="level3 unnumbered">

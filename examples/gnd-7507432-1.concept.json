@@ -1,0 +1,14 @@
+{
+  "uri": "http://d-nb.info/gnd/7507432-1",
+  "prefLabel": { "de": "Drei-Sektoren-Hypothese" },
+  "memberSet": [
+    { 
+      "uri": "http://d-nb.info/gnd/4126823-4",
+      "prefLabel": { "de": "Sektoraler Strukturwandel" }
+    },
+    {
+      "uri": "http://d-nb.info/gnd/4161152-4",
+      "prefLabel": { "de": "Hypothese" }
+    }
+  ]
+}

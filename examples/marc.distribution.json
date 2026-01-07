@@ -1,0 +1,6 @@
+{
+  "download": "http://example.org/data/dump.xml.gz",
+  "mimetype": "application/xml",
+  "format": "http://format.gbv.de/marc/authority",
+  "compressFormat": "http://www.iana.org/assignments/media-types/application/gzip"
+}

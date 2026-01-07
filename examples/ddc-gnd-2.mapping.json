@@ -1,0 +1,35 @@
+{
+    "fromScheme": {"uri":"http://dewey.info/scheme/edition/e22/"},
+    "from": {
+        "memberSet": [ {
+            "uri": "http://dewey.info/class/612.112/e22/",
+            "notation": ["612.112"]
+        } ]
+    },
+    "toScheme": {"uri":"http://d-nb.info/gnd/7749153-1"},
+    "to": {
+        "memberChoice": [ {
+            "uri": "http://d-nb.info/gnd/4074195-3",
+            "prefLabel": { "de": "Leukozyt" }
+          },{
+            "uri": "http://d-nb.info/gnd/4141893-1",
+            "prefLabel": { "de": "Alkalische Leukozytenphosphatase" }
+          },{
+            "uri": "http://d-nb.info/gnd/7606617-4",
+            "prefLabel": { "de": "Blutlymphozyt" }
+          },{
+            "uri": "http://d-nb.info/gnd/4158047-3",
+            "prefLabel": { "de": "Granulozyt" }
+          },{
+            "uri": "http://d-nb.info/gnd/4227943-4",
+            "prefLabel": { "de": "Leukozytenadhäsion" }
+          },{
+            "uri": "http://d-nb.info/gnd/4166696-3",
+            "prefLabel": { "de": "Leukozytenphosphatase" }
+          },{
+            "uri": "http://d-nb.info/gnd/4285013-7",
+            "prefLabel": { "de": "Monozyt" }
+        } ]
+    },
+    "mappingRelevance": 0.5
+}

@@ -1,0 +1,17 @@
+{
+  "type": ["http://www.w3.org/2004/02/skos/core#Concept"],
+  "uri": "http://www.wikidata.org/entity/Q5",
+  "prefLabel": { "en": "human" },
+  "occurrences": [
+    {
+      "relation": "http://schema.org/about",
+      "count": 206,
+      "modified": "2017-11-15T14:00:58.796Z"
+    },
+    {
+      "relation": "http://www.wikidata.org/entity/P31",
+      "count": 3706347,
+      "modified": "2017-11-15T14:00:58.796Z"
+    }
+  ]
+}

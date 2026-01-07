@@ -1,0 +1,93 @@
+{
+  "uri": "http://gbv.github.io/jskos/examples/object-types.scheme.json",
+  "type": [ "http://www.w3.org/2004/02/skos/core#ConceptScheme" ],
+  "topConcepts": [
+    { "uri": "http://www.w3.org/2004/02/skos/core#Concept" },
+    { "uri": "http://www.w3.org/ns/dcat#Dataset" },
+    { "uri": "http://www.w3.org/ns/dcat#Distribution" },
+    { "uri": "https://www.w3.org/ns/dcat#DataService" },
+    { "uri": "http://www.w3.org/2004/02/skos/core#mappingRelation" },
+    { "uri": "http://www.opengis.net/ont/geosparql#Geometry" },
+    { "uri": "http://iiif.io/api/presentation/2#Manifest" },
+    { "uri": "http://www.w3.org/ns/oa#Annotation" }
+  ],
+  "concepts": [ {
+      "uri": "http://www.w3.org/2004/02/skos/core#Concept",
+      "prefLabel": { "en": "concept" },
+      "url": "https://gbv.github.io/jskos/#concept",
+      "narrower": [ {
+          "uri": "http://schema.vocnet.org/NonIndexingConcept",
+          "prefLabel": { "en": "non-indexing concept" }
+        }, {
+          "uri": "http://www.w3.org/2002/07/owl#Class",
+          "prefLabel": { "en": "class" }
+        }, {
+          "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
+          "prefLabel": { "en": "property" }
+        } ]
+    }, {
+      "uri": "http://www.w3.org/ns/dcat#Dataset",
+      "prefLabel": { "en": "dataset" },
+      "url": "http://gbv.github.io/jskos/#dataset",
+      "narrower": [ {
+        "uri": "http://www.w3.org/2004/02/skos/core#ConceptScheme",
+        "prefLabel": { "en": "concept scheme" },
+        "url": "https://gbv.github.io/jskos/#concept-scheme"
+      }, {
+        "uri": "http://www.w3.org/ns/dcat#Catalog",
+        "identifier": [ "http://purl.org/cld/cdtype/CatalogueOrIndex" ],
+        "prefLabel": { "en": "registry" },
+        "url": "https://gbv.github.io/jskos/#registry"
+      }, {
+        "uri": "http://rdf-vocabulary.ddialliance.org/xkos#Correspondence",
+        "identifier": [
+          "http://purl.org/spar/fabio/VocabularyMapping",
+          "http://rdfs.org/ns/void#Linkset"
+        ],
+        "prefLabel": { "en": "concordance" },
+        "url": "https://gbv.github.io/jskos/#concordance"
+      } ]
+    }, {
+      "uri": "http://www.w3.org/ns/dcat#Distribution",
+      "prefLabel": { "en": "distribution" },
+      "url": "https://gbv.github.io/jskos/#distribution"
+    }, {
+      "uri": "https://www.w3.org/ns/dcat#DataService",
+      "prefLabel": { "en": "service" },
+      "url": "https://gbv.github.io/jskos/#service"
+    }, {
+      "uri": "http://www.w3.org/2004/02/skos/core#mappingRelation",
+      "prefLabel": { "en": "is in mapping relation with" },
+      "narrower": [ {
+        "uri": "http://www.w3.org/2004/02/skos/core#closeMatch",
+        "prefLabel": { "en": "has close match" }
+      }, {
+        "uri": "http://www.w3.org/2004/02/skos/core#exactMatch",
+        "prefLabel": { "en": "has exact match" }
+      }, {
+        "uri": "http://www.w3.org/2004/02/skos/core#broadMatch",
+        "prefLabel": { "en": "has broader match" },
+        "related": [ { "uri": "http://www.w3.org/2004/02/skos/core#narrowMatch" } ]
+      }, {
+        "uri": "http://www.w3.org/2004/02/skos/core#narrowMatch",
+        "prefLabel": { "en": "has narrower match" },
+        "related": [ { "uri": "http://www.w3.org/2004/02/skos/core#broadMatch" } ]
+      }, {
+        "uri": "http://www.w3.org/2004/02/skos/core#relatedMatch",
+        "prefLabel": { "en": "has related match" }
+      } ]
+    }, {
+      "uri": "http://www.opengis.net/ont/geosparql#Geometry",
+      "prefLabel": { "en": "location" }
+    }, {
+      "uri": "http://iiif.io/api/presentation/2#Manifest",
+      "prefLabel": { "en": "media" }
+    }, {
+      "uri": "http://www.w3.org/ns/oa#Annotation",
+      "prefLabel": { "en": "annotation" }
+    }, {
+      "uri": "https://schema.org/PostalAddress",
+      "prefLabel": { "en": "address" }
+    }
+  ]
+}

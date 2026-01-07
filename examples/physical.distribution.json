@@ -1,0 +1,6 @@
+{
+  "services": [ {
+    "type": [ "http://www.w3.org/ns/dcat#DataService" ],
+    "prefLabel": { "en": "physical delivery" }
+  } ]
+}

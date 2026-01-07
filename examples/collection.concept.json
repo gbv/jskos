@@ -1,0 +1,16 @@
+{
+  "prefLabel": { "en": "milk" },
+  "type": [ "http://www.w3.org/2004/02/skos/core#Concept" ],
+  "narrower": [ {
+     "prefLabel": { "en": "milk by source animal" },
+     "type": [
+       "http://www.w3.org/2004/02/skos/core#Concept",
+       "http://schema.vocnet.org/NonIndexingConcept"
+     ],
+     "memberList": [
+       { "prefLabel": { "en": "cow milk" } },
+       { "prefLabel": { "en": " goat milk" } },
+       { "prefLabel": { "en": "buffalo milk" } }
+     ]
+  } ]
+}

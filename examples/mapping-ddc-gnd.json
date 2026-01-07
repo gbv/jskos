@@ -1,0 +1,104 @@
+[
+    {
+        "creator": [{
+            "prefLabel": {
+                "de": "CrissCross"   
+            },
+            "url": "http://ixtrieve.fh-koeln.de/crisscross/index.html"
+        }],
+        "type": ["http://www.w3.org/2004/02/skos/core#exactMatch"],
+        "fromScheme": {"notation":["DDC"]},
+        "from": {
+            "memberSet": [ 
+                {
+                    "notation": ["612.112"],
+                    "prefLabel": { "de": "Leukozyten (Weiße Blutkörperchen)"}
+                }
+            
+            ]
+        },
+        "toScheme": {"notation":["GND"]},
+        "to": {
+            "memberSet": [ {
+                "uri": "http://d-nb.info/gnd/4074195-3",
+                "prefLabel": { "de": "Leukozyt" },
+                "notation":["4074195-3"]
+            } ]
+        }
+    },
+    {
+        "creator": [{
+            "prefLabel": {
+                "de": "CrissCross"   
+            },
+            "url": "http://ixtrieve.fh-koeln.de/crisscross/index.html"
+        }],
+        "mappingRelevance": 0.5,
+        "fromScheme": {"notation":["DDC"]},
+        "from": {
+            "memberSet": [ {
+                "uri": "http://dewey.info/class/612.112/e22/",
+                "notation": ["612.112"],
+                "prefLabel": { "de": "Leukozyten (Weiße Blutkörperchen)"}
+            } ]
+        },
+        "toScheme": {"notation":["GND"]},
+        "to": {
+            "memberChoice": [ {
+                "uri": "http://d-nb.info/gnd/4074195-3",
+                "prefLabel": { "de": "Leukozyt" },
+                "notation":["4074195-3"]
+            },{
+                "uri": "http://d-nb.info/gnd/4141893-1",
+                "prefLabel": { "de": "Alkalische Leukozytenphosphatase" },
+                "notation":["4141893-1"]
+            },{
+                "uri": "http://d-nb.info/gnd/7606617-4",
+                "prefLabel": { "de": "Blutlymphozyt" },
+                "notation":["7606617-4"]
+            },{
+                "uri": "http://d-nb.info/gnd/4158047-3",
+                "prefLabel": { "de": "Granulozyt" },
+                "notation":["4158047-3"]
+            },{
+                "uri": "http://d-nb.info/gnd/4227943-4",
+                "prefLabel": { "de": "Leukozytenadhäsion" },
+                "notation":["4227943-4"]
+            },{
+                "uri": "http://d-nb.info/gnd/4166696-3",
+                "prefLabel": { "de": "Leukozytenphosphatase" },
+                "notation":["4166696-3"]
+            },{
+                "uri": "http://d-nb.info/gnd/4285013-7",
+                "prefLabel": { "de": "Monozyt" },
+                "notation":["4285013-7"]
+            } ]
+        }
+    },
+    {
+        "creator": [{
+            "prefLabel": {
+                "de": "CrissCross"   
+            },
+            "url": "http://ixtrieve.fh-koeln.de/crisscross/index.html"
+        }],
+        "mappingRelevance": 0.2,
+        "justification": "https://w3id.org/semapv/vocab/ManualMappingCuration",
+        "fromScheme": {"notation":["DDC"]},
+        "from": {
+            "memberChoice": [ {
+                "uri": "http://dewey.info/class/612.112/e22/",
+                "notation": ["612.112"],
+                "prefLabel": { "de": "Leukozyten (Weiße Blutkörperchen)"}
+            } ]
+        },
+        "toScheme": {"notation":["GND"]},
+        "to": {
+            "memberSet": [ {
+                "uri": "http://d-nb.info/gnd/4499720-6",
+                "prefLabel": { "de": "Leukozytenintegrine" },
+                "notation":["4499720-6"]
+            } ]
+        }
+    }
+]

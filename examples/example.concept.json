@@ -1,0 +1,29 @@
+{
+  "uri": "http://example.org/terminology/P",
+  "type": ["http://www.w3.org/2004/02/skos/core#Concept"],
+  "scopeNote": {
+    "en": ["state of harmony characterized by lack of violent conflict and freedom from fear of violence"],
+    "de": ["Abwesenheit von Gewalt, Angst und anderen Störungen"]
+  },
+  "prefLabel": {
+    "en": "peace",
+    "de": "Frieden"
+  },
+  "altLabel": {
+    "de": ["Friede"]
+  },
+  "notation": ["P"],
+  "narrower": [
+    {
+      "prefLabel": {
+        "en": "world peace",
+        "de": "Weltfrieden"
+      } 
+    }
+  ],
+  "related": [
+    { 
+      "prefLabel": { "en": "war", "de": "Krieg" } 
+    }
+  ]
+}

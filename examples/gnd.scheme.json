@@ -1,0 +1,31 @@
+{
+   "definition" : {
+      "-" : ["…"],
+      "de" : ["Von der DNB in Kooperation mit den Verbundpartnern geführte gemeinsame Normdatei"],
+      "en" : ["international authority file for personal names, subject headings and corporate bodies"]
+   },
+   "identifier" : [
+      "http://bartoc.org/en/node/430",
+      "http://d-nb.info/gnd/7749153-1",
+      "http://viaf.org/viaf/188136221",
+      "http://www.wikidata.org/entity/Q36578",
+      null
+   ],
+   "namespace" : "http://d-nb.info/gnd/",
+   "notation" : [
+      "GND"
+   ],
+   "notationPattern" : "[0-9X-]+",
+   "prefLabel" : {
+      "-" : "…",
+      "ar" : "ملف استنادي متكامل",
+      "de" : "Gemeinsame Normdatei",
+      "en" : "Integrated Authority File",
+      "ko" : "게마인자메 노름다타이"
+   },
+   "type" : [
+      "http://www.w3.org/2004/02/skos/core#ConceptScheme"
+   ],
+   "uri" : "http://d-nb.info/gnd/7749153-1",
+   "uriPattern" : "^http://d-nb\\.info/gnd/([0-9X-]+)$"
+}

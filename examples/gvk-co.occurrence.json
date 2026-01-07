@@ -1,0 +1,36 @@
+[
+  {
+    "database": { "uri": "http://uri.gbv.de/database/gvk" },
+    "memberSet": [
+      {
+        "uri": "http://uri.gbv.de/terminology/bk/08.22",
+        "prefLabel": { "de": "Mittelalterliche Philosophie" }
+      }
+    ],
+    "count": 3657,
+    "modified": "2017-11-22",
+    "url": "https://gso.gbv.de/DB=2.1/CMD?ACT=SRCHA&IKT=1016&SRT=YOP&TRM=bkl+08.22"
+  },
+  {
+    "database": { "uri": "http://uri.gbv.de/database/gvk" },
+    "memberSet": [
+      {
+        "uri": "http://dewey.info/class/610/e23/",
+        "prefLabel": { "en": "Medicine & health" }
+      }
+    ],
+    "count": 144611,
+    "modified": "2017-11-22",
+    "url": "https://gso.gbv.de/DB=2.1/CMD?ACT=SRCHA&IKT=1016&SRT=YOP&TRM=ddc+610"
+  },
+  {
+    "database": { "uri": "http://uri.gbv.de/database/gvk" },
+    "memberSet": [
+      { "uri": "http://uri.gbv.de/terminology/bk/08.22" },
+      { "uri": "http://dewey.info/class/610/e23/" }
+    ],
+    "count": 2,
+    "modified": "2017-11-22",
+    "url": "https://gso.gbv.de/DB=2.1/CMD?ACT=SRCHA&IKT=1016&SRT=YOP&TRM=bkl+08.22+ddc+610"
+  }
+]

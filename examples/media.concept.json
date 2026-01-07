@@ -1,0 +1,13 @@
+{
+  "media": [ {
+    "type": "Manifest",
+    "items": [],
+    "thumbnail": [
+      {
+        "type": "Image",
+        "id": "http://example.org/1/thumbnail.jpg",
+        "format": "image/jpeg"
+      }
+    ]
+  } ]
+}

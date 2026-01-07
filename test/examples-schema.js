@@ -19,9 +19,9 @@ for (let type of types) {
   schemas[type] = JSON.parse(fs.readFileSync(`./schemas/${type}.schema.json`))
   ajv.addSchema(schemas[type])
 }
-const validate = Object.fromEntries(types.map(type => [type, ajv.compile(schemas[type])]))
 
-testExamples("Valid against JSON Schema", "examples", types, (objects, file, type) => {
+var validate = Object.fromEntries(types.map(type => [type, ajv.compile(schemas[type])]))
+const testValid = () => testExamples("Valid against JSON Schema", "examples", types, (objects, file, type) => {
   for (let object of objects) {
     if (validate[type](object)) {
       assert.ok(true)
@@ -30,6 +30,8 @@ testExamples("Valid against JSON Schema", "examples", types, (objects, file, typ
     }
   }
 })
+
+testValid()
 
 testExamples("Invalid against JSON Schema", "examples/invalid", types, (objects, file, type) => {
   for (let object of objects) {
@@ -51,10 +53,14 @@ describe("Strict checking (no unknown fields)", () => {
    
   types.forEach(type => ajv.addSchema(schemas[type]))
 
+  validate = Object.fromEntries(types.map(type => [type, ajv.compile(schemas[type])]))
+  
   strict.forEach(type => it(type, () => {
     const valid = ajv.compile(schemas[type])
     const example = type === "mapping" ? { from: {memberSet:[]}, to: {memberSet:[]} } : {}
     example.unknown = []
     assert.equal(valid(example), false)
   }))
+
+  testValid()
 })

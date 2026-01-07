@@ -19,9 +19,12 @@
       }
     }
   },
-  "allOf": [
+  "anyOf": [
     {
-      "$ref": "resource.schema.json"
+      "$ref": "item.schema.json"
+    },
+    {
+      "$ref": "bundle.schema.json"
     }
   ],
   "properties": {

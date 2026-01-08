@@ -826,14 +826,14 @@ Note
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th style="text-align: left;">object type</th>
+<th style="text-align: left;">kind of data</th>
 <th style="text-align: left;">object type URI</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;"><a href="#occurrence">occurrence</a></td>
-<td style="text-align: left;">?</td>
+<td style="text-align: left;"><em>not defined yet</em></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><a href="#location">location</a></td>
@@ -851,14 +851,21 @@ Note
 <td style="text-align: left;"><a href="#address">address</a></td>
 <td style="text-align: left;"><a href="https://schema.org/PostalAddress" class="uri">https://schema.org/PostalAddress</a></td>
 </tr>
+<tr class="even">
+<td style="text-align: left;">SKOS collections</td>
+<td style="text-align: left;"><a href="http://schema.vocnet.org/NonIndexingConcept" class="uri">http://schema.vocnet.org/NonIndexingConcept</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Resource types</td>
+<td style="text-align: left;"><a href="http://www.w3.org/2002/07/owl#Class" class="uri">http://www.w3.org/2002/07/owl#Class</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Properties</td>
+<td style="text-align: left;"><a href="http://www.w3.org/2000/01/rdf-schema#Property" class="uri">http://www.w3.org/2000/01/rdf-schema#Property</a></td>
+</tr>
 </tbody>
 </table>
-<p>Application SHOULD also support the following type URIs for additional subtypes of <a href="#concept">concept</a>:</p>
-<ul>
-<li><a href="http://schema.vocnet.org/NonIndexingConcept" class="uri">http://schema.vocnet.org/NonIndexingConcept</a> for SKOS collections</li>
-<li><a href="http://www.w3.org/2002/07/owl#Class" class="uri">http://www.w3.org/2002/07/owl#Class</a> for RDF classes</li>
-<li><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property" class="uri">http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</a> for RDF properties</li>
-</ul>
+<p>The latter three are used for subtypes of <a href="#concept">concept</a>. See also <a href="#registry">registry</a> fields <code>properties</code> (used in <a href="#qualified-statements">qualified statements</a>) and <code>types</code>, and the list of object type URIs in <a href="#dataset">dataset</a> field <code>objectTypes</code>.</p>
 </section>
 <section id="object-types" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Object types</h1>
@@ -1664,60 +1671,7 @@ Example&nbsp;10
 </table>
 <p>The first element of array field <code>type</code>, if given, MUST be the <a href="#resource-and-property-types">item type</a> URI <a href="http://www.w3.org/ns/dcat#Catalog" class="uri">http://www.w3.org/ns/dcat#Catalog</a> . Applications SHOULD also accept alternative URI <a href="http://purl.org/cld/cdtype/CatalogueOrIndex" class="uri">http://purl.org/cld/cdtype/CatalogueOrIndex</a> for backwards compatibility.</p>
 <p>Registries are collection of <a href="#concept">concepts</a>, <a href="#concept-scheme">concept schemes</a>, <a href="#mapping">mappings</a>, <a href="#concordance">concordances</a>, <a href="#occurrence">occurrences</a>, and/or other registries with information about <a href="#resource-and-property-types">resource types</a> and <a href="#resource-and-property-types">property types</a>.</p>
-<p>Field <code>objectTypes</code> SHOULD list <a href="#resource-and-property-types">object type URIs</a> of entities included in the registry:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: left;">resource type URI</th>
-<th style="text-align: left;">if it contains</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><a href="http://www.w3.org/2004/02/skos/core#Concept" class="uri">http://www.w3.org/2004/02/skos/core#Concept</a></td>
-<td style="text-align: left;"><a href="#concept">concepts</a> (<code>concepts</code>, <code>types</code>, <code>properties</code>)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><a href="http://www.w3.org/2004/02/skos/core#ConceptScheme" class="uri">http://www.w3.org/2004/02/skos/core#ConceptScheme</a></td>
-<td style="text-align: left;"><a href="#concept-scheme">concept schemes</a> (<code>schemes</code>)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><a href="http://www.w3.org/2004/02/skos/core#mappingRelation" class="uri">http://www.w3.org/2004/02/skos/core#mappingRelation</a></td>
-<td style="text-align: left;"><a href="#mapping">mappings</a> (<code>mappings</code>)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><a href="http://rdf-vocabulary.ddialliance.org/xkos#Correspondence" class="uri">http://rdf-vocabulary.ddialliance.org/xkos#Correspondence</a></td>
-<td style="text-align: left;"><a href="#concordance">concordances</a> (<code>concordances</code>)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">??? (not specified yet)</td>
-<td style="text-align: left;"><a href="#occurrence">occurrences</a> (<code>occurrences</code>)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><a href="http://www.w3.org/ns/dcat#Catalog" class="uri">http://www.w3.org/ns/dcat#Catalog</a></td>
-<td style="text-align: left;"><a href="#registry">registries</a> (<code>registries</code>)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><a href="http://www.w3.org/ns/oa#Annotation" class="uri">http://www.w3.org/ns/oa#Annotation</a></td>
-<td style="text-align: left;"><a href="#annotation">annotations</a> (<code>annotations</code>)</td>
-</tr>
-</tbody>
-</table>
-<p>A registry limited to only one of the fields <code>concepts</code>, <code>schemes</code>, <code>mappings</code>, <code>concordances</code>, and <code>occurrences</code>, <code>registries</code> is also called a <strong>collection</strong> of the corresponding <a href="#resource-and-property-types">item type</a>. Registry field <code>types</code> SHOULD include the corresponding item type URI.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Registries are the top JSKOS entity, followed by <a href="#concordance">concordances</a>, <a href="#mapping">mappings</a> <a href="#concept-scheme">concept schemes</a>, and on the lowest level <a href="#concept">concepts</a> and <a href="#resource-and-property-types">resource types</a>. See <a href="#distribution">Distributions</a> for an alternative.</p>
-<p>Conversion of JSKOS registries to RDF (see <a href="#mapping-to-rdf">appendix</a>) requires a different value for field <code>concepts</code> to not infer the RDF property <code>skos:inScheme</code> but <code>dct:isPartOf</code>.</p>
-</div>
-</div>
+<p>A registry limited to only one of the fields <code>concepts</code>, <code>schemes</code>, <code>mappings</code>, <code>concordances</code>, <code>occurrences</code>, <code>registries</code>, and <code>annotations</code> is also called a <strong>collection</strong> of the corresponding <a href="#resource-and-property-types">item type</a>. Collections MAY contain additional resource types (<code>types</code>) and property types (<code>properties</code>).</p>
 <div id="lst-concept1" class="json listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-concept1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -2103,7 +2057,7 @@ Note
 <tr class="odd">
 <td style="text-align: left;">objectTypes</td>
 <td style="text-align: left;"><a href="#list">list</a> of <a href="#uri">URI</a></td>
-<td style="text-align: left;">URIs of types of records in this dataset</td>
+<td style="text-align: left;"><a href="#resource-and-property-types">object type URIs</a> of records in this dataset</td>
 </tr>
 </tbody>
 </table>
@@ -2118,6 +2072,63 @@ Diagram&nbsp;3: dataset and connected object types
 </div>
 </figure>
 </div>
+<p>Field <code>objectTypes</code>, if given, MUST contain the following <a href="#resource-and-property-types">object type URIs</a> for fields containing a non-empty <a href="#set">set</a>:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">field</th>
+<th style="text-align: left;">records</th>
+<th style="text-align: left;">URI</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">concepts</td>
+<td style="text-align: left;"><a href="#concept">concepts</a></td>
+<td style="text-align: left;"><a href="http://www.w3.org/2004/02/skos/core#Concept" class="uri">http://www.w3.org/2004/02/skos/core#Concept</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">schemes</td>
+<td style="text-align: left;"><a href="#concept-scheme">concept schemes</a></td>
+<td style="text-align: left;"><a href="http://www.w3.org/2004/02/skos/core#ConceptScheme" class="uri">http://www.w3.org/2004/02/skos/core#ConceptScheme</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">mappings</td>
+<td style="text-align: left;"><a href="#mapping">mappings</a></td>
+<td style="text-align: left;"><a href="http://www.w3.org/2004/02/skos/core#mappingRelation" class="uri">http://www.w3.org/2004/02/skos/core#mappingRelation</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">concordances</td>
+<td style="text-align: left;"><a href="#concordance">concordances</a></td>
+<td style="text-align: left;"><a href="http://rdf-vocabulary.ddialliance.org/xkos#Correspondence" class="uri">http://rdf-vocabulary.ddialliance.org/xkos#Correspondence</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">occurrences</td>
+<td style="text-align: left;"><a href="#occurrence">occurrences</a></td>
+<td style="text-align: left;"><em>not defined yet</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">registries</td>
+<td style="text-align: left;"><a href="#registry">registries</a></td>
+<td style="text-align: left;"><a href="http://www.w3.org/ns/dcat#Catalog" class="uri">http://www.w3.org/ns/dcat#Catalog</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">types</td>
+<td style="text-align: left;"><a href="#resource-and-property-types">resource types</a></td>
+<td style="text-align: left;"><a href="http://www.w3.org/2002/07/owl#Class" class="uri">http://www.w3.org/2002/07/owl#Class</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">properties</td>
+<td style="text-align: left;"><a href="#resource-and-property-types">property types</a></td>
+<td style="text-align: left;"><a href="http://www.w3.org/2000/01/rdf-schema#Property" class="uri">http://www.w3.org/2000/01/rdf-schema#Property</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">annotations</td>
+<td style="text-align: left;"><a href="#annotation">annotations</a></td>
+<td style="text-align: left;"><a href="http://www.w3.org/ns/oa#Annotation" class="uri">http://www.w3.org/ns/oa#Annotation</a></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="concept-bundle" class="level2" data-number="4.12">
 <h2 data-number="4.12" class="anchored" data-anchor-id="concept-bundle"><span class="header-section-number">4.12</span> Concept Bundle</h2>

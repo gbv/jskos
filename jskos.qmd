@@ -440,19 +440,20 @@ item                item type URI
 
 An **object type URI** is an item type URI, or one of the following:
 
-object type         object type URI
+kind of data        object type URI
 ------------------- -----------------------------------------------------
-[occurrence]        ?
+[occurrence]        *not defined yet*
 [location]          <http://www.opengis.net/ont/geosparql#Geometry>
 [media]             <http://iiif.io/api/presentation/2#Manifest> 
 [annotation]        <http://www.w3.org/ns/oa#Annotation>
 [address]           <https://schema.org/PostalAddress>
+SKOS collections    <http://schema.vocnet.org/NonIndexingConcept>
+Resource types      <http://www.w3.org/2002/07/owl#Class>
+Properties          <http://www.w3.org/2000/01/rdf-schema#Property>
 
-Application SHOULD also support the following type URIs for additional subtypes of [concept]:
-
-- <http://schema.vocnet.org/NonIndexingConcept> for SKOS collections
-- <http://www.w3.org/2002/07/owl#Class> for RDF classes
-- <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> for RDF properties
+The latter three are used for subtypes of [concept]. See also [registry] fields
+`properties` (used in [qualified statements]) and `types`, and the list of
+object type URIs in [dataset] field `objectTypes`.
 
 # Object types
 
@@ -799,32 +800,10 @@ Registries are collection of [concepts], [concept schemes], [mappings],
 [concordances], [occurrences], and/or other registries with information about
 [resource types] and [property types].
 
-Field `objectTypes` SHOULD list [object type URIs](#resource-and-property-types) of entities included in the registry:
-
-resource type URI                                           if it contains 
------------------------------------------------------------ ------------------
-<http://www.w3.org/2004/02/skos/core#Concept>               [concepts] (`concepts`, `types`, `properties`)
-<http://www.w3.org/2004/02/skos/core#ConceptScheme>         [concept schemes] (`schemes`)
-<http://www.w3.org/2004/02/skos/core#mappingRelation>       [mappings] (`mappings`)
-<http://rdf-vocabulary.ddialliance.org/xkos#Correspondence> [concordances] (`concordances`)
-??? (not specified yet)                                     [occurrences] (`occurrences`)
-<http://www.w3.org/ns/dcat#Catalog>                         [registries] (`registries`)
-<http://www.w3.org/ns/oa#Annotation>                        [annotations] (`annotations`)
-
 A registry limited to only one of the fields `concepts`, `schemes`, `mappings`,
-`concordances`, and `occurrences`, `registries` is also called a **collection**
-of the corresponding [item type]. Registry field `types` SHOULD include the
-corresponding item type URI.
-
-::: {.callout-note}
-Registries are the top JSKOS entity, followed by
-[concordances], [mappings] [concept schemes], and on the lowest level
-[concepts] and [resource types]. See [Distributions] for an alternative.
-
-Conversion of JSKOS registries to RDF (see [appendix](#mapping-to-rdf))
-requires a different value for field `concepts` to not infer the RDF property
-`skos:inScheme` but `dct:isPartOf`.
-:::
+`concordances`, `occurrences`, `registries`, and `annotations` is also called
+a **collection** of the corresponding [item type]. Collections MAY contain 
+additional resource types (`types`) and property types (`properties`).
 
 ```{.json #lst-concept1 lst-cap="A registry with concepts and its subtypes"}
 {{< include examples/concept.registry.json >}}
@@ -1063,11 +1042,25 @@ distributions [set] of [distributions]  [distributions] to access the content of
 services      [set] of [service]        Services to access the content of the dataset
 extent        string                    Size of the concept scheme
 license       [set]                     Licenses which the full scheme can be used under
-objectTypes   [list] of [URI]           URIs of types of records in this dataset
+objectTypes   [list] of [URI]           [object type URIs](#resource-and-property-types) of records in this dataset
 
 Object subtypes of dataset include [concept scheme], [registry], and [concordance].
 
 ![dataset and connected object types](dataset.svg){#fig-dataset}
+
+Field `objectTypes`, if given, MUST contain the following [object type URIs](#resource-and-property-types) for fields containing a non-empty [set]:
+
+field        records            URI
+------------ ------------------ -------
+concepts     [concepts]         <http://www.w3.org/2004/02/skos/core#Concept>
+schemes      [concept schemes]  <http://www.w3.org/2004/02/skos/core#ConceptScheme>
+mappings     [mappings]         <http://www.w3.org/2004/02/skos/core#mappingRelation>
+concordances [concordances]     <http://rdf-vocabulary.ddialliance.org/xkos#Correspondence>
+occurrences  [occurrences]      *not defined yet*
+registries   [registries]       <http://www.w3.org/ns/dcat#Catalog>
+types        [resource types]   <http://www.w3.org/2002/07/owl#Class>
+properties   [property types]   <http://www.w3.org/2000/01/rdf-schema#Property>
+annotations  [annotations]      <http://www.w3.org/ns/oa#Annotation>
 
 
 ## Concept Bundle

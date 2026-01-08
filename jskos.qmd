@@ -449,11 +449,11 @@ kind of data        object type URI
 [address]           <https://schema.org/PostalAddress>
 SKOS collections    <http://schema.vocnet.org/NonIndexingConcept>
 Resource types      <http://www.w3.org/2002/07/owl#Class>
-Properties          <http://www.w3.org/2000/01/rdf-schema#Property>
+Properties          <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>
 
 The latter three are used for subtypes of [concept]. See also [registry] fields
 `properties` (used in [qualified statements]) and `types`, and the list of
-object type URIs in [dataset] field `objectTypes`.
+object type URIs in field `objectTypes` of [dataset].
 
 # Object types
 
@@ -803,7 +803,7 @@ Registries are collection of [concepts], [concept schemes], [mappings],
 A registry limited to only one of the fields `concepts`, `schemes`, `mappings`,
 `concordances`, `occurrences`, `registries`, and `annotations` is also called
 a **collection** of the corresponding [item type]. Collections MAY contain 
-additional resource types (`types`) and property types (`properties`).
+additional resource types (`types`) and property types (`properties`). 
 
 ```{.json #lst-concept1 lst-cap="A registry with concepts and its subtypes"}
 {{< include examples/concept.registry.json >}}
@@ -1059,7 +1059,7 @@ concordances [concordances]     <http://rdf-vocabulary.ddialliance.org/xkos#Corr
 occurrences  [occurrences]      *not defined yet*
 registries   [registries]       <http://www.w3.org/ns/dcat#Catalog>
 types        [resource types]   <http://www.w3.org/2002/07/owl#Class>
-properties   [property types]   <http://www.w3.org/2000/01/rdf-schema#Property>
+properties   [property types]   <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>
 annotations  [annotations]      <http://www.w3.org/ns/oa#Annotation>
 
 

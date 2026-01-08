@@ -2,7 +2,8 @@
   "type": [ "http://www.w3.org/ns/dcat#Catalog" ],
   "prefLabel": { "en": "People entities" },
   "objectTypes": [
-    "http://www.w3.org/2004/02/skos/core#Concept"
+    "http://www.w3.org/2004/02/skos/core#Concept",
+    "http://www.w3.org/2002/07/owl#Class"
   ],
   "types": [
     { "uri": "http://www.w3.org/2004/02/skos/core#Concept" },

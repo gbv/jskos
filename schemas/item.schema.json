@@ -175,15 +175,15 @@
     },
     "startPlace": {
       "description": "where an item started (e.g. place of birth)",
-      "$ref": "concept.schema.json#/$defs/conceptSet"
+      "$ref": "#/$defs/itemSet"
     },
     "endPlace": {
       "description": "where an item ended (e.g. place of death)",
-      "$ref": "concept.schema.json#/$defs/conceptSet"
+      "$ref": "#/$defs/itemSet"
     },
     "place": {
       "description": "other relevant place(s) of the item",
-      "$ref": "concept.schema.json#/$defs/conceptSet"
+      "$ref": "#/$defs/itemSet"
     },
     "address": {
       "description": "geographic location of the item",
@@ -191,6 +191,10 @@
     },
     "replacedBy": {
       "description": "Related items that supplant, displace, or supersede the described item",
+      "$ref": "#/$defs/itemSet"
+    },
+    "basedOn": {
+      "description": "related items that inspired or led to this item",
       "$ref": "#/$defs/itemSet"
     },
     "subject": {

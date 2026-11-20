@@ -103,6 +103,10 @@
       "@type": "@id",
       "@container": "@set"
     },
+    "media": {
+      "@id": "http://xmlns.com/foaf/0.1/depiction",
+      "@context": "http://iiif.io/api/presentation/3/context.json"
+    },
     "place": {
       "@id": "http://schema.org/location",
       "@container": "@set"

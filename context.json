@@ -188,6 +188,10 @@
       "@id": "http://purl.org/dc/terms/license",
       "@container": "@set"
     },
+    "accessRights": {
+      "@id": "http://purl.org/dc/terms/accessRights",
+      "@container": "@set"
+    },
     "deprecated": "http://www.w3.org/2002/07/owl#deprecated",
     "replacedBy": "http://purl.org/dc/terms/isReplacedBy",
     "basedOn": "http://schema.org/basedOn",

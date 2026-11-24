@@ -62,6 +62,10 @@
       "description": "Licenses which the data can be used under",
       "$ref": "concept.schema.json#/$defs/conceptSet"
     },
+    "accessRights": {
+      "description": "Legal information about access or restrictions",
+      "$ref": "concept.schema.json#/$defs/conceptSet"
+    },
     "checksum": {
       "description": "Checksum of the download (algorithm and digest value)",
       "type": "object",

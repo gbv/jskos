@@ -836,6 +836,7 @@ compressFormat [URI]              compression format of the distribution
 packageFormat  [URI]              packaging format when multiple files are grouped together
 services       [set] of [service] Services to retrieve the distribution (e.g. via an API)
 license        [set]              license which the data can be used under
+accessRights   [set]              legal information about access or restrictions
 size           string             Size of a distribution in bytes or literal such as "1.5 MB"
 checksum       [checksum]         Checksum of the download (algorithm and digest value)
 
@@ -1653,6 +1654,9 @@ JSKOS started in 2014 as as part of project [coli-conc](https://coli-conc.gbv.de
 ### next draft {-}
 
 *See <https://github.com/gbv/jskos/issues> for open issues*
+
+- Add Distribution field `accessRights`
+- Extend JSON-LD context with `basedOn`
 
 ### 0.7.1 (2026-01-07) {-}
 

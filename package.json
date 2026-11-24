@@ -21,7 +21,7 @@
     "ajv-formats": "^3.0.1",
     "ajv-formats-draft2019": "^1.6.1",
     "edtf": "^4.6.0",
-    "glob": "^13.0.0",
+    "glob": "^14.0.6",
     "jsonld": "^9.0.0",
     "jsonld2rdf": "^0.5.1",
     "mocha": "^11.0.0",
